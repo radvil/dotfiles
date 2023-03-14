@@ -22,8 +22,8 @@ setup_link() {
 	local src="$1" dst="$2"
 	if [ -d "$src" ]; then
 		if [ ! -d "$dst" ]; then
-      info "directory $dst doesnt exists!"
-      okay "directory $dst created!"
+			info "directory $dst doesnt exists!"
+			okay "directory $dst created!"
 			ln -s "$src" "$dst"
 			okay "linked dir $1 >> $2"
 		else
@@ -46,5 +46,9 @@ source_file() {
 	else
 		warn "file $dst doesn't exist! [skipped]"
 	fi
+}
 
+ensure_exec() {
+	cmdname="$(command -v "$1" 2>/dev/null)" || cmdname="$(dirname "$0")/$1"
+	[[ -x "$cmdname" ]] || fail "$cmdname not found"
 }
