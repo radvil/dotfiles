@@ -8,7 +8,6 @@
 : 1677084817:0;dot commit -m "disable zsh instant prompt"
 : 1677084817:0;vi .dotfiles
 : 1677084817:0;dot push -u origin minimal-setup
-: 1677084817:0;vi .radvil
 : 1677084817:0;ls .dotfiles
 : 1677084817:0;dot rm -r .aws/workbench
 : 1677084817:0;dot commit -am "Test"
@@ -18,8 +17,6 @@
 : 1677084817:0;dot branch -D origin/minimal-setup
 : 1677084817:0;dot branc --list
 : 1677084817:0;dot checkout -b setup-z-lua
-: 1677084817:0;ls .radvil
-: 1677084817:0;vi .radvil/z.lua
 : 1677084817:0;dot commit -m 
 : 1677084817:0;dot commit -am "Add z.lua"
 : 1677084817:0;dot merge setup-z-lua
@@ -332,13 +329,11 @@
 : 1677084817:0;../BAK
 : 1677084817:0;../nvim_BAK
 : 1677084817:0;which _zlua
-: 1677084817:0;cd ~/Projects/radvil
 : 1677084817:0;dot commit -m "Packer to Lazy.nvim Test"
 : 1677084817:0;dot merge feature/lazy-nvim
 : 1677084817:0;dot checkout feature/lazy-nvim
 : 1677084817:0;z prorad
 : 1677084817:0;z Prorad
-: 1677084817:0;z Projects/radvil
 : 1677084817:0;mx new NEO-DEV
 : 1677084817:0;cd ~/.config/
 : 1677084817:0;rm -rf nvim_BAK
@@ -556,7 +551,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;rm -rf ~/.local/state/nvim
 : 1677084817:0;rm -rf ~/.cache/nvim
 : 1677084817:0;vi
-: 1677084817:0;z radvil
 : 1677084817:0;vi
 : 1677084817:0;refresh
 : 1677084817:0;source_zsh
@@ -576,7 +570,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;z nvim
 : 1677084817:0;mx a
 : 1677084817:0;vi
-: 1677084817:0;z radvil
 : 1677084817:0;vi
 : 1677084817:0;z nvim
 : 1677084817:0;vi
@@ -627,9 +620,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;vi
 : 1677084817:0;rm -rf ~/.cache/nvim && rm -rf ~/.local/state/nvim
 : 1677084817:0;exit
-: 1677084817:0;vi ~/.radvil/alis
-: 1677084817:0;vi ~/.radvil/aliases.sh
-: 1677084817:0;s ~/.radvil/aliases.sh
 : 1677084817:0;purge-nvim-cache
 : 1677084817:0;vi
 : 1677084817:0;vi 
@@ -644,7 +634,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;sudo apt update && sudo apt full-upgrade
 : 1677084817:0;ls
 : 1677084817:0;lazygit
-: 1677084817:0;z radvil
 : 1677084817:0;lazygit
 : 1677084817:0;ls
 : 1677084817:0;mx new -s CLIO-DEV
@@ -660,7 +649,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;mx a
 : 1677084817:0;ls
 : 1677084817:0;dot status
-: 1677084817:0;dot add .radvil/aliases.sh
 : 1677084817:0;dot commit -m "Add aliases"
 : 1677084817:0;dot push
 : 1677084817:0;dot checkout preview/nvim
@@ -891,7 +879,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;cd Projects
 : 1677084817:0;ls
 : 1677084817:0;ls trash:â¤.desktop
-: 1677084817:0;git clone https://github.com/radvil2/dot.deb.git
 : 1677084817:0;mv dot.deb/Forks/Rvim .
 : 1677084817:0;ls
 : 1677084817:0;rm -rf dot.deb
@@ -909,23 +896,16 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;git add .
 : 1677084817:0;git commit -m "ð¿´¥ INIT THIS FIRE"
 : 1677084817:0;git branch -M main
-: 1677084817:0;gi remote add origin git@github.com:radvil2/rvim.git
-: 1677084817:0;git remote add origin git@github.com:radvil2/rvim.git
 : 1677084817:0;git push -u origin main
 : 1677084817:0;ls
 : 1677084817:0;ssh-agent
 : 1677084817:0;ssh-keygen -t ed25519 -C "radvil.developer@gmail.com"
 : 1677084817:0;mkdir ~/.ssh/github
 : 1677084817:0;ssh-keygen -t ed25519 -C "radvil.developer@gmail.com"
-: 1677084817:0;cat ~/.ssh/github/radvil_ed25519.pub
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;git push -u origin main
-: 1677084817:0;vi ~/.ssh/id_rsa_github_radvil2
-: 1677084817:0;vi ~/.ssh/id_rsa_github_radvil2.pub
 : 1677084817:0;git push -u origin main
 : 1677084817:0;ssh -T git@github.com
-: 1677084817:0;ssh -T git@github.com:radvil/rvim.git
 : 1677084817:0;vi .git/config
 : 1677084817:0;git push -u origin main
 : 1677084817:0;vi .git/config
@@ -951,11 +931,9 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;sudo service network-manager restart
 : 1677084817:0;ping github.com
 : 1677084817:0;ssh -T git@github.com
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;ping github.com
 : 1677084817:0;ssh -T git@github.com
-: 1677084817:0;git remote set-url origin git@github.com:radvil/rvim.git
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;ping github.com
 : 1677084817:0;git push
@@ -968,7 +946,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;ls
 : 1677084817:0;..
 : 1677084817:0;ls
-: 1677084817:0;git clone https://github.com/radvil2/dot.deb
 : 1677084817:0;ls
 : 1677084817:0;mv dot.deb/.config/nvim ~/.config -r
 : 1677084817:0;mv dot.deb/.config/nvim ~/.config
@@ -1214,7 +1191,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;dot push
 : 1677084817:0;ping github.com
 : 1677084817:0;ssh -T git@github.com
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;dot ls-remote
 : 1677084817:0;git fetch
@@ -1325,7 +1301,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;git push
 : 1677084817:0;git -T git@github.com
 : 1677084817:0;ssh -T git@github.com
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;git push
 : 1677084817:0;exit
@@ -1606,13 +1581,11 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;ls
 : 1677084817:0;dot branch --show-current
 : 1677084817:0;dot push
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;dot push
 : 1677084817:0;git -T git@github.com
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;dot push
 : 1677084817:0;dot ls-remote
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;ssh -T git@github.com
 : 1677084817:0;dot ls-remote
 : 1677084817:0;dot push
@@ -1819,15 +1792,12 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;lazygit --work-tree="$HOME" --git-dir="$HOME/.dotfiles/"
 : 1677084817:0;lg
 : 1677084817:0;cd
-: 1677084817:0;vi ~/.radvil/aliases.sh
 : 1677084817:0;exit
 : 1677084817:0;source_zsh
 : 1677084817:0;lgd
 : 1677084817:0;cd
-: 1677084817:0;source ~/.radvil/aliases.sh
 : 1677084817:0;lgd
 : 1677084817:0;lg
-: 1677084817:0;vi ~/.radvil/aliases.sh
 : 1677084817:0;echo $PATH | grep lazygit
 : 1677084817:0;echo $PATH
 : 1677084817:0;which lazygit
@@ -1843,18 +1813,14 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;echo $(which bash > /dev/null)
 : 1677084817:0;vi ~/.profile
 : 1677084817:0;source .profile
-: 1677084817:0;vi ~/.radvil/aliases.sh
-: 1677084817:0;source ~/.radvil/aliases.sh
 : 1677084817:0;lg
 : 1677084817:0;exit
 : 1677084817:0;cd
-: 1677084817:0;vi ~/.radvil/aliases.sh
 : 1677084817:0;exit
 : 1677084817:0;vi ~/.zshrc
 : 1677084817:0;source_zsh
 : 1677084817:0;exit
 : 1677084817:0;lgd
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;lgd
 : 1677084817:0;killall lazygit
 : 1677084817:0;exit
@@ -1892,7 +1858,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;cd
 : 1677084817:0;dot status
 : 1677084817:0;dot add .profile
-: 1677084817:0;dot add .radvil
 : 1677084817:0;dot add .tmux.conf
 : 1677084817:0;dot add .zshrc
 : 1677084817:0;dot status
@@ -1907,7 +1872,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;dot push
 : 1677084817:0;dot checkout preview/nvim\#refactoring
 : 1677084817:0;dot status
-: 1677084817:0;vi ~/.radvil/aliases.sh
 : 1677084817:0;source_zsh
 : 1677084817:0;lgd
 : 1677084817:0;killall lazygit
@@ -1920,7 +1884,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;cd
 : 1677084817:0;ls
 : 1677084817:0;ll
-: 1677084817:0;vi ~/.radvil/aliases.sh
 : 1677084817:0;exists lazygit
 : 1677084817:0;exit
 : 1677084817:0;lg
@@ -1973,7 +1936,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;dot status
 : 1677084817:0;mx
 : 1677084817:0;dot status
-: 1677084817:0;dot add ../.radvil
 : 1677084817:0;dot commit -m "some bashrc adjustment, TODO: findout why lazygit crash on my bare repo setup"
 : 1677084817:0;dot push
 : 1677084817:0;dot checkout preview/nvim
@@ -2007,8 +1969,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;starship init
 : 1677084817:0;starship init zsh
 : 1677084817:0;cat .config/starship.toml
-: 1677084817:0;mkdir .radvil/config
-: 1677084817:0;mv .config/starship.toml .radvil/config
 : 1677084817:0;source ~/.zshrc
 : 1677084817:0;prompt_starship
 : 1677084817:0;source ~/.zshrc
@@ -2020,11 +1980,8 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;prompt_starship
 : 1677084817:0;source ~/.zshrc
 : 1677084817:0;prompt_starship
-: 1677084817:0;source ~/.radvil/aliases.sh && prompt_starship
 : 1677084817:0;ls /usr/local/bin/starship
-: 1677084817:0;source ~/.radvil/aliases.sh && prompt_starship
 : 1677084817:0;exit
-: 1677084817:0;source ~/.radvil/aliases.sh && prompt_starship
 : 1677084817:0;z nvim
 : 1677084817:0;-
 : 1677084817:0;so-zsh
@@ -2138,7 +2095,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;dot status
 : 1677084817:0;dot add .bashrc .zshrc
 : 1677084817:0;dot status
-: 1677084817:0;dot add .radvil
 : 1677084817:0;dot add .config/konsolerc
 : 1677084817:0;dot add .config/systemsettingsrc
 : 1677084817:0;dot add .config/plasmashellrc
@@ -2218,7 +2174,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;ls
 : 1677084817:0;cd forks
 : 1677084817:0;ls
-: 1677084817:0;git clone https://github.com/radvil2/smooth-cursor.nvim
 : 1677084817:0;exit
 : 1677084817:0;vi
 : 1677084817:0;dot status
@@ -2346,9 +2301,7 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;z nvim
 : 1677084817:0;vi
 : 1677084817:0;z admin
-: 1677084817:0;z radvil
 : 1677084817:0;cd
-: 1677084817:0;cd Projects/radvil
 : 1677084817:0;ls
 : 1677084817:0;vi
 : 1677084817:0;exit
@@ -2545,10 +2498,7 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;git commit -m "Add some testing configs"
 : 1677084817:0;git add .
 : 1677084817:0;git commit -m "Add some testing configs"
-: 1677084817:0;git remote add origin remote add origin git@github.com:radvil2/rvim.git
-: 1677084817:0;git remote add origin git@github.com:radvil2/rvim.git
 : 1677084817:0;git push -u origin main
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;git push -u origin main
 : 1677084817:0;lg
 : 1677084817:0;vi
@@ -2645,7 +2595,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;z clo
 : 1677084817:0;z clio
 : 1677084817:0;exit
-: 1677084817:0;z /home/radvil/Codes/clio-crm
 : 1677084817:0;ng s --port=5000
 : 1677084817:0;v
 : 1677084817:0;exit
@@ -2719,8 +2668,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;exit
 : 1677084817:0;vi
 : 1677084817:0;z playground
-: 1677084817:0;z radvil
-: 1677084817:0;cd ~/Projects/radvil/apps/wedding-invitation
 : 1677084817:0;vi
 : 1677084817:0;..
 : 1677084817:0;ls
@@ -2731,7 +2678,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;l
 : 1677084817:0;cd ~/Projects
 : 1677084817:0;ls
-: 1677084817:0;cd radvil
 : 1677084817:0;ls
 : 1677084817:0;z rvim
 : 1677084817:0;vi
@@ -2929,9 +2875,7 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;git add .
 : 1677084817:0;git commit
 : 1677084817:0;git branch -M main
-: 1677084817:0;git remote add origin git@github.com:radvil/fokus.nvim.git
 : 1677084817:0;git push -u origin main
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;git push -u origin main
 : 1677084817:0;exit
 : 1677084817:0;mx a
@@ -3008,8 +2952,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;vi
 : 1677084817:0;exit
 : 1677084817:0;z fokus
-: 1677084817:0;z /home/radvil/Projects/focus.nvim ls
-: 1677084817:0;z /home/radvil/Projects/focus.nvim
 : 1677084817:0;ls
 : 1677084817:0;..
 : 1677084817:0;mv focus.nvim fokus.nvim
@@ -3021,7 +2963,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;exit
 : 1677084817:0;git status
 : 1677084817:0;git push -u orign main
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;git push -u orign main
 : 1677084817:0;git push -u origin main
 : 1677084817:0;exit
@@ -3061,9 +3002,7 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;cd references
 : 1677084817:0;ls
 : 1677084817:0;ls threejs-solar-system
-: 1677084817:0;git clone git@github.com:radvil/angular-movie-using-rx-angular.git angular-movie-zone-less
 : 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
-: 1677084817:0;git clone git@github.com:radvil/angular-movie-using-rx-angular.git angular-movie-zone-less
 : 1677084817:0;ls
 : 1677084817:0;du -sh angular-
 : 1677084817:0;du -sh angular-movie-zone-less
@@ -3151,7 +3090,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;mv references angular
 : 1677084817:0;mv rvim neovim
 : 1677084817:0;ls
-: 1677084817:0;mv radvil angular/nx-radvil
 : 1677084817:0;ls
 : 1677084817:0;mkdir others
 : 1677084817:0;mv golang others
@@ -3190,7 +3128,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;got commit -m "initial release version-2"
 : 1677084817:0;dot commit -m "initial release version-2"
 : 1677084817:0;dot push
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;dot push
 : 1677084817:0;dot brach -a
 : 1677084817:0;dot branch -a
@@ -3258,7 +3195,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;ls
 : 1677084817:0;cd angular
 : 1677084817:0;ls
-: 1677084817:0;cd nx-radvil
 : 1677084817:0;ls
 : 1677084817:0;ls apps
 : 1677084817:0;ls apps/examples/src/app/
@@ -3348,7 +3284,6 @@ sudo install lazygit /usr/local/bin
 : 1677084817:0;git branch -d monorepo-setup
 : 1677084817:0;git branch
 : 1677084817:0;vi
-: 1677084817:0;z /home/radvil/Projects/angular
 : 1677084817:0;ls
 : 1677084817:0;yarn add -S @angular/fire
 : 1677084817:0;yarn add @angular/fire -S
@@ -3406,7 +3341,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;ls
 : 1677084817:0;cd angular
 : 1677084817:0;ls
-: 1677084817:0;cd nx-radvil
 : 1677084817:0;ls
 : 1677084817:0;exit
 : 1677084817:0;nx serve examples
@@ -3516,7 +3450,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;dot branch -a
 : 1677084817:0;dot branch -r
 : 1677084817:0;dot fetch
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;dot fetch
 : 1677084817:0;dot branch -r
 : 1677084817:0;dot status
@@ -3537,13 +3470,7 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;dot fetch --all
 : 1677084817:0;dot branch -a
 : 1677084817:0;dot branch -r
-: 1677084817:0;vi ~/.radvil/aliases.sh
-: 1677084817:0;mkdir ~/.radvil/bin
-: 1677084817:0;vi ~/.radvil/bin/fetch-n-pull-all-git-branches
-: 1677084817:0;chmod +x ~/.radvil/bin/fetch-n-pull-all-git-branches
-: 1677084817:0;vi ~/.radvil/bin/fetch-n-pull-all-git-branches
 : 1677084817:0;cd
-: 1677084817:0;cd .radvil/
 : 1677084817:0;ls
 : 1677084817:0;mv bin env
 : 1677084817:0;cd env
@@ -3559,7 +3486,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;vi ../aliases.sh
 : 1677084817:0;exit
 : 1677084817:0;fetch_all_git_branches
-: 1677084817:0;cd .radvil
 : 1677084817:0;ls
 : 1677084817:0;vi aliases.sh
 : 1677084817:0;so-zsh
@@ -3709,7 +3635,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;dot branch push
 : 1677084817:0;dot status
 : 1677084817:0;dot branch --show-current
-: 1677084817:0;dot add .radvil
 : 1677084817:0;dot add .tmux.conf
 : 1677084817:0;dot add .config/kglobalshorcutsrc
 : 1677084817:0;dot add .config/kglobalshortcutsrc
@@ -3776,7 +3701,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;dot commit -m "nvim autopairs leaps, kwin shortcuts, new rofi window finders, etc"
 : 1677084817:0;dot push
 : 1677084817:0;rofi -show ssh
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;dot push
 : 1677084817:0;ping 8.8.8.8
 : 1677084817:0;dot push
@@ -3836,8 +3760,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;i
 : 1677084817:0;exit
 : 1677084817:0;vi
-: 1677084817:0;z radvil
-: 1677084817:0;cd ~/Projects/angular/nx-radvil
 : 1677084817:0;ls
 : 1677084817:0;nx serve radvlix
 : 1677084817:0;v
@@ -3888,7 +3810,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;v
 : 1677084817:0;vi
 : 1677084817:0;v
-: 1677084817:0;ngserver --stdio --tsProbeLocations /home/radvil/.local/share/nvim/mason/packages/angular-language-server/node_modules,/home/radvil/Codes/parastar-admin/node_modules --ngProbeLocations /home/radvil/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server/node_modules,/home/radvil/Codes/parastar-admin/node_modules
 : 1677084817:0;exit
 : 1677084817:0;vi
 : 1677084817:0;v
@@ -4328,7 +4249,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;exit
 : 1677084817:0;git add .
 : 1677084817:0;exit
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1677084817:0;exit
 : 1677084817:0;v
 : 1677084817:0;vi
@@ -4346,7 +4266,6 @@ nx g @nrwl/angular:lib models --standaloneConfig --simpleName --skipTests --tags
 : 1677084817:0;dot add .
 : 1677084817:0;dot commit -m "feat: lua-language-server, lua_ls instead of sumneko_lua"
 : 1677084817:0;dot push
-: 1677084817:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1677084817:0;dot push
 : 1677084817:0;dot status
 : 1677084817:0;exit
@@ -4406,11 +4325,6 @@ dot add .config/nvim/lua/usr/ui/notify.lua;\
 dot add .config/nvim/lua/var/env.lua;\
 dot add .config/rofi/config.rasi;\
 dot add .profile;\
-dot add .radvil/bin/autocmds;\
-dot add .radvil/env/aliases.env;\
-dot add .radvil/env/api.env;\
-dot add .radvil/env/var.env;\
-dot add .radvil/profile;\
 dot add .zshrc;\
 
 : 1677084817:0;dot commit -m "update env config"
@@ -4815,11 +4729,7 @@ fi
 : 1677084817:0;mv nvim nvim.bak
 : 1677084817:0;z forks
 : 1677084817:0;ls
-: 1677084817:0;git clone git@github.com:radvil/rnvm.git
 : 1677084817:0;ping 8.8.8.8
-: 1677084817:0;git clone git@github.com:radvil/rnvm.git
-: 1677084817:0;ssh-add ~/.ssh/github/radvil_ed25519
-: 1677084817:0;git clone git@github.com:radvil/rnvm.git
 : 1677084817:0;cd rnvim
 : 1677084817:0;exit
 : 1677084817:0;cd
@@ -4829,15 +4739,12 @@ fi
 : 1677084817:0;ls nvim
 : 1677084817:0;ls
 : 1677084817:0;ls nvim
-: 1677084817:0;z radvil
 : 1677084817:0;-
 : 1677084817:0;cd
-: 1677084817:0;cd .radvil/config
 : 1677084817:0;ls
 : 1677084817:0;exit
 : 1677084817:0;z forks
 : 1677084817:0;ls
-: 1677084817:0;git clone git@github.com:radvil/LazyVim-starter.git -b self
 : 1677084817:0;ls -s LazyVim-starter ~/.config/nvim
 : 1677084817:0;ls -S LazyVim-starter ~/.config/nvim
 : 1677084817:0;ls -S ~/forks/LazyVim-starter ~/.config/nvim
@@ -5090,15 +4997,12 @@ dot add ../.tmux.conf;\
 : 1677084817:0;pwd
 : 1677084817:0;ls
 : 1677084817:0;exit
-: 1677084817:0;vi ~/.radvil/env/alias.env
 : 1677084817:0;alias forecast="nvim -u ~/forks/rvim-lazy/init.lua"
 : 1677084817:0;alias dev="nvim -u ~/forks/rvim-lazy/init.lua"
 : 1677084817:0;dev
-: 1677084817:0;ls ~/.local/share/nvim/radvil
 : 1677084817:0;ls
 : 1677084817:0;exit
 : 1677084817:0;dev
-: 1677084817:0;rm -rf ~/.local/share/nvim/radvil
 : 1677084817:0;cd ~/.local/share/nvim
 : 1677084817:0;ls
 : 1677084817:0;cd lazy
@@ -6470,7 +6374,6 @@ dot add ../.tmux.conf;\
 : 1677084817:0;rm -rf nnn-*
 : 1677084817:0;cd
 : 1677084817:0;ll
-: 1677084817:0;cd .radvil
 : 1677084817:0;ls
 : 1677084817:0;cd config
 : 1677084817:0;ls
@@ -6499,7 +6402,6 @@ dot add ../.tmux.conf;\
 : 1677084820:0;so-zsh
 : 1677084852:0;nbak
 : 1677084862:0;sudo apt info nbak
-: 1677085020:0;cd .radvil
 : 1677085020:0;ls
 : 1677085023:0;vi
 : 1677085206:0;vi ~/.config/nnn/plugins/preview-tui
@@ -6532,7 +6434,6 @@ dot add ../.tmux.conf;\
 : 1677086015:0;ls
 : 1677086019:0;cd
 : 1677086021:0;nnn
-: 1677086153:0;z /home/radvil/Downloads/Programs
 : 1677086154:0;ls
 : 1677086159:0;git clone $ git clone https://github.com/sebastiencs/icons-in-terminal.git
 : 1677086166:0;git clone https://github.com/sebastiencs/icons-in-terminal.git
@@ -6547,7 +6448,6 @@ dot add ../.tmux.conf;\
 : 1677086398:0;vi ~/.config/kitty/kitty.conf
 : 1677086449:0;./print_icons.sh
 : 1677086471:0;nnn
-: 1677086507:0;z /home/radvil/Downloads/Programs
 : 1677086507:0;ls
 : 1677086510:0;cd nnn-4.7
 : 1677086510:0;ls
@@ -6559,16 +6459,11 @@ dot add ../.tmux.conf;\
 : 1677086544:0;which nnn
 : 1677086557:0;rm -rf /usr/local/bin/nnn
 : 1677086560:0;sudo rm -rf /usr/local/bin/nnn
-: 1677086577:0;mv nnn ~/.radvil/bin/
-: 1677086585:0;cd ~/.radvil/bin
 : 1677086586:0;ls
 : 1677086591:0;so-zsh
 : 1677086594:0;nnn
-: 1677086613:0;vi ~/.radvil/bin/autocmd.sh
 : 1677086735:0;so-zsh
-: 1677086746:0;vi ~/.radvil/bin/autocmd.sh
 : 1677086763:0;so-zsh
-: 1677086783:0;rm -rf ~/.radvil/bin/nnn
 : 1677086788:0;z Prog
 : 1677086789:0;ls
 : 1677086791:0;cd nnn-4.7
@@ -6609,14 +6504,12 @@ dot add ../.tmux.conf;\
 : 1677169097:0;which go
 : 1677169249:0;./lf
 : 1677169254:0;exit
-: 1677169304:0;cd .radvil
 : 1677169305:0;ls
 : 1677169306:0;vi
 : 1677170070:0;so-zsh
 : 1677170086:0;autocmd.sh
 : 1677170092:0;exit
 : 1677170096:0;mx
-: 1677170122:0;mv ~/Downloads/Programs/lf ~/.radvil/bin
 : 1677170126:0;so-zsh
 : 1677170128:0;lf
 : 1677170146:0;which lf
@@ -6624,7 +6517,6 @@ dot add ../.tmux.conf;\
 : 1677170162:0;lf
 : 1677170315:0;mx
 : 1677170320:0;ls
-: 1677170325:0;cd .radvil
 : 1677170326:0;ls
 : 1677170329:0;ll
 : 1677170333:0;vi profile
@@ -6636,7 +6528,6 @@ dot add ../.tmux.conf;\
 : 1677171091:0;ls
 : 1677171094:0;cd ..
 : 1677171094:0;ls
-: 1677171101:0;cd .radvil/config
 : 1677171101:0;ls
 : 1677171112:0;vi lf-colors
 : 1677171155:0;cd ~/.config/lf
@@ -6659,11 +6550,9 @@ dot add ../.tmux.conf;\
 : 1677172906:0;lf
 : 1677172992:0;ls
 : 1677172995:0;cd lf
-: 1677173012:0;cd .radvil
 : 1677173013:0;vi
 : 1677173030:0;exit
 : 1677173033:0;vi
-: 1677173045:0;cd .radvil
 : 1677173046:0;ls
 : 1677173047:0;vi
 : 1677173069:0;cd ~/.config/lf
@@ -6680,7 +6569,6 @@ dot add ../.tmux.conf;\
 : 1677222905:0;cd ami-workspace-base
 : 1677222906:0;ls
 : 1677222911:0;mx
-: 1677222934:0;cd ~/.radvil
 : 1677222935:0;v
 : 1677222936:0;vi
 : 1677222939:0;nvim
@@ -6717,7 +6605,6 @@ dot add ../.tmux.conf;\
 : 1677256590:0;lf
 : 1677256601:0;exit
 : 1677256803:0;lf
-: 1677256983:0;cd .radvil
 : 1677256983:0;ls
 : 1677256986:0;lf
 : 1677258528:0;lfrun
@@ -6728,7 +6615,6 @@ dot add ../.tmux.conf;\
 : 1677259139:0;rm -rf nnn
 : 1677259142:0;rm -rf lf-linux-amd64.tar.gz
 : 1677259143:0;ls
-: 1677259153:0;git clone https://github.com/radvil/lfimg
 : 1677259163:0;cd lfimg
 : 1677259163:0;ls
 : 1677259173:0;make install
@@ -6743,7 +6629,6 @@ dot add ../.tmux.conf;\
 : 1677259815:0;lr
 : 1677259897:0;dot status
 : 1677259907:0;dot add .config/kwinrc
-: 1677259916:0;dot add .radvil
 : 1677259937:0;dot add Documents/neorg-vault/neovim/todo.norg
 : 1677259958:0;dot add .profile
 : 1677259969:0;dot .config/kitty/kitty.conf
@@ -6768,7 +6653,6 @@ dot add ../.tmux.conf;\
 : 1677264750:0;v
 : 1677318340:0;mx
 : 1677318341:0;ls
-: 1677318344:0;cd radvil
 : 1677318345:0;ls
 : 1677318347:0;cd nvim
 : 1677318347:0;ls
@@ -6795,7 +6679,6 @@ dot add ../.tmux.conf;\
 : 1677329682:0;ls --color
 : 1677329742:0;echo $LS_COLORS
 : 1677329750:0;ls
-: 1677329765:0;cd ~/.radvil
 : 1677329766:0;v
 : 1677329962:0;ls
 : 1677329966:0;dot status
@@ -6814,7 +6697,6 @@ dot add ../.tmux.conf;\
 : 1677330068:0;ls
 : 1677330070:0;cd angular
 : 1677330070:0;ls
-: 1677330073:0;cd nx-radvil
 : 1677330074:0;ls
 : 1677330092:0;exit
 : 1677330100:0;nvm use 18
@@ -7059,7 +6941,6 @@ git branch -d merge/timetable;\
 git branch -d merge/timetable-multipleslot;\
 git branch -d merge/timetable-slot;\
 git branch -d new-ui;\
-git branch -d radvil-fixes;\
 git branch -d refactoring;\
 git branch -d rommy-fix-scroll-horizontal;
 : 1677471668:0;git branch -D branches-merging-finale;\
@@ -7094,7 +6975,6 @@ git branch -D merge/timetable;\
 git branch -D merge/timetable-multipleslot;\
 git branch -D merge/timetable-slot;\
 git branch -D new-ui;\
-git branch -D radvil-fixes;\
 git branch -D refactoring;\
 git branch -D rommy-fix-scroll-horizontal;
 : 1677471688:0;git branch -d branches-merging-finale;\
@@ -7129,7 +7009,6 @@ git branch -d merge/timetable;\
 git branch -d merge/timetable-multipleslot;\
 git branch -d merge/timetable-slot;\
 git branch -d new-ui;\
-git branch -d radvil-fixes;\
 git branch -d refactoring;\
 git branch -d rommy-fix-scroll-horizontal;
 : 1677471696:0;git branch -a
@@ -7300,7 +7179,6 @@ git branch -d rommy-fix-scroll-horizontal;
 : 1677601653:0;z nvim
 : 1677601654:0;v
 : 1677601703:0;z radvlix
-: 1677601710:0;cd ~/Projects/angular/nx-radvil
 : 1677601712:0;ls
 : 1677601720:0;git branch -a
 : 1677601736:0;git checkout radvlix/base-setup
@@ -7326,8 +7204,6 @@ git branch -d rommy-fix-scroll-horizontal;
 : 1677690553:0;z nvim
 : 1677690554:0;v
 : 1677690560:0;vi
-: 1677690617:0;z radvil
-: 1677690634:0;cd ~/Projects/angular/nx-radvil
 : 1677690643:0;nx serve radvlix
 : 1677690661:0;vi
 : 1677692609:0;z nvim
@@ -7690,7 +7566,6 @@ git branch -d rommy-fix-scroll-horizontal;
 : 1677949232:0;cd
 : 1677949245:0;lf
 : 1677949282:0;cat .zshenv
-: 1677949299:0;cd .radvil
 : 1677949300:0;kls
 : 1677949301:0;ls
 : 1677949305:0;lf
@@ -7705,8 +7580,6 @@ git branch -d rommy-fix-scroll-horizontal;
 : 1677950004:0;ps -p $$
 : 1677950089:0;exit
 : 1677950118:0;cd
-: 1677950196:0;mkdir ~/.radvil/scripts
-: 1677950224:0;cp .fzf/shell/* -r ~/.radvil/bin/
 : 1677950238:0;exit
 : 1677951030:0;dot checkout -b refactoring-dotfiles
 : 1677951034:0;exit
@@ -7761,7 +7634,6 @@ dot add .config/kglobalshortcutsrc;\
 dot add .config/kwinrc;\
 dot add .config/spectaclerc;\
 dot add .config/systemsettingsrc;\
-dot add .radvil;
 : 1677959185:0;dot status
 : 1677959211:0;dot commit -m "new dotfiels structures + switch to starship prompt by default"
 : 1677959245:0;dot push --set-upstream origin refactoring-dotfiles
@@ -7782,7 +7654,6 @@ dot add .radvil;
 : 1677959673:0;so-zsh
 : 1677959691:0;starship
 : 1677959713:0;exit
-: 1677960608:0;vi ~/.radvil/zsh/profile
 : 1677960646:0;nvm
 : 1677960654:0;ls -la | grep .nvm
 : 1677960659:0;cd .nvm
@@ -7800,9 +7671,7 @@ dot add .radvil;
 : 1677960922:0;source .profile
 : 1677960929:0;nvm ls-remote
 : 1677960957:0;vi ~/.profile
-: 1677961043:0;mv .profile ~/.radvil/universal
 : 1677961051:0;exit
-: 1677961066:0;cd .radvil
 : 1677961067:0;vi
 : 1677961692:0;exit
 : 1677961914:0;cd
@@ -7854,15 +7723,12 @@ dot add ../.zshrc;
 : 1677964491:0;nvim $(fzf --height 40% --reverse)\
 
 : 1677964522:0;fzf --height 40% --reverse | nvim
-: 1677965998:0;vi ~/.radvil/bin/fzm
 : 1677966021:0;fzm
-: 1677966038:0;sudo chmod +x ~/.radvil/bin/fzm
 : 1677966046:0;fzm
 : 1677966078:0;vi $(fzm)
 : 1677966111:0;fzf
 : 1677966120:0;exit
 : 1677966126:0;fzm
-: 1677966139:0;cd .radvil
 : 1677966142:0;fzm
 : 1677966290:0;â½¯ todoist --namespace --project-namespace list | fzf --preview 'todoist show {1}' | cut -d ' ' -f 1 | tr '\n' ' '
 : 1677966308:0;exit
@@ -7960,7 +7826,6 @@ dot add ../.zshrc;
 : 1678025971:0;nx -v
 : 1678025982:0;ff
 : 1678026299:0;ls
-: 1678026303:0;cd .radvil
 : 1678026304:0;ls
 : 1678026305:0;tree
 : 1678026312:0;v
@@ -7973,10 +7838,8 @@ dot add ../.zshrc;
 : 1678026421:0;fv
 : 1678026428:0;vi bin/fv
 : 1678026459:0;exit
-: 1678026463:0;cd .radvil
 : 1678026464:0;ls
 : 1678026467:0;cd
-: 1678026469:0;cd .radvil
 : 1678026469:0;ls
 : 1678026472:0;fv
 : 1678026478:0;vi bin/fv
@@ -8020,7 +7883,6 @@ dot add ../.zshrc;
 : 1678032240:0;exit
 : 1678032242:0;mx
 : 1678032246:0;dot status
-: 1678032253:0;~/.radvil
 : 1678032254:0;ls
 : 1678032257:0;dot status
 : 1678032259:0;dot add .
@@ -8096,7 +7958,6 @@ dot add ../.zshrc;
 : 1678035027:0;exit
 : 1678035031:0;sudo apt update && sudo apt dist-upgrade -y
 : 1678035167:0;exit
-: 1678036653:0;cd .radvil
 : 1678036653:0;ls
 : 1678036656:0;vi
 : 1678036662:0;lf
@@ -8252,19 +8113,16 @@ dot add ../.zshrc;
 : 1678046208:0;z nv
 : 1678046210:0;v
 : 1678046261:0;cd
-: 1678046264:0;cd .radvil
 : 1678046266:0;vi
 : 1678047452:0;exit
 : 1678047468:0;reboot
 : 1678047542:0;exit
-: 1678047552:0;cd .radvil
 : 1678047573:0;vi
 : 1678047753:0;cd
 : 1678047757:0;vi .zshrc
 : 1678047769:0;vi .zshenv
 : 1678047857:0;exit
 : 1678047871:0;mx
-: 1678047878:0;cd .radvil
 : 1678047879:0;vi
 : 1678047931:0;exit
 : 1678047981:0;ff
@@ -8277,7 +8135,6 @@ dot add ../.zshrc;
 : 1678048122:0;exit
 : 1678048564:0;dot status
 : 1678048565:0;exit
-: 1678048575:0;cd .radvil
 : 1678048578:0;dot status
 : 1678048596:0;dot add .
 : 1678048605:0;dot add ../.zshenv
@@ -8287,13 +8144,11 @@ dot add ../.zshrc;
 : 1678048698:0;cd
 : 1678048703:0;vi .zshenv
 : 1678048822:0;cd .rad
-: 1678048826:0;cd .radvil
 : 1678048827:0;ls
 : 1678048830:0;vi
 : 1678048919:0;exit
 : 1678048925:0;nvm
 : 1678048926:0;exit
-: 1678048934:0;cd .radvil
 : 1678048937:0;dot add .
 : 1678048941:0;dot status
 : 1678048950:0;dot commit -m "env"
@@ -8317,7 +8172,6 @@ dot add ../.zshrc;
 : 1678068696:0;vi
 : 1678068788:0;exit
 : 1678068798:0;dot status
-: 1678068882:0;vi ~/.radvil/config/starship.toml
 : 1678069198:0;exit
 : 1678069587:0;so-zsh
 : 1678069791:0;z nvim
@@ -8334,11 +8188,9 @@ dot add ../.zshrc;
 : 1678073976:0;-
 : 1678074035:0;z nv
 : 1678074208:0;-
-: 1678074212:0;cd .radvil
 : 1678074718:0;-
 : 1678074721:0;z nv
 : 1678074731:0;-
-: 1678074735:0;cd .radvil
 : 1678074772:0;-
 : 1678074775:0;z nv
 : 1678074823:0;z pana
@@ -8348,7 +8200,6 @@ dot add ../.zshrc;
 : 1678075037:0;vi
 : 1678075045:0;exit
 : 1678075053:0;cd
-: 1678075060:0;cd .radvil
 : 1678075065:0;dot status
 : 1678075069:0;dot add .
 : 1678075091:0;dot commit -m "cutomize starship prompt"
@@ -8383,16 +8234,13 @@ dot add ../.zshrc;
 : 1678082954:0;git merge brian-fixes
 : 1678083025:0;bin/deploy.sh
 : 1678083136:0;cd
-: 1678083143:0;cd .radvil
 : 1678083146:0;vi
 : 1678083324:0;exit
 : 1678083378:0;cd
 : 1678083381:0;exit
 : 1678083412:0;dot status
-: 1678083417:0;z .radvil
 : 1678083425:0;-
 : 1678083426:0;cd
-: 1678083428:0;cd .radvil
 : 1678083429:0;ls
 : 1678083432:0;dot status
 : 1678083439:0;dot add config
@@ -8443,7 +8291,6 @@ dot add ../.zshrc;
 : 1678084904:0;ls .config/nvim
 : 1678085072:0;tree
 : 1678085075:0;ls
-: 1678085077:0;cd .radvil
 : 1678085083:0;tree
 : 1678085136:0;cd
 : 1678085144:0;vi .zshenv
@@ -8452,10 +8299,7 @@ dot add ../.zshrc;
 : 1678085448:0;ls
 : 1678085450:0;z nvi
 : 1678085452:0;..
-: 1678085460:0;mv nvim ~/.radvil/config
 : 1678085463:0;vi
-: 1678085483:0;vi -u ~/.radvil/config/nvim
-: 1678085488:0;vi -u ~/.radvil/config/nvim/init.lua
 : 1678085507:0;exit
 : 1678085538:0;vi
 : 1678085550:0;ls nvim
@@ -8524,7 +8368,6 @@ dot add ../.zshrc;
 : 1678086800:0;cd
 : 1678087035:0;dot status
 : 1678087097:0;ll
-: 1678087102:0;cd .radvil
 : 1678087102:0;l
 : 1678087109:0;cd config
 : 1678087110:0;ll
@@ -8538,7 +8381,6 @@ dot add ../.zshrc;
 : 1678087414:0;ll
 : 1678087422:0;vi ../starship.toml
 : 1678087582:0;exit
-: 1678087612:0;z /home/radvil/Codes/panasonic-microsite
 : 1678087645:0;exit
 : 1678087652:0;dot status
 : 1678087656:0;pwd
@@ -8582,7 +8424,6 @@ dot add ../.zshrc;
 : 1678089148:0;ls
 : 1678089151:0;..
 : 1678089152:0;ls
-: 1678089155:0;cd nx-radvil
 : 1678089157:0;vi
 : 1678089364:0;exit
 : 1678091845:0;git status
@@ -8618,7 +8459,6 @@ dot add ../.zshrc;
 : 1678092789:0;ls
 : 1678092849:0;ll
 : 1678092851:0;dot status
-: 1678092855:0;cd .radvil
 : 1678092857:0;dot status
 : 1678092889:0;dot branch -a
 : 1678093144:0;pwd
@@ -8631,7 +8471,6 @@ dot add ../.zshrc;
 : 1678093216:0;ls
 : 1678093242:0;dot add nvim
 : 1678093245:0;dot status
-: 1678093255:0;dot add ../.radvil
 : 1678093267:0;dot commit -m "link nvim config instead"
 : 1678093277:0;dot branch --show-current
 : 1678093279:0;dot push
@@ -8676,7 +8515,6 @@ dot add ../.zshrc;
 : 1678093903:0;dot log
 : 1678093923:0;dot sync
 : 1678093935:0;mx
-: 1678093943:0;cd .radvil
 : 1678093944:0;ls
 : 1678093976:0;cat scripts/git-sync-all-branches.sh
 : 1678094014:0;fg %1
@@ -8702,16 +8540,11 @@ dot add ../.zshrc;
 : 1678094477:0;ping 8.8.8.8
 : 1678094480:0;exit
 : 1678094868:0;dot status
-: 1678094917:0;vi ~/.radvil/scripts/git-purge-branch.sh
-: 1678095372:0;chmod +x ~/.radvil/scripts/git-purge-branch.sh
-: 1678095401:0;vi ~/.radvil/scripts/git-purge-branch.sh
 : 1678095433:0;mx
 : 1678095449:0;mx a
 : 1678095570:0;so-zsh
 : 1678095585:0;dot status
 : 1678095609:0;dot-purge-branch refactoring-dotfiles
-: 1678095640:0;vi ~/.radvil/scripts/git-purge-branch.sh
-: 1678095648:0;vi ~/.radvil/scripts/dot-purge-branch.sh
 : 1678095750:0;dot-purge-branch refactoring-dotfiles
 : 1678095760:0;exit
 : 1678095845:0;dot-purge-branch refactoring-dotfiles
@@ -8719,17 +8552,14 @@ dot add ../.zshrc;
 : 1678095996:0;dot-purge-branch refactoring-dotfiles
 : 1678096004:0;exit
 : 1678096020:0;dot status
-: 1678096031:0;dot add .radvil/aliases
 : 1678096053:0;dot commit -m "alias for purge dotfiles branch, PR: refine later
 : 1678096056:0;dot commit -m "alias for purge dotfiles branch, PR: refine later"
 : 1678096058:0;dot push
 : 1678096079:0;dot push --set-upstream origin stage/preview
 : 1678096090:0;dot status
 : 1678096149:0;lgs
-: 1678096158:0;vi .radvil/aliases
 : 1678096175:0;so-zsh
 : 1678096182:0;lgs
-: 1678096278:0;vi .radvil/aliases
 : 1678096320:0;lgs
 : 1678096325:0;exit
 : 1678096482:0;lgs
@@ -8742,7 +8572,6 @@ dot add ../.zshrc;
 : 1678096695:0;git-sync
 : 1678096724:0;ff
 : 1678096732:0;dot status
-: 1678096741:0;cd .radvil
 : 1678096745:0;dot add aliases
 : 1678096751:0;dot add scripts
 : 1678096775:0;dot commit -m "undefined utils on scripts"
@@ -8817,7 +8646,6 @@ dot add ../.zshrc;
 : 1678098779:0;exit
 : 1678098785:0;rm -rf .git
 : 1678098797:0;git init
-: 1678098812:0;git remote add origin https://github.com/radvil2/portfolio.git
 : 1678098816:0;git status
 : 1678098823:0;git branch -a
 : 1678098829:0;git pull
@@ -8825,7 +8653,6 @@ dot add ../.zshrc;
 : 1678098878:0;git fetch
 : 1678098886:0;vi .git/config
 : 1678098895:0;git pull
-: 1678098910:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1678098917:0;git fetch
 : 1678098928:0;cd
 : 1678098934:0;vi .dotfiles/config
@@ -8833,7 +8660,6 @@ dot add ../.zshrc;
 : 1678098972:0;exit
 : 1678098978:0;git fetch
 : 1678098987:0;git pull
-: 1678098996:0;ssh-add ~/.ssh/id_rsa_github_radvil2
 : 1678099001:0;git pull
 : 1678099011:0;exit
 : 1678099014:0;mx
@@ -8877,15 +8703,10 @@ dot add ../.zshrc;
 : 1678099863:0;git init
 : 1678099901:0;git config --help\
 : 1678099902:0;git config --help
-: 1678100008:0;git config --local user.name "Radvil"\
-git config --local user.email "radvil.developer@gmail.com"\
 git config --global core.editor "nvim"\
 git config --global color.ui true
-: 1678100016:0;git config --local user.name "Radvil";\
-git config --local user.email "radvil.developer@gmail.com";\
 git config --global core.editor "nvim";\
 git config --global color.ui true;
-: 1678100088:0;git remote add origin git@github-radvil2:radvil2/portfolio.git
 : 1678100102:0;git fetch
 : 1678100553:0;git checkout main
 : 1678100557:0;git status
@@ -8980,11 +8801,9 @@ git config --global color.ui true;
 : 1678182711:0;sudo apt upadte]
 : 1678182715:0;sudo apt update
 : 1678182771:0;exit
-: 1678182845:0;z .radvil
 : 1678182846:0;ls
 : 1678182848:0;vi
 : 1678182854:0;cd
-: 1678182859:0;.radvil
 : 1678182862:0;vi
 : 1678183357:0;v
 : 1678187136:0;exit
@@ -9002,7 +8821,6 @@ git config --global color.ui true;
 : 1678189606:0;dot add .config/kwinrc
 : 1678189618:0;dot commit -m "shortcuts file changes"
 : 1678189619:0;dot push
-: 1678191381:0;cd .radvil
 : 1678191381:0;ls
 : 1678191382:0;vi
 : 1678193564:0;v
@@ -9036,7 +8854,6 @@ git config --global color.ui true;
 : 1678207706:0;git merge radvlix/shared-auth-store
 : 1678207710:0;exit
 : 1678207815:0;cd
-: 1678207818:0;cd .radvil
 : 1678207819:0;ls
 : 1678207821:0;vi
 : 1678208176:0;v
@@ -9276,8 +9093,6 @@ git config --global color.ui true;
 : 1678273141:0;vi package.json
 : 1678273186:0;npm start
 : 1678273223:0;vi
-: 1678273696:0;git config --local user.name "Radvil";\
-git config --local user.email "radvil.developer@gmail.com";
 : 1678273708:0;exit
 : 1678274065:0;ng g c booking-scheduling
 : 1678274068:0;exit
@@ -9289,7 +9104,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678275560:0;i
 : 1678275561:0;v
 : 1678275685:0;reboot
-: 1678288370:0;cd .radvil
 : 1678288384:0;ls
 : 1678288395:0;dot status
 : 1678288399:0;dot add .
@@ -9412,7 +9226,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678307714:0;v
 : 1678308015:0;exit
 : 1678333646:0;mx new -s AMI-DEV
-: 1678333686:0;cd .radvil
 : 1678333688:0;vi
 : 1678333739:0;v
 : 1678333890:0;ls
@@ -9459,7 +9272,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678334392:0;vi
 : 1678334419:0;exit
 : 1678334434:0;vi
-: 1678334448:0;cd .radvil
 : 1678334450:0;mx
 : 1678334453:0;exit
 : 1678334456:0;mx -a
@@ -9471,7 +9283,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678336535:0;exit
 : 1678336542:0;poweroff
 : 1678337431:0;ls
-: 1678337437:0;cd .radvil
 : 1678337440:0;mx
 : 1678337444:0;z admin
 : 1678337540:0;ls
@@ -9513,7 +9324,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678339386:0;ls
 : 1678339391:0;cd BAK
 : 1678339391:0;ls
-: 1678339854:0;cd /home/radvil/Projects/angular/BAK/playgrounds-BAK/dashboard-branches-merging-finale/
 : 1678339856:0;ls
 : 1678339858:0;vi
 : 1678340381:0;v
@@ -9586,9 +9396,7 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678386462:0;exit
 : 1678386484:0;cd dashboard-branches-merging-finale
 : 1678386491:0;z dashboard-branches-merging-finale
-: 1678386505:0;z /home/radvil/Projects/angular/BAK/dashboard-branches-merging-finale
 : 1678386508:0;v
-: 1678386535:0;pushd ~/.radvil/config/nvim
 : 1678386536:0;vi
 : 1678386563:0;popd
 : 1678386571:0;v
@@ -9656,7 +9464,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678462994:0;nv
 : 1678462996:0;v
 : 1678463051:0;cd
-: 1678463054:0;cd .radvil
 : 1678463056:0;dot status
 : 1678463060:0;dot add .
 : 1678463066:0;dot commit -m "fold fix"
@@ -9692,7 +9499,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678554370:0;dot commit -m "[fix] doubled formatter attached keymappings"
 : 1678554382:0;exit
 : 1678589776:0;ls
-: 1678590338:0;cd .radvil
 : 1678590341:0;vi
 : 1678590764:0;v
 : 1678596230:0;cd nvim
@@ -9791,7 +9597,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678647060:0;brew
 : 1678647069:0;sudo apt install alacritty
 : 1678647080:0;sudo apt info alacritty
-: 1678647420:0;cd ../.radvil
 : 1678647421:0;ls
 : 1678647429:0;vi 
 : 1678647677:0;./install/bootstrap.sh
@@ -9841,7 +9646,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678653691:0;ls
 : 1678653692:0;vi
 : 1678653739:0;exit
-: 1678653749:0;cd .radvil
 : 1678653750:0;vi
 : 1678653866:0;mx a
 : 1678654165:0;./alacritty/install.sh
@@ -9850,7 +9654,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678655583:0;which alacritty
 : 1678655596:0;exit
 : 1678655956:0;ls
-: 1678655973:0;cd .radvil
 : 1678655974:0;vi
 : 1678655991:0;l
 : 1678656101:0;exit
@@ -9899,7 +9702,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678660157:0;-
 : 1678660159:0;ll
 : 1678660275:0;cd
-: 1678660278:0;cd .radvil
 : 1678660279:0;ls
 : 1678660292:0;vi config/starship.toml
 : 1678660382:0;sudo apt install starship
@@ -9945,7 +9747,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678662165:0;-
 : 1678662165:0;v
 : 1678662233:0;exit
-: 1678662242:0;cd .radvil
 : 1678662244:0;vi
 : 1678662293:0;exiyt
 : 1678662296:0;exit
@@ -9958,7 +9759,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678692323:0;sudo systemctl restart keychron.service
 : 1678692326:0;exit
 : 1678692798:0;ls
-: 1678692806:0;cd .radvil
 : 1678692807:0;vi
 : 1678693151:0;ls
 : 1678693172:0;cd
@@ -9975,7 +9775,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678693538:0;..
 : 1678693541:0;cd Templates/shaky-dotfiles
 : 1678693542:0;vi
-: 1678693724:0;cd .radvil
 : 1678693732:0;vi
 : 1678694700:0;exit
 : 1678694750:0;ll
@@ -9985,15 +9784,7 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678694788:0;cd .neonfiles
 : 1678694788:0;ls
 : 1678694790:0;vi
-: 1678694925:0;radvil info "Info"
 : 1678694929:0;ll
-: 1678694944:0;chmod +x bin/radvil
-: 1678694955:0;radvil info "info"
-: 1678694974:0;radvil info
-: 1678694977:0;radvil info test
-: 1678695009:0;radvil info
-: 1678695029:0;eval $(radvil info)
-: 1678695038:0;eval $(radvil info test)
 : 1678695041:0;exit
 : 1678695921:0;vi
 : 1678695927:0;cd
@@ -10049,7 +9840,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678707626:0;reboot
 : 1678717611:0;cd Projects/angular
 : 1678717612:0;l
-: 1678717616:0;cd nx-radvil
 : 1678717618:0;ls
 : 1678717621:0;mx
 : 1678717627:0;ng s
@@ -10067,7 +9857,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678718972:0;exit
 : 1678718979:0;..
 : 1678718980:0;ls
-: 1678718982:0;cd nx-radvil
 : 1678718982:0;ls
 : 1678718986:0;lg
 : 1678718991:0;vi
@@ -10154,7 +9943,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678798207:0;exit
 : 1678798209:0;cd
 : 1678798211:0;ls
-: 1678798213:0;cd .radvil
 : 1678798213:0;ls
 : 1678798223:0;vi config/starship.toml
 : 1678798235:0;dot status
@@ -10181,7 +9969,6 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678806396:0;ls -la
 : 1678806428:0;exit
 : 1678809490:0;ls
-: 1678809494:0;cd .radvil
 : 1678809496:0;dot status
 : 1678809502:0;ls
 : 1678809510:0;dot add zsh
@@ -10191,29 +9978,24 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678810337:0;ll
 : 1678810384:0;mx
 : 1678810387:0;ls
-: 1678810392:0;cd .radvil
 : 1678810392:0;ls
 : 1678810453:0;cd ..
 : 1678810454:0;ls
 : 1678810462:0;ls .dotfiles
 : 1678810480:0;rm -rf .dotfiles
-: 1678810771:0;cd .radvil
 : 1678810771:0;ls
 : 1678810789:0;git init
 : 1678810803:0;git add .
 : 1678810851:0;git commit -m "������ Moving on from bare repo, use linkings strategy"
 : 1678810865:0;git branch -M main
-: 1678810879:0;git remote add origin git@github.com:radvil/dotfiles.git
 : 1678810890:0;git push -u origin main
 : 1678810902:0;vi .git/config
 : 1678810917:0;git push -u origin main
 : 1678810977:0;vi .git/config
 : 1678810985:0;git push -u origin main
-: 1678811000:0;ssh-add ~/.ssh/github/radvil_ed25519
 : 1678811013:0;so-zsh
 : 1678811021:0;git push -u origin main
 : 1678811144:0;..
-: 1678811156:0;mv .radvil .dotfiles
 : 1678811574:0;mx
 : 1678811576:0;ls
 : 1678811580:0;cd .dotfiles

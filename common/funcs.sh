@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# shellcheck disable=1090
+# shellcheck disable=SC2046,2086,SC2181,1090
 
 info() {
 	printf "[\033[00;34m🚀INFO\033[0m] %s$1\n"
@@ -22,8 +22,6 @@ setup_link() {
 	local src="$1" dst="$2"
 	if [ -d "$src" ]; then
 		if [ ! -d "$dst" ]; then
-			info "directory $dst doesnt exists!"
-			okay "directory $dst created!"
 			ln -s "$src" "$dst"
 			okay "linked dir $1 >> $2"
 		else
@@ -48,7 +46,39 @@ source_file() {
 	fi
 }
 
+ensure_deps() {
+	local sources="$1"
+	info "installing common dependencies.."
+	sudo apt install $(cat $sources) -y
+	if [[ ! $? -eq 0 ]]; then
+		warn "failed during dependencies installation!"
+	else
+		okay "dependencies installed successfully!"
+	fi
+}
+
 ensure_exec() {
 	cmdname="$(command -v "$1" 2>/dev/null)" || cmdname="$(dirname "$0")/$1"
 	[[ -x "$cmdname" ]] || fail "$cmdname not found"
+}
+
+copy_scripts() {
+	local src_dir="$1"
+	if [ -d "$src_dir" ]; then
+    chmod +x -R "$src_dir"
+		echo "sudo cp $src_dir/* /usr/local/bin/ -r" | bash
+		okay "copied $src_dir/* to /usr/local/bin/"
+	else
+		warn "scripts $src_dir directory doesn't exist! [skipped]"
+	fi
+}
+
+copy_binaries() {
+	local src_dir="$1"
+	if [ -d "$src_dir" ]; then
+		echo "sudo cp $src_dir/* /usr/bin/ -r" | bash
+		okay "copied $src_dir/* to /usr/bin/"
+	else
+		warn "binnaries $src_dir directory doesn't exist! [skipped]"
+	fi
 }

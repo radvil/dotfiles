@@ -20,7 +20,7 @@ M.dependencies = {
   },
 }
 M.opts = {
-  default_cmd = "sh ~/.radvil/scripts/lf-with-img-preview.sh",
+  default_cmd = "lr",
   default_action = "edit",
   default_actions = {
         ["<C-t>"] = "tabedit",
