@@ -1,3 +1,3 @@
 # ensure_installed fzf || error "fzf was not installed"
-source_file "$RADVIL/fzf/completion.zsh"
-source_file "$RADVIL/fzf/key-bindings.zsh"
+source_file "$DOTFILES/fzf/completion.zsh"
+source_file "$DOTFILES/fzf/key-bindings.zsh"

@@ -1,4 +1,4 @@
-source "$RADVIL/common/funcs.sh"
+source "$DOTFILES/common/funcs.sh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 CACHED_PROMPT="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 source_file "$CACHED_PROMPT"

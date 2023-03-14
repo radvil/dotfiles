@@ -144,9 +144,9 @@
 : 1677084817:0;yarn install
 : 1677084817:0;git git add .
 : 1677084817:0;git commit -m "resolve node_modules"
-: 1677084817:0;mx RADVIL
+: 1677084817:0;mx DOTFILES
 : 1677084817:0;git commit -m "update examples, bla bla yadaa yadaa"
-: 1677084817:0;mx new -s RADVIL
+: 1677084817:0;mx new -s DOTFILES
 : 1677084817:0;git checkout -b feature/vanilla-threejs
 : 1677084817:0;git merge wedding-invitation
 : 1677084817:0;git merge examples
@@ -10201,3 +10201,21 @@ git config --local user.email "radvil.developer@gmail.com";
 : 1678810771:0;ls
 : 1678810789:0;git init
 : 1678810803:0;git add .
+: 1678810851:0;git commit -m "������ Moving on from bare repo, use linkings strategy"
+: 1678810865:0;git branch -M main
+: 1678810879:0;git remote add origin git@github.com:radvil/dotfiles.git
+: 1678810890:0;git push -u origin main
+: 1678810902:0;vi .git/config
+: 1678810917:0;git push -u origin main
+: 1678810977:0;vi .git/config
+: 1678810985:0;git push -u origin main
+: 1678811000:0;ssh-add ~/.ssh/github/radvil_ed25519
+: 1678811013:0;so-zsh
+: 1678811021:0;git push -u origin main
+: 1678811144:0;..
+: 1678811156:0;mv .radvil .dotfiles
+: 1678811574:0;mx
+: 1678811576:0;ls
+: 1678811580:0;cd .dotfiles
+: 1678811580:0;ls
+: 1678811592:0;lg
