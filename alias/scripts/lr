@@ -1,19 +1,11 @@
-#!/bin/env bash
+#!/bin/sh
 
-ensure_exec() {
-	cmdname="$(command -v "$1" 2>/dev/null)" || cmdname="$(dirname "$0")/$1"
-	[[ -x "$cmdname" ]] || fail "$cmdname not found"
-}
+set -e
 
 cleanup() {
 	exec 3>&-
 	rm "$FIFO_UEBERZUG"
 }
-
-set -e
-
-ensure_exec lf
-ensure_exec ueberzug
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	lf "$@"

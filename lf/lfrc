@@ -111,5 +111,5 @@ set relativenumber on
 
 #lfimg
 set ratios 1:2:3
-set cleaner ~/.dotfiles/lf/cleaner
-set cleaner ~/.dotfiles/lf/preview
+set cleaner ~/.config/lf/cleaner
+set preview ~/.config/lf/preview
