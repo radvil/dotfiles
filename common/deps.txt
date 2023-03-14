@@ -1,0 +1,6 @@
+git
+curl
+ssh
+tmux
+rsync
+
