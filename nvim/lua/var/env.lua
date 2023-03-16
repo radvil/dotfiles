@@ -24,7 +24,7 @@ M.g = {
 M.theme = {
   colorscheme = "tokyonight",
   variant = "moon",
-  transbg = false,
+  transbg = true,
   force_darkmode = true,
   rainbow_brackets = true,
 }
@@ -97,12 +97,12 @@ M.lsp = {
   },
   -- TODO: Later provide quick setup
   server_options = {
-    ["cssls"] = {},
-    ["jsonls"] = {},
-    ["tsserver"] = {},
-    ["emmet_ls"] = {},
-    ["angularls"] = {},
-    ["rust_analyzer"] = {},
+        ["cssls"] = {},
+        ["jsonls"] = {},
+        ["tsserver"] = {},
+        ["emmet_ls"] = {},
+        ["angularls"] = {},
+        ["rust_analyzer"] = {},
   },
 }
 

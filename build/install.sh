@@ -2,18 +2,17 @@
 
 cd "$(dirname "$0")/.."
 
-pwd=$(pwd -P)
+source_dir=$(pwd -P)
 username=$(whoami)
-
-DOTFILES="$pwd"
-
+DOTFILES="$source_dir"
+printf "Setting up dotfiles in %s$DOTFILES...\n"
 sudo chown -R "$username" "$DOTFILES"
-ls -l "$DOTFILES"
 
 set -e
 
 # shellcheck source=../common/funcs.sh
 source "$DOTFILES/common/funcs.sh"
+ensure_deps "$DOTFILES/build/deps.txt"
 
 setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
@@ -25,6 +24,5 @@ setup_link "$DOTFILES/zsh/history" "$HOME/.zsh_history"
 setup_link "$DOTFILES/zsh/env" "$HOME/.zshenv"
 setup_link "$DOTFILES/zsh/init.zsh" "$HOME/.zshrc"
 
-ensure_deps "$DOTFILES/common/deps.txt"
 copy_binaries "$DOTFILES/binaries"
 copy_scripts "$DOTFILES/alias/scripts"

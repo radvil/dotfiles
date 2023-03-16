@@ -18,21 +18,43 @@ fail() {
 	exit
 }
 
+confirmed() {
+	read -r -p "[❓] $1 [Y/n] >> " answer
+	answer=${answer,,} # tolower
+	if [[ $answer =~ ^(y| ) ]] || [[ -z $answer ]]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
 setup_link() {
 	local src="$1" dst="$2"
 	if [ -d "$src" ]; then
 		if [ ! -d "$dst" ]; then
 			ln -s "$src" "$dst"
-			okay "linked dir $1 >> $2"
+			okay "linked dir \"$1\" >> \"$2\""
 		else
-			warn "dir $dst already exists! [skipped]"
+			if confirmed "\"$dst\" already exists, do you wanna replace it ?"; then
+				trash -rf "$dst"
+				ln -s "$src" "$dst"
+				okay "linked \"$1\" >> \"$2\""
+			else
+				warn "\"$1\" to \"$2\" [skipped]"
+			fi
 		fi
 	else
 		if [ ! -f "$dst" ]; then
 			ln -s "$src" "$dst"
-			okay "linked file $1 >> $2"
+			okay "linked file \"$1\" >> \"$2\""
 		else
-			warn "file $dst already exists! [skipped]"
+			if confirmed "\"$dst\" already exists, do you wanna replace it ?"; then
+				trash -rf "$dst"
+				ln -s "$src" "$dst"
+				okay "linked \"$1\" >> \"$2\""
+			else
+				warn "\"$1\" to \"$2\" [skipped]"
+			fi
 		fi
 	fi
 }
@@ -59,13 +81,13 @@ ensure_deps() {
 
 ensure_exec() {
 	cmdname="$(command -v "$1" 2>/dev/null)" || cmdname="$(dirname "$0")/$1"
-	[[ -x "$cmdname" ]] || fail "$cmdname not found"
+	[[ -x "$cmdname" ]] || "$2" || fail "$cmdname not found"
 }
 
 copy_scripts() {
 	local src_dir="$1"
 	if [ -d "$src_dir" ]; then
-    chmod +x -R "$src_dir"
+		chmod +x -R "$src_dir"
 		echo "sudo cp $src_dir/* /usr/local/bin/ -r" | bash
 		okay "copied $src_dir/* to /usr/local/bin/"
 	else

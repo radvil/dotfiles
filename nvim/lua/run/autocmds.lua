@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   pattern = "*",
   group = vim.api.nvim_create_augroup("MySetCursorLine", {}),
   callback = function()
-    if rvim.theme.transbg then
+    if rvim.theme.transbg or not rvim.theme.force_darkmode then
       vim.opt.cursorline = false
     else
       vim.opt.cursorline = true
