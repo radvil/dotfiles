@@ -14,6 +14,8 @@ set -e
 source "$DOTFILES/common/funcs.sh"
 ensure_deps "$DOTFILES/build/deps.txt"
 
+chsh -s "$(which zsh)"
+
 setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
@@ -26,3 +28,5 @@ setup_link "$DOTFILES/zsh/init.zsh" "$HOME/.zshrc"
 
 copy_binaries "$DOTFILES/binaries"
 copy_scripts "$DOTFILES/alias/scripts"
+
+zsh
