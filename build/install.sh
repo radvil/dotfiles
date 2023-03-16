@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")/.."
+cd ..
 
 source_dir=$(pwd -P)
+
 username=$(whoami)
+
 DOTFILES="$source_dir"
+
 printf "Setting up dotfiles in %s$DOTFILES...\n"
+
 sudo chown -R "$username" "$DOTFILES"
 
 set -e
 
 # shellcheck source=../common/funcs.sh
 source "$DOTFILES/common/funcs.sh"
+
 ensure_deps "$DOTFILES/build/deps.txt"
 
 chsh -s "$(which zsh)"
@@ -27,6 +32,7 @@ setup_link "$DOTFILES/zsh/env" "$HOME/.zshenv"
 setup_link "$DOTFILES/zsh/init.zsh" "$HOME/.zshrc"
 
 copy_binaries "$DOTFILES/binaries"
+
 copy_scripts "$DOTFILES/alias/scripts"
 
 zsh
