@@ -34,12 +34,12 @@ M.file_explorer = {
   enabled = true,
   ---@type "ranger" | "lf" | "nnn"
   provider = "nnn",
+  fix_import_on_file_operations = true,
   sidebar_tree = {
     enabled = true,
     ---@type "nvim-tree" | "neo-tree"
     provider = "nvim-tree",
   },
-  fix_import_on_file_operations = true,
 }
 
 M.symbols = {

@@ -11,6 +11,7 @@ end
 
 M.dependencies = {
   "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-nvim-lsp-signature-help",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
@@ -75,10 +76,26 @@ M.opts = function()
       end, { "i", "s" }),
     }),
     sources = nvim_cmp.config.sources({
-      { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "buffer" },
+      { name = "nvim_lsp" },
+      { name = 'nvim_lsp_signature_help' },
       { name = "path" },
+      {
+        name = "buffer",
+        keyword_length = 5,
+        ---use all buffers
+        -- get_bufnrs = function()
+        --   return vim.api.nvim_list_bufs()
+        -- end,
+        ---use all visible buffers
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end
+      },
     }),
     formatting = {
       fields = { "kind", "abbr", "menu" },
