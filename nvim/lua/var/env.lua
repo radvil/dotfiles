@@ -93,7 +93,7 @@ M.lsp = {
   formatonsave = {
     enabled = true,
     command = "RxLspToggleFormatonsave",
-    toggle_keymap = "<C-z>u",
+    toggle_keymap = "<C-z>f",
   },
   -- TODO: Later provide quick setup
   server_options = {

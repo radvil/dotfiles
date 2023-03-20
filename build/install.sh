@@ -23,6 +23,7 @@ chsh -s "$(which zsh)"
 
 setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
 setup_link "$DOTFILES/nvim" "$HOME/.config/nvim"
 setup_link "$DOTFILES/lf" "$HOME/.config/lf"
