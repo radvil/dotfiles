@@ -21,6 +21,8 @@ ensure_deps "$DOTFILES/build/deps.txt"
 
 chsh -s "$(which zsh)"
 
+custom_install "$DOTFILES/nnn"
+
 setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"

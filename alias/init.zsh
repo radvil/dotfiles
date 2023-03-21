@@ -15,4 +15,5 @@ alias edit-nvimrc="vi ~/.config/nvim/init.lua"
 alias purge-nvim-cache="rm -rf ~/.cache/nvim && rm -rf ~/.local/state/nvim"
 alias forecast="curl wttr.in/Kendari"
 alias lgs="lazygit_with_cwd_switch"
-
+alias n="nnn -P p"
+alias N="sudo nnn -e"

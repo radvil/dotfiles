@@ -68,6 +68,16 @@ source_file() {
 	fi
 }
 
+custom_install() {
+	if [ -s "$1/install.sh" ]; then
+		chmod +x "$1/install.sh"
+    #shellcheck source=/dev/null
+		source "$1/install.sh"
+	else
+		warn "file $dst doesn't exist! [skipped]"
+	fi
+}
+
 ensure_deps() {
 	local sources="$1"
 	info "installing common dependencies.."

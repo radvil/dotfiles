@@ -5,3 +5,7 @@ ssh
 tmux
 rsync
 lua5.3
+moc
+bat
+ffmpegthumbnailer
+ffmpeg
