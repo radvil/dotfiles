@@ -1,13 +1,15 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/Codes/panasonic-microsite
-- /home/radvil/Codes/mykado-console
-- /home/radvil/Codes/clio-crm
+- /home/radvil/Codes/super-clinic-console
+- /home/radvil/Codes/spl
 - /home/radvil/Codes/parastar-admin
+- /home/radvil/Codes/panasonic-microsite
+- /home/radvil/Codes/clio-crm
+- /home/radvil/Codes/ami-workspace-base
+- /home/radvil/Codes/mykado-console
 - /home/radvil/Projects/angular/playground
 - /home/radvil/Projects/angular/nx-radvil
-- /home/radvil/Codes/ami-workspace-base
 - /home/radvil/Projects/neovim/fokus.nvim
 startuppopupversion: 5
 customcommandshistory: []
