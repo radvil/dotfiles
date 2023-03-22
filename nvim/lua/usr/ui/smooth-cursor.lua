@@ -1,6 +1,7 @@
 ---@type LazySpec
 local M = {}
-M.dir = rvim.path.home .. "/forks/smooth-cursor.nvim"
+-- M.dir = rvim.path.home .. "/forks/smooth-cursor.nvim"
+M[1] = "radvil2/smooth-cursor.nvim"
 M.event = "BufReadPre"
 M.opts = {
   disable_float_win = true,
