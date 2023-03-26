@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+# utils
+source "$DOTFILES/build/utils.sh"
+
+# source config
+source_file "$HOME/.nvm/nvm.sh" --silent
+source_file "$HOME/.nvm/bash_completion" --silent
+
+source_file "$DOTFILES/git/init.zsh" --silent
+source_file "$DOTFILES/omz/init.zsh" --silent
+source_file "$DOTFILES/starship/init.zsh" --silent
+source_file "$DOTFILES/nnn/init.zsh" --silent
+source_file "$DOTFILES/fzf/init.zsh" --silent
+source_file "$DOTFILES/z/init.zsh" --silent
+
+# aliases should be on last line
+source_file "$DOTFILES/alias/init.zsh" --silent
