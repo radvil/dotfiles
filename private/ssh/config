@@ -1,8 +1,8 @@
 ##gitlab.ami.com
-#Host gitlab.ami.com
-#  Hostname gitlab.com
-#  PreferredAuthentications publickey
-#  IdentityFile ~/.ssh/work/gitlab_ami_ed25519
+Host gitlab.ami.com
+ Hostname gitlab.com
+ PreferredAuthentications publickey
+ IdentityFile ~/.ssh/work/gitlab_ami_ed25519
 #github.radvil.com
 Host github.radvil.com
    Hostname github.com
