@@ -24,9 +24,9 @@ M.g = {
 M.theme = {
   colorscheme = "tokyonight",
   variant = "moon",
-  transbg = true,
+  transbg = false,
   force_darkmode = true,
-  rainbow_brackets = true,
+  rainbow_brackets = false,
 }
 
 ---@class RvimFileExplorerSpec
@@ -97,12 +97,12 @@ M.lsp = {
   },
   -- TODO: Later provide quick setup
   server_options = {
-        ["cssls"] = {},
-        ["jsonls"] = {},
-        ["tsserver"] = {},
-        ["emmet_ls"] = {},
-        ["angularls"] = {},
-        ["rust_analyzer"] = {},
+    ["cssls"] = {},
+    ["jsonls"] = {},
+    ["tsserver"] = {},
+    ["emmet_ls"] = {},
+    ["angularls"] = {},
+    ["rust_analyzer"] = {},
   },
 }
 

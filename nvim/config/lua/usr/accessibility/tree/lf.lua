@@ -1,5 +1,6 @@
 ---@type LazySpec
 local M = {}
+M.enabled = false
 M[1] = "radvil/lf.nvim"
 M.dependencies = {
   "akinsho/toggleterm.nvim",
@@ -23,10 +24,10 @@ M.opts = {
   default_cmd = "lr",
   default_action = "edit",
   default_actions = {
-        ["<C-t>"] = "tabedit",
-        ["<C-x>"] = "split",
-        ["<C-v>"] = "vsplit",
-        ["<C-o>"] = "tab drop",
+    ["<C-t>"] = "tabedit",
+    ["<C-x>"] = "split",
+    ["<C-v>"] = "vsplit",
+    ["<C-o>"] = "tab drop",
   },
   winblend = 10,
   dir = "",                  -- directory where `lf` starts ('gwd' is git-working-directory, "" is CWD)
@@ -40,7 +41,6 @@ M.opts = {
   tmux = false,              -- tmux statusline can be disabled on opening of Lf
   layout_mapping = "<C-Up>", -- resize window with this key
 }
-
 M.keys = {
   {
     "<Leader><Space>",
@@ -48,7 +48,6 @@ M.keys = {
     desc = "[📁 File manager] Open float",
   }
 }
-
 M.config = function(_, opts)
   opts.views = {
     { width = 0.600, height = 0.600 },
@@ -61,5 +60,4 @@ M.config = function(_, opts)
   }
   require("lf").setup(opts)
 end
-
 return M

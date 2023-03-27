@@ -1,0 +1,9 @@
+[Unit]
+Description=The command start ssh agent and register custom ssh keys
+
+[Service]
+ExecStart=/home/radvil/.dotfiles/private/ssh/autorun.sh
+
+[Install]
+WantedBy=multi-user.target
+
