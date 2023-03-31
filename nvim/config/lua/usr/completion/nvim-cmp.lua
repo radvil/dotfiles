@@ -41,15 +41,13 @@ M.opts = function()
       end,
     },
     mapping = cmap.preset.insert({
-      -- Accept currently selected item.
-      -- Set `select` to `false` to only confirm explicitly selected items.
-          ["<CR>"] = cmap.confirm({ select = true }),
-          ["<C-Space>"] = cmap.complete({}),
-          ["<C-u>"] = cmap.scroll_docs(-4),
-          ["<C-d>"] = cmap.scroll_docs(4),
-          ["<C-e>"] = cmap.abort(),
-          ["<C-x>"] = cmap.close(),
-          ["<C-n>"] = cmap(function(fallback)
+      ["<CR>"] = cmap.confirm({ select = true }),
+      ["<C-Space>"] = cmap.complete({}),
+      ["<C-u>"] = cmap.scroll_docs(-4),
+      ["<C-d>"] = cmap.scroll_docs(4),
+      ["<C-e>"] = cmap.abort(),
+      ["<C-x>"] = cmap.close(),
+      ["<C-n>"] = cmap(function(fallback)
         if nvim_cmp.visible() then
           nvim_cmp.select_next_item({
             behavior = nvim_cmp.SelectBehavior.Insert,
@@ -62,7 +60,7 @@ M.opts = function()
           fallback()
         end
       end, { "i", "s" }),
-          ["<C-p>"] = cmap(function(fallback)
+      ["<C-p>"] = cmap(function(fallback)
         if nvim_cmp.visible() then
           nvim_cmp.select_prev_item({
             behavior = nvim_cmp.SelectBehavior.Insert,
@@ -75,17 +73,10 @@ M.opts = function()
       end, { "i", "s" }),
     }),
     sources = nvim_cmp.config.sources({
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "path" },
-      {
-        name = "buffer",
-        keyword_length = 5,
-        ---use all buffers
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
-      },
+      { name = "nvim_lsp", priority = 1000 },
+      { name = "luasnip",  priority = 750 },
+      { name = "buffer",   priority = 500 },
+      { name = "path",     priority = 250 },
     }),
     formatting = {
       fields = { "kind", "abbr", "menu" },

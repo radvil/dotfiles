@@ -1,6 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/AMI/clio-crm
+- /home/radvil/AMI/mykado-console
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

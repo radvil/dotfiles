@@ -58,7 +58,7 @@ opt.hidden = true                  -- for toggleterm
 ---@desc folds
 ---TODO: seemts like it doesn't work as expected
 -- opt.foldlevelstart = -1
-vim.o.foldcolumn = "1"
+vim.o.foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
