@@ -3,7 +3,7 @@ local env = rvim.theme
 ---@LazySpec
 local M = {}
 M[1] = "nyoom-engineering/oxocarbon.nvim"
-M.lazy = true
+-- M.lazy = true
 if env.colorscheme == "oxocarbon" then
   M.priority = 999
   M.lazy = false

@@ -1,10 +1,9 @@
 local env = rvim.theme
 local transparent = env.transbg and env.force_darkmode
-
 ---@type LazySpec[]
 local M = {}
 M[1] = "EdenEast/nightfox.nvim"
-M.lazy = true
+-- M.lazy = true
 M.opts = {
   options = {
     transparent = transparent,

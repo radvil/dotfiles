@@ -6,7 +6,7 @@ local variant = not darkmode and "day" or env.variant or "storm"
 ---@type LazySpec
 local M = {}
 M[1] = "folke/tokyonight.nvim"
-M.lazy = true
+-- M.lazy = true
 M.opts = function()
   local opts = {
     style = variant,

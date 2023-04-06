@@ -5,7 +5,7 @@ local transbg = env.force_darkmode and env.transbg
 local M = {}
 M[1] = "uloco/bluloco.nvim"
 M.dependencies = "rktjmp/lush.nvim"
-M.lazy = true
+-- M.lazy = true
 M.config = function()
   local opts = {
     ---@type "auto" | "dark" | "light"

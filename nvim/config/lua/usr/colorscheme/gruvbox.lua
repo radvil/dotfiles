@@ -3,7 +3,7 @@ local env = rvim.theme
 ---@type LazySpec
 local M = {}
 M[1] = "ellisonleao/gruvbox.nvim"
-M.lazy = true
+-- M.lazy = true
 M.opts = function(opts)
   local transbg = rvim.theme.transbg or false
   return vim.tbl_deep_extend("force", {

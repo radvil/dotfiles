@@ -95,15 +95,6 @@ M.lsp = {
     command = "RxLspToggleFormatonsave",
     toggle_keymap = "<C-z>f",
   },
-  -- TODO: Later provide quick setup
-  server_options = {
-    ["cssls"] = {},
-    ["jsonls"] = {},
-    ["tsserver"] = {},
-    ["emmet_ls"] = {},
-    ["angularls"] = {},
-    ["rust_analyzer"] = {},
-  },
 }
 
 _G.rvim = M
