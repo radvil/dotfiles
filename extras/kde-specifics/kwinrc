@@ -75,7 +75,7 @@ preventProtrusion=false
 screenGapBottom=13
 screenGapLeft=13
 screenGapRight=13
-screenGapTop=9
+screenGapTop=13
 tileLayoutGap=13
 
 [Script-desktopchangeosd]
@@ -113,8 +113,6 @@ ElectricBorderMaximize=false
 Scale=1
 
 [org.kde.kdecoration2]
-BorderSize=Tiny
-BorderSizeAuto=false
 ButtonsOnLeft=XIA
 ButtonsOnRight=SM
 library=org.kde.bismuth.decoration
