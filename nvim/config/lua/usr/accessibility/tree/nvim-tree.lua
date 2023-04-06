@@ -45,7 +45,7 @@ M.opts = {
     enable = true,
   },
   view = {
-    relativenumber = true,
+    relativenumber = false,
     hide_root_folder = true,
     signcolumn = "yes",
     number = false,

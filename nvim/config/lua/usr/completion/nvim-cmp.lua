@@ -31,10 +31,10 @@ M.opts = function()
         hl_group = "LspCodeLens",
       },
     },
-    -- window = {
-    --   completion = nvim_cmp.config.window.bordered(),
-    --   documentation = nvim_cmp.config.window.bordered(),
-    -- },
+    window = {
+      completion = nvim_cmp.config.window.bordered(),
+      documentation = nvim_cmp.config.window.bordered(),
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)

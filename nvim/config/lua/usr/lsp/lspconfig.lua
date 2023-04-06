@@ -1,11 +1,8 @@
 ---@desc: language service provider
 ---@type LazySpec
 local M = {}
-
 M[1] = "neovim/nvim-lspconfig"
-
 M.event = "BufReadPre"
-
 M.dependencies = {
   "mason.nvim",
   "williamboman/mason-lspconfig.nvim",
@@ -29,26 +26,39 @@ M.dependencies = {
     end,
   },
 }
-
 ---@class RvimLspOptions
 M.opts = {
   install_missing_servers = true,
   ---set to false if dont wanna auto install server
   servers = {
-        ["jsonls"] = true,
-        ["bashls"] = true,
-        ["html"] = {},
-        ["lua_ls"] = {},
-        ["cssls"] = {},
-        ["tsserver"] = {},
-        ["rust_analyzer"] = {},
-        ["emmet_ls"] = {},
-        ["angularls"] = function()
+    ["jsonls"] = true,
+    ["bashls"] = true,
+    ["html"] = {},
+    ["lua_ls"] = {
+      settings = {
+        Lua = {
+          workspace = {
+            checkThirdParty = false,
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+        },
+      },
+    },
+    ["cssls"] = {},
+    ["tsserver"] = {
+      settings = {
+        completions = {
+          completeFunctionCalls = true,
+        },
+      },
+    },
+    ["rust_analyzer"] = {},
+    ["emmet_ls"] = {},
+    ["angularls"] = function()
       return require("usr.lsp.lang.angularls").get_server_opts()
     end,
-    -- ["gopls"] = vim.fn.executable("go") ~= 1 and false or function()
-    --   return require("usr.lsp.lang.golang").get_server_opts()
-    -- end,
   },
 }
 

@@ -8,6 +8,6 @@ M.enabled = true
 
 M.dependencies = "arkav/lualine-lsp-progress"
 
-M.opts = require("usr.ui.lualine.rainbow")
+M.opts = require("usr.ui.lualine.default")
 
 return M

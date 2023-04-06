@@ -1,140 +1,102 @@
 local icons = require("media.icons")
-local palette = require("media.colors").palette
-local utils = require("usr.ui.lualine.utils")
-local theme = rvim.theme.colorscheme
-
+local function fg(name)
+  return function()
+    ---@type {foreground?:number}?
+    local hl = vim.api.nvim_get_hl_by_name(name, true)
+    return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
+  end
+end
 return {
   options = {
-    disabled_filetypes = require("opt.filetype").excludes,
+    theme = "auto",
     globalstatus = true,
-    component_separators = {
-      left = "",
-      right = "",
-    },
-    section_separators = {
-      left = "",
-      right = "",
-    },
-    always_divide_middle = true,
-    icons_enabled = true,
-    ignore_focus = {},
-    theme = theme,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
+    disabled_filetypes = {
+      statusline = {
+        "dashboard",
+        "alpha"
+      }
     },
   },
+  extensions = { "neo-tree", "lazy" },
   sections = {
-    lualine_a = {
-      "fileformat",
-      "mode",
-    },
+    lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = {
       {
-        "filetype",
-        fmt = function(ftype)
-          local fsize = utils.get_filesize()
-          local fname = utils.get_filename()
-          return ftype .. fsize .. fname
-        end,
-      },
-      {
         "diagnostics",
-        sources = { "nvim_diagnostic" },
         symbols = {
           error = icons.Diagnostics.Error,
           warn = icons.Diagnostics.Warn,
           info = icons.Diagnostics.Info,
           hint = icons.Diagnostics.Hint,
         },
-        diagnostics_color = {
-          color_error = {
-            fg = palette.red,
-          },
-          color_warn = {
-            fg = palette.yellow,
-          },
-          color_info = {
-            fg = palette.cyan,
-          },
-        },
+      },
+      {
+        "filetype",
+        icon_only = true,
+        separator = "",
+        padding = {
+          left = 1,
+          right = 0
+        }
+      },
+      {
+        "filename",
+        path = 1,
+        symbols = {
+          modified = "  ",
+          readonly = "",
+          unnamed = ""
+        }
+      },
+      -- stylua: ignore
+      {
+        function() return require("nvim-navic").get_location() end,
+        cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
       },
     },
     lualine_x = {
+      -- stylua: ignore
       {
-        "lsp_progress",
-        spinner_symbols = icons.SpinnerFrames,
-        display_components = {
-          "lsp_client_name",
-          "spinner",
-        },
-        color = {
-          bg = palette.trans,
-          fg = palette.yellow,
-        },
+        function() return require("noice").api.status.command.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
+        color = fg("Statement")
       },
+      -- stylua: ignore
+      {
+        function() return require("noice").api.status.mode.get() end,
+        cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
+        color = fg("Constant"),
+      },
+      { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
       {
         "diff",
-        cond = IsGitWorkspace,
         symbols = {
           added = icons.Git.Untracked .. " ",
           modified = icons.Git.Unstaged .. " ",
           removed = icons.Git.Deleted .. " ",
         },
-        diff_color = {
-          added = {
-            fg = palette.green,
-          },
-          modified = {
-            fg = palette.yellow,
-          },
-          removed = {
-            fg = palette.red,
-          },
-        },
-      },
-      {
-        function()
-          return utils.get_server_names()
-        end,
-        fmt = function(servername)
-          return servername .. " 👻"
-        end,
       },
     },
     lualine_y = {
       {
         "progress",
-        fmt = function(progress)
-          return progress .. " 🚀"
-        end,
+        separator = " ",
+        padding = {
+          left = 1,
+          right = 0
+        }
+      },
+      {
+        "location",
+        padding = {
+          left = 0, right = 1 }
       },
     },
     lualine_z = {
-      {
-        "location",
-        fmt = function(location)
-          return location .. " 🐧"
-        end,
-      },
+      function()
+        return " " .. os.date("%R")
+      end,
     },
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      "filename",
-    },
-    lualine_x = {
-      "location",
-    },
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {},
 }

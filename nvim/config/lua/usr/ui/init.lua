@@ -10,6 +10,8 @@ return {
   require("usr.ui.twilight"),
   require("usr.ui.barbeque"),
   require("usr.ui.colorizer"),
+  require("usr.ui.scrollbar"),
+  require("usr.ui.neoscroll"),
   require("usr.ui.fokus-nvim"),
   require("usr.ui.webdevicons"),
   require("usr.ui.smooth-cursor"),

@@ -1,8 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/AMI/mcp.bak
 - /home/radvil/AMI/clio-crm
+- /home/radvil/AMI/parastar-console
+- /home/radvil/AMI/mcp.bak
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

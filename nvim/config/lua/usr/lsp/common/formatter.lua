@@ -1,5 +1,5 @@
 local M = {}
-local util = require("utils")
+local utils = require("utils")
 
 local opts = vim.tbl_deep_extend("force", {
   enabled = true,
@@ -9,11 +9,16 @@ local opts = vim.tbl_deep_extend("force", {
 
 ---toggle global formatonsave
 function M:toggle()
-  opts.enabled = not opts.enabled
-  if opts.enabled then
-    util.info("Codes » Autoformat Enabled")
+  if vim.b.autoformat == false then
+    vim.b.autoformat = nil
+    opts.enabled = true
   else
-    util.warn("Codes » Autoformat Disabled")
+    opts.enabled = not opts.enabled
+  end
+  if opts.enabled then
+    utils.info("Autoformat » Enabled", { title = "Codes" })
+  else
+    utils.warn("Autoformat » Disabled", { title = "Codes" })
   end
 end
 
@@ -21,13 +26,16 @@ end
 ---@param bufnr integer | nil
 function M:format(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
-  local filetype = vim.bo[bufnr].filetype
-  local have_nls = #require("null-ls.sources").get_available(filetype, "NULL_LS_FORMATTING") > 0
-  local custom_params = require("utils").opts("nvim-lspconfig").format or {}
+  if vim.b.autoformat == false then
+    return
+  end
+  local ft = vim.bo[bufnr].filetype
+  local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+  local custom_params = utils.opts("nvim-lspconfig").format or {}
   vim.lsp.buf.format({
     bufnr = bufnr,
     filter = function(client)
-      return have_nls and client.name == "null-ls" or client.name ~= "null"
+      return have_nls and client.name == "null-ls" or client.name ~= "null-ls"
     end,
     unpack(custom_params),
   })
@@ -38,16 +46,16 @@ end
 ---@param bufnr integer | nil
 function M.attach_to_client(client, bufnr)
   if
-    client.config
-    and client.config.capabilities
-    and client.config.capabilities.documentFormattingProvider == false
+      client.config
+      and client.config.capabilities
+      and client.config.capabilities.documentFormattingProvider == false
   then
     return
   end
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   if client.supports_method("textDocument/formatting") then
     vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("RvimLspFormatter", { clear = true }),
+      group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
       buffer = bufnr,
       callback = function()
         if opts.enabled then
@@ -60,11 +68,7 @@ end
 
 ---create user commands based on user's provided commands
 function M:register_user_commands()
-  local cmd = opts.command
-  vim.api.nvim_create_user_command(cmd, function()
-    M:toggle()
-  end, {})
-  vim.api.nvim_create_user_command(cmd, function()
+  vim.api.nvim_create_user_command(opts.command, function()
     M:toggle()
   end, {})
 end
