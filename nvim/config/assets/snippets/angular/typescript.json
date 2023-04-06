@@ -8,12 +8,33 @@
       "@Component({",
       "\tselector: '${1:selector-name}',",
       "\ttemplateUrl: '${2:name}.component.html'",
+      "\tstyleUrls: ['${2:name}.component.scss']",
       "})",
       "",
       "export class ${3:Name}Component implements OnInit {",
       "\tconstructor() { }",
       "",
       "\tngOnInit() { }$0",
+      "}"
+    ]
+  },
+  "Angular Component Standalone": {
+    "prefix": "a-component-standalone",
+    "description": "Angular component standalone",
+    "body": [
+      "import { ChangeDetectionStrategy, Component } from '@angular/core';",
+      "import { NgIf } from '@angular/common';",
+      "",
+      "@Component({",
+      "\tstandalone: true,",
+      "\tselector: '${1:selector-name}',",
+      "\ttemplateUrl: '${2:name}.component.html',",
+      "\tstyleUrls: ['${2:name}.component.scss'],",
+      "\tchangeDetection: ChangeDetectionStrategy.OnPush,",
+      "\timports: [NgIf],",
+      "})",
+      "export class ${3:Name}Component {",
+      "\tconstructor() { }",
       "}"
     ]
   },
@@ -43,6 +64,25 @@
       "",
       "@Pipe({",
       "\tname: '${1:selector-name}'",
+      "})",
+      "",
+      "export class ${2:Name}Pipe implements PipeTransform {",
+      "\ttransform(value: any, ...args: any[]): any {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ]
+  },
+  "Angular Pipe Standalone": {
+    "prefix": "a-pipe-standalone",
+    "description": "Angular pipe standalone",
+    "body": [
+      "import { Pipe, PipeTransform } from '@angular/core';",
+      "",
+      "@Pipe({",
+      "\tstandalone: true,",
+      "\tname: '${1:selector-name}',",
+      "\timports: [],",
       "})",
       "",
       "export class ${2:Name}Pipe implements PipeTransform {",
@@ -101,16 +141,6 @@
       "\tpath: '${1:path}', ",
       "\tloadChildren: () => import('${2:lazy-path}').then(m => m.${3:lazy-module})",
       "},$0"
-    ]
-  },
-  "Routing Params - Subscribe": {
-    "prefix": "a-route-params-subscribe",
-    "description": "Angular - subscribe to routing parameters",
-    "body": [
-      "this.route.paramMap",
-      "\t.pipe(map(params => params.get('id')), tap(id => (this.id = +id)))",
-      "\t.subscribe(id => {$1});",
-      "$0"
     ]
   },
   "HttpClient.get": {
@@ -195,20 +225,6 @@
       "}"
     ]
   },
-  "Output Event": {
-    "prefix": "a-output-event",
-    "body": ["@Output() ${1:eventName} = new EventEmitter<${2:eventType}>();"],
-    "description": "Angular @Output event and emitter"
-  },
-  "Subscribe": {
-    "prefix": "a-subscribe",
-    "description": "Angular observable subscribe",
-    "body": [
-      "this.${1:service}.${2:function}",
-      "\t.subscribe(${3:arg} => this.${4:property} = ${3:arg});",
-      "$0"
-    ]
-  },
   "Angular Root Component": {
     "prefix": "a-component-root",
     "description": "Angular App root component",
@@ -247,15 +263,6 @@
       "$0"
     ]
   },
-  "Route definitions": {
-    "prefix": "a-routes",
-    "description": "Route definitions",
-    "body": [
-      "import { Routes } from '@angular/router';",
-      "",
-      "export const routes: Routes = [${0}]"
-    ]
-  },
   "Angular Module": {
     "prefix": "a-module",
     "description": "Angular Module",
@@ -281,6 +288,22 @@
       "import { Directive } from '@angular/core';",
       "",
       "@Directive({ selector: '[${1:selector-name}]' })",
+      "export class ${2:Name}Directive {",
+      "\tconstructor() { }",
+      "}"
+    ]
+  },
+  "Angular Directive Standalone": {
+    "prefix": "a-directive-standalone",
+    "description": "Angular directive for standalone",
+    "body": [
+      "import { Directive } from '@angular/core';",
+      "",
+      "@Directive({",
+      "\tstandalone: true,",
+      "\tselector: '[${1:selector-name}],'",
+      "\timports: [],",
+      "})",
       "export class ${2:Name}Directive {",
       "\tconstructor() { }",
       "}"
@@ -368,21 +391,6 @@
       "}"
     ]
   },
-  "Angular Opt-In Preload Strategy": {
-    "prefix": "a-preload-opt-in-strategy",
-    "description": "Angular opt-in preload strategy",
-    "body": [
-      "import { PreloadingStrategy, Route } from '@angular/router';",
-      "import { Observable, of } from 'rxjs';",
-      "",
-      "export class PreloadSelectedModulesList implements PreloadingStrategy {",
-      "\tpreload(route: Route, load: Function): Observable<any> {",
-      "\t\treturn route.data && route.data['${1:preload}'] ? load() : of(null);",
-      "\t}",
-      "}",
-      "$0"
-    ]
-  },
   "Angular Network-Aware Preload Strategy": {
     "prefix": "a-preload-network-strategy",
     "description": "Angular network aware preload strategy",
@@ -452,11 +460,6 @@
     "prefix": "a-rxjs-import",
     "description": "RxJs import",
     "body": ["import { ${1:Observable} } from 'rxjs';", "$0"]
-  },
-  "RxJs Operator Import": {
-    "prefix": "a-rxjs-operator-import",
-    "description": "RxJs import",
-    "body": ["import { ${1:map} } from 'rxjs/operators';", "$0"]
   },
   "Angular Resolver": {
     "prefix": "a-resolver",
@@ -558,55 +561,6 @@
       "\tselect$1,",
       "\t(state: $1State) => state.${3:property}",
       ");"
-    ]
-  },
-  "NgRx Create Selector w/ Props": {
-    "prefix": "a-ngrx-create-selector-props",
-    "description": "Creates an NgRx Selector using props",
-    "body": [
-      "export const select${1:Feature}${2:Property} = createSelector(",
-      "\tselect$1,",
-      "\t(state: $1State, props) => ${3:selectLogic}",
-      ");"
-    ]
-  },
-  "NgRx Data Import Entity Data Module": {
-    "prefix": "a-ngrx-data-entity-data-module-import",
-    "description": "Import NgRx Entity Data Module",
-    "body": ["EntityDataModule.forRoot(${1:entityConfig}),"]
-  },
-  "NgRx Data Entity Metadata": {
-    "prefix": "a-ngrx-data-entity-metadata",
-    "description": "NgRx Data Entity Metadata",
-    "body": [
-      "import { EntityMetadataMap } from '@ngrx/data';",
-      "",
-      "const entityMetadata: EntityMetadataMap = {",
-      "  ${1:Model1}: {},${0}",
-      "};",
-      "",
-      "export const entityConfig = {",
-      "  entityMetadata",
-      "};"
-    ]
-  },
-  "NgRx Data Entity Collection Data Service": {
-    "prefix": "a-ngrx-data-entity-collection-data-service",
-    "description": "NgRx Data Entity Collection Data Service",
-    "body": [
-      "import { Injectable } from '@angular/core';",
-      "import {",
-      "  EntityCollectionServiceBase,",
-      "  EntityCollectionServiceElementsFactory",
-      "} from '@ngrx/data';",
-      "import { ${1:Model} } from '${2:../core}';",
-      "",
-      "@Injectable({ providedIn: ${3:'root'} })",
-      "export class ${1:Model}Service extends EntityCollectionServiceBase<${1:Model}> {",
-      "  constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {",
-      "    super('${1:Model}', serviceElementsFactory);",
-      "  }",
-      "}"
     ]
   },
   "TrackBy Function": {
