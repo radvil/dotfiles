@@ -46,6 +46,7 @@ M.symbols = {
   enabled = true,
   wrap = false,
   auto_close = false,
+  width = 18,
   position = "right",
   relative_width = false,
   highlight_hovered_item = true,

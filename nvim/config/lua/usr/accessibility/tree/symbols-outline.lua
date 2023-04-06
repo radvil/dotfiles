@@ -1,9 +1,7 @@
+---@type LazySpec
 local M = {}
-
 M[1] = "simrat39/symbols-outline.nvim"
-
 M.enabled = rvim.symbols.enabled or false
-
 ---@alias symbolopts table<string, {icon:string,hl:string}>
 ---@param opts symbolopts
 local function get_symbols(opts)
@@ -15,7 +13,6 @@ local function get_symbols(opts)
   end
   return opts
 end
-
 M.opts = function(opts)
   local highlight_hovered_item = rvim.symbols.highlight_hovered_item or false
   local relative_width = rvim.symbols.relative_width or false
@@ -47,7 +44,6 @@ M.opts = function(opts)
     symbol_blacklist = {},
   }
 end
-
 M.keys = {
   {
     "<C-z>s",
@@ -55,5 +51,4 @@ M.keys = {
     desc = "⭐ Toggle symbols window",
   },
 }
-
 return M
