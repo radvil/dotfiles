@@ -91,7 +91,6 @@ gapTop=13
 includeMaximized=false
 
 [TabBox]
-LayoutName=big_icons
 OrderMinimizedMode=1
 
 [TabBoxAlternative]
