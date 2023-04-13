@@ -1,9 +1,9 @@
 local M = {}
 
 M.custom_labels = {
-  ["angularls"] = "Angular language server",
-  ["tsserver"] = "Typescript language server",
-  ["lua_ls"] = "Lua language server",
+  ["angularls"] = "Angular 2+",
+  ["tsserver"] = "Typescript",
+  ["lua_ls"] = "Lua",
 }
 
 M.get_filesize = function()

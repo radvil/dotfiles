@@ -1,13 +1,9 @@
-local M = {}
-
 local icons = require("media.icons")
-
+---@type LazySpec
+local M = {}
 M[1] = "nvim-tree/nvim-tree.lua"
-
 M.cmd = "NvimTree"
-
 M.dependencies = { "nvim-tree/nvim-web-devicons" }
-
 M.keys = {
   {
     "<Leader>e",
@@ -15,10 +11,10 @@ M.keys = {
     desc = "[Tree] toggle",
   },
 }
-
 M.opts = {
-  hijack_unnamed_buffer_when_opening = true,
+  hijack_unnamed_buffer_when_opening = false,
   auto_reload_on_write = true,
+  sync_root_with_cwd = true,
   hijack_cursor = true,
   sort_by = "name",
   hijack_directories = {
@@ -37,16 +33,19 @@ M.opts = {
   },
   update_focused_file = {
     update_cwd = false,
+    update_root = false,
     enable = true,
   },
   git = {
+    enable = true,
     ignore = false,
     timeout = 200,
+  },
+  filesystem_watchers = {
     enable = true,
   },
   view = {
     relativenumber = false,
-    hide_root_folder = true,
     signcolumn = "yes",
     number = false,
     side = "left",
@@ -55,6 +54,7 @@ M.opts = {
   renderer = {
     highlight_opened_files = "name",
     root_folder_modifier = ":t",
+    root_folder_label = false,
     indent_markers = {
       enable = true,
       icons = {
@@ -70,11 +70,21 @@ M.opts = {
         folder_arrow = true,
         folder = true,
         file = true,
-        git = true,
+        git = false,
       },
       glyphs = {
         symlink = icons.Common.Symlink,
         default = icons.Common.File,
+        folder = {
+          default = icons.Folder.Default,
+          empty = icons.Folder.Empty,
+          empty_open = icons.Folder.EmptyOpened,
+          open = icons.Folder.Opened,
+          symlink = icons.Folder.Symlink,
+          symlink_open = icons.Folder.SymlinkOpened,
+          arrow_open = icons.Folder.ArrowOpened,
+          arrow_closed = icons.Folder.ArrowClosed,
+        },
         git = {
           untracked = icons.Git.Untracked,
           unstaged = icons.Git.Unstaged,
@@ -97,12 +107,12 @@ M.opts = {
     },
   },
   filters = {
+    dotfiles = true,
     custom = {
       "node_modules",
       "\\.cache",
       "dist",
     },
-    dotfiles = true,
   },
   trash = {
     require_confirm = true,

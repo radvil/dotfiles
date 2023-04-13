@@ -2,4 +2,5 @@
 
 export LANG=en_US.UTF-8
 export DOTFILES="$HOME/.dotfiles"
+export EDITOR=neovim
 

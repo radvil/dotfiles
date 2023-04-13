@@ -204,11 +204,11 @@ insert_left({
 insert_left({
   "lsp_progress",
   display_components = {
-    "lsp_client_name",
+    -- "lsp_client_name",
     "spinner",
     -- { "title", "percentage", "message" },
   },
-  spinner_symbols = icons.SpinnerFrames,
+  spinner_symbols = icons.SpinnerFramesAlt,
   color = {
     fg = palette.yellow,
     bg = palette.trans,
@@ -254,20 +254,20 @@ insert_right({
   },
 })
 
----command status
-insert_right({
-  function()
-    return require("noice").api.status.command.get()
-  end,
-  cond = function()
-    return package.loaded["noice"] and require("noice").api.status.command.has()
-  end,
-  padding = 0,
-  color = utils.fg("Statement"),
-  fmt = function(cmdstatus)
-    return "« " .. cmdstatus .. " » "
-  end,
-})
+-- ---command status
+-- insert_right({
+--   function()
+--     return require("noice").api.status.command.get()
+--   end,
+--   cond = function()
+--     return package.loaded["noice"] and require("noice").api.status.command.has()
+--   end,
+--   padding = 0,
+--   color = utils.fg("Statement"),
+--   fmt = function(cmdstatus)
+--     return "« " .. cmdstatus .. " » "
+--   end,
+-- })
 
 ---file size
 insert_right({

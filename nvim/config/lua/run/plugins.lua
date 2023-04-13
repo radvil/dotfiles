@@ -15,6 +15,32 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+---@type LazyConfig
+local lazy_options = {
+  ui = {
+    border = "single",
+    icons = {
+      ft = "",
+      lazy = "鈴 ",
+      loaded = "",
+      not_loaded = "",
+    },
+  },
+  checker = {
+    enabled = true
+  },
+  defaults = {
+    lazy = false,
+    version = nil,
+  },
+  install = {
+    colorscheme = {
+      "tokyonight",
+      "catppuccin"
+    }
+  },
+}
+
 require("lazy").setup({
   "folke/lazy.nvim",
   require("usr.ui"),
@@ -24,9 +50,6 @@ require("lazy").setup({
   require("usr.completion"),
   require("usr.misc"),
   require("usr._preview"),
-  ui = {
-    border = "double",
-  },
-})
+}, lazy_options)
 
 Log("Plugins init!", "^^ RUN")

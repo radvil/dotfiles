@@ -130,14 +130,14 @@ M.Diagnostics = {
 }
 
 M.Folder = {
-  ArrowClosed = "",
-  ArrowOpened = "",
-  Default = "",
-  Opened = "",
-  Empty = "",
-  EmptyOpened = "",
-  Symlink = "",
-  SymlinkOpened = "",
+  ArrowOpened   = "",
+  ArrowClosed   = "",
+  Default       = "",
+  Opened        = "",
+  Empty         = "",
+  EmptyOpened   = "",
+  Symlink       = "",
+  SymlinkOpened = "",
 }
 
 M.Git = {

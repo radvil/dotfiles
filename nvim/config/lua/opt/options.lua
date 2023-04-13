@@ -5,14 +5,14 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   opt.shortmess:append({ C = true })
 end
 
-opt.wrap = false               -- Disable line wrap
-opt.autowrite = true           -- Enable auto write
-opt.clipboard = "unnamedplus"  -- Sync with system clipboard
+opt.wrap = false              -- Disable line wrap
+opt.autowrite = true          -- Enable auto write
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.confirm = true             -- Confirm to save changes before exiting modified buffer
-opt.cursorline = true          -- Enable highlighting of the current line
-opt.expandtab = true           -- Use spaces instead of tabs
-opt.formatoptions = "jcroqlnt" -- tcqj
+opt.confirm = true            -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true         -- Enable highlighting of the current line
+opt.expandtab = true          -- Use spaces instead of tabs
+-- opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true      -- Ignore case
@@ -22,6 +22,7 @@ opt.mouse = "a"            -- Enable mouse mode
 opt.number = true          -- Print line number
 opt.pumblend = 0           -- Popup blend
 opt.pumheight = 10         -- Maximum number of entries in a popup
+opt.cmdheight = 1
 opt.relativenumber = true  -- Relative line numbers
 opt.scrolloff = 4          -- Lines of context
 opt.sessionoptions = {

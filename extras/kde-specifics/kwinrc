@@ -134,9 +134,9 @@ ElectricBorderMaximize=false
 Scale=1
 
 [org.kde.kdecoration2]
-BorderSize=Tiny
+BorderSize=None
 BorderSizeAuto=false
 ButtonsOnLeft=XIA
-ButtonsOnRight=SM
+ButtonsOnRight=S
 library=org.kde.oxygen
 theme=Oxygen

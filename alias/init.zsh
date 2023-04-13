@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+alias cl="clear"
 alias rm="trash"
 alias ls="exa"
 alias ll='exa -alF'
