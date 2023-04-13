@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # links configs
+setup_link "$DOTFILES/profile" "$HOME/.profile"
 setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"

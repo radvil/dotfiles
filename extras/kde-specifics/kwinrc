@@ -27,6 +27,25 @@ BorderActivateAll=9
 [Effect-diminactive]
 Strength=13
 
+[Effect-glide]
+InDistance=10
+InRotationAngle=6
+InRotationEdge=1
+OutDistance=40
+OutRotationAngle=2
+OutRotationEdge=3
+
+[Effect-kwin4_effect_glitch]
+Duration=500
+Speed=1
+
+[Effect-kwin4_effect_hexagon]
+Duration=700
+Scale=2
+
+[Effect-kwin4_effect_incinerate]
+Duration=1000
+
 [Effect-kwin4_effect_translucency]
 ComboboxPopups=98
 IndividualMenuConfig=true
@@ -57,12 +76,14 @@ diminactiveEnabled=true
 forceblurEnabled=false
 kwin4_effect_fadedesktopEnabled=true
 kwin4_effect_fadingpopupsEnabled=false
+kwin4_effect_scaleEnabled=false
+kwin4_effect_shapecornersEnabled=true
 kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
+kwin4_effect_tv_glitchEnabled=true
 magiclampEnabled=true
 screenedgeEnabled=false
 slideEnabled=false
-slidingpopupsEnabled=false
 synchronizeskipswitcherEnabled=false
 tileseditorEnabled=false
 wobblywindowsEnabled=true
@@ -72,11 +93,11 @@ enableSpiralLayout=false
 layoutPerActivity=false
 monocleMaximize=false
 preventProtrusion=false
-screenGapBottom=13
-screenGapLeft=13
-screenGapRight=13
-screenGapTop=13
-tileLayoutGap=13
+screenGapBottom=10
+screenGapLeft=10
+screenGapRight=10
+screenGapTop=10
+tileLayoutGap=10
 
 [Script-desktopchangeosd]
 PopupHideDelay=500
@@ -113,6 +134,8 @@ ElectricBorderMaximize=false
 Scale=1
 
 [org.kde.kdecoration2]
+BorderSize=Tiny
+BorderSizeAuto=false
 ButtonsOnLeft=XIA
 ButtonsOnRight=SM
 library=org.kde.bismuth.decoration
