@@ -23,11 +23,4 @@ M.on_attach = function(client, buffer)
   end
 end
 
-function M.get_default_server_options()
-  return {
-    capabilities = M.get_capabilities(),
-    on_attach = M.on_attach,
-  }
-end
-
 return M

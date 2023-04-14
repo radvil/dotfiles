@@ -1,9 +1,7 @@
+---@type LazySpec
 local M = {}
-
 M[1] = "jose-elias-alvarez/typescript.nvim"
-
 M.event = "BufReadPre"
-
 M.dependencies = {
   {
     "williamboman/mason-lspconfig.nvim",

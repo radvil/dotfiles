@@ -17,17 +17,17 @@ vim.opt.rtp:prepend(lazypath)
 
 ---@type LazyConfig
 local lazy_options = {
+  checker = {
+    enabled = true
+  },
   ui = {
-    border = "single",
+    border = "rounded",
     icons = {
       ft = "",
       lazy = "鈴 ",
       loaded = "",
       not_loaded = "",
     },
-  },
-  checker = {
-    enabled = true
   },
   defaults = {
     lazy = false,

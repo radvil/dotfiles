@@ -26,6 +26,7 @@ M.dependencies = {
     end,
   },
 }
+
 ---@class RvimLspOptions
 M.opts = {
   install_missing_servers = true,
@@ -62,6 +63,13 @@ M.opts = {
   },
 }
 
+local function get_defaults()
+  return {
+    capabilities = require("usr.lsp.common.utils").get_capabilities(),
+    on_attach = require("usr.lsp.common.utils").on_attach,
+  }
+end
+
 ---@desc setup default servers and attach default handlers
 ---@param options RvimLspOptions
 local setup_servers = function(options)
@@ -69,18 +77,17 @@ local setup_servers = function(options)
 
   ---@param opts function | table | boolean
   for server, opts in pairs(options.servers) do
-    local default_opts = require("usr.lsp.common.utils").get_default_server_options()
     if type(opts) == "boolean" and opts == false then
-      opts = default_opts
+      opts = get_defaults()
     else
       -- TODO: remove unlisted servers after being removed from the quicksettings
       ensure_installed[#ensure_installed + 1] = server
       if type(opts) == "function" then
-        opts = opts() or default_opts
+        opts = opts() or get_defaults()
       elseif type(opts) == "table" then
-        opts = vim.tbl_deep_extend("force", default_opts, opts or {})
+        opts = vim.tbl_deep_extend("force", get_defaults(), opts or {})
       else
-        opts = default_opts
+        opts = get_defaults()
       end
     end
     require("lspconfig")[server].setup(opts)

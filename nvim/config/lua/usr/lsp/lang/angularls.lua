@@ -13,7 +13,7 @@ function M.get_server_opts()
   return {
     capabilities = require("usr.lsp.common.utils").get_capabilities(),
     on_attach = function(client, buffer)
-      ---@fix enabling this makes rename provider to prompt twice if we already have tsserver attached to the buffer
+      ---@fix need to disable if tsserver rename provider also used
       client.server_capabilities.renameProvider = false
       require("usr.lsp.common.utils").on_attach(client, buffer)
     end,

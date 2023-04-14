@@ -15,7 +15,11 @@ M.specs = {
   opts = {
     update_in_insert = false,
     severity_sort = true,
-    underline = true,
+    underline = false,
+    float = {
+      border = 'rounded',
+      source = 'always'
+    },
     virtual_text = {
       prefix = icons.Misc.Squirrel,
       spacing = 4,
@@ -77,6 +81,17 @@ function M:override_builtins()
   end
   M:merge_specs("opts")
   vim.diagnostic.config(M.specs.opts)
+
+  -- Override float windows handlers styles
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+    vim.lsp.handlers.hover,
+    { border = 'rounded' }
+  )
+
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    { border = 'rounded' }
+  )
 end
 
 function M.setup()
