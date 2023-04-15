@@ -18,6 +18,9 @@ Map("v", "J", "5j")
 Map("v", "K", "5k")
 Map("v", "L", "$")
 
+-- Fighting Kirby
+-- Map("c", "<F2>", [[\(.*\)]])
+
 -- Change forward/backward whilst in ins mode
 Map("i", "<C-d>", '<Esc>l"_cw')
 Map("i", "<A-Bs>", '<Esc>l"_cb')
