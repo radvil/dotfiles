@@ -23,7 +23,7 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 8
+  size: 7.5
   # builtin_box_drawing: false
   draw_bold_text_with_bright_colors: false
   normal:
@@ -41,7 +41,7 @@ font:
 
 colors:
   primary:
-    background: "#181825" #'#1d1f21'
+    background: "#1E1E2E"
     foreground: "#c5c8c6"
   #normal:
   #  black:   '#1d1f21'

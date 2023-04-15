@@ -1,5 +1,6 @@
 return {
   require("usr.completion.luasnip"),
+  require("usr.completion.copilot"),
   require("usr.completion.nvim-cmp"),
   require("usr.completion.vim-repeat"),
   require("usr.completion.mini-comment"),

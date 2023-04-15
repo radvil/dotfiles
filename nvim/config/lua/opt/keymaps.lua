@@ -106,18 +106,3 @@ end, { desc = "Toggle Line Numbers" })
 Map("n", "<Leader>gg", function()
   util.float_term({ "lazygit" })
 end, { desc = " Lazy Git » Open CWD" })
-
--- Quit with prompt
-Map({ "n", "v", "x" }, "ZZ", function()
-  if not GetBufOpt("modified") then
-    vim.cmd("qa!")
-  else
-    util.prompt_confirmation({
-      title = "Quit neovim?",
-      msg = "You have unsaved changes, quit anyway?",
-      on_confirmed = function()
-        vim.cmd("qa!")
-      end,
-    })
-  end
-end)

@@ -78,8 +78,8 @@ function M.get_root()
           and vim.tbl_map(function(ws)
             return vim.uri_to_fname(ws.uri)
           end, workspace)
-        or client.config.root_dir and { client.config.root_dir }
-        or {}
+          or client.config.root_dir and { client.config.root_dir }
+          or {}
       for _, p in ipairs(paths) do
         local r = vim.loop.fs_realpath(p) or ""
         if path:find(r, 1, true) then
@@ -112,53 +112,15 @@ function M.get_root()
   return root
 end
 
----open an input dialog
----@param opts {title?: string, msg?: string, on_confirmed?: function | nil, on_close?: function | nil }
----@return NuiInput
-function M.prompt_confirmation(opts)
-  local Input = require("nui.input")
-  local options = {
-    position = "50%",
-    size = { width = 77 },
-    win_options = {
-      winhighlight = "Normal:Normal",
-    },
-    border = {
-      style = "rounded",
-      text = {
-        top = string.format(" ≪ %s ≫ ", opts.title or "Confirmation"),
-        top_align = "center",
-      },
-    },
-  }
-  local inputRef = Input(options, {
-    prompt = string.format("💋 %s Y[es]/N[o] == ", opts.msg or "Confirm?"),
-    default_value = "No",
-    on_submit = function(res)
-      local accepted = res == "y" or res == "Y" or res == "Yes" or res == "yes"
-      if accepted and type(opts.on_confirmed) == "function" then
-        opts.on_confirmed()
-        vim.notify("Confirmed!!")
-      else
-        if type(opts.on_close) == "function" then
-          opts.on_close()
-          vim.notify("Canceled!")
-        end
-      end
-    end,
-    on_close = function()
-      Input.on:unmount()
-      if type(opts.on_close) == "function" then
-        opts.on_close()
-      end
+---@param on_attach fun(client, buffer)
+function M.on_attach(on_attach)
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buffer = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
     end,
   })
-  inputRef:mount()
-  local map_opt = { noremap = true, nowait = true }
-  inputRef:map("n", "<Esc>", function()
-    inputRef:unmount()
-  end, map_opt)
-  return inputRef
 end
 
 -- this will return a function that calls telescope.
