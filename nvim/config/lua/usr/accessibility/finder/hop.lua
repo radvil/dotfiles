@@ -1,6 +1,6 @@
 ---@type LazySpec
 local M = {}
-M[1] = "radvil2/hop.nvim"
+M[1] = "zzhirong/hop.nvim" -- using forks from this dude
 M.enabled = true
 M.event = "VeryLazy"
 local function register_keymaps()

@@ -2,5 +2,9 @@
 
 export LANG=en_US.UTF-8
 export DOTFILES="$HOME/.dotfiles"
-export EDITOR=neovim
+export EDITOR=nvim
 
+# TODO: Handle privately
+export PATH="$HOME/.local/bin:$PATH"
+export OPENAI_API_KEY=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
+alias code-gpt="sgpt --repl temp --code"
