@@ -1,11 +1,19 @@
 ---@type LazySpec
 local M = {}
+local env = function()
+  return rvim.completion.copilot
+end
 M[1] = "zbirenbaum/copilot.lua"
+M.enabled = env().enabled
 M.cmd = "Copilot"
 M.build = ":Copilot auth"
 M.opts = {
-  suggestion = { enabled = false },
-  panel = { enabled = false },
+  suggestion = {
+    enabled = env().suggestion_enabled,
+  },
+  panel = {
+    enabled = env().panel_enabled,
+  },
 }
 M.dependencies = {
   "zbirenbaum/copilot-cmp",

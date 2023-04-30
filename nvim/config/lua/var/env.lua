@@ -24,7 +24,7 @@ M.g = {
 M.theme = {
   colorscheme = "tokyonight",
   variant = "moon",
-  transbg = false,
+  transbg = true,
   force_darkmode = true,
   rainbow_brackets = false,
 }
@@ -78,6 +78,10 @@ M.note_taking = {
   },
 }
 
+M.statusline = {
+  enabled = true,
+}
+
 M.lsp = {
   ---@type RxLspDiagnosticsSpecs
   diagnostics = {
@@ -96,6 +100,16 @@ M.lsp = {
     command = "RxLspToggleFormatonsave",
     toggle_keymap = "<C-z>f",
   },
+}
+
+M.completion = {
+  enabled = true,
+  enable_snippets = true,
+  copilot = {
+    enabled = true,
+    suggestion_enabled = false,
+    panel_enabled = false,
+  }
 }
 
 _G.rvim = M

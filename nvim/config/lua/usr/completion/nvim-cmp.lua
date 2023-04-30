@@ -1,3 +1,7 @@
+local env = function()
+  return rvim.completion
+end
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -9,31 +13,45 @@ local formatting_style = {
     local kind_icons = require("media.icons").KindIcons
     local item_kind = vim_item.kind
     local sources = {
-      copilot = "COPILOT",
       nvim_lsp = item_kind,
       luasnip = " SNIP",
       buffer = " BUFF",
       path = " PATH",
     }
+    if env().copilot.enabled then
+      sources.copilot = "COPI"
+    end
     vim_item.kind = kind_icons[item_kind]
     vim_item.menu = sources[entry.source.name]
     return vim_item
   end,
 }
 
+local sources = {
+  { name = "nvim_lsp" },
+  { name = "luasnip" },
+  { name = "buffer" },
+  { name = "path" },
+}
+
 ---@type LazySpec
 local M = {}
 M[1] = "hrsh7th/nvim-cmp" --4E2C-BC80
 M.event = "InsertEnter"
+M.enabled = env().enabled
 M.dependencies = {
   "saadparwaiz1/cmp_luasnip",
   "windwp/nvim-autopairs",
   "L3MON4D3/LuaSnip",
-  "zbirenbaum/copilot-cmp",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
 }
+if env().copilot.enabled then
+  table.insert(sources, { name = "copilot", group_index = 2 })
+  ---@diagnostic disable-next-line: param-type-mismatch
+  table.insert(M.dependencies, "zbirenbaum/copilot-cmp")
+end
 M.opts = function()
   local luasnip = require("luasnip")
   local cmp = require("cmp")
@@ -42,12 +60,9 @@ M.opts = function()
     behavior = cmp.ConfirmBehavior.Replace,
     select = true,
   })
-
   ---@type cmp.Config
   local opts = {
-    completion = {
-      completeopt = "menu,menuone",
-    },
+    completion = { completeopt = "menu,menuone", },
     window = {
       documentation = cmp.config.window.bordered(),
       completion = cmp.config.window.bordered(),
@@ -62,14 +77,15 @@ M.opts = function()
       ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ["<C-e>"] = cmp.mapping.abort(),
+      ["<C-x>"] = cmp.mapping.abort(),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<CR>"] = function(...)
         local entry = cmp.get_selected_entry()
-        if entry and entry.source.name == "copilot" then
+        if env().copilot.enabled and entry and entry.source.name == "copilot" then
           return mapping_confirm_copilot(...)
+        else
+          return mapping_confirm(...)
         end
-        return mapping_confirm(...)
       end,
       ["<S-CR>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
@@ -96,13 +112,7 @@ M.opts = function()
         end
       end, { "i", "s" }),
     },
-    sources = cmp.config.sources({
-      { name = "copilot", group_index = 2 },
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "path" },
-    }),
+    sources = cmp.config.sources(sources),
     formatting = formatting_style,
     -- experimental = {
     --   ghost_text = {
@@ -111,13 +121,11 @@ M.opts = function()
     -- },
   }
 
-  -- TODO: later set condition on rvim.env
-  if true then
+  if env().copilot.enabled then
     opts.sorting = {
       priority_weight = 1,
       comparators = {
         require("copilot_cmp.comparators").prioritize,
-
         -- Below is the default comparitor list and order for nvim-cmp
         cmp.config.compare.offset,
         -- cmp.config.compare.scopes, --this is commented in nvim-cmp too

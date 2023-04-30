@@ -43,3 +43,4 @@ trash-cli
 htop
 neofetch
 kvantum-qt5
+bc

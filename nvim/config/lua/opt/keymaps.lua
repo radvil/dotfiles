@@ -105,4 +105,4 @@ end, { desc = "Toggle Line Numbers" })
 
 Map("n", "<Leader>gg", function()
   util.float_term({ "lazygit" })
-end, { desc = " Lazy Git » Open CWD" })
+end, { desc = " Git » Open Lazy Git (cwd)" })

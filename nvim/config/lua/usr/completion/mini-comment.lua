@@ -2,6 +2,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.comment"
+M.enabled = false
 M.event = "VeryLazy"
 M.opts = {
   hooks = {
