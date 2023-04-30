@@ -30,11 +30,26 @@ function ami-project() {
   cd "$HOME/AMI"
   target_dir=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 50% -w 69% --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="right,90,wrap")
   if [[ -z $target_dir ]]; then
-    echo "Nothing was selected"
+    info "No project was selected"
     cd "$cached_dir"
     return 0
   else
     cd "$target_dir" && nvim
+  fi
+}
+
+
+function ssh-use() {
+  profiles=("radvil-gitlab [Work]" "radvil-github [Personal]" "radvil2-github [Personal]")
+  selected=$(printf "%s\n" "${profiles[@]}" | fzf --border --prompt="🔑 Select Key  ")
+  if [[ -z $selected ]]; then
+    warn "No key was selected"
+    return 0
+  else
+    eval $(ssh-agent -s)
+    selected=$(echo $selected | cut -d ' ' -f 1)
+    ssh-add "$HOME/.ssh/$selected"
+    okay "Selected key  $selected"
   fi
 }
 
