@@ -28,7 +28,7 @@ function _fzf_comprun() {
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"
-  target_dir=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 50% -w 69% --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="right,90,wrap")
+  target_dir=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
   if [[ -z $target_dir ]]; then
     info "No project was selected"
     cd "$cached_dir"
