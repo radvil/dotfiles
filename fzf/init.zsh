@@ -44,14 +44,24 @@ function __create_tmux_session() {
     if tmux has-session -t "$session_name" 2>/dev/null; then
       tmux attach -t "$session_name"
     else
-      # if session does not exist create it
-      tmux new -s "$session_name" -c "$full_path"
+      # if second argument exists and == nvim create session with nvim
+      if [[ -n $2 ]] && [[ $2 == nvim ]]; then
+        tmux new -s "$session_name" -c "$full_path" nvim
+      else
+        tmux new -s "$session_name" -c "$full_path"
+      fi
     fi
   else
     if tmux has-session -t "$session_name" 2>/dev/null; then
       tmux switch-client -t "$session_name"
     else
-      tmux new -s "$session_name" -d -c "$full_path"
+      # if second argument exists and == nvim create session with nvim
+      if [[ -n $2 ]] && [[ $2 == nvim ]]; then
+        tmux new -s "$session_name" -d -c "$full_path" nvim
+      else
+        tmux new -s "$session_name" -d -c "$full_path"
+      fi
+      # switch to new created session
       tmux switch-client -t "$session_name"
     fi
   fi
@@ -65,10 +75,12 @@ function ami-project() {
     info "No project was selected"
     return 0
   else
-    __create_tmux_session "$dir_name"
+    __create_tmux_session "$dir_name" "nvim"
   fi
   cd "$cached_dir"
 }
+alias am="ami-project"
+alias ami="ami-project"
 
 function zmux() {
   selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path  ")
