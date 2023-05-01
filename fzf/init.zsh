@@ -96,7 +96,6 @@ function ssh-use() {
   fi
 }
 
-
 # default utilities
 \. "$DOTFILES/fzf/utils/completion.zsh" --silent
 \. "$DOTFILES/fzf/utils/key-bindings.zsh" --silent
