@@ -1,4 +1,5 @@
 require("run.overrides")
+require("opt.cmd")
 require("run.autocmds")
 require("opt.options")
 require("run.plugins")

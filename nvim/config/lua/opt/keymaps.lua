@@ -110,3 +110,7 @@ end, { desc = " Git » Open Lazy Git (cwd)" })
 Map("n", "<Leader><Space>", function()
   vim.cmd [[call system('zmux')]]
 end, { desc = "Tmux » New Session" })
+
+Map("n", "<Leader>t", function()
+  util.float_term()
+end, { desc = "Terminal » Open Float" })

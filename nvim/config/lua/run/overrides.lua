@@ -20,7 +20,7 @@ function M:reset_keys()
 end
 
 ---@param props table | nil
-function M.disable_builtin_plugins(props)
+function M:disable_builtin_plugins(props)
   for _, plugin in
   ipairs(vim.tbl_extend("force", {
     "2html_plugin",
@@ -59,7 +59,7 @@ function M.disable_builtin_plugins(props)
 end
 
 ---@param props table | nil
-function M.disable_builtin_providers(props)
+function M:disable_builtin_providers(props)
   for _, provider in
   ipairs(vim.tbl_extend("force", {
     "perl",
