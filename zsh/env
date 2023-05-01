@@ -1,10 +1,20 @@
 #!/bin/zsh
 
-export LANG=en_US.UTF-8
-export DOTFILES="$HOME/.dotfiles"
-export EDITOR=nvim
+# base
+source "$DOTFILES/keys"
+source "$DOTFILES/zsh/var"
+source "$DOTFILES/build/utils.sh"
 
-# TODO: Handle privately
-export PATH="$HOME/.local/bin:$PATH"
-export OPENAI_API_KEY=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
-alias code-gpt="sgpt --repl temp --code"
+# source config
+source_file "$HOME/.nvm/nvm.sh" --silent
+source_file "$HOME/.nvm/bash_completion" --silent
+source_file "$DOTFILES/git/init.zsh" --silent
+source_file "$DOTFILES/omz/init.zsh" --silent
+source_file "$DOTFILES/starship/init.zsh" --silent
+source_file "$DOTFILES/nnn/init.zsh" --silent
+source_file "$DOTFILES/nvim/bin/init-switcher.zsh" --silent
+source_file "$DOTFILES/fzf/init.zsh" --silent
+source_file "$DOTFILES/z/init.zsh" --silent
+
+# aliases should be on last line
+source_file "$DOTFILES/alias/init.zsh" --silent

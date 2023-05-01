@@ -90,19 +90,23 @@ if not util.has("mini.bufremove") then
   Map("n", "<Leader>bD", "<Cmd>bufdo bdelete<Cr>", { desc = "Delete all buffers" })
 end
 
-Map("n", "<Leader>us", function()
+Map("n", "<C-z>s", function()
   util.toggle("spell")
-end, { desc = "Toggle Spelling" })
+end, { desc = "Toggle » Word Spelling" })
 
-Map("n", "<Leader>uw", function()
+Map("n", "<C-z>w", function()
   util.toggle("wrap")
-end, { desc = "Toggle Word Wrap" })
+end, { desc = "Toggle » Word Wrap" })
 
-Map("n", "<Leader>ul", function()
+Map("n", "<C-z>n", function()
   util.toggle("relativenumber", true)
   util.toggle("number")
-end, { desc = "Toggle Line Numbers" })
+end, { desc = "Toggle » Line Numbers" })
 
 Map("n", "<Leader>gg", function()
   util.float_term({ "lazygit" })
 end, { desc = " Git » Open Lazy Git (cwd)" })
+
+Map("n", "<Leader><Space>", function()
+  vim.cmd [[call system('zmux')]]
+end, { desc = "Tmux » New Session" })

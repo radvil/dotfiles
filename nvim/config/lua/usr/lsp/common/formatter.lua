@@ -80,7 +80,7 @@ function M:register_user_keymaps()
     return string.format("<Cmd>%s<CR>", name)
   end
   vim.keymap.set("n", kmp, fmtcmd(cmd), {
-    desc = "Code » Autoformat",
+    desc = "Toggle » LSP Autoformat",
   })
 end
 

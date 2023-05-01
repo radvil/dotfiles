@@ -19,4 +19,4 @@ function nvim-switch() {
   NVIM_APPNAME=$config nvim $@
 }
 
-bindkey -s ^o "nvim-switch\n"
+# bindkey -s ^o "nvim-switch\n"

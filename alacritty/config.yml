@@ -23,21 +23,21 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 7.5
+  size: 7
   # builtin_box_drawing: false
   draw_bold_text_with_bright_colors: false
   normal:
-    #JetBrainsMono Nerd Font Mono
-    family: Input Mono Condensed
+    family: JetBrainsMono Nerd Font Mono
+    # family: Input Mono Condensed
     style: Regular
-  bold:
-    family: Input Mono Condensed
-    style: Bold
-  italic:
-    family: Input Mono Condensed
-    style: Italic
-  bold_italic:
-    family: Input Mono Condensed
+  # bold:
+  #   family: Input Mono Condensed
+  #   style: Bold
+  # italic:
+  #   family: Input Mono Condensed
+  #   style: Italic
+  # bold_italic:
+  #   family: Input Mono Condensed
 
 colors:
   primary:

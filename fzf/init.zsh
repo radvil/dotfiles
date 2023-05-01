@@ -25,19 +25,68 @@ function _fzf_comprun() {
   esac
 }
 
+function __get_session_name() {
+  full_path="$1"
+  session_name=$(basename "$full_path")
+  # if session_name starts with "." remove it"
+  [[ $session_name == .* ]] && session_name=${session_name#.}
+  # uppercase session_name and replace "." with "-"
+  session_name=$(echo "$session_name" | tr '[:lower:]' '[:upper:]' | tr '.' '-')
+  echo "$session_name"
+}
+
+function __create_tmux_session() {
+  full_path=$(realpath "$1")
+  session_name=$(__get_session_name "$full_path")
+  # if not inside tmux
+  if [[ -z "$TMUX" ]]; then
+    # if session exists attach to it
+    if tmux has-session -t "$session_name" 2>/dev/null; then
+      tmux attach -t "$session_name"
+    else
+      # if session does not exist create it
+      cd "$full_path"
+      tmux new -s "$session_name"
+    fi
+  else
+    if tmux has-session -t "$session_name" 2>/dev/null; then
+      if [[ "$session_name" == "$(__get_session_name "$PWD")" ]]; then
+        return 0
+      else
+        tmux switch-client -t "$session_name"
+      fi
+    else
+      cd "$full_path"
+      tmux new -s "$session_name" -d
+      tmux switch-client -t "$session_name"
+    fi
+  fi
+}
+
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"
-  target_dir=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
-  if [[ -z $target_dir ]]; then
+  full_path=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
+  if [[ -z $full_path ]]; then
     info "No project was selected"
     cd "$cached_dir"
     return 0
   else
-    cd "$target_dir" && nvim
+    __create_tmux_session "$full_path"
   fi
 }
 
+function zmux() {
+  selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path  ")
+  full_path=$(echo "$selected" | tr -s ' ' | cut -d ' ' -f 2)
+  if [[ -z $full_path ]]; then
+    info "No path was selected"
+    return 0
+  else
+    __create_tmux_session "$full_path"
+  fi
+}
+bindkey -s "\eo" "zmux\n"
 
 function ssh-use() {
   profiles=("radvil-gitlab [Work]" "radvil-github [Personal]" "radvil2-github [Personal]")

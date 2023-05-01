@@ -20,6 +20,9 @@ M.opts = function()
   end
   return opts
 end
+M.init = function()
+  vim.notify = require("notify");
+end
 M.keys = {
   {
     "<C-z>n",
@@ -29,7 +32,7 @@ M.keys = {
         pending = true,
       })
     end,
-    desc = "[Notify] dismiss all",
+    desc = "Toggle » Notification Prompt",
   },
 }
 return M

@@ -65,7 +65,7 @@ function M:register_keymaps()
   local kmp = M.specs.keymaps
   local cmd = M.specs.commands
   vim.keymap.set("n", kmp.toggle, util.fmtcmd(cmd.toggle), {
-    desc = "🤖 Toggle diagnostics",
+    desc = "Toggle » LSP Diagnostics",
   })
 end
 
