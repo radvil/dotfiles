@@ -45,19 +45,13 @@ function __create_tmux_session() {
       tmux attach -t "$session_name"
     else
       # if session does not exist create it
-      cd "$full_path"
-      tmux new -s "$session_name"
+      tmux new -s "$session_name" -c "$full_path"
     fi
   else
     if tmux has-session -t "$session_name" 2>/dev/null; then
-      if [[ "$session_name" == "$(__get_session_name "$PWD")" ]]; then
-        return 0
-      else
-        tmux switch-client -t "$session_name"
-      fi
+      tmux switch-client -t "$session_name"
     else
-      cd "$full_path"
-      tmux new -s "$session_name" -d
+      tmux new -s "$session_name" -d -c "$full_path"
       tmux switch-client -t "$session_name"
     fi
   fi
@@ -66,14 +60,14 @@ function __create_tmux_session() {
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"
-  full_path=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
-  if [[ -z $full_path ]]; then
+  dir_name=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
+  if [[ -z $dir_name ]]; then
     info "No project was selected"
-    cd "$cached_dir"
     return 0
   else
-    __create_tmux_session "$full_path"
+    __create_tmux_session "$dir_name"
   fi
+  cd "$cached_dir"
 }
 
 function zmux() {
