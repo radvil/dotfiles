@@ -1,11 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/AMI/clio-crm
 - /home/radvil/AMI/ami-angular-template
 - /home/radvil/AMI/parastar-console
 - /home/radvil/AMI/mykado-console
 - /home/radvil/AMI/mcp.bak
-- /home/radvil/AMI/clio-crm
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

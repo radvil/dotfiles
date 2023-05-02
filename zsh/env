@@ -1,8 +1,12 @@
 #!/bin/zsh
 
+export EDITOR=nvim
+export LANG=en_US.UTF-8
+export DOTFILES="$HOME/.dotfiles"
+export PATH="$HOME/.local/bin:$PATH"
+
 # base
 source "$DOTFILES/keys"
-source "$DOTFILES/zsh/var"
 source "$DOTFILES/build/utils.sh"
 
 # source config
