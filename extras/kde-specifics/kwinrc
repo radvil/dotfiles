@@ -135,9 +135,9 @@ ElectricBorderMaximize=false
 Scale=1
 
 [org.kde.kdecoration2]
-BorderSize=None
+BorderSize=Tiny
 BorderSizeAuto=false
 ButtonsOnLeft=XIA
 ButtonsOnRight=S
-library=org.kde.oxygen
-theme=Oxygen
+library=org.kde.bismuth.decoration
+theme=Bismuth

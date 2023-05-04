@@ -7,5 +7,6 @@ recentrepos:
 - /home/radvil/AMI/mykado-console
 - /home/radvil/AMI/mcp.bak
 startuppopupversion: 5
-customcommandshistory: []
+customcommandshistory:
+- q
 hidecommandlog: false

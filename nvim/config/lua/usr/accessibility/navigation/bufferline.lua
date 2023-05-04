@@ -16,22 +16,22 @@ M.keys = {
     desc = "Pick buffer",
   },
   {
-    "<A-[>",
+    "<A-,>",
     "<Cmd>BufferLineMovePrev<CR>",
     desc = "Move buffer to left",
   },
   {
-    "<A-]>",
+    "<A-.>",
     "<Cmd>BufferLineMoveNext<CR>",
     desc = "Move buffer to right",
   },
   {
-    "<A-,>",
+    "<A-[>",
     "<Cmd>BufferLineCyclePrev<CR>",
     desc = "Switch to prev buffer",
   },
   {
-    "<A-.>",
+    "<A-]>",
     "<Cmd>BufferLineCycleNext<CR>",
     desc = "Switch to next buffer",
   },
