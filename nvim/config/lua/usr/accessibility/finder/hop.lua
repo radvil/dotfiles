@@ -49,7 +49,7 @@ local function register_keymaps()
     desc = "[hop] Till prev inlined char",
     remap = true,
   })
-  vim.keymap.set(mode, "m", function()
+  vim.keymap.set(mode, "S", function()
     hop.hint_char2({
       current_line_only = false,
       multi_windows = true,

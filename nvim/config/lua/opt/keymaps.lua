@@ -107,6 +107,10 @@ Map("n", "<Leader>gg", function()
   util.float_term({ "lazygit" })
 end, { desc = " Git » Open Lazy Git (cwd)" })
 
-Map("n", "<Leader><Space>", function()
+Map("n", "<Leader>mm", function()
   vim.cmd [[call system('zmux')]]
-end, { desc = "Tmux » New Session" })
+end, { desc = "Tmux Session » Most Used [z]" })
+
+Map("n", "<Leader>mw", function()
+  vim.cmd [[call system('ami-project')]]
+end, { desc = "Tmux Session » Workspace [nvim]" })

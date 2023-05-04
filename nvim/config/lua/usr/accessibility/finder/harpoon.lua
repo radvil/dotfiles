@@ -15,14 +15,14 @@ end
 
 M.keys = {
   {
-    "<Leader>'",
+    "<C-m>",
     mark_current,
-    desc = "Bookmark » Add to List",
+    desc = "Harpoon » Mark File",
   },
   {
-    '<Leader>"',
+    '<Leader><Space>',
     quick_menu,
-    desc = "Bookmark » Open List",
+    desc = "Harpoon » Open List",
   },
 }
 

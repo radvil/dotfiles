@@ -67,6 +67,13 @@ function __create_tmux_session() {
   fi
 }
 
+function __cmd_on_vertical_split() {
+  cmd="$1"
+  tmux split-window -v "$cmd"
+  tmux select-pane -U
+}
+bindkey -s "\ev" "__cmd_on_vertical_split\n"
+
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"
@@ -81,6 +88,7 @@ function ami-project() {
 }
 alias am="ami-project"
 alias ami="ami-project"
+bindkey -s "\ew" "ami-project\n"
 
 function zmux() {
   selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path  ")
@@ -92,7 +100,7 @@ function zmux() {
     __create_tmux_session "$full_path"
   fi
 }
-bindkey -s "\eo" "zmux\n"
+bindkey -s "\em" "zmux\n"
 
 function ssh-use() {
   profiles=("radvil-gitlab [Work]" "radvil-github [Personal]" "radvil2-github [Personal]")
