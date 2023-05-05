@@ -9,4 +9,5 @@ return {
   require("usr.accessibility.tabout"),
   require("usr.accessibility.treesitter-context"),
   require("usr.accessibility.range-highlight"),
+  require("usr.accessibility.vim-fugitive"),
 }

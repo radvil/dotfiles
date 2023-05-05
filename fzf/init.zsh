@@ -67,13 +67,6 @@ function __create_tmux_session() {
   fi
 }
 
-function __cmd_on_vertical_split() {
-  cmd="$1"
-  tmux split-window -v "$cmd"
-  tmux select-pane -U
-}
-bindkey -s "\ev" "__cmd_on_vertical_split\n"
-
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"

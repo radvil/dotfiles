@@ -30,6 +30,17 @@ M.config = function()
       enable = true,
       duration = 150,
     },
+    autowidth = {
+      enable = false,
+      winwidth = 5,
+      filetype = {
+        help = 2,
+      },
+    },
+    ignore = {
+      buftype = { "quickfix" },
+      filetype = require("opt.filetype").excludes,
+    }
   })
 end
 return M

@@ -109,8 +109,8 @@ end, { desc = " Git » Open Lazy Git (cwd)" })
 
 Map("n", "<Leader>mm", function()
   vim.cmd [[call system('zmux')]]
-end, { desc = "Tmux Session » Most Used [z]" })
+end, { desc = "Tmux » Jump to Most Used [z]" })
 
 Map("n", "<Leader>mw", function()
   vim.cmd [[call system('ami-project')]]
-end, { desc = "Tmux Session » Workspace [nvim]" })
+end, { desc = "Tmux » Switch Workspace [nvim]" })

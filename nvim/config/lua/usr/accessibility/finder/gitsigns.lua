@@ -18,11 +18,19 @@ local signs = {
 M.opts = {
   signs = signs,
   on_attach = function(buffer)
-    local gs = package.loaded.gitsigns
-    local opts = { buffer = buffer }
+    local function gs()
+      return package.loaded.gitsigns
+    end
 
-    Map("n", "]h", gs.next_hunk, Merge(opts, { desc = "Next Hunk" }))
-    Map("n", "[h", gs.prev_hunk, Merge(opts, { desc = "Prev Hunk" }))
+    -- Map("n", "]h", gs.next_hunk, Merge(opts, { desc = "Next Hunk" }))
+    -- Map("n", "[h", gs.prev_hunk, Merge(opts, { desc = "Prev Hunk" }))
+    Map("n", "<C-z>g", function()
+      gs().toggle_current_line_blame()
+    end, { buffer = buffer, desc = "Toggle »  Git Blame Line" })
+
+    Map("n", "<Leader>gd", function()
+      gs().diffthis()
+    end, { buffer = buffer, desc = " Git » Diff This" })
 
     -- TODO: Learn all mechanism first
     -- map({ "n", "v" }, "<Leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
