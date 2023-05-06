@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
+
 if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
   info "\"Oh My Zsh\" has already installed. skipping.."
 else

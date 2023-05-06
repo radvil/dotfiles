@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2181
 
-source "$DOTFILES/build/utils.sh"
+[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
 
 function __install_spotify-tui() {
-# if command not found "spt
+	# if command not found "spt
 	if has_installed spt; then
 		info "spotify-tui has already installed. Skipping..."
 	else

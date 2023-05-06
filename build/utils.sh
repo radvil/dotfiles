@@ -86,3 +86,5 @@ has_installed() {
 	[[ -x "$cmdname" ]]
 }
 
+export DOTFILES_UTILS_LOADED=1
+

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
+
 set -e
 
 font_packages="$DOTFILES/extras/fonts/packages.txt"
