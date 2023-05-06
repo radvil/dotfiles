@@ -6,7 +6,7 @@ export DOTFILES="$HOME/.dotfiles"
 export PATH="$HOME/.local/bin:$PATH"
 
 # base
-source "$DOTFILES/keys"
+source "$DOTFILES/secrets"
 source "$DOTFILES/build/utils.sh"
 
 # source config
@@ -19,6 +19,7 @@ source_file "$DOTFILES/nnn/init.zsh" --silent
 source_file "$DOTFILES/nvim/bin/init-switcher.zsh" --silent
 source_file "$DOTFILES/fzf/init.zsh" --silent
 source_file "$DOTFILES/z/init.zsh" --silent
+source_file "$DOTFILES/extras/spotify/init.zsh" --silent
 
 # aliases should be on last line
 source_file "$DOTFILES/alias/init.zsh" --silent

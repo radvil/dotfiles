@@ -1,20 +1,12 @@
 ---@desc: highlight range on cmdline
---Should deactivate relative number for this,
--- TODO: set condition on vim.opt.relativenumber value changes
-
 ---@type LazySpec
 local M = {}
-
 M[1] = "winston0410/range-highlight.nvim"
-
 M.enabled = false
-
 M.event = "CmdlineEnter"
-
 M.dependencies = {
   "winston0410/cmd-parser.nvim",
 }
-
 M.opts = {
   highlight = "Visual",
   highlight_with_out_range = {
@@ -51,5 +43,4 @@ M.opts = {
     sort = true,
   },
 }
-
 return M

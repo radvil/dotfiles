@@ -80,7 +80,6 @@ local setup_servers = function(options)
     if type(opts) == "boolean" and opts == false then
       opts = get_defaults()
     else
-      -- TODO: remove unlisted servers after being removed from the quicksettings
       ensure_installed[#ensure_installed + 1] = server
       if type(opts) == "function" then
         opts = opts() or get_defaults()

@@ -84,9 +84,9 @@ if confirmed "Do you want to restore you previous \"KDE specifics config\"?"; th
   source_file "$DOTFILES/extras/kde-specifics/install.sh"
 fi
 
-# Setup private ssh service
-if confirmed "Do you wanna configure your private ssh service?"; then
-  source_file "$DOTFILES/private/ssh/install.sh"
+# Setup Spotify TUI
+if confirmed "Do you install and configure spotify-tui?"; then
+  source_file "$DOTFILES/extras/spotify/install.sh"
 fi
 
 # change default shell to zsh

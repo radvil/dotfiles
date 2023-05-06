@@ -27,10 +27,10 @@ M.opts = {
     enable = true,
   },
   indent = {
-    enable = true, --TODO: check
+    enable = true,
     disable = { "python" },
   },
-  fold = { enable = true }, --TODO: check
+  fold = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {

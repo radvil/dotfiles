@@ -85,6 +85,11 @@ M.WebDevIcons = {
     color = "#549FDD",
     name = "AngularComponent",
   },
+  ["cmp.ts"] = {
+    icon = "",
+    color = "#cd1053",
+    name = "AngularComponentStandalone",
+  },
   ["module.ts"] = {
     icon = "",
     color = "#cd1053",
@@ -114,6 +119,21 @@ M.WebDevIcons = {
     icon = "",
     color = "#ae61e0",
     name = "AngularStore",
+  },
+  ["actions.ts"] = {
+    icon = "",
+    color = "#d52f2f",
+    name = "StoreActions",
+  },
+  ["selectors.ts"] = {
+    icon = "",
+    color = "#ebba0b",
+    name = "StoreSelectors",
+  },
+  ["effects.ts"] = {
+    icon = "",
+    color = "#448bde",
+    name = "StoreEffects",
   },
   ["angular.json"] = {
     icon = "",

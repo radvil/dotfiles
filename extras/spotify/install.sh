@@ -1,23 +1,33 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2181
 
 source "$DOTFILES/build/utils.sh"
 
-# spotify terminal client
-if ! has_installed spt; then
-	if confirmed "Do you wanna install and setup spotify terminal client?"; then
-		info "Installing spotify-tui client..."
-		yay -S spotify-tui spotifyd
+function __install_spotify-tui() {
+# if command not found "spt
+	if has_installed spt; then
+		info "spotify-tui has already installed. Skipping..."
+	else
+		info "Installing spotify-tui..."
+		yay -S spotify-tui
 		okay "spotify-tui client installed successfully!"
-		rm -rf "$HOME/.config/spotify-tui"
-		mkdir -p "$HOME/.config/spotify-tui"
-		ln -sf "$DOTFILES/extras/spotify/spotify-tui.yml" "$HOME/.config/spotify-tui/client.yml"
-		[[ -d "$HOME/.config/spotifyd" ]] || mkdir -p "$HOME/.config/spotifyd"
-		ln -sf "$DOTFILES/extras/spotify/spotifyd.conf" "$HOME/.config/spotifyd/spotifyd.conf"
-		[[ -d "$HOME/.config/systemd" ]] || mkdir -p "$HOME/.config/systemd"
-		ln -sf "$DOTFILES/extras/spotify/spotifyd.service" "$HOME/.config/systemd/spotifyd.service"
-		systemctl --user enable spotifyd.service
-		systemctl --user start spotifyd.service
+		local config_dir="$HOME/.config/spotify-tui"
+		[[ -d "$config_dir" ]] || mkdir -p "$config_dir"
+		ln -sf "$DOTFILES/extras/spotify/spotify-tui.yml" "$config_dir/client.yml"
 	fi
+}
+
+# install spotify daemon
+if has_installed spotifyd; then
+	info "spotifyd has already installed. Skipping..."
 else
-	info "spotify-tui has already installed. Skipping..."
+	info "Installing spotifyd..."
+	sudo pacman -S spotifyd
+	if [[ $? -eq 0 ]]; then
+		info "spotifyd installed successfully!"
+		config_dir="$HOME/.config/spotifyd"
+		[[ -d "$config_dir" ]] || mkdir -p "$config_dir"
+		ln -sf "$DOTFILES/extras/spotify/spotifyd.conf" "$config_dir/spotifyd.conf"
+		__install_spotify-tui
+	fi
 fi

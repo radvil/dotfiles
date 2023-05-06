@@ -2,6 +2,7 @@
 local util = require("utils")
 
 -- Base
+Map("n", "ZZ", ":qa<Cr>", { desc = "Quit" })
 Map({ "n", "i", "c", "x", "o" }, "<A-Space>", "<Esc>", { nowait = true, desc = "Exit insert" })
 -- Map("n", "<Leader>xl", "<Cmd>lopen<Cr>", { desc = "[Loclist] open" })
 Map("n", "<Leader>xe", "<Cmd>copen<Cr>", { desc = "Open Quickfix" })
@@ -17,9 +18,6 @@ Map("v", "H", "^")
 Map("v", "J", "5j")
 Map("v", "K", "5k")
 Map("v", "L", "$")
-
--- Fighting Kirby
--- Map("c", "<F2>", [[\(.*\)]])
 
 -- Change forward/backward whilst in ins mode
 Map("i", "<C-d>", '<Esc>l"_cw')
@@ -74,7 +72,6 @@ Map("v", "<A-k>", ":m '<-2<Cr>gv=gv", { desc = "Move up" })
 Map("i", "<A-k>", "<Esc>:m .-2<Cr>==gi", { desc = "Move up" })
 
 -- Windows
--- NOTE: Later learn about Tab
 Map("n", "<Leader>wd", "<C-W>c", { desc = "CURRENT » Delete" }) -- same as <Cmd>close
 Map("n", "<C-Up>", "<Cmd>resize +2<Cr>", { desc = "Increase window height" })
 Map("n", "<C-Down>", "<Cmd>resize -2<Cr>", { desc = "Decrease window height" })

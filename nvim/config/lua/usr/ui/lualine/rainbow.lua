@@ -190,7 +190,7 @@ insert_left({
 ---lsp serer's name
 insert_left({
   function()
-    return utils.get_server_names() --TODO: recreate this func
+    return utils.get_server_names()
   end,
   color = {
     fg = palette.yellow,

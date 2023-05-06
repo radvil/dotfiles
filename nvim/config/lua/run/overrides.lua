@@ -2,9 +2,7 @@ local M = {}
 
 function M:reset_keys()
   local opts = { silent = true, noremap = true }
-  vim.keymap.set("", "<C-z><C-z>", "", opts)
-  -- vim.keymap.set({ "n", "x", "v" }, "q", "<Nop>", opts)
-  -- vim.keymap.set({ "n", "x", "v" }, "Q", "<Nop>", opts)
+  vim.keymap.set("", "<C-z><C-z>", "<Nop>", opts)
   vim.keymap.set({ "n", "x", "v" }, "<NL>", "<Nop>", opts)
   vim.keymap.set("n", "<A-Cr>", "<Nop>", opts)
   vim.keymap.set("i", "<A-Bs>", "<Nop>", opts)
