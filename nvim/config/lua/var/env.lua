@@ -71,7 +71,7 @@ M.whichkey = {
 }
 
 M.note_taking = {
-  enabled = true,
+  enabled = false,
   workspaces = {
     demo = "~/Documents/neorg-vault/demo",
     ami = "~/Documents/neorg-vault/ami",

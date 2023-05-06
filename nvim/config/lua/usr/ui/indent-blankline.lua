@@ -1,11 +1,8 @@
 ---@desc indentation guide
 ---@type LazySpec
 local M = {}
-
 M[1] = "lukas-reineke/indent-blankline.nvim"
-
 M.event = "BufReadPost"
-
 M.opts = {
   char = "▏",
   buftype_exclude = { "terminal" },
@@ -28,7 +25,7 @@ M.opts = {
     "arguments",
   },
   -- disabled now for performance hit.
-  -- use_treesitter = true
+  use_treesitter = true
 }
 
 return M

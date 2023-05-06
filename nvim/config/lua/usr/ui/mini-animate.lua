@@ -1,6 +1,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.animate"
+M.enabled = false
 M.event = "VeryLazy"
 M.opts = function()
   -- don't use animate when scrolling with the mouse

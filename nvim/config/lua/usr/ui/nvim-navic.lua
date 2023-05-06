@@ -1,6 +1,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "SmiteshP/nvim-navic"
+M.enabled = false
 M.dependencies = { "neovim/nvim-lspconfig" }
 M.opts = {
   icons = require("media.icons").KindIcons,
