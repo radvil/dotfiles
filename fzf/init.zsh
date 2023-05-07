@@ -73,11 +73,11 @@ function ami-project() {
   dir_name=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
   if [[ -z $dir_name ]]; then
     info "No project was selected"
-    return 0
+    cd "$cached_dir"
   else
     __create_tmux_session "$dir_name" "nvim"
+    cd "$cached_dir"
   fi
-  cd "$cached_dir"
 }
 alias am="ami-project"
 alias ami="ami-project"
