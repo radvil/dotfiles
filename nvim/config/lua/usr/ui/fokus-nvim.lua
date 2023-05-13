@@ -8,7 +8,7 @@ M.keys = {
   {
     "<Leader>wf",
     "<Cmd>ZenMode<Cr>",
-    desc = "CURRENT » Enter/Leave Fokus",
+    desc = "CURRENT » Toggle Fokus Mode",
   },
 }
 M.opts = {
@@ -16,7 +16,7 @@ M.opts = {
     notify_status_change = false,
     blacklists_filetypes = require("opt.filetype").excludes,
     on_fokus_leave = nil,
-    on_fokus_enter = nil,
+    on_fokus_enter = nil
   },
 }
 return M

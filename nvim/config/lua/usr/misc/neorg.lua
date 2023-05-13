@@ -16,9 +16,9 @@ end
 M.opts = function(_, opts)
   return vim.tbl_deep_extend("force", opts, {
     load = {
-          ["core.defaults"] = {},       -- Loads default behaviour
-          ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.norg.dirman"] = {      -- Manages Neorg workspaces
+      ["core.defaults"] = {},       -- Loads default behaviour
+      ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+      ["core.norg.dirman"] = {      -- Manages Neorg workspaces
         config = {
           workspaces = get_workspaces(),
         },

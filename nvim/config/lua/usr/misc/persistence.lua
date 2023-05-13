@@ -26,17 +26,17 @@ M.keys = {
   {
     "<Leader>Sr",
     restore_session,
-    desc = "Restore [current dir]",
+    desc = "Restore [CWD]",
   },
   {
     "<Leader>Sl",
     restore_last_session,
-    desc = "Restore last",
+    desc = "Restore Last",
   },
   {
-    "<Leader>Ss",
+    "<C-z>S",
     stop_session_saving,
-    desc = "Toggle persistence",
+    desc = "Toggle » Session Persistence",
   },
 }
 return M

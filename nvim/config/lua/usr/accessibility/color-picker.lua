@@ -2,6 +2,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "ziontee113/color-picker.nvim"
+M.enabled = false
 M.cmd = {
   "PickColor",
   "PickColorInsert",

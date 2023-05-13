@@ -51,16 +51,16 @@ Map("v", "<", "<gv", { desc = "Indent Left" })
 Map("v", ">", ">gv", { desc = "Indent Right" })
 
 -- Move to window using the <ctrl> hjkl keys
-if not util.has("vim-tmux-navigator") then
-  Map("n", "<C-h>", "<C-w>h", { desc = "[Window] Navigate left" })
-  Map("n", "<C-j>", "<C-w>j", { desc = "[Window] Navigate down" })
-  Map("n", "<C-k>", "<C-w>k", { desc = "[Window] Navigate up" })
-  Map("n", "<C-l>", "<C-w>l", { desc = "[Window] Navigate right" })
+if os.getenv("TMUX") == nil then
+  Map("n", "<C-h>", "<C-w>h", { desc = "[Win] Navigate left" })
+  Map("n", "<C-j>", "<C-w>j", { desc = "[Win] Navigate down" })
+  Map("n", "<C-k>", "<C-w>k", { desc = "[Win] Navigate up" })
+  Map("n", "<C-l>", "<C-w>l", { desc = "[Win] Navigate right" })
 else
-  Map("n", "<C-h>", "<Cmd>TmuxNavigateLeft<Cr>", { desc = "[Window] Navigate left" })
-  Map("n", "<C-j>", "<Cmd>TmuxNavigateDown<Cr>", { desc = "[Window] Navigate down" })
-  Map("n", "<C-k>", "<Cmd>TmuxNavigateUp<Cr>", { desc = "[Window] Navigate up" })
-  Map("n", "<C-l>", "<Cmd>TmuxNavigateRight<Cr>", { desc = "[Window] Navigate right" })
+  Map("n", "<C-h>", "<Cmd>TmuxNavigateLeft<Cr>", { desc = "[Win/Tmux] Navigate left" })
+  Map("n", "<C-j>", "<Cmd>TmuxNavigateDown<Cr>", { desc = "[Win/Tmux] Navigate down" })
+  Map("n", "<C-k>", "<Cmd>TmuxNavigateUp<Cr>", { desc = "[Win/Tmux] Navigate up" })
+  Map("n", "<C-l>", "<Cmd>TmuxNavigateRight<Cr>", { desc = "[Win/Tmux] Navigate right" })
 end
 
 -- Move Lines
@@ -101,12 +101,16 @@ Map("n", "<C-z>n", function()
 end, { desc = "Toggle » Line Numbers" })
 
 Map("n", "<Leader>gg", function()
-  util.float_term({ "lazygit" })
-end, { desc = " Git » Open Lazy Git (cwd)" })
+  if os.getenv("TMUX") ~= nil then
+    vim.cmd [[call system('run-in-popup lazygit')]]
+  else
+    util.float_term({ "lazygit" })
+  end
+end, { desc = " Git » Open Lazy Git [cwd]" })
 
 Map("n", "<Leader>mm", function()
   vim.cmd [[call system('zmux')]]
-end, { desc = "Tmux » Jump to Most Used [z]" })
+end, { desc = "Tmux » Jump to Most Used Directory [z]" })
 
 Map("n", "<Leader>mw", function()
   vim.cmd [[call system('ami-project')]]

@@ -2,6 +2,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "lukas-reineke/indent-blankline.nvim"
+M.enabled = true
 M.event = "BufReadPost"
 M.opts = {
   char = "▏",

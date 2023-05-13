@@ -1,10 +1,5 @@
 local opt = vim.opt
 
-if vim.fn.has("nvim-0.9.0") == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append({ C = true })
-end
-
 opt.wrap = false              -- Disable line wrap
 opt.autowrite = true          -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -55,6 +50,11 @@ opt.updatetime = 200               -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 7                -- Minimum window width
 opt.hidden = true                  -- for toggleterm
+
+if vim.fn.has("nvim-0.9.0") == 1 then
+  opt.splitkeep = "screen"
+  opt.shortmess:append({ C = true })
+end
 
 ---@desc folds
 vim.o.foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil

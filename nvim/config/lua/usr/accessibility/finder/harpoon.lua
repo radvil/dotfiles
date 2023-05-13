@@ -6,7 +6,7 @@ M[1] = "ThePrimeagen/harpoon"
 
 local function mark_current()
   require("harpoon.mark").add_file()
-  vim.notify("📌 Document marked")
+  vim.notify("Document marked", vim.log.levels.INFO, { title = "Harpoon", icon = "📌" })
 end
 
 local function quick_menu()
@@ -15,7 +15,7 @@ end
 
 M.keys = {
   {
-    "<C-m>",
+    "<Leader>'",
     mark_current,
     desc = "Harpoon » Mark File",
   },

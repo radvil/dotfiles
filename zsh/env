@@ -21,5 +21,6 @@ source_file "$DOTFILES/fzf/init.zsh" --silent
 source_file "$DOTFILES/z/init.zsh" --silent
 source_file "$DOTFILES/extras/spotify/init.zsh" --silent
 
-# aliases should be on last line
+# customs
+source_file "$DOTFILES/zsh/funcs.zsh" --silent
 source_file "$DOTFILES/alias/init.zsh" --silent

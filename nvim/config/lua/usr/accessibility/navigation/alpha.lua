@@ -42,7 +42,7 @@ M.config = function(_, A)
     callback = function()
       local stats = require("lazy").stats()
       local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-      A.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+      A.section.footer.val = "⚡Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
       pcall(vim.cmd.AlphaRedraw)
     end,
   })

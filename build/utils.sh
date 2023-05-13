@@ -15,7 +15,7 @@ okay() {
 
 fail() {
 	printf "\033[2K[\033[0;31m❌FAIL\033[0m] %s$1\n"
-	exit
+  return 0
 }
 
 confirmed() {

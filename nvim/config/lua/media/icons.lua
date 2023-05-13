@@ -174,6 +174,7 @@ M.Git = {
 }
 
 M.KindIcons = {
+  Copilot = " ",
   Array = " ",
   Boolean = "◩ ",
   Class = " ",

@@ -2,11 +2,15 @@
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.indentscope"
+M.enabled = true
 M.event = "BufReadPre"
 M.opts = {
   symbol = "│",
-  options = {
-    try_as_border = true,
+  mappings = {
+    object_scope = 'ii',
+    object_scope_with_border = 'ai',
+    goto_top = '[i',
+    goto_bottom = ']i',
   },
 }
 M.config = function(_, opts)

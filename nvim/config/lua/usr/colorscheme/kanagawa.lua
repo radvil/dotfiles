@@ -1,12 +1,10 @@
-local env = rvim.theme
-
 ---@type LazySpec
 local M = {}
 M[1] = "rebelot/kanagawa.nvim"
 -- M.lazy = true
 M.opts = {
-  transparent = env.transbg, -- do not set background color
-  undercurl = true,          -- enable undercurls
+  transparent = rvim.theme.transbg, -- do not set background color
+  undercurl = true,                 -- enable undercurls
   commentStyle = { italic = true },
   functionStyle = {},
   keywordStyle = { italic = true },
@@ -20,7 +18,7 @@ M.opts = {
   terminalColors = true,   -- define vim.g.terminal_color_{0,17}
   colors = {},
 }
-if env.colorscheme == "kanagawa" then
+if rvim.theme.colorscheme == "kanagawa" then
   M.priority = 999
   M.lazy = false
   M.init = function()
