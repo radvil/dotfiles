@@ -1,16 +1,4 @@
 {
-  "doctype": {
-    "prefix": "doctype",
-    "body": ["<!DOCTYPE>", "$1"],
-    "description": "HTML - Defines the document type",
-    "scope": "text.html"
-  },
-  "a": {
-    "prefix": "a",
-    "body": "<a href=\"$1\">$2</a>$3",
-    "description": "HTML - Defines a hyperlink",
-    "scope": "text.html"
-  },
   "abbr": {
     "prefix": "abbr",
     "body": "<abbr title=\"$1\">$2</abbr>$3",
@@ -47,12 +35,6 @@
     "description": "HTML - Defines sounds content",
     "scope": "text.html"
   },
-  "b": {
-    "prefix": "b",
-    "body": "<b>$1</b>$2",
-    "description": "HTML - Defines bold text",
-    "scope": "text.html"
-  },
   "base": {
     "prefix": "base",
     "body": "<base href=\"$1\" target=\"$2\">$3",
@@ -81,24 +63,6 @@
     "prefix": "blockquote",
     "body": ["<blockquote cite=\"$2\">", "\t$1", "</blockquote>"],
     "description": "HTML - Defines a long quotation",
-    "scope": "text.html"
-  },
-  "body": {
-    "prefix": "body",
-    "body": ["<body>", "\t$1", "</body>"],
-    "description": "HTML - Defines the body element",
-    "scope": "text.html"
-  },
-  "br": {
-    "prefix": "br",
-    "body": "<br>",
-    "description": "HTML - Inserts a single line break",
-    "scope": "text.html"
-  },
-  "button": {
-    "prefix": "button",
-    "body": "<button type=\"$1\">$2</button>$3",
-    "description": "HTML - Defines a push button",
     "scope": "text.html"
   },
   "canvas": {
@@ -179,12 +143,6 @@
     "description": "HTML - Defines a definition term",
     "scope": "text.html"
   },
-  "div": {
-    "prefix": "div",
-    "body": ["<div>", "\t$1", "</div>"],
-    "description": "HTML - Defines a section in a document",
-    "scope": "text.html"
-  },
   "dl": {
     "prefix": "dl",
     "body": ["<dl>", "\t$1", "</dl>"],
@@ -239,48 +197,6 @@
     "description": "HTML - Defines a form",
     "scope": "text.html"
   },
-  "h1": {
-    "prefix": "h1",
-    "body": "<h1>$1</h1>$2",
-    "description": "HTML - Defines header 1",
-    "scope": "text.html"
-  },
-  "h2": {
-    "prefix": "h2",
-    "body": "<h2>$1</h2>$2",
-    "description": "HTML - Defines header 2",
-    "scope": "text.html"
-  },
-  "h3": {
-    "prefix": "h3",
-    "body": "<h3>$1</h3>$2",
-    "description": "HTML - Defines header 3",
-    "scope": "text.html"
-  },
-  "h4": {
-    "prefix": "h4",
-    "body": "<h4>$1</h4>$2",
-    "description": "HTML - Defines header 4",
-    "scope": "text.html"
-  },
-  "h5": {
-    "prefix": "h5",
-    "body": "<h5>$1</h5>$2",
-    "description": "HTML - Defines header 5",
-    "scope": "text.html"
-  },
-  "h6": {
-    "prefix": "h6",
-    "body": "<h6>$1</h6>$2",
-    "description": "HTML - Defines header 6",
-    "scope": "text.html"
-  },
-  "head": {
-    "prefix": "head",
-    "body": ["<head>", "\t$1", "</head>"],
-    "description": "HTML - Defines information about the document",
-    "scope": "text.html"
-  },
   "header": {
     "prefix": "header",
     "body": ["<header>", "\t$1", "</header>"],
@@ -293,19 +209,13 @@
     "description": "HTML - Defines information about a section in a document",
     "scope": "text.html"
   },
-  "hr": {
-    "prefix": "hr",
-    "body": "<hr>",
-    "description": "HTML - Defines a horizontal rule",
-    "scope": "text.html"
-  },
   "html": {
     "prefix": "html",
     "body": ["<html>", "\t$1", "</html>"],
     "description": "HTML - Defines an html document",
     "scope": "text.html"
   },
-  "html5": {
+  "!": {
     "prefix": "html5",
     "body": [
       "<!DOCTYPE html>",
@@ -390,12 +300,6 @@
     "description": "HTML - Defines a resource reference",
     "scope": "text.html"
   },
-  "main": {
-    "prefix": "main",
-    "body": ["<main>", "\t$1", "</main>"],
-    "description": "HTML - Defines an image map",
-    "scope": "text.html"
-  },
   "map": {
     "prefix": "map",
     "body": ["<map name=\"$1\">", "\t$2", "</map>"],
@@ -472,12 +376,6 @@
     "prefix": "output",
     "body": "<output name=\"$1\" for=\"$2\">$3</output>$4",
     "description": "HTML - Defines some types of output",
-    "scope": "text.html"
-  },
-  "p": {
-    "prefix": "p",
-    "body": "<p>$1</p>$2",
-    "description": "HTML - Defines a paragraph",
     "scope": "text.html"
   },
   "param": {
@@ -564,24 +462,6 @@
     "description": "HTML - Defines media resource",
     "scope": "text.html"
   },
-  "span": {
-    "prefix": "span",
-    "body": "<span>$1</span>$2",
-    "description": "HTML - Defines a section in a document",
-    "scope": "text.html"
-  },
-  "strong": {
-    "prefix": "strong",
-    "body": "<strong>$1</strong>$2",
-    "description": "HTML - Defines strong text",
-    "scope": "text.html"
-  },
-  "style": {
-    "prefix": "style",
-    "body": ["<style>", "$1", "</style>"],
-    "description": "HTML - Defines a style definition",
-    "scope": "text.html"
-  },
   "sub": {
     "prefix": "sub",
     "body": "<sub>$1</sub>$2",
@@ -664,12 +544,6 @@
     "prefix": "track",
     "body": "<track src=\"$1\" kind=\"$2\" srclang=\"$3\" label=\"$4\">$5",
     "description": "HTML - Defines a table row",
-    "scope": "text.html"
-  },
-  "u": {
-    "prefix": "u",
-    "body": "<u>$1</u>$2",
-    "description": "HTML - Used to define underlined text",
     "scope": "text.html"
   },
   "ul": {

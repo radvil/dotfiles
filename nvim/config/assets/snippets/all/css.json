@@ -35,39 +35,39 @@
     "description": "animation: name duration timing-function delay direction count fill-mode play-state"
   },
   "animation-delay": {
-    "prefix": "anide",
+    "prefix": "ani-de",
     "body": "animation-delay: ${0:1s};"
   },
   "animation-direction": {
-    "prefix": "anidi",
+    "prefix": "ani-di",
     "body": "animation-direction: ${1|alternate,alternate-reverse,reverse,normal|};",
     "description": "initial value: normal"
   },
   "animation-duratuion": {
-    "prefix": "anidu",
+    "prefix": "ani-du",
     "body": "animation-duration: ${0:1s};"
   },
   "animation-fill-mode": {
-    "prefix": "anifm",
+    "prefix": "ani-fm",
     "body": "animation-fill-mode: ${1|forwards,backwards,both,none|};",
     "description": "initial value: none"
   },
   "animation-iteration-count": {
-    "prefix": "aniic",
+    "prefix": "ani-ic",
     "body": "animation-iteration-count: ${0:infinite};",
     "description": "initial value: 1"
   },
   "animation-name": {
-    "prefix": "anin",
+    "prefix": "ani-n",
     "body": "animation-name: ${0:name};"
   },
   "animation-play-state": {
-    "prefix": "anips",
+    "prefix": "ani-ps",
     "body": "animation-play-state: ${1|paused,running|};",
     "description": "initial value: running"
   },
   "animation-timing-function": {
-    "prefix": "anitf",
+    "prefix": "ani-tf",
     "body": "animation-timing-function: ${1|linear,ease,ease-in-out,ease-in,ease-out,step-start,step-end,steps,cubic-bezier|};",
     "description": "initial value: ease"
   },
@@ -232,10 +232,6 @@
     "body": "flex: ${1:1} ${2:1} ${3:auto};",
     "description": "flex: grow shrink basis"
   },
-  "flex (alt)": {
-    "prefix": "fle",
-    "body": "flex: ${1:1} ${2:1} ${3:auto};"
-  },
   "flex-direction": {
     "prefix": "fld",
     "body": "flex-direction: ${1|row,row-reverse,column,column-reverse|};",
@@ -319,10 +315,6 @@
     "body": "font: ${0:12px/1.5};",
     "description": "font: [weight style variant stretch] size/line-height family"
   },
-  "height": {
-    "prefix": "hei",
-    "body": "height: ${0:1px};"
-  },
   "justify-content": {
     "prefix": "jc",
     "body": "justify-content: ${1|flex-start,flex-end,center,space-between,space-around|};",
@@ -387,10 +379,6 @@
     "prefix": "listur",
     "body": "list-style-type: upper-roman;"
   },
-  "left": {
-    "prefix": "lef",
-    "body": "left: ${0:0};"
-  },
   "line-height": {
     "prefix": "lh",
     "body": "line-height: ${0:1.5};"
@@ -443,10 +431,6 @@
     "prefix": "maw",
     "body": "max-width: ${0:1px};"
   },
-  "opacity": {
-    "prefix": "opa",
-    "body": "opacity: ${0:0};"
-  },
   "overflow": {
     "prefix": "ov",
     "body": "overflow: ${1|visible,hidden,scroll,auto,clip|};"
@@ -468,24 +452,32 @@
     "body": "overflow: visible;"
   },
   "padding": {
-    "prefix": "pad",
+    "prefix": "pd",
     "body": "padding: ${0:0};"
   },
   "padding-bottom": {
-    "prefix": "padb",
+    "prefix": "pdb",
     "body": "padding-bottom: ${0:0};"
   },
   "padding-left": {
-    "prefix": "padl",
+    "prefix": "pdl",
     "body": "padding-left: ${0:0};"
   },
   "padding-right": {
-    "prefix": "padr",
+    "prefix": "pdr",
     "body": "padding-right: ${0:0};"
   },
   "padding-top": {
-    "prefix": "padt",
+    "prefix": "pdt",
     "body": "padding-top: ${0:0};"
+  },
+  "padding-inline": {
+    "prefix": "pdx",
+    "body": "padding-inline: ${0:0};"
+  },
+  "padding-block": {
+    "prefix": "pdy",
+    "body": "padding-block: ${0:0};"
   },
   "position": {
     "prefix": "pos",
@@ -506,10 +498,6 @@
   "position sticky": {
     "prefix": "poss",
     "body": "position: sticky;"
-  },
-  "right": {
-    "prefix": "rig",
-    "body": "right: ${0:0};"
   },
   "text-align": {
     "prefix": "ta",
@@ -556,10 +544,6 @@
     "prefix": "tt",
     "body": "text-transform: ${1|capitalize,uppercase,lowercase,full-width,none|};"
   },
-  "top": {
-    "prefix": "top",
-    "body": "top: ${0:0};"
-  },
   "vertical-align": {
     "prefix": "va",
     "body": "vertical-align: ${1|baseline,middle,top,bottom,sub,super,text-top,text-bottom|};"
@@ -577,28 +561,20 @@
     "body": "vertical-align: top;"
   },
   "visibility": {
-    "prefix": "vis",
+    "prefix": "vs",
     "body": "visibility: ${1|visible,hidden,collapse|};"
   },
   "visibility: visible": {
-    "prefix": "visv",
+    "prefix": "vsv",
     "body": "visibility: visible;"
   },
   "visibility: hidden": {
-    "prefix": "vish",
+    "prefix": "vsh",
     "body": "visibility: hidden;"
   },
   "word-break": {
     "prefix": "wb",
     "body": "word-break: ${1|break-all,keep-all,break-word,normal|};"
-  },
-  "width": {
-    "prefix": "wid",
-    "body": "width: ${0:0};"
-  },
-  "width: auto": {
-    "prefix": "wida",
-    "body": "width: auto;"
   },
   "white-space": {
     "prefix": "ws",
@@ -624,6 +600,10 @@
     "prefix": "imp",
     "body": "@import '${0:filename}';"
   },
+  "@use": {
+    "prefix": "use",
+    "body": "@use '${0:filename}';"
+  },
   "@mixin": {
     "prefix": "mix",
     "body": "@mixin ${1:name} {\n  $0\n}"
@@ -640,12 +620,12 @@
     "prefix": "med",
     "body": "@media screen and (${1:max-width: 300px}) {\n  $0\n}"
   },
+  "@media-range": {
+    "prefix": "medr",
+    "body": "@media ${1:width <= 650px} {\n  $0\n}"
+  },
   "!important": {
     "prefix": "!",
-    "body": "!important"
-  },
-  "!important (alt)": {
-    "prefix": "i",
     "body": "!important"
   }
 }

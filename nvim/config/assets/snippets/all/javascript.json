@@ -3,14 +3,6 @@
     "prefix": "sim",
     "body": "setImmediate(() => {\n\t${0}\n})"
   },
-  "await": {
-    "prefix": "a",
-    "body": "await ${0}"
-  },
-  "await Promise.all": {
-    "prefix": "apa",
-    "body": "await Promise.all(${1:value})"
-  },
   "await Promise.all with destructuring": {
     "prefix": "apad",
     "body": "const [${0}] = await Promise.all(${1:value})"
@@ -26,10 +18,6 @@
   "Node callback": {
     "prefix": "cb",
     "body": "function (err, ${1:value}) {\n\tif (err) throw err\n\t${0}\n}"
-  },
-  "process.env": {
-    "prefix": "pe",
-    "body": "process.env"
   },
   "Promise.all": {
     "prefix": "pa",
@@ -227,38 +215,6 @@
     "prefix": "some",
     "body": "${1:iterable}.some((${2:item}) => {\n\t${0}\n})"
   },
-  "var statement": {
-    "prefix": "v",
-    "body": "var ${1:name}"
-  },
-  "var assignment": {
-    "prefix": "va",
-    "body": "var ${1:name} = ${2:value}"
-  },
-  "let statement": {
-    "prefix": "l",
-    "body": "let ${1:name}"
-  },
-  "const statement": {
-    "prefix": "c",
-    "body": "const ${1:name}"
-  },
-  "const statement from destructuring": {
-    "prefix": "cd",
-    "body": "const { ${2:prop} } = ${1:value}"
-  },
-  "const statement from array destructuring": {
-    "prefix": "cad",
-    "body": "const [ ${2:prop} ] = ${1:value}"
-  },
-  "const assignment awaited": {
-    "prefix": "ca",
-    "body": "const ${1:name} = await ${2:value}"
-  },
-  "const destructuring assignment awaited": {
-    "prefix": "cda",
-    "body": "const { ${1:name} } = await ${2:value}"
-  },
   "const arrow function assignment": {
     "prefix": "cf",
     "body": "const ${1:name} = (${2:arguments}) => {\n\treturn ${0}\n}"
@@ -274,14 +230,6 @@
   "let assignment yielded": {
     "prefix": "ly",
     "body": "let ${1:name} = yield ${2:value}"
-  },
-  "const object": {
-    "prefix": "co",
-    "body": "const ${1:name} = {\n\t${0}\n}"
-  },
-  "const array": {
-    "prefix": "car",
-    "body": "const ${1:name} = [\n\t${0}\n]"
   },
   "generate array of integers starting with 1": {
     "prefix": "gari",
@@ -322,30 +270,6 @@
   "import module": {
     "prefix": "im",
     "body": "import ${2:*} from '${1:module}'"
-  },
-  "import module as": {
-    "prefix": "ia",
-    "body": "import ${2:*} as ${3:name} from '${1:module}'"
-  },
-  "import module destructured": {
-    "prefix": "id",
-    "body": "import {$2} from '${1:module}'"
-  },
-  "typeof": {
-    "prefix": "to",
-    "body": "typeof ${1:source} === '${2:undefined}'"
-  },
-  "this": {
-    "prefix": "t",
-    "body": "this."
-  },
-  "instanceof": {
-    "prefix": "iof",
-    "body": "${1:source} instanceof ${2:Object}"
-  },
-  "let and if statement": {
-    "prefix": "lif",
-    "body": "let ${0} \n if (${2:condition}) {\n\t${1}\n}"
   },
   "else statement": {
     "prefix": "el",
@@ -395,30 +319,6 @@
     "prefix": "iife",
     "body": ";(function (${1:arguments}) {\n\t${0}\n})(${2})"
   },
-  "async immediately-invoked function expression": {
-    "prefix": "aiife",
-    "body": ";(async (${1:arguments}) => {\n\t${0}\n})(${2})"
-  },
-  "arrow function": {
-    "prefix": "af",
-    "body": "(${1:arguments}) => ${2:statement}"
-  },
-  "arrow function with destructuring": {
-    "prefix": "fd",
-    "body": "({${1:arguments}}) => ${2:statement}"
-  },
-  "arrow function with destructuring returning destructured": {
-    "prefix": "fdr",
-    "body": "({${1:arguments}}) => ${1:arguments}"
-  },
-  "arrow function with body": {
-    "prefix": "f",
-    "body": "(${1:arguments}) => {\n\t${0}\n}"
-  },
-  "arrow function with return": {
-    "prefix": "fr",
-    "body": "(${1:arguments}) => {\n\treturn ${0}\n}"
-  },
   "generator function": {
     "prefix": "gf",
     "body": "function* (${1:arguments}) {\n\t${0}\n}"
@@ -430,10 +330,6 @@
   "console.log": {
     "prefix": "cl",
     "body": "console.log(${0})"
-  },
-  "console.log a variable": {
-    "prefix": "cv",
-    "body": "console.log('${1}:', ${1})"
   },
   "console.error": {
     "prefix": "ce",
@@ -551,16 +447,6 @@
     "prefix": "rp",
     "body": "return new Promise((resolve, reject) => {\n\t${0}\n})"
   },
-  "wrap selection in arrow function": {
-    "prefix": "wrap selection in arrow function",
-    "body": "() => {\n\t{$TM_SELECTED_TEXT}\n}",
-    "description": "wraps text in arrow function"
-  },
-  "wrap selection in async arrow function": {
-    "prefix": "wrap selection in async arrow function",
-    "body": "async () => {\n\t{$TM_SELECTED_TEXT}\n}",
-    "description": "wraps text in arrow function"
-  },
   "define module": {
     "prefix": "define",
     "body": [
@@ -666,28 +552,8 @@
     "description": "Set Interval Function"
   },
   "Import external module.": {
-    "prefix": "import statement",
+    "prefix": "import mod",
     "body": ["import { $0 } from \"${1:module}\";"],
     "description": "Import external module."
-  },
-  "Region Start": {
-    "prefix": "#region",
-    "body": ["//#region $0"],
-    "description": "Folding Region Start"
-  },
-  "Region End": {
-    "prefix": "#endregion",
-    "body": ["//#endregion"],
-    "description": "Folding Region End"
-  },
-  "Log warning to console": {
-    "prefix": "warn",
-    "body": ["console.warn($1);", "$0"],
-    "description": "Log warning to the console"
-  },
-  "Log error to console": {
-    "prefix": "error",
-    "body": ["console.error($1);", "$0"],
-    "description": "Log error to the console"
   }
 }
