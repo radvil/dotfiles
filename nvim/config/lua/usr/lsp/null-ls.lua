@@ -2,6 +2,7 @@
 --- @type LazySpec
 local M = {}
 M[1] = "jose-elias-alvarez/null-ls.nvim"
+M.enabled = true
 M.dependencies = { "williamboman/mason.nvim" }
 M.event = "BufReadPre"
 ---@param files table
@@ -14,6 +15,10 @@ M.opts = function()
   local nls = require("null-ls")
   return {
     sources = {
+      nls.builtins.formatting.shfmt,
+      nls.builtins.formatting.prettierd,
+      nls.builtins.code_actions.eslint_d,
+      nls.builtins.diagnostics.shellcheck,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.eslint_d.with({
         condition = with_root_files({
@@ -22,9 +27,6 @@ M.opts = function()
           ".eslintjs",
         }),
       }),
-      nls.builtins.formatting.shfmt,
-      nls.builtins.diagnostics.shellcheck,
-      nls.builtins.formatting.prettierd,
       nls.builtins.formatting.stylua.with({
         condition = with_root_files({
           "stylua.toml",

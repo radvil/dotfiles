@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2181
 
-[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
+[[ $DOTFILES_UTILS_LOADED != "true" ]] && source "$DOTFILES/build/utils.sh"
 
 function __install_spotify-tui() {
 	# if command not found "spt

@@ -21,7 +21,7 @@ M.keys = {
     "<C-p>",
     util.telescope("files"),
     "<Cmd>Telescope find_files<Cr>",
-    desc = "files (root dir)",
+    desc = "Find » Files [CWD]",
     mode = "n",
   },
   {

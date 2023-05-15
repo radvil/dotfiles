@@ -102,7 +102,7 @@ end, { desc = "Toggle » Line Numbers" })
 
 Map("n", "<Leader>gg", function()
   if os.getenv("TMUX") ~= nil then
-    vim.cmd [[call system('run-in-popup lazygit')]]
+    vim.cmd [[call system('lg --popup')]]
   else
     util.float_term({ "lazygit" })
   end

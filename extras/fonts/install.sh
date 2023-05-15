@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
+[[ $DOTFILES_UTILS_LOADED != "true" ]] && source "$DOTFILES/build/utils.sh"
 
 set -e
 

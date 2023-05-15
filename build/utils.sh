@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2046,2086,SC2181,1090
 
+export DOTFILES_UTILS_LOADED="true"
+
 info() {
 	printf "[\033[00;34m🚀INFO\033[0m] %s$1\n"
 }
@@ -15,6 +17,11 @@ okay() {
 
 fail() {
 	printf "\033[2K[\033[0;31m❌FAIL\033[0m] %s$1\n"
+  return 0
+}
+
+error() {
+  echo -e "\033[31m$1\033[0m"
   return 0
 }
 
@@ -85,6 +92,4 @@ has_installed() {
 	cmdname="$(command -v "$1" 2>/dev/null)"
 	[[ -x "$cmdname" ]]
 }
-
-export DOTFILES_UTILS_LOADED=1
 

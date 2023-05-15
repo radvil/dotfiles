@@ -43,25 +43,13 @@ opt.splitbelow = true    -- Put new windows below current
 opt.splitright = true    -- Put new windows right of current
 opt.tabstop = 2          -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
-opt.timeoutlen = 460
 opt.undofile = true
 opt.undolevels = 10000
 opt.updatetime = 200               -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 7                -- Minimum window width
 opt.hidden = true                  -- for toggleterm
-
-if vim.fn.has("nvim-0.9.0") == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append({ C = true })
-end
-
----@desc folds
-vim.o.foldcolumn = vim.fn.has "nvim-0.9" == 1 and "1" or nil
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.opt.fillchars = {
+opt.fillchars = {
   foldopen = "",
   foldclose = "",
   foldsep = " ",
@@ -70,12 +58,24 @@ vim.opt.fillchars = {
   eob = " ",
 }
 
----@desc windows
+vim.g.markdown_recommended_style = 0
 vim.o.winwidth = 7
 vim.o.winminwidth = 5
----@desc disable to animate window split responsively
 vim.o.equalalways = false
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
----@desc markdown indent fix
-vim.g.markdown_recommended_style = 0
+if os.getenv("TMUX") == nil then
+  opt.timeoutlen = 460
+else
+  opt.timeoutlen = 200
+end
+
+if vim.fn.has("nvim-0.9.0") == 1 then
+  opt.splitkeep = "screen"
+  opt.shortmess:append({ C = true })
+  vim.o.foldcolumn = "1"
+end
+
 Log("Options loaded!", "^^ OPT")

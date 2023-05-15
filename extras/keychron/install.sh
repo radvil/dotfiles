@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # if $DOTFILES_UTILS_LOADED=0 then load utils.sh
-[[ $DOTFILES_UTILS_LOADED -eq 0 ]] && source "$DOTFILES/build/utils.sh"
+[[ $DOTFILES_UTILS_LOADED != "true" ]] && source "$DOTFILES/build/utils.sh"
 
 source="$DOTFILES/extras/keychron/keychron.service" 
 destination="/etc/systemd/system/keychron.service"

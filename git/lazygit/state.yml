@@ -1,11 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/Projects/web-projects/nx-radvil
 - /home/radvil/AMI/ami-angular-template
 - /home/radvil/AMI/parastar-console
 - /home/radvil/AMI/clio-crm
 - /home/radvil/AMI/mykado-console
-- /home/radvil/Projects/ng-components
 - /home/radvil/AMI/mcp.bak
 startuppopupversion: 5
 customcommandshistory:
