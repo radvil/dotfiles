@@ -59,9 +59,11 @@ M.opts = function()
   local cmp = require("cmp")
   ---@type cmp.Config
   local opts = {
+    sources = cmp.config.sources(sources),
+    formatting = formatting_style,
     completion = {
       completeopt = "menu,menuone",
-      -- keyword_length = 1,
+      keyword_length = 2,
     },
     snippet = {
       expand = function(args)
@@ -103,8 +105,6 @@ M.opts = function()
         end
       end, { "i", "s" }),
     },
-    sources = cmp.config.sources(sources),
-    formatting = formatting_style,
   }
 
   -- if not env().copilot.enabled then
