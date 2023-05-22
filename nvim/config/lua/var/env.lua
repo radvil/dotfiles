@@ -106,7 +106,7 @@ M.completion = {
   enabled = true,
   enable_snippets = true,
   copilot = {
-    enabled = true,
+    enabled = false,
     suggestion_enabled = false,
     panel_enabled = false,
   }

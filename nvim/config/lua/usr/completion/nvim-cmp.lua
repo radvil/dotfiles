@@ -26,11 +26,11 @@ local formatting_style = {
 }
 
 local sources = {
-  { name = "copilot",  group_index = 2 },
-  { name = "nvim_lsp", group_index = 2 },
+  { name = "nvim_lsp", group_index = 1 },
   { name = "luasnip",  group_index = 2 },
-  { name = "buffer",   group_index = 2 },
-  { name = "path",     group_index = 2 },
+  { name = "copilot",  group_index = 3 },
+  { name = "buffer",   group_index = 4, keyword_length = 3 },
+  { name = "path",     group_index = 5 },
 }
 
 ---@type LazySpec
@@ -59,7 +59,10 @@ M.opts = function()
   local cmp = require("cmp")
   ---@type cmp.Config
   local opts = {
-    completion = { completeopt = "menu,menuone", },
+    completion = {
+      completeopt = "menu,menuone",
+      -- keyword_length = 1,
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -68,12 +71,14 @@ M.opts = function()
     mapping = {
       ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+      -- ["<C-p>"] = cmp.mapping.select_prev_item(),
+      -- ["<C-n>"] = cmp.mapping.select_next_item(),
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
       ["<C-x>"] = cmp.mapping.abort(),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      ["<S-CR>"] = cmp.mapping.confirm({
+      ["<C-o>"] = cmp.mapping.confirm({
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       }),
@@ -102,23 +107,23 @@ M.opts = function()
     formatting = formatting_style,
   }
 
-  if not env().copilot.enabled then
-    opts.experimental = {
-      ghost_text = {
-        hl_group = "LspCodeLens",
-      },
-    }
-  else
-    opts.window = {
-      documentation = cmp.config.window.bordered(),
-      completion = cmp.config.window.bordered(),
-    }
-  end
+  -- if not env().copilot.enabled then
+  --   opts.experimental = {
+  --     ghost_text = {
+  --       hl_group = "LspCodeLens",
+  --     },
+  --   }
+  -- else
+  opts.window = {
+    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+  }
+  -- end
   return opts
 end
 M.config = function(_, opts)
   ---ensure mapping don't exist
-  vim.keymap.set("i", "<A-n>", "<Nop>")
+  vim.keymap.set({ "i", "s" }, "<A-n>", "<Nop>")
   require("cmp").setup(opts)
 end
 
