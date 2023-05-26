@@ -72,12 +72,12 @@ M.Circle = {
 M.WebDevIcons = {
   ["guard.ts"] = {
     icon = "",
-    color = "#0beb64",
+    color = "#0BEB64",
     name = "AngularGuard",
   },
   ["service.ts"] = {
     icon = "",
-    color = "#ebba0b",
+    color = "#EBBA0B",
     name = "AngularService",
   },
   ["component.ts"] = {
@@ -87,12 +87,12 @@ M.WebDevIcons = {
   },
   ["cmp.ts"] = {
     icon = "",
-    color = "#cd1053",
+    color = "#CD1053",
     name = "AngularComponentStandalone",
   },
   ["module.ts"] = {
     icon = "",
-    color = "#cd1053",
+    color = "#CD1053",
     name = "AngularModule",
   },
   ["routes.ts"] = {
@@ -102,42 +102,47 @@ M.WebDevIcons = {
   },
   ["pipe.ts"] = {
     icon = "",
-    color = "#62b2c6",
+    color = "#62B2C6",
     name = "AngularPipe",
   },
   ["interface.ts"] = {
     icon = "ﯤ",
-    color = "#448bde",
+    color = "#448BDE",
     name = "TypeScriptInterface",
   },
   ["namespace.ts"] = {
     icon = "",
-    color = "#038b52",
+    color = "#038B52",
     name = "TypeScriptNamespace",
   },
   ["store.ts"] = {
     icon = "",
-    color = "#ae61e0",
+    color = "#AE61E0",
     name = "AngularStore",
+  },
+  ["state.ts"] = {
+    icon = "",
+    color = "#DD68B0",
+    name = "AngularState",
   },
   ["actions.ts"] = {
     icon = "",
-    color = "#d52f2f",
+    color = "#D52F2F",
     name = "StoreActions",
   },
   ["selectors.ts"] = {
     icon = "",
-    color = "#ebba0b",
+    color = "#EBBA0B",
     name = "StoreSelectors",
   },
   ["effects.ts"] = {
     icon = "",
-    color = "#448bde",
+    color = "#448BDE",
     name = "StoreEffects",
   },
   ["angular.json"] = {
     icon = "",
-    color = "#d52f2f",
+    color = "#D52F2F",
     name = "AngularJson",
   },
 }

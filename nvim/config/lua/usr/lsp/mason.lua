@@ -1,4 +1,3 @@
----@desc: cmdline tools and lsp servers
 ---@type LazySpec
 local M = {}
 M[1] = "williamboman/mason.nvim"
@@ -11,7 +10,6 @@ M.opts = {
     "prettierd",
     "shfmt",
     "stylua",
-    "flake8",
   }
 }
 ---@param opts MasonSettings | {ensure_installed: string[]}

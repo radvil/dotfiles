@@ -11,13 +11,14 @@ function M.get_server_opts()
   local root_files = { "angular.json" }
   local fback_root_files = { "nx.json", "workspace.json" }
   return {
+    single_file_support = false,
     capabilities = require("usr.lsp.common.utils").get_capabilities(),
     on_attach = function(client, buffer)
-      ---@fix need to disable if tsserver rename provider also used
       client.server_capabilities.renameProvider = false
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
       require("usr.lsp.common.utils").on_attach(client, buffer)
     end,
-    single_file_support = false,
     root_dir = function(fname)
       local original = util.root_pattern(unpack(root_files))(fname)
       local fallback = util.root_pattern(unpack(fback_root_files))(fname)

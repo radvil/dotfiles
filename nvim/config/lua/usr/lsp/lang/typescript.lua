@@ -7,7 +7,6 @@ M.dependencies = {
     "williamboman/mason-lspconfig.nvim",
     opts = function(_, opts)
       if opts and type(opts.ensure_installed) == "table" then
-        --TODO: I think this won't work
         vim.list_extend(opts.ensure_installed, { "tsserver" })
       end
     end,

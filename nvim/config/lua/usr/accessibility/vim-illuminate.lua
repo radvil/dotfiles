@@ -14,11 +14,13 @@ M.keys = {
     "<A-p>",
     prev_ref,
     desc = "Prev Reference",
+    mode = { "n", "x", "v" }
   },
   {
     "<A-n>",
     next_ref,
     desc = "Next Reference",
+    mode = { "n", "x", "v" }
   },
 }
 M.opts = {

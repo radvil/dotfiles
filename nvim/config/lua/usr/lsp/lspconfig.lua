@@ -34,7 +34,6 @@ M.opts = {
   servers = {
     ["jsonls"] = true,
     ["bashls"] = true,
-    ["html"] = {},
     ["lua_ls"] = {
       settings = {
         Lua = {
@@ -47,7 +46,6 @@ M.opts = {
         },
       },
     },
-    ["cssls"] = {},
     ["tsserver"] = {
       settings = {
         completions = {
@@ -55,11 +53,17 @@ M.opts = {
         },
       },
     },
-    ["rust_analyzer"] = {},
-    ["emmet_ls"] = {},
-    ["angularls"] = function()
-      return require("usr.lsp.lang.angularls").get_server_opts()
-    end,
+    ["html"] = {},
+    ["cssls"] = {},
+    ["emmet_ls"] = {
+      single_file_support = true,
+      on_attach = function(client, buffer)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        require("usr.lsp.common.utils").on_attach(client, buffer)
+      end
+    },
+    ["angularls"] = require("usr.lsp.lang.angularls").get_server_opts,
   },
 }
 

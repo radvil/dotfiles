@@ -66,7 +66,7 @@ M.opts = {
     diagnostics = "nvim_lsp",
     sort_by = "insert_at_end",
     --- @type "thin" | "padded_slant" | "slant" | "thick" | "none"
-    separator_style = rvim.theme.transbg and "padded_slant" or "thin",
+    separator_style = "thin",
     indicator = {
       ---@type "icon" | "underline" | "none"
       style = "icon",

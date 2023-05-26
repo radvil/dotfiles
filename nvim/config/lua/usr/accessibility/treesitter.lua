@@ -1,13 +1,9 @@
 ---@desc syntax tree hi, hirarchy, etc, etc, ...
 ---@type LazySpec
 local M = {}
-
 M[1] = "nvim-treesitter/nvim-treesitter"
-
 M.event = "BufReadPre"
-
 M.build = ":TSUpdate"
-
 M.keys = {
   {
     "<C-Space>",
@@ -19,7 +15,6 @@ M.keys = {
     mode = "x",
   },
 }
-
 --- @type TSConfig
 M.opts = {
   highlight = {
@@ -41,11 +36,9 @@ M.opts = {
     },
   },
 }
-
 --- @param opts TSConfig
 M.config = function(_, opts)
   opts.ensure_installed = require("opt.filetype").treesitter
   require("nvim-treesitter.configs").setup(opts)
 end
-
 return M
