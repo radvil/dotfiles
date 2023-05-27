@@ -46,15 +46,29 @@ M.opts = {
         },
       },
     },
+    ["html"] = {},
+    ["cssls"] = {},
     ["tsserver"] = {
       settings = {
+        typescript = {
+          format = {
+            indentSize = vim.o.shiftwidth,
+            convertTabsToSpaces = vim.o.expandtab,
+            tabSize = vim.o.tabstop,
+          },
+        },
+        javascript = {
+          format = {
+            indentSize = vim.o.shiftwidth,
+            convertTabsToSpaces = vim.o.expandtab,
+            tabSize = vim.o.tabstop,
+          },
+        },
         completions = {
           completeFunctionCalls = true,
         },
       },
     },
-    ["html"] = {},
-    ["cssls"] = {},
     ["emmet_ls"] = {
       single_file_support = true,
       on_attach = function(client, buffer)

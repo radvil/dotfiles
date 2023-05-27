@@ -6,18 +6,31 @@ M.opts = {
   delete_check_events = "TextChanged",
   history = true,
 }
-M.init = function()
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = function()
-      if
-          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-          and not require("luasnip").session.jump_active
-      then
-        require("luasnip").unlink_current()
-      end
+M.keys = {
+  {
+    "<Tab>",
+    function()
+      return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
     end,
-  })
-end
+    expr = true,
+    silent = true,
+    mode = "i",
+  },
+  {
+    "<Tab>",
+    function()
+      require("luasnip").jump(1)
+    end,
+    mode = "s"
+  },
+  {
+    "<S-Tab>",
+    function()
+      require("luasnip").jump(-1)
+    end,
+    mode = { "i", "s" }
+  },
+}
 M.config = function()
   local vscode_loader = require("luasnip.loaders.from_vscode")
   vscode_loader.lazy_load()
