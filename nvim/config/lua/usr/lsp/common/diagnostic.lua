@@ -2,7 +2,7 @@ local M = {}
 local util = require("utils")
 local icons = require("media.icons")
 
----@class RxLspDiagnosticsSpecs
+---@type LspDiagnosticConfig
 M.specs = {
   enabled = true,
   icons = icons.Diagnostics,

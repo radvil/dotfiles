@@ -12,7 +12,7 @@ function M.register_user_cmds()
   vim.api.nvim_create_user_command("CT", "Telescope lsp_type_definitions", {})
   vim.api.nvim_create_user_command("CX", "TroubleToggle", {})
   vim.api.nvim_create_user_command("CF", function()
-    require("usr.lsp.common.formatter"):format()
+    require("usr.lsp.common.formatter").format({ force = true })
   end, {})
 end
 

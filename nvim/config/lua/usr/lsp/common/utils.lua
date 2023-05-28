@@ -14,7 +14,6 @@ function M.get_capabilities()
 end
 
 M.on_attach = function(client, buffer)
-  require("usr.lsp.common.formatter").attach_to_client(client, buffer)
   require("usr.lsp.common.keymaps").attach_to_client(client, buffer)
   if client.server_capabilities["documentSymbolProvider"] then
     if require("utils").has("nvim-navic") then

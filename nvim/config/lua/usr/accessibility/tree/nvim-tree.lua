@@ -59,7 +59,8 @@ M.opts = {
       enable = true,
       icons = {
         corner = "└",
-        edge = "│ ",
+        edge = "│",
+        -- edge = "│ ",
         none = "  ",
       },
     },
@@ -164,10 +165,10 @@ M.opts = {
     Map("n", "?", api.tree.toggle_help, opts("Help"))
 
     -- tree node
-    Map("n", "<CR>", api.node.open.edit, opts("Open"))
+    Map("n", "o", api.node.open.edit, opts("Open"))
     Map("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
     Map("n", "l", api.node.open.no_window_picker, opts("Open: no window picker"))
-    Map("n", "o", api.node.open.no_window_picker, opts("Open: no window picker"))
+    Map("n", "<CR>", api.node.open.no_window_picker, opts("Open: no window picker"))
     Map("n", "<C-v>", api.node.open.vertical, opts("Open vertical"))
     Map("n", "<C-x>", api.node.open.horizontal, opts("Open horizontal"))
     Map("n", "w", api.node.open.preview, opts("Open preview"))

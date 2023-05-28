@@ -83,22 +83,24 @@ M.statusline = {
 }
 
 M.lsp = {
-  ---@type RxLspDiagnosticsSpecs
+  ---@class LspDiagnosticConfig
   diagnostics = {
     enabled = true,
     icons = {},
     commands = {
-      toggle = "RxToggleDiagnostics",
+      toggle = "LspToggleDiagnostics",
     },
     keymaps = {
       toggle = "<C-Z>d",
     },
     opts = {},
   },
+  ---@class LspFormatOnSaveConfig
   formatonsave = {
     enabled = true,
-    command = "RxLspToggleFormatonsave",
-    toggle_keymap = "<C-z>f",
+    notify = false,
+    command = "LspToggleFormatOnSave",
+    keymap = "<C-z>f",
   },
 }
 
