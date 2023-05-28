@@ -35,16 +35,16 @@ M.opts = function()
   if bgtrans then
     opts.styles.sidebars = "transparent"
     opts.styles.floats = "transparent"
-    opts.on_colors = function(colors)
-      colors.error = "#ff0000"
-    end
-    opts.on_highlights = function(hl, _)
-      local user_colors = require("media.colors").palette
-      hl.TelescopeBorder = {
-        fg = user_colors.cyan,
-        bg = user_colors.bg,
-      }
-    end
+    -- opts.on_colors = function(colors)
+    --   colors.error = "#ff0000"
+    -- end
+    -- opts.on_highlights = function(hl, _)
+    --   local user_colors = require("media.colors").palette
+    --   hl.TelescopeBorder = {
+    --     fg = user_colors.cyan,
+    --     bg = user_colors.bg,
+    --   }
+    -- end
   end
   return opts
 end
