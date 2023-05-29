@@ -38,7 +38,7 @@ M.file_explorer = {
   sidebar_tree = {
     enabled = true,
     ---@type "nvim-tree" | "neo-tree"
-    provider = "nvim-tree",
+    provider = "neo-tree",
   },
 }
 

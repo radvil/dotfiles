@@ -27,8 +27,8 @@ font:
   # builtin_box_drawing: false
   draw_bold_text_with_bright_colors: false
   normal:
-    family: JetBrainsMono Nerd Font Mono
-    # family: Input Mono Condensed
+    # family: JetBrainsMono Nerd Font Mono
+    family: Input Mono Condensed
     style: Regular
   # bold:
   #   family: Input Mono Condensed

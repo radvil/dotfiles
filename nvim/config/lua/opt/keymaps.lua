@@ -3,7 +3,7 @@ local util = require("utils")
 
 -- Base
 Map("n", "ZZ", ":qa<Cr>", { desc = "Quit" })
-Map({ "n", "i", "c", "x", "o" }, "<A-Space>", "<Esc>", { nowait = true, desc = "Exit insert" })
+Map("", "<A-Space>", "<Esc>", { nowait = true, desc = "Exit insert" })
 -- Map("n", "<Leader>xl", "<Cmd>lopen<Cr>", { desc = "[Loclist] open" })
 Map("n", "<Leader>xe", "<Cmd>copen<Cr>", { desc = "Open Quickfix" })
 Map("n", ";", ":", { nowait = true, silent = false })
