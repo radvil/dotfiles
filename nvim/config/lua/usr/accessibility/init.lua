@@ -8,4 +8,5 @@ return {
   require("usr.accessibility.nvim-ufo"),
   require("usr.accessibility.tabout"),
   require("usr.accessibility.treesitter-context"),
+  require("usr.accessibility.oil-nvim"),
 }

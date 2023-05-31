@@ -1,45 +1,49 @@
-local function fallbackFoldHandler(_)
-  local res = {}
-  table.insert(res, { startLine = 1, endLine = 3 })
-  table.insert(res, { startLine = 5, endLine = 10 })
-  return res
-end
-
-local get_providers = function(_, filetype)
-  return ({
-        git = fallbackFoldHandler,
-        typescript = { "lsp", "indent" },
-        typescriptreact = { "lsp", "indent" },
-        html = { "treesitter", "indent" },
-        python = "indent",
-        scss = "indent",
-        vim = "indent",
-      })[filetype] or { "treesitter", "indent" }
-end
-
-local function register_keymaps()
-  vim.keymap.set("n", "zR", function()
-    require("ufo").openAllFolds()
-  end, { desc = "[Fold] Open all" })
-  vim.keymap.set("n", "zM", function()
-    require("ufo").closeAllFolds()
-  end, { desc = "[Fold] Close all" })
-  -- local winid = require("ufo").peekFoldedLinesUnderCursor()
-  -- if winid then
-  --   local bufnr = vim.api.nvim_win_get_buf(winid)
-  --   local keys = { "a", "i", "o", "A", "I", "O", "gd", "gr" }
-  --   for _, k in ipairs(keys) do
-  --     vim.keymap.set("n", k, "<CR>" .. k, { noremap = false, buffer = bufnr })
-  --   end
-  -- end
-end
-
 ---@type LazySpec
 local M = {}
 M[1] = "kevinhwang91/nvim-ufo"
+M.enabled = true
 M.dependencies = { "kevinhwang91/promise-async", "neovim/nvim-lspconfig" }
+local ftMap = {
+  git = "",
+  -- typescript = { "lsp", "indent" },
+  typescript = { "treesitter", "indent" },
+  typescriptreact = { "lsp", "indent" },
+  html = { "treesitter", "indent" },
+  python = "indent",
+  scss = "indent",
+  vim = "indent",
+}
 M.config = function()
-  require("ufo").setup({ provider_selector = get_providers })
-  register_keymaps()
+  ---@param bufnr number
+  ---@return Promise
+  local function fallbackSelector(bufnr)
+    local function handleFallbackException(err, providerName)
+      if type(err) == 'string' and err:match('UfoFallbackException') then
+        return require('ufo').getFolds(bufnr, providerName)
+      else
+        return require('promise').reject(err)
+      end
+    end
+    return require('ufo').getFolds(bufnr, 'lsp'):catch(function(err)
+      return handleFallbackException(err, 'treesitter')
+    end):catch(function(err)
+      return handleFallbackException(err, 'indent')
+    end)
+  end
+
+  require("ufo").setup({
+    ---@diagnostic disable-next-line: unused-local
+    provider_selector = function(bufnr, filetype, buftype)
+      return ftMap[filetype] or fallbackSelector
+    end
+  })
+
+  vim.keymap.set("n", "zO", function()
+    require("ufo").openAllFolds()
+  end, { desc = "Fold » Open All" })
+
+  vim.keymap.set("n", "zC", function()
+    require("ufo").closeAllFolds()
+  end, { desc = "Fold » Close All" })
 end
 return M

@@ -43,7 +43,7 @@ M.file_explorer = {
 }
 
 M.symbols = {
-  enabled = true,
+  enabled = false,
   wrap = false,
   auto_close = false,
   width = 18,

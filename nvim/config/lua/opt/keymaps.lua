@@ -3,6 +3,8 @@ local util = require("utils")
 
 -- Base
 Map("n", "ZZ", ":qa<Cr>", { desc = "Quit" })
+Map("n", "q", "")
+Map("n", "Q", "q", { desc = "Record" })
 Map("", "<A-Space>", "<Esc>", { nowait = true, desc = "Exit insert" })
 -- Map("n", "<Leader>xl", "<Cmd>lopen<Cr>", { desc = "[Loclist] open" })
 Map("n", "<Leader>xe", "<Cmd>copen<Cr>", { desc = "Open Quickfix" })
@@ -38,7 +40,7 @@ if not util.has("mini.animate") then
   Map("n", "N", "Nzz", { nowait = true, desc = "Show + center search results" })
 end
 
--- Test selection
+-- Toggle selection
 Map("n", "<C-g>", "ggVG", { desc = "Select all content [Normal]" })
 Map("i", "<C-g>", "<Esc>ggVG<Cr>", { desc = "Select all content" })
 Map("v", "<C-g>", "<Esc>", { desc = "Deselect all content" })
@@ -49,6 +51,16 @@ Map({ "i", "n" }, "<esc>", "<Cmd>noh<Cr><esc>", { desc = "Clear hlsearch" })
 -- Better indenting
 Map("v", "<", "<gv", { desc = "Indent Left" })
 Map("v", ">", ">gv", { desc = "Indent Right" })
+
+if vim.opt.clipboard ~= "unnamedplus" then
+  -- Copy from system clipboard
+  Map({ "n", "v", "x" }, "gy", '"+y', { desc = "system clipboard » copy" })
+  Map("n", "gY", '"+Y', { desc = "system clipboard » copy line" })
+
+  -- Paste from system clipboard
+  Map("n", "gp", '"+p', { desc = "system clipboard » paste before cursor" })
+  Map("n", "gP", '"+P', { desc = "system clipboard » pase after cursor" })
+end
 
 -- Move to window using the <ctrl> hjkl keys
 if os.getenv("TMUX") == nil then
