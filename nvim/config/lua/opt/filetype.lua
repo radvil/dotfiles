@@ -57,4 +57,18 @@ M.excludes = {
   unpack(M.sidebars),
 }
 
+M.popups = {
+  "DressingInput",
+  "lazy",
+  "lspinfo",
+  "mason",
+  "neo-tree-popup",
+  "notify",
+  "oil",
+  "prompt",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "WhichKey",
+}
+
 return M

@@ -15,13 +15,13 @@ M.keys = {
   {
     "<C-c>",
     "<CMD>PickColor<CR>",
-    desc = "Pick color",
+    desc = "color-picker » pick",
     unpack(noremap),
   },
   {
     "<C-c>",
     "<CMD>PickColorInsert<CR>",
-    desc = "Pick color insert",
+    desc = "color-picket » pick (imode)",
     unpack(noremap),
     mode = "i",
   },

@@ -17,12 +17,12 @@ M.keys = {
   {
     "<Leader>'",
     mark_current,
-    desc = "Harpoon » Mark File",
+    desc = "harpoon » mark file",
   },
   {
     '<Leader><Space>',
     quick_menu,
-    desc = "Harpoon » Open List",
+    desc = "harpoon » file list",
   },
 }
 

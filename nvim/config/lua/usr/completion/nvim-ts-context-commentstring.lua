@@ -1,8 +1,7 @@
----@desc treesitter comment string context
 ---@type LazySpec
 local M = {}
 M[1] = "JoosepAlviste/nvim-ts-context-commentstring"
-M.event = "BufReadPre"
+M.event = "VeryLazy"
 M.dependencies = { "nvim-treesitter/nvim-treesitter" }
 M.opts = {
   context_commentstring = {

@@ -12,7 +12,7 @@ M.opts = {
   transparent_background = env().transbg,
   term_colors = true,
   dim_inactive = {
-    enabled = not env().transbg,
+    enabled = false,
     percentage = 0.15,
     shade = "dark",
   },

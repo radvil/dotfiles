@@ -1,11 +1,13 @@
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-neo-tree/neo-tree.nvim"
+
 M.dependencies = {
   "nvim-tree/nvim-web-devicons",
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
 }
+
 M.keys = {
   {
     "<Leader>e",
@@ -15,7 +17,7 @@ M.keys = {
         toggle = true,
       })
     end,
-    desc = "Explorer NeoTree (root dir)",
+    desc = "neotree » toggle (root)",
   },
   {
     "<Leader>E",
@@ -25,7 +27,7 @@ M.keys = {
         toggle = true,
       })
     end,
-    desc = "Tree » Toggle",
+    desc = "neotree » toggle",
   },
 }
 
@@ -71,22 +73,22 @@ M.opts = {
   },
   default_component_configs = {
     indent = {
-      with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+      with_expanders = true,
       expander_collapsed = "",
       expander_expanded = "",
       expander_highlight = "NeoTreeExpander",
     },
     git_status = {
       symbols = {
-        added = "",
-        modified = "💋",
-        deleted = "✖",
-        renamed = "",
-        untracked = "",
-        ignored = "",
-        unstaged = "",
-        staged = "",
-        conflict = "",
+        added = " ",
+        modified = "",
+        deleted = " ",
+        renamed = " ",
+        untracked = " ",
+        ignored = " ",
+        unstaged = "✗ ",
+        staged = " ",
+        conflict = " ",
       },
     },
   },
@@ -128,8 +130,6 @@ M.opts = {
       ["x"] = "cut_to_clipboard",
       ["p"] = "paste_from_clipboard",
 
-      -- ["<"] = "prev_source",
-      -- [">"] = "next_source",
       ["<bs>"] = "navigate_up",
       ["?"] = "show_help",
       ["w"] = "toggle_preview",
@@ -142,92 +142,12 @@ M.opts = {
       ["."] = "set_root",
       ["R"] = "refresh",
       ["q"] = "close_window",
-      -- ["<A-space>"] = "blur",
 
       ["/f"] = "fuzzy_finder",
       ["/d"] = "fuzzy_finder_directory",
       ["//"] = "filter_on_submit",
     },
   },
-  -- default_component_configs = {
-  --   container = {
-  --     enable_character_fade = true,
-  --   },
-  --   indent = {
-  --     padding = 2,
-  --     indent_size = 3,
-  --     indent_marker = "│",
-  --     with_markers = true,
-  --     with_expanders = true,
-  --     expander_expanded = "",
-  --     expander_collapsed = "",
-  --     last_indent_marker = "└",
-  --     highlight = "NeoTreeIndentMarker",
-  --     expander_highlight = "NeoTreeExpander",
-  --   },
-  --   icon = {
-  --     highlight = "NeoTreeFileIcon",
-  --     folder_closed = "",
-  --     folder_empty = "ﰊ",
-  --     folder_open = "",
-  --     default = "*",
-  --   },
-  --   modified = {
-  --     highlight = "NeoTreeModified",
-  --     symbol = "[+]",
-  --   },
-  --   name = {
-  --     highlight = "NeoTreeFileName",
-  --     use_git_status_colors = true,
-  --     trailing_slash = false,
-  --   },
-  --   git_status = {
-  --     symbols = {
-  --       added = "",
-  --       modified = " 💋",
-  --       deleted = " ✖",
-  --       renamed = " ",
-  --       untracked = " ",
-  --       ignored = " ",
-  --       unstaged = " ",
-  --       staged = " ",
-  --       conflict = " ",
-  --     },
-  --   },
-  -- },
-  -- window = {
-  --   mappings = {
-  --     ["<space>"] = "none",
-  --   },
-  -- },
-  -- filesystem = {
-  --   follow_current_file = true,
-  --   use_libuv_file_watcher = true,
-  --   hijack_netrw_behavior = "open_default",
-  --   group_empty_dirs = false,
-  --   filtered_items = {
-  --     visible = false,
-  --     hide_dotfiles = true,
-  --     hide_gitignored = true,
-  --     hide_hidden = true,
-  --     hide_by_name = {
-  --       "node_modules",
-  --     },
-  --     hide_by_pattern = {
-  --       "*.angular",
-  --     },
-  --     always_show = {
-  --       ".gitignored",
-  --     },
-  --     never_show = {
-  --       ".DS_Store",
-  --       "thumbs.db",
-  --     },
-  --     never_show_by_pattern = {
-  --       --".null-ls_*",
-  --     },
-  --   },
-  -- },
 }
 
 M.config = function(_, opts)

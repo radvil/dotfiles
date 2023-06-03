@@ -23,12 +23,24 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- Close some filetypes with <q>
+-- close with <q>, escape with <A-Space>
 vim.api.nvim_create_autocmd("FileType", {
   pattern = require("opt.filetype").excludes,
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<Cmd>close<Cr>", {
+    vim.keymap.set("n", "q", ":close<cr>", {
+      buffer = event.buf,
+      silent = true,
+    })
+  end,
+})
+
+-- close popups using <A-Space>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = require("opt.filetype").popups,
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("", "<A-Space>", ":close<cr>", {
       buffer = event.buf,
       silent = true,
     })
@@ -43,23 +55,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufReadPre", {
-  once = true,
-  pattern = "*",
-  group = vim.api.nvim_create_augroup("MySetCursorLine", {}),
-  callback = function()
-    if rvim.theme.transbg or not rvim.theme.force_darkmode then
-      vim.opt.cursorline = false
-    else
-      vim.opt.cursorline = true
-    end
-  end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "zsh",
   callback = function()
-    -- let treesitter use bash highlight for zsh files as well
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
 })

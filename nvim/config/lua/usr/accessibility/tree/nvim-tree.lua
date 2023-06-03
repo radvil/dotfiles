@@ -8,7 +8,7 @@ M.keys = {
   {
     "<Leader>e",
     "<Cmd>NvimTreeToggle<Cr>",
-    desc = "[Tree] toggle",
+    desc = "nvimtree » toggle",
   },
 }
 M.opts = {

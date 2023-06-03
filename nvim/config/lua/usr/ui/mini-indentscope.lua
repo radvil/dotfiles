@@ -3,14 +3,14 @@
 local M = {}
 M[1] = "echasnovski/mini.indentscope"
 M.enabled = true
-M.event = "BufReadPre"
+M.event = { "BufReadPre", "BufNewFile" }
 M.opts = {
   symbol = "│",
   mappings = {
-    object_scope = 'ii',
-    object_scope_with_border = 'ai',
     goto_top = '[i',
     goto_bottom = ']i',
+    object_scope = 'ii',
+    object_scope_with_border = 'ai',
   },
 }
 M.config = function(_, opts)

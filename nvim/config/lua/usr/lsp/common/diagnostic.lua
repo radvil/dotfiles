@@ -15,12 +15,15 @@ M.specs = {
   opts = {
     update_in_insert = false,
     severity_sort = true,
-    underline = false,
+    underline = true,
     float = {
       border = 'rounded',
-      source = 'always'
+      source = 'if_many'
     },
     virtual_text = {
+      -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+      -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+      -- prefix = "icons",
       prefix = icons.Misc.Squirrel,
       spacing = 4,
     },

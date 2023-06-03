@@ -1,44 +1,51 @@
----@desc syntax tree hi, hirarchy, etc, etc, ...
 ---@type LazySpec
 local M = {}
+
 M[1] = "nvim-treesitter/nvim-treesitter"
-M.event = "BufReadPre"
+M.event = { "BufReadPost", "BufNewFile" }
 M.build = ":TSUpdate"
 M.keys = {
   {
-    "<C-Space>",
-    desc = "Increment selection",
+    "<c-space>",
+    desc = "treesitter » increase selection",
   },
   {
-    "<Bs>",
-    desc = "Shrink selection",
+    "<bs>",
+    desc = "treesitter » shrink selection",
     mode = "x",
   },
 }
+
 --- @type TSConfig
 M.opts = {
-  highlight = {
-    additional_vim_regex_highlighting = false,
-    enable = true,
-  },
-  indent = {
-    enable = true,
-    disable = { "python" },
-  },
-  fold = { enable = true },
+  highlight = { enable = true, },
+  indent = { enable = true, },
+  -- fold = { enable = true },
+  ensure_installed = require("opt.filetype").treesitter,
   incremental_selection = {
     enable = true,
     keymaps = {
-      node_incremental = "<C-Space>",
-      init_selection = "<C-Space>",
-      scope_incremental = "<Nop>",
-      node_decremental = "<Bs>",
+      node_incremental = "<c-space>",
+      init_selection = "<c-space>",
+      scope_incremental = "<nop>",
+      node_decremental = "<bs>",
     },
   },
 }
+
 --- @param opts TSConfig
 M.config = function(_, opts)
-  opts.ensure_installed = require("opt.filetype").treesitter
+  if type(opts.ensure_installed) == "table" then
+    local added = {}
+    opts.ensure_installed = vim.tbl_filter(function(lang)
+      if added[lang] then
+        return false
+      end
+      added[lang] = true
+      return true
+    end, opts.ensure_installed)
+  end
   require("nvim-treesitter.configs").setup(opts)
 end
+
 return M

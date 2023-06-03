@@ -24,17 +24,17 @@ M.keys = {
   {
     "<Leader>Sr",
     restore_session,
-    desc = "Session » Restore [CWD]",
+    desc = "session » restore [cwd]",
   },
   {
     "<Leader>Sl",
     restore_last_session,
-    desc = "Session » Restore Last",
+    desc = "session » restore last",
   },
   {
     "<Leader>Ss",
     stop_session_saving,
-    desc = "Session » Stop Save",
+    desc = "session » stop saving",
   },
 }
 return M

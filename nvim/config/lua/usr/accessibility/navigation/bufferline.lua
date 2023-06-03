@@ -6,59 +6,69 @@ M.event = "VeryLazy"
 M.dependencies = { "nvim-tree/nvim-web-devicons" }
 M.keys = {
   {
-    "<Leader>bP",
+    "<Leader>bS",
+    ":BufferLineSortByTabs<cr>",
+    desc = "buffer » sort by directory",
+  },
+  {
+    "<Leader>bs",
+    ":BufferLineSortByDirectory<cr>",
+    desc = "buffer » sort by relative directory",
+  },
+  {
+    "<Leader>bp",
     "<Cmd>BufferLineTogglePin<CR>",
-    desc = "CURRENT » Pin/Unpin",
+    desc = "buffer » toggle pin",
   },
   {
     "<A-b>",
     "<Cmd>BufferLinePick<CR>",
-    desc = "Pick buffer",
+    desc = "buffer » pick",
   },
   {
     "<A-,>",
     "<Cmd>BufferLineMovePrev<CR>",
-    desc = "Move buffer to left",
+    desc = "buffer » shift left",
   },
   {
     "<A-.>",
     "<Cmd>BufferLineMoveNext<CR>",
-    desc = "Move buffer to right",
+    desc = "buffer » shift right",
   },
   {
     "<A-[>",
     "<Cmd>BufferLineCyclePrev<CR>",
-    desc = "Switch to prev buffer",
+    desc = "buffer » switch prev",
   },
   {
     "<A-]>",
     "<Cmd>BufferLineCycleNext<CR>",
-    desc = "Switch to next buffer",
+    desc = "buffer » switch next",
   },
   {
     "<A-1>",
     "<Cmd>BufferLineGoToBuffer 1<CR>",
-    desc = "Switch to 1st buffer",
+    desc = "buffer » switch 1st",
   },
   {
     "<A-2>",
     "<Cmd>BufferLineGoToBuffer 2<CR>",
-    desc = "Switch to 2nd buffer",
+    desc = "buffer » switch 2nd",
   },
   {
     "<A-3>",
     "<Cmd>BufferLineGoToBuffer 3<CR>",
-    desc = "Switch to 3rd buffer",
+    desc = "buffer » switch 3rd",
   },
   {
     "<A-4>",
     "<Cmd>BufferLineGoToBuffer 4<CR>",
-    desc = "Switch to 5th buffer",
+    desc = "buffer » switch 4th",
   },
   {
     "<A-5>",
     "<Cmd>BufferLineGoToBuffer 5<CR>",
-    desc = "Switch to 5th buffer",
+    desc = "buffer » switch 5th",
   },
 }
 M.opts = {

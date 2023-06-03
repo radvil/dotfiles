@@ -2,6 +2,7 @@
 local M = {}
 M[1] = "williamboman/mason.nvim"
 M.cmd = "Mason"
+
 M.opts = {
   ensure_installed = {
     "markdownlint",
@@ -12,6 +13,7 @@ M.opts = {
     "stylua",
   }
 }
+
 ---@param opts MasonSettings | {ensure_installed: string[]}
 M.config = function(_, opts)
   require("mason").setup(opts)

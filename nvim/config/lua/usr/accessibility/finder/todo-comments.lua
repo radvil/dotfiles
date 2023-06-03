@@ -1,45 +1,36 @@
 ---@type LazySpec
 local M = {}
-
-local function next_ref()
-  require("todo-comments").jump_next()
-end
-
-local function prev_ref()
-  require("todo-comments").jump_prev()
-end
-
 M[1] = "folke/todo-comments.nvim"
-
+M.enabled = true
 M.event = "BufReadPost"
-
 M.cmd = { "TodoTrouble", "TodoTelescope" }
-
 M.config = true
-
 M.keys = {
   {
     "]]",
-    next_ref,
-    desc = "[todo] Next ref",
+    function()
+      require("todo-comments").jump_next()
+    end,
+    desc = "todo-comment » next ref",
     remap = true,
   },
   {
     "[[",
-    prev_ref,
-    desc = "[todo] Prev ref",
+    function()
+      require("todo-comments").jump_prev()
+    end,
+    desc = "todo-comment » prev ref",
     remap = true,
   },
   {
     "<Leader>xt",
-    "<Cmd>TodoTrouble<Cr>",
-    desc = "Todo List",
+    ":TodoTrouble<Cr>",
+    desc = "diagnostics » todo comments",
   },
   {
     "<Leader>/t",
-    "<Cmd>TodoTelescope<Cr>",
-    desc = "Find » Todo(s)",
+    ":TodoTelescope<Cr>",
+    desc = "telescope » find todo comments",
   },
 }
-
 return M

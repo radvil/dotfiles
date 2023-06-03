@@ -3,12 +3,13 @@ local M = {}
 M[1] = "folke/which-key.nvim"
 M.event = "VeryLazy"
 M.enabled = rvim.whichkey.enabled
+
 M.opts = {
-  window = {
-    border = "single",
-    -- [top, right, bottom, left]
-    margin = { 1, 1, 1, 1 },
-  },
+  -- window = {
+  --   border = "single",
+  --   -- [top, right, bottom, left]
+  --   margin = { 1, 1, 1, 1 },
+  -- },
   icons = {
     -- symbol used in the command line area that shows your active key combo
     breadcrumb = "»",
@@ -19,27 +20,26 @@ M.opts = {
     spacing = 7,
     align = "center",
   },
-  key_labels = {
-    ["<leader>"] = "Leader",
-    ["<space>"] = "Space",
-    ["<bs>"] = "Backspace",
-    ["<tab>"] = "Tab",
-    ["<esc>"] = "Esc",
-  },
   disable = {
     buftypes = { "terminal" },
     filetypes = require("opt.filetype").excludes,
   },
 }
+
 M.init = function()
   local wk = require("which-key")
   wk.register({
     ["<Leader>/"] = { name = "Telescope" },
-    ["<Leader>x"] = { name = "Problem" },
+    ["<Leader>x"] = { name = "Diagnostics" },
     ["<Leader>b"] = { name = "Buffer" },
     ["<Leader>w"] = { name = "Window" },
-    ["<Localleader>g"] = { name = "Git" },
-    ["s"] = { name = "Surrond" },
+    ["<Leader>m"] = { name = "Tmux" },
+    ["<Leader>s"] = { name = "Spectre" },
+    ["<Leader>S"] = { name = "Session" },
+    ["<Leader>f"] = { name = "File action" },
+    ["<Loader>g"] = { name = "Git" },
+    ["so"] = { name = "Surrond textobject" },
   })
 end
+
 return M

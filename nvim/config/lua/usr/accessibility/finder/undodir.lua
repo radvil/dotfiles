@@ -5,9 +5,9 @@ M[1] = "mbbill/undotree"
 M.enabled = true
 M.keys = {
   {
-    "<Leader>/u",
+    "<Leader>U",
     "<Cmd>UndotreeToggle<CR>",
-    desc = "Find » Undo(s)",
+    desc = "undotree » toggle",
   },
 }
 return M

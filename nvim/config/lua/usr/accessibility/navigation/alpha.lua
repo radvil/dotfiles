@@ -7,13 +7,13 @@ M.opts = function()
   local A = require("alpha.themes.dashboard")
   A.section.header.val = require("media.ascii-arts").Default
   A.section.buttons.val = {
-    A.button("p", " " .. " Plugins", ":Lazy<CR>"),
-    A.button("o", "📁" .. " Recent files", ":Telescope oldfiles<CR>"),
-    A.button("f", "🔭" .. " Find file", ":Telescope find_files<CR>"),
-    A.button("w", "🔎" .. " Search text", ":Telescope live_grep<CR>"),
-    A.button("t", "📌" .. " Find tasks", ":TodoTelescope<CR>"),
-    A.button(".", "🔧" .. " Configuration", ":e $MYVIMRC<CR>"),
-    A.button("s", "🕗" .. " Restore session", "<Cmd>lua require('persistence').load()<Cr>"),
+    A.button("p", " " .. " Plugins", ":Lazy<cr>"),
+    A.button("o", "📁" .. " Recent files", ":Telescope oldfiles<cr>"),
+    A.button("f", "🔭" .. " Find file", ":Telescope find_files<cr>"),
+    A.button("w", "🔎" .. " Search text", ":Telescope live_grep<cr>"),
+    A.button("t", "📌" .. " Find tasks", ":TodoTelescope<cr>"),
+    A.button(".", "🔧" .. " Nvim Config", ":e $MYVIMRC<cr>"),
+    A.button("s", "🕗" .. " Restore session", "<cmd>lua require('persistence').load()<cr>"),
   }
   for _, button in ipairs(A.section.buttons.val) do
     button.opts.hl = "AlphaButtons"

@@ -1,11 +1,13 @@
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.bufremove"
+
 local function remove(force, bufnr)
   force = force == nil and false
   bufnr = bufnr == nil and 0
   require("mini.bufremove").delete(bufnr or 0, force or false)
 end
+
 M.init = function()
   vim.api.nvim_create_user_command("BD", function()
     remove()
@@ -28,26 +30,28 @@ M.init = function()
     end
   end, { desc = "Remove all buffers [force]" })
 end
+
 M.keys = {
   {
     "<Leader>bd",
     "<Cmd>BD<Cr>",
-    desc = "CURRENT » Safe Delete",
+    desc = "buffer » safe delete",
   },
   {
     "<Leader>bf",
     "<Cmd>BF<Cr>",
-    desc = "CURRENT » Force Delete",
+    desc = "buffer » force delete",
   },
   {
     "<Leader>bD",
     "<Cmd>BAD<Cr>",
-    desc = "ALL » Safe Delete",
+    desc = "buffer » safe delete (all)",
   },
   {
     "<Leader>bF",
     "<Cmd>BAF<Cr>",
-    desc = "ALL » Force Delete",
+    desc = "buffer » force delete (all)",
   },
 }
+
 return M

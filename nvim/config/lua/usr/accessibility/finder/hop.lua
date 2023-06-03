@@ -14,7 +14,7 @@ local function register_keymaps()
       current_line_only = true,
     })
   end, {
-    desc = "[hop] Find next inlined char",
+    desc = "hop » find next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "[f", function()
@@ -24,7 +24,7 @@ local function register_keymaps()
       current_line_only = true,
     })
   end, {
-    desc = "[hop] Find prev inlined char",
+    desc = "hop » find prev char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "]t", function()
@@ -35,7 +35,7 @@ local function register_keymaps()
       hint_offset = -1,
     })
   end, {
-    desc = "[hop] Till next inlined char",
+    desc = "hop » to next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "[t", function()
@@ -46,7 +46,7 @@ local function register_keymaps()
       hint_offset = 1,
     })
   end, {
-    desc = "[hop] Till prev inlined char",
+    desc = "hop » to next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "S", function()
@@ -56,7 +56,7 @@ local function register_keymaps()
       teasing = true,
     })
   end, {
-    desc = "[hop] Move/jump accross windows",
+    desc = "hop » jump everywhere",
     remap = true,
   })
 end

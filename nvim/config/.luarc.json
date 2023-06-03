@@ -1,7 +1,8 @@
 {
     "workspace.checkThirdParty": false,
     "diagnostics.disable": [
-        "missing-parameter"
+        "missing-parameter",
+        "param-type-mismatch"
     ],
     "workspace.library": [
         "/home/radvil/.local/share/nvim/lazy/neodev.nvim/types/stable",

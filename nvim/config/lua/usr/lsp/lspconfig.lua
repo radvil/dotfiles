@@ -2,7 +2,9 @@
 ---@type LazySpec
 local M = {}
 M[1] = "neovim/nvim-lspconfig"
-M.event = "BufReadPre"
+M.enabled = true
+M.event = { "BufReadPre", "BufNewFile" }
+
 M.dependencies = {
   "mason.nvim",
   "williamboman/mason-lspconfig.nvim",

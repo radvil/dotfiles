@@ -1,25 +1,23 @@
 ---@type LazySpec
 local M = {}
-local function prev_ref()
-  require("illuminate").goto_prev_reference(false)
-end
-local function next_ref()
-  require("illuminate").goto_next_reference(false)
-end
 M[1] = "RRethy/vim-illuminate"
 M.event = "BufReadPost"
 M.enabled = true
 M.keys = {
   {
     "<A-p>",
-    prev_ref,
-    desc = "Prev Reference",
+    function()
+      require("illuminate").goto_prev_reference(false)
+    end,
+    desc = "vim-illuminate » prev ref",
     mode = { "n", "x", "v" }
   },
   {
     "<A-n>",
-    next_ref,
-    desc = "Next Reference",
+    function()
+      require("illuminate").goto_next_reference(false)
+    end,
+    desc = "vim-illuminate » next ref",
     mode = { "n", "x", "v" }
   },
 }

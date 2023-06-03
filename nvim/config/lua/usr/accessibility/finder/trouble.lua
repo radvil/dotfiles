@@ -3,23 +3,18 @@
 local M = {}
 M[1] = "folke/trouble.nvim"
 M.enabled = true
-M.cmd = {
-  "TroubleToggle",
-  "Trouble",
-}
-M.opts = {
-  use_diagnostic_signs = true,
-}
+M.cmd = { "TroubleToggle", "Trouble", }
+M.opts = { use_diagnostic_signs = true, }
 M.keys = {
   {
     "<Leader>xd",
-    "<Cmd>TroubleToggle document_diagnostics<cr>",
-    desc = "Document Diagnostics",
+    ":TroubleToggle document_diagnostics<cr>",
+    desc = "diagnostics » trouble (document)",
   },
   {
     "<Leader>xw",
-    "<Cmd>TroubleToggle workspace_diagnostics<Cr>",
-    desc = "Workspace Diagnostics",
+    ":TroubleToggle workspace_diagnostics<Cr>",
+    desc = "diagnostics » trouble (workspace)",
   },
 }
 return M

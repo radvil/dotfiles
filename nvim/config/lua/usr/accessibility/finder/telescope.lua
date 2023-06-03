@@ -1,13 +1,9 @@
----@desc fuzzy finder
 ---@type LazySpec
 local M = {}
-
 local util = require("utils")
-
 M[1] = "nvim-telescope/telescope.nvim"
-
+M.enabled = true
 M.cmd = "Telescope"
-
 M.dependencies = {
   "nvim-telescope/telescope-fzf-native.nvim",
   build = "make",
@@ -15,69 +11,73 @@ M.dependencies = {
     require("telescope").load_extension("fzf")
   end,
 }
-
 M.keys = {
   {
     "<C-p>",
     util.telescope("files"),
     "<Cmd>Telescope find_files<Cr>",
-    desc = "Find » Files [CWD]",
+    desc = "telescope » find files",
     mode = "n",
+  },
+  {
+    "<Leader>/d",
+    ":Dotfiles<cr>",
+    desc = "telescope » open nvim config",
   },
   {
     "<Leader>/f",
     "<Cmd>Telescope find_files<Cr>",
-    desc = "Find » Files",
+    desc = "telescope » find files [root]",
   },
   {
     "<Leader>/w",
     "<Cmd>Telescope live_grep<Cr>",
-    desc = "Find » Word",
+    desc = "telescope » live grep",
   },
   {
     "<Leader>/:",
     "<Cmd>Telescope command_history<Cr>",
-    desc = "Find » Commands History",
+    desc = "telescope » command history",
   },
   {
     "<Leader>/b",
     "<Cmd>Telescope buffers<Cr>",
-    desc = "Find » Opened Buffers",
+    desc = "telescope » find opened buffers",
   },
   {
     "<Leader>/o",
     "<Cmd>Telescope oldfiles<Cr>",
-    desc = "Find » Last Files",
+    desc = "telescope » find recent files",
   },
   {
     "<Leader>/h",
     "<Cmd>Telescope help_tags<Cr>",
-    desc = "Find » Help Tags",
+    desc = "telescope » find help tags",
   },
   {
     "<Leader>/H",
     "<Cmd>Telescope highlights<Cr>",
-    desc = "Find » Highlight Groups",
+    desc = "telescope » find highlights",
   },
   {
     "<Leader>/k",
     "<Cmd>Telescope keymaps<Cr>",
-    desc = "Find » Register Keymaps",
+    desc = "telescope » find keymaps",
   },
   {
     "<Leader>/M",
     "<Cmd>Telescope man_pages<Cr>",
-    desc = "Find » Manual Pages",
-  },
-  {
-    "<Leader>/c",
-    util.telescope("colorscheme", { enable_preview = true }),
-    desc = "Find » Colorschemes",
+    desc = "telescope » find man pages",
   },
   {
     "<Leader>/C",
+    util.telescope("colorscheme", { enable_preview = true }),
+    desc = "telescope » find colorscheme",
+  },
+  {
+    "<Leader>/c",
     "<Cmd>Telescope commands<Cr>",
-    desc = "Find » User Commands",
+    desc = "telescope » find available commands",
   },
 }
 
@@ -89,7 +89,6 @@ M.opts = function()
       layout_strategy = "horizontal",
       sorting_strategy = "ascending",
       prompt_prefix = " 🔭 ",
-      -- winblend = 0,
       mappings = {
         ["i"] = {
           ["<A-Space>"] = actions.close,
@@ -108,8 +107,8 @@ M.opts = function()
           ["q"] = actions.close,
           ["<C-p>"] = actions.move_selection_previous,
           ["<C-n>"] = actions.move_selection_next,
-          ["sh"] = actions.select_horizontal,
-          ["sv"] = actions.select_vertical,
+          ["<C-h>"] = actions.select_horizontal,
+          ["<C-v>"] = actions.select_vertical,
         },
       },
     },

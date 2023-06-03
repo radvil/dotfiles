@@ -22,9 +22,9 @@ M.g = {
 }
 
 M.theme = {
-  colorscheme = "tokyonight",
-  variant = "moon",
-  transbg = true,
+  colorscheme = "catppuccin",
+  variant = "mocha",
+  transbg = false,
   force_darkmode = true,
   rainbow_brackets = false,
 }
