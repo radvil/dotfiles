@@ -5,11 +5,11 @@ M.event = "VeryLazy"
 M.enabled = rvim.whichkey.enabled
 
 M.opts = {
-  -- window = {
-  --   border = "single",
-  --   -- [top, right, bottom, left]
-  --   margin = { 1, 1, 1, 1 },
-  -- },
+  window = {
+    border = "",
+    -- [top, right, bottom, left]
+    -- margin = { 1, 1, 1, 1 },
+  },
   icons = {
     -- symbol used in the command line area that shows your active key combo
     breadcrumb = "»",

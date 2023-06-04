@@ -25,7 +25,7 @@ M.init = function()
 end
 M.keys = {
   {
-    "<C-z>n",
+    "<c-z>n",
     function()
       require("notify").dismiss({
         silent = true,
