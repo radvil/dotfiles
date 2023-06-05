@@ -8,32 +8,32 @@ M.keys = {
   {
     "<Leader>w<Cr>",
     "<Cmd>WinShift<CR>",
-    desc = "ALL » Manage",
+    desc = "Window » Manage",
   },
   {
     "<Leader>ws",
     "<Cmd>WinShift swap<Cr>",
-    desc = "ALL » Swap",
+    desc = "Window » Swap",
   },
   {
     "<Leader>wj",
     "<Cmd>WinShift down<Cr>",
-    desc = "CURRENT » Shift Down",
+    desc = "Window » Shift down",
   },
   {
     "<Leader>wk",
     "<Cmd>WinShift top<Cr>",
-    desc = "CURRENT » Shift Top",
+    desc = "Window » Shift top",
   },
   {
     "<Leader>wh",
     "<Cmd>WinShift left<Cr>",
-    desc = "CURRENT » Shift Left",
+    desc = "Window » Shift left",
   },
   {
     "<Leader>wl",
     "<Cmd>WinShift right<Cr>",
-    desc = "CURRENT » Shift Right",
+    desc = "Window » Shift right",
   },
 }
 M.opts = function()

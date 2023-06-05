@@ -11,17 +11,17 @@ M.keys = {
   {
     "<Leader>wm",
     "<Cmd>WindowsMaximize<Cr>",
-    desc = "CURRENT » Maximize/Minimize",
+    desc = "Window » Maximize/Minimize",
   },
   {
     "<Leader>w=",
     "<Cmd>WindowsEqualize<Cr>",
-    desc = "ALL » Set Equal Size",
+    desc = "Window » Set Equal Size",
   },
   {
     "<Leader>wu",
     "<Cmd>WindowsToggleAutowidth<Cr>",
-    desc = "CURRENT » Toggle Auto Width",
+    desc = "Window » Toggle Auto Width",
   },
 }
 M.config = function()

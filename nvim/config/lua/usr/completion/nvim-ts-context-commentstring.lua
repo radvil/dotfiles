@@ -2,6 +2,7 @@
 local M = {}
 M[1] = "JoosepAlviste/nvim-ts-context-commentstring"
 M.event = "VeryLazy"
+M.enabled = false
 M.dependencies = { "nvim-treesitter/nvim-treesitter" }
 M.opts = {
   context_commentstring = {

@@ -1,6 +1,5 @@
 ---@type LazySpec[]
 return {
-  require("usr.ui.noice"),
   require("usr.ui.notify"),
   require("usr.ui.zenmode"),
   require("usr.ui.windows"),
@@ -8,10 +7,8 @@ return {
   require("usr.ui.plenary"),
   require("usr.ui.winshift"),
   require("usr.ui.twilight"),
-  require("usr.ui.barbeque"),
   require("usr.ui.colorizer"),
   require("usr.ui.fokus-nvim"),
-  require("usr.ui.nvim-navic"),
   require("usr.ui.webdevicons"),
   require("usr.ui.mini-animate"),
   require("usr.ui.smooth-cursor"),

@@ -1,5 +1,7 @@
 local M = {}
 
+unpack = unpack or table.unpack
+
 M.sidebars = {
   "dbui",
   "DiffViewFiles",
@@ -100,7 +102,7 @@ M.builtin_plugins_excludes = {
   "zip",
   "zipPlugin",
   "ruby",
-  "gem"
+  "gem",
 }
 
 return M

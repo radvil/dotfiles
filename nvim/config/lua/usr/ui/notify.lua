@@ -5,7 +5,7 @@ M[1] = "rcarriga/nvim-notify"
 M.event = "BufReadPost"
 M.opts = function()
   local opts = {
-    timeout = 666,
+    timeout = 1000,
     max_height = function()
       return math.floor(vim.o.lines * 0.75)
     end,

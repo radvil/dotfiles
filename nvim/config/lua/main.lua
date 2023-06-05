@@ -1,8 +1,6 @@
-require("run.overrides")
-require("opt.cmd")
-require("run.autocmds")
-require("run.plugins")
+require("boot").setup({ leaderKey = " " })
 require("opt.options")
+require("opt.autocmds")
 require("opt.keymaps")
 
 Log("CORE LOADED", "^ ROOT")

@@ -5,6 +5,9 @@ M[1] = "echasnovski/mini.indentscope"
 M.enabled = true
 M.event = { "BufReadPre", "BufNewFile" }
 M.opts = {
+  draw = {
+    delay = 500,
+  },
   symbol = "│",
   mappings = {
     goto_top = '[i',
