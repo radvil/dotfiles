@@ -4,6 +4,7 @@ M[1] = "nvim-neo-tree/neo-tree.nvim"
 
 M.dependencies = {
   "nvim-tree/nvim-web-devicons",
+  "s1n7ax/nvim-window-picker",
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
 }
