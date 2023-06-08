@@ -101,6 +101,6 @@ Map("n", "<leader>gg", function() util.float_term({ "lazygit" }) end, { desc = "
 --   { desc = " Git » Open Lazy Git [cwd]" })
 
 -- floating terminal
-Map("n", "<leader>ft", function() util.float_term(nil, { cwd = util.get_root() }) end, { desc = "Terminal (root dir)" })
+Map("n", "<leader>ft", function() util.float_term(nil, { cwd = util.get_root() }) end, { desc = "Terminal (root)" })
 Map("n", "<leader>fT", function() util.float_term() end, { desc = "Terminal (cwd)" })
 Map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
