@@ -26,14 +26,14 @@ M.keys = {
   },
   {
     "<Leader>/f",
-    "<Cmd>Telescope find_files<Cr>",
-    desc = "telescope » find files [root]",
+    "<Cmd>Telescope find_files<cr>",
+    desc = "telescope » find files (root)",
   },
-  {
-    "<Leader>/w",
-    "<Cmd>Telescope live_grep<Cr>",
-    desc = "telescope » live grep",
-  },
+  { "<Leader>/w", util.telescope("live_grep"),                    desc = "telescope » live grep (cwd)" },
+  { "<Leader>/W", util.telescope("live_grep", { cwd = false }),   desc = "telescope » live grep (root)" },
+  { "<Leader>/S", util.telescope("grep_string"),                  desc = "telescope » grep Word (cwd)" },
+  { "<Leader>/s", util.telescope("grep_string", { cwd = false }), desc = "telescope » grep Word (root)" },
+  { "<Leader>//", "<cmd>Telescope resume<cr>",                    desc = "telescope » resume" },
   {
     "<Leader>/:",
     "<Cmd>Telescope command_history<Cr>",
