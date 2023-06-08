@@ -1,3 +1,4 @@
+local icons = require "media.icons"
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-neo-tree/neo-tree.nvim"
@@ -62,7 +63,9 @@ M.init = function()
     text = "",
   })
 end
-
+local i = function(icon)
+  return string.format("%s ", icon)
+end
 M.opts = {
   close_if_last_window = true,
   popup_border_style = "rounded",
@@ -81,15 +84,17 @@ M.opts = {
     },
     git_status = {
       symbols = {
-        added = " ",
-        modified = "",
-        deleted = " ",
-        renamed = " ",
-        untracked = " ",
-        ignored = " ",
-        unstaged = "✗ ",
-        staged = " ",
-        conflict = " ",
+        -- Change type
+        added = i(icons.Git.AddedFilled),
+        deleted = i(icons.Git.DeletedFilled),
+        modified = i(icons.Git.Modified),
+        renamed = i(icons.Git.Renamed),
+        -- Status type
+        staged = i(icons.Git.StagedFilled),
+        unstaged = i(icons.Git.UnstagedFilled),
+        untracked = i(icons.Git.Untracked),
+        conflict = i(icons.Git.Conflict),
+        ignored = i(icons.Git.Ignored),
       },
     },
   },
@@ -110,8 +115,8 @@ M.opts = {
       ["o"] = "open_with_window_picker",
       ["<cr>"] = "open",
       ["<2-LeftMouse>"] = "open",
-      ["vs"] = "open_vsplit",
-      ["sp"] = "open_split",
+      ["gy"] = "open_vsplit",
+      ["gx"] = "open_split",
 
       ["t"] = "open_tabnew",
       ["h"] = "close_node",
