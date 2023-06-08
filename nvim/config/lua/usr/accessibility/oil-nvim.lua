@@ -16,7 +16,7 @@ M.keys = {
     function()
       require("oil").toggle_float()
     end,
-    desc = "oil-nvim » toggle (float)"
+    desc = "Float » Explorer (pwd)"
   }
 }
 M.deactivate = function()
