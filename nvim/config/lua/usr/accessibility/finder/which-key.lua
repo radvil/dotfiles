@@ -38,7 +38,7 @@ M.init = function()
     ["<Leader>S"] = { name = "Session" },
     ["<Leader>f"] = { name = "Float" },
     ["<Leader>g"] = { name = "Git" },
-    ["<Leader>j"] = { name = "JavaScript/TypeScript" },
+    ["<Leader>j"] = { name = "Javascript actions" },
     ["so"] = { name = "Surrond textobject" },
   })
 end
