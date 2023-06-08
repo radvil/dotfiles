@@ -18,9 +18,9 @@ M.opts = {
     local function gs()
       return package.loaded.gitsigns
     end
-    vim.keymap.set("n", "<C-z>g", function()
+    vim.keymap.set("n", "<c-z>g", function()
       gs().toggle_current_line_blame()
-    end, { buffer = buffer, desc = "git sign » blame line" })
+    end, { buffer = buffer, desc = "git sign » toggle blame line" })
     vim.keymap.set("n", "<Leader>gd", function()
       gs().diffthis()
     end, { buffer = buffer, desc = "git sign » diff buffer" })
