@@ -36,7 +36,7 @@ M.init = function()
     ["<Leader>m"] = { name = "Tmux" },
     ["<Leader>s"] = { name = "Spectre" },
     ["<Leader>S"] = { name = "Session" },
-    ["<Leader>f"] = { name = "File action" },
+    ["<Leader>f"] = { name = "Float" },
     ["<Loader>g"] = { name = "Git" },
     ["so"] = { name = "Surrond textobject" },
   })
