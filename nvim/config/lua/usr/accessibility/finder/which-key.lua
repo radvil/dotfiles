@@ -18,7 +18,7 @@ M.opts = {
   },
   layout = {
     spacing = 7,
-    align = "center",
+    -- align = "center",
   },
   disable = {
     buftypes = { "terminal" },
