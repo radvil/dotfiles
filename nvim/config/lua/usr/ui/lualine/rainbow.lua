@@ -2,19 +2,17 @@ local icons = require("media.icons")
 local palette = require("media.colors").palette
 local vmodecolor = require("media.colors").vim_mode
 local utils = require("usr.ui.lualine.utils")
-
 local bgcolor = utils.get_bgcolor(palette.bg)
 local M = {}
 
+M.extensions = { "neo-tree", "lazy" }
+
 M.options = {
-  disabled_filetypes = {
-    "alpha",
-    "Dashboard",
-  },
-  globalstatus = true,
+  disabled_filetypes = { "alpha", "Dashboard", },
   component_separators = "",
   section_separators = "",
-  icons_enabled = true,
+  icons_enabled = false,
+  globalstatus = true,
   theme = "auto",
 }
 
@@ -106,12 +104,24 @@ insert_left({
   end,
 })
 
-insert_arrow({
-  left = function()
-    return vmodecolor[vim.fn.mode()]
+-- insert_arrow({
+--   left = function()
+--     return vmodecolor[vim.fn.mode()]
+--   end,
+--   middle = palette.orange,
+--   right = palette.yellow,
+-- })
+
+insert_left({
+  function()
+    return icons.Git.Branch
   end,
-  middle = palette.orange,
-  right = palette.yellow,
+  color = function()
+    return {
+      bg = palette.orange,
+      fg = bgcolor
+    }
+  end,
 })
 
 ---git branch
@@ -125,19 +135,19 @@ insert_left({
   },
   fmt = function(str)
     if str == "" or str == nil then
-      return "!= vcs"
+      return "<empty>"
     end
     return str
   end,
 })
 
-insert_arrow({
-  left = palette.yellow,
-  middle = palette.violet,
-  right = function()
-    return IsBufferNotEmpty() and utils.get_filemeta().color or ""
-  end,
-})
+-- insert_arrow({
+--   left = palette.yellow,
+--   middle = palette.violet,
+--   right = function()
+--     return IsBufferNotEmpty() and utils.get_filemeta().color or ""
+--   end,
+-- })
 
 ---file's icon + name
 insert_left({
@@ -167,10 +177,11 @@ insert_left({
     })
     local fname_suffix = utils.create_hi("FileNameSuffix", {
       content = separator,
-      bg = palette.blue,
+      bg = meta.color,
       fg = palette.green,
     })
     return ficon .. ficon_suffix .. fname .. fname_suffix
+    -- return ficon .. fname .. fname_suffix
   end,
 })
 
@@ -182,7 +193,7 @@ insert_left({
   cond = IsBufferNotEmpty,
   color = function()
     return {
-      fg = palette.blue,
+      fg = utils.get_filemeta(utils.get_filename()).color
     }
   end,
 })
@@ -220,13 +231,13 @@ insert_left({
   "diagnostics",
   sources = { "nvim_diagnostic" },
   symbols = {
-    error = icons.Diagnostics.Error,
-    warn = icons.Diagnostics.Warn,
-    info = icons.Diagnostics.Info,
+    Error = icons.Diagnostics.Error,
+    Warn = icons.Diagnostics.Warn,
+    Info = icons.Diagnostics.Info,
   },
   diagnostics_color = {
     color_error = { fg = palette.red },
-    color_info = { fg = palette.cyan },
+    color_info = { fg = palette.blue },
     color_warn = { fg = palette.yellow },
   },
 })
@@ -236,22 +247,6 @@ insert_left({
   function()
     return "%="
   end,
-})
-
----git signs
-insert_right({
-  "diff",
-  cond = IsGitWorkspace,
-  symbols = {
-    added = icons.Git.Untracked .. " ",
-    modified = icons.Git.Unstaged .. " ",
-    removed = icons.Git.Deleted .. " ",
-  },
-  diff_color = {
-    added = { fg = palette.green },
-    modified = { fg = palette.yellow },
-    removed = { fg = palette.red },
-  },
 })
 
 -- ---command status
@@ -269,14 +264,30 @@ insert_right({
 --   end,
 -- })
 
+---git signs
+insert_right({
+  "diff",
+  cond = IsGitWorkspace,
+  symbols = {
+    added = icons.Git.AddedFilled .. " ",
+    modified = icons.Git.UnstagedFilled .. " ",
+    removed = icons.Git.DeletedFilled .. " ",
+  },
+  diff_color = {
+    added = { fg = palette.green },
+    modified = { fg = palette.yellow },
+    removed = { fg = palette.red },
+  },
+})
+
 ---file size
 insert_right({
   "filesize",
   cond = IsBufferNotEmpty,
   padding = 0,
-  color = utils.fg("Special"),
+  color = utils.fg("Special", true),
   fmt = function(filesize)
-    return " " .. filesize .. " "
+    return "│ " .. filesize .. " "
   end,
 })
 
@@ -289,7 +300,7 @@ insert_right({
     gui = "bold",
   },
   fmt = function(progress)
-    return " " .. progress .. " "
+    return "│ " .. progress .. " "
   end,
 })
 
@@ -302,7 +313,7 @@ insert_right({
     fg = palette.yellow,
   },
   fmt = function(location)
-    return " " .. location .. " "
+    return "│ " .. location .. " "
   end,
 })
 
