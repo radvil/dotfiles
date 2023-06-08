@@ -2,27 +2,23 @@
 local M = {}
 M[1] = "folke/zen-mode.nvim"
 M.cmd = "ZenMode"
+M.keys = {
+  {
+    "<Leader>wf",
+    ":ZenMode<cr>",
+    desc = "fokus-nvim » toggle zen mode",
+  },
+}
 M.opts = {
   window = {
     backdrop = 0.95,
     width = 120,
     height = 1,
     options = {
-      -- signcolumn = "no",
-      -- number = false,
-      -- relativenumber = false,
-      -- cursorline = false,
-      -- cursorcolumn = false,
       foldcolumn = "0",
-      -- list = false,
     },
   },
   plugins = {
-    -- options = {
-    --   enabled = true,
-    --   ruler = false,
-    --   showcmd = false,
-    -- },
     twilight = {
       enabled = false,
     },
@@ -41,7 +37,5 @@ M.opts = {
       font = "14",
     },
   },
-  -- on_open = function(win) end,
-  -- on_close = function() end,
 }
 return M
