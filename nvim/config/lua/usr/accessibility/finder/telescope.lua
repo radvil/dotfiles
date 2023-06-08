@@ -60,6 +60,11 @@ M.keys = {
     desc = "telescope » find help tags",
   },
   {
+    "<f1>",
+    ":Telescope help_tags<cr>",
+    desc = "telescope » find help tags",
+  },
+  {
     "<Leader>/H",
     "<Cmd>Telescope highlights<Cr>",
     desc = "telescope » find highlights",
