@@ -71,6 +71,7 @@ Map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "swap selected lines up" })
 Map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "swap selected lines down" })
 
 -- windows
+Map("n", "<leader>ww", "<c-w>p", { desc = "Window » other" })
 Map("n", "<leader>wd", "<c-w>c", { desc = "window » delete" }) -- TODO: same as <Cmd>close ??
 Map("n", "<c-up>", ":resize +2<cr>", { desc = "window » height++" })
 Map("n", "<c-down>", ":resize -2<cr>", { desc = "window » height--" })
@@ -78,9 +79,10 @@ Map("n", "<c-left>", ":vertical resize -2<cr>", { desc = "window » width--" })
 Map("n", "<c-right>", ":vertical resize +2<cr>", { desc = "window » width++" })
 
 -- buffers
-Map("n", "[b", ":bprevious<cr>", { desc = "buffer » prev" })
-Map("n", "]b", ":bnext<cr>", { desc = "buffer » next" })
-
+Map("n", "<Leader>`", "<cmd>e #<cr>", { desc = "Buffer » switch to other" })
+Map("n", "<Leader>bb", "<cmd>e #<cr>", { desc = "Buffer » switch to other" })
+Map("n", "[b", ":bprevious<cr>", { desc = "Buffer » prev" })
+Map("n", "]b", ":bnext<cr>", { desc = "Buffer » next" })
 if not util.has("mini.bufremove") then
   Map("n", "<leader>bd", ":bdelete<cr>", { desc = "buffer » delete" })
   Map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "buffer » delete (all)" })
