@@ -166,16 +166,24 @@ M.Folder = {
 }
 
 M.Git = {
-  BranchAlt = "",
-  Unstaged = "✗",
-  Staged = "✓",
-  Unmerged = "",
-  Renamed = "➜",
+  Branch = "",
+  Gitlab = "",
+  Github = "󰊤",
+  Copilot = "",
+  Added = "",
+  AddedFilled = "",
+  Staged = "",
+  StagedFilled = "",
+  Unstaged = "󰅘",
+  UnstagedFilled = "󰅗",
+  Modified = "",
+  Unmerged = "",
+  Renamed = "",
   Deleted = "",
   DeletedFilled = "",
-  Untracked = "",
-  UntrackedFilled = "",
-  Ignored = "◌",
+  Untracked = "",
+  Ignored = "",
+  Conflict = "",
 }
 
 M.KindIcons = {
