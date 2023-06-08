@@ -43,10 +43,10 @@ if not util.has("mini.animate") then
 end
 
 if vim.opt.clipboard ~= "unnamedplus" then
-  Map({ "n", "x", "v" }, "gy", '"+y', { desc = "system clipboard » copy" })
-  Map({ "n", "x", "v" }, "gY", '"+y$', { desc = "system clipboard » copy line" })
-  Map({ "n", "x", "v" }, "gp", '"+p', { desc = "system clipboard » paste before cursor" })
-  Map({ "n", "x", "v" }, "gP", '"+P', { desc = "system clipboard » pase after cursor" })
+  Map({ "n", "x", "v" }, "gy", '"+y', { nowait = true, desc = "system clipboard » copy" })
+  Map("n", "gY", '"+y$', { nowait = true, desc = "system clipboard » copy line" })
+  Map({ "n", "x", "v" }, "gp", '"+p', { nowait = true, desc = "system clipboard » paste before cursor" })
+  Map("n", "gP", '"+P', { nowait = true, desc = "system clipboard » pase after cursor" })
 end
 
 -- move to window using the <ctrl> hjkl keys
@@ -95,12 +95,12 @@ Map("n", "<c-z>n", function()
   util.toggle("relativenumber", true)
   util.toggle("number")
 end, { desc = "toggle » line numbers" })
-Map("n", "<leader>gg", function() util.float_term({ "lazygit" }) end, { desc = "LazyGit » open float (cwd)" })
--- Map("n", "<leader>gg",
---   function() if os.getenv("TMUX") ~= nil then vim.cmd [[call system('lg --popup')]] else util.float_term({ "lazygit" }) end end,
---   { desc = " Git » Open Lazy Git [cwd]" })
 
 -- floating terminal
-Map("n", "<leader>ft", function() util.float_term(nil, { cwd = util.get_root() }) end, { desc = "Terminal (root)" })
-Map("n", "<leader>fT", function() util.float_term() end, { desc = "Terminal (cwd)" })
+Map("n", "<leader>fG", function() util.float_term({ "lazygit" }, { cwd = util.get_root() }) end,
+  { desc = "Float » lazygit open (root)" })
+Map("n", "<leader>fg", function() util.float_term({ "lazygit" }) end, { desc = "Float » lazygit open (cwd)" })
+Map("n", "<leader>ft", function() util.float_term(nil, { cwd = util.get_root() }) end,
+  { desc = "Float » terminal (root)" })
+Map("n", "<leader>fT", function() util.float_term() end, { desc = "Float » terminal (cwd)" })
 Map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
