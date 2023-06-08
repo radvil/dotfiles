@@ -26,19 +26,23 @@ M.dependencies = {
 local function attach_keymappings(buffer)
   buffer = buffer or 0
   Map("n", "gM", ":TypescriptAddMissingImports<CR>", {
-    desc = "Add missing imports",
+    desc = "Typescript » Add missing imports",
     buffer = buffer,
   })
   Map("n", "gO", ":TypescriptOrganizeImports<CR>", {
-    desc = "Add organize imports",
+    desc = "Typescript » Organize imports",
     buffer = buffer,
   })
-  Map("n", "<F2>", ":TypescriptRenameFile<CR>", {
+  Map("n", "gR", ":TypescriptRenameFile<CR>", {
     buffer = buffer,
-    desc = "Rename file",
+    desc = "Typescrpt » Rename file",
   })
   Map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
-    desc = "Go to source definition",
+    desc = "Typescript » Go to source",
+    buffer = buffer,
+  })
+  Map("n", "gC", ":TypescriptRemoveUnused<cr>", {
+    desc = "Typescript » Remove unused imports",
     buffer = buffer,
   })
 end
