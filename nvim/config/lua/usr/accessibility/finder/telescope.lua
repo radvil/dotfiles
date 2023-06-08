@@ -46,8 +46,13 @@ M.keys = {
   },
   {
     "<Leader>/o",
-    "<Cmd>Telescope oldfiles<Cr>",
-    desc = "telescope » find recent files",
+    util.telescope("oldfiles", { cwd = vim.loop.cwd() }),
+    desc = "telescope » find recent files (cwd)",
+  },
+  {
+    "<Leader>/O",
+    ":Telescope oldfiles<cr>",
+    desc = "telescope » find recent files (root)",
   },
   {
     "<Leader>/h",
@@ -79,6 +84,16 @@ M.keys = {
     "<Cmd>Telescope commands<Cr>",
     desc = "telescope » find available commands",
   },
+  {
+    "<Leader>/X",
+    ":Telescope diagnostics<cr>",
+    desc = "telescope » workspace diagnostics",
+  },
+  {
+    "<Leader>/x",
+    ":Telescope diagnostics bufnr=0<cr>",
+    desc = "telescope » find diagnostics (cwd)",
+  },
 }
 
 M.opts = function()
@@ -96,15 +111,14 @@ M.opts = function()
           ["<C-h>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
           ["<C-p>"] = actions.move_selection_previous,
-          ["<C-Down>"] = actions.cycle_history_next,
-          ["<C-Up>"] = actions.cycle_history_prev,
+          ["<A-j>"] = actions.cycle_history_next,
+          ["<A-k>"] = actions.cycle_history_prev,
           ["<C-n>"] = actions.move_selection_next,
           ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
           ["<C-d>"] = actions.preview_scrolling_down,
           ["<C-u>"] = actions.preview_scrolling_up,
         },
         ["n"] = {
-          ["q"] = actions.close,
           ["<C-p>"] = actions.move_selection_previous,
           ["<C-n>"] = actions.move_selection_next,
           ["<C-h>"] = actions.select_horizontal,
