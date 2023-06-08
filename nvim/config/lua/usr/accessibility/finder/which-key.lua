@@ -37,7 +37,8 @@ M.init = function()
     ["<Leader>s"] = { name = "Spectre" },
     ["<Leader>S"] = { name = "Session" },
     ["<Leader>f"] = { name = "Float" },
-    ["<Loader>g"] = { name = "Git" },
+    ["<Leader>g"] = { name = "Git" },
+    ["<Leader>j"] = { name = "JavaScript/TypeScript" },
     ["so"] = { name = "Surrond textobject" },
   })
 end
