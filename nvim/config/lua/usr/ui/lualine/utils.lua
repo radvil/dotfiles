@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local M = {}
 
 M.custom_labels = {
@@ -48,11 +49,12 @@ M.get_server_names = function()
   return "No Lsp attached"
 end
 
-function M.fg(name)
+---@param bold? boolean
+function M.fg(name, bold)
   return function()
     ---@type {foreground?:number}?
     local hl = vim.api.nvim_get_hl_by_name(name, true)
-    return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
+    return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground), bold = bold or false }
   end
 end
 
