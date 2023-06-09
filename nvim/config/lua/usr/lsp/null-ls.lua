@@ -2,7 +2,6 @@
 --- @type LazySpec
 local M = {}
 M[1] = "jose-elias-alvarez/null-ls.nvim"
-M.enabled = true
 M.dependencies = { "williamboman/mason.nvim" }
 M.event = "BufReadPre"
 
