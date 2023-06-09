@@ -4,11 +4,11 @@ local util = require("utils")
 -- ' g' `, ← all of these are the same keys to list marks
 
 -- reset
-Map("", "<c-z><c-z>", "", { silent = true, noremap = true })
-Map({ "n", "x", "v" }, "<nl>", "<nop>", { silent = true, noremap = true })
-Map("n", "<a-cr>", "<nop>", { silent = true, noremap = true })
-Map("i", "<a-bs>", "<nop>", { silent = true, noremap = true })
-Map("i", "<c-d>", "<nop>", { silent = true, noremap = true })
+Map("", "<c-z><c-z>", "")
+Map("i", "<c-d>", "<nop>")
+Map("n", "<a-cr>", "<nop>")
+Map("i", "<a-bs>", "<nop>")
+Map({ "n", "x", "v" }, "<nl>", "<nop>")
 
 -- base
 Map("v", "<", "<gv", { desc = "indent left" })
@@ -55,11 +55,6 @@ if os.getenv("TMUX") == nil then
   Map("n", "<c-j>", "<c-w>j", { desc = "window » navigate down" })
   Map("n", "<c-k>", "<c-w>k", { desc = "window » navigate up" })
   Map("n", "<c-l>", "<c-w>l", { desc = "window » navigate right" })
-else
-  Map("n", "<c-h>", ":TmuxNavigateLeft<cr>", { nowait = true, desc = "window/tmux » navigate left" })
-  Map("n", "<c-j>", ":TmuxNavigateDown<cr>", { nowait = true, desc = "window/tmux » navigate down" })
-  Map("n", "<c-k>", ":TmuxNavigateUp<cr>", { nowait = true, desc = "window/tmux » navigate up" })
-  Map("n", "<c-l>", ":TmuxNavigateRight<cr>", { nowait = true, desc = "window/tmux » navigate right" })
 end
 
 -- swap lines
