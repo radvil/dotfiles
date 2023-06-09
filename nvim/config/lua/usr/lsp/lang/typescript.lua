@@ -25,49 +25,27 @@ M.dependencies = {
 
 local function attach_keymappings(buffer)
   buffer = buffer or 0
-  -- Map("n", "gM", ":TypescriptAddMissingImports<CR>", {
-  --   desc = "Typescript » Add missing imports",
-  --   buffer = buffer,
-  -- })
-  -- Map("n", "gO", ":TypescriptOrganizeImports<CR>", {
-  --   desc = "Typescript » Organize imports",
-  --   buffer = buffer,
-  -- })
-  -- Map("n", "<Leader><f2>", ":TypescriptRenameFile<CR>", {
-  --   buffer = buffer,
-  --   desc = "Typescript » Rename file",
-  -- })
-  -- Map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
-  --   desc = "Typescript » Go to source",
-  --   buffer = buffer,
-  -- })
-  -- Map("n", "gC", ":TypescriptRemoveUnused<cr>", {
-  --   desc = "Typescript » Remove unused imports",
-  --   buffer = buffer,
-  -- })
-
-  -- NOTE: New experimental keymaps
-  Map("n", "<Leader>ji", ":TypescriptAddMissingImports<cr>", {
+  Map("n", "gM", ":TypescriptAddMissingImports<CR>", {
     desc = "Typescript » Add missing imports",
     buffer = buffer,
   })
-  Map("n", "<Leader>jo", ":TypescriptOrganizeImports<cr>", {
+  Map("n", "gO", ":TypescriptOrganizeImports<CR>", {
     desc = "Typescript » Organize imports",
     buffer = buffer,
   })
-  Map("n", "<Leader>jr", ":TypescriptRenameFile<cr>", {
+  Map("n", "<Leader><f2>", ":TypescriptRenameFile<CR>", {
     buffer = buffer,
     desc = "Typescript » Rename file",
   })
-  Map("n", "<Leader>jd", ":TypescriptGoToSourceDefinition<cr>", {
+  Map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
     desc = "Typescript » Go to source",
     buffer = buffer,
   })
-  Map("n", "<Leader>ju", ":TypescriptRemoveUnused<cr>", {
+  Map("n", "gC", ":TypescriptRemoveUnused<cr>", {
     desc = "Typescript » Remove unused imports",
     buffer = buffer,
   })
-  Map("n", "<Leader>jf", ":TypescriptFixAll<cr>", {
+  Map("n", "gF", ":TypescriptFixAll<cr>", {
     desc = "Typescript » Fix all",
     buffer = buffer,
   })
