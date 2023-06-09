@@ -25,4 +25,5 @@ M.config = function(_, opts)
     end
   end
 end
+
 return M
