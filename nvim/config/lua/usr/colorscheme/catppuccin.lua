@@ -1,15 +1,12 @@
-local env = function()
-  return rvim.theme
-end
-
 ---@type LazySpec
 local M = {}
 M[1] = "catppuccin/nvim"
 M.name = "catppuccin"
--- M.lazy = true
+
 M.opts = {
-  flavour = env().variant, -- latte, frappe, macchiato, mocha
-  transparent_background = env().transbg,
+  ---@type "latte" | "frappe" | "macchiato" | "mocha"
+  flavour = rvim.theme.variant,
+  transparent_background = rvim.theme.transbg,
   term_colors = true,
   dim_inactive = {
     enabled = false,
@@ -47,15 +44,15 @@ M.opts = {
     hop = true,
     notify = true,
     telekasten = false,
-    symbols_outline = true,
-    mini = true,
+    symbols_outline = false,
+    mini = false,
     navic = false,
-    noice = true,
+    noice = false,
     fidget = false,
     neotree = true,
     nvimtree = {
-      enabled = true,
-      transparent_panel = env().transbg,
+      enabled = false,
+      transparent_panel = rvim.theme.transbg,
       show_root = true,
     },
     dap = {
@@ -63,7 +60,7 @@ M.opts = {
       enable_ui = false,
     },
     indent_blankline = {
-      enabled = true,
+      enabled = false,
       colored_indent_levels = false,
     },
     native_lsp = {
@@ -83,11 +80,13 @@ M.opts = {
     },
   },
 }
-if env().colorscheme == "catppuccin" then
+
+if rvim.theme.colorscheme == "catppuccin" then
   M.priority = 999
   M.lazy = false
   M.init = function()
     vim.cmd("colorscheme catppuccin")
   end
 end
+
 return M
