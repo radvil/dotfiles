@@ -18,11 +18,11 @@ function regpath() {
 	if [[ -z "$PATH" ]]; then
 		export PATH="$1"
 	else
-    if [[ ":$PATH:" != *":$1:"* ]]; then
-      # echo "adding $1 to PATH"
-      export PATH="$1:$PATH"
-    fi
-    # export path alias
+		if [[ ":$PATH:" != *":$1:"* ]]; then
+			# echo "adding $1 to PATH"
+			export PATH="$1:$PATH"
+		fi
+		# export path alias
 		[[ -n "$2" ]] && export "$2"="$1"
 	fi
 }
