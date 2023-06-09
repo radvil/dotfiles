@@ -1,6 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/Projects/go-journeys/src
 - /home/radvil/AMI/ami-erp-project
 - /home/radvil/AMI/mykado-console
 - /home/radvil/Projects/web-projects/nx-radvil
