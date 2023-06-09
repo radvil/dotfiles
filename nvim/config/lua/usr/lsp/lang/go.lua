@@ -1,31 +1,3 @@
----@type LazySpec
-local treesitter = {
-  "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    vim.list_extend(opts.ensure_installed, {
-      "go",
-      "gomod",
-      "gowork",
-      "gosum",
-    })
-  end,
-}
-
----@type LazySpec
-local neotest = {
-  "nvim-neotest/neotest",
-  optional = true,
-  dependencies = { "nvim-neotest/neotest-go", },
-  opts = {
-    adapters = {
-      ["neotest-go"] = {
-        -- Here we can set options for neotest-go, e.g.
-        -- args = { "-tags=integration" }
-      },
-    },
-  },
-}
-
 local server_options = {
   settings = {
     gopls = {
@@ -52,8 +24,30 @@ local server_options = {
 
 ---@type LazySpec[]
 return {
-  treesitter,
-  neotest,
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "go",
+        "gomod",
+        "gowork",
+        "gosum",
+      })
+    end,
+  },
+  {
+    "nvim-neotest/neotest",
+    optional = true,
+    dependencies = { "nvim-neotest/neotest-go", },
+    opts = {
+      adapters = {
+        ["neotest-go"] = {
+          -- Here we can set options for neotest-go, e.g.
+          -- args = { "-tags=integration" }
+        },
+      },
+    },
+  },
   {
     "neovim/nvim-lspconfig",
     ---@type RvimLspOptions
