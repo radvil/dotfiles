@@ -22,8 +22,8 @@ M.g = {
 }
 
 M.theme = {
-  colorscheme = "tokyonight",
-  variant = "moon",
+  colorscheme = "catppuccin",
+  variant = "mocha",
   transbg = true,
   force_darkmode = true,
   rainbow_brackets = false,
