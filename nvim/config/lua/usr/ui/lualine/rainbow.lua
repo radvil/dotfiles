@@ -141,13 +141,13 @@ insert_left({
   end,
 })
 
--- insert_arrow({
---   left = palette.yellow,
---   middle = palette.violet,
---   right = function()
---     return IsBufferNotEmpty() and utils.get_filemeta().color or ""
---   end,
--- })
+insert_arrow({
+  left = palette.yellow,
+  middle = palette.violet,
+  right = function()
+    return IsBufferNotEmpty() and utils.get_filemeta().color or ""
+  end,
+})
 
 ---file's icon + name
 insert_left({
