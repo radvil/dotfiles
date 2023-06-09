@@ -1,0 +1,66 @@
+---@type LazySpec
+local treesitter = {
+  "nvim-treesitter/nvim-treesitter",
+  opts = function(_, opts)
+    vim.list_extend(opts.ensure_installed, {
+      "go",
+      "gomod",
+      "gowork",
+      "gosum",
+    })
+  end,
+}
+
+---@type LazySpec
+local neotest = {
+  "nvim-neotest/neotest",
+  optional = true,
+  dependencies = { "nvim-neotest/neotest-go", },
+  opts = {
+    adapters = {
+      ["neotest-go"] = {
+        -- Here we can set options for neotest-go, e.g.
+        -- args = { "-tags=integration" }
+      },
+    },
+  },
+}
+
+local server_options = {
+  settings = {
+    gopls = {
+      semanticTokens = true,
+    },
+  },
+  on_attach = function(client, buffer)
+    -- workaround for gopls not supporting semantictokensprovider
+    -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+    if not client.server_capabilities.semanticTokensProvider then
+      local semantic = client.config.capabilities.textDocument.semanticTokens
+      client.server_capabilities.semanticTokensProvider = {
+        full = true,
+        legend = {
+          tokenTypes = semantic.tokenTypes,
+          tokenModifiers = semantic.tokenModifiers,
+        },
+        range = true,
+      }
+    end
+    require("usr.lsp.common.utils").on_attach(client, buffer)
+  end
+}
+
+---@type LazySpec[]
+return {
+  treesitter,
+  neotest,
+  {
+    "neovim/nvim-lspconfig",
+    ---@type RvimLspOptions
+    opts = {
+      servers = {
+        gopls = server_options
+      },
+    },
+  }
+}
