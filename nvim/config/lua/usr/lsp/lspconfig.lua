@@ -1,4 +1,3 @@
----@desc: language service provider
 ---@type LazySpec
 local M = {}
 M[1] = "neovim/nvim-lspconfig"
@@ -32,10 +31,12 @@ M.dependencies = {
 ---@class RvimLspOptions
 M.opts = {
   install_missing_servers = true,
-  ---set to false if dont wanna auto install server
+  ---NOTE: set value to false to prevent autoinstall servers
   servers = {
     ["jsonls"] = true,
     ["bashls"] = true,
+    ["html"] = {},
+    ["cssls"] = {},
     ["lua_ls"] = {
       settings = {
         Lua = {
@@ -48,8 +49,6 @@ M.opts = {
         },
       },
     },
-    ["html"] = {},
-    ["cssls"] = {},
     ["tsserver"] = {
       settings = {
         typescript = {
@@ -71,15 +70,6 @@ M.opts = {
         },
       },
     },
-    ["emmet_ls"] = {
-      single_file_support = true,
-      on_attach = function(client, buffer)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-        require("usr.lsp.common.utils").on_attach(client, buffer)
-      end
-    },
-    ["angularls"] = require("usr.lsp.lang.angularls").get_server_opts,
   },
 }
 
@@ -90,9 +80,8 @@ local function get_defaults()
   }
 end
 
----@desc setup default servers and attach default handlers
 ---@param options RvimLspOptions
-local setup_servers = function(options)
+local setup_language_servers = function(options)
   local ensure_installed = {}
   ---@param opts function | table | boolean
   for server, opts in pairs(options.servers) do
@@ -120,7 +109,7 @@ end
 M.config = function(_, opts)
   require("usr.lsp.common.diagnostic").setup()
   require("usr.lsp.common.formatter").setup()
-  setup_servers(opts)
+  setup_language_servers(opts)
 end
 
 return M
