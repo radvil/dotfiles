@@ -22,7 +22,7 @@ M.keys = {
     mode = "n",
   },
   {
-    "<leader>/d",
+    "<leader>/.",
     ":Dotfiles<cr>",
     desc = "telescope » find dotfiles",
   },
