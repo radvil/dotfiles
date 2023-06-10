@@ -1,5 +1,4 @@
 local M = {}
-local util = require("lazy.core.util")
 
 M.root_patterns = { ".git", "lua" }
 
@@ -63,7 +62,8 @@ function M.toggle(option, silent, values)
       vim.opt_local[option] = values[1]
     end
     local opt = { title = "Option" }
-    return util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), opt)
+
+    return require("lazy.core.util").info("Set " .. option .. " to " .. vim.opt_local[option]:get(), opt)
   end
 
   vim.opt_local[option] = not vim.opt_local[option]:get()
@@ -71,9 +71,9 @@ function M.toggle(option, silent, values)
   if not silent then
     local opt = { title = "Option" }
     if vim.opt_local[option]:get() then
-      util.info("Enabled " .. option, opt)
+      require("lazy.core.util").info("Enabled " .. option, opt)
     else
-      util.warn("Disabled " .. option, opt)
+      require("lazy.core.util").warn("Disabled " .. option, opt)
     end
   end
 end
