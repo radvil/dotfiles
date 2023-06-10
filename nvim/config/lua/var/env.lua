@@ -15,6 +15,7 @@ opt.completion = true
 opt.maplocalleader = " "
 opt.lsp_diagnostics = true
 opt.lsp_formatonsave = true
+opt.notify_on_format = true
 opt.completion_copilot = false
 opt.completion_snippets = true
 opt.colorscheme = "tokyonight"
