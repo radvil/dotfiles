@@ -1,6 +1,6 @@
 require("core").bootstrap({
   -- register global variable(s) and api(s)
-  settings = require("var"),
+  settings = require("core").setup(),
 
   -- load all plugins's specs
   on_init = function(options)

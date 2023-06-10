@@ -2,6 +2,14 @@ local M = {}
 
 unpack = unpack or table.unpack
 
+function M.setup()
+  ---@class RnvSettings
+  return {
+    opt = require("core.env"),
+    api = require("core.api"),
+  }
+end
+
 ---@param params { settings: RnvSettings, on_init: function, after_init: function }
 function M.bootstrap(params)
   _G.rnv = params.settings
@@ -21,7 +29,7 @@ function M.bootstrap(params)
       "--filter=blob:none",
       "https://github.com/folke/lazy.nvim.git",
       "--branch=stable", -- latest stable release
-      datapath
+      datapath,
     })
     rnv.api.log("lazy.nvim installed...", "core")
   end
