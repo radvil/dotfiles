@@ -1,5 +1,7 @@
 ---@diagnostic disable: assign-type-mismatch
-if not rnv.opt.completion_copilot then return {} end
+if not rnv.opt.completion_copilot then
+  return {}
+end
 
 ---@type LazySpec[]
 return {
@@ -8,7 +10,7 @@ return {
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-      suggestion = { enabled = false, },
+      suggestion = { enabled = false },
       panel = { enabled = false },
     },
   },
