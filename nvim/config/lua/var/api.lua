@@ -3,24 +3,24 @@ local M = {}
 ---@param msg string
 ---@param prefix string | nil
 M.log = function(msg, prefix)
-  if not rnv.opt.dev then
+  if not rnv and not rnv.opt.dev then
     return
   end
   prefix = prefix or "Log"
   prefix = string.format("[%s]", prefix)
-  vim.api.nvim_echo({ { prefix, "Type" }, { " ≫ " .. msg } }, true, {})
+  vim.api.nvim_echo({ { prefix, "Type" }, { " » " .. msg } }, true, {})
 end
 
 ---display a warning message on console only for while in a dev mode
 ---@param msg string
 ---@param prefix string | nil
 M.warn = function(msg, prefix)
-  if not rnv.opt.dev then
+  if not rnv and not rnv.opt.dev then
     return
   end
   prefix = prefix or "Warn"
   prefix = string.format("[%s]", prefix)
-  vim.api.nvim_echo({ { prefix, "Label" }, { " ≫ " .. msg } }, true, {})
+  vim.api.nvim_echo({ { prefix, "Label" }, { " » " .. msg } }, true, {})
 end
 
 ---@param arg string
@@ -29,8 +29,6 @@ M.is_empty_string = function(arg)
   return arg == nil or arg == ""
 end
 
----TODO: refactors
----safety call to retrieve current buffer options
 ---@param opt string
 ---@return table | nil
 M.get_buf_opt = function(opt)
