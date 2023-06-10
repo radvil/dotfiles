@@ -4,7 +4,7 @@ local function get_server_options()
   local fback_root_files = { "nx.json", "workspace.json" }
   return {
     single_file_support = false,
-    capabilities = require("usr.lsp.common.utils").get_capabilities(),
+    capabilities = require("common.lsp").make_client_capabilities(),
     root_dir = function(fname)
       local original = util.root_pattern(unpack(root_files))(fname)
       local fallback = util.root_pattern(unpack(fback_root_files))(fname)
@@ -14,7 +14,7 @@ local function get_server_options()
       client.server_capabilities.renameProvider = false
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
-      require("usr.lsp.common.utils").on_attach(client, buffer)
+      require("common.lsp").attach_keymaps(client, buffer)
     end,
   }
 end
@@ -28,7 +28,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@type rvnLspOptions
+    ---@type RvnLspOptions
     opts = {
       servers = {
         angularls = get_server_options,
