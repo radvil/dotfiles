@@ -75,8 +75,8 @@ M.opts = {
 
 local function get_defaults()
   return {
-    capabilities = require("usr.lsp.common.utils").get_capabilities(),
-    on_attach = require("usr.lsp.common.utils").on_attach,
+    capabilities = require("common.lsp").make_client_capabilities(),
+    on_attach = require("common.lsp").default_on_attach,
   }
 end
 
