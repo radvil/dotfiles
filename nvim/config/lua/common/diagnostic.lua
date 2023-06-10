@@ -25,7 +25,7 @@ function M.setup()
     return
   end
 
-  for name, icon in pairs(require("media.icons").Diagnostics) do
+  for name, icon in pairs(require("opt.icons").Diagnostics) do
     name = "DiagnosticSign" .. name
     vim.fn.sign_define(name, {
       texthl = name,
@@ -46,7 +46,7 @@ function M.setup()
       -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
       -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
       -- prefix = "icons",
-      prefix = require("media.icons").Misc.Squirrel,
+      prefix = require("opt.icons").Misc.Squirrel,
       spacing = 4,
     },
   })

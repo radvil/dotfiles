@@ -45,13 +45,13 @@ M.opts = function()
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "copilot" },
-      { name = "buffer", keyword_length = 3 },
+      { name = "buffer",  keyword_length = 3 },
       { name = "path" },
     }),
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        local kind_icons = require("media.icons").KindIcons
+        local kind_icons = require("opt.icons").KindIcons
         local item_kind = vim_item.kind
         local sources = {
           nvim_lsp = item_kind,

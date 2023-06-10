@@ -1,4 +1,5 @@
-local icons = require("media.icons")
+---@diagnostic disable: undefined-field
+local icons = require("opt.icons")
 local function fg(name)
   return function()
     ---@type {foreground?:number}?

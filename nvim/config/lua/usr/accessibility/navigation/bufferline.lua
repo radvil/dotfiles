@@ -85,7 +85,7 @@ M.opts = {
     show_tab_indicators = true,
     always_show_bufferline = false,
     diagnostics_indicator = function(_, _, diag)
-      local icons = require("media.icons").Diagnostics
+      local icons = require("opt.icons").Diagnostics
       local ret = (diag.error and icons.Error .. diag.error .. " " or "")
           .. (diag.warning and icons.Warn .. diag.warning or "")
       return vim.trim(ret)
@@ -93,14 +93,14 @@ M.opts = {
     offsets = {
       {
         filetype = "NvimTree",
-        text = require("media.icons").Misc.Vim .. " Tree View",
+        text = require("opt.icons").Misc.Vim .. " Tree View",
         highlight = "BufferLineBackground",
         text_align = "left",
         separator = false,
       },
       {
         filetype = "neo-tree",
-        text = require("media.icons").Misc.Vim .. " Tree View",
+        text = require("opt.icons").Misc.Vim .. " Tree View",
         highlight = "BufferLineBackground",
         text_align = "left",
         separator = false,

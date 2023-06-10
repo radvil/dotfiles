@@ -14,7 +14,7 @@ M.keys = {
   },
 }
 M.opts = function()
-  local icons = require("media.icons")
+  local icons = require("opt.icons")
   return {
     hijack_unnamed_buffer_when_opening = false,
     auto_reload_on_write = true,

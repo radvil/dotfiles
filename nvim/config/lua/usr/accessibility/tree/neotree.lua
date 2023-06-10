@@ -1,4 +1,3 @@
-local icons = require("media.icons")
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-neo-tree/neo-tree.nvim"
@@ -65,98 +64,101 @@ M.init = function()
     text = "",
   })
 end
-local i = function(icon)
-  return string.format("%s ", icon)
-end
-M.opts = {
-  close_if_last_window = true,
-  popup_border_style = "rounded",
-  use_default_mappings = false,
-  filesystem = {
-    bind_to_cwd = false,
-    follow_current_file = true,
-    use_libuv_file_watcher = true,
-  },
-  default_component_configs = {
-    indent = {
-      with_expanders = true,
-      expander_collapsed = "",
-      expander_expanded = "",
-      expander_highlight = "NeoTreeExpander",
+M.opts = function()
+  local icons = require("opt.icons")
+  local i = function(icon)
+    return string.format("%s ", icon)
+  end
+  return {
+    close_if_last_window = true,
+    popup_border_style = "rounded",
+    use_default_mappings = false,
+    filesystem = {
+      bind_to_cwd = false,
+      follow_current_file = true,
+      use_libuv_file_watcher = true,
     },
-    git_status = {
-      symbols = {
-        -- Change type
-        added = i(icons.Git.AddedFilled),
-        deleted = i(icons.Git.DeletedFilled),
-        modified = i(icons.Git.Modified),
-        renamed = i(icons.Git.Renamed),
-        -- Status type
-        staged = i(icons.Git.StagedFilled),
-        unstaged = i(icons.Git.UnstagedFilled),
-        untracked = i(icons.Git.Untracked),
-        conflict = i(icons.Git.Conflict),
-        ignored = i(icons.Git.Ignored),
+    default_component_configs = {
+      indent = {
+        with_expanders = true,
+        expander_collapsed = "",
+        expander_expanded = "",
+        expander_highlight = "NeoTreeExpander",
+      },
+      git_status = {
+        symbols = {
+          -- Change type
+          added = i(icons.Git.AddedFilled),
+          deleted = i(icons.Git.DeletedFilled),
+          modified = i(icons.Git.Modified),
+          renamed = i(icons.Git.Renamed),
+          -- Status type
+          staged = i(icons.Git.StagedFilled),
+          unstaged = i(icons.Git.UnstagedFilled),
+          untracked = i(icons.Git.Untracked),
+          conflict = i(icons.Git.Conflict),
+          ignored = i(icons.Git.Ignored),
+        },
       },
     },
-  },
-  buffers = {
-    follow_current_file = true,
-    group_empty_dirs = true,
-    show_unloaded = true,
-  },
-  window = {
-    width = 46,
-    position = "left",
-    mapping_options = {
-      noremap = true,
-      nowait = true,
+    buffers = {
+      follow_current_file = true,
+      group_empty_dirs = true,
+      show_unloaded = true,
     },
-    mappings = {
-      ["l"] = "open",
-      ["o"] = "open_with_window_picker",
-      ["<cr>"] = "open",
-      ["<2-LeftMouse>"] = "open",
-      ["gy"] = "open_vsplit",
-      ["gx"] = "open_split",
+    window = {
+      width = 46,
+      position = "left",
+      mapping_options = {
+        noremap = true,
+        nowait = true,
+      },
+      mappings = {
+        ["l"] = "open",
+        ["o"] = "open_with_window_picker",
+        ["<cr>"] = "open",
+        ["<2-LeftMouse>"] = "open",
+        ["gy"] = "open_vsplit",
+        ["gx"] = "open_split",
 
-      ["t"] = "open_tabnew",
-      ["h"] = "close_node",
-      ["za"] = "toggle_node",
-      ["zc"] = "close_node",
-      ["zC"] = "close_all_nodes",
-      ["zO"] = "expand_all_nodes",
+        ["t"] = "open_tabnew",
+        ["h"] = "close_node",
+        ["za"] = "toggle_node",
+        ["zc"] = "close_node",
+        ["zC"] = "close_all_nodes",
+        ["zO"] = "expand_all_nodes",
 
-      ["a"] = "add",
-      ["d"] = "delete",
-      ["r"] = "rename",
-      ["<F2>"] = "rename",
-      ["c"] = "copy",
-      ["m"] = "move",
+        ["a"] = "add",
+        ["d"] = "delete",
+        ["r"] = "rename",
+        ["<F2>"] = "rename",
+        ["c"] = "copy",
+        ["m"] = "move",
 
-      ["y"] = "copy_to_clipboard",
-      ["x"] = "cut_to_clipboard",
-      ["p"] = "paste_from_clipboard",
+        ["y"] = "copy_to_clipboard",
+        ["x"] = "cut_to_clipboard",
+        ["p"] = "paste_from_clipboard",
 
-      ["<bs>"] = "navigate_up",
-      ["?"] = "show_help",
-      ["w"] = "toggle_preview",
-      ["W"] = { "toggle_preview", config = { use_float = true } },
-      ["<esc>"] = "revert_preview",
-      ["H"] = "toggle_hidden",
-      ["[g"] = "prev_git_modified",
-      ["]g"] = "next_git_modified",
+        ["<bs>"] = "navigate_up",
+        ["?"] = "show_help",
+        ["w"] = "toggle_preview",
+        ["W"] = { "toggle_preview", config = { use_float = true } },
+        ["<esc>"] = "revert_preview",
+        ["H"] = "toggle_hidden",
+        ["[g"] = "prev_git_modified",
+        ["]g"] = "next_git_modified",
 
-      ["."] = "set_root",
-      ["R"] = "refresh",
-      ["q"] = "close_window",
+        ["."] = "set_root",
+        ["R"] = "refresh",
+        ["q"] = "close_window",
 
-      ["/f"] = "fuzzy_finder",
-      ["/d"] = "fuzzy_finder_directory",
-      ["//"] = "filter_on_submit",
+        ["/f"] = "fuzzy_finder",
+        ["/d"] = "fuzzy_finder_directory",
+        ["//"] = "filter_on_submit",
+      },
     },
-  },
-}
+  }
+end
 
 M.config = function(_, opts)
   require("neo-tree").setup(opts)

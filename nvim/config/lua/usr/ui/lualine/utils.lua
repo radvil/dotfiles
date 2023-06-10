@@ -86,7 +86,7 @@ end
 ---@param name? string file name
 ---@param ext? string file extension
 function M.get_filemeta(name, ext)
-  local icon = require("media.icons").Common.File
+  local icon = require("opt.icons").Common.File
   local color = M.get_bgcolor()
   if require("nvim-web-devicons").has_loaded() then
     ext = ext or vim.fn.expand("%:e")
