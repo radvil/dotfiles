@@ -2,6 +2,7 @@
 local M = {}
 M[1] = "jose-elias-alvarez/typescript.nvim"
 M.event = "BufReadPre"
+
 M.dependencies = {
   {
     "williamboman/mason-lspconfig.nvim",
@@ -23,43 +24,41 @@ M.dependencies = {
   },
 }
 
-local function attach_keymappings(buffer)
+local function attach_specific_keymaps(buffer)
   buffer = buffer or 0
-  Map("n", "gM", ":TypescriptAddMissingImports<CR>", {
+  rnv.api.map("n", "gM", ":TypescriptAddMissingImports<CR>", {
     desc = "Typescript » Add missing imports",
     buffer = buffer,
   })
-  Map("n", "gO", ":TypescriptOrganizeImports<CR>", {
+  rnv.api.map("n", "gO", ":TypescriptOrganizeImports<CR>", {
     desc = "Typescript » Organize imports",
     buffer = buffer,
   })
-  Map("n", "<Leader><f2>", ":TypescriptRenameFile<CR>", {
+  rnv.api.map("n", "<Leader><f2>", ":TypescriptRenameFile<CR>", {
     buffer = buffer,
     desc = "Typescript » Rename file",
   })
-  Map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
+  rnv.api.map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
     desc = "Typescript » Go to source",
     buffer = buffer,
   })
-  Map("n", "gC", ":TypescriptRemoveUnused<cr>", {
+  rnv.api.map("n", "gC", ":TypescriptRemoveUnused<cr>", {
     desc = "Typescript » Remove unused imports",
     buffer = buffer,
   })
-  Map("n", "gF", ":TypescriptFixAll<cr>", {
+  rnv.api.map("n", "gF", ":TypescriptFixAll<cr>", {
     desc = "Typescript » Fix all",
     buffer = buffer,
   })
 end
 
 M.opts = function()
-  local utils = require("usr.lsp.common.utils")
-  local capabilities = utils.get_capabilities()
   return {
     server = {
-      capabilities = capabilities,
+      capabilities = require("common.lsp").make_client_capabilities(),
       on_attach = function(client, buffer)
-        utils.on_attach(client, buffer)
-        attach_keymappings(buffer)
+        require("common.lsp").default_on_attach(client, buffer)
+        attach_specific_keymaps(buffer)
       end,
     },
   }
