@@ -3,7 +3,7 @@ local opt = {}
 
 opt.name = "NgVim"
 opt.version = ">= 0.0.1"
-opt.dev = false
+opt.dev = true
 opt.transbg = true
 opt.mapleader = " "
 opt.darkmode = true
@@ -14,8 +14,8 @@ opt.statusline = true
 opt.completion = true
 opt.maplocalleader = " "
 opt.lsp_diagnostics = true
-opt.lsp_formatonsave = true
-opt.notify_on_format = false
+opt.lsp_autoformat = true
+opt.format_notification = false
 opt.completion_copilot = false
 opt.completion_snippets = true
 opt.colorscheme = "tokyonight"
