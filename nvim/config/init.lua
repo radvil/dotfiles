@@ -7,8 +7,8 @@ require("core").bootstrap({
     rnv.api.log("ON INIT", "init")
     require("lazy").setup({
       "folke/lazy.nvim",
+      require("libs.colorschemes"),
       require("usr.accessibility"),
-      require("usr.colorscheme"),
       require("usr.completion"),
       require("usr._preview"),
       require("usr.misc"),
@@ -23,5 +23,5 @@ require("core").bootstrap({
     require("opt.options")
     require("opt.autocmds")
     require("opt.keymaps")
-  end
+  end,
 })
