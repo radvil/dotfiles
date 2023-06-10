@@ -13,74 +13,74 @@ local default_keys = {
   {
     "]d",
     M.diagnostic_goto(true),
-    desc = "Lsp » Next diagnostic ref",
+    desc = "Doc diagnostic » Next reference",
   },
   {
     "[d",
     M.diagnostic_goto(false),
-    desc = "Lsp » Prev diagnostic ref",
+    desc = "Doc diagnostic » Prev reference",
   },
   {
     "]e",
     M.diagnostic_goto(true, "ERROR"),
-    desc = "Lsp » Next error ref",
+    desc = "Doc diagnostic » Next reference (error)",
   },
   {
     "[e",
     M.diagnostic_goto(false, "ERROR"),
-    desc = "Lsp » Prev error ref",
+    desc = "Doc diagnostic » Prev reference (error)",
   },
   {
     "]w",
     M.diagnostic_goto(true, "WARN"),
-    desc = "Lsp » Next warning",
+    desc = "Doc diagnostic » Next reference (warn)",
   },
   {
     "[w",
     M.diagnostic_goto(false, "WARN"),
-    desc = "Lsp » Next warning",
+    desc = "Doc diagnostic » Prev reference (warn)",
   },
   {
     "gh",
     vim.lsp.buf.hover,
-    desc = "Lsp » Hover",
+    desc = "LSP » Document hover",
   },
   {
     "gd",
     ":CD<cr>",
-    desc = "Lsp » Goto to definition",
+    desc = "LSP » Goto to definition",
   },
   {
     "ga",
     ":CA<cr>",
     mode = { "n", "v" },
     has = "codeAction",
-    desc = "Lsp » Code action",
+    desc = "LSP » Code action",
   },
   {
     "gf",
     ":CF<cr>",
     has = "documentFormatting",
-    desc = "Lsp » Format document",
+    desc = "LSP » Format document",
   },
   {
     "gf",
     ":CF<cr>",
     has = "documentRangeFormatting",
-    desc = "Lsp » Format selection",
+    desc = "LSP » Format selection",
     mode = "v",
   },
   {
     "gr",
     ":CR<cr>",
     has = "rename",
-    desc = "Lsp » Rename under cursor",
+    desc = "LSP » Rename under cursor",
   },
   {
     "<F2>",
     ":CR<cr>",
     has = "rename",
-    desc = "Lsp » Rename under cursor",
+    desc = "LSP » Rename under cursor",
   },
 }
 
@@ -95,7 +95,7 @@ local register_user_cmds = function()
   vim.api.nvim_create_user_command("CT", "Telescope lsp_type_definitions", {})
   vim.api.nvim_create_user_command("CX", "TroubleToggle", {})
   vim.api.nvim_create_user_command("CF", function()
-    require("usr.lsp.common.formatter").api.format_document({ force = true })
+    require("common.formatter").api.format_document({ force = true })
   end, {})
 end
 
