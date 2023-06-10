@@ -1,3 +1,5 @@
-_G.rnv = {}
-_G.rnv.opt = require("var.env")
-_G.rnv.api = require("var.api")
+---@class RnvSettings
+local M = {}
+M.opt = require("var.env")
+M.api = require("var.api")
+return M
