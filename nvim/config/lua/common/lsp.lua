@@ -1,0 +1,152 @@
+local M = {}
+
+function M.diagnostic_goto(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+
+---@type (LazyKeys|{has?:string})[]
+local default_keys = {
+  {
+    "]d",
+    M.diagnostic_goto(true),
+    desc = "Lsp » Next diagnostic ref",
+  },
+  {
+    "[d",
+    M.diagnostic_goto(false),
+    desc = "Lsp » Prev diagnostic ref",
+  },
+  {
+    "]e",
+    M.diagnostic_goto(true, "ERROR"),
+    desc = "Lsp » Next error ref",
+  },
+  {
+    "[e",
+    M.diagnostic_goto(false, "ERROR"),
+    desc = "Lsp » Prev error ref",
+  },
+  {
+    "]w",
+    M.diagnostic_goto(true, "WARN"),
+    desc = "Lsp » Next warning",
+  },
+  {
+    "[w",
+    M.diagnostic_goto(false, "WARN"),
+    desc = "Lsp » Next warning",
+  },
+  {
+    "gh",
+    vim.lsp.buf.hover,
+    desc = "Lsp » Hover",
+  },
+  {
+    "gd",
+    ":CD<cr>",
+    desc = "Lsp » Goto to definition",
+  },
+  {
+    "ga",
+    ":CA<cr>",
+    mode = { "n", "v" },
+    has = "codeAction",
+    desc = "Lsp » Code action",
+  },
+  {
+    "gf",
+    ":CF<cr>",
+    has = "documentFormatting",
+    desc = "Lsp » Format document",
+  },
+  {
+    "gf",
+    ":CF<cr>",
+    has = "documentRangeFormatting",
+    desc = "Lsp » Format selection",
+    mode = "v",
+  },
+  {
+    "gr",
+    ":CR<cr>",
+    has = "rename",
+    desc = "Lsp » Rename under cursor",
+  },
+  {
+    "<F2>",
+    ":CR<cr>",
+    has = "rename",
+    desc = "Lsp » Rename under cursor",
+  },
+}
+
+local register_user_cmds = function()
+  vim.api.nvim_create_user_command("CR", "lua vim.lsp.buf.rename()", {})
+  vim.api.nvim_create_user_command("CA", "lua vim.lsp.buf.code_action()", {})
+  vim.api.nvim_create_user_command("CD", "Telescope lsp_definitions", {})
+  vim.api.nvim_create_user_command("CV", vim.lsp.buf.signature_help, {})
+  vim.api.nvim_create_user_command("CI", "Telescope lsp_implementations", {})
+  vim.api.nvim_create_user_command("CL", "Telescope lsp_references", {})
+  -- TODO: handle documentSymbolProvider as "CS"
+  vim.api.nvim_create_user_command("CT", "Telescope lsp_type_definitions", {})
+  vim.api.nvim_create_user_command("CX", "TroubleToggle", {})
+  vim.api.nvim_create_user_command("CF", function()
+    require("usr.lsp.common.formatter").api.format_document({ force = true })
+  end, {})
+end
+
+function M.attach_keymaps(client, buffer)
+  register_user_cmds()
+  local Keys = require("lazy.core.handler.keys")
+  ---@type table<string,LazyKeys|{has?:string}>
+  local keymaps = {}
+  for _, value in ipairs(default_keys) do
+    local keys = Keys.parse(value)
+    if keys[2] == vim.NIL or keys[2] == false then
+      keymaps[keys.id] = nil
+    else
+      keymaps[keys.id] = keys
+    end
+  end
+  for _, keys in pairs(keymaps) do
+    if not keys.has or client.server_capabilities[keys.has .. "Provider"] then
+      local opts = Keys.opts(keys)
+      opts.has = nil
+      opts.silent = true
+      opts.buffer = buffer
+      vim.keymap.set(keys.mode or "n", keys[1], keys[2], opts)
+    end
+  end
+end
+
+function M.attach_symbols_handler(client, buffer)
+  if client.server_capabilities["documentSymbolProvider"] then
+    if require("utils").has("nvim-navic") then
+      require("nvim-navic").attach(client, buffer)
+    end
+  end
+end
+
+function M.make_client_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+  local nvim_cmp = rnv.api.call("cmp_nvim_lsp")
+  if nvim_cmp then
+    capabilities = nvim_cmp.default_capabilities(capabilities)
+  end
+  return capabilities
+end
+
+M.default_on_attach = function(client, buffer)
+  M.attach_symbols_handler(client, buffer)
+  M.attach_keymaps(client, buffer)
+end
+
+return M
