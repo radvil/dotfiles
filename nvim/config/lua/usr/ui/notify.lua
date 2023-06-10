@@ -30,7 +30,7 @@ M.keys = {
         pending = true,
       })
     end,
-    desc = "Toggle » Notification Prompt",
+    desc = "Notification » Dismiss",
   },
 }
 return M
