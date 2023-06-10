@@ -1,12 +1,12 @@
-local bgtrans = rnv.opt.transbg
-local darkmode = rnv.opt.darkmode
-local variant = not darkmode and "day" or rnv.opt.colorvariant or "storm"
-
 ---@type LazySpec
 local M = {}
 M[1] = "folke/tokyonight.nvim"
--- M.lazy = true
+
 M.opts = function()
+  local bgtrans = rnv.opt.transbg
+  local darkmode = rnv.opt.darkmode
+  local variant = not darkmode and "day" or rnv.opt.colorvariant or "storm"
+
   local opts = {
     style = variant,
     italic_functions = false,
@@ -37,11 +37,11 @@ M.opts = function()
   end
   return opts
 end
-if rnv.opt.colorscheme == "tokyonight" then
-  M.priority = 999
-  M.lazy = false
-  M.init = function()
+
+M.init = function()
+  if rnv.opt.colorscheme == "tokyonight" then
     vim.cmd("colorscheme tokyonight")
   end
 end
+
 return M
