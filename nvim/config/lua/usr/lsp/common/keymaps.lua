@@ -12,7 +12,7 @@ function M.register_user_cmds()
   vim.api.nvim_create_user_command("CT", "Telescope lsp_type_definitions", {})
   vim.api.nvim_create_user_command("CX", "TroubleToggle", {})
   vim.api.nvim_create_user_command("CF", function()
-    require("usr.lsp.common.formatter").format({ force = true })
+    require("usr.lsp.common.formatter").api.format_document({ force = true })
   end, {})
 end
 
@@ -63,38 +63,38 @@ M.keys = {
   },
   {
     "gd",
-    "<Cmd>CD<Cr>",
+    ":CD<cr>",
     desc = "Lsp » Goto to definition",
   },
   {
     "ga",
-    "<Cmd>CA<Cr>",
+    ":CA<cr>",
     mode = { "n", "v" },
     has = "codeAction",
     desc = "Lsp » Code action",
   },
   {
     "gf",
-    "<Cmd>CF<Cr>",
+    ":CF<cr>",
     has = "documentFormatting",
     desc = "Lsp » Format document",
   },
   {
     "gf",
-    "<Cmd>CF<Cr>",
+    ":CF<cr>",
     has = "documentRangeFormatting",
     desc = "Lsp » Format selection",
     mode = "v",
   },
   {
     "gr",
-    "<Cmd>CR<Cr>",
+    ":CR<cr>",
     has = "rename",
     desc = "Lsp » Rename under cursor",
   },
   {
     "<F2>",
-    "<Cmd>CR<Cr>",
+    ":CR<cr>",
     has = "rename",
     desc = "Lsp » Rename under cursor",
   },
