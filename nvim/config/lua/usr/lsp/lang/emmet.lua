@@ -1,7 +1,7 @@
 ---@type LazySpec[]
 return {
   "neovim/nvim-lspconfig",
-  ---@type rvnLspOptions
+  ---@type RvnLspOptions
   opts = {
     servers = {
       emmet_ls = {
@@ -9,7 +9,8 @@ return {
         on_attach = function(client, buffer)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
-          require("usr.lsp.common.utils").on_attach(client, buffer)
+          -- NOTE: test later
+          -- require("common.lsp").attach_keymaps(client, buffer)
         end
       }
     },
