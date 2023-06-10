@@ -4,15 +4,19 @@ local M = {}
 M[1] = "rcarriga/nvim-notify"
 M.event = "BufReadPost"
 M.opts = function(_, opts)
-  opts.timeout = 1000
-  opts.max_height = function()
-    return math.floor(vim.o.lines * 0.75)
-  end
-  opts.max_width = function()
-    return math.floor(vim.o.columns * 0.36)
-  end
-  if rnv.opt.transbg then
-    opts.background_colour = "#000000"
+  if not rnv.dev then
+    opts.timeout = 1000
+    opts.max_height = function()
+      return math.floor(vim.o.lines * 0.75)
+    end
+    opts.max_width = function()
+      return math.floor(vim.o.columns * 0.36)
+    end
+    if rnv.opt.transbg then
+      opts.background_colour = "#000000"
+    end
+  else
+    opts.timeout = 1000
   end
   return opts
 end
