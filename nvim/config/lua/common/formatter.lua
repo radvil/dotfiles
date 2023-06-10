@@ -1,18 +1,20 @@
 local M = {}
 
+M.loaded = false
+
 M.opts = {
-  formatonsave = rnv.opt.lsp_formatonsave,
-  notifyformat = rnv.opt.notify_on_format,
+  autoformat = rnv.opt.lsp_autoformat or false,
+  notifyformat = rnv.opt.format_notification or false
 }
 
-local function toggle_formatonsave()
+local function toggle_autoformat()
   if vim.b.autoformat == false then
     vim.b.autoformat = nil
-    M.opts.formatonsave = true
+    M.opts.autoformat = true
   else
-    M.opts.formatonsave = not M.opts.formatonsave
+    M.opts.autoformat = not M.opts.autoformat
   end
-  if M.opts.formatonsave then
+  if M.opts.autoformat then
     require("utils").info("Document » Autoformat Enabled", { title = "LSP" })
   else
     require("utils").warn("Document » Autoformat Disabled", { title = "LSP" })
@@ -123,7 +125,7 @@ local function format_document(opts)
 end
 
 M.api = {
-  toggle_formatonsave = toggle_formatonsave,
+  toggle_autoformat = toggle_autoformat,
   format_document = format_document,
   supports_format = supports_format,
   notify_onformat = notify_onformat,
@@ -131,23 +133,29 @@ M.api = {
 }
 
 function M.setup()
+  if M.loaded then
+    rnv.api.warn("formatter already loaded!", "common.formatter")
+    return
+  end
   -- register toggle event
   vim.api.nvim_create_user_command("RnvLspToggleAutoFormat", function()
-    toggle_formatonsave()
+    toggle_autoformat()
   end, {})
   --- register toggle keymaps
-  vim.keymap.set("n", "<c-z>f", toggle_formatonsave, {
+  vim.keymap.set("n", "<c-z>f", toggle_autoformat, {
     desc = "Toggle » Document format on save",
   })
   --- listen on format on save
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = vim.api.nvim_create_augroup("RnvLspAutoFormat", {}),
     callback = function()
-      if M.opts.formatonsave then
+      if M.opts.autoformat then
         format_document()
       end
     end,
   })
+
+  M.loaded = true
 end
 
 return M
