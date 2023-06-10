@@ -18,7 +18,7 @@ local server_options = {
         range = true,
       }
     end
-    require("usr.lsp.common.utils").on_attach(client, buffer)
+    require("common.lsp").default_on_attach(client, buffer)
   end
 }
 
@@ -50,7 +50,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@type rvnLspOptions
+    ---@type RvnLspOptions
     opts = {
       servers = {
         gopls = server_options
