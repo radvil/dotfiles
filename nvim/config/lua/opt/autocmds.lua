@@ -1,3 +1,5 @@
+rnv.api.log("Loading autocommands...", "opt.autocmds")
+
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({
   "FocusGained",
@@ -61,5 +63,3 @@ vim.api.nvim_create_autocmd("FileType", {
     require("nvim-treesitter.highlight").attach(0, "bash")
   end,
 })
-
-rnv.api.log("EVENTS LOADED!", "AUTOCMDS")

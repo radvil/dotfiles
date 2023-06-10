@@ -1,3 +1,5 @@
+rnv.api.log("Loading vim options...", "opt.options")
+
 vim.opt.wrap = false     -- Disable line wrap
 vim.opt.autowrite = true -- Enable auto write
 -- opt.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -76,5 +78,3 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   vim.opt.shortmess:append({ C = true })
   vim.o.foldcolumn = "1"
 end
-
-rnv.api.log("OPTIONS LOADED!", "VIM OPTS")

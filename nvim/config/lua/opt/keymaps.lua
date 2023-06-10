@@ -1,3 +1,5 @@
+rnv.api.log("Loading keymaps...", "opt.keymaps")
+
 local util = require("utils")
 local map = rnv.api.map
 
@@ -118,5 +120,3 @@ map("n", "<leader>fT", function()
   util.float_term()
 end, { desc = "Float » terminal (cwd)" })
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
-
-rnv.api.log("KEYMAPS LOADED", "KEYMAPS")
