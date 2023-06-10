@@ -5,13 +5,13 @@ M[1] = "rcarriga/nvim-notify"
 M.event = "BufReadPost"
 M.opts = function()
   local opts = {
-    timeout = 10000,
-    -- max_height = function()
-    --   return math.floor(vim.o.lines * 0.75)
-    -- end,
-    -- max_width = function()
-    --   return math.floor(vim.o.columns * 0.36)
-    -- end,
+    timeout = 1000,
+    max_height = function()
+      return math.floor(vim.o.lines * 0.75)
+    end,
+    max_width = function()
+      return math.floor(vim.o.columns * 0.36)
+    end,
   }
   if rnv.opt.transbg then
     opts.background_colour = "#000000"
