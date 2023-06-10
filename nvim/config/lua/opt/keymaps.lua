@@ -1,6 +1,6 @@
 rnv.api.log("Loading keymaps...", "opt.keymaps")
 
-local util = require("utils")
+local util = require("common.utils")
 local map = rnv.api.map
 
 -- TODO:

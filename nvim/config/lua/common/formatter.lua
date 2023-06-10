@@ -15,9 +15,9 @@ local function toggle_autoformat()
     M.opts.autoformat = not M.opts.autoformat
   end
   if M.opts.autoformat then
-    require("utils").info("Document » Autoformat Enabled", { title = "LSP" })
+    require("common.utils").info("Document » Autoformat Enabled", { title = "LSP" })
   else
-    require("utils").warn("Document » Autoformat Disabled", { title = "LSP" })
+    require("common.utils").warn("Document » Autoformat Disabled", { title = "LSP" })
   end
 end
 
@@ -115,7 +115,7 @@ local function format_document(opts)
   if M.opts.notifyformat then
     notify_onformat(formatters)
   end
-  local params = require("utils").opts("nvim-lspconfig").format or {}
+  local params = require("common.utils").opts("nvim-lspconfig").format or {}
   vim.lsp.buf.format(vim.tbl_deep_extend("force", {
     bufnr = bufnr,
     filter = function(client)

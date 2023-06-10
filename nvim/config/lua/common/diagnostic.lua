@@ -8,10 +8,10 @@ local toggle = function()
   M.enabled = not M.enabled
   if M.enabled then
     vim.diagnostic.enable()
-    require("utils").info("Diagnostics » Enabled", { title = "LSP" })
+    require("common.utils").info("Diagnostics » Enabled", { title = "LSP" })
   else
     vim.diagnostic.disable()
-    require("utils").warn("Diagnostics » Disabled", { title = "LSP" })
+    require("common.utils").warn("Diagnostics » Disabled", { title = "LSP" })
   end
 end
 

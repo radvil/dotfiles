@@ -23,7 +23,7 @@ M.dependencies = {
   {
     "hrsh7th/cmp-nvim-lsp",
     cond = function()
-      return require("utils").has("nvim-cmp")
+      return require("common.utils").has("nvim-cmp")
     end,
   },
 }

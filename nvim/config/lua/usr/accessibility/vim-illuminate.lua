@@ -29,7 +29,7 @@ M.config = function(_, opts)
   require("illuminate").configure(opts)
   vim.api.nvim_create_autocmd("FileType", {
     callback = function()
-      if require("utils").buf_has_keymaps({ "<A-n>", "<A-p>" }) then
+      if require("common.utils").buf_has_keymaps({ "<A-n>", "<A-p>" }) then
         pcall(vim.keymap.del, "n", "<A-n>", { buffer = true })
         pcall(vim.keymap.del, "n", "<A-p>", { buffer = true })
       end

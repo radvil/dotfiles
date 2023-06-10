@@ -125,7 +125,7 @@ end
 
 function M.attach_symbols_handler(client, buffer)
   if client.server_capabilities["documentSymbolProvider"] then
-    if require("utils").has("nvim-navic") then
+    if require("common.utils").has("nvim-navic") then
       require("nvim-navic").attach(client, buffer)
     end
   end

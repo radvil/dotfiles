@@ -17,7 +17,7 @@ M.keys = {
     "<Leader>e",
     function()
       require("neo-tree.command").execute({
-        dir = require("utils").get_root(),
+        dir = require("common.utils").get_root(),
         toggle = true,
       })
     end,

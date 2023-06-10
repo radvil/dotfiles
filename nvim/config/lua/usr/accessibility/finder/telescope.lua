@@ -1,6 +1,6 @@
 ---@type LazySpec
 local M = {}
-local util = require("utils")
+local util = require("common.utils")
 M[1] = "nvim-telescope/telescope.nvim"
 M.enabled = true
 M.cmd = "Telescope"
