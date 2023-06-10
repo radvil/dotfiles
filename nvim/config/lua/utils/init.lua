@@ -178,10 +178,10 @@ function M.buf_has_keymaps(mappings, mode, bufnr)
   return ret
 end
 
----@alias rvnNotifyOpts {lang?:string, title?:string, level?:number}
+---@alias RvnNotifyOpts {lang?:string, title?:string, level?:number}
 
 ---@param msg string|string[]
----@param opts? rvnNotifyOpts
+---@param opts? RvnNotifyOpts
 function M.notify(msg, opts)
   if vim.in_fast_event() then
     return vim.schedule(function()
@@ -215,7 +215,7 @@ function M.notify(msg, opts)
 end
 
 ---@param msg string|string[]
----@param opts? rvnNotifyOpts
+---@param opts? RvnNotifyOpts
 function M.error(msg, opts)
   opts = opts or {}
   opts.level = vim.log.levels.ERROR
@@ -223,7 +223,7 @@ function M.error(msg, opts)
 end
 
 ---@param msg string|string[]
----@param opts? rvnNotifyOpts
+---@param opts? RvnNotifyOpts
 function M.info(msg, opts)
   opts = opts or {}
   opts.level = vim.log.levels.INFO
@@ -231,7 +231,7 @@ function M.info(msg, opts)
 end
 
 ---@param msg string|string[]
----@param opts? rvnNotifyOpts
+---@param opts? RvnNotifyOpts
 function M.warn(msg, opts)
   opts = opts or {}
   opts.level = vim.log.levels.WARN
@@ -239,7 +239,7 @@ function M.warn(msg, opts)
 end
 
 ---@param msg string|table
----@param opts? rvnNotifyOpts
+---@param opts? RvnNotifyOpts
 function M.debug(msg, opts)
   if not rnv.opt.dev then
     return
