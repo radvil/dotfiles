@@ -2,8 +2,9 @@
 local M = {}
 M[1] = "folke/which-key.nvim"
 M.event = "VeryLazy"
-M.enabled = rnv.opt.whichkey
-
+M.enabled = function()
+  return rnv.opt.whichkey
+end
 M.opts = {
   window = {
     border = "",
@@ -33,7 +34,7 @@ M.opts = {
     "<c-r>",
     -- spelling
     "z=",
-  }
+  },
 }
 local function reset_presets_labels()
   local presets = require("which-key.plugins.presets")
