@@ -3,7 +3,7 @@ local M = {}
 ---@param msg string
 ---@param prefix string | nil
 M.log = function(msg, prefix)
-  if not rnv and not rnv.opt.dev then
+  if not rnv.opt.dev then
     return
   end
   prefix = prefix or "Log"
@@ -15,7 +15,7 @@ end
 ---@param msg string
 ---@param prefix string | nil
 M.warn = function(msg, prefix)
-  if not rnv and not rnv.opt.dev then
+  if not rnv.opt.dev then
     return
   end
   prefix = prefix or "Warn"
