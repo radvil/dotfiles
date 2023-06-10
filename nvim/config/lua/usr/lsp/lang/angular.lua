@@ -28,7 +28,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@type RvimLspOptions
+    ---@type rvnLspOptions
     opts = {
       servers = {
         angularls = get_server_options,

@@ -50,7 +50,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    ---@type RvimLspOptions
+    ---@type rvnLspOptions
     opts = {
       servers = {
         gopls = server_options

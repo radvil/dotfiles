@@ -6,7 +6,7 @@ function M.get_capabilities()
     dynamicRegistration = false,
     lineFoldingOnly = true,
   }
-  local nvim_cmp = Call("cmp_nvim_lsp")
+  local nvim_cmp = rnv.api.call("cmp_nvim_lsp")
   if nvim_cmp then
     capabilities = nvim_cmp.default_capabilities(capabilities)
   end

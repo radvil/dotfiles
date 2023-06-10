@@ -1,7 +1,7 @@
 ---@type LazySpec[]
 return {
   "neovim/nvim-lspconfig",
-  ---@type RvimLspOptions
+  ---@type rvnLspOptions
   opts = {
     servers = {
       emmet_ls = {

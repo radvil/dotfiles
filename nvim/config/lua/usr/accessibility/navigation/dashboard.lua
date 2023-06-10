@@ -15,7 +15,7 @@ M.opts = {
     winbar = false,
   },
   config = {
-    header = require("media.ascii-arts").Default,
+    header = rnv.opt.welcome_header,
     footer = {
       "                       ",
       "                       ",

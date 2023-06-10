@@ -5,7 +5,7 @@ M[1] = "goolord/alpha-nvim"
 M.event = "VimEnter"
 M.opts = function()
   local A = require("alpha.themes.dashboard")
-  A.section.header.val = require("media.ascii-arts").Default
+  A.section.header.val = rnv.opt.welcome_header
   A.section.buttons.val = {
     A.button("p", " " .. " Plugins", ":Lazy<cr>"),
     A.button("o", "📁" .. " Recent files", ":Telescope oldfiles<cr>"),
@@ -38,7 +38,7 @@ M.config = function(_, A)
   end
   require("alpha").setup(A.opts)
   vim.api.nvim_create_autocmd("User", {
-    pattern = "RvimStarted",
+    pattern = "rvnStarted",
     callback = function()
       local stats = require("lazy").stats()
       local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)

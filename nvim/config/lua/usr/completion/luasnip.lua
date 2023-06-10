@@ -21,14 +21,14 @@ M.keys = {
     function()
       require("luasnip").jump(1)
     end,
-    mode = "s"
+    mode = "s",
   },
   {
     "<S-Tab>",
     function()
       require("luasnip").jump(-1)
     end,
-    mode = { "i", "s" }
+    mode = { "i", "s" },
   },
 }
 M.config = function()
@@ -36,8 +36,8 @@ M.config = function()
   vscode_loader.lazy_load()
   vscode_loader.lazy_load({
     paths = {
-      rvim.path.config .. "/assets/snippets/all/",
-      rvim.path.config .. "/assets/snippets/angular/",
+      os.getenv("HOME") .. "/.config/nvim/assets/snippets/all/",
+      os.getenv("HOME") .. "/.config/nvim/assets/snippets/angular/",
     },
   })
 end

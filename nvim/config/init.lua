@@ -1,4 +1,3 @@
 require("var")
 require("main")
-Log("CONFIGURATION LOADED!", "INDEX")
-
+rnv.api.log("CONFIG LOADED!", "INIT")

@@ -137,7 +137,7 @@ end
 function M.init()
   vim.api.nvim_create_user_command("Dotfiles", function()
     require("utils").telescope("files", {
-      cwd = rvim.path.config,
+      cwd = rnv.path.config,
     })()
   end, {})
 end

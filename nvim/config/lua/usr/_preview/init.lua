@@ -1,4 +1,4 @@
-if not rvim.devmode then
+if not rnv.devmode then
   return {}
 end
 

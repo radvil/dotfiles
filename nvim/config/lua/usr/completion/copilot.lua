@@ -1,17 +1,15 @@
 ---@diagnostic disable: assign-type-mismatch
-local env = rvim.completion.copilot
-if not env.enabled then return {} end
+if not rnv.opt.completion_copilot then return {} end
 
 ---@type LazySpec[]
 return {
   {
     "zbirenbaum/copilot.lua",
-    enabled = env.enabled,
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-      suggestion = { enabled = env.suggestion_enabled, },
-      panel = { enabled = env.panel_enabled, },
+      suggestion = { enabled = false, },
+      panel = { enabled = false },
     },
   },
 

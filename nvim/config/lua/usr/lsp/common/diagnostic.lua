@@ -2,12 +2,11 @@ local M = {}
 local util = require("utils")
 local icons = require("media.icons")
 
----@type LspDiagnosticConfig
 M.specs = {
   enabled = true,
   icons = icons.Diagnostics,
   commands = {
-    toggle = "RvimToggleLspDiagnostics",
+    toggle = "RvnToggleLspDiagnostics",
   },
   keymaps = {
     toggle = "<Leader>ud",
@@ -30,50 +29,19 @@ M.specs = {
   },
 }
 
----@param section string
-function M:merge_specs(section)
-  if type(M.specs[section]) == "boolean" or type(M.specs[section]) == "string" then
-    M.specs[section] = section or M.specs[section]
-  elseif type(M.specs[section]) == "table" then
-    M.specs[section] = vim.tbl_deep_extend("force", M.specs[section], rvim.lsp.diagnostics[section])
-  else
-    error("Invalid value for rvim spec: " .. section)
-  end
-end
-
----toggle workspace diagnostics
 ---@param value boolean | nil
 local function toggle_diagnostics(value)
   M.specs.enabled = value or not M.specs.enabled
-  local opt = { title = "Diagnostics" }
   if M.specs.enabled then
     vim.diagnostic.enable()
-    util.info("[🤖 Diagnostics] enabled!", opt)
+    util.info("Diagnostics » Enabled", { title = "LSP" })
   else
     vim.diagnostic.disable()
-    util.warn("[🤖 Diagnostics] disabled!", opt)
+    util.warn("Diagnostics » Disabled", { title = "LSP" })
   end
 end
 
-function M:register_usercmd()
-  M:merge_specs("commands")
-  vim.api.nvim_create_user_command(M.specs.commands.toggle, function()
-    toggle_diagnostics()
-  end, {})
-end
-
----register keymaps to handle lsp diagnostic
-function M:register_keymaps()
-  M:merge_specs("keymaps")
-  local kmp = M.specs.keymaps
-  local cmd = M.specs.commands
-  vim.keymap.set("n", kmp.toggle, util.fmtcmd(cmd.toggle), {
-    desc = "Toggle » LSP Diagnostics",
-  })
-end
-
-function M:override_builtins()
-  M:merge_specs("icons")
+function M.override_builtins()
   for name, icon in pairs(M.specs.icons) do
     name = "DiagnosticSign" .. name
     vim.fn.sign_define(name, {
@@ -82,15 +50,11 @@ function M:override_builtins()
       numhl = "",
     })
   end
-  M:merge_specs("opts")
   vim.diagnostic.config(M.specs.opts)
-
-  -- Override float windows handlers styles
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
     { border = 'rounded' }
   )
-
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
     { border = 'rounded' }
@@ -98,10 +62,16 @@ function M:override_builtins()
 end
 
 function M.setup()
-  M:merge_specs("enabled")
-  M:override_builtins()
-  M:register_usercmd()
-  M:register_keymaps()
+  M.override_builtins()
+  vim.api.nvim_create_user_command(M.specs.commands.toggle, function()
+    toggle_diagnostics()
+  end, {})
+
+  local kmp = M.specs.keymaps
+  local cmd = M.specs.commands
+  vim.keymap.set("n", kmp.toggle, util.fmtcmd(cmd.toggle), {
+    desc = "Diagnostics » Toggle",
+  })
 end
 
 return M

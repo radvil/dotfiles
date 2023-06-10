@@ -1,7 +1,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-neorg/neorg"
-M.enabled = rvim.note_taking.enabled
+M.enabled = false
 M.cmd = { "Neorg" }
 M.build = ":Neorg sync-parsers"
 M.dependencies = "nvim-lua/plenary.nvim"
@@ -11,7 +11,7 @@ end
 local function get_workspaces()
   return vim.tbl_extend("force", {
     neovim = get_vault_path("neovim"),
-  }, rvim.note_taking.workspaces or {})
+  }, rnv.note_taking.workspaces or {})
 end
 M.opts = function(_, opts)
   return vim.tbl_deep_extend("force", opts, {

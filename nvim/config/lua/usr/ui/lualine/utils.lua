@@ -29,7 +29,7 @@ end
 
 M.get_filename = function()
   local prefix = " ⚓ "
-  if GetBufOpt("mod") then
+  if rnv.api.get_buf_opt("mod") then
     prefix = " 💋 "
   end
   return prefix .. vim.fn.expand("%:t")
@@ -63,7 +63,7 @@ end
 ---@return string -- formatted name
 function M.create_hi(group, opts)
   local pad = opts.padding or ""
-  local hi_group = string.format("RvimHiStatusline%s", group)
+  local hi_group = string.format("rvnHiStatusline%s", group)
   local content = pad .. opts.content .. pad
   vim.api.nvim_set_hl(0, hi_group, {
     bold = opts.bold or false,
@@ -75,7 +75,7 @@ end
 
 ---@param fallback? string color fallback if result get nil
 function M.get_bgcolor(fallback)
-  local ret = fallback or require("media.colors").palette.bg
+  local ret = fallback or rnv.opt.palette.bg
   local bghl = vim.api.nvim_get_hl_by_name("TabLineFill", true)
   if bghl.background ~= nil then
     ret = string.format("#%06x", bghl.background)

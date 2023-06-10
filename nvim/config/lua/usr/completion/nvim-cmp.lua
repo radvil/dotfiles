@@ -5,7 +5,7 @@ M[1] = "hrsh7th/nvim-cmp"
 ---@diagnostic disable-next-line: assign-type-mismatch
 M.version = false -- last release is way too old
 M.event = "InsertEnter"
-M.enabled = rvim.completion.enabled
+M.enabled = rnv.opt.completion
 M.dependencies = {
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-nvim-lsp",
@@ -43,10 +43,10 @@ M.opts = function()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp" },
-      { name = "luasnip", },
-      { name = "copilot", },
-      { name = "buffer",  keyword_length = 3 },
-      { name = "path", },
+      { name = "luasnip" },
+      { name = "copilot" },
+      { name = "buffer", keyword_length = 3 },
+      { name = "path" },
     }),
     formatting = {
       fields = { "kind", "abbr", "menu" },

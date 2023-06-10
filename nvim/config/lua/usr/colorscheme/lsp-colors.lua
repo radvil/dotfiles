@@ -1,6 +1,6 @@
 ---@type LazySpec
 local M = {}
-local colors = require("media.colors").palette
+local colors = rnv.opt.palette
 M[1] = "folke/lsp-colors.nvim"
 M.enabled = true
 M.opts = {

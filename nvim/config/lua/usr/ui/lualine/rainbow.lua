@@ -1,14 +1,36 @@
-local icons = require("media.icons")
-local palette = require("media.colors").palette
-local vmodecolor = require("media.colors").vim_mode
-local utils = require("usr.ui.lualine.utils")
-local bgcolor = utils.get_bgcolor(palette.bg)
 local M = {}
+
+local icons = require("media.icons")
+local utils = require("usr.ui.lualine.utils")
+local palette = rnv.opt.palette
+local bgcolor = utils.get_bgcolor(palette.bg)
+local vmodecolor = {
+  n = palette.red,
+  i = palette.green,
+  v = palette.orange,
+  [""] = palette.orange,
+  V = palette.orange,
+  c = palette.magenta,
+  no = palette.red,
+  s = palette.pink,
+  S = palette.pink,
+  [""] = palette.pink,
+  ic = palette.cyan,
+  R = palette.violet,
+  Rv = palette.violet,
+  cv = palette.blue,
+  ce = palette.blue,
+  r = palette.magenta,
+  rm = palette.magenta,
+  ["r?"] = palette.magenta,
+  ["!"] = palette.red,
+  t = palette.red,
+}
 
 M.extensions = { "neo-tree", "lazy" }
 
 M.options = {
-  disabled_filetypes = { "alpha", "Dashboard", },
+  disabled_filetypes = { "alpha", "Dashboard" },
   component_separators = "",
   section_separators = "",
   icons_enabled = false,
@@ -119,7 +141,7 @@ insert_left({
   color = function()
     return {
       bg = palette.orange,
-      fg = bgcolor
+      fg = bgcolor,
     }
   end,
 })
@@ -145,7 +167,7 @@ insert_arrow({
   left = palette.yellow,
   middle = palette.violet,
   right = function()
-    return IsBufferNotEmpty() and utils.get_filemeta().color or ""
+    return rnv.api.is_git_workspace() and utils.get_filemeta().color or ""
   end,
 })
 
@@ -153,7 +175,7 @@ insert_arrow({
 insert_left({
   "filename",
   padding = 0,
-  cond = IsBufferNotEmpty,
+  cond = rnv.api.is_not_empty_buffer,
   fmt = function(filename)
     local separator = icons.Chevron.RightBigFilled
     local meta = utils.get_filemeta(filename)
@@ -190,10 +212,10 @@ insert_left({
     return icons.Chevron.RightBigFilled
   end,
   padding = 0,
-  cond = IsBufferNotEmpty,
+  cond = rnv.api.is_not_empty_buffer,
   color = function()
     return {
-      fg = utils.get_filemeta(utils.get_filename()).color
+      fg = utils.get_filemeta(utils.get_filename()).color,
     }
   end,
 })
@@ -267,7 +289,7 @@ insert_left({
 ---git signs
 insert_right({
   "diff",
-  cond = IsGitWorkspace,
+  cond = rnv.api.is_git_workspace,
   symbols = {
     added = icons.Git.AddedFilled .. " ",
     modified = icons.Git.UnstagedFilled .. " ",
@@ -283,7 +305,7 @@ insert_right({
 ---file size
 insert_right({
   "filesize",
-  cond = IsBufferNotEmpty,
+  cond = rnv.api.is_not_empty_buffer,
   padding = 0,
   color = utils.fg("Special", true),
   fmt = function(filesize)

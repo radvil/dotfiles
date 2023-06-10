@@ -1,7 +1,6 @@
-local env = rvim.theme
-local bgtrans = env.transbg
-local darkmode = env.force_darkmode
-local variant = not darkmode and "day" or env.variant or "storm"
+local bgtrans = rnv.opt.transbg
+local darkmode = rnv.opt.darkmode
+local variant = not darkmode and "day" or rnv.opt.colorvariant or "storm"
 
 ---@type LazySpec
 local M = {}
@@ -35,20 +34,10 @@ M.opts = function()
   if bgtrans then
     opts.styles.sidebars = "transparent"
     opts.styles.floats = "transparent"
-    -- opts.on_colors = function(colors)
-    --   colors.error = "#ff0000"
-    -- end
-    -- opts.on_highlights = function(hl, _)
-    --   local user_colors = require("media.colors").palette
-    --   hl.TelescopeBorder = {
-    --     fg = user_colors.cyan,
-    --     bg = user_colors.bg,
-    --   }
-    -- end
   end
   return opts
 end
-if env.colorscheme == "tokyonight" then
+if rnv.opt.colorscheme == "tokyonight" then
   M.priority = 999
   M.lazy = false
   M.init = function()

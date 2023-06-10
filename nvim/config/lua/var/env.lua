@@ -1,117 +1,46 @@
-local M = {}
+local opt = {}
 
-M.devmode = false
-
-M.path = {
-  home = os.getenv("HOME"),
-  cache = os.getenv("HOME") .. "/.cache/nvim",
-  data = os.getenv("HOME") .. "/.local/share/nvim",
-  config = os.getenv("HOME") .. "/.config/nvim",
+opt.dev = false
+opt.transbg = true
+opt.mapleader = " "
+opt.darkmode = true
+---@type "neotree" | "nvim-tree"
+opt.tree = "neotree"
+opt.whichkey = true
+opt.statusline = true
+opt.completion = true
+opt.maplocalleader = " "
+opt.lsp_diagnostics = true
+opt.lsp_formatonsave = true
+opt.completion_copilot = false
+opt.completion_snippets = true
+opt.colorscheme = "tokyonight"
+opt.colorvariant = "moon"
+opt.data = os.getenv("HOME") .. "/.local/share/nvim/lazy/lazy.nvim"
+opt.welcome_header = {
+  "                                                ",
+  "                   🔥               ⚡⚡        ",
+  "         ██╗     █████╗ ██╗   ██╗██╗ Z          ",
+  "         ██║    ██╔══██╗██║   ██║██║Z           ",
+  "         ██║    ███████║██║   ██║██║            ",
+  "         ██║    ██╔══██║╚██╗ ██╔╝██║            ",
+  "         ██████╗██║  ██║ ╚████╔╝ ██║            ",
+  "         ╚═════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝            ",
+  "                                                ",
+}
+opt.palette = {
+  bg = "#1A1B23",
+  fg = "#ffffff",
+  blue = "#51AFEF",
+  cyan = "#8AD3C8",
+  darkblue = "#081633",
+  green = "#6DD390",
+  magenta = "#C678DD",
+  orange = "#FF855A",
+  red = "#EC5F67",
+  pink = "#E76EB1",
+  violet = "#A9A1E1",
+  yellow = "#ECBE7B",
 }
 
-M.user = {
-  name = "Radvil Laode",
-  email = "radvil.developer@gmail.com",
-  github = "https://github.com/radvil",
-  facebook = "https://facebook.com/radvilardian",
-}
-
-M.g = {
-  mapleader = " ",
-  maplocalleader = " ",
-}
-
-M.theme = {
-  colorscheme = "tokyonight",
-  variant = "moon",
-  transbg = true,
-  force_darkmode = true,
-  rainbow_brackets = false,
-}
-
----@class RvimFileExplorerSpec
-M.file_explorer = {
-  enabled = true,
-  ---@type "ranger" | "lf" | "nnn"
-  provider = "nnn",
-  fix_import_on_file_operations = true,
-  sidebar_tree = {
-    enabled = true,
-    ---@type "nvim-tree" | "neo-tree"
-    provider = "neo-tree",
-  },
-}
-
-M.symbols = {
-  enabled = false,
-  wrap = false,
-  auto_close = false,
-  width = 18,
-  position = "right",
-  relative_width = false,
-  highlight_hovered_item = true,
-  keymaps = {
-    close = { "<Esc>", "q" },
-    goto_location = { "<Cr>", "o" },
-    focus_location = "l",
-    hover_symbol = "<C-space>",
-    toggle_preview = "gh",
-    rename_symbol = "gr",
-    code_actions = "ga",
-    fold = "zc",
-    unfold = "zo",
-    fold_all = "zC",
-    unfold_all = "zO",
-    fold_reset = "zU",
-  },
-}
-
-M.whichkey = {
-  enabled = true,
-}
-
-M.note_taking = {
-  enabled = false,
-  workspaces = {
-    demo = "~/Documents/neorg-vault/demo",
-    ami = "~/Documents/neorg-vault/ami",
-  },
-}
-
-M.statusline = {
-  enabled = true,
-}
-
-M.lsp = {
-  ---@class LspDiagnosticConfig
-  diagnostics = {
-    enabled = true,
-    icons = {},
-    commands = {
-      toggle = "LspToggleDiagnostics",
-    },
-    keymaps = {
-      toggle = "<C-Z>d",
-    },
-    opts = {},
-  },
-  ---@class LspFormatOnSaveConfig
-  formatonsave = {
-    enabled = true,
-    notify = false,
-    command = "LspToggleFormatOnSave",
-    keymap = "<C-z>f",
-  },
-}
-
-M.completion = {
-  enabled = true,
-  enable_snippets = true,
-  copilot = {
-    enabled = false,
-    suggestion_enabled = false,
-    panel_enabled = false,
-  }
-}
-
-_G.rvim = M
+return opt

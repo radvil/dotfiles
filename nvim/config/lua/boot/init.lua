@@ -1,25 +1,13 @@
 ---@class NgVimSpec
 local M = {}
-
 M.name = "NgVim"
-
 M.version = ">= 0.0.1"
 
----@class NgVimConfig
-M.opts = {
-  leaderKey = " ",
-  localLeaderKey = " ",
-  path = rvim.path.data .. "/lazy/lazy.nvim",
-}
+function M.setup()
+  vim.g.mapleader = rnv.opt.mapleader or " "
+  vim.g.maplocalleader = rnv.opt.maplocalleader or " "
 
----@param opts? NgVimConfig
-function M.setup(opts)
-  M.opts = vim.tbl_extend("force", M.opts, opts or {})
-
-  vim.g.mapleader = M.opts.leaderKey or " "
-  vim.g.maplocalleader = M.opts.localLeaderKey or " "
-
-  if not vim.loop.fs_stat(M.opts.path) then
+  if not vim.loop.fs_stat(rnv.opt.data) then
     vim.notify("🚩 lazy.nvim was not installed, installing the latest stable version...")
     vim.fn.system({
       "git",
@@ -27,15 +15,16 @@ function M.setup(opts)
       "--filter=blob:none",
       "https://github.com/folke/lazy.nvim.git",
       "--branch=stable", -- latest stable release
-      M.opts.path,
+      rnv.opt.data,
     })
   end
 
-  vim.opt.rtp:prepend(M.opts.path)
+  vim.opt.rtp:prepend(rnv.opt.data)
 
   require("boot.lazy-nvim").setup()
-
-  Log("Bootstraping plugins...", "^^ BOOT")
+  rnv.api.log("Bootstraping plugins...", "BOOT")
 end
+
+M.setup()
 
 return M

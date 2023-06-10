@@ -1,6 +1,6 @@
-require("boot").setup({ leaderKey = " " })
+require("boot")
 require("opt.options")
 require("opt.autocmds")
 require("opt.keymaps")
 
-Log("CORE LOADED", "^ ROOT")
+rnv.api.log("CORE LOADED", "MAIN")

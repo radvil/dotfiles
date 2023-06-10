@@ -1,4 +1,4 @@
-# RVIM PLUGINS SPEC
+# rvn PLUGINS SPEC
 
 ### UI
 

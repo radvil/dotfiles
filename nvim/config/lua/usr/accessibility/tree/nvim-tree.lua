@@ -3,6 +3,7 @@ local icons = require("media.icons")
 local M = {}
 M[1] = "nvim-tree/nvim-tree.lua"
 M.cmd = "NvimTree"
+M.enabled = rnv.opt.tree == "nvim-tree"
 M.dependencies = { "nvim-tree/nvim-web-devicons" }
 M.keys = {
   {

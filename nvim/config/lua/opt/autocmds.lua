@@ -62,4 +62,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-Log("Events loaded!", "^^ OPT")
+rnv.api.log("EVENTS LOADED!", "AUTOCMDS")

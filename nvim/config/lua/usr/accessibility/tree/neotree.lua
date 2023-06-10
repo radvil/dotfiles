@@ -1,8 +1,8 @@
-local icons = require "media.icons"
+local icons = require("media.icons")
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-neo-tree/neo-tree.nvim"
-
+M.enabled = rnv.opt.tree == "neotree"
 M.dependencies = {
   "nvim-tree/nvim-web-devicons",
   "s1n7ax/nvim-window-picker",

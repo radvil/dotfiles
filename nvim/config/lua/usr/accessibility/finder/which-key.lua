@@ -2,7 +2,7 @@
 local M = {}
 M[1] = "folke/which-key.nvim"
 M.event = "VeryLazy"
-M.enabled = rvim.whichkey.enabled
+M.enabled = rnv.opt.whichkey
 
 M.opts = {
   window = {

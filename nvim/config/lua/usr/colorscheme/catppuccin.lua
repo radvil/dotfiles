@@ -5,8 +5,8 @@ M.name = "catppuccin"
 
 M.opts = {
   ---@type "latte" | "frappe" | "macchiato" | "mocha"
-  flavour = rvim.theme.variant,
-  transparent_background = rvim.theme.transbg,
+  flavour = rnv.opt.colorvariant,
+  transparent_background = rnv.opt.transbg,
   term_colors = true,
   dim_inactive = {
     enabled = false,
@@ -52,7 +52,7 @@ M.opts = {
     neotree = true,
     nvimtree = {
       enabled = false,
-      transparent_panel = rvim.theme.transbg,
+      transparent_panel = rnv.opt.transbg,
       show_root = true,
     },
     dap = {
@@ -81,7 +81,7 @@ M.opts = {
   },
 }
 
-if rvim.theme.colorscheme == "catppuccin" then
+if rnv.opt.colorscheme == "catppuccin" then
   M.priority = 999
   M.lazy = false
   M.init = function()

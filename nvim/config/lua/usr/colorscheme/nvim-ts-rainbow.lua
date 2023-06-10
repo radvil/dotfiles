@@ -2,10 +2,10 @@
 local M = {}
 M[1] = "p00f/nvim-ts-rainbow"
 M.event = "BufReadPre"
-M.enabled = rvim.theme.rainbow_brackets
+M.enabled = false
 M.dependencies = "nvim-treesitter"
 M.config = function()
-  local colors = require("media.colors").palette
+  local colors = rnv.opt.palette
   require("nvim-treesitter.configs").setup({
     rainbow = {
       enable = true,
