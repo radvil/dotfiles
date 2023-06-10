@@ -24,7 +24,7 @@ M.keys = {
   {
     "<leader>/d",
     ":Dotfiles<cr>",
-    desc = "telescope » open nvim config",
+    desc = "telescope » find dotfiles",
   },
   {
     "<leader>/f",
