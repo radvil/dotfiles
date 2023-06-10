@@ -119,17 +119,6 @@ function M.get_root()
   return root
 end
 
----@param on_attach fun(client, buffer)
-function M.on_attach(on_attach)
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      local buffer = args.buf
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      on_attach(client, buffer)
-    end,
-  })
-end
-
 -- this will return a function that calls telescope.
 -- cwd will defautlt to util.get_root
 -- for `files`, git_files or find_files will be chosen depending on .git
@@ -252,7 +241,7 @@ end
 ---@param msg string|table
 ---@param opts? rvnNotifyOpts
 function M.debug(msg, opts)
-  if not rnv.devmode then
+  if not rnv.opt.dev then
     return
   end
   opts = opts or {}
@@ -265,12 +254,6 @@ function M.debug(msg, opts)
     opts.lang = "lua"
     M.notify(vim.inspect(msg), opts)
   end
-end
-
----@param name string command name
----@return string formatted command
-function M.fmtcmd(name)
-  return string.format("<Cmd>%s<CR>", name)
 end
 
 return M
