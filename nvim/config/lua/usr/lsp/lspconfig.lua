@@ -28,7 +28,7 @@ M.dependencies = {
   },
 }
 
----@class rvnLspOptions
+---@class RvnLspOptions
 M.opts = {
   install_missing_servers = true,
   ---NOTE: set value to false to prevent autoinstall servers
@@ -80,7 +80,7 @@ local function get_defaults()
   }
 end
 
----@param options rvnLspOptions
+---@param options RvnLspOptions
 local setup_language_servers = function(options)
   local ensure_installed = {}
   ---@param opts function | table | boolean
@@ -105,7 +105,7 @@ local setup_language_servers = function(options)
   })
 end
 
----@param opts rvnLspOptions
+---@param opts RvnLspOptions
 M.config = function(_, opts)
   require("usr.lsp.common.diagnostic").setup()
   require("usr.lsp.common.formatter").setup()
