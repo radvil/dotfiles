@@ -1,75 +1,42 @@
 local M = {}
-local utils = require("utils")
 
 M.opts = {
-  enabled = true,
-  notify = true,
-  keymap = "<Leader>uf",
-  command = "RnvLspToggleFormatOnSave",
+  formatonsave = rnv.opt.lsp_formatonsave,
+  notifyformat = rnv.opt.notify_on_format,
 }
 
-function M.toggle()
+local function toggle_formatonsave()
   if vim.b.autoformat == false then
     vim.b.autoformat = nil
-    M.opts.enabled = true
+    M.opts.formatonsave = true
   else
-    M.opts.enabled = not M.opts.enabled
+    M.opts.formatonsave = not M.opts.formatonsave
   end
-  if M.opts.enabled then
-    utils.info("Autoformat » Enabled", { title = "Lsp" })
+  if M.opts.formatonsave then
+    require("utils").info("Document » Autoformat Enabled", { title = "LSP" })
   else
-    utils.warn("Autoformat » Disabled", { title = "Lsp" })
+    require("utils").warn("Document » Autoformat Disabled", { title = "LSP" })
   end
-end
-
----@param opts? {force?:boolean}
-function M.format(opts)
-  if vim.b.autoformat == false and not (opts and opts.force) then
-    return
-  end
-
-  local bufnr = vim.api.nvim_get_current_buf()
-  local formatters = M.get_formatters(bufnr)
-  local client_ids = vim.tbl_map(function(client)
-    return client.id
-  end, formatters.active)
-
-  if #client_ids == 0 then
-    return
-  end
-
-  if M.opts.notify then
-    M.notify(formatters)
-  end
-
-  local params = utils.opts("nvim-lspconfig").format or {}
-  vim.lsp.buf.format(vim.tbl_deep_extend("force", {
-    bufnr = bufnr,
-    filter = function(client)
-      return vim.tbl_contains(client_ids, client.id)
-    end,
-  }, params))
 end
 
 ---@param formatters FormattersParams
-function M.notify(formatters)
+local function notify_onformat(formatters)
   local lines = { "# Active:" }
   for _, client in ipairs(formatters.active) do
     local line = "- **" .. client.name .. "**"
     if client.name == "null-ls" then
       line = line
-        .. " ("
-        .. table.concat(
-          vim.tbl_map(function(f)
-            return "`" .. f.name .. "`"
-          end, formatters.null_ls),
-          ", "
-        )
-        .. ")"
+          .. " ("
+          .. table.concat(
+            vim.tbl_map(function(f)
+              return "`" .. f.name .. "`"
+            end, formatters.null_ls),
+            ", "
+          )
+          .. ")"
     end
     table.insert(lines, line)
   end
-
   if #formatters.available > 0 then
     table.insert(lines, "")
     table.insert(lines, "# Disabled:")
@@ -77,7 +44,6 @@ function M.notify(formatters)
       table.insert(lines, "- **" .. client.name .. "**")
     end
   end
-
   vim.notify(table.concat(lines, "\n"), vim.log.levels.INFO, {
     title = "Formatting",
     on_open = function(win)
@@ -89,13 +55,26 @@ function M.notify(formatters)
   })
 end
 
+-- Gets all lsp clients that support formatting
+-- and have not disabled it in their client config
+---@param client lsp.Client
+local function supports_format(client)
+  if
+      client.config
+      and client.config.capabilities
+      and client.config.capabilities.documentFormattingProvider == false
+  then
+    return false
+  end
+  return client.supports_method("textDocument/formatting") or client.supports_method("textDocument/rangeFormatting")
+end
+
 -- Gets all lsp clients that support formatting.
 -- When a null-ls formatter is available for the current filetype,
 -- only null-ls formatters are returned.
-function M.get_formatters(bufnr)
+local function get_formatters(bufnr)
   local ft = vim.bo[bufnr].filetype
   local null_ls = package.loaded["null-ls"] and require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") or {}
-
   ---@class FormattersParams
   local ret = {
     ---@type lsp.Client[]
@@ -104,11 +83,10 @@ function M.get_formatters(bufnr)
     available = {},
     null_ls = null_ls,
   }
-
   ---@type lsp.Client[]
   local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
   for _, client in ipairs(clients) do
-    if M.supports_format(client) then
+    if supports_format(client) then
       if (#null_ls > 0 and client.name == "null-ls") or #null_ls == 0 then
         table.insert(ret.active, client)
       else
@@ -116,48 +94,57 @@ function M.get_formatters(bufnr)
       end
     end
   end
-
   return ret
 end
 
--- Gets all lsp clients that support formatting
--- and have not disabled it in their client config
----@param client lsp.Client
-function M.supports_format(client)
-  if
-    client.config
-    and client.config.capabilities
-    and client.config.capabilities.documentFormattingProvider == false
-  then
-    return false
+---@param opts? {force?:boolean}
+local function format_document(opts)
+  if vim.b.autoformat == false and not (opts and opts.force) then
+    return
   end
-  return client.supports_method("textDocument/formatting") or client.supports_method("textDocument/rangeFormatting")
+  local bufnr = vim.api.nvim_get_current_buf()
+  local formatters = get_formatters(bufnr)
+  local client_ids = vim.tbl_map(function(client)
+    return client.id
+  end, formatters.active)
+  if #client_ids == 0 then
+    return
+  end
+  if M.opts.notifyformat then
+    notify_onformat(formatters)
+  end
+  local params = require("utils").opts("nvim-lspconfig").format or {}
+  vim.lsp.buf.format(vim.tbl_deep_extend("force", {
+    bufnr = bufnr,
+    filter = function(client)
+      return vim.tbl_contains(client_ids, client.id)
+    end,
+  }, params))
 end
 
----create user commands based on user's provided commands
-function M.register_user_commands()
-  vim.api.nvim_create_user_command(M.opts.command, function()
-    M.toggle()
-  end, {})
-end
-
-function M.register_user_keymaps()
-  local function fmtcmd(name)
-    return string.format("<Cmd>%s<CR>", name)
-  end
-  vim.keymap.set("n", M.opts.keymap, fmtcmd(M.opts.command), {
-    desc = "Toggle » LSP Autoformat",
-  })
-end
+M.api = {
+  toggle_formatonsave = toggle_formatonsave,
+  format_document = format_document,
+  supports_format = supports_format,
+  notify_onformat = notify_onformat,
+  get_formatters = get_formatters,
+}
 
 function M.setup()
-  M.register_user_commands()
-  M.register_user_keymaps()
+  -- register toggle event
+  vim.api.nvim_create_user_command("RnvLspToggleAutoFormat", function()
+    toggle_formatonsave()
+  end, {})
+  --- register toggle keymaps
+  vim.keymap.set("n", "<c-z>f", toggle_formatonsave, {
+    desc = "Toggle » Document format on save",
+  })
+  --- listen on format on save
   vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("LspAutoFormat", {}),
+    group = vim.api.nvim_create_augroup("RnvLspAutoFormat", {}),
     callback = function()
-      if M.opts.enabled then
-        M.format()
+      if M.opts.formatonsave then
+        format_document()
       end
     end,
   })
