@@ -1,5 +1,5 @@
 local function getconfig(name)
-  return require(string.format("usr.accessibility.finder.%s", name))
+  return require(string.format("libs.accessibility.finder.%s", name))
 end
 return {
   getconfig("todo-comments"),

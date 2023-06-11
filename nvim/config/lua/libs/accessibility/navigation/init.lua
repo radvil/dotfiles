@@ -1,5 +1,5 @@
 local function getconfig(name)
-  return require(string.format("usr.accessibility.navigation.%s", name))
+  return require(string.format("libs.accessibility.navigation.%s", name))
 end
 ---@type LazySpec[]
 return {
