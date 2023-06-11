@@ -50,6 +50,10 @@ vim.opt.updatetime = 200               -- Save swap file and trigger CursorHold
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 7                -- Minimum window width
 vim.opt.hidden = true                  -- for toggleterm
+vim.opt.laststatus = 3
+vim.opt.timeoutlen = 200
+vim.opt.splitkeep = "screen"
+vim.opt.shortmess:append({ C = true })
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
@@ -63,18 +67,8 @@ vim.g.markdown_recommended_style = 0
 vim.o.winwidth = 7
 vim.o.winminwidth = 5
 vim.o.equalalways = false
-vim.o.foldlevel = 99
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-
-if os.getenv("TMUX") == nil then
-  vim.opt.timeoutlen = 460
-else
-  vim.opt.timeoutlen = 200
-end
-
-if vim.fn.has("nvim-0.9.0") == 1 then
-  vim.opt.splitkeep = "screen"
-  vim.opt.shortmess:append({ C = true })
-  vim.o.foldcolumn = "1"
-end
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
