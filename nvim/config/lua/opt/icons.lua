@@ -76,6 +76,13 @@ M.Diagnostics = {
   Warn = " ",
 }
 
+M.DiagnosticsFilled = {
+  Error = " ",
+  Warn = " ",
+  Hint = " ",
+  Info = " ",
+}
+
 M.Folder = {
   ArrowOpened   = "",
   ArrowClosed   = "",

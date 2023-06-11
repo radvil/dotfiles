@@ -4,6 +4,19 @@ M.loaded = false
 
 M.enabled = rnv.opt.lsp_diagnostics or false
 
+M.opts = {
+  update_in_insert = false,
+  severity_sort = true,
+  underline = true,
+  float = {
+    border = 'rounded',
+    source = 'if_many'
+  },
+  virtual_text = {
+    spacing = 4,
+  },
+}
+
 local toggle = function()
   M.enabled = not M.enabled
   if M.enabled then
@@ -20,12 +33,13 @@ M.api = {
 }
 
 function M.setup()
+  local icons = require("opt.icons")
   if M.loaded then
     rnv.api.log("Diagnostics already loaded!", "common.diagnostics")
     return
   end
 
-  for name, icon in pairs(require("opt.icons").Diagnostics) do
+  for name, icon in pairs(icons.DiagnosticsFilled) do
     name = "DiagnosticSign" .. name
     vim.fn.sign_define(name, {
       texthl = name,
@@ -34,22 +48,19 @@ function M.setup()
     })
   end
 
-  vim.diagnostic.config({
-    update_in_insert = false,
-    severity_sort = true,
-    underline = true,
-    float = {
-      border = 'rounded',
-      source = 'if_many'
-    },
-    virtual_text = {
-      -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-      -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-      -- prefix = "icons",
-      prefix = require("opt.icons").Misc.Squirrel,
-      spacing = 4,
-    },
-  })
+  if vim.fn.has("nvim-0.10.0") == 0 then
+    M.opts.virtual_text.prefix = icons.Misc.Squirrel
+  else
+    M.opts.virtual_text.prefix = function(diagnostic)
+      for d, icon in pairs(icons.Diagnostics) do
+        if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+          return icon
+        end
+      end
+    end
+  end
+
+  vim.diagnostic.config(vim.deepcopy(M.opts))
 
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
