@@ -47,23 +47,8 @@ M.init = function()
       require("neo-tree")
     end
   end
-  vim.fn.sign_define("DiagnosticSignError", {
-    texthl = "DiagnosticSignError",
-    text = " ",
-  })
-  vim.fn.sign_define("DiagnosticSignWarn", {
-    texthl = "DiagnosticSignWarn",
-    text = " ",
-  })
-  vim.fn.sign_define("DiagnosticSignInfo", {
-    texthl = "DiagnosticSignInfo",
-    text = " ",
-  })
-  vim.fn.sign_define("DiagnosticSignHint", {
-    texthl = "DiagnosticSignHint",
-    text = "",
-  })
 end
+
 M.opts = function()
   local icons = require("opt.icons")
   local i = function(icon)
@@ -107,7 +92,7 @@ M.opts = function()
       show_unloaded = true,
     },
     window = {
-      width = 46,
+      width = 36,
       position = "left",
       mapping_options = {
         noremap = true,
