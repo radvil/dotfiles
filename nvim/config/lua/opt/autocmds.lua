@@ -37,17 +37,17 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- close popups using <A-Space>
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = require("opt.filetype").popups,
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("", "<A-Space>", ":close<cr>", {
-      buffer = event.buf,
-      silent = true,
-    })
-  end,
-})
+-- -- close popups using <A-Space>
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = require("opt.filetype").popups,
+--   callback = function(event)
+--     vim.bo[event.buf].buflisted = false
+--     vim.keymap.set("", "<A-Space>", ":close<cr>", {
+--       buffer = event.buf,
+--       silent = true,
+--     })
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },

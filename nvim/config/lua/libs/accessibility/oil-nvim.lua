@@ -3,6 +3,7 @@ local M = {}
 M[1] = "stevearc/oil.nvim"
 M.enabled = true
 M.dependencies = "nvim-tree/nvim-web-devicons"
+
 M.keys = {
   -- {
   --   "<Leader>fo",
@@ -19,9 +20,7 @@ M.keys = {
     desc = "Float » Explorer (pwd)"
   }
 }
-M.deactivate = function()
-  vim.cmd([[Oil close]])
-end
+
 M.opts = {
   default_file_explorer = false,
   restore_win_options = true,
@@ -38,9 +37,9 @@ M.opts = {
   keymaps = {
     ["g?"] = "actions.show_help",
     ["q"] = "actions.close",
-    ["<CR>"] = "actions.select",
-    ["-"] = "actions.parent",
-    ["_"] = "actions.open_cwd",
+    ["<cr>"] = "actions.select",
+    ["<bs>"] = "actions.parent",
+    ["^"] = "actions.open_cwd",
     ["gh"] = "actions.toggle_hidden",
     ["gx"] = "actions.select_vsplit",
     ["gy"] = "actions.select_split",
@@ -83,4 +82,9 @@ M.opts = {
     },
   },
 }
+
+M.deactivate = function()
+  vim.cmd([[Oil close]])
+end
+
 return M

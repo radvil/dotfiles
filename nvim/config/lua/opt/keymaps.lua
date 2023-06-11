@@ -76,8 +76,8 @@ map("n", "<c-left>", ":vertical resize -2<cr>", { desc = "window » width--" })
 map("n", "<c-right>", ":vertical resize +2<cr>", { desc = "window » width++" })
 
 -- buffers
-map("n", "<Leader>`", "<cmd>e #<cr>", { desc = "Buffer » switch to other" })
-map("n", "<Leader>bb", "<cmd>e #<cr>", { desc = "Buffer » switch to other" })
+map("n", "<Leader>`", "<cmd>e #<cr>", { desc = "buffer » switch to other" })
+map("n", "<Leader>bb", "<cmd>e #<cr>", { desc = "buffer » switch to other" })
 map("n", "[b", ":bprevious<cr>", { desc = "Buffer » prev" })
 map("n", "]b", ":bnext<cr>", { desc = "Buffer » next" })
 if not util.has("mini.bufremove") then

@@ -33,8 +33,8 @@ M.keys = {
   },
   { "<leader>/w", util.telescope("live_grep"),                    desc = "telescope » live grep (cwd)" },
   { "<leader>/W", util.telescope("live_grep", { cwd = false }),   desc = "telescope » live grep (root)" },
-  { "<leader>/S", util.telescope("grep_string"),                  desc = "telescope » grep Word (cwd)" },
-  { "<leader>/s", util.telescope("grep_string", { cwd = false }), desc = "telescope » grep Word (root)" },
+  { "<leader>/S", util.telescope("grep_string"),                  desc = "telescope » grep word (cwd)" },
+  { "<leader>/s", util.telescope("grep_string", { cwd = false }), desc = "telescope » grep word (root)" },
   {
     "<leader>//",
     ":Telescope resume<cr>",
@@ -42,12 +42,12 @@ M.keys = {
   },
   {
     "<leader>/:",
-    ":Telescope command_history<Cr>",
+    ":Telescope command_history<cr>",
     desc = "telescope » command history",
   },
   {
     "<leader>/b",
-    ":Telescope buffers<Cr>",
+    ":Telescope buffers<cr>",
     desc = "telescope » find opened buffers",
   },
   {
@@ -72,17 +72,17 @@ M.keys = {
   },
   {
     "<leader>/H",
-    ":Telescope highlights<Cr>",
+    ":Telescope highlights<cr>",
     desc = "telescope » find highlights",
   },
   {
     "<leader>/k",
-    ":Telescope keymaps<Cr>",
+    ":Telescope keymaps<cr>",
     desc = "telescope » find keymaps",
   },
   {
     "<leader>/M",
-    ":Telescope man_pages<Cr>",
+    ":Telescope man_pages<cr>",
     desc = "telescope » find man pages",
   },
   {
@@ -92,7 +92,7 @@ M.keys = {
   },
   {
     "<leader>/c",
-    ":Telescope commands<Cr>",
+    ":Telescope commands<cr>",
     desc = "telescope » find available commands",
   },
   {
@@ -104,6 +104,21 @@ M.keys = {
     "<leader>/x",
     ":Telescope diagnostics bufnr=0<cr>",
     desc = "telescope » find diagnostics (cwd)",
+  },
+  {
+    "<leader>/g",
+    ":Telescope git_branches<cr>",
+    desc = "telescope » git branches",
+  },
+  {
+    "<leader>/j",
+    util.telescope("jumplist", { initial_mode = "normal" }),
+    desc = "telescope » jump list",
+  },
+  {
+    "<leader><tab>",
+    util.telescope("jumplist", { initial_mode = "normal" }),
+    desc = "telescope » jump list",
   },
 }
 
@@ -130,6 +145,7 @@ M.opts = function()
           ["<c-u>"] = actions.preview_scrolling_up,
         },
         ["n"] = {
+          ["<esc>"] = actions.close,
           ["<c-p>"] = actions.move_selection_previous,
           ["<c-n>"] = actions.move_selection_next,
           ["<c-h>"] = actions.select_horizontal,

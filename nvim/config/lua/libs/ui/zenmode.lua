@@ -7,7 +7,7 @@ M.keys = {
   {
     "<Leader>wf",
     ":ZenMode<cr>",
-    desc = "fokus-nvim » toggle zen mode",
+    desc = "Window » toggle zen mode",
   },
 }
 
