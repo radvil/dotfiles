@@ -10,7 +10,7 @@ local map = rnv.api.map
 map("i", "<c-d>", "<nop>")
 map("n", "<a-cr>", "<nop>")
 map("i", "<a-bs>", "<nop>")
-map({ "n", "x", "v" }, "-", "g$")
+map({ "n", "x", "v", "o" }, "-", "g$")
 map({ "n", "x", "v" }, "<nl>", "<nop>")
 map("", "<c-z>", ":undo<cr>", { nowait = true })
 

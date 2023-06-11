@@ -9,4 +9,5 @@ return {
   require("libs.accessibility.tabout"),
   require("libs.accessibility.treesitter-context"),
   require("libs.accessibility.oil-nvim"),
+  require("libs.accessibility.status-column"),
 }

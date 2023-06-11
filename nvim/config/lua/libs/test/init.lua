@@ -23,6 +23,9 @@ return {
       vim.opt.splitkeep = "screen"
     end,
     opts = {
+      animate = {
+        enabled = false,
+      },
       bottom = {
         {
           ft = "lazyterm",
@@ -63,7 +66,7 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == "buffers"
           end,
-          pinned = true,
+          pinned = false,
           open = "Neotree position=top buffers",
         },
         -- any other neo-tree windows
