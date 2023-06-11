@@ -10,11 +10,11 @@ require("core").bootstrap({
       "folke/lazy.nvim",
       require("libs.color"),
       require("libs.misc"),
+      require("libs.test"),
       require("libs.lsp"),
       require("libs.ui"),
       require("usr.accessibility"),
       require("usr.completion"),
-      require("usr._preview"),
     }, options)
   end,
 
