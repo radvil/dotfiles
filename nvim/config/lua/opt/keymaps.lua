@@ -7,11 +7,12 @@ local map = rnv.api.map
 -- ' g' `, ← all of these are the same keys to list marks
 
 -- reset
-map("", "<c-z><c-z>", "")
 map("i", "<c-d>", "<nop>")
 map("n", "<a-cr>", "<nop>")
 map("i", "<a-bs>", "<nop>")
+map({ "n", "x", "v" }, "-", "g$")
 map({ "n", "x", "v" }, "<nl>", "<nop>")
+map("", "<c-z>", ":undo<cr>", { nowait = true })
 
 -- base
 map("v", "<", "<gv", { desc = "indent left" })
@@ -32,8 +33,6 @@ map("i", "<c-g>", "<esc>ggVG", { desc = "select all content" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "clear hlsearch" })
 map({ "n", "x", "v" }, "K", "5k", { desc = "shift 5 top" })
 map({ "n", "x", "v" }, "J", "5j", { desc = "shift 5 down" })
--- map({ "n", "x", "v" }, "H", "^", { desc = "shift to start line" })
--- map({ "n", "x", "v" }, "L", "$", { desc = "shift to end line" })
 map({ "n", "x", "v" }, "Q", "q", { nowait = true, desc = "record" })
 map({ "n", "x", "v" }, "+", ":join<cr>", { nowait = true, desc = "join lines" })
 map({ "n", "x", "v" }, "q", "<esc>", { nowait = true, desc = "escape to normal" })
@@ -86,16 +85,16 @@ if not util.has("mini.bufremove") then
   map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "buffer » delete (all)" })
 end
 
-map("n", "<c-z>w", function()
+map("n", "<leader>uw", function()
   util.toggle("wrap")
 end, { desc = "Toggle » word wrap" })
-map("n", "<c-z>s", function()
+map("n", "<leader>us", function()
   util.toggle("spell")
 end, { desc = "Toggle » word spell" })
-map("n", "<c-z>c", function()
+map("n", "<leader>uc", function()
   util.toggle("cursorline")
 end, { desc = "Toggle » cursor line" })
-map("n", "<c-z>n", function()
+map("n", "<leader>un", function()
   util.toggle("relativenumber", true)
   util.toggle("number")
 end, { desc = "Toggle » line numbers" })

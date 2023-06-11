@@ -2,6 +2,7 @@
 local M = {}
 M[1] = "folke/zen-mode.nvim"
 M.cmd = "ZenMode"
+
 M.keys = {
   {
     "<Leader>wf",
@@ -9,6 +10,7 @@ M.keys = {
     desc = "fokus-nvim » toggle zen mode",
   },
 }
+
 M.opts = {
   window = {
     backdrop = 0.95,
@@ -38,4 +40,5 @@ M.opts = {
     },
   },
 }
+
 return M

@@ -27,7 +27,7 @@ end
 
 M.keys = {
   {
-    "<c-z>n", -- TODO: Toggle notification
+    "<leader>uN", -- TODO: Toggle notification
     function()
       require("notify").dismiss({
         silent = true,

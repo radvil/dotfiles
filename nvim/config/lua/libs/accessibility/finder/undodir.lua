@@ -5,7 +5,7 @@ M[1] = "mbbill/undotree"
 M.enabled = true
 M.keys = {
   {
-    "<leader>u",
+    "<leader>U",
     ":UndotreeToggle<cr>",
     desc = "undotree » toggle",
   },

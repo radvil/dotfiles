@@ -65,8 +65,8 @@ function M.setup()
     M.api.toggle()
   end, {})
 
-  vim.keymap.set("n", "<c-z>x", M.api.toggle, {
-    desc = "Diagnostics » Toggle",
+  vim.keymap.set("n", "<Leader>ux", M.api.toggle, {
+    desc = "Toggle » diagnostics",
   })
 
   M.loaded = true

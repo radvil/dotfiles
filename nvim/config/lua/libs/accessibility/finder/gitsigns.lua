@@ -20,7 +20,7 @@ M.opts = {
     local function gs()
       return package.loaded.gitsigns
     end
-    vim.keymap.set("n", "<c-z>g", function()
+    vim.keymap.set("n", "<leader>ug", function()
       gs().toggle_current_line_blame()
     end, { buffer = buffer, desc = "Toggle » git blame line" })
     vim.keymap.set("n", "<Leader>gd", function()

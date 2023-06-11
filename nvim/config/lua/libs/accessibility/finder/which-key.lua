@@ -105,6 +105,7 @@ M.init = function()
     ["<Leader>S"] = { name = "Session" },
     ["<Leader>f"] = { name = "Float" },
     ["<Leader>g"] = { name = "Git" },
+    ["<Leader>u"] = { name = "Toggle" },
     ["c<M-i>"] = { name = "Change variable or value" },
     ["s"] = { name = "Surround" },
   })
