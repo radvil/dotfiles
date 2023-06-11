@@ -100,7 +100,7 @@ M.opts = {
       },
       {
         filetype = "neo-tree",
-        text = require("opt.icons").Misc.Vim .. " Tree View",
+        text = require("opt.icons").Misc.Vim .. " SIDENAV VIEW",
         highlight = "BufferLineBackground",
         text_align = "left",
         separator = false,
