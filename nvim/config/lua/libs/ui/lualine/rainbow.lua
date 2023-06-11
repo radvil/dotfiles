@@ -1,7 +1,7 @@
 local M = {}
 
 local icons = require("opt.icons")
-local utils = require("usr.ui.lualine.utils")
+local utils = require("libs.ui.lualine.utils")
 local palette = rnv.opt.palette
 local bgcolor = utils.get_bgcolor(palette.bg)
 local vmodecolor = {

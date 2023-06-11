@@ -7,6 +7,6 @@ M.enabled = function()
 end
 M.dependencies = "arkav/lualine-lsp-progress"
 M.opts = function()
-  return require("usr.ui.lualine.rainbow")
+  return require("libs.ui.lualine.rainbow")
 end
 return M

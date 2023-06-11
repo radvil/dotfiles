@@ -9,12 +9,12 @@ require("core").bootstrap({
     require("lazy").setup({
       "folke/lazy.nvim",
       require("libs.color"),
-      require("libs.lsp"),
       require("libs.misc"),
+      require("libs.lsp"),
+      require("libs.ui"),
       require("usr.accessibility"),
       require("usr.completion"),
       require("usr._preview"),
-      require("usr.ui"),
     }, options)
   end,
 
