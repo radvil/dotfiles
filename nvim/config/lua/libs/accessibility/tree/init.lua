@@ -1,6 +1,9 @@
+local function getconfig(name)
+  return require(string.format("libs.accessibility.tree.%s", name))
+end
 ---@type LazySpec[]
 return {
-  require("libs.accessibility.tree.symbols-outline"),
-  require("libs.accessibility.tree.nvim-tree"),
-  require("libs.accessibility.tree.neotree"),
+  getconfig("symbols-outline"),
+  getconfig("nvim-tree"),
+  getconfig("neotree"),
 }

@@ -3,7 +3,7 @@ local opt = {}
 
 opt.name = "NgVim"
 opt.version = ">= 0.0.1"
-opt.dev = true
+opt.dev = false
 opt.transbg = true
 opt.mapleader = " "
 opt.darkmode = true
