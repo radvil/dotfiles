@@ -23,8 +23,26 @@ return {
       vim.opt.splitkeep = "screen"
     end,
     opts = {
+      wo = {
+        winbar = false,
+      },
+      options = {
+        left = { size = 33 },
+      },
       animate = {
-        enabled = false,
+        enabled = true,
+        fps = 100,
+        cps = 120,
+        on_begin = function()
+          vim.g.minianimate_disable = true
+        end,
+        on_end = function()
+          vim.g.minianimate_disable = false
+        end,
+        spinner = {
+          frames = require("opt.icons").SpinnerFramesAlt,
+          interval = 80,
+        },
       },
       bottom = {
         {
@@ -66,7 +84,7 @@ return {
           filter = function(buf)
             return vim.b[buf].neo_tree_source == "buffers"
           end,
-          pinned = false,
+          pinned = true,
           open = "Neotree position=top buffers",
         },
         -- any other neo-tree windows
