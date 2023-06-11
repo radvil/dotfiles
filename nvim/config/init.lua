@@ -8,7 +8,7 @@ require("core").bootstrap({
     require("opt.options")
     require("lazy").setup({
       "folke/lazy.nvim",
-      require("libs.colorschemes"),
+      require("libs.colors"),
       require("libs.lsp"),
       require("usr.accessibility"),
       require("usr.completion"),

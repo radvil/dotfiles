@@ -7,7 +7,6 @@ return {
   require("usr.ui.plenary"),
   require("usr.ui.winshift"),
   require("usr.ui.twilight"),
-  require("usr.ui.colorizer"),
   require("usr.ui.fokus-nvim"),
   require("usr.ui.webdevicons"),
   require("usr.ui.mini-animate"),
