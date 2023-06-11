@@ -1,4 +1,3 @@
----@desc nice statusline
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-lualine/lualine.nvim"
