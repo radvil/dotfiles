@@ -123,8 +123,8 @@ M.opts = function()
         ["o"] = "open_with_window_picker",
         ["<cr>"] = "open",
         ["<2-LeftMouse>"] = "open",
-        ["gy"] = "open_vsplit",
-        ["gx"] = "open_split",
+        ["<c-v>"] = "open_vsplit",
+        ["<c-x>"] = "open_split",
 
         ["t"] = "open_tabnew",
         ["h"] = "close_node",
