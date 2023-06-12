@@ -2,6 +2,7 @@
 local M = {}
 M[1] = "simrat39/symbols-outline.nvim"
 M.enabled = true
+M.event = "VeryLazy"
 
 M.opts = {
   highlight_hovered_item = true,
@@ -13,7 +14,7 @@ M.opts = {
     goto_location = { "<cr>", "o" },
     focus_location = "l",
     hover_symbol = "K",
-    toggle_preview = "gh",
+    toggle_preview = nil,
     rename_symbol = "gr",
     code_actions = "ga",
     fold = "zc",
@@ -22,7 +23,7 @@ M.opts = {
     unfold_all = "zO",
     fold_reset = "zU",
   },
-  width = 50,
+  width = 40,
   wrap = false,
   show_guides = true,
   auto_preview = false,
