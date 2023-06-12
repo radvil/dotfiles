@@ -32,11 +32,11 @@ M.keys = {
     end,
     desc = "Neotree » Toggle",
   },
-  {
-    "<leader><tab>",
-    ":Neotree position=left buffers<cr>",
-    desc = "Neotree » Toggle opened buffers",
-  },
+  -- {
+  --   "<leader><tab>",
+  --   ":Neotree position=left buffers<cr>",
+  --   desc = "Neotree » Toggle opened buffers",
+  -- },
 }
 
 M.deactivate = function()
