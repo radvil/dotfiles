@@ -3,8 +3,8 @@ local opt = {}
 
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
-opt.dev = false
-opt.transbg = true
+opt.dev = true
+opt.transbg = false
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neotree" | "nvim-tree"
@@ -71,7 +71,7 @@ opt.lazy_config = {
   },
   performance = {
     reset_packpath = true, -- reset the package path to improve startup time
-    cache = { enabled = true },
+    cache = { enabled = opt.dev },
     rtp = {
       reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
       paths = {},   -- add any custom paths here that you want to includes in the rtp
