@@ -11,6 +11,7 @@ local with_root_files = function(files)
     return utils.root_has_file(files)
   end
 end
+
 M.opts = function()
   local nls = require("null-ls")
   return {
