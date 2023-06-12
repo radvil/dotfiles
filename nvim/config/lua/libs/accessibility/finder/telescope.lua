@@ -19,11 +19,13 @@ M.keys = {
     util.telescope("files"),
     ":Telescope find_files<cr>",
     desc = "telescope » find files",
-    mode = "n",
   },
   {
     "<leader>/.",
-    ":Dotfiles<cr>",
+    util.telescope("files", {
+      prompt_title = "🔧 DOTFILES",
+      cwd = os.getenv("DOTFILES"),
+    }),
     desc = "telescope » find dotfiles",
   },
   {
@@ -38,7 +40,7 @@ M.keys = {
   {
     "<leader>//",
     ":Telescope resume<cr>",
-    desc = "telescope » resume"
+    desc = "telescope » resume",
   },
   {
     "<leader>/:",
@@ -47,7 +49,7 @@ M.keys = {
   },
   {
     "<leader>/b",
-    ":Telescope buffers<cr>",
+    ":Telescope buffers show_all_buffers=true<cr>",
     desc = "telescope » find opened buffers",
   },
   {
@@ -87,7 +89,10 @@ M.keys = {
   },
   {
     "<leader>/C",
-    util.telescope("colorscheme", { enable_preview = true }),
+    util.telescope("colorscheme", {
+      prompt_title = "🎨 COLORSCHEMES",
+      enable_preview = true,
+    }),
     desc = "telescope » find colorscheme",
   },
   {
@@ -112,8 +117,16 @@ M.keys = {
   },
   {
     "<leader>/j",
-    util.telescope("jumplist", { initial_mode = "normal" }),
+    util.telescope("jumplist", {
+      prompt_title = "JUMP LIST",
+      initial_mode = "normal",
+    }),
     desc = "telescope » jump list",
+  },
+  {
+    "<leader><Tab>",
+    ":Telescope buffers initial_mode=normal ignore_current_buffer=true sort_mru=true<cr>",
+    desc = "telescope » find opened buffers",
   },
 }
 
@@ -140,6 +153,7 @@ M.opts = function()
           ["<c-u>"] = actions.preview_scrolling_up,
         },
         ["n"] = {
+          ["q"] = actions.close,
           ["<esc>"] = actions.close,
           ["<c-p>"] = actions.move_selection_previous,
           ["<c-n>"] = actions.move_selection_next,
@@ -149,15 +163,6 @@ M.opts = function()
       },
     },
   }
-end
-
-function M.init()
-  vim.api.nvim_create_user_command("Dotfiles", function()
-    require("utils").telescope("files", {
-      prompt_title = '🔧 DOTFILES',
-      cwd = os.getenv("DOTFILES"),
-    })()
-  end, {})
 end
 
 return M
