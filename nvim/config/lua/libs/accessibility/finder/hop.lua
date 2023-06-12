@@ -1,11 +1,11 @@
 ---@type LazySpec
 local M = {}
 M[1] = "zzhirong/hop.nvim" -- using forks from this dude
-M.enabled = true
+M.enabled = false
 M.event = "VeryLazy"
 local function register_keymaps()
   local hop = require("hop")
-  local mode = { "n", "x", "v", "o", "s" }
+  local mode = { "n", "x", "v", "o" }
   local directions = require("hop.hint").HintDirection
   vim.keymap.set(mode, "]f", function()
     hop.hint_char1({
@@ -14,7 +14,7 @@ local function register_keymaps()
       current_line_only = true,
     })
   end, {
-    desc = "hop » find next char (inline)",
+    desc = "HOP » find next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "[f", function()
@@ -24,7 +24,7 @@ local function register_keymaps()
       current_line_only = true,
     })
   end, {
-    desc = "hop » find prev char (inline)",
+    desc = "HOP » find prev char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "]t", function()
@@ -35,7 +35,7 @@ local function register_keymaps()
       hint_offset = -1,
     })
   end, {
-    desc = "hop » to next char (inline)",
+    desc = "HOP » to next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "[t", function()
@@ -46,7 +46,7 @@ local function register_keymaps()
       hint_offset = 1,
     })
   end, {
-    desc = "hop » to next char (inline)",
+    desc = "HOP » to next char (inline)",
     remap = true,
   })
   vim.keymap.set(mode, "S", function()
@@ -56,7 +56,7 @@ local function register_keymaps()
       teasing = true,
     })
   end, {
-    desc = "hop » jump everywhere",
+    desc = "HOP » jumping search",
     remap = true,
   })
 end
