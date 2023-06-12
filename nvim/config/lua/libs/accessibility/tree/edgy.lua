@@ -23,6 +23,7 @@ return {
     opts = {
       options = {
         left = { size = 40 },
+        right = { size = 50 },
       },
       animate = {
         enabled = false,
@@ -39,6 +40,18 @@ return {
           interval = 80,
         },
       },
+
+      right = {
+        {
+          ft = "spectre_panel",
+          size = { height = 0.5 }
+        },
+        {
+          ft = "Trouble",
+          size = { height = 0.5 }
+        },
+      },
+
       bottom = {
         {
           ft = "lazyterm",
@@ -48,14 +61,9 @@ return {
             return not vim.b[buf].lazyterm_cmd
           end,
         },
-        "Trouble",
         {
           ft = "qf",
           title = "QuickFix"
-        },
-        {
-          ft = "spectre_panel",
-          size = { height = 0.3 }
         },
         {
           ft = "help",
