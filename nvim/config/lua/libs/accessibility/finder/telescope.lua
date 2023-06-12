@@ -115,11 +115,6 @@ M.keys = {
     util.telescope("jumplist", { initial_mode = "normal" }),
     desc = "telescope » jump list",
   },
-  {
-    "<leader><tab>",
-    util.telescope("jumplist", { initial_mode = "normal" }),
-    desc = "telescope » jump list",
-  },
 }
 
 M.opts = function()
