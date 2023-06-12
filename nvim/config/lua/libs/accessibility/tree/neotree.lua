@@ -20,7 +20,7 @@ M.keys = {
         toggle = true,
       })
     end,
-    desc = "neotree » toggle (root)",
+    desc = "Neotree » Toggle (root)",
   },
   {
     "<Leader>E",
@@ -30,7 +30,12 @@ M.keys = {
         toggle = true,
       })
     end,
-    desc = "neotree » toggle",
+    desc = "Neotree » Toggle",
+  },
+  {
+    "<Leader><Tab>",
+    ":Neotree position=left buffers<cr>",
+    desc = "Neotree » Toggle opened buffers",
   },
 }
 
@@ -58,11 +63,6 @@ M.opts = function()
     close_if_last_window = true,
     popup_border_style = "rounded",
     use_default_mappings = false,
-    filesystem = {
-      bind_to_cwd = false,
-      follow_current_file = true,
-      use_libuv_file_watcher = true,
-    },
     default_component_configs = {
       indent = {
         with_expanders = true,
@@ -92,7 +92,7 @@ M.opts = function()
       show_unloaded = true,
     },
     window = {
-      width = 36,
+      width = 40,
       position = "left",
       mapping_options = {
         noremap = true,
@@ -124,22 +124,31 @@ M.opts = function()
         ["x"] = "cut_to_clipboard",
         ["p"] = "paste_from_clipboard",
 
-        ["<bs>"] = "navigate_up",
         ["?"] = "show_help",
-        ["w"] = "toggle_preview",
-        ["W"] = { "toggle_preview", config = { use_float = true } },
+        ["W"] = "toggle_preview",
+        ["w"] = { "toggle_preview", config = { use_float = true } },
         ["<esc>"] = "revert_preview",
-        ["H"] = "toggle_hidden",
-        ["[g"] = "prev_git_modified",
-        ["]g"] = "next_git_modified",
 
-        ["."] = "set_root",
         ["R"] = "refresh",
         ["q"] = "close_window",
-
-        ["/f"] = "fuzzy_finder",
-        ["/d"] = "fuzzy_finder_directory",
-        ["//"] = "filter_on_submit",
+      },
+    },
+    filesystem = {
+      bind_to_cwd = false,
+      follow_current_file = true,
+      use_libuv_file_watcher = true,
+      window = {
+        mappings = {
+          ["D"] = "",
+          ["<bs>"] = "navigate_up",
+          ["."] = "set_root",
+          ["H"] = "toggle_hidden",
+          ["/"] = "fuzzy_finder",
+          ["f"] = "filter_on_submit",
+          ["<a-space>"] = "clear_filter",
+          ["[g"] = "prev_git_modified",
+          ["]g"] = "next_git_modified",
+        },
       },
     },
   }
