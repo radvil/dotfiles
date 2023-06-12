@@ -5,7 +5,7 @@ M.enabled = true
 
 M.opts = {
   highlight_hovered_item = true,
-  relative_width = true,
+  relative_width = false,
   auto_close = false,
   position = "right",
   keymaps = {
@@ -22,7 +22,7 @@ M.opts = {
     unfold_all = "zO",
     fold_reset = "zU",
   },
-  width = 46,
+  width = 50,
   wrap = false,
   show_guides = true,
   auto_preview = false,
