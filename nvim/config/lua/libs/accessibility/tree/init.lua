@@ -6,4 +6,5 @@ return {
   getconfig("symbols-outline"),
   getconfig("nvim-tree"),
   getconfig("neotree"),
+  getconfig("edgy"),
 }
