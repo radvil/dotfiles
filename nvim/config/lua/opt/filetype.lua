@@ -50,7 +50,7 @@ M.excludes = {
   "lazy",
   "noice",
   "DressingInput",
-  "TelescopePrompt",
+  -- "TelescopePrompt",
   "TelescopeResults",
   "WhichKey",
   unpack(M.sidebars),
