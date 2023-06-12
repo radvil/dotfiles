@@ -9,16 +9,16 @@ M.keys = {
     function()
       require("illuminate").goto_prev_reference(false)
     end,
-    desc = "vim-illuminate » prev ref",
-    mode = { "n", "x", "v" }
+    desc = "Vim Illuminate » Prev ref",
+    mode = { "n", "x", "o" }
   },
   {
     "<A-n>",
     function()
       require("illuminate").goto_next_reference(false)
     end,
-    desc = "vim-illuminate » next ref",
-    mode = { "n", "x", "v" }
+    desc = "Vim Illuminate » Next ref",
+    mode = { "n", "x", "o" }
   },
 }
 M.opts = {

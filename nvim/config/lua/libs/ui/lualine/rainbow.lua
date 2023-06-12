@@ -67,49 +67,49 @@ end
 ---@alias VType string | function
 ---@param colors {left: VType; middle: VType; right: VType}
 ---@param cond? boolean | function default to true
-local function insert_arrow(colors, cond)
-  if type(cond) == "function" then
-    cond = cond()
-  elseif type(cond) == "boolean" then
-    cond = cond
-  else
-    cond = true
-  end
-  if not cond then
-    return
-  end
-  local function val(c)
-    if type(c) == "function" then
-      return c()
-    else
-      return c
-    end
-  end
-  insert_left({
-    function()
-      return icons.Chevron.RightBigFilled
-    end,
-    padding = 0,
-    color = function()
-      return {
-        fg = val(colors.left),
-        bg = val(colors.middle),
-      }
-    end,
-  })
-  insert_left({
-    function()
-      return icons.Chevron.RightBigFilled
-    end,
-    padding = 0,
-    color = function()
-      return {
-        fg = val(colors.middle),
-        bg = val(colors.right),
-      }
-    end,
-  })
-end
+-- local function insert_arrow(colors, cond)
+--   if type(cond) == "function" then
+--     cond = cond()
+--   elseif type(cond) == "boolean" then
+--     cond = cond
+--   else
+--     cond = true
+--   end
+--   if not cond then
+--     return
+--   end
+--   local function val(c)
+--     if type(c) == "function" then
+--       return c()
+--     else
+--       return c
+--     end
+--   end
+--   insert_left({
+--     function()
+--       return icons.Chevron.RightBigFilled
+--     end,
+--     padding = 0,
+--     color = function()
+--       return {
+--         fg = val(colors.left),
+--         bg = val(colors.middle),
+--       }
+--     end,
+--   })
+--   insert_left({
+--     function()
+--       return icons.Chevron.RightBigFilled
+--     end,
+--     padding = 0,
+--     color = function()
+--       return {
+--         fg = val(colors.middle),
+--         bg = val(colors.right),
+--       }
+--     end,
+--   })
+-- end
 
 ---vim mode
 insert_left({
@@ -163,13 +163,13 @@ insert_left({
   end,
 })
 
-insert_arrow({
-  left = palette.yellow,
-  middle = palette.violet,
-  right = function()
-    return rnv.api.is_git_workspace() and utils.get_filemeta().color or ""
-  end,
-})
+-- insert_arrow({
+--   left = palette.yellow,
+--   middle = palette.violet,
+--   right = function()
+--     return rnv.api.is_git_workspace() and utils.get_filemeta().color or ""
+--   end,
+-- })
 
 ---file's icon + name
 insert_left({
