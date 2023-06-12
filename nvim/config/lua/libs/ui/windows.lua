@@ -42,7 +42,7 @@ M.config = function()
     },
     ignore = {
       buftype = { "quickfix" },
-      filetype = require("opt.filetype").excludes,
+      filetype = require("opt.filetype").popups,
     }
   })
 end
