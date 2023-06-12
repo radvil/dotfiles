@@ -48,17 +48,29 @@ return {
         next_group = '<space>',
         prev_group = '<tab>',
       }
+      leap.opts.labels = { "s", "f", "n",
+        "j", "k", "l", "h", "o", "d", "w", "e", "m", "b",
+        "u", "y", "v", "r", "g", "t", "c", "x", "/", "z",
+        "S", "F", "N",
+        "J", "K", "L", "H", "O", "D", "W", "E", "M", "B",
+        "U", "Y", "V", "R", "G", "T", "C", "X", "?", "Z" }
     end
   },
   {
     "ggandor/flit.nvim",
     dependencies = "ggandor/leap.nvim",
-    config = function()
-      local opts = {
-        keys = { f = ']f', F = '[f', t = ']t', T = '[t' },
-        labeled_modes = "nxo",
-      }
-      require("flit").setup(opts)
-    end
+    keys = function()
+      ---@type LazyKeys[]
+      local ret = {}
+      for _, key in ipairs({ "f", "F", "t", "T" }) do
+        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
+      end
+      return ret
+    end,
+    opts = {
+      keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+      multiline = false,
+      labeled_modes = "nx",
+    }
   }
 }

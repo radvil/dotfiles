@@ -5,8 +5,8 @@ M.enabled = false
 M.event = "VeryLazy"
 local function register_keymaps()
   local hop = require("hop")
-  local mode = { "n", "x", "v", "o" }
   local directions = require("hop.hint").HintDirection
+  local mode = { "n", "x", "v", "o" }
   vim.keymap.set(mode, "]f", function()
     hop.hint_char1({
       direction = directions.AFTER_CURSOR,
