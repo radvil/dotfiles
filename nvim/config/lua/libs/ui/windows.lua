@@ -13,17 +13,17 @@ M.keys = {
   {
     "<Leader>wm",
     ":WindowsMaximize<cr>",
-    desc = "Window » maximize/minimize",
+    desc = "Window » Maximize/minimize",
   },
   {
     "<Leader>w=",
     ":WindowsEqualize<cr>",
-    desc = "Window » set equal size",
+    desc = "Window » Set equal size",
   },
   {
     "<Leader>uW",
     ":WindowsToggleAutowidth<cr>",
-    desc = "Toggle » window auto width",
+    desc = "Toggle » Window auto width",
   },
 }
 
