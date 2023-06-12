@@ -118,7 +118,6 @@ M.opts = function()
         ["r"] = "rename",
         ["<F2>"] = "rename",
         ["c"] = "copy",
-        ["m"] = "move",
 
         ["y"] = "copy_to_clipboard",
         ["x"] = "cut_to_clipboard",
