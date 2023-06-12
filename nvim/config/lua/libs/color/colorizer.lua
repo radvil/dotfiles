@@ -7,5 +7,4 @@ M.opts = {
     names = false,
   },
 }
-
 return M
