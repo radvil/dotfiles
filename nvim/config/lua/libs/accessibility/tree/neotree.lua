@@ -32,6 +32,11 @@ M.keys = {
     end,
     desc = "Neotree » Toggle",
   },
+  {
+    "<leader><cr>",
+    ":Neotree reveal<cr>",
+    desc = "Neotree » Reveal",
+  },
 }
 
 M.deactivate = function()
