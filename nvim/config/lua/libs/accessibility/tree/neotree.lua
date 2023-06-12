@@ -13,7 +13,7 @@ M.dependencies = {
 
 M.keys = {
   {
-    "<Leader>e",
+    "<leader>e",
     function()
       require("neo-tree.command").execute({
         dir = require("common.utils").get_root(),
@@ -23,7 +23,7 @@ M.keys = {
     desc = "Neotree » Toggle (root)",
   },
   {
-    "<Leader>E",
+    "<leader>E",
     function()
       require("neo-tree.command").execute({
         dir = vim.loop.cwd(),
@@ -33,7 +33,7 @@ M.keys = {
     desc = "Neotree » Toggle",
   },
   {
-    "<Leader><Tab>",
+    "<leader><tab>",
     ":Neotree position=left buffers<cr>",
     desc = "Neotree » Toggle opened buffers",
   },
@@ -139,7 +139,6 @@ M.opts = function()
       use_libuv_file_watcher = true,
       window = {
         mappings = {
-          ["D"] = "",
           ["<bs>"] = "navigate_up",
           ["."] = "set_root",
           ["H"] = "toggle_hidden",

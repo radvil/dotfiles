@@ -1,7 +1,7 @@
 ---@class RnvOptions
 local opt = {}
 
-opt.name = "NgVim"
+opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
 opt.transbg = true

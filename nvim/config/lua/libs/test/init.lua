@@ -24,13 +24,13 @@ return {
     end,
     opts = {
       wo = {
-        winbar = false,
+        winbar = true,
       },
       options = {
-        left = { size = 33 },
+        left = { size = 36 },
       },
       animate = {
-        enabled = true,
+        enabled = false,
         fps = 100,
         cps = 120,
         on_begin = function()
@@ -45,14 +45,14 @@ return {
         },
       },
       bottom = {
-        {
-          ft = "lazyterm",
-          title = "LazyTerm",
-          size = { height = 0.4 },
-          filter = function(buf)
-            return not vim.b[buf].lazyterm_cmd
-          end,
-        },
+        -- {
+        --   ft = "lazyterm",
+        --   title = "LazyTerm",
+        --   size = { height = 0.4 },
+        --   filter = function(buf)
+        --     return not vim.b[buf].lazyterm_cmd
+        --   end,
+        -- },
         "Trouble",
         {
           ft = "qf",
@@ -66,10 +66,12 @@ return {
             return vim.bo[buf].buftype == "help"
           end,
         },
-        { ft = "spectre_panel", size = { height = 0.4 } },
+        {
+          ft = "spectre_panel",
+          size = { height = 0.4 }
+        },
       },
       left = {
-        -- Neo-tree filesystem always takes half the screen height
         {
           title = "WORKDIR",
           ft = "neo-tree",
@@ -81,11 +83,11 @@ return {
         {
           title = "BUFFERS",
           ft = "neo-tree",
+          open = "Neotree position=top buffers",
           filter = function(buf)
             return vim.b[buf].neo_tree_source == "buffers"
           end,
           pinned = true,
-          open = "Neotree position=top buffers",
         },
         -- any other neo-tree windows
         "neo-tree",
