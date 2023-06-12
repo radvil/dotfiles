@@ -6,18 +6,18 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<leader>ue",
+        [[<leader>\]],
         function()
           require("edgy").toggle()
         end,
-        desc = "Toggle » Edgy Window",
+        desc = "Edgy » Toggle windows",
       },
       {
-        "<leader>uE",
+        "<leader>wp",
         function()
           require("edgy").select()
         end,
-        desc = "Edgy » Select Window"
+        desc = "Edgy » Pick window"
       },
     },
     opts = {
