@@ -6,9 +6,9 @@ M.enabled = function()
 end
 M.dependencies = {
   "nvim-tree/nvim-web-devicons",
-  "s1n7ax/nvim-window-picker",
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
+  "s1n7ax/nvim-window-picker",
 }
 
 M.keys = {
@@ -32,11 +32,6 @@ M.keys = {
     end,
     desc = "Neotree » Toggle",
   },
-  -- {
-  --   "<leader><tab>",
-  --   ":Neotree position=left buffers<cr>",
-  --   desc = "Neotree » Toggle opened buffers",
-  -- },
 }
 
 M.deactivate = function()
