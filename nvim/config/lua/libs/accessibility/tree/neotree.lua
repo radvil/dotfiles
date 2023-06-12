@@ -34,8 +34,8 @@ M.keys = {
   },
   {
     "<leader><cr>",
-    ":Neotree reveal<cr>",
-    desc = "Neotree » Reveal",
+    ":Neotree show<cr>",
+    desc = "Neotree » Show",
   },
 }
 
@@ -63,6 +63,26 @@ M.opts = function()
     close_if_last_window = true,
     popup_border_style = "rounded",
     use_default_mappings = false,
+    event_handlers = {
+      {
+        event = "neo_tree_window_after_open",
+        handler = function()
+          if package.loaded["windows"] then
+            vim.cmd [[WindowsEqualize]]
+          end
+        end,
+        id = "RnvNeotreeAfterOpen"
+      },
+      {
+        event = "neo_tree_window_after_close",
+        handler = function()
+          if package.loaded["windows"] then
+            vim.cmd [[WindowsEqualize]]
+          end
+        end,
+        id = "RnvNeotreeAfterClose"
+      },
+    },
     default_component_configs = {
       indent = {
         with_expanders = true,
