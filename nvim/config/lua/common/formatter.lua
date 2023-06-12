@@ -150,7 +150,7 @@ function M.setup()
     group = vim.api.nvim_create_augroup("RnvLspAutoFormat", {}),
     callback = function()
       if M.opts.autoformat then
-        format_document()
+        M.api.format_document()
       end
     end,
   })
