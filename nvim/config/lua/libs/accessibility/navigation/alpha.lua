@@ -29,6 +29,15 @@ M.opts = function()
   return db
 end
 
+M.init = function()
+  vim.api.nvim_create_user_command("Dotfiles", function()
+    require("common.utils").telescope("files", {
+      prompt_title = "🔧 DOTFILES",
+      cwd = os.getenv("DOTFILES"),
+    })()
+  end, { desc = "Telescope » Open dotfiles" })
+end
+
 M.config = function(_, db)
   -- close Lazy and re-open when the dashboard is ready
   if vim.o.filetype == "lazy" then

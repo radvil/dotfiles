@@ -13,7 +13,7 @@ M.init = function()
         require("mini.bufremove").delete(bufnr, false)
       end
     end
-  end, { desc = "Delte all buffers" })
+  end, { desc = "Delete all buffers" })
 
   vim.api.nvim_create_user_command("BF", function()
     require("mini.bufremove").delete(0, true)

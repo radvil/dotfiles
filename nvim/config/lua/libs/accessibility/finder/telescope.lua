@@ -22,10 +22,7 @@ M.keys = {
   },
   {
     "<leader>/.",
-    util.telescope("files", {
-      prompt_title = "🔧 DOTFILES",
-      cwd = os.getenv("DOTFILES"),
-    }),
+    ":Dotfiles<cr>",
     desc = "telescope » find dotfiles",
   },
   {
