@@ -53,7 +53,8 @@ M.init = function()
     end
   end
 end
-
+-- TestOpen = 0
+-- TestClose = 0
 M.opts = function()
   local icons = require("opt.icons")
   local i = function(icon)
@@ -65,20 +66,28 @@ M.opts = function()
     use_default_mappings = false,
     event_handlers = {
       {
-        event = "neo_tree_window_after_open",
-        handler = function()
-          if package.loaded["windows"] then
-            vim.cmd [[WindowsEqualize]]
-          end
-        end,
-        id = "RnvNeotreeAfterOpen"
-      },
-      {
         event = "neo_tree_window_after_close",
         handler = function()
+          -- TestClose = TestClose + 1
+          -- rnv.api.warn(TestClose)
+          --FIXME: only resize when window close,
+          --should figure out how to resize on win open
           if package.loaded["windows"] then
             vim.cmd [[WindowsEqualize]]
+            -- rnv.api.log("after close")
           end
+        end,
+        id = "RnvNeotreeAfterClose"
+      },
+      {
+        event = "after_render",
+        handler = function()
+          -- vim.fn.timer_start(500, function()
+          if package.loaded["windows"] then
+            vim.cmd [[WindowsEqualize]]
+            -- rnv.api.warn("after open")
+          end
+          -- end)
         end,
         id = "RnvNeotreeAfterClose"
       },

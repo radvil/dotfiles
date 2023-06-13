@@ -9,6 +9,7 @@ M.sidebars = {
   "neo-tree",
   "neo-tree-popup",
   "Outline",
+  "edgy"
 }
 
 M.treesitter = {
