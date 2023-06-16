@@ -5,12 +5,13 @@ M.enabled = true
 M.event = "BufReadPost"
 
 M.opts = function(_, opts)
-  opts.timeout = 1000
   if rnv.opt.transbg then
     opts.background_colour = "#000000"
   end
   if rnv.opt.dev then
     opts.timeout = 10000
+  else
+    opts.timeout = 1000
     opts.max_height = function()
       return math.floor(vim.o.lines * 0.75)
     end
