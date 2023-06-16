@@ -30,6 +30,20 @@ M.treesitter = {
   "yaml",
 }
 
+M.popups = {
+  "DressingInput",
+  "lazy",
+  "lspinfo",
+  "mason",
+  "neo-tree-popup",
+  "notify",
+  "oil",
+  "prompt",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "WhichKey",
+}
+
 M.excludes = {
   "dirbuf",
   "fugitive",
@@ -55,20 +69,7 @@ M.excludes = {
   "TelescopeResults",
   "WhichKey",
   unpack(M.sidebars),
-}
-
-M.popups = {
-  "DressingInput",
-  "lazy",
-  "lspinfo",
-  "mason",
-  "neo-tree-popup",
-  "notify",
-  "oil",
-  "prompt",
-  "TelescopePrompt",
-  "TelescopeResults",
-  "WhichKey",
+  unpack(M.popups)
 }
 
 M.builtin_plugins_excludes = {
