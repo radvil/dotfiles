@@ -34,8 +34,8 @@ M.keys = {
   },
   {
     "<leader><cr>",
-    ":Neotree show<cr>",
-    desc = "Neotree » Show",
+    ":Neotree reveal current<cr>",
+    desc = "Neotree » Reveal",
   },
 }
 
