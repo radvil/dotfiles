@@ -9,31 +9,33 @@ M.opts = function()
 
   local opts = {
     style = variant,
-    italic_functions = false,
+    tokyonight_sidebars = require("opt.filetype").sidebars,
     terminal_colors = true,
-    italic_comments = true,
-    italic_keywords = false,
-    italic_variables = false,
     transparent = bgtrans,
     hide_inactive_statusline = true,
     transparent_sidebar = bgtrans,
-    dark_sidebar = true,
-    dark_float = true,
     day_brightness = 0.3,
     lualine_bold = true,
+    dim_inactive = false,
     styles = {
       comments = "italic",
       keywords = "italic",
-      functions = "NONE",
+      functions = "italic",
       variables = "NONE",
-      sidebars = "normal",
-      floats = "normal",
+      sidebars = "dark",
+      floats = "dark",
     },
-    tokyonight_sidebars = require("opt.filetype").sidebars,
+    on_colors = function(colors)
+      colors.diff.delete = "#ff0000"
+    end,
+    on_highlights = function(hl)
+      hl.CursorLine.bold = true
+    end
   }
   if bgtrans then
     opts.styles.sidebars = "transparent"
     opts.styles.floats = "transparent"
+    opts.dim_inactive = false
   end
   return opts
 end
