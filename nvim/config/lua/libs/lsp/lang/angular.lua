@@ -23,8 +23,9 @@ end
 return {
   {
     "radvil2/nvim-treesitter-angular",
-    branch = "jsx-parser-fix",
     dependencies = "nvim-treesitter/nvim-treesitter",
+    branch = "jsx-parser-fix",
+    ft = { "html", "typescript" }
   },
   {
     "neovim/nvim-lspconfig",
