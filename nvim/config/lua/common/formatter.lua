@@ -8,6 +8,7 @@ M.opts = {
 }
 
 local function toggle_autoformat()
+  local utils = require("common.utils")
   if vim.b.autoformat == false then
     vim.b.autoformat = nil
     M.opts.autoformat = true
@@ -15,9 +16,9 @@ local function toggle_autoformat()
     M.opts.autoformat = not M.opts.autoformat
   end
   if M.opts.autoformat then
-    require("common.utils").info("Document » Autoformat Enabled", { title = "LSP" })
+    utils.info("Document » Autoformat Enabled", { title = "LSP formatter" })
   else
-    require("common.utils").warn("Document » Autoformat Disabled", { title = "LSP" })
+    utils.warn("Document » Autoformat Disabled", { title = "LSP formatter" })
   end
 end
 
@@ -142,7 +143,7 @@ function M.setup()
     toggle_autoformat()
   end, {})
   --- register toggle keymaps
-  vim.keymap.set("n", "<c-z>f", toggle_autoformat, {
+  vim.keymap.set("n", "<leader>uf", toggle_autoformat, {
     desc = "Toggle » document format on save",
   })
   --- listen on format on save
