@@ -107,6 +107,7 @@ end
 
 ---@param opts RvnLspOptions
 M.config = function(_, opts)
+  require("common.lsp").register_user_cmds()
   require("common.diagnostic").setup()
   require("common.formatter").setup()
   setup_language_servers(opts)

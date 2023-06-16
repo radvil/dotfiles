@@ -84,7 +84,7 @@ local default_keys = {
   },
 }
 
-local register_user_cmds = function()
+M.register_user_cmds = function()
   vim.api.nvim_create_user_command("CR", "lua vim.lsp.buf.rename()", {})
   vim.api.nvim_create_user_command("CA", "lua vim.lsp.buf.code_action()", {})
   vim.api.nvim_create_user_command("CD", "Telescope lsp_definitions", {})
@@ -100,7 +100,6 @@ local register_user_cmds = function()
 end
 
 function M.attach_keymaps(client, buffer)
-  register_user_cmds()
   local Keys = require("lazy.core.handler.keys")
   ---@type table<string,LazyKeys|{has?:string}>
   local keymaps = {}
