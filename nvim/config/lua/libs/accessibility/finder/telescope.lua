@@ -86,10 +86,7 @@ M.keys = {
   },
   {
     "<leader>/C",
-    util.telescope("colorscheme", {
-      prompt_title = "🎨 COLORSCHEMES",
-      enable_preview = true,
-    }),
+    util.telescope("colorscheme", { enable_preview = true, }),
     desc = "telescope » find colorscheme",
   },
   {
@@ -129,7 +126,7 @@ M.keys = {
 
 M.opts = function()
   local actions = require("telescope.actions")
-  return {
+  local opts = {
     defaults = {
       layout_config = { prompt_position = "top" },
       layout_strategy = "horizontal",
@@ -160,6 +157,10 @@ M.opts = function()
       },
     },
   }
+  if not rnv.opt.transbg then
+    opts.defaults.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
+  end
+  return opts
 end
 
 return M
