@@ -19,7 +19,7 @@ opt.format_notification = false
 opt.completion_copilot = false
 opt.completion_snippets = true
 opt.colorscheme = "tokyonight"
-opt.colorvariant = "moon"
+opt.colorvariant = "night"
 opt.data = os.getenv("HOME") .. "/.local/share/nvim/lazy/lazy.nvim"
 
 ---@type "dashboard" | "mini-starter" | "alpha-nvim"
