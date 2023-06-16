@@ -28,12 +28,12 @@
       "@Component({",
       "\tstandalone: true,",
       "\tselector: '${1:selector-name}',",
-      "\ttemplateUrl: '${2:name}.component.html',",
-      "\tstyleUrls: ['${2:name}.component.scss'],",
+      "\ttemplateUrl: '${2:name}.cmp.html',",
+      "\tstyleUrls: ['${2:name}.cmp.scss'],",
       "\tchangeDetection: ChangeDetectionStrategy.OnPush,",
       "\timports: [NgIf],",
       "})",
-      "export class ${3:Name}Component {",
+      "export class ${3:Name}Cmp {",
       "\tconstructor() { }",
       "}"
     ]
