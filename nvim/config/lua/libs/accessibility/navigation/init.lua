@@ -4,6 +4,7 @@ end
 ---@type LazySpec[]
 return {
   getconfig("tmux-navigator"),
+  getconfig("smart-splits"),
   getconfig("bufferline"),
   getconfig("dashboard"),
   getconfig("alpha"),
