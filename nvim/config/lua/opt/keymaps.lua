@@ -46,9 +46,9 @@ end
 
 if vim.opt.clipboard ~= "unnamedplus" then
   map({ "n", "x", "v" }, "gy", '"+y', { nowait = true, desc = "system clipboard » copy" })
-  map("n", "gY", '"+y$', { nowait = true, desc = "system clipboard » copy line" })
+  map({ "n", "x" }, "gY", '"+y$', { nowait = true, desc = "system clipboard » copy line" })
   map({ "n", "x", "v" }, "gp", '"+p', { nowait = true, desc = "system clipboard » paste before cursor" })
-  map("n", "gP", '"+P', { nowait = true, desc = "system clipboard » pase after cursor" })
+  map({ "n", 'x' }, "gP", '"+P', { nowait = true, desc = "system clipboard » pase after cursor" })
 end
 
 -- move to window using the <ctrl> hjkl keys
@@ -70,17 +70,20 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "swap selected lines down" })
 -- windows
 map("n", "<leader>ww", "<c-w>p", { desc = "Window » other" })
 map("n", "<leader>wd", "<c-w>c", { desc = "window » delete" }) -- TODO: same as <Cmd>close ??
-map("n", "<c-up>", ":resize +2<cr>", { desc = "window » height++" })
-map("n", "<c-down>", ":resize -2<cr>", { desc = "window » height--" })
-map("n", "<c-left>", ":vertical resize -2<cr>", { desc = "window » width--" })
-map("n", "<c-right>", ":vertical resize +2<cr>", { desc = "window » width++" })
+
+if rnv.api.call("smart-splits") == nil then
+  map("n", "<c-up>", ":resize +2<cr>", { desc = "window » height++" })
+  map("n", "<c-down>", ":resize -2<cr>", { desc = "window » height--" })
+  map("n", "<c-left>", ":vertical resize -2<cr>", { desc = "window » width--" })
+  map("n", "<c-right>", ":vertical resize +2<cr>", { desc = "window » width++" })
+end
 
 -- buffers
 map("n", "<Leader>`", "<cmd>e #<cr>", { desc = "buffer » switch to other" })
 map("n", "<Leader>bb", "<cmd>e #<cr>", { desc = "buffer » switch to other" })
 map("n", "[b", ":bprevious<cr>", { desc = "Buffer » prev" })
 map("n", "]b", ":bnext<cr>", { desc = "Buffer » next" })
-if not util.has("mini.bufremove") then
+if rnv.api.call("mini.bufremove") == nil then
   map("n", "<leader>bd", ":bdelete<cr>", { desc = "buffer » delete" })
   map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "buffer » delete (all)" })
 end
