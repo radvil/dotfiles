@@ -4,68 +4,73 @@ M[1] = "glepnir/dashboard-nvim"
 M.enabled = rnv.opt.starter_name == "dashboard"
 M.event = "VimEnter"
 
-M.opts = function()
-  return {
-    theme = "doom",
-    hide = {
-      statusline = true,
-      tabline = false,
-      winbar = false,
+M.opts = {
+  theme = "hyper",
+  shortcut_type = "number",
+  config = {
+    disable_move = true,
+    week_header = {
+      enable = true,
     },
-    config = {
-      header = rnv.opt.starter_logo,
-      footer = {
-        "                       ",
-        "                       ",
-        "🔥 WELCOME BACK FUCKER!",
+    packages = {
+      enable = false,
+    },
+    mru = {
+      enable = true,
+      limit = 10,
+      icon = "📁 ",
+      label = "Most recent used"
+    },
+    project = {
+      enable = false,
+      limit = 8,
+    },
+    shortcut = {
+      {
+        icon = "📎 ",
+        desc = 'Plugins',
+        group = '@constructor',
+        action = [[Lazy]],
+        key = "p",
       },
-      center = {
-        {
-          key = "p",
-          icon = "  ",
-          desc = "Manage Plugins                           ",
-          desc_hi = "DashboardCenter",
-          action = "Lazy",
-        },
-        {
-          key = "o",
-          icon = "📁 ",
-          desc = "Open recent files                        ",
-          desc_hi = "DashboardCenter",
-          action = "Telescope oldfiles",
-        },
-        {
-          key = "f",
-          icon = "🔎 ",
-          desc = "Find files                               ",
-          desc_hi = "DashboardCenter",
-          action = "Telescope find_files",
-        },
-        {
-          key = "t",
-          icon = "📌 ",
-          desc = "List all tasks                           ",
-          desc_hi = "DashboardCenter",
-          action = "TodoTelescope",
-        },
-        {
-          key = ".",
-          icon = "🔧 ",
-          desc = "Open dotfiles                            ",
-          desc_hi = "DashboardCenter",
-          action = "Dotfiles",
-        },
-        {
-          key = "s",
-          icon = "👻 ",
-          desc = "Restore session                          ",
-          desc_hi = "DashboardCenter",
-          action = 'lua require("usr.misc.persistence").api.restore_session()',
-        },
+      {
+        icon = "🕗 ",
+        desc = 'Resume',
+        group = 'DiagnosticWarn',
+        action = [[lua require('persistence').load()]],
+        key = "s"
+      },
+      {
+        icon = "🔭 ",
+        desc = 'Files',
+        group = 'DiagnosticOk',
+        action = [[Telescope find_files]],
+        key = "f"
+      },
+      {
+        icon = "🔎 ",
+        desc = 'Grep',
+        group = 'DiagnosticHint',
+        action = [[Telescope live_grep]],
+        key = "w"
+      },
+      {
+        icon = "🔧 ",
+        desc = 'Dotfiles',
+        group = '@float',
+        action = [[Dotfiles]],
+        key = "."
+      },
+      {
+        icon = "⭕ ",
+        desc = 'Quit',
+        group = '@tag.tsx',
+        action = [[qa]],
+        key = "q"
       },
     },
   }
-end
+}
 
 M.init = function()
   ---@desc close Lazy and re-open when the dashboard is ready
@@ -78,6 +83,14 @@ M.init = function()
       end,
     })
   end
+
+  ---@desc register telescope dotfiles on VimEnter here
+  vim.api.nvim_create_user_command("Dotfiles", function()
+    require("common.utils").telescope("files", {
+      prompt_title = "🔧 DOTFILES",
+      cwd = os.getenv("DOTFILES"),
+    })()
+  end, { desc = "Telescope » Open dotfiles" })
 end
 
 return M

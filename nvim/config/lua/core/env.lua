@@ -7,44 +7,45 @@ opt.dev = false
 opt.transbg = false
 opt.mapleader = " "
 opt.darkmode = true
----@type "neotree" | "nvim-tree"
-opt.tree = "neotree"
+---@type "neo-tree" | "nvim-tree"
+opt.tree = "neo-tree"
 opt.whichkey = true
+opt.tsrainbow = true
 opt.statusline = true
+opt.floating_winbar = false
 opt.completion = true
 opt.maplocalleader = " "
 opt.lsp_diagnostics = true
 opt.lsp_autoformat = true
+opt.lsp_inlayhints = false
 opt.format_notification = false
 opt.completion_copilot = false
 opt.completion_snippets = true
 opt.colorscheme = "tokyonight"
-opt.colorvariant = "night"
+opt.colorvariant = "moon"
 opt.data = os.getenv("HOME") .. "/.local/share/nvim/lazy/lazy.nvim"
 
----@type "dashboard" | "mini-starter" | "alpha-nvim"
+---@type "dashboard" | "alpha-nvim"
 opt.starter_name = "alpha-nvim"
 opt.starter_logo = [[
-
-      ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗   Z
-      ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║ Z
-      ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║
-      ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
-      ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
-      ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
+      ██╗     █████╗ ██████╗  █████╗ ██╗   ██╗██╗███╗   ███╗   Z
+      ██║    ██╔══██╗██╔══██╗██╔══██╗██║   ██║██║████╗ ████║ Z
+      ██║    ███████║██████╔╝███████║██║   ██║██║██╔████╔██║
+      ██║    ██╔══██║██╔══██╗██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║
+      ██████╗██║  ██║██║  ██║██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
+      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 ]]
 
 opt.palette = {
   bg = "#1A1B23",
   fg = "#ffffff",
   blue = "#51AFEF",
-  cyan = "#8AD3C8",
-  darkblue = "#081633",
+  cyan = "#0DB9D7",
   green = "#6DD390",
-  magenta = "#C678DD",
   orange = "#FF855A",
   red = "#EC5F67",
   pink = "#E76EB1",
+  magenta = "#C678DD",
   violet = "#A9A1E1",
   yellow = "#ECBE7B",
 }

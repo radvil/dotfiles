@@ -52,7 +52,7 @@ if vim.opt.clipboard ~= "unnamedplus" then
 end
 
 -- move to window using the <ctrl> hjkl keys
-if os.getenv("TMUX") == nil then
+if not os.getenv("TMUX") then
   map("n", "<c-h>", "<c-w>h", { desc = "window » navigate left" })
   map("n", "<c-j>", "<c-w>j", { desc = "window » navigate down" })
   map("n", "<c-k>", "<c-w>k", { desc = "window » navigate up" })
@@ -104,13 +104,22 @@ end, { desc = "Toggle » line numbers" })
 
 -- floating terminal
 map("n", "<leader>fG", function()
-  util.float_term({ "lazygit" }, { cwd = util.get_root() })
+  util.float_term({ "lazygit" }, {
+    cwd = util.get_root(),
+    esc_esc = false,
+    ctrl_hjkl = false
+  })
 end, { desc = "Float » lazygit open (root)" })
 map("n", "<leader>fg", function()
-  util.float_term({ "lazygit" })
+  util.float_term({ "lazygit" }, {
+    esc_esc = false,
+    ctrl_hjkl = false
+  })
 end, { desc = "Float » lazygit open (cwd)" })
 map("n", "<leader>ft", function()
-  util.float_term(nil, { cwd = util.get_root() })
+  util.float_term(nil, {
+    cwd = util.get_root()
+  })
 end, { desc = "Float » terminal (root)" })
 map("n", "<leader>fT", function()
   util.float_term()

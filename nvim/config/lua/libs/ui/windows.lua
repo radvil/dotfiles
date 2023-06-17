@@ -41,7 +41,7 @@ M.config = function()
       },
     },
     ignore = {
-      buftype = { "quickfix", "edgy" },
+      buftype = { "nofile", "quickfix", "edgy" },
       filetype = require("opt.filetype").excludes,
     }
   })

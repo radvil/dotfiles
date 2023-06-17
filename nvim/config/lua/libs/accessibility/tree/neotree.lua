@@ -2,7 +2,7 @@
 local M = {}
 M[1] = "nvim-neo-tree/neo-tree.nvim"
 M.enabled = function()
-  return rnv.opt.tree == "neotree"
+  return rnv.opt.tree == "neo-tree"
 end
 M.dependencies = {
   "nvim-tree/nvim-web-devicons",
@@ -45,16 +45,24 @@ end
 
 M.init = function()
   vim.g.neo_tree_remove_legacy_commands = 1
+
   if vim.fn.argc() == 1 then
-    ---@diagnostic disable-next-line: param-type-mismatch
     local stat = vim.loop.fs_stat(vim.fn.argv(0))
     if stat and stat.type == "directory" then
       require("neo-tree")
     end
   end
+
+  vim.api.nvim_create_autocmd("TermClose", {
+    pattern = "*lazygit",
+    callback = function()
+      if package.loaded["neo-tree.sources.git_status"] then
+        require("neo-tree.sources.git_status").refresh()
+      end
+    end,
+  })
 end
--- TestOpen = 0
--- TestClose = 0
+
 M.opts = function()
   local icons = require("opt.icons")
   local i = function(icon)
@@ -66,30 +74,25 @@ M.opts = function()
     use_default_mappings = false,
     event_handlers = {
       {
+        id = "RnvNeotreeAfterClose",
         event = "neo_tree_window_after_close",
         handler = function()
           -- TestClose = TestClose + 1
-          -- rnv.api.warn(TestClose)
           --FIXME: only resize when window close,
           --should figure out how to resize on win open
           if package.loaded["windows"] then
             vim.cmd [[WindowsEqualize]]
-            -- rnv.api.log("after close")
           end
         end,
-        id = "RnvNeotreeAfterClose"
       },
       {
+        id = "RnvNeotreeAfterClose",
         event = "after_render",
         handler = function()
-          -- vim.fn.timer_start(500, function()
           if package.loaded["windows"] then
             vim.cmd [[WindowsEqualize]]
-            -- rnv.api.warn("after open")
           end
-          -- end)
         end,
-        id = "RnvNeotreeAfterClose"
       },
     },
     default_component_configs = {
@@ -179,18 +182,6 @@ M.opts = function()
       },
     },
   }
-end
-
-M.config = function(_, opts)
-  require("neo-tree").setup(opts)
-  vim.api.nvim_create_autocmd("TermClose", {
-    pattern = "*lazygit",
-    callback = function()
-      if package.loaded["neo-tree.sources.git_status"] then
-        require("neo-tree.sources.git_status").refresh()
-      end
-    end,
-  })
 end
 
 return M

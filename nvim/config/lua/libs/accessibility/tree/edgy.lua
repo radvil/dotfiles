@@ -40,7 +40,7 @@ return {
           vim.g.minianimate_disable = false
         end,
         spinner = {
-          frames = { "", "", "", "", "", "", "", "", "", "" },
+          frames = require("opt.icons").SpinnerFrames,
           interval = 80,
         },
       },
@@ -90,7 +90,7 @@ return {
           open = function()
             vim.api.nvim_input("<esc><space>e")
           end,
-          size = { height = 0.6 },
+          size = { height = 0.7 },
         },
         {
           title = " OPENED BUFFERS",
@@ -101,16 +101,16 @@ return {
           pinned = true,
           open = "Neotree position=top buffers",
         },
-        {
-          title = " GIT STATUS",
-          ft = "neo-tree",
-          filter = function(buf)
-            return vim.b[buf].neo_tree_source == "git_status"
-          end,
-          pinned = true,
-          open = "Neotree position=right git_status",
-        },
-        -- "neo-tree",
+        -- {
+        --   title = " GIT STATUS",
+        --   ft = "neo-tree",
+        --   filter = function(buf)
+        --     return vim.b[buf].neo_tree_source == "git_status"
+        --   end,
+        --   pinned = true,
+        --   open = "Neotree position=right git_status",
+        -- },
+        "neo-tree",
       },
 
       keys = {

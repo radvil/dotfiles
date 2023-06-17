@@ -64,52 +64,52 @@ local function insert_right(changes)
   table.insert(M.sections.lualine_x, changes or {})
 end
 
----@alias VType string | function
----@param colors {left: VType; middle: VType; right: VType}
----@param cond? boolean | function default to true
--- local function insert_arrow(colors, cond)
---   if type(cond) == "function" then
---     cond = cond()
---   elseif type(cond) == "boolean" then
---     cond = cond
---   else
---     cond = true
---   end
---   if not cond then
---     return
---   end
---   local function val(c)
---     if type(c) == "function" then
---       return c()
---     else
---       return c
---     end
---   end
---   insert_left({
---     function()
---       return icons.Chevron.RightBigFilled
---     end,
---     padding = 0,
---     color = function()
---       return {
---         fg = val(colors.left),
---         bg = val(colors.middle),
---       }
---     end,
---   })
---   insert_left({
---     function()
---       return icons.Chevron.RightBigFilled
---     end,
---     padding = 0,
---     color = function()
---       return {
---         fg = val(colors.middle),
---         bg = val(colors.right),
---       }
---     end,
---   })
--- end
+--@alias VType string | function
+--@param colors {left: VType; middle: VType; right: VType}
+--@param cond? boolean | function default to true
+local function insert_arrow(colors, cond)
+  if type(cond) == "function" then
+    cond = cond()
+  elseif type(cond) == "boolean" then
+    cond = cond
+  else
+    cond = true
+  end
+  if not cond then
+    return
+  end
+  local function val(c)
+    if type(c) == "function" then
+      return c()
+    else
+      return c
+    end
+  end
+  insert_left({
+    function()
+      return icons.Chevron.RightBigFilled
+    end,
+    padding = 0,
+    color = function()
+      return {
+        fg = val(colors.left),
+        bg = val(colors.middle),
+      }
+    end,
+  })
+  insert_left({
+    function()
+      return icons.Chevron.RightBigFilled
+    end,
+    padding = 0,
+    color = function()
+      return {
+        fg = val(colors.middle),
+        bg = val(colors.right),
+      }
+    end,
+  })
+end
 
 ---vim mode
 insert_left({
@@ -126,50 +126,46 @@ insert_left({
   end,
 })
 
--- insert_arrow({
---   left = function()
---     return vmodecolor[vim.fn.mode()]
---   end,
---   middle = palette.orange,
---   right = palette.yellow,
--- })
+if not os.getenv("TMUX") then
+  insert_left({
+    function()
+      return icons.Git.Branch
+    end,
+    color = function()
+      return {
+        bg = palette.orange,
+        fg = bgcolor,
+      }
+    end,
+  })
 
-insert_left({
-  function()
-    return icons.Git.Branch
-  end,
-  color = function()
-    return {
-      bg = palette.orange,
+  ---git branch
+  insert_left({
+    "branch",
+    icon = icons.Common.Git,
+    color = {
+      bg = palette.yellow,
       fg = bgcolor,
-    }
-  end,
-})
-
----git branch
-insert_left({
-  "branch",
-  icon = icons.Common.Git,
-  color = {
-    bg = palette.yellow,
-    fg = bgcolor,
-    gui = "bold",
-  },
-  fmt = function(str)
-    if str == "" or str == nil then
-      return "<empty>"
-    end
-    return str
-  end,
-})
-
--- insert_arrow({
---   left = palette.yellow,
---   middle = palette.violet,
---   right = function()
---     return rnv.api.is_git_workspace() and utils.get_filemeta().color or ""
---   end,
--- })
+      gui = "bold",
+    },
+    fmt = function(str)
+      if str == "" or str == nil then
+        return "<empty>"
+      end
+      return str
+    end,
+  })
+else
+  insert_arrow({
+    left = function()
+      return vmodecolor[vim.fn.mode()]
+    end,
+    middle = palette.orange,
+    right = function()
+      return rnv.api.is_git_workspace() and utils.get_filemeta().color or ""
+    end,
+  })
+end
 
 ---file's icon + name
 insert_left({

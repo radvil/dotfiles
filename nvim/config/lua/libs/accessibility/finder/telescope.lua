@@ -46,7 +46,8 @@ M.keys = {
   },
   {
     "<leader>/b",
-    ":Telescope buffers show_all_buffers=true<cr>",
+    -- ":Telescope buffers show_all_buffers=true<cr>",
+    ":Telescope buffers initial_mode=normal ignore_current_buffer=true sort_mru=true<cr>",
     desc = "telescope » find opened buffers",
   },
   {
@@ -119,8 +120,12 @@ M.keys = {
   },
   {
     "<leader><Tab>",
-    ":Telescope buffers initial_mode=normal ignore_current_buffer=true sort_mru=true<cr>",
-    desc = "telescope » find opened buffers",
+    util.telescope("oldfiles", {
+      prompt_title = "🗒️ RECENT FILES",
+      initial_mode = "normal",
+      cwd = vim.loop.cwd()
+    }),
+    desc = "telescope » most recent used",
   },
 }
 
@@ -158,7 +163,12 @@ M.opts = function()
     },
   }
   if not rnv.opt.transbg then
-    opts.defaults.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
+    -- opts.defaults.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
+    opts.defaults.borderchars = {
+      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+      results = { " " },
+      preview = { " " },
+    }
   end
   return opts
 end

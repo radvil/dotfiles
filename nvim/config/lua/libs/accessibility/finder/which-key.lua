@@ -91,6 +91,7 @@ local function reset_presets_labels()
   presets.motions["_"] = "Entire line"
   presets.motions["0"] = "Start of line"
   presets.motions["$"] = "End of sentence"
+  presets.motions["<M-i>"] = [[variable or value]]
 end
 M.init = function()
   local wk = require("which-key")
@@ -106,7 +107,6 @@ M.init = function()
     ["<Leader>f"] = { name = "Float" },
     ["<Leader>g"] = { name = "Git" },
     ["<Leader>u"] = { name = "Toggle" },
-    ["c<M-i>"] = { name = "Change variable or value" },
     ["s"] = { name = "Surround" },
   })
 end

@@ -3,7 +3,7 @@
 local M = {}
 M[1] = "nvim-treesitter/nvim-treesitter-context"
 M.event = "BufReadPre"
-M.enabled = false -- TODO: conflicted with nvim hop
+M.enabled = false
 M.dependencies = { "nvim-treesitter/nvim-treesitter" }
 M.opts = {
   enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)

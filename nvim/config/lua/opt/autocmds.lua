@@ -27,9 +27,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- close with <q>, escape with <A-Space>
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = require("opt.filetype").excludes,
+  pattern = require("opt.filetype").sidebars,
   callback = function(event)
     vim.bo[event.buf].buflisted = false
+    vim.wo.foldcolumn = "0"
     vim.keymap.set("n", "q", ":close<cr>", {
       buffer = event.buf,
       silent = true,

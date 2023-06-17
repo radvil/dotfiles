@@ -85,18 +85,27 @@ local default_keys = {
 }
 
 M.register_user_cmds = function()
-  vim.api.nvim_create_user_command("CR", "lua vim.lsp.buf.rename()", {})
-  vim.api.nvim_create_user_command("CA", "lua vim.lsp.buf.code_action()", {})
-  vim.api.nvim_create_user_command("CD", "Telescope lsp_definitions", {})
-  vim.api.nvim_create_user_command("CV", vim.lsp.buf.signature_help, {})
-  vim.api.nvim_create_user_command("CI", "Telescope lsp_implementations", {})
-  vim.api.nvim_create_user_command("CL", "Telescope lsp_references", {})
-  -- TODO: handle documentSymbolProvider as "CS"
-  vim.api.nvim_create_user_command("CT", "Telescope lsp_type_definitions", {})
-  vim.api.nvim_create_user_command("CX", "TroubleToggle", {})
-  vim.api.nvim_create_user_command("CF", function()
-    require("common.formatter").api.format_document({ force = true })
-  end, {})
+  local format = function() require("common.formatter").api.format_document({ force = true }) end
+
+  ---@param name string
+  ---@param callback function | string
+  ---@param desc string
+  local command = function(name, callback, desc)
+    return vim.api.nvim_create_user_command("C" .. name, callback, {
+      desc = "LSP » " .. desc
+    })
+  end
+
+  command("R", "lua vim.lsp.buf.rename()", "Rename under cursor")
+  command("A", "lua vim.lsp.buf.code_action()", "Code action")
+  command("D", "Telescope lsp_definitions", "Find definitions")
+  command("V", vim.lsp.buf.signature_help, "Signature help")
+  command("I", "Telescope lsp_implementations", "Find implementations")
+  command("L", "Telescope lsp_references", "Find references")
+
+  command("T", "Telescope lsp_type_definitions", "Find type defintions")
+  command("X", "TroubleToggle", "Trouble diagnostics")
+  command("F", format, "Format document")
 end
 
 function M.attach_keymaps(client, buffer)

@@ -4,28 +4,34 @@ M[1] = "lewis6991/gitsigns.nvim"
 M.enabled = true
 M.event = "BufReadPre"
 
--- -- TODO: change ugly icons
--- local signs = {
---   add = { text = "▎" },
---   change = { text = "▎" },
---   delete = { text = "契" },
---   topdelete = { text = "契" },
---   changedelete = { text = "▎" },
---   untracked = { text = "▎" },
--- }
+---@param bufnr number
+---@param lhs string
+---@param rhs function | string
+---@param desc string
+local map = function(bufnr, lhs, rhs, desc)
+  return vim.keymap.set("n", lhs, rhs, {
+    desc = "Gitsign » " .. desc,
+    buffer = bufnr,
+  })
+end
 
 M.opts = {
-  -- signs = signs,
+  current_line_blame_opts = {
+    delay = 1000,
+    virt_text_pos = "right_align",
+    virt_text_priority = 100,
+  },
   on_attach = function(buffer)
-    local function gs()
-      return package.loaded.gitsigns
-    end
-    vim.keymap.set("n", "<leader>ug", function()
-      gs().toggle_current_line_blame()
-    end, { buffer = buffer, desc = "Toggle » git blame line" })
-    vim.keymap.set("n", "<Leader>gd", function()
-      gs().diffthis()
-    end, { buffer = buffer, desc = "Git sign » diff current buffer" })
+    local gs = require('gitsigns')
+    map(buffer, "<Leader>gd", function()
+      gs.diffthis()
+    end, "Diff current buffer")
+    map(buffer, "<leader>ug", function()
+      gs.toggle_signs()
+      gs.toggle_numhl()
+      gs.toggle_linehl()
+      gs.toggle_current_line_blame()
+    end, "Toggle all views")
   end,
 }
 

@@ -8,20 +8,20 @@ return {
     "ggandor/leap.nvim",
     enabled = true,
     keys = {
+      -- {
+      --   "m",
+      --   function()
+      --     require("leap").leap({
+      --       target_windows = {
+      --         vim.fn.win_getid()
+      --       }
+      --     })
+      --   end,
+      --   desc = "Leap » Accross current window",
+      --   mode = { "n", "x", "o" },
+      -- },
       {
         "m",
-        function()
-          require("leap").leap({
-            target_windows = {
-              vim.fn.win_getid()
-            }
-          })
-        end,
-        desc = "Leap » Accross current window",
-        mode = { "n", "x", "o" },
-      },
-      {
-        "<a-w>",
         function()
           require('leap').leap {
             target_windows = vim.tbl_filter(
@@ -31,7 +31,7 @@ return {
           }
         end,
         desc = "Leap » Accross all windows",
-        mode = "n",
+        mode = { "n", "x", "o" },
       },
     },
     config = function()
@@ -69,8 +69,8 @@ return {
     end,
     opts = {
       keys = { f = 'f', F = 'F', t = 't', T = 'T' },
-      multiline = false,
       labeled_modes = "nx",
+      multiline = false,
     }
   }
 }

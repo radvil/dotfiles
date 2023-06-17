@@ -63,7 +63,7 @@ end
 ---@return string -- formatted name
 function M.create_hi(group, opts)
   local pad = opts.padding or ""
-  local hi_group = string.format("rvnHiStatusline%s", group)
+  local hi_group = string.format("RvnHiStatusline%s", group)
   local content = pad .. opts.content .. pad
   vim.api.nvim_set_hl(0, hi_group, {
     bold = opts.bold or false,

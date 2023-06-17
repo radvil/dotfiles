@@ -1,8 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/AMI/ami-erp-project
+- /home/radvil/Projects/cli-tools/nightmoon-tmux
+- /home/radvil/Projects/cli-tools/vim-splits-tmux
 - /home/radvil/AMI/mykado-console
+- /home/radvil/AMI/ami-erp-project
 - /home/radvil/Projects/go-journeys/src
 - /home/radvil/Projects/web-projects/nx-radvil
 - /home/radvil/AMI/mcp.bak

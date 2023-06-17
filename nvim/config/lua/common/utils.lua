@@ -12,7 +12,7 @@ local terminals = {}
 
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
----@param opts? LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
+---@param opts? LazyCmdOptions|{interactive?:boolean, esc_esc?:false, ctrl_hjkl?:false}
 function M.float_term(cmd, opts)
   opts = vim.tbl_deep_extend("force", {
     ft = "lazyterm",
@@ -20,17 +20,30 @@ function M.float_term(cmd, opts)
   }, opts or {}, { persistent = true })
   ---@cast opts LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
 
-  local termkey = vim.inspect({ cmd = cmd or "shell", cwd = opts.cwd, env = opts.env })
+  local termkey = vim.inspect({
+    cmd = cmd or "shell",
+    count = vim.v.count1,
+    cwd = opts.cwd,
+    env = opts.env,
+  })
 
   if terminals[termkey] and terminals[termkey]:buf_valid() then
     terminals[termkey]:toggle()
   else
     terminals[termkey] = require("lazy.util").float_term(cmd, opts)
     local buf = terminals[termkey].buf
+    local kopt = { buffer = buf, nowait = true }
     vim.b[buf].lazyterm_cmd = cmd
     if opts.esc_esc == false then
-      vim.keymap.set("t", "<esc>", "<esc>", { buffer = buf, nowait = true })
+      vim.keymap.set("t", "<esc>", "<esc>", kopt)
     end
+    if opts.ctrl_hjkl == false then
+      vim.keymap.set("t", "<c-h>", "<c-h>", kopt)
+      vim.keymap.set("t", "<c-j>", "<c-j>", kopt)
+      vim.keymap.set("t", "<c-k>", "<c-k>", kopt)
+      vim.keymap.set("t", "<c-l>", "<c-l>", kopt)
+    end
+
     vim.api.nvim_create_autocmd("BufEnter", {
       buffer = buf,
       callback = function()

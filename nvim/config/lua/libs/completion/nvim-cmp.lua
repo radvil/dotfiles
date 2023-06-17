@@ -14,26 +14,26 @@ M.dependencies = {
 }
 
 M.init = function()
-  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#EC5F67" })
 end
 
 M.opts = function()
   local luasnip = require("luasnip")
   local cmp = require("cmp")
 
+  vim.api.nvim_set_hl(0, "CmpGhostText", {
+    link = "Comment",
+    default = true
+  })
+
   ---@type cmp.Config
-  return {
+  local opts = {
     completion = {
       completeopt = "menu,menuone",
       -- keyword_length = 2,
     },
-    window = {
-      documentation = cmp.config.window.bordered(),
-      completion = cmp.config.window.bordered(),
-    },
     experimental = {
       ghost_text = {
-        hl_group = "LspCodeLens",
+        hl_group = "CmpChostText",
       },
     },
     snippet = {
@@ -79,6 +79,21 @@ M.opts = function()
       }),
     },
   }
+
+  if rnv.opt.transbg then
+    opts.window = {
+      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+    }
+  end
+
+  if rnv.opt.completion_copilot then
+    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {
+      fg = "#EC5F67",
+    })
+  end
+
+  return opts
 end
 
 return M

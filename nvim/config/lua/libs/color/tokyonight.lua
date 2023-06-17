@@ -9,7 +9,6 @@ M.opts = function()
 
   local opts = {
     style = variant,
-    tokyonight_sidebars = require("opt.filetype").sidebars,
     terminal_colors = true,
     transparent = bgtrans,
     hide_inactive_statusline = true,
@@ -17,10 +16,11 @@ M.opts = function()
     day_brightness = 0.3,
     lualine_bold = true,
     dim_inactive = false,
+    sidebars = require("opt.filetype").sidebars,
     styles = {
-      comments = "italic",
-      keywords = "italic",
-      functions = "italic",
+      comments = { italic = true },
+      keywords = { italic = true },
+      functions = "NONE",
       variables = "NONE",
       sidebars = "dark",
       floats = "dark",

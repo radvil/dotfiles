@@ -14,9 +14,9 @@ return {
       local utils = require("common.utils")
       local o = { title = "Windows" }
       require("smart-splits").setup({
-        at_edge = "stop",
+        -- at_edge = "stop",
         log_level = "info",
-        ignored_buftypes = { "NvimTree" },
+        ignored_buftypes = { "NvimTree", "neo-tree", "terminal" },
         cursor_follows_swapped_bufs = true,
         ignored_filetypes = require("opt.filetype").excludes,
         resize_mode = {
