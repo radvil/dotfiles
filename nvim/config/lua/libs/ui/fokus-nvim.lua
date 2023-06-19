@@ -1,15 +1,25 @@
 ---@type LazySpec
 local M = {}
 M[1] = "radvil/fokus.nvim"
-M.enabled = false
+M.enabled = true
+M.dev = rnv.opt.dev
 M.event = "BufReadPre"
-M.dependencies = { "folke/twilight.nvim", "folke/zen-mode.nvim" }
-M.opts = {
-  view = {
-    notify_status_change = false,
-    blacklists_filetypes = require("opt.filetype").excludes,
-    on_fokus_leave = nil,
-    on_fokus_enter = nil
+M.dependencies = { "folke/twilight.nvim" }
+M.keys = {
+  {
+    "<Leader>wu",
+    vim.cmd.FokusToggle,
+    desc = "Window » Toggle fokus mode",
   },
 }
+M.config = function()
+  require("fokus").setup({
+    exclude_filetypes = {
+      unpack(require("opt.filetype").excludes),
+      unpack(require("opt.filetype").popups)
+    },
+    notify = { enabled = true },
+    hooks = {},
+  })
+end
 return M
