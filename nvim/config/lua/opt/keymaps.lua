@@ -102,20 +102,22 @@ map("n", "<leader>un", function()
   util.toggle("number")
 end, { desc = "Toggle » Line numbers" })
 
--- floating terminal
-map("n", "<leader>fG", function()
+-- floating lazygit
+map("n", "<leader>gG", function()
   util.float_term({ "lazygit" }, {
     cwd = util.get_root(),
     esc_esc = false,
     ctrl_hjkl = false
   })
-end, { desc = "Float » Lazygit open (root)" })
-map("n", "<leader>fg", function()
+end, { desc = "Git » Open lazygit (root)" })
+map("n", "<leader>gg", function()
   util.float_term({ "lazygit" }, {
     esc_esc = false,
     ctrl_hjkl = false
   })
-end, { desc = "Float » Lazygit open (cwd)" })
+end, { desc = "Git » Open lazygit (cwd)" })
+
+-- floating terminal
 map("n", "<leader>ft", function()
   util.float_term(nil, {
     cwd = util.get_root()
@@ -124,8 +126,8 @@ end, { desc = "Float » Terminal (root)" })
 map("n", "<leader>fT", function()
   util.float_term()
 end, { desc = "Float » Terminal (cwd)" })
--- map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
+-- floating tmux
 map("n", "<leader>mw", function()
   vim.cmd([[call system('ami-project')]])
 end, { desc = "Tmux » Switch ami workspace" })
