@@ -14,6 +14,7 @@ require("core").bootstrap({
       require("libs.misc"),
       require("libs.test"),
       require("libs.lsp"),
+      require("libs.git"),
       require("libs.ui"),
     }, options)
   end,
