@@ -30,7 +30,7 @@ M.keys = {
 M.config = function()
   require("windows").setup({
     animation = {
-      enable = false,
+      enable = true,
       duration = 150,
     },
     autowidth = {
@@ -42,7 +42,10 @@ M.config = function()
     },
     ignore = {
       buftype = { "nofile", "quickfix", "edgy" },
-      filetype = require("opt.filetype").excludes,
+      filetype = {
+        unpack(require("opt.filetype").sidebars),
+        "help"
+      }
     }
   })
 end
