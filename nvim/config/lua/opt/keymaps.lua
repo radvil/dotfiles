@@ -10,11 +10,12 @@ local map = rnv.api.map
 map("i", "<c-d>", "<nop>")
 map("n", "<a-cr>", "<nop>")
 map("i", "<a-bs>", "<nop>")
-map({ "n", "x", "v", "o" }, "-", "g$")
-map({ "n", "x", "v" }, "<nl>", "<nop>")
+map({ "n", "x", "v", "o" }, "-", "$")
+map({ "n", "x", "v" }, "<nL>", "<nop>")
 map("", "<c-z>", ":undo<cr>", { nowait = true })
+map("", "<a-space>", "<esc><esc>", { nowait = true })
 
--- base
+-- basE
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 map("n", "U", "<c-r>", { nowait = true, desc = "Redo" })
