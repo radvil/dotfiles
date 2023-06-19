@@ -13,9 +13,8 @@ map("i", "<a-bs>", "<nop>")
 map({ "n", "x", "v", "o" }, "-", "$")
 map({ "n", "x", "v" }, "<nL>", "<nop>")
 map("", "<c-z>", ":undo<cr>", { nowait = true })
-map("", "<a-space>", "<esc><esc>", { nowait = true })
 
--- basE
+-- base
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 map("n", "U", "<c-r>", { nowait = true, desc = "Redo" })
@@ -125,7 +124,7 @@ end, { desc = "Float » Terminal (root)" })
 map("n", "<leader>fT", function()
   util.float_term()
 end, { desc = "Float » Terminal (cwd)" })
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+-- map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
 map("n", "<leader>mw", function()
   vim.cmd([[call system('ami-project')]])
