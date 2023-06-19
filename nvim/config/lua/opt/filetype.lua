@@ -16,9 +16,7 @@ M.sidebars = {
   "fugitive",
   "fugitiveblame",
   "gitcommit",
-  "help",
   "Trouble",
-  "lazy",
   "mason",
 }
 
@@ -72,8 +70,7 @@ M.excludes = {
   "alpha",
   "noice",
   "DressingInput",
-  -- "TelescopePrompt",
-  "TelescopeResults",
+  "help",
   unpack(M.sidebars),
 }
 
