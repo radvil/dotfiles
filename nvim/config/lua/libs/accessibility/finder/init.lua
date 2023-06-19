@@ -3,10 +3,8 @@ local function getconfig(name)
 end
 return {
   getconfig("todo-comments"),
-  getconfig("git-conflict"),
   getconfig("telescope"),
   getconfig("which-key"),
-  getconfig("gitsigns"),
   getconfig("trouble"),
   getconfig("spectre"),
   getconfig("undodir"),

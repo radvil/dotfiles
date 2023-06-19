@@ -1,6 +1,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "akinsho/git-conflict.nvim"
+M.enabled = false
 M.opts = {
   default_mappings = false,    -- disable buffer local mapping created by this plugin
   default_commands = true,     -- disable commands created by this plugin

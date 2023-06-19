@@ -23,15 +23,12 @@ M.opts = {
   },
   on_attach = function(buffer)
     local gs = require('gitsigns')
-    map(buffer, "<Leader>gd", function()
-      gs.diffthis()
-    end, "Diff current buffer")
-    map(buffer, "<leader>ug", function()
+    map(buffer, "<leader>gu", function()
       gs.toggle_signs()
       gs.toggle_numhl()
       gs.toggle_linehl()
       gs.toggle_current_line_blame()
-    end, "Toggle all views")
+    end, "Toggle buffer status")
   end,
 }
 
