@@ -68,9 +68,6 @@ M.init = function()
       if package.loaded["neo-tree.sources.git_status"] then
         require("neo-tree.sources.git_status").refresh()
       end
-      if package.loaded["neo-tree.sources.buffers"] then
-        require("neo-tree.sources.buffers").refresh()
-      end
     end,
   })
 end

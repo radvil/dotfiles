@@ -119,17 +119,27 @@ map("n", "<leader>un", function()
   util.toggle("number")
 end, { desc = "Toggle » Line numbers" })
 
--- floating terminal
-local ft = function() util.float_term(nil, { cwd = util.get_root() }) end
-map("n", "<leader>ft", ft, { desc = "Float » Terminal (root dir)" })
-map("n", "<leader>fT", function() util.float_term() end, { desc = "Float » Terminal (curr dir)" })
+---@param cmd string | nil
+---@param root boolean
+local ft = function(cmd, root)
+  local opt = {
+    size = { width = 0.6, height = 0.7 },
+    title = "  " .. (cmd or "Terminal"),
+  }
+  if not rnv.opt.transbg then opt.border = "none" end
+  if root then opt.cwd = util.get_root() end
+  util.float_term(cmd, opt)
+end
+map("n", [[<c-\>]], function() ft(nil, true) end, { desc = "Float » Terminal open (root dir)" })
+map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Float » Terminal hide" })
+map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+map("n", "<leader>ft", function() ft(nil, true) end, { desc = "Float » Terminal (root dir)" })
+map("n", "<leader>fT", function() ft(nil) end, { desc = "Float » Terminal (curr dir)" })
+map("n", "<leader>fh", function() ft("htop") end, { desc = "Float » Open htop" })
+map("n", "<leader>fn", function() ft("node") end, { desc = "Float » NodeJS" })
 map("n", "<leader>mw", function() vim.cmd([[call system('ami-project')]]) end, { desc = "Tmux » Switch ami workspace" })
 map("n", "<leader>mm", function() vim.cmd([[call system('zmux')]]) end, { desc = "Tmux » Switch to most recent" })
 
--- terminal
-map("n", [[<c-\>]], ft, { desc = "Float » Terminal open (root dir)" })
-map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Float » Terminal hide" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 if rnv.api.call("edgy") ~= nil then
   map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal" })
   map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
