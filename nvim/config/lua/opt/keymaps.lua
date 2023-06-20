@@ -122,10 +122,7 @@ end, { desc = "Toggle » Line numbers" })
 ---@param cmd string | nil
 ---@param root boolean
 local ft = function(cmd, root)
-  local opt = {
-    size = { width = 0.6, height = 0.7 },
-    title = "  " .. (cmd or "Terminal"),
-  }
+  local opt = { size = { width = 0.6, height = 0.7 }, title = "  " .. (cmd or "Terminal"), title_pos = "right" }
   if not rnv.opt.transbg then opt.border = "none" end
   if root then opt.cwd = util.get_root() end
   util.float_term(cmd, opt)
@@ -149,6 +146,15 @@ if rnv.api.call("edgy") ~= nil then
 end
 
 -- floating lazygit
-local lz = function(o) util.float_term({ "lazygit" }, { unpack(o), esc_esc = false, ctrl_hjkl = false }) end
-map("n", "<leader>gG", function() lz({ cwd = util.get_root() }) end, { desc = "Git » Open lazygit (root)" })
-map("n", "<leader>gg", function() lz({}) end, { desc = "Git » Open lazygit (cwd)" })
+local lz = function(opts)
+  util.float_term({ "lazygit" }, {
+    unpack(opts or {}),
+    title_pos = "right",
+    title = "  LazyGit ",
+    border = "rounded",
+    ctrl_hjkl = false,
+    esc_esc = false,
+  })
+end
+map("n", "<leader>gG", function() lz({ cwd = util.get_root() }) end, { desc = "Git » Open lazygit (root dir)" })
+map("n", "<leader>gg", function() lz() end, { desc = "Git » Open lazygit (curr dir)" })
