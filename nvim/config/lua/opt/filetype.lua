@@ -1,29 +1,8 @@
 local M = {}
 
-M.sidebars = {
-  "dbui",
-  "DiffViewFiles",
-  "Mundo",
-  "MundoDiff",
-  "NvimTree",
-  "neo-tree",
-  "neo-tree-popup",
-  "Outline",
-  "edgy",
-  "dirbuf",
-  "qf",
-  "WhichKey",
-  "fugitive",
-  "fugitiveblame",
-  "gitcommit",
-  "Trouble",
-  "mason",
-}
-
 M.treesitter = {
   "bash",
   "css",
-  "scss",
   "diff",
   "go",
   "graphql",
@@ -40,11 +19,31 @@ M.treesitter = {
   "query",
   "regex",
   "rust",
+  "scss",
   "toml",
   "tsx",
   "typescript",
   "vim",
   "yaml",
+}
+
+M.sidebars = {
+  "dbui",
+  "DiffviewFiles",
+  "Mundo",
+  "MundoDiff",
+  "NvimTree",
+  "neo-tree",
+  "neo-tree-popup",
+  "Outline",
+  "edgy",
+  "dirbuf",
+  "qf",
+  "WhichKey",
+  "fugitive",
+  "fugitiveblame",
+  "gitcommit",
+  "Trouble",
 }
 
 M.popups = {
@@ -58,6 +57,7 @@ M.popups = {
   "prompt",
   "TelescopePrompt",
   "TelescopeResults",
+  "DressingInput",
 }
 
 M.excludes = {
@@ -69,7 +69,6 @@ M.excludes = {
   "dashboard",
   "alpha",
   "noice",
-  "DressingInput",
   "help",
   unpack(M.sidebars),
 }
