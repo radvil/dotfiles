@@ -112,6 +112,7 @@ local setup_language_servers = function(options)
     end
     require("lspconfig")[server].setup(opts)
   end
+  require("lspconfig.ui.windows").default_options.border = "single"
   require("mason-lspconfig").setup({
     automatic_installation = options.install_missing_servers,
     ensure_installed = ensure_installed,

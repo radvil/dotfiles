@@ -4,7 +4,7 @@ local opt = {}
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
-opt.transbg = true
+opt.transbg = false
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neo-tree" | "nvim-tree"
@@ -23,6 +23,12 @@ opt.completion_copilot = false
 opt.completion_snippets = true
 opt.colorscheme = "tokyonight"
 opt.colorvariant = "moon"
+opt.animations = true
+opt.animate_cursor = true
+opt.animate_scroll = false
+opt.animate_window_resize = true
+opt.animate_window_open = false
+opt.animate_window_close = false
 opt.data = os.getenv("HOME") .. "/.local/share/nvim/lazy/lazy.nvim"
 
 ---@type "dashboard" | "alpha-nvim"

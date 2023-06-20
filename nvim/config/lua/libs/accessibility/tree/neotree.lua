@@ -34,7 +34,16 @@ M.keys = {
   },
   {
     "<leader><cr>",
-    ":Neotree reveal current<cr>",
+    ":Neotree focus<cr>",
+    desc = "Neotree » Focus",
+  },
+  {
+    [[<leader>\]],
+    function()
+      if not require("common.utils").has("edgy") then
+        vim.cmd [[Neotree show]]
+      end
+    end,
     desc = "Neotree » Reveal",
   },
 }
@@ -59,6 +68,9 @@ M.init = function()
       if package.loaded["neo-tree.sources.git_status"] then
         require("neo-tree.sources.git_status").refresh()
       end
+      if package.loaded["neo-tree.sources.buffers"] then
+        require("neo-tree.sources.buffers").refresh()
+      end
     end,
   })
 end
@@ -72,25 +84,32 @@ M.opts = function()
     close_if_last_window = true,
     popup_border_style = "rounded",
     use_default_mappings = false,
+    sources = {
+      "filesystem",
+      "buffers",
+      "git_status",
+      "document_symbols"
+    },
     event_handlers = {
       {
-        id = "RnvNeotreeAfterClose",
-        event = "neo_tree_window_after_close",
+        id = "RnvNeotreeAfterOpen",
+        event = "neo_tree_window_after_open",
         handler = function()
-          -- TestClose = TestClose + 1
-          --FIXME: only resize when window close,
-          --should figure out how to resize on win open
-          if package.loaded["windows"] then
-            vim.cmd [[WindowsEqualize]]
+          if rnv.api.call("edgy") == nil then
+            rnv.api.map("n", [[<leader>\]], function()
+              vim.cmd [[Neotree close]]
+            end, { remap = true, desc = "Neotree » Close window" })
           end
         end,
       },
       {
         id = "RnvNeotreeAfterClose",
-        event = "after_render",
+        event = "neo_tree_window_after_close",
         handler = function()
-          if package.loaded["windows"] then
-            vim.cmd [[WindowsEqualize]]
+          if rnv.api.call("edgy") == nil then
+            rnv.api.map("n", [[<leader>\]], function()
+              vim.cmd [[Neotree show]]
+            end, { remap = true, desc = "Neotree » Show window" })
           end
         end,
       },
@@ -170,6 +189,7 @@ M.opts = function()
       use_libuv_file_watcher = true,
       window = {
         mappings = {
+          ["<c-m>"] = "",
           ["<bs>"] = "navigate_up",
           ["."] = "set_root",
           ["H"] = "toggle_hidden",

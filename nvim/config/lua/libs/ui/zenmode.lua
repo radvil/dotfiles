@@ -5,9 +5,9 @@ M.cmd = "ZenMode"
 
 M.keys = {
   {
-    "<Leader>wf",
+    "<Leader>wz",
     ":ZenMode<cr>",
-    desc = "Window » Zen mode toggle",
+    desc = "Window » Zen toggle",
   },
 }
 

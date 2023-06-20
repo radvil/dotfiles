@@ -4,14 +4,16 @@ M[1] = "radvil/fokus.nvim"
 M.enabled = true
 M.dev = rnv.opt.dev
 M.event = "BufReadPre"
-M.dependencies = { "folke/twilight.nvim" }
+M.dependencies = "folke/twilight.nvim"
+
 M.keys = {
   {
-    "<Leader>wu",
+    "<Leader>wf",
     vim.cmd.FokusToggle,
-    desc = "Window » Toggle fokus mode",
+    desc = "Window » Fokus toggle",
   },
 }
+
 M.config = function()
   require("fokus").setup({
     exclude_filetypes = {
@@ -21,5 +23,9 @@ M.config = function()
     notify = { enabled = true },
     hooks = {},
   })
+  -- if rnv.opt.transbg then
+  vim.cmd.FokusToggle()
+  -- end
 end
+
 return M

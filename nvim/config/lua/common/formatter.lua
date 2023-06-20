@@ -144,7 +144,7 @@ function M.setup()
   end, {})
   --- register toggle keymaps
   vim.keymap.set("n", "<leader>uf", toggle_autoformat, {
-    desc = "Toggle » document format on save",
+    desc = "Toggle » Format document on save",
   })
   --- listen on format on save
   vim.api.nvim_create_autocmd("BufWritePre", {

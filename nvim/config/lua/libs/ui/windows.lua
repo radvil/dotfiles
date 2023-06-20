@@ -1,13 +1,8 @@
----@desc auto-resize windows on focused
 ---@type LazySpec
 local M = {}
 M[1] = "radvil2/windows.nvim"
 M.event = "WinNew"
-
-M.dependencies = {
-  { "anuvyklack/middleclass" },
-  { "anuvyklack/animation.nvim", enabled = true },
-}
+M.dependencies = "anuvyklack/middleclass"
 
 M.keys = {
   {
@@ -18,21 +13,18 @@ M.keys = {
   {
     "<Leader>w=",
     ":WindowsEqualize<cr>",
-    desc = "Window » Set equal size",
+    desc = "Window » Equalize",
   },
   {
-    "<Leader>uW",
+    "<Leader>wu",
     ":WindowsToggleAutowidth<cr>",
-    desc = "Toggle » Window auto width",
+    desc = "Window » Toggle autowidth",
   },
 }
 
 M.config = function()
   require("windows").setup({
-    animation = {
-      enable = true,
-      duration = 150,
-    },
+    animation = { enable = false, },
     autowidth = {
       enable = false,
       winwidth = 5,

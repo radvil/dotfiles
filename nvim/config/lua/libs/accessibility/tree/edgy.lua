@@ -1,4 +1,4 @@
-if true then
+if not rnv.opt.dev then
   return {}
 end
 
@@ -113,24 +113,24 @@ return {
         "neo-tree",
       },
 
-      keys = {
-        -- increase width
-        ["<c-Right>"] = function(win)
-          win:resize("width", 2)
-        end,
-        -- decrease width
-        ["<c-Left>"] = function(win)
-          win:resize("width", -2)
-        end,
-        -- increase height
-        ["<c-Up>"] = function(win)
-          win:resize("height", 2)
-        end,
-        -- decrease height
-        ["<c-Down>"] = function(win)
-          win:resize("height", -2)
-        end,
-      },
+      -- keys = {
+      --   ["<c-Right>"] = function(win)
+      --     -- win:resize("width", 2)
+      --     require("smart-splits").resize_right()
+      --   end,
+      --   ["<c-Left>"] = function(win)
+      --     -- win:resize("width", -2)
+      --     require("smart-splits").resize_left()
+      --   end,
+      --   ["<c-Up>"] = function(win)
+      --     -- win:resize("height", 2)
+      --     require("smart-splits").resize_up()
+      --   end,
+      --   ["<c-Down>"] = function(win)
+      --     -- win:resize("height", -2)
+      --     require("smart-splits").resize_down()
+      --   end,
+      -- },
     },
   },
 

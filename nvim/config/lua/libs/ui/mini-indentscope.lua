@@ -1,4 +1,3 @@
----@desc active indent guide and indent text objects
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.indentscope"
