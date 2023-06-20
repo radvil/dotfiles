@@ -51,13 +51,9 @@ map({ "n", "x", "v" }, "+", ":join<cr>", { nowait = true, desc = "Join lines" })
 map({ "n", "x", "v" }, "q", "<esc>", { nowait = true, desc = "Escape to normal" })
 map({ "n", "x", "v" }, ";", ":", { nowait = true, silent = false, desc = "Drop into cmdline" })
 
--- center search result
--- map("n", "n", "nzz", { nowait = true, desc = "Show & center search" })
--- map("n", "N", "Nzz", { nowait = true, desc = "Show & center search" })
-
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
--- map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
--- map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- Clear search, diff update and redraw
 map(
@@ -90,10 +86,15 @@ map("i", "<A-k>", "<esc>:m .-2<cr>==gi", { desc = "Swap current line up" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Swap selected lines up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Swap selected lines down" })
 
+-- tabs
+map("n", "[t", ":tabprevious<cr>", { desc = "Tab » Prev" })
+map("n", "]t", ":tabnext<cr>", { desc = "Tab » Next" })
+map("n", "<leader>tn", ":tabnew<cr>", { desc = "Tab » New" })
+map("n", "<leader>td", ":tabclose<cr>", { desc = "Tab » Delete" })
+
 -- windows
 map("n", "<leader>ww", "<c-w>p", { desc = "Window » Other" })
 map("n", "<leader>wd", "<c-w>c", { desc = "Window » Delete" }) -- TODO: same as <Cmd>close ??
-
 if rnv.api.call("smart-splits") == nil then
   map("n", "<c-up>", ":resize +2<cr>", { desc = "Window » Height++" })
   map("n", "<c-down>", ":resize -2<cr>", { desc = "Window » Height--" })
@@ -119,6 +120,15 @@ map("n", "<leader>un", function()
   util.toggle("number")
 end, { desc = "Toggle » Line numbers" })
 
+if rnv.api.call("edgy") ~= nil then
+  map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal" })
+  map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+  map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+  map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+  map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+end
+
+---floating terminal
 ---@param cmd string | nil
 ---@param root boolean
 local ft = function(cmd, root)
@@ -134,18 +144,11 @@ map("n", "<leader>ft", function() ft(nil, true) end, { desc = "Float » Terminal
 map("n", "<leader>fT", function() ft(nil) end, { desc = "Float » Terminal (curr dir)" })
 map("n", "<leader>fh", function() ft("htop") end, { desc = "Float » Open htop" })
 map("n", "<leader>fn", function() ft("node") end, { desc = "Float » NodeJS" })
-map("n", "<leader>mw", function() vim.cmd([[call system('ami-project')]]) end, { desc = "Tmux » Switch ami workspace" })
-map("n", "<leader>mm", function() vim.cmd([[call system('zmux')]]) end, { desc = "Tmux » Switch to most recent" })
+map("n", "<leader>mw", function() vim.cmd [[call system('ami-project')]] end, { desc = "Tmux » Switch ami workspace" })
+map("n", "<leader>mm", function() vim.cmd [[call system('zmux')]] end, { desc = "Tmux » Switch to most recent" })
 
-if rnv.api.call("edgy") ~= nil then
-  map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal" })
-  map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
-  map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
-  map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
-  map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-end
-
--- floating lazygit
+---floating lazygit
+---@param opts LazyCmdOptions
 local lz = function(opts)
   util.float_term({ "lazygit" }, {
     unpack(opts or {}),
