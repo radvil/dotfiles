@@ -29,12 +29,12 @@ M.opts = {
       vim.opt_local.colorcolumn = { 80 }
     end,
     view_opened = function(view)
-      local msg = ("%s » Opened on tabpage %d"):format(view.class:name())
-      require("common.utils").info(msg, view.tabpage)
+      local msg = "%s » Opened on tabpage %d"
+      require("common.utils").info(msg:format(view.class:name(), view.tabpage))
     end,
     view_closed = function(view)
-      local msg = ("%s » Closed on tabpage %d"):format(view.class:name())
-      require("common.utils").warn(msg, view.tabpage)
+      local msg = "%s » Closed on tabpage %d"
+      require("common.utils").warn(msg:format(view.class:name(), view.tabpage))
     end,
   }
 }
