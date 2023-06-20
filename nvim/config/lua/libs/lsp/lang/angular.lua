@@ -12,8 +12,8 @@ local function get_server_options()
     end,
     on_attach = function(client, buffer)
       client.server_capabilities.renameProvider = false
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
+      client.server_capabilities.documentFormattingProvider = true
+      client.server_capabilities.documentRangeFormattingProvider = true
       require("common.lsp").attach_keymaps(client, buffer)
     end,
   }
@@ -31,9 +31,7 @@ return {
     "neovim/nvim-lspconfig",
     ---@type RvnLspOptions
     opts = {
-      servers = {
-        angularls = get_server_options,
-      },
+      servers = { angularls = get_server_options },
     },
   }
 }
