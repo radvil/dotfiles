@@ -3,7 +3,6 @@ local M = {}
 M[1] = "hrsh7th/nvim-cmp"
 
 ---@diagnostic disable-next-line: assign-type-mismatch
-M.version = false -- last release is way too old
 M.event = "InsertEnter"
 M.enabled = rnv.opt.completion
 M.dependencies = {
@@ -12,9 +11,6 @@ M.dependencies = {
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
 }
-
-M.init = function()
-end
 
 M.opts = function()
   local luasnip = require("luasnip")
