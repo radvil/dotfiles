@@ -1,6 +1,6 @@
 rnv.api.log("Loading autocommands...", "opt.autocmds")
 
--- Check if we need to reload the file when it changed
+--Check if any buffers were changed outside of Vim.
 vim.api.nvim_create_autocmd({
   "FocusGained",
   "TermClose",
@@ -27,7 +27,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- close with <q>, escape with <A-Space>
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = require("opt.filetype").sidebars,
+  pattern = {
+    unpack(require("opt.filetype").sidebars),
+    "help"
+  },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.wo.foldcolumn = "0"
@@ -46,9 +49,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "zsh",
+--   callback = function(e)
+--     require("nvim-treesitter.highlight").attach(e.buf, "bash")
+--   end,
+-- })
