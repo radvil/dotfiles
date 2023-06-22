@@ -1,5 +1,7 @@
+---@type LazySpec
 return {
   "folke/styler.nvim",
+  enabled = function() return not rnv.opt.transbg end,
   config = function()
     require("styler").setup({
       themes = {
