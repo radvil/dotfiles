@@ -13,21 +13,20 @@ return {
         function()
           require("leap").leap({
             target_windows = {
-              vim.fn.win_getid()
-            }
+              vim.fn.win_getid(),
+            },
           })
         end,
         desc = "Leap » Visual selection (continue)",
-        mode = { "x", "v" },
+        mode = { "x", "o" },
       },
       {
         "m",
         function()
-          require('leap').leap({
-            target_windows = vim.tbl_filter(
-              function(win) return vim.api.nvim_win_get_config(win).focusable end,
-              vim.api.nvim_tabpage_list_wins(0)
-            )
+          require("leap").leap({
+            target_windows = vim.tbl_filter(function(win)
+              return vim.api.nvim_win_get_config(win).focusable
+            end, vim.api.nvim_tabpage_list_wins(0)),
           })
         end,
         desc = "Leap » Accross all windows",
@@ -39,22 +38,64 @@ return {
       leap.opts.case_sensitive = false
       -- NOTE: IDK why I need these
       leap.opts.special_keys = {
-        repeat_search = '<enter>',
-        next_phase_one_target = '<enter>',
-        next_target = { '<enter>', ';' },
-        prev_target = { '<tab>', ',' },
-        multi_revert = '<backspace>',
-        multi_accept = '<enter>',
-        next_group = '<space>',
-        prev_group = '<tab>',
+        repeat_search = "<enter>",
+        next_phase_one_target = "<enter>",
+        next_target = { "<enter>", ";" },
+        prev_target = { "<tab>", "," },
+        multi_revert = "<backspace>",
+        multi_accept = "<enter>",
+        next_group = "<space>",
+        prev_group = "<tab>",
       }
-      leap.opts.labels = { "s", "f", "n",
-        "j", "k", "l", "h", "o", "d", "w", "e", "m", "b",
-        "u", "y", "v", "r", "g", "t", "c", "x", "/", "z",
-        "S", "F", "N",
-        "J", "K", "L", "H", "O", "D", "W", "E", "M", "B",
-        "U", "Y", "V", "R", "G", "T", "C", "X", "?", "Z" }
-    end
+      leap.opts.labels = {
+        "s",
+        "f",
+        "n",
+        "j",
+        "k",
+        "l",
+        "h",
+        "o",
+        "d",
+        "w",
+        "e",
+        "m",
+        "b",
+        "u",
+        "y",
+        "v",
+        "r",
+        "g",
+        "t",
+        "c",
+        "x",
+        "/",
+        "z",
+        "S",
+        "F",
+        "N",
+        "J",
+        "K",
+        "L",
+        "H",
+        "O",
+        "D",
+        "W",
+        "E",
+        "M",
+        "B",
+        "U",
+        "Y",
+        "V",
+        "R",
+        "G",
+        "T",
+        "C",
+        "X",
+        "?",
+        "Z",
+      }
+    end,
   },
   {
     "ggandor/flit.nvim",
@@ -68,9 +109,9 @@ return {
       return ret
     end,
     opts = {
-      keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+      keys = { f = "f", F = "F", t = "t", T = "T" },
       labeled_modes = "nox",
       multiline = false,
-    }
-  }
+    },
+  },
 }
