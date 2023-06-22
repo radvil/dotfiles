@@ -107,6 +107,12 @@ map("n", "<leader>un", function()
   util.toggle("number")
 end, { desc = "Toggle » Line numbers" })
 
+if vim.lsp.buf.inlay_hint then
+  map("n", "<leader>uh", function() vim.lsp.buf.inlay_hint(0, nil) end, {
+    desc = "Toggle » Inlay hint"
+  })
+end
+
 if rnv.api.call("edgy") ~= nil then
   map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Escape terminal" })
   map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })

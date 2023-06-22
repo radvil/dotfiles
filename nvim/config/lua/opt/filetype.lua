@@ -8,8 +8,6 @@ M.treesitter = {
   "graphql",
   "html",
   "javascript",
-  "json",
-  "jsonc",
   "lua",
   "markdown",
   "markdown_inline",
@@ -21,8 +19,6 @@ M.treesitter = {
   "rust",
   "scss",
   "toml",
-  "tsx",
-  "typescript",
   "vim",
   "yaml",
 }
@@ -103,7 +99,7 @@ M.builtin_plugins_excludes = {
   "zip",
   "zipPlugin",
   "ruby",
-  "gem"
+  "gem",
 }
 
 return M

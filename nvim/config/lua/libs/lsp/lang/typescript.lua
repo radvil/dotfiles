@@ -1,65 +1,100 @@
----@type LazySpec
-local M = {}
-M[1] = "jose-elias-alvarez/typescript.nvim"
-M.event = "BufReadPre"
-
-M.dependencies = {
+return {
+  -- Add typescript to treesitter
   {
-    "williamboman/mason-lspconfig.nvim",
+    "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      if opts and type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "tsserver" })
-      end
-    end,
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      if opts and type(opts.sources) == "table" then
-        vim.list_extend(opts.sources, {
-          require("typescript.extensions.null-ls.code-actions"),
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, {
+          "typescript",
+          "tsx",
         })
       end
     end,
   },
-}
 
-local function attach_specific_keymaps(buffer)
-  buffer = buffer or 0
-  rnv.api.map("n", "gM", ":TypescriptAddMissingImports<CR>", {
-    desc = "Typescript » Add missing imports",
-    buffer = buffer,
-  })
-  rnv.api.map("n", "gO", ":TypescriptOrganizeImports<CR>", {
-    desc = "Typescript » Organize imports",
-    buffer = buffer,
-  })
-  rnv.api.map("n", "<Leader><f2>", ":TypescriptRenameFile<CR>", {
-    buffer = buffer,
-    desc = "Typescript » Rename file",
-  })
-  rnv.api.map("n", "gd", ":TypescriptGoToSourceDefinition<CR>", {
-    desc = "Typescript » Go to source",
-    buffer = buffer,
-  })
-  rnv.api.map("n", "gC", ":TypescriptRemoveUnused<cr>", {
-    desc = "Typescript » Remove unused imports",
-    buffer = buffer,
-  })
-  rnv.api.map("n", "gF", ":TypescriptFixAll<cr>", {
-    desc = "Typescript » Fix all",
-    buffer = buffer,
-  })
-end
-
-M.opts = {
-  server = {
-    capabilities = require("common.lsp").make_client_capabilities(),
-    on_attach = function(client, bufnr)
-      require("common.lsp").default_on_attach(client, bufnr)
-      attach_specific_keymaps(bufnr)
+  -- Register typescriopt linting
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, opts)
+      if type(opts.sources) == "table" then
+        local code_actions = require("typescript.extensions.null-ls.code-actions")
+        table.insert(opts.sources, code_actions)
+      end
     end,
   },
-}
 
-return M
+  -- Correctly setup lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = "jose-elias-alvarez/typescript.nvim",
+    opts = {
+      -- make sure mason installs the server
+      servers = {
+        ---@type lspconfig.options.tsserver
+        tsserver = {
+          settings = {
+            typescript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              format = {
+                indentSize = vim.o.shiftwidth,
+                convertTabsToSpaces = vim.o.expandtab,
+                tabSize = vim.o.tabstop,
+              },
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            completions = {
+              completeFunctionCalls = true,
+            },
+          },
+        },
+      },
+      setup = {
+        tsserver = function(_, opts)
+          require("common.utils").on_attach(function(client, bufnr)
+            if client.name == "tsserver" then
+              local map = function(lhs, name, desc)
+                rnv.api.map("n", lhs, string.format("<cmd>Typescript%s<cr>", name), {
+                  desc = string.format("Typescript » %s", desc),
+                  buffer = bufnr,
+                })
+              end
+              map("gd", "GoToSourceDefinition", "Go to source definition")
+              map("gM", "AddMissingImports", "Add missing imports")
+              map("gC", "RemoveUnused", "Remove unused imports")
+              map("gO", "OrganizeImports", "Organize imports")
+              map("gM", "RenameFile", "Rename file")
+              map("gF", "FixAll", "Fix all")
+            end
+          end)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+      },
+    },
+  },
+}

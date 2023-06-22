@@ -1,9 +1,11 @@
 return {
-  require("libs.lsp.mason"),
-  require("libs.lsp.null-ls"),
-  require("libs.lsp.lspconfig"),
+  require("libs.lsp.config"),
+  require("libs.lsp.installer"),
   require("libs.lsp.lang.typescript"),
+  require("libs.lsp.lang.tailwind"),
   require("libs.lsp.lang.angular"),
-  require("libs.lsp.lang.emmet"),
+  require("libs.lsp.lang.json"),
   require("libs.lsp.lang.go"),
+  require("libs.lsp.linters.eslint"),
+  require("libs.lsp.linters.null-ls"),
 }

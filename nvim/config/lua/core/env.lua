@@ -3,8 +3,8 @@ local opt = {}
 
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
-opt.dev = false
-opt.transbg = true
+opt.dev = true
+opt.transbg = false
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neo-tree" | "nvim-tree"
@@ -17,7 +17,7 @@ opt.completion = true
 opt.maplocalleader = " "
 opt.lsp_diagnostics = true
 opt.lsp_autoformat = true
-opt.lsp_inlayhints = false
+opt.inlay_hint = true
 opt.format_notification = false
 opt.completion_copilot = false
 opt.completion_snippets = true
@@ -84,7 +84,7 @@ opt.lazy_config = {
     cache = { enabled = opt.dev },
     rtp = {
       reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
-      paths = {},   -- add any custom paths here that you want to includes in the rtp
+      paths = {}, -- add any custom paths here that you want to includes in the rtp
       disabled_plugins = require("opt.filetype").builtin_plugins_excludes,
     },
   },
