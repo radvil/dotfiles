@@ -5,6 +5,7 @@ require("core").bootstrap({
   -- load all plugins's specs
   on_init = function(options)
     rnv.api.log("ON INIT", "init")
+    require("opt.highlights")
     require("opt.options")
     require("lazy").setup({
       "folke/lazy.nvim",
