@@ -175,28 +175,28 @@ insert_left({
   fmt = function(filename)
     local separator = icons.Chevron.RightBigFilled
     local meta = utils.get_filemeta(filename)
-    local ficon = utils.create_hi("FileIconContent", {
+    local ficon = utils.create_hi("RnvStatusLineFileIconContent", {
       content = meta.icon,
-      padding = " ",
-      fg = bgcolor,
       bg = meta.color,
+      fg = bgcolor,
+      padding = " ",
     })
-    local ficon_suffix = utils.create_hi("FileIconSuffix", {
+    local ficon_suffix = utils.create_hi("RnvStatusLineFileIconSuffix", {
       content = separator,
       bg = palette.green,
       fg = meta.color,
     })
-    local fname = utils.create_hi("FileName", {
+    local fname = utils.create_hi("RnvStatusLineFileName", {
       content = filename,
-      padding = " ",
       bg = palette.green,
       fg = bgcolor,
+      padding = " ",
       bold = true,
     })
-    local fname_suffix = utils.create_hi("FileNameSuffix", {
+    local fname_suffix = utils.create_hi("RnvStatusLineFileNameSuffix", {
       content = separator,
-      bg = meta.color,
       fg = palette.green,
+      bg = meta.color,
     })
     return ficon .. ficon_suffix .. fname .. fname_suffix
     -- return ficon .. fname .. fname_suffix
