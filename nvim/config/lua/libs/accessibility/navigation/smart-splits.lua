@@ -1,14 +1,6 @@
 -- or use a specific version
 return {
   {
-    "christoomey/vim-tmux-navigator",
-    enabled = false,
-  },
-  {
-    "sindrets/winshift.nvim",
-    enabled = false,
-  },
-  {
     "mrjones2014/smart-splits.nvim",
     event = "VeryLazy",
     config = function()
