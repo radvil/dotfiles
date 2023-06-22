@@ -3,7 +3,6 @@ local function getconfig(name)
 end
 ---@type LazySpec[]
 return {
-  getconfig("tmux-navigator"),
   getconfig("smart-splits"),
   getconfig("bufferline"),
   getconfig("dashboard"),
