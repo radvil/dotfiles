@@ -27,13 +27,13 @@ M.opts = function()
     },
     on_colors = function(colors)
       colors.diff.delete = "#ff0000"
-      if rnv.opt.transbg then
-        colors.border = rnv.opt.palette.orange
-      end
+      -- if rnv.opt.transbg then
+      colors.border = rnv.opt.palette.cyan
+      -- end
     end,
     on_highlights = function(hl)
       hl.CursorLine.bold = true
-    end
+    end,
   }
   if bgtrans then
     opts.styles.sidebars = "transparent"
