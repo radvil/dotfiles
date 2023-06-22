@@ -3,7 +3,7 @@ local opt = {}
 
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
-opt.dev = true
+opt.dev = false
 opt.transbg = false
 opt.mapleader = " "
 opt.darkmode = true
