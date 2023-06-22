@@ -1,4 +1,3 @@
----@type LazySpec
 local M = {}
 local util = require("common.utils")
 M[1] = "nvim-telescope/telescope.nvim"
@@ -30,10 +29,26 @@ M.keys = {
     ":Telescope find_files<cr>",
     desc = "telescope » find files (root)",
   },
-  { "<leader>/w", util.telescope("live_grep"),                    desc = "telescope » live grep (cwd)" },
-  { "<leader>/W", util.telescope("live_grep", { cwd = false }),   desc = "telescope » live grep (root)" },
-  { "<leader>/S", util.telescope("grep_string"),                  desc = "telescope » grep word (cwd)" },
-  { "<leader>/s", util.telescope("grep_string", { cwd = false }), desc = "telescope » grep word (root)" },
+  {
+    "<leader>/w",
+    util.telescope("live_grep", { layout_strategy = "vertical" }),
+    desc = "telescope » live grep (cwd)"
+  },
+  {
+    "<leader>/W",
+    util.telescope("live_grep", { layout_strategy = "vertical", cwd = false }),
+    desc = "telescope » live grep (root)"
+  },
+  {
+    "<leader>/S",
+    util.telescope("grep_string", { layout_strategy = "vertical" }),
+    desc = "telescope » grep string (cwd)"
+  },
+  {
+    "<leader>/s",
+    util.telescope("grep_string", { layout_strategy = "vertical", cwd = false }),
+    desc = "telescope » grep string (root)"
+  },
   {
     "<leader>//",
     ":Telescope resume<cr>",
@@ -46,7 +61,6 @@ M.keys = {
   },
   {
     "<leader>/b",
-    -- ":Telescope buffers show_all_buffers=true<cr>",
     ":Telescope buffers initial_mode=normal ignore_current_buffer=true sort_mru=true<cr>",
     desc = "telescope » find opened buffers",
   },
@@ -62,7 +76,7 @@ M.keys = {
   },
   {
     "<leader>/h",
-    ":Telescope help_tags<Cr>",
+    ":Telescope help_tags layout_strategy=vertical<Cr>",
     desc = "telescope » find help tags",
   },
   {
