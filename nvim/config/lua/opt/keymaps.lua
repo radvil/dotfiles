@@ -1,20 +1,7 @@
 rnv.api.log("Loading keymaps...", "opt.keymaps")
 
 local util = require("common.utils")
--- local map = rnv.api.map
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
+local map = rnv.api.map
 
 -- TODO:
 -- ' g' `, ← all of these are the same keys to list marks
@@ -36,8 +23,8 @@ map("n", "<a-cr>", "o<esc>", { desc = "Add one line down" })
 map("i", "<c-d>", "<del>", { desc = "Delete next char" })
 map("i", "<c-h>", "<left>", { desc = "Shift one char left" })
 map("i", "<c-l>", "<right>", { desc = "Shift one char right" })
-map({ "i", "s" }, "<a-bs>", '<esc>l"_cb', { desc = "Delete one word left", remap = true })
-map("i", "<c-w>", "<space><esc>i", { desc = "Delete one word right" })
+map({ "i", "s", "o" }, "<a-bs>", '<esc>ciw', { nowait = true, desc = "Delete one word left" })
+map({ "i", "s", "o" }, "<a-i>", "<space><esc>i", { desc = "Delete one word right" })
 map("n", "<leader>xl", ":lopen<cr>", { desc = "Diagnostics » Open in loclist" })
 map("n", "<leader>xe", ":copen<cr>", { desc = "Diagnostics » Open in quickfix" })
 map("n", "<c-g>", "ggVG", { desc = "Select all content" })
