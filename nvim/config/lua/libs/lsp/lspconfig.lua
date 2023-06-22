@@ -70,12 +70,32 @@ M.opts = {
             convertTabsToSpaces = vim.o.expandtab,
             tabSize = vim.o.tabstop,
           },
+          inlayHints = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
         },
         javascript = {
           format = {
             indentSize = vim.o.shiftwidth,
             convertTabsToSpaces = vim.o.expandtab,
             tabSize = vim.o.tabstop,
+          },
+          inlayHints = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
           },
         },
         completions = {
