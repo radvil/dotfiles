@@ -4,7 +4,7 @@ local opt = {}
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
-opt.transbg = false
+opt.transbg = true
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neo-tree" | "nvim-tree"
