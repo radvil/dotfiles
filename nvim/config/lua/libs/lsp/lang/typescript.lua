@@ -52,16 +52,14 @@ local function attach_specific_keymaps(buffer)
   })
 end
 
-M.opts = function()
-  return {
-    server = {
-      capabilities = require("common.lsp").make_client_capabilities(),
-      on_attach = function(client, buffer)
-        require("common.lsp").default_on_attach(client, buffer)
-        attach_specific_keymaps(buffer)
-      end,
-    },
-  }
-end
+M.opts = {
+  server = {
+    capabilities = require("common.lsp").make_client_capabilities(),
+    on_attach = function(client, bufnr)
+      require("common.lsp").default_on_attach(client, bufnr)
+      attach_specific_keymaps(bufnr)
+    end,
+  },
+}
 
 return M
