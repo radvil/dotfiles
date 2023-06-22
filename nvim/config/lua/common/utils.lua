@@ -269,4 +269,22 @@ function M.debug(msg, opts)
   end
 end
 
+---find first index of value given
+---@param tbl table
+---@param val string
+---@return boolean
+function M.list_has(tbl, val)
+  if type(tbl) ~= "table" then
+    error("table expected, got " .. type(tbl), 2)
+  end
+  local ret = false
+  for _, v in pairs(tbl) do
+    if val == v then
+      ret = true
+      break
+    end
+  end
+  return ret
+end
+
 return M
