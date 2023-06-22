@@ -1,7 +1,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "radvil2/windows.nvim"
-M.event = "WinNew"
+M.event = "VeryLazy"
 M.dependencies = "anuvyklack/middleclass"
 
 M.keys = {
@@ -9,16 +9,19 @@ M.keys = {
     "<Leader>wm",
     ":WindowsMaximize<cr>",
     desc = "Window » Maximize/minimize",
+    silent = true,
   },
   {
     "<Leader>w=",
     ":WindowsEqualize<cr>",
     desc = "Window » Equalize",
+    silent = true,
   },
   {
     "<Leader>wu",
     ":WindowsToggleAutowidth<cr>",
     desc = "Window » Toggle autowidth",
+    silent = true,
   },
 }
 
