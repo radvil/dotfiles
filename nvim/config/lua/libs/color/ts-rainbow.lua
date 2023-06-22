@@ -16,6 +16,15 @@ M.config = function()
         'rainbow-parens',
         html = 'rainbow-tags',
         latex = 'rainbow-blocks',
+      },
+      hlgroups = {
+        'TSRainbowRed',
+        'TSRainbowYellow',
+        'RnvBlue',
+        'TSRainbowOrange',
+        'TSRainbowGreen',
+        'RnvViolet',
+        'RnvCyan'
       }
     },
   })
