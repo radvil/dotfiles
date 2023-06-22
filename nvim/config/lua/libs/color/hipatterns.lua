@@ -11,10 +11,10 @@ return {
       },
       highlighters = {
         -- fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'TodoBgFIX' },
-        -- hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'TodoBgHack' },
+        -- hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'RnvRed' },
         -- todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'TodoBgTODO' },
-        -- note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'TodoBgNOTE' },
-        toggle    = { pattern = '%f[%w]()TOGGLE()%f[%W]', group = 'TodoBgWARN' },
+        -- note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'RnvGreen' },
+        toggle    = { pattern = '%f[%w]()TOGGLE()%f[%W]', group = 'RnvYellow' },
         -- Highlight hex color strings (`#rrggbb`) using that color
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
