@@ -24,7 +24,7 @@ M.config = function()
     hooks = {},
   })
   -- if rnv.opt.transbg then
-  vim.cmd.FokusToggle()
+  require("fokus.view").toggle(false)
   -- end
 end
 
