@@ -1,7 +1,9 @@
 ---@type LazySpec
 local M = {}
 M[1] = "glepnir/dashboard-nvim"
-M.enabled = rnv.opt.starter_name == "dashboard"
+M.enabled = function()
+  return rnv.opt.starter_name == "dashboard"
+end
 M.event = "VimEnter"
 
 M.opts = {
@@ -19,7 +21,7 @@ M.opts = {
       enable = true,
       limit = 10,
       icon = "📁 ",
-      label = "Most recent used"
+      label = "Most recent used",
     },
     project = {
       enable = false,
@@ -28,48 +30,48 @@ M.opts = {
     shortcut = {
       {
         icon = "📎 ",
-        desc = 'Plugins',
-        group = '@constructor',
+        desc = "Plugins",
+        group = "@constructor",
         action = [[Lazy]],
         key = "p",
       },
       {
         icon = "🕗 ",
-        desc = 'Resume',
-        group = 'DiagnosticWarn',
+        desc = "Resume",
+        group = "DiagnosticWarn",
         action = [[lua require('persistence').load()]],
-        key = "s"
+        key = "s",
       },
       {
         icon = "🔭 ",
-        desc = 'Files',
-        group = 'DiagnosticOk',
+        desc = "Files",
+        group = "DiagnosticOk",
         action = [[Telescope find_files]],
-        key = "f"
+        key = "f",
       },
       {
         icon = "🔎 ",
-        desc = 'Grep',
-        group = 'DiagnosticHint',
+        desc = "Grep",
+        group = "DiagnosticHint",
         action = [[Telescope live_grep]],
-        key = "w"
+        key = "w",
       },
       {
         icon = "🔧 ",
-        desc = 'Dotfiles',
-        group = '@float',
+        desc = "Dotfiles",
+        group = "@float",
         action = [[Dotfiles]],
-        key = "."
+        key = ".",
       },
       {
         icon = "⭕ ",
-        desc = 'Quit',
-        group = '@tag.tsx',
+        desc = "Quit",
+        group = "@tag.tsx",
         action = [[qa]],
-        key = "q"
+        key = "q",
       },
     },
-  }
+  },
 }
 
 M.init = function()

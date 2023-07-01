@@ -9,6 +9,6 @@ return {
   getconfig("spectre"),
   getconfig("undodir"),
   getconfig("harpoon"),
+  getconfig("flash"),
   getconfig("leap"),
-  getconfig("hop"),
 }

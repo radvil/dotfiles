@@ -58,7 +58,6 @@ M.popups = {
 
 M.excludes = {
   "NeogitStatus",
-  "notify",
   "packer",
   "prompt",
   "Dashboard",

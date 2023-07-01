@@ -1,8 +1,10 @@
 ---@type LazySpec
 local M = {}
 M[1] = "rcarriga/nvim-notify"
-M.enabled = true
 M.event = "BufReadPost"
+M.enabled = function()
+  return true or not rnv.opt.minimal_mode
+end
 
 M.opts = function(_, opts)
   if rnv.opt.transbg then

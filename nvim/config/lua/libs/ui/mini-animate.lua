@@ -1,8 +1,10 @@
 ---@type LazySpec
 local M = {}
 M[1] = "echasnovski/mini.animate"
-M.enabled = function() return rnv.opt.animations end
 M.event = "VeryLazy"
+M.enabled = function()
+  return rnv.opt.animations and not rnv.opt.minimal_mode
+end
 
 M.opts = function()
   -- don't use animate when scrolling with the mouse
@@ -21,7 +23,7 @@ M.opts = function()
       enable = rnv.opt.animate_cursor,
       timing = animate.gen_timing.linear({
         duration = 150,
-        unit = 'total'
+        unit = "total",
       }),
       -- path = animate.gen_path.line({
       --   predicate = function()
@@ -33,42 +35,42 @@ M.opts = function()
       enable = rnv.opt.animate_window_resize,
       timing = animate.gen_timing.linear({
         duration = 30,
-        unit = "total"
+        unit = "total",
       }),
     },
     open = {
       enable = rnv.opt.animate_window_open,
       timing = animate.gen_timing.linear({
         duration = 400,
-        unit = 'total'
+        unit = "total",
       }),
       winconfig = animate.gen_winconfig.wipe({
-        direction = 'from_edge'
+        direction = "from_edge",
       }),
       winblend = animate.gen_winblend.linear({
         from = 80,
-        to = 100
+        to = 100,
       }),
     },
     close = {
       enable = rnv.opt.animate_window_close,
       timing = animate.gen_timing.linear({
         duration = 400,
-        unit = 'total'
+        unit = "total",
       }),
       winconfig = animate.gen_winconfig.wipe({
-        direction = 'to_edge'
+        direction = "to_edge",
       }),
       winblend = animate.gen_winblend.linear({
         from = 100,
-        to = 80
+        to = 80,
       }),
     },
     scroll = {
       enable = rnv.opt.animate_scroll,
       timing = animate.gen_timing.linear({
         duration = 150,
-        unit = "total"
+        unit = "total",
       }),
       subscroll = animate.gen_subscroll.equal({
         predicate = function(total_scroll)

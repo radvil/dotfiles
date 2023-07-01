@@ -1,7 +1,9 @@
 ---@type LazySpec
 local M = {}
 M[1] = "folke/lsp-colors.nvim"
-M.enabled = true
+M.enabled = function()
+  return not rnv.opt.minimal_mode
+end
 M.opts = function()
   local colors = rnv.opt.palette
   return {

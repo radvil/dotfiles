@@ -21,7 +21,7 @@ return {
         function()
           require("edgy").select()
         end,
-        desc = "Edgy » Pick window"
+        desc = "Edgy » Pick window",
       },
     },
     opts = {
@@ -48,11 +48,11 @@ return {
       right = {
         {
           ft = "spectre_panel",
-          size = { height = 0.5 }
+          size = { height = 0.5 },
         },
         {
           ft = "Trouble",
-          size = { height = 0.5 }
+          size = { height = 0.5 },
         },
       },
 
@@ -67,7 +67,7 @@ return {
         },
         {
           ft = "qf",
-          title = "QuickFix"
+          title = "QuickFix",
         },
         {
           ft = "help",
@@ -140,7 +140,7 @@ return {
     optional = true,
     opts = function(_, opts)
       opts.open_files_do_not_replace_types = opts.open_files_do_not_replace_types
-          or { "terminal", "Trouble", "qf", "Outline" }
+        or { "terminal", "Trouble", "qf", "Outline" }
       table.insert(opts.open_files_do_not_replace_types, "edgy")
     end,
   },

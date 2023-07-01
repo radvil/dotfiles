@@ -23,20 +23,20 @@ map("n", "<a-cr>", "o<esc>", { desc = "Add one line down" })
 map("i", "<c-d>", "<del>", { desc = "Delete next char" })
 map("i", "<c-h>", "<left>", { desc = "Shift one char left" })
 map("i", "<c-l>", "<right>", { desc = "Shift one char right" })
-map({ "i", "s", "o" }, "<a-bs>", '<esc>ciw', { nowait = true, desc = "Delete one word left" })
-map({ "i", "s", "o" }, "<a-i>", "<space><esc>i", { desc = "Delete one word right" })
+map({ "i", "c" }, "<a-bs>", "<esc>ciw", { nowait = true, desc = "Delete one word left" })
+map({ "i", "c" }, "<a-i>", "<space><esc>i", { desc = "Delete one word right" })
 map("n", "<leader>xl", ":lopen<cr>", { desc = "Diagnostics » Open in loclist" })
 map("n", "<leader>xe", ":copen<cr>", { desc = "Diagnostics » Open in quickfix" })
 map("n", "<c-g>", "ggVG", { desc = "Select all content" })
 map("v", "<c-g>", "<esc>", { desc = "Unselect all content" })
 map("i", "<c-g>", "<esc>ggVG", { desc = "Select all content" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch" })
-map({ "n", "x", "v" }, "K", "5k", { desc = "Shift 5 top" })
-map({ "n", "x", "v" }, "J", "5j", { desc = "Shift 5 down" })
+-- map({ "n", "x", "v" }, "K", "5k", { desc = "Shift 5 top" })
+-- map({ "n", "x", "v" }, "J", "5j", { desc = "Shift 5 down" })
 map({ "n", "x", "v" }, "Q", "q", { nowait = true, desc = "Record" })
 map({ "n", "x", "v" }, "+", ":join<cr>", { nowait = true, desc = "Join lines" })
 map({ "n", "x", "v" }, "q", "<esc>", { nowait = true, desc = "Escape to normal" })
-map({ "n", "x", "v" }, ";", ":", { nowait = true, silent = false, desc = "Drop into cmdline" })
+-- map({ "n", "x", "v" }, ";", ":", { nowait = true, silent = false, desc = "Drop into cmdline" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -51,10 +51,13 @@ map(
 )
 
 if vim.opt.clipboard ~= "unnamedplus" then
-  map({ "n", "x", "s" }, "gy", '"+y', { remap = true, nowait = true, desc = "System clipboard » Copy" })
-  map({ "n", "x" }, "gY", '"+y$', { remap = true, nowait = true, desc = "System clipboard » Copy line" })
-  map({ "n", "x", "s" }, "gp", '"+p', { remap = true, nowait = true, desc = "System clipboard » Paste before cursor" })
-  map({ "n", 'x' }, "gP", '"+P', { remap = true, nowait = true, desc = "System clipboard » Paste after cursor" })
+  local opt = function(desc)
+    return { remap = true, nowait = true, desc = string.format("System clipboard %s » ", desc) }
+  end
+  map({ "n", "o", "x", "v" }, "gy", '"+y', opt("Copy"))
+  map({ "n", "o", "x", "v" }, "gp", '"+p', opt("Paste before cursor"))
+  map("n", "gY", '"+y$', opt("Copy line"))
+  map("n", "gP", '"+P', opt("Paste after cursor"))
 end
 
 -- move to window using the <ctrl> hjkl keys
@@ -99,17 +102,25 @@ if rnv.api.call("mini.bufremove") == nil then
   map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "Buffer » Delete (all)" })
 end
 
-map("n", "<leader>uw", function() util.toggle("wrap") end, { desc = "Toggle » Word wrap" })
-map("n", "<leader>us", function() util.toggle("spell") end, { desc = "Toggle » Word spell" })
-map("n", "<leader>uc", function() util.toggle("cursorline") end, { desc = "Toggle » Cursor line" })
+map("n", "<leader>uw", function()
+  util.toggle("wrap")
+end, { desc = "Toggle » Word wrap" })
+map("n", "<leader>us", function()
+  util.toggle("spell")
+end, { desc = "Toggle » Word spell" })
+map("n", "<leader>uc", function()
+  util.toggle("cursorline")
+end, { desc = "Toggle » Cursor line" })
 map("n", "<leader>un", function()
   util.toggle("relativenumber", true)
   util.toggle("number")
 end, { desc = "Toggle » Line numbers" })
 
 if vim.lsp.buf.inlay_hint then
-  map("n", "<leader>uh", function() vim.lsp.buf.inlay_hint(0, nil) end, {
-    desc = "Toggle » Inlay hint"
+  map("n", "<leader>uh", function()
+    vim.lsp.buf.inlay_hint(0, nil)
+  end, {
+    desc = "Toggle » Inlay hint",
   })
 end
 
@@ -126,19 +137,37 @@ end
 ---@param root boolean
 local ft = function(cmd, root)
   local opt = { size = { width = 0.6, height = 0.7 }, title = "  " .. (cmd or "Terminal"), title_pos = "right" }
-  if not rnv.opt.transbg then opt.border = "none" end
-  if root then opt.cwd = util.get_root() end
+  if not rnv.opt.transbg then
+    opt.border = "none"
+  end
+  if root then
+    opt.cwd = util.get_root()
+  end
   util.float_term(cmd, opt)
 end
-map("n", [[<c-\>]], function() ft(nil, true) end, { desc = "Float » Terminal open (root dir)" })
+map("n", [[<c-\>]], function()
+  ft(nil, true)
+end, { desc = "Float » Terminal open (root dir)" })
 map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Float » Terminal hide" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-map("n", "<leader>ft", function() ft(nil, true) end, { desc = "Float » Terminal (root dir)" })
-map("n", "<leader>fT", function() ft(nil) end, { desc = "Float » Terminal (curr dir)" })
-map("n", "<leader>fh", function() ft("htop") end, { desc = "Float » Open htop" })
-map("n", "<leader>fn", function() ft("node") end, { desc = "Float » NodeJS" })
-map("n", "<leader>mw", function() vim.cmd [[call system('ami-project')]] end, { desc = "Tmux » Switch ami workspace" })
-map("n", "<leader>mm", function() vim.cmd [[call system('zmux')]] end, { desc = "Tmux » Switch to most recent" })
+map("n", "<leader>ft", function()
+  ft(nil, true)
+end, { desc = "Float » Terminal (root dir)" })
+map("n", "<leader>fT", function()
+  ft(nil)
+end, { desc = "Float » Terminal (curr dir)" })
+map("n", "<leader>fh", function()
+  ft("htop")
+end, { desc = "Float » Open htop" })
+map("n", "<leader>fn", function()
+  ft("node")
+end, { desc = "Float » NodeJS" })
+map("n", "<leader>mw", function()
+  vim.cmd([[call system('ami-project')]])
+end, { desc = "Tmux » Switch ami workspace" })
+map("n", "<leader>mm", function()
+  vim.cmd([[call system('zmux')]])
+end, { desc = "Tmux » Switch to most recent" })
 
 ---floating lazygit
 ---@param opts LazyCmdOptions
@@ -152,5 +181,9 @@ local lz = function(opts)
     esc_esc = false,
   })
 end
-map("n", "<leader>gG", function() lz({ cwd = util.get_root() }) end, { desc = "Git » Open lazygit (root dir)" })
-map("n", "<leader>gg", function() lz() end, { desc = "Git » Open lazygit (curr dir)" })
+map("n", "<leader>gG", function()
+  lz({ cwd = util.get_root() })
+end, { desc = "Git » Open lazygit (root dir)" })
+map("n", "<leader>gg", function()
+  lz()
+end, { desc = "Git » Open lazygit (curr dir)" })

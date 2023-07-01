@@ -3,6 +3,9 @@
 local M = {}
 M.event = "BufReadPre"
 M[1] = "folke/twilight.nvim"
+M.enabled = function()
+  return not rnv.opt.minimal_mode
+end
 M.cmd = { "Twilight", "TwilghtEnable", "TwilightDisable" }
 ---@type TwilightOptions
 M.opts = {

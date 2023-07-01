@@ -2,13 +2,15 @@
 ---@type LazySpec
 local M = {}
 M[1] = "nvim-treesitter/nvim-treesitter-context"
+M.dependencies = "nvim-treesitter/nvim-treesitter"
 M.event = "BufReadPre"
-M.enabled = false
-M.dependencies = { "nvim-treesitter/nvim-treesitter" }
+M.enabled = function()
+  return false --[[ rnv.opt.minimal_mode and not rnv.opt.transbg ]]
+end
 M.opts = {
-  enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
   throttle = true, -- Throttles plugin updates (may improve performance)
-  max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
   patterns = {
     -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
     -- For all filetypes

@@ -2,7 +2,7 @@
 ---@type LazySpec
 local M = {}
 M[1] = "mbbill/undotree"
-M.enabled = true
+M.enabled = false
 M.keys = {
   {
     "<leader>U",

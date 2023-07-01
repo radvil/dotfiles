@@ -3,8 +3,8 @@
 local M = {}
 M[1] = "folke/trouble.nvim"
 M.enabled = true
-M.cmd = { "TroubleToggle", "Trouble", }
-M.opts = { use_diagnostic_signs = true, }
+M.cmd = { "TroubleToggle", "Trouble" }
+M.opts = { use_diagnostic_signs = true }
 M.keys = {
   {
     "<Leader>xd",

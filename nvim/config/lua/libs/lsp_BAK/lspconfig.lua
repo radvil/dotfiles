@@ -1,8 +1,8 @@
 ---@type LazySpec
 local M = {}
 M[1] = "neovim/nvim-lspconfig"
-M.enabled = true
 M.event = { "BufReadPre", "BufNewFile" }
+M.enabled = true
 
 M.dependencies = {
   "mason.nvim",
@@ -53,7 +53,7 @@ M.opts = {
             paramType = true,
             paramName = "Disable",
             semicolon = "Disable",
-            arrayIndex = "Disable"
+            arrayIndex = "Disable",
           },
         },
       },
@@ -71,7 +71,7 @@ M.opts = {
             tabSize = vim.o.tabstop,
           },
           inlayHints = {
-            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHints = "all",
             includeInlayParameterNameHintsWhenArgumentMatchesName = false,
             includeInlayFunctionParameterTypeHints = true,
             includeInlayVariableTypeHints = true,
@@ -88,7 +88,7 @@ M.opts = {
             tabSize = vim.o.tabstop,
           },
           inlayHints = {
-            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHints = "all",
             includeInlayParameterNameHintsWhenArgumentMatchesName = false,
             includeInlayFunctionParameterTypeHints = true,
             includeInlayVariableTypeHints = true,

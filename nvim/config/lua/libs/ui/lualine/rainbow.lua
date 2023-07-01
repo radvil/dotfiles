@@ -27,7 +27,7 @@ local vmodecolor = {
   t = palette.red,
 }
 
-M.extensions = { "neo-tree", "lazy" }
+--M.extensions = { "neo-tree", "lazy" }
 
 M.options = {
   disabled_filetypes = { "alpha", "Dashboard" },

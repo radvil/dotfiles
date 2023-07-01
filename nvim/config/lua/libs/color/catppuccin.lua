@@ -5,7 +5,6 @@ M.name = "catppuccin"
 
 M.opts = function()
   return {
-    ---@type "latte" | "frappe" | "macchiato" | "mocha"
     flavour = rnv.opt.colorvariant,
     transparent_background = rnv.opt.transbg,
     term_colors = true,

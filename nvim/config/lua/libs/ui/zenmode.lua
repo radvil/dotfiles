@@ -2,6 +2,9 @@
 local M = {}
 M[1] = "folke/zen-mode.nvim"
 M.cmd = "ZenMode"
+M.enabled = function()
+  return not rnv.opt.minimal_mode
+end
 
 M.keys = {
   {

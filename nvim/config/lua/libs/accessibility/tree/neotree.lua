@@ -34,17 +34,8 @@ M.keys = {
   },
   {
     "<leader><cr>",
-    ":Neotree focus<cr>",
-    desc = "Neotree » Focus",
-  },
-  {
-    [[<leader>\]],
-    function()
-      if not require("common.utils").has("edgy") then
-        vim.cmd [[Neotree show]]
-      end
-    end,
-    desc = "Neotree » Reveal",
+    ":Neotree buffers<cr>",
+    desc = "Neotree » Buffers",
   },
 }
 
@@ -70,6 +61,12 @@ M.init = function()
       end
     end,
   })
+
+  if rnv.api.call("edgy") == nil then
+    rnv.api.map("n", [[<leader>\]], function()
+      vim.cmd([[Neotree show]])
+    end, { desc = "Neotree » Show" })
+  end
 end
 
 M.opts = function()
@@ -85,7 +82,7 @@ M.opts = function()
       "filesystem",
       "buffers",
       "git_status",
-      "document_symbols"
+      "document_symbols",
     },
     event_handlers = {
       {
@@ -94,7 +91,7 @@ M.opts = function()
         handler = function()
           if rnv.api.call("edgy") == nil then
             rnv.api.map("n", [[<leader>\]], function()
-              vim.cmd [[Neotree close]]
+              vim.cmd([[Neotree close]])
             end, { remap = true, desc = "Neotree » Close window" })
           end
         end,
@@ -105,7 +102,7 @@ M.opts = function()
         handler = function()
           if rnv.api.call("edgy") == nil then
             rnv.api.map("n", [[<leader>\]], function()
-              vim.cmd [[Neotree show]]
+              vim.cmd([[Neotree show]])
             end, { remap = true, desc = "Neotree » Show window" })
           end
         end,

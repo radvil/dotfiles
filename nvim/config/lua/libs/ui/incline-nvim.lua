@@ -3,7 +3,7 @@ return {
   "b0o/incline.nvim",
   event = "BufReadPre",
   enabled = function()
-    return rnv.opt.floating_winbar
+    return rnv.opt.floating_winbar and not rnv.opt.minimal_mode
   end,
   config = function()
     local colors = rnv.opt.palette
@@ -12,11 +12,11 @@ return {
         groups = {
           InclineNormal = {
             guibg = colors.pink,
-            guifg = colors.bg
+            guifg = colors.bg,
           },
           InclineNormalNC = {
             guifg = colors.pink,
-            guibg = colors.bg
+            guibg = colors.bg,
           },
         },
       },

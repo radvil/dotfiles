@@ -1,8 +1,8 @@
 ---@type LazySpec
 local M = {}
 M[1] = "stevearc/oil.nvim"
-M.enabled = true
 M.dependencies = "nvim-tree/nvim-web-devicons"
+M.enabled = true
 
 M.keys = {
   -- {
@@ -17,8 +17,8 @@ M.keys = {
     function()
       require("oil").toggle_float()
     end,
-    desc = "Float » Explorer (pwd)"
-  }
+    desc = "Float » Explorer (pwd)",
+  },
 }
 
 M.opts = {

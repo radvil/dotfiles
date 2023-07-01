@@ -87,7 +87,7 @@ return {
               map("gM", "AddMissingImports", "Add missing imports")
               map("gC", "RemoveUnused", "Remove unused imports")
               map("gO", "OrganizeImports", "Organize imports")
-              map("gM", "RenameFile", "Rename file")
+              map("gR", "RenameFile", "Rename file")
               map("gF", "FixAll", "Fix all")
             end
           end)

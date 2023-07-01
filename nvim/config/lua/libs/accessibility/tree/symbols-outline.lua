@@ -1,8 +1,10 @@
 ---@type LazySpec
 local M = {}
 M[1] = "simrat39/symbols-outline.nvim"
-M.enabled = true
 M.event = "VeryLazy"
+M.enabled = function()
+  return not rnv.opt.minimal_mode
+end
 
 M.opts = {
   highlight_hovered_item = true,

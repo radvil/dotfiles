@@ -8,6 +8,7 @@ M.keys = {
   {
     "<c-space>",
     desc = "treesitter » increase selection",
+    mode = "x",
   },
   {
     "<bs>",
@@ -18,9 +19,8 @@ M.keys = {
 
 --- @type TSConfig
 M.opts = {
-  highlight = { enable = true, },
-  indent = { enable = true, },
-  -- fold = { enable = true },
+  indent = { enable = true },
+  highlight = { enable = true },
   ensure_installed = require("opt.filetype").treesitter,
   incremental_selection = {
     enable = true,

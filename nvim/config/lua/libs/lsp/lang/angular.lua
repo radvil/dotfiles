@@ -9,6 +9,7 @@ return {
       "html",
     },
   },
+
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -23,17 +24,13 @@ return {
           end,
         },
       },
+
       setup = {
         angularls = function()
           require("common.utils").on_attach(function(client)
             if client.name == "angularls" then
               client.server_capabilities.documentRangeFormattingProvider = true
               client.server_capabilities.documentFormattingProvider = true
-              client.server_capabilities.renameProvider = true
-            elseif client.name == "html" then
-              client.server_capabilities.documentRangeFormattingProvider = false
-              client.server_capabilities.documentFormattingProvider = false
-            elseif client.name == "tsserver" then
               client.server_capabilities.renameProvider = false
             end
           end)

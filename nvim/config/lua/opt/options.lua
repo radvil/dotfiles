@@ -1,75 +1,72 @@
 rnv.api.log("Loading vim options...", "opt.options")
 
-vim.opt.wrap = false     -- Disable line wrap
-vim.opt.autowrite = true -- Enable auto write
--- opt.clipboard = "unnamedplus" -- Sync with system clipboard
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.foldlevelstart = 99
+vim.opt.equalalways = false
+vim.opt.smartindent = true
+vim.opt.shiftround = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.foldenable = true
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
+vim.opt.sidescrolloff = 8
+vim.opt.undolevels = 100
+vim.opt.showmode = false
+vim.opt.smartcase = true
+vim.opt.autowrite = true
+vim.opt.expandtab = true
+vim.opt.timeoutlen = 200
+vim.opt.updatetime = 200
+vim.opt.winminwidth = 5
+vim.opt.undofile = true
+vim.opt.foldlevel = 99
+vim.opt.laststatus = 3
+vim.opt.shiftwidth = 2
+vim.opt.pumheight = 10
+vim.opt.confirm = true
+vim.opt.scrolloff = 9
+vim.opt.hidden = true
+vim.opt.number = true
+vim.opt.winwidth = 7
+vim.opt.wrap = false
+vim.opt.pumblend = 0
+vim.opt.tabstop = 2
+vim.opt.list = true
+vim.opt.cmdheight = rnv.opt.minimal_mode and 0 or 1
 vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.confirm = true    -- Confirm to save changes before exiting modified buffer
-vim.opt.cursorline = true -- Enable highlighting of the current line
-vim.opt.expandtab = true  -- Use spaces instead of tabs
--- opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.wildmode = "longest:full,full"
 vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.grepprg = "rg --vimgrep"
-vim.opt.ignorecase = true      -- Ignore case
-vim.opt.inccommand = "nosplit" -- preview incremental substitute
-vim.opt.list = true            -- Show some invisible characters (tabs...
-vim.opt.mouse = "a"            -- Enable mouse mode
-vim.opt.number = true          -- Print line number
-vim.opt.pumblend = 0           -- Popup blend
-vim.opt.pumheight = 10         -- Maximum number of entries in a popup
-vim.opt.cmdheight = 1
-vim.opt.relativenumber = true  -- Relative line numbers
-vim.opt.scrolloff = 15         -- Lines of context
+vim.opt.inccommand = "nosplit"
+vim.opt.splitkeep = "screen"
+vim.opt.signcolumn = "yes"
+vim.opt.foldcolumn = "1"
+vim.opt.mouse = "a"
+vim.opt.fillchars = {
+  foldopen = require("opt.icons").Folder.ArrowOpened,
+  foldclose = require("opt.icons").Folder.ArrowClosed,
+  foldsep = " ",
+  fold = " ",
+  diff = "╱",
+  eob = " ",
+}
 vim.opt.sessionoptions = {
   "buffers",
   "curdir",
   "tabpages",
   "winsize",
 }
-vim.opt.shiftround = true -- Round indent
-vim.opt.shiftwidth = 2    -- Size of an indent
 vim.opt.shortmess:append({
   W = true,
   I = true,
   c = true,
 })
-vim.opt.showmode      = false -- Dont show mode since we have a statusline
-vim.opt.sidescrolloff = 8     -- Columns of context
-vim.opt.signcolumn    = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-vim.opt.smartcase     = true  -- Don't ignore case with capitals
-vim.opt.smartindent   = true  -- Insert indents automatically
-vim.opt.spelllang     = { "en" }
-vim.opt.splitbelow    = true  -- Put new windows below current
-vim.opt.splitright    = true  -- Put new windows right of current
-vim.opt.tabstop       = 2     -- Number of spaces tabs count for
-vim.opt.termguicolors = true  -- True color support
--- vim.opt.guicursor = ""
-vim.opt.undofile      = true
-vim.opt.undolevels    = 10000
-vim.opt.updatetime    = 200                 -- Save swap file and trigger CursorHold
-vim.opt.wildmode      = "longest:full,full" -- Command-line completion mode
-vim.opt.winminwidth   = 7                   -- Minimum window width
-vim.opt.hidden        = true                -- for toggleterm
-vim.opt.laststatus    = 3
-vim.opt.timeoutlen    = 200
-vim.opt.splitkeep     = "screen"
-vim.opt.shortmess:append({ C = true })
-vim.opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  foldsep = " ",
-  fold = " ",
-  diff = "╱",
-  eob = " ",
+vim.opt.spelllang = {
+  "en",
+  "id",
 }
 
 vim.g.markdown_recommended_style = 0
-vim.o.winwidth = 7
-vim.o.winminwidth = 5
-vim.o.equalalways = false
-
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]

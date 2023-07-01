@@ -18,7 +18,7 @@ M.opts = function()
 
   vim.api.nvim_set_hl(0, "CmpGhostText", {
     link = "Comment",
-    default = true
+    default = true,
   })
 
   ---@type cmp.Config
@@ -41,7 +41,7 @@ M.opts = function()
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "copilot" },
-      { name = "buffer",  keyword_length = 3 },
+      { name = "buffer", keyword_length = 3 },
       { name = "path" },
     }),
     formatting = {
@@ -76,7 +76,7 @@ M.opts = function()
     },
   }
 
-  if rnv.opt.transbg then
+  if rnv.opt.transbg or rnv.opt.minimal_mode then
     opts.window = {
       documentation = cmp.config.window.bordered(),
       completion = cmp.config.window.bordered(),

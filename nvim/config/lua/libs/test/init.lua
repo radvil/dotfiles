@@ -4,6 +4,9 @@ if not rnv.opt.dev then
 end
 
 ---@type LazySpec[]
+---Test code here...
+
+---end of test
 return {
   require("libs.test.hackertype"),
 }

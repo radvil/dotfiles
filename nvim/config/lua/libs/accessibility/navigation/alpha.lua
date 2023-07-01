@@ -25,7 +25,7 @@ M.opts = function()
   db.section.header.opts.hl = "AlphaHeader"
   db.section.buttons.opts.hl = "AlphaButtons"
   db.section.footer.opts.hl = "AlphaFooter"
-  db.opts.layout[1].val = 8
+  db.opts.layout[1].val = rnv.opt.minimal_mode and 3 or 8
   return db
 end
 

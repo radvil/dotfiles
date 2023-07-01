@@ -15,22 +15,21 @@ function M.get()
 		-- stylua: ignore
 		M._keys = {
 			{ "<leader>cd", vim.diagnostic.open_float,                 desc = "Line Diagnostics" },
-			{ "<leader>cl", "<cmd>LspInfo<cr>",                        desc = "Lsp Info" },
 			{ "gd",         "<cmd>Telescope lsp_definitions<cr>",      desc = "Goto Definition",       has = "definition" },
 			{ "gr",         "<cmd>Telescope lsp_references<cr>",       desc = "References" },
 			{ "gD",         vim.lsp.buf.declaration,                   desc = "Goto Declaration" },
-			{ "gI",         "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
-			{ "gy",         "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
+			-- { "gI",         "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
+			-- { "gy",         "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
 			{ "K",          vim.lsp.buf.hover,                         desc = "Hover" },
 			{ "gK",         vim.lsp.buf.signature_help,                desc = "Signature Help",        has = "signatureHelp" },
-			-- {
-			-- 	"<c-k>",
-			-- 	vim.lsp.buf.signature_help,
-			-- 	mode = "i",
-			-- 	desc = "Signature Help",
-			-- 	has =
-			-- 	"signatureHelp"
-			-- },
+			{
+				"<c-k>",
+				vim.lsp.buf.signature_help,
+				mode = "i",
+				desc = "Signature Help",
+				has =
+				"signatureHelp"
+			},
 			{ "]d", M.diagnostic_goto(true),           desc = "Next Diagnostic" },
 			{ "[d", M.diagnostic_goto(false),          desc = "Prev Diagnostic" },
 			{ "]e", M.diagnostic_goto(true, "ERROR"),  desc = "Next Error" },
@@ -84,7 +83,12 @@ function M.get()
         has = "rename",
       }
     else
-      M._keys[#M._keys + 1] = { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", has = "rename" }
+      M._keys[#M._keys + 1] = {
+        "<leader>cr",
+        vim.lsp.buf.rename,
+        desc = "Rename",
+        has = "rename",
+      }
     end
   end
   return M._keys

@@ -1,7 +1,9 @@
 ---@type LazySpec
 local M = {}
 M[1] = "radvil/fokus.nvim"
-M.enabled = true
+M.enabled = function()
+  return not rnv.opt.minimal_mode
+end
 M.dev = rnv.opt.dev
 M.event = "BufReadPre"
 M.dependencies = "folke/twilight.nvim"
@@ -18,7 +20,7 @@ M.config = function()
   require("fokus").setup({
     exclude_filetypes = {
       unpack(require("opt.filetype").excludes),
-      unpack(require("opt.filetype").popups)
+      unpack(require("opt.filetype").popups),
     },
     notify = { enabled = true },
     hooks = {},

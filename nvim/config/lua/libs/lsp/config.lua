@@ -33,13 +33,16 @@ M.opts = {
     timeout_ms = nil,
   },
   inlay_hints = {
-    enabled = rnv.opt.inlay_hint,
+    enabled = rnv.opt.lsp_inlay_hint,
   },
   icons = require("opt.icons").DiagnosticsFilled,
   diagnostics = {
-    underline = true,
     update_in_insert = false,
     severity_sort = true,
+    underline = true,
+    float = {
+      border = rnv.opt.transbg or rnv.opt.minimal_mode and "rounded" or "",
+    },
     virtual_text = {
       spacing = 4,
       source = "if_many",

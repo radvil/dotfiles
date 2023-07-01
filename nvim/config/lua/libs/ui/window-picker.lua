@@ -24,33 +24,43 @@ M.config = function()
     },
   })
 
+  -- stylua: ignore
   local pick_window = function()
     local win = picker.pick_window({ include_current_win = false })
-    if not win then
-      win = vim.api.nvim_get_current_win()
-    end
+    if not win then win = vim.api.nvim_get_current_win() end
     vim.api.nvim_set_current_win(win)
   end
 
+  -- stylua: ignore
   local swap_window = function()
     local curr_win = vim.api.nvim_get_current_win()
     local target_win = picker.pick_window({ include_current_win = false })
-    if not target_win then
-      target_win = curr_win
-    end
+    if not target_win then target_win = curr_win end
     local target_ft = vim.api.nvim_get_option_value("filetype", { win = target_win })
+    local target_buf = vim.fn.winbufnr(target_win)
     if util.list_has(filetypes, target_ft) then
-      util.warn("Not possible!", { title = "Window picker" })
+      util.warn("Not possible!", {
+        title = "Window picker",
+      })
       return
     end
-    local target_buf = vim.fn.winbufnr(target_win)
     vim.api.nvim_win_set_buf(target_win, 0)
     vim.api.nvim_win_set_buf(0, target_buf)
     vim.api.nvim_set_current_win(target_win)
   end
 
-  rnv.api.map("n", "<a-w>", pick_window, { desc = "Window » Select using picker" })
-  rnv.api.map("n", "<leader>ws", swap_window, { desc = "Window » Swap using picker" })
+  --stylua: ignore
+  local map = function(lhs, rhs, desc)
+    rnv.api.map("n", lhs, rhs, {
+      desc = string.format(
+        "Window » %s",
+        desc
+      )
+    })
+  end
+
+  map("<a-w>", pick_window, "Select using picker")
+  map("<leader>ws", swap_window, "Swap using picker")
 end
 
 return M

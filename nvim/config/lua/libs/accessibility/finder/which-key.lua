@@ -5,41 +5,51 @@ M.event = "VeryLazy"
 M.enabled = function()
   return rnv.opt.whichkey
 end
-M.opts = {
-  window = {
-    border = "",
-  },
-  icons = {
-    breadcrumb = "»",
-    separator = "➜",
-    group = "🔸",
-  },
-  layout = {
-    spacing = 7,
-  },
-  disable = {
-    buftypes = { "terminal" },
-    filetypes = require("opt.filetype").excludes,
-  },
-  -- ignore_missing = true,
-  show_help = false,
-  triggers_nowait = {
-    -- marks
-    "`",
-    "'",
-    "g`",
-    "g'",
-    -- registers
-    '"',
-    "<c-r>",
-    -- spelling
-    "z=",
-  },
-}
+
+M.opts = function()
+  local options = {
+    window = {
+      position = "bottom",
+      margin = { 0, 0, 0, 0 },
+    },
+    icons = {
+      breadcrumb = "»",
+      separator = "➜",
+      group = "🔸",
+    },
+    layout = {
+      spacing = 3,
+    },
+    disable = {
+      buftypes = { "terminal" },
+      filetypes = require("opt.filetype").excludes,
+    },
+    -- ignore_missing = true,
+    show_help = true,
+    triggers_nowait = {
+      -- marks
+      "`",
+      "'",
+      "g`",
+      "g'",
+      -- registers
+      '"',
+      "<c-r>",
+      -- spelling
+      "z=",
+    },
+  }
+  if rnv.opt.transbg then
+    options.window.border = "single"
+  end
+  return options
+end
+
 local function reset_presets_labels()
   local presets = require("which-key.plugins.presets")
 
   presets.operators["v"] = nil
+  presets.operators["gc"] = "Comments"
   presets.operators["so"] = "Surround » open/add"
   presets.operators["sd"] = "Surround » delete"
   presets.operators["s]"] = "Surround » find next"
@@ -93,6 +103,7 @@ local function reset_presets_labels()
   presets.motions["$"] = "End of sentence"
   presets.motions["<M-i>"] = [[variable or value]]
 end
+
 M.init = function()
   local wk = require("which-key")
   reset_presets_labels()

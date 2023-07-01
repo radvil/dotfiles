@@ -1,15 +1,12 @@
-if false then
-  return {}
-end
-
 ---@type LazySpec[]
 return {
   {
     "ggandor/leap.nvim",
-    enabled = true,
+    --stylua: ignore
+    enabled = function() return not rnv.opt.dev end,
     keys = {
       {
-        "m",
+        "<a-m>",
         function()
           require("leap").leap({
             target_windows = {
@@ -21,7 +18,7 @@ return {
         mode = { "x", "o" },
       },
       {
-        "m",
+        "<a-m>",
         function()
           require("leap").leap({
             target_windows = vim.tbl_filter(function(win)
@@ -33,6 +30,7 @@ return {
         mode = "n",
       },
     },
+
     config = function()
       local leap = require("leap")
       leap.opts.case_sensitive = false
@@ -96,22 +94,45 @@ return {
         "Z",
       }
     end,
-  },
+  }, -- EOL leap.nvim
+
   {
     "ggandor/flit.nvim",
+    --stylua: ignore
+    enabled = function () return not rnv.opt.dev end,
     dependencies = "ggandor/leap.nvim",
+
     keys = function()
       ---@type LazyKeys[]
       local ret = {}
-      for _, key in ipairs({ "f", "F", "t", "T" }) do
-        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
+      for _, key in ipairs({
+        "f",
+        "F",
+        "t",
+        "T",
+      }) do
+        ret[#ret + 1] = {
+          key,
+          mode = {
+            "n",
+            "x",
+            "o",
+          },
+          desc = key,
+        }
       end
       return ret
     end,
+
     opts = {
-      keys = { f = "f", F = "F", t = "t", T = "T" },
       labeled_modes = "nox",
       multiline = false,
+      keys = {
+        f = "f",
+        F = "F",
+        t = "t",
+        T = "T",
+      },
     },
   },
 }

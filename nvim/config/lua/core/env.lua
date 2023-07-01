@@ -1,10 +1,12 @@
 ---@class RnvOptions
 local opt = {}
+local is_kitty = os.getenv("KITTY_PID") ~= nil
 
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
-opt.transbg = false
+opt.minimal_mode = is_kitty
+opt.transbg = false --[[ opt.minimal_mode ]]
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neo-tree" | "nvim-tree"
@@ -17,7 +19,7 @@ opt.completion = true
 opt.maplocalleader = " "
 opt.lsp_diagnostics = true
 opt.lsp_autoformat = true
-opt.inlay_hint = true
+opt.lsp_inlay_hint = false
 opt.format_notification = false
 opt.completion_copilot = false
 opt.completion_snippets = true
@@ -34,12 +36,12 @@ opt.data = os.getenv("HOME") .. "/.local/share/nvim/lazy/lazy.nvim"
 ---@type "dashboard" | "alpha-nvim"
 opt.starter_name = "alpha-nvim"
 opt.starter_logo = [[
-      ██╗     █████╗ ██████╗  █████╗ ██╗   ██╗██╗███╗   ███╗   Z
-      ██║    ██╔══██╗██╔══██╗██╔══██╗██║   ██║██║████╗ ████║ Z
-      ██║    ███████║██████╔╝███████║██║   ██║██║██╔████╔██║
-      ██║    ██╔══██║██╔══██╗██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║
-      ██████╗██║  ██║██║  ██║██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
-      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+    ██╗     █████╗ ██████╗  █████╗ ██╗   ██╗██╗███╗   ███╗   Z
+    ██║    ██╔══██╗██╔══██╗██╔══██╗██║   ██║██║████╗ ████║ Z
+    ██║    ███████║██████╔╝███████║██║   ██║██║██╔████╔██║
+    ██║    ██╔══██║██╔══██╗██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║
+    ██████╗██║  ██║██║  ██║██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
+    ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
 ]]
 
 opt.palette = {

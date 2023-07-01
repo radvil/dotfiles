@@ -1,7 +1,9 @@
 ---@type LazySpec
 local M = {}
+
 M[1] = "folke/persistence.nvim"
 M.event = "BufReadPre"
+
 M.opts = {
   options = {
     "buffers",
@@ -11,6 +13,7 @@ M.opts = {
     "help",
   },
 }
+
 local function restore_session()
   require("persistence").load()
 end
@@ -20,6 +23,7 @@ end
 local function stop_session_saving()
   require("persistence").stop()
 end
+
 M.keys = {
   {
     "<Leader>Sr",
@@ -37,4 +41,5 @@ M.keys = {
     desc = "session » stop saving",
   },
 }
+
 return M

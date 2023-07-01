@@ -32,22 +32,22 @@ M.keys = {
   {
     "<leader>/w",
     util.telescope("live_grep", { layout_strategy = "vertical" }),
-    desc = "telescope » live grep (cwd)"
+    desc = "telescope » live grep (cwd)",
   },
   {
     "<leader>/W",
     util.telescope("live_grep", { layout_strategy = "vertical", cwd = false }),
-    desc = "telescope » live grep (root)"
+    desc = "telescope » live grep (root)",
   },
   {
     "<leader>/S",
     util.telescope("grep_string", { layout_strategy = "vertical" }),
-    desc = "telescope » grep string (cwd)"
+    desc = "telescope » grep string (cwd)",
   },
   {
     "<leader>/s",
     util.telescope("grep_string", { layout_strategy = "vertical", cwd = false }),
-    desc = "telescope » grep string (root)"
+    desc = "telescope » grep string (root)",
   },
   {
     "<leader>//",
@@ -101,7 +101,7 @@ M.keys = {
   },
   {
     "<leader>/C",
-    util.telescope("colorscheme", { enable_preview = true, }),
+    util.telescope("colorscheme", { enable_preview = true }),
     desc = "telescope » find colorscheme",
   },
   {
@@ -137,13 +137,13 @@ M.keys = {
     util.telescope("oldfiles", {
       prompt_title = "🗒️ RECENT FILES",
       initial_mode = "normal",
-      cwd = vim.loop.cwd()
+      cwd = vim.loop.cwd(),
     }),
     desc = "telescope » most recent used",
   },
 }
 
-M.opts = function()
+M.config = function()
   local actions = require("telescope.actions")
   local opts = {
     defaults = {
@@ -184,7 +184,7 @@ M.opts = function()
       preview = { " " },
     }
   end
-  return opts
+  require("telescope").setup(opts)
 end
 
 return M
