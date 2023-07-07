@@ -15,7 +15,6 @@ source_file "$DOTFILES/git/init.zsh" --silent
 source_file "$DOTFILES/omz/init.zsh" --silent
 source_file "$DOTFILES/starship/init.zsh" --silent
 source_file "$DOTFILES/nnn/init.zsh" --silent
-source_file "$DOTFILES/nvim/bin/init-switcher.zsh" --silent
 source_file "$DOTFILES/fzf/init.zsh" --silent
 source_file "$DOTFILES/z/init.zsh" --silent
 source_file "$DOTFILES/extras/spotify/init.zsh" --silent

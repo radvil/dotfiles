@@ -1,0 +1,150 @@
+---@diagnostic disable-next-line: redefined-local
+---@diagnostic disable: param-type-mismatch
+-- TODO: Need to add those sweet sweet lsp workspace diagnostic counts
+if not pcall(require, "el") then
+  -- TODO: Add in a nice default statusline here.
+  -- Would be good to research anyway for the course
+  return
+end
+
+RELOAD "el"
+require("el").reset_windows()
+
+vim.opt.laststatus = 3
+
+if false then
+  -- Disappearing statusline for commands
+  vim.opt.cmdheight = 0
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    group = vim.api.nvim_create_augroup("StatusDisappear", { clear = true }),
+    callback = function()
+      if vim.v.event.new_mode == "c" then
+        vim.opt.laststatus = 0
+      elseif vim.v.event.old_mode == "c" then
+        vim.opt.laststatus = 3
+      end
+
+      pcall(vim.cmd, [[silent! redraw]])
+    end,
+  })
+end
+
+local builtin = require "el.builtin"
+local extensions = require "el.extensions"
+local sections = require "el.sections"
+local subscribe = require "el.subscribe"
+local lsp_statusline = require "el.plugins.lsp_status"
+local diagnostic = require "el.diagnostic"
+
+local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
+  local icon = extensions.file_icon(_, bufnr)
+  if icon then
+    return icon .. " "
+  end
+  return ""
+end)
+
+local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
+  local branch = extensions.git_branch(window, buffer)
+  if branch then
+    return " " .. extensions.git_icon() .. " " .. branch
+  end
+end)
+
+local git_changes = subscribe.buf_autocmd("el_git_changes", "BufWritePost", function(window, buffer)
+  return extensions.git_changes(window, buffer)
+end)
+
+local show_current_func = function(window, buffer)
+  if buffer.filetype == "lua" then
+    return ""
+  end
+
+  return lsp_statusline.current_function(window, buffer)
+end
+
+local minimal_status_line = function(_, buffer)
+  if string.find(buffer.name, "sourcegraph/sourcegraph") then
+    return true
+  end
+end
+
+local is_sourcegraph = function(_, buffer)
+  if string.find(buffer.name, "sg://") then
+    return true
+  end
+end
+
+local diagnostic_display = diagnostic.make_buffer()
+
+require("el").setup {
+  generator = function(window, buffer)
+    local is_minimal = minimal_status_line(window, buffer)
+
+    local mode = extensions.gen_mode { format_string = " %s " }
+    if is_sourcegraph then
+      return {
+        { mode },
+        { sections.split, required = true },
+        { builtin.file },
+        { sections.split, required = true },
+        { builtin.filetype },
+      }
+    end
+
+    local items = {
+      { mode, required = true },
+      { git_branch },
+      { " " },
+      { sections.split, required = true },
+      { git_icon },
+      { sections.maximum_width(builtin.file_relative, 0.60), required = true },
+      { sections.collapse_builtin { { " " }, { builtin.modified_flag } } },
+      { sections.split, required = true },
+      { diagnostic_display },
+      { show_current_func },
+      { git_changes },
+      { "[" },
+      { builtin.line_with_width(3) },
+      { ":" },
+      { builtin.column_with_width(2) },
+      { "]" },
+      {
+        sections.collapse_builtin {
+          "[",
+          builtin.help_list,
+          builtin.readonly_list,
+          "]",
+        },
+      },
+      { builtin.filetype },
+    }
+
+    local add_item = function(result, item)
+      if is_minimal and not item.required then
+        return
+      end
+
+      table.insert(result, item)
+    end
+
+    local result = {}
+    for _, item in ipairs(items) do
+      add_item(result, item)
+    end
+
+    return result
+  end,
+}
+
+--require("fidget").setup {
+--  text = {
+--    spinner = "moon",
+--  },
+--  align = {
+--    bottom = true,
+--  },
+--  window = {
+--    relative = "editor",
+--  },
+--}

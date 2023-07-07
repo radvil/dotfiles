@@ -23,7 +23,7 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 7
+  size: 8
   # builtin_box_drawing: false
   draw_bold_text_with_bright_colors: false
   normal:
