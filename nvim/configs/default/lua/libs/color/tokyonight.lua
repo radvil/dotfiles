@@ -27,9 +27,7 @@ M.opts = function()
     },
     on_colors = function(colors)
       colors.diff.delete = "#ff0000"
-      -- if rnv.opt.transbg then
-      colors.border = rnv.opt.palette.cyan
-      -- end
+      colors.border = "#12131D"
     end,
     on_highlights = function(hl)
       if not rnv.opt.minimal_mode then

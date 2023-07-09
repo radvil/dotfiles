@@ -126,7 +126,7 @@ insert_left({
   end,
 })
 
-if not os.getenv("TMUX") then
+if vim.g.neovide then
   insert_left({
     function()
       return icons.Git.Branch

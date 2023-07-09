@@ -34,7 +34,7 @@ vim.opt.wrap = false
 vim.opt.pumblend = 0
 vim.opt.tabstop = 2
 vim.opt.list = true
-vim.opt.cmdheight = rnv.opt.minimal_mode and 0 or 1
+vim.opt.cmdheight = 1
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.wildmode = "longest:full,full"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -68,5 +68,10 @@ vim.opt.spelllang = {
   "en",
   "id",
 }
+
+if vim.g.neovide then
+  vim.opt.cmdheight = 0
+  vim.opt.guifont = { "FiraCode Nerd Font", ":h8" }
+end
 
 vim.g.markdown_recommended_style = 0

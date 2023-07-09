@@ -8,10 +8,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         opts = function(_, opts)
           if type(opts.ensure_installed) == "table" then
-            vim.list_extend(opts.ensure_installed, {
-              "scss",
-              "graphql",
-            })
+            table.insert(opts.ensure_installed, "scss")
           end
         end,
       },
@@ -40,8 +37,6 @@ return {
         angularls = function()
           require("lazyvim.util").on_attach(function(client)
             if client.name == "angularls" then
-              --client.server_capabilities.documentRangeFormattingProvider = true
-              --client.server_capabilities.documentFormattingProvider = true
               client.server_capabilities.renameProvider = false
             end
           end)

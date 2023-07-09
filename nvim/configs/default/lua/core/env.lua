@@ -1,12 +1,15 @@
 ---@class RnvOptions
 local opt = {}
-local is_kitty = os.getenv("KITTY_PID") ~= nil
+local cond = {
+  is_kitty = os.getenv("KITTY_PID") ~= nil,
+  is_neovide = vim.g.neovide,
+}
 
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
-opt.minimal_mode = is_kitty
-opt.transbg = false --[[ opt.minimal_mode ]]
+opt.minimal_mode = cond.is_neovide
+opt.transbg = not vim.g.neovide or false
 opt.mapleader = " "
 opt.darkmode = true
 ---@type "neo-tree" | "nvim-tree"

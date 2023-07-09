@@ -3,7 +3,7 @@ require("config.lazy").bootstrap({
     "LazyVim/LazyVim",
     import = "lazyvim.plugins",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "tokyonight",
       defaults = {
         autocmds = true,
         keymaps = false,

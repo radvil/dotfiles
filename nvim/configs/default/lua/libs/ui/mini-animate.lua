@@ -3,7 +3,7 @@ local M = {}
 M[1] = "echasnovski/mini.animate"
 M.event = "VeryLazy"
 M.enabled = function()
-  return rnv.opt.animations and not rnv.opt.minimal_mode
+  return not vim.g.neovide and rnv.opt.animations and not rnv.opt.minimal_mode
 end
 
 M.opts = function()

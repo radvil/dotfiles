@@ -41,7 +41,7 @@ M.opts = {
     severity_sort = true,
     underline = true,
     float = {
-      border = rnv.opt.transbg or rnv.opt.minimal_mode and "rounded" or "",
+      border = rnv.opt.transbg or rnv.opt.minimal_mode and "rounded" or "none",
     },
     virtual_text = {
       spacing = 4,

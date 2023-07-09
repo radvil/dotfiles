@@ -3,7 +3,7 @@ return {
   {
     "ggandor/leap.nvim",
     --stylua: ignore
-    enabled = function() return not rnv.opt.dev end,
+    enabled = false,
     keys = {
       {
         "<a-m>",
@@ -99,7 +99,7 @@ return {
   {
     "ggandor/flit.nvim",
     --stylua: ignore
-    enabled = function () return not rnv.opt.dev end,
+    enabled = false,
     dependencies = "ggandor/leap.nvim",
 
     keys = function()

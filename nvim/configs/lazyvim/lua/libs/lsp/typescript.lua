@@ -50,7 +50,7 @@ return {
             },
           },
           completions = {
-            completeFunctionCalls = true,
+            completeFunctionCalls = false,
           },
         },
       },
