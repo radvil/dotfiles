@@ -36,103 +36,28 @@ return {
   end,
 
   keys = function()
+    local Kmap = function(lhs, cmd, desc)
+      cmd = string.format("<cmd>BufferLine%s<cr>", cmd)
+      desc = string.format("Buffer » %s", desc)
+      return { lhs, cmd, desc = desc, silent = true }
+    end
     return {
-      {
-        "<Leader>bS",
-        ":BufferLineSortByTabs<cr>",
-        desc = "Buffer » Sort by directory",
-        silent = true,
-      },
-      {
-        "<Leader>bs",
-        ":BufferLineSortByDirectory<cr>",
-        desc = "Buffer » Sort by relative directory",
-        silent = true,
-      },
-      {
-        "<Leader>bp",
-        "<Cmd>BufferLineTogglePin<CR>",
-        desc = "Buffer » Toggle pin",
-        silent = true,
-      },
-      {
-        "<a-b>",
-        "<Cmd>BufferLinePick<CR>",
-        desc = "Buffer » Pick",
-        silent = true,
-      },
-      {
-        "<A-.>",
-        "<Cmd>BufferLineMoveNext<CR>",
-        desc = "buffer » shift right",
-        silent = true,
-      },
-      {
-        "<A-[>",
-        "<Cmd>BufferLineCyclePrev<CR>",
-        desc = "buffer » switch prev",
-        silent = true,
-      },
-      {
-        "<a-[>",
-        "<Cmd>BufferLineCyclePrev<CR>",
-        desc = "Buffer » Switch prev",
-        silent = true,
-      },
-      {
-        "<a-]>",
-        "<Cmd>BufferLineCycleNext<CR>",
-        desc = "Buffer » Switch next",
-        silent = true,
-      },
-      {
-        "<a-1>",
-        "<Cmd>BufferLineGoToBuffer 1<CR>",
-        desc = "Buffer » Switch 1st",
-        silent = true,
-      },
-      {
-        "<a-2>",
-        "<Cmd>BufferLineGoToBuffer 2<CR>",
-        desc = "Buffer » Switch 2nd",
-        silent = true,
-      },
-      {
-        "<a-3>",
-        "<Cmd>BufferLineGoToBuffer 3<CR>",
-        desc = "Buffer » Switch 3rd",
-        silent = true,
-      },
-      {
-        "<a-4>",
-        "<Cmd>BufferLineGoToBuffer 4<CR>",
-        desc = "Buffer » Switch 4th",
-        silent = true,
-      },
-      {
-        "<a-5>",
-        "<Cmd>BufferLineGoToBuffer 5<CR>",
-        desc = "Buffer » Switch 5th",
-        silent = true,
-      },
-      {
-        "<leader>bB",
-        ":BufferLineCloseLeft<cr>",
-        desc = "Buffer » Close left",
-        silent = true,
-      },
-      {
-        "<leader>bW",
-        ":BufferLineCloseRight<cr>",
-        desc = "Buffer » Close right",
-        silent = true,
-      },
-      {
-        "<leader>bC",
-        ":BufferLineCloseOthers<cr>",
-        desc = "Buffer » Close others",
-        silent = true,
-      },
+      Kmap("<a-b>", "Pick", "Pick"),
+      Kmap("<leader>bS", "SortByTabs", "Sort by tabs"),
+      Kmap("<leader>bs", "SortByDirectory", "Sort by directory"),
+      Kmap("<leader>bp", "TogglePin", "Toggle pin"),
+      Kmap("<a-.>", "MoveNext", "Shift right"),
+      Kmap("<a-,>", "MovePrev", "Shift left"),
+      Kmap("<a-[>", "CyclePrev", "Switch prev"),
+      Kmap("<a-]>", "CycleNext", "Switch next"),
+      Kmap("<a-1>", "GoToBuffer 1", "Switch 1st"),
+      Kmap("<a-2>", "GoToBuffer 2", "Switch 2nd"),
+      Kmap("<a-3>", "GoToBuffer 3", "Switch 3rd"),
+      Kmap("<a-4>", "GoToBuffer 4", "Switch 4th"),
+      Kmap("<a-5>", "GoToBuffer 5", "Switch 5th"),
+      Kmap("<leader>bB", "CloseLeft", "Close left"),
+      Kmap("<leader>bW", "CloseRight", "Close right"),
+      Kmap("<leader>bC", "CloseOthers", "Close others"),
     }
   end,
 }

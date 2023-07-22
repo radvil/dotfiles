@@ -1,9 +1,11 @@
 local Icon = require("common.icons").Common
+
 return {
   "nvim-telescope/telescope.nvim",
+  event = "VeryLazy",
 
   config = function(_, opts)
-    local LazyUtil = require("lazyvim.util")
+    local Utils = require("common.utils")
     local actions = require("telescope.actions")
     local basics = {
       ["<c-t>"] = actions.select_tab,
@@ -14,7 +16,7 @@ return {
       ["<a-d>"] = function()
         local action_state = require("telescope.actions.state")
         local line = action_state.get_current_line()
-        LazyUtil.telescope("find_files", {
+        Utils.telescope("find_files", {
           prompt_title = require("common.icons").Common.EyeOpen .. "Find files (no hidden)",
           sorting_strategy = "descending",
           default_text = line,
@@ -62,16 +64,16 @@ return {
   end,
 
   init = function()
-    local LazyUtil = require("lazyvim.util")
+    local Utils = require("common.utils")
 
     ---register telescope dotfiles on VimEnter here
     vim.api.nvim_create_user_command("TelescopeDotfiles", function()
-      LazyUtil.telescope("files", { prompt_title = "🔧 DOTFILES", cwd = os.getenv("DOTFILES") })()
+      Utils.telescope("files", { prompt_title = "🔧 DOTFILES", cwd = os.getenv("DOTFILES") })()
     end, { desc = "Telescope » Open dotfiles" })
 
     ---register custom note trigger
     vim.api.nvim_create_user_command("TelescopeNotes", function()
-      LazyUtil.telescope("find_files", {
+      Utils.telescope("find_files", {
         prompt_title = Icon.Note .. "Find notes",
         cwd = os.getenv("HOME") .. "/Documents/obsidian-vault",
       })()
@@ -79,7 +81,7 @@ return {
   end,
 
   keys = function()
-    local LazyUtil = require("lazyvim.util")
+    local Utils = require("common.utils")
 
     ---@param lhs string
     ---@param cmd string | function
@@ -103,7 +105,7 @@ return {
 
       Kmap(
         "<leader>/k",
-        LazyUtil.telescope("keymaps", {
+        Utils.telescope("keymaps", {
           prompt_title = Icon.Keyboard .. "Keymaps",
         }),
         "Find keymaps"
@@ -111,42 +113,34 @@ return {
 
       Kmap(
         "<leader>/h",
-        LazyUtil.telescope("highlights", { prompt_title = Icon.ColorMode .. "Highlights" }),
+        Utils.telescope("highlights", { prompt_title = Icon.ColorMode .. "Highlights" }),
         "Find highlights"
       ),
 
-      Kmap("<f1>", LazyUtil.telescope("help_tags", { prompt_title = Icon.Question .. " Help tags" }), "Find help tags"),
+      Kmap("<f1>", Utils.telescope("help_tags", { prompt_title = Icon.Question .. " Help tags" }), "Find help tags"),
 
       Kmap(
         "<leader>//",
-        LazyUtil.telescope("resume", { prompt_title = Icon.Continue .. "Continue" }),
+        Utils.telescope("resume", { prompt_title = Icon.Continue .. "Continue" }),
         "Continue last action"
       ),
 
-      Kmap(
-        "<c-p>",
-        LazyUtil.telescope("find_files", { prompt_title = Icon.File .. "Files (cwd)" }),
-        "Find files (cwd)"
-      ),
+      Kmap("<c-p>", Utils.telescope("find_files", { prompt_title = Icon.File .. "Files (cwd)" }), "Find files (cwd)"),
 
       Kmap(
         "<leader>/f",
-        LazyUtil.telescope("find_files", {
+        Utils.telescope("find_files", {
           prompt_title = Icon.File .. "Files (root)",
           cwd = false,
         }),
         "Find files (root)"
       ),
 
-      Kmap(
-        "<leader>/w",
-        LazyUtil.telescope("live_grep", { prompt_title = Icon.Word .. "Grep word" }),
-        "Grep word (cwd)"
-      ),
+      Kmap("<leader>/w", Utils.telescope("live_grep", { prompt_title = Icon.Word .. "Grep word" }), "Grep word (cwd)"),
 
       Kmap(
         "<leader>/W",
-        LazyUtil.telescope("live_grep", {
+        Utils.telescope("live_grep", {
           prompt_title = Icon.Word .. "Grep word",
           cwd = false,
         }),
@@ -155,7 +149,7 @@ return {
 
       Kmap(
         "<leader>/C",
-        LazyUtil.telescope("colorscheme", {
+        Utils.telescope("colorscheme", {
           prompt_title = Icon.ColorPalette .. "Colorscheme",
           enable_preview = true,
         }),
@@ -164,7 +158,7 @@ return {
 
       Kmap(
         "<leader>/p",
-        LazyUtil.telescope("find_files", {
+        Utils.telescope("find_files", {
           prompt_title = Icon.Package .. "Find plugins",
           cwd = vim.fn.stdpath("data"),
         }),
@@ -173,7 +167,7 @@ return {
 
       Kmap(
         "<leader><tab>",
-        LazyUtil.telescope("oldfiles", {
+        Utils.telescope("oldfiles", {
           prompt_title = Icon.RecentFiles .. "Recent files",
           initial_mode = "normal",
           cwd = vim.loop.cwd(),
@@ -183,7 +177,7 @@ return {
 
       Kmap(
         "<leader>/r",
-        LazyUtil.telescope("oldfiles", {
+        Utils.telescope("oldfiles", {
           prompt_title = Icon.RecentFiles .. "Recent files",
           cwd = vim.loop.cwd(),
         }),
@@ -192,7 +186,7 @@ return {
 
       Kmap(
         "<leader>/R",
-        LazyUtil.telescope("oldfiles", {
+        Utils.telescope("oldfiles", {
           prompt_title = Icon.RecentFiles .. "Recent files (root)",
           initial_mode = "normal",
         }),
@@ -201,7 +195,7 @@ return {
 
       Kmap(
         "<leader>/S",
-        LazyUtil.telescope("grep_string", {
+        Utils.telescope("grep_string", {
           prompt_title = Icon.String .. "Grep string",
           layout_strategy = "vertical",
         }),
@@ -210,7 +204,7 @@ return {
 
       Kmap(
         "<leader>/s",
-        LazyUtil.telescope("grep_string", {
+        Utils.telescope("grep_string", {
           prompt_title = Icon.String .. "Grep string",
           layout_strategy = "vertical",
           cwd = false,
@@ -220,7 +214,7 @@ return {
 
       Kmap(
         "<leader>/N",
-        LazyUtil.telescope("find_files", {
+        Utils.telescope("find_files", {
           prompt_title = Icon.Note .. "Find notes",
           cwd = os.getenv("HOME") .. "/Documents/obsidian-vault",
         }),
@@ -229,7 +223,7 @@ return {
 
       Kmap(
         "<leader>'",
-        LazyUtil.telescope("marks", {
+        Utils.telescope("marks", {
           prompt_title = Icon.Marker .. "Marks",
           initial_mode = "normal",
         }),
@@ -238,7 +232,7 @@ return {
 
       Kmap(
         "<leader>;",
-        LazyUtil.telescope("jumplist", {
+        Utils.telescope("jumplist", {
           prompt_title = Icon.Reverse .. "Jump list",
           initial_mode = "normal",
         }),
@@ -247,7 +241,7 @@ return {
 
       Kmap(
         "<leader>,",
-        LazyUtil.telescope("buffers", {
+        Utils.telescope("buffers", {
           prompt_title = Icon.RootFolderOpened .. "Opened buffers",
           ignore_current_buffer = true,
           initial_mode = "normal",

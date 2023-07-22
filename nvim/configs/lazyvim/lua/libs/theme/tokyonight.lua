@@ -15,7 +15,7 @@ return {
     dark_sidebar = true,
     dark_float = true,
     lualine_bold = true,
-    tokyonight_sidebars = require("common.filetypes").sidebars,
+    tokyonight_sidebars = require("common.filetypes").Windows,
     on_colors = function(colors)
       colors.border = "#12131D"
     end,

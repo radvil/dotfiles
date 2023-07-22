@@ -1,6 +1,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons", "s1n7ax/nvim-window-picker" },
+
   keys = function()
     return {
       {
@@ -34,8 +35,9 @@ return {
 
   opts = function(_, opts)
     local icons = require("common.icons")
-      --stylua: ignore
-      local i = function(icon) return string.format("%s ", icon) end
+    local i = function(icon)
+      return string.format("%s ", icon)
+    end
     opts.default_component_configs = {
       indent = {
         with_markers = true,
@@ -102,7 +104,9 @@ return {
 
     opts.filesystem = {
       bind_to_cwd = false,
-      follow_current_file = true,
+      follow_current_file = {
+        enabled = true,
+      },
       use_libuv_file_watcher = true,
       hijack_netrw_behavior = "disabled",
       window = {

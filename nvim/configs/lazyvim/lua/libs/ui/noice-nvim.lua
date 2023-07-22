@@ -3,6 +3,9 @@ local activated = true
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
+  enabled = function()
+    return not vim.g.neovide
+  end,
   -- stylua: ignore
   keys = function ()
     return {
