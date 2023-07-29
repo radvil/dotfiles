@@ -35,5 +35,4 @@ return {
   require("libs.color.catppuccin"),
   require("libs.color.tokyonight"),
   require("libs.color.monokai-pro"),
-  require("libs.color.hipatterns"),
 }
