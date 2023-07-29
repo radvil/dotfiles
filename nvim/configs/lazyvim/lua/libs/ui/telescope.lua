@@ -27,7 +27,10 @@ return {
     }
     opts = vim.tbl_deep_extend("force", opts or {}, {
       defaults = {
-        layout_config = { prompt_position = "top" },
+        layout_config = {
+          prompt_position = "top",
+          width = 0.9,
+        },
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
         prompt_prefix = " 🔭 ",
@@ -56,7 +59,7 @@ return {
       opts.defaults.borderchars = {
         prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
         results = { " " },
-        preview = { " " },
+        preview = { "─", " ", " ", " ", "─", "─", " ", " " },
       }
     end
 
@@ -136,12 +139,20 @@ return {
         "Find files (root)"
       ),
 
-      Kmap("<leader>/w", Utils.telescope("live_grep", { prompt_title = Icon.Word .. "Grep word" }), "Grep word (cwd)"),
+      Kmap(
+        "<leader>/w",
+        Utils.telescope("live_grep", {
+          prompt_title = Icon.Word .. "Grep word",
+          layout_strategy = "vertical",
+        }),
+        "Grep word (cwd)"
+      ),
 
       Kmap(
         "<leader>/W",
         Utils.telescope("live_grep", {
           prompt_title = Icon.Word .. "Grep word",
+          layout_strategy = "vertical",
           cwd = false,
         }),
         "Grep word (root)"

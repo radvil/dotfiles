@@ -11,6 +11,11 @@ function M.call(...)
   end
 end
 
+---@param plugin string
+function M.has(plugin)
+  return require("lazy.core.config").spec.plugins[plugin] ~= nil
+end
+
 ---check buffer against given mapping list or string
 ---@param bufnr integer | nil
 ---@param mappings table | string

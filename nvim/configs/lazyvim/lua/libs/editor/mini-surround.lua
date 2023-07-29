@@ -1,18 +1,21 @@
+---@type LazySpec
 return {
   "echasnovski/mini.surround",
-  event = "VeryLazy",
-  opts = function(_, opts)
+  enabled = true,
+  event = "BufReadPre",
+  config = function(_, opts)
     opts.silent = true
-    opts.respect_selection_type = true
+    opts.respect_selectwon_type = true
     opts.mappings = {
-      add = "-a",
-      replace = "-s",
-      delete = "-d",
-      find_left = "-[",
-      find = "-]",
-      highlight = "-h",
+      add = "so",
+      delete = "sd",
+      replace = "sc",
+      find_left = "[s",
+      find = "]s",
+      highlight = "sh",
       update_n_lines = "",
     }
-    return opts
+    vim.keymap.set("n", "s", "<nop>", { remap = true })
+    require("mini.surround").setup(opts)
   end,
 }

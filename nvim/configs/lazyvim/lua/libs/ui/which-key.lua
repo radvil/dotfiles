@@ -53,45 +53,60 @@ end
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = {
-    show_help = false,
-    window = {
-      position = "bottom",
-      margin = { 0, 0, 0, 0 },
-    },
-    icons = {
-      breadcrumb = "»",
-      separator = "➜",
-      group = "🔸",
-    },
-    layout = {
-      spacing = 2,
-    },
-    disable = {
-      buftypes = { "terminal" },
-      filetypes = require("common.filetypes").Excludes,
-    },
-  },
+  opts = function()
+    local Utils = require("common.utils")
+
+    local opts = {
+      show_help = false,
+      window = {
+        position = "bottom",
+        margin = { 0, 0, 0, 0 },
+      },
+      icons = {
+        breadcrumb = "»",
+        separator = "➜",
+        group = "🔸",
+      },
+      layout = {
+        spacing = 2,
+      },
+      disable = {
+        buftypes = { "terminal" },
+        filetypes = require("common.filetypes").Excludes,
+      },
+      defaults = {
+        mode = { "n", "v" },
+        ["g"] = { name = "Goto" },
+        ["]"] = { name = "Next" },
+        ["["] = { name = "Prev" },
+        ["<Leader>/"] = { name = "Telescope" },
+        ["<Leader>x"] = { name = "Diagnostics" },
+        ["<Leader>b"] = { name = "Buffer" },
+        ["<Leader>w"] = { name = "Window" },
+        ["<Leader>m"] = { name = "Tmux" },
+        ["<Leader>s"] = { name = "Spectre" },
+        ["<Leader>S"] = { name = "Session" },
+        ["<Leader>f"] = { name = "Float" },
+        ["<Leader>g"] = { name = "Git" },
+        ["<Leader>u"] = { name = "Toggle" },
+      },
+    }
+
+    if Utils.has("noice.nvim") then
+      opts.defaults["<leader>n"] = { name = "Noice/Notify" }
+    end
+
+    if Utils.has("mini.surround") then
+      opts.defaults["s"] = { name = "Surround" }
+    end
+
+    return opts
+  end,
 
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(opts)
-    wk.register({
-      ["<Leader>/"] = { name = "Telescope" },
-      ["<Leader>x"] = { name = "Diagnostics" },
-      ["<Leader>b"] = { name = "Buffer" },
-      ["<Leader>w"] = { name = "Window" },
-      ["<Leader>m"] = { name = "Tmux" },
-      ["<Leader>s"] = { name = "Spectre" },
-      ["<Leader>S"] = { name = "Session" },
-      ["<Leader>f"] = { name = "Float" },
-      ["<Leader>g"] = { name = "Git" },
-      ["<Leader>u"] = { name = "Toggle" },
-      ["<Leader>n"] = { name = "Noice/Notify" },
-      ["<leader>t"] = { name = "Tabs" },
-      ["<leader>c"] = { name = "Code action" },
-      ["-"] = { name = "Surrounding" },
-    })
+    wk.register(opts.defaults)
     reset_presets_labels()
   end,
 }
