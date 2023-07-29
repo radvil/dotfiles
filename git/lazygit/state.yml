@@ -2,9 +2,10 @@ lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
 - /home/radvil/AMI/ami-erp-project
-- /home/radvil/AMI/mykado-console
 - /home/radvil/Projects/forks/LazyVim
-- /home/radvil/.config/nvim-minimal
+- /home/radvil/AMI/mykado-console
+- /home/radvil/AMI/parastar-console
+- /home/radvil/AMI/sentra-ponsel
 - /home/radvil/Documents/obsidian-vault
 - /home/radvil/Projects/cli-tools/fokus.nvim
 - /home/radvil/AMI/clio-crm
@@ -12,7 +13,6 @@ recentrepos:
 - /home/radvil/Projects/cli-tools/vim-splits-tmux
 - /home/radvil/Projects/go-journeys/src
 - /home/radvil/AMI/mcp.bak
-- /home/radvil/AMI/parastar-console
 startuppopupversion: 5
 customcommandshistory:
 - q
