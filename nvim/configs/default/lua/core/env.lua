@@ -8,7 +8,7 @@ local cond = {
 opt.name = "RnV"
 opt.version = ">= 0.0.1"
 opt.dev = false
-opt.minimal_mode = cond.is_neovide
+opt.minimal_mode = not cond.is_neovide
 opt.transbg = not vim.g.neovide or false
 opt.mapleader = " "
 opt.darkmode = true

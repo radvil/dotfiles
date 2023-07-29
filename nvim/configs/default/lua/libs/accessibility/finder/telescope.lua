@@ -147,7 +147,10 @@ M.config = function()
   local actions = require("telescope.actions")
   local opts = {
     defaults = {
-      layout_config = { prompt_position = "top" },
+      layout_config = {
+        prompt_position = "top",
+        width = 0.9,
+      },
       layout_strategy = "horizontal",
       sorting_strategy = "ascending",
       prompt_prefix = " 🔭 ",
@@ -176,14 +179,6 @@ M.config = function()
       },
     },
   }
-  if not rnv.opt.transbg then
-    -- opts.defaults.borderchars = { " ", " ", " ", " ", " ", " ", " ", " " }
-    opts.defaults.borderchars = {
-      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-      results = { " " },
-      preview = { " " },
-    }
-  end
   require("telescope").setup(opts)
 end
 

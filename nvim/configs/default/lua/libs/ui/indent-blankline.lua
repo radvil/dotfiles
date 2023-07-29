@@ -9,7 +9,7 @@ M.opts = {
   char = "│",
   buftype_exclude = { "terminal" },
   show_trailing_blankline_indent = false,
-  show_current_context = true,
+  show_current_context = false,
   filetype_exclude = require("opt.filetype").excludes,
   -- default : {'class', 'function', 'method'}
   context_patterns = {

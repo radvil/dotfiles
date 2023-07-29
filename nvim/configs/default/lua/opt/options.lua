@@ -29,12 +29,13 @@ vim.opt.confirm = true
 vim.opt.scrolloff = 9
 vim.opt.hidden = true
 vim.opt.number = true
+vim.opt.cmdheight = 1
 vim.opt.winwidth = 7
 vim.opt.wrap = false
 vim.opt.pumblend = 0
 vim.opt.tabstop = 2
 vim.opt.list = true
-vim.opt.cmdheight = 1
+vim.opt.swapfile = false
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.wildmode = "longest:full,full"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -72,6 +73,9 @@ vim.opt.spelllang = {
 if vim.g.neovide then
   vim.opt.cmdheight = 0
   vim.opt.guifont = { "FiraCode Nerd Font", ":h8" }
+  vim.g.neovide_cursor_animate_command_line = false
+  ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
+  vim.g.neovide_cursor_vfx_mode = "railgun"
 end
 
 vim.g.markdown_recommended_style = 0

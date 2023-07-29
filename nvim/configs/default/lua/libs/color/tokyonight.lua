@@ -30,9 +30,7 @@ M.opts = function()
       colors.border = "#12131D"
     end,
     on_highlights = function(hl)
-      if not rnv.opt.minimal_mode then
-        hl.CursorLine.bold = true
-      end
+      hl.CursorLine.bold = true
     end,
   }
   if bgtrans then

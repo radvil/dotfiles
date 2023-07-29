@@ -5,73 +5,31 @@ M[1] = "akinsho/nvim-bufferline.lua"
 M.enabled = true
 M.event = "VeryLazy"
 M.dependencies = { "nvim-tree/nvim-web-devicons" }
-M.keys = {
-  {
-    "<Leader>bS",
-    ":BufferLineSortByTabs<cr>",
-    desc = "buffer » sort by directory",
-  },
-  {
-    "<Leader>bs",
-    ":BufferLineSortByDirectory<cr>",
-    desc = "buffer » sort by relative directory",
-  },
-  {
-    "<Leader>bp",
-    "<Cmd>BufferLineTogglePin<CR>",
-    desc = "buffer » toggle pin",
-  },
-  {
-    "<A-b>",
-    "<Cmd>BufferLinePick<CR>",
-    desc = "buffer » pick",
-  },
-  {
-    "<A-,>",
-    "<Cmd>BufferLineMovePrev<CR>",
-    desc = "buffer » shift left",
-  },
-  {
-    "<A-.>",
-    "<Cmd>BufferLineMoveNext<CR>",
-    desc = "buffer » shift right",
-  },
-  {
-    "<A-[>",
-    "<Cmd>BufferLineCyclePrev<CR>",
-    desc = "buffer » switch prev",
-  },
-  {
-    "<A-]>",
-    "<Cmd>BufferLineCycleNext<CR>",
-    desc = "buffer » switch next",
-  },
-  {
-    "<A-1>",
-    "<Cmd>BufferLineGoToBuffer 1<CR>",
-    desc = "buffer » switch 1st",
-  },
-  {
-    "<A-2>",
-    "<Cmd>BufferLineGoToBuffer 2<CR>",
-    desc = "buffer » switch 2nd",
-  },
-  {
-    "<A-3>",
-    "<Cmd>BufferLineGoToBuffer 3<CR>",
-    desc = "buffer » switch 3rd",
-  },
-  {
-    "<A-4>",
-    "<Cmd>BufferLineGoToBuffer 4<CR>",
-    desc = "buffer » switch 4th",
-  },
-  {
-    "<A-5>",
-    "<Cmd>BufferLineGoToBuffer 5<CR>",
-    desc = "buffer » switch 5th",
-  },
-}
+M.keys = function()
+  local Kmap = function(lhs, cmd, desc)
+    cmd = string.format("<cmd>BufferLine%s<cr>", cmd)
+    desc = string.format("Buffer » %s", desc)
+    return { lhs, cmd, desc = desc, silent = true }
+  end
+  return {
+    Kmap("<a-b>", "Pick", "Pick"),
+    Kmap("<leader>bS", "SortByTabs", "Sort by tabs"),
+    Kmap("<leader>bs", "SortByDirectory", "Sort by directory"),
+    Kmap("<leader>bp", "TogglePin", "Toggle pin"),
+    Kmap("<a-.>", "MoveNext", "Shift right"),
+    Kmap("<a-,>", "MovePrev", "Shift left"),
+    Kmap("<a-[>", "CyclePrev", "Switch prev"),
+    Kmap("<a-]>", "CycleNext", "Switch next"),
+    Kmap("<a-1>", "GoToBuffer 1", "Switch 1st"),
+    Kmap("<a-2>", "GoToBuffer 2", "Switch 2nd"),
+    Kmap("<a-3>", "GoToBuffer 3", "Switch 3rd"),
+    Kmap("<a-4>", "GoToBuffer 4", "Switch 4th"),
+    Kmap("<a-5>", "GoToBuffer 5", "Switch 5th"),
+    Kmap("<leader>bB", "CloseLeft", "Close left"),
+    Kmap("<leader>bW", "CloseRight", "Close right"),
+    Kmap("<leader>bC", "CloseOthers", "Close others"),
+  }
+end
 M.opts = {
   options = {
     diagnostics = "nvim_lsp",
