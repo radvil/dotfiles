@@ -24,7 +24,7 @@ util.map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = 
 
 if vim.opt.clipboard ~= "unnamedplus" then
   local opt = function(desc)
-    return { remap = true, nowait = true, desc = string.format("System clipboard » %s", desc) }
+    return { nowait = true, desc = string.format("System clipboard » %s", desc) }
   end
   util.map({ "n", "o", "x", "v" }, "gy", '"+y', opt("Yank"))
   util.map({ "n", "o", "x", "v" }, "gp", '"+p', opt("Paste after cursor"))
@@ -96,9 +96,7 @@ end, { desc = "Toggle » Line numbers" })
 ---floating terminal
 local ft = function(cmd, root)
   local opt = { size = { width = 0.6, height = 0.7 }, title = "  " .. (cmd or "Terminal"), title_pos = "right" }
-  if not minimal.transbg then
-    opt.border = "none"
-  end
+  opt.border = minimal.transbg and "single" or "none"
   if root then
     opt.cwd = util.get_root()
   end
@@ -106,18 +104,14 @@ local ft = function(cmd, root)
 end
 util.map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 util.map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Float » Terminal hide" })
-util.map("n", "<leader>fh", function()
-  ft("btop")
-end, { desc = "Float » Open htop/btop" })
-util.map("n", "<leader>fT", function()
-  ft(nil)
-end, { desc = "Float » Terminal (curr dir)" })
-util.map("n", "<leader>ft", function()
-  ft(nil, true)
-end, { desc = "Float » Terminal (root dir)" })
-util.map("n", [[<c-\>]], function()
-  ft(nil, true)
-end, { desc = "Float » Terminal open (root dir)" })
+--stylua: ignore
+util.map("n", "<leader>fh", function() ft("btop") end, { desc = "Float » Open htop/btop" })
+--stylua: ignore
+util.map("n", "<leader>fT", function() ft(nil) end, { desc = "Float » Terminal (curr dir)" })
+--stylua: ignore
+util.map("n", "<leader>ft", function() ft(nil, true) end, { desc = "Float » Terminal (root dir)" })
+--stylua: ignore
+util.map("n", [[<c-\>]], function() ft(nil, true) end, { desc = "Float » Terminal open (root dir)" })
 
 if not vim.g.neovide then
   util.map("n", "<leader>fz", function()
