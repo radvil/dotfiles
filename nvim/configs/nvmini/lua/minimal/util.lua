@@ -197,8 +197,8 @@ function M.float_term(cmd, opts)
     ft = "lazyterm",
     size = { width = 0.9, height = 0.9 },
   }, opts or {}, { persistent = true })
-  ---@cast opts LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
 
+  ---@cast opts LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
   local termkey = vim.inspect({ cmd = cmd or "shell", cwd = opts.cwd, env = opts.env, count = vim.v.count1 })
 
   if terminals[termkey] and terminals[termkey]:buf_valid() then
@@ -216,8 +216,9 @@ function M.float_term(cmd, opts)
       vim.keymap.set("t", "<c-k>", "<c-k>", { buffer = buf, nowait = true })
       vim.keymap.set("t", "<c-l>", "<c-l>", { buffer = buf, nowait = true })
     end
-
-    vim.keymap.set("t", "<space>", " ", { buffer = buf, nowait = true })
+    if vim.g.mapleader == " " then
+      vim.keymap.set("t", "<space>", " ", { buffer = buf, nowait = true })
+    end
     vim.api.nvim_create_autocmd("BufEnter", {
       buffer = buf,
       callback = function()
