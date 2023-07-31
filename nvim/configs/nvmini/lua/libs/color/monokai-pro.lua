@@ -29,8 +29,11 @@ return {
           Visual = {
             bg = "#55435b",
           },
+          TelescopeSelectionCaret = {
+            link = "Visual",
+          },
           TelescopeMatching = {
-            fg = minimal.palette.fg2,
+            fg = minimal.palette.yellow,
           },
           FlashCurrent = {
             fg = minimal.palette.bg,
