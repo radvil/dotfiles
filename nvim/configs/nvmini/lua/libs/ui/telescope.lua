@@ -44,7 +44,7 @@ return {
         layout_strategy = "horizontal",
         sorting_strategy = "ascending",
         prompt_prefix = " 🔭 ",
-        selection_caret = "▷ ",
+        selection_caret = " ",
         mappings = {
           ["i"] = vim.tbl_extend("force", basics, {
             ["<a-space>"] = actions.close,
