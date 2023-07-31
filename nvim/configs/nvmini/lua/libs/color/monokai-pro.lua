@@ -26,11 +26,9 @@ return {
           LazyNormal = { link = "Normal" },
           LspInlayHint = { link = "Comment" },
           ZenBg = { bg = minimal.palette.bg },
-          -- Visual = {
-          --   fg = minimal.palette.bg,
-          --   bg = "#D79A9D",
-          --   bold = true,
-          -- },
+          Visual = {
+            bg = "#55435b",
+          },
           TelescopeMatching = {
             fg = minimal.palette.fg2,
           },
