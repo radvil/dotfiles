@@ -4,7 +4,7 @@ require("minimal.util").log("Loading options...")
 vim.opt.wrap = false
 vim.opt.autowrite = true
 vim.opt.confirm = true
-vim.opt.cursorline = not minimal.transbg
+vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.list = true
