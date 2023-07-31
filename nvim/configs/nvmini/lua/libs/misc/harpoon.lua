@@ -11,21 +11,21 @@ return {
           icon = "📌",
         })
       end,
-      desc = "Harpoon » Mark file",
+      desc = "Mark file",
     },
     {
       [[<leader>\]],
       function() require("harpoon.ui").toggle_quick_menu() end,
-      desc = "Harpoon » File list",
+      desc = "Marked file list",
     },
     { "[f",
       function() require("harpoon.ui").nav_prev() end,
-      desc = "Harpoon » Prev mark",
+      desc = "Prev marked file",
     },
     {
       "]f",
       function() require("harpoon.ui").nav_next() end,
-      desc = "Harpoon » Next mark",
+      desc = "Next marked file",
     },
   },
 
