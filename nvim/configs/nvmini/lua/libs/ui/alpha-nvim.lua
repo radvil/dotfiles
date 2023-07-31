@@ -30,15 +30,31 @@ return {
 
   opts = function()
     local db = require("alpha.themes.dashboard")
+    --     local logo = [[
+    --  ███╗   ██╗██╗   ██╗███╗   ███╗██╗███╗   ██╗██╗
+    --  ████╗  ██║██║   ██║████╗ ████║██║████╗  ██║██║
+    --  ██╔██╗ ██║██║   ██║██╔████╔██║██║██╔██╗ ██║██║
+    --  ██║╚██╗██║╚██╗ ██╔╝██║╚██╔╝██║██║██║╚██╗██║██║
+    --  ██║ ╚████║ ╚████╔╝ ██║ ╚═╝ ██║██║██║ ╚████║██║
+    --  ╚═╝  ╚═══╝  ╚═══╝  ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝
+    -- ]]
+    -- db.section.header.val = vim.split(logo .. "\n" .. hello(), "\n")
     local logo = [[
- ███╗   ██╗██╗   ██╗███╗   ███╗██╗███╗   ██╗██╗
- ████╗  ██║██║   ██║████╗ ████║██║████╗  ██║██║
- ██╔██╗ ██║██║   ██║██╔████╔██║██║██╔██╗ ██║██║
- ██║╚██╗██║╚██╗ ██╔╝██║╚██╔╝██║██║██║╚██╗██║██║
- ██║ ╚████║ ╚████╔╝ ██║ ╚═╝ ██║██║██║ ╚████║██║
- ╚═╝  ╚═══╝  ╚═══╝  ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝
+MMMMMMMMMMMMMMMMM.                             MMMMMMMMMMMMMMMMMM
+ `MMMMMMMMMMMMMMMM           M\  /M           MMMMMMMMMMMMMMMM'
+   `MMMMMMMMMMMMMMM          MMMMMM          MMMMMMMMMMMMMMM'
+     MMMMMMMMMMMMMMM-_______MMMMMMMM_______-MMMMMMMMMMMMMMM
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+     .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.
+               `MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM'
+                      `MMMMMMMMMMMMMMMMMM'
+                          `MMMMMMMMMM'
+                             MMMMMM 
+                              MMMM
+                               MM
 ]]
-    db.section.header.val = vim.split(logo .. "\n" .. hello(), "\n")
+    db.section.header.val = vim.split(logo, "\n")
     db.section.buttons.val = {
       db.button("s", "🕗" .. " Resume session", [[:lua require('persistence').load()<cr>]]),
       db.button("o", "📁" .. " Recent files", ":Telescope oldfiles<cr>"),
