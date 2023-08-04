@@ -10,7 +10,7 @@ opt.colorscheme = vim.g.neovide and "tokyonight" or "monokai-pro"
 opt.colorvariant = opt.colorscheme == "tokyonight" and "moon" or "mocha"
 opt.darkmode = true
 opt.completion = true
-opt.bufferline = vim.g.neovide
+opt.bufferline = false
 opt.fold = true
 opt.autotag = true
 opt.autopairs = true
