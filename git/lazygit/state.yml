@@ -1,7 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
-    - /home/radvil/.dotfiles
     - /home/radvil/AMI/ami-erp-project
+    - /home/radvil/Projects/go-journeys/src
+    - /home/radvil/.dotfiles
     - /home/radvil/AMI/parastar-console
     - /home/radvil/AMI/mykado-console
     - /home/radvil/Projects/linux-dotfiles
