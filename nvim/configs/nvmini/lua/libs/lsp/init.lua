@@ -3,6 +3,7 @@ return {
   require("libs.lsp.installer"),
   require("libs.lsp.config"),
 
+  require("libs.lsp.lang.go"),
   require("libs.lsp.lang.json"),
   require("libs.lsp.lang.rust"),
   require("libs.lsp.lang.emmet"),
