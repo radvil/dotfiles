@@ -1,7 +1,7 @@
 return {
   "loctvl842/monokai-pro.nvim",
-  lazy = false,
   priority = 999,
+  lazy = false,
   opts = function()
     local opts = {
       ---@type "classic" | "octagon" | "pro" | "machine" | "ristretto" | "spectrum"

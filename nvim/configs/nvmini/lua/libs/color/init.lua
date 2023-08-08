@@ -1,4 +1,4 @@
-require("minimal.util").log("Loading colorschemes...")
+require("minimal.util").debug("Loading colorschemes...")
 
 for name, hex_color in pairs(minimal.palette) do
   require("minimal.util").set_hl(name, { fg = hex_color })
@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     if minimal.colorscheme == "tokyonight" then
       vim.cmd([[hi link NeoTreeDirectoryIcon NvimMiniYellow]])
       vim.cmd([[hi link NeoTreeDirectoryName NvimMiniYellow2]])
-      -- vim.cmd([[hi link BufferLineBufferSelected NvimMiniYellow]])
       if minimal.transbg then
         vim.cmd([[hi link FloatBorder NvimMiniYellow]])
         vim.cmd([[hi link TelescopeTitle NvimMiniYellow]])
