@@ -44,6 +44,7 @@ local function get_default_opts()
       colorscheme = {
         "tokyonight",
         "catppuccin",
+        "monokai-pro",
       },
     },
     performance = {

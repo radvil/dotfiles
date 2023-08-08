@@ -1,4 +1,4 @@
-require("minimal.util").log("Loading autocommands...")
+require("minimal.util").debug("Loading autocommands...")
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("nvmini_" .. name, { clear = true })

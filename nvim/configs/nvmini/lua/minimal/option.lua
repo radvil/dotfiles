@@ -1,5 +1,4 @@
---stylua: ignore
-require("minimal.util").log("Loading options...")
+require("minimal.util").debug("Loading options...")
 
 vim.opt.wrap = false
 vim.opt.autowrite = true

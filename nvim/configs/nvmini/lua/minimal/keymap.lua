@@ -1,5 +1,5 @@
 local Util = require("minimal.util")
-Util.log("Loading keymaps...")
+Util.debug("Loading keymaps...")
 
 -- reset
 Util.map({ "n", "x", "v" }, "<nL>", "<nop>")
@@ -125,7 +125,7 @@ local lz = function(opts)
     unpack(opts or {}),
     title_pos = "right",
     title = "  LazyGit ",
-    border = "rounded",
+    border = "single",
     ctrl_hjkl = false,
     esc_esc = false,
   })

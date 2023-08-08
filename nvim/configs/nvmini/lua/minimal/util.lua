@@ -38,9 +38,6 @@ function M.on_lsp_attach(callback)
 end
 
 function M.log(msg, opts)
-  if not minimal.dev then
-    return
-  end
   opts = vim.tbl_deep_extend("force", {
     severity = vim.log.levels.INFO,
     title = "LOG",
@@ -49,6 +46,21 @@ function M.log(msg, opts)
   local hl = opts.severity == vim.log.levels.INFO and "Type" or "Label"
   vim.api.nvim_echo({
     { title, hl },
+    { " » " .. msg },
+  }, true, {})
+end
+
+function M.debug(msg)
+  if not minimal.dev then
+    return
+  end
+  local opts = {
+    severity = vim.log.levels.INFO,
+    title = "DEBUG",
+  }
+  local title = string.format("[%s]", opts.title)
+  vim.api.nvim_echo({
+    { title, "Debug" },
     { " » " .. msg },
   }, true, {})
 end
