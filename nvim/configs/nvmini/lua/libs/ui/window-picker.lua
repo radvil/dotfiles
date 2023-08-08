@@ -1,5 +1,6 @@
 local M = {}
 M[1] = "s1n7ax/nvim-window-picker"
+M.commit = "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5"
 M.event = "VeryLazy"
 
 M.config = function()
