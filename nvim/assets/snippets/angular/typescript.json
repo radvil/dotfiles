@@ -18,7 +18,7 @@
       "}"
     ]
   },
-  "Angular Component Standalone": {
+  "Angular Component (Standalone)": {
     "prefix": "a-component-standalone",
     "description": "Angular component standalone",
     "body": [
@@ -38,7 +38,7 @@
       "}"
     ]
   },
-  "Angular Component with Inline Template": {
+  "Angular Component (Inline Template)": {
     "prefix": "a-component-inline",
     "description": "Angular component with an inline template",
     "body": [
@@ -73,7 +73,7 @@
       "}"
     ]
   },
-  "Angular Pipe Standalone": {
+  "Angular Pipe (Standalone)": {
     "prefix": "a-pipe-standalone",
     "description": "Angular pipe standalone",
     "body": [
@@ -105,12 +105,12 @@
       "}"
     ]
   },
-  "Angular Default Route Path": {
+  "Angular Route (Default Path)": {
     "prefix": "a-route-path-default",
     "description": "Angular default route path",
     "body": ["{ path: '', pathMatch: 'full', redirectTo: '${1:path}' },$0"]
   },
-  "Angular Route Path with Children": {
+  "Angular Route (Path with Children)": {
     "prefix": "a-route-path-with-children",
     "description": "Angular route path with children",
     "body": [
@@ -123,17 +123,17 @@
       "},$0"
     ]
   },
-  "Angular 404 Route Path": {
+  "Angular Route (404 Path)": {
     "prefix": "a-route-path-404",
     "description": "Angular 404 route path",
     "body": ["{ path: '**', component: ${1:PathNotFoundComponent} },$0"]
   },
-  "Angular Eager Route Path": {
+  "Angular Route Path (Eager)": {
     "prefix": "a-route-path-eager",
     "description": "Angular eager route path",
     "body": ["{ path: '${1:path}', component: ${2:Name}Component },$0"]
   },
-  "Angular Lazy Route Path": {
+  "Angular Route Path (Lazy)": {
     "prefix": "a-route-path-lazy",
     "description": "Angular lazy route path",
     "body": [
@@ -143,12 +143,7 @@
       "},$0"
     ]
   },
-  "HttpClient.get": {
-    "prefix": "a-httpclient-get",
-    "description": "Angular HttpClient.get",
-    "body": ["return this.httpClient.get('${1:url}');$0"]
-  },
-  "Angular HttpClient Service": {
+  "Angular Service (HttpClient)": {
     "prefix": "a-service-httpclient",
     "description": "Angular service with HttpClient",
     "body": [
@@ -162,7 +157,7 @@
       "}"
     ]
   },
-  "Angular HttpInterceptor for Logging": {
+  "Angular Interceptor (Http Logging)": {
     "prefix": "a-http-interceptor-logging",
     "description": "Angular HttpInterceptor for Logging HttpClient",
     "body": [
@@ -188,7 +183,7 @@
       "}"
     ]
   },
-  "Angular HttpInterceptor for Headers": {
+  "Angular Interceptor (Http Headers)": {
     "prefix": "a-http-interceptor-headers",
     "description": "Angular HttpInterceptor for headers HttpClient",
     "body": [
@@ -209,7 +204,7 @@
       "}"
     ]
   },
-  "Angular HttpInterceptor - Empty": {
+  "Angular Interceptor (Http Empty)": {
     "prefix": "a-http-interceptor",
     "description": "Empty Angular HttpInterceptor for HttpClient",
     "body": [
@@ -225,23 +220,7 @@
       "}"
     ]
   },
-  "Angular Root Component": {
-    "prefix": "a-component-root",
-    "description": "Angular App root component",
-    "body": [
-      "import { Component } from '@angular/core';",
-      "",
-      "@Component({",
-      "\tselector: '${1:prefix-app}',",
-      "\ttemplate: `",
-      "\t\t<router-outlet></router-outlet>",
-      "\t\t`",
-      "})",
-      "export class ${2:App}Component { }",
-      "$0"
-    ]
-  },
-  "Angular Root Module": {
+  "Angular Module (Root)": {
     "prefix": "a-module-root",
     "description": "Angular Root Module",
     "body": [
@@ -263,21 +242,20 @@
       "$0"
     ]
   },
-  "Angular Module": {
-    "prefix": "a-module",
-    "description": "Angular Module",
+  "Angular Module (Feature)": {
+    "prefix": "a-module-feature",
+    "description": "Angular Feature Module",
     "body": [
       "import { NgModule } from '@angular/core';",
+      "import { CommonModule  } from '@angular/common';",
       "",
-      "import { ${1:Name}Component } from './${2:name}.component';",
+      "import { ${1:Feature}Component } from './${1:feature}.component';",
       "",
       "@NgModule({",
-      "\timports: [],",
-      "\texports: [],",
-      "\tdeclarations: [${1:Name}Component],",
-      "\tproviders: [],",
+      "\tdeclarations: [${1:Feature}Component],",
+      "\timports: [CommonModule],",
       "})",
-      "export class ${1:Name}Module { }",
+      "export class ${1:Feature}Module { }",
       "$0"
     ]
   },
@@ -293,7 +271,7 @@
       "}"
     ]
   },
-  "Angular Directive Standalone": {
+  "Angular Directive (Standalone)": {
     "prefix": "a-directive-standalone",
     "description": "Angular directive for standalone",
     "body": [
@@ -309,7 +287,7 @@
       "}"
     ]
   },
-  "Angular CanActivate Guard": {
+  "Angular Guard (CanActivate)": {
     "prefix": "a-guard-can-activate",
     "description": "Angular CanActivate guard",
     "body": [
@@ -326,7 +304,7 @@
       "}"
     ]
   },
-  "Angular CanActivateChild Guard": {
+  "Angular Guard (CanActivateChild)": {
     "prefix": "a-guard-can-activate-child",
     "description": "Angular CanActivateChild guard",
     "body": [
@@ -343,7 +321,7 @@
       "}"
     ]
   },
-  "Angular CanLoad Guard": {
+  "Angular Guard (CanLoad)": {
     "prefix": "a-guard-can-load",
     "description": "Angular CanLoad guard",
     "body": [
@@ -360,7 +338,7 @@
       "}"
     ]
   },
-  "Angular CanDeactivate Guard": {
+  "Angular Guard (CanDeactivate)": {
     "prefix": "a-guard-can-deactivate",
     "description": "Angular CanDeactivate guard",
     "body": [
@@ -391,7 +369,7 @@
       "}"
     ]
   },
-  "Angular Network-Aware Preload Strategy": {
+  "Angular Preload Strategy (Network-Aware)": {
     "prefix": "a-preload-network-strategy",
     "description": "Angular network aware preload strategy",
     "body": [
@@ -425,8 +403,8 @@
       "}"
     ]
   },
-  "Angular Router Events": {
-    "prefix": "a-router-events",
+  "Angular Router (Events)": {
+    "prefix": "a-router-on-event",
     "description": "Angular Router Events",
     "body": [
       "checkEvents() {",
@@ -443,16 +421,12 @@
       "}"
     ]
   },
-  "Angular Module SkipSelf Constructor": {
-    "prefix": "a-ctor-skip-self",
-    "description": "Angular Module SkipSelf constructor",
+  "Angular TrackBy": {
+    "prefix": "a-trackby",
+    "description": "TrackBy Function",
     "body": [
-      "constructor( @Optional() @SkipSelf() parentModule: ${1:ModuleName} {",
-      "\tif (parentModule) {",
-      "\t\tconst msg = `${1:ModuleName} has already been loaded. ",
-      "\t\t\tImport ${1:ModuleName} once, only, in the root AppModule.`;",
-      "\t\tthrow new Error(msg);",
-      "\t}",
+      "${1:trackBy}(index: number, ${2:name}: ${3:model}): ${4:number} {",
+      "  return ${2:name}${5:.id};$0",
       "}"
     ]
   },
@@ -477,8 +451,8 @@
       "}"
     ]
   },
-  "NgRx Store Module": {
-    "prefix": "a-ngrx-store-module",
+  "NgRx Store Module (Root)": {
+    "prefix": "a-ngrx-store-root-module",
     "description": "NgRx Store Module",
     "body": [
       "import { NgModule } from '@angular/core';",
@@ -500,13 +474,6 @@
   "NgRx Create Action": {
     "prefix": "a-ngrx-create-action",
     "description": "Creates an NgRx Action",
-    "body": [
-      "export const ${1:action} = createAction('[${2:Source}] ${3:Event}');"
-    ]
-  },
-  "NgRx Create Action w/ Props": {
-    "prefix": "a-ngrx-create-action-props",
-    "description": "Creates an NgRx Action with Props",
     "body": [
       "export const ${1:action} = createAction('[${2:Source}] ${3:Event}', props<{${4:key}: ${5:type}}>());"
     ]
@@ -537,22 +504,6 @@
       "});"
     ]
   },
-  "NgRx Create Effect for API Call": {
-    "prefix": "a-ngrx-create-effect-api",
-    "description": "Creates an NgRx Effect Scaffolded for API Call",
-    "body": [
-      "${1:effectName}$ = createEffect(() => {",
-      "\treturn this.actions$.pipe(",
-      "\t\t\tofType(${2:Feature}Actions.${3:action}),",
-      "\t\t\t${4:operator}(() =>",
-      "\t\t\t\t${5:apiSource}.pipe(",
-      "\t\t\t\t\tmap(data => $2Actions.$3Success({ data })),",
-      "\t\t\t\t\tcatchError(error => of($2Actions.$3Failure({ error }))))",
-      "\t\t\t\t),",
-      "\t);",
-      "});"
-    ]
-  },
   "NgRx Create Selector": {
     "prefix": "a-ngrx-create-selector",
     "description": "Creates an NgRx Selector",
@@ -561,15 +512,6 @@
       "\tselect$1,",
       "\t(state: $1State) => state.${3:property}",
       ");"
-    ]
-  },
-  "TrackBy Function": {
-    "prefix": "a-trackby",
-    "description": "TrackBy Function",
-    "body": [
-      "${1:trackBy}(index: number, ${2:name}: ${3:model}): ${4:number} {",
-      "  return ${2:name}${5:.id};$0",
-      "}"
     ]
   }
 }

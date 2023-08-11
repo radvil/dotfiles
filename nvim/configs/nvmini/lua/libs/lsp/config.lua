@@ -121,6 +121,16 @@ M.opts = {
     end,
   },
   prehook = function()
+    -- HACK: disable lsp watcher. Too slow on linux
+    local ok, wf = pcall(require, "vim.lsp._watchfiles")
+    if ok and minimal.lsp_disable_file_watcher then
+      wf._watchfunc = function()
+        return function()
+          vim.notify("LSP » File watcher disabled!", vim.log.levels.WARN)
+        end
+      end
+    end
+
     if minimal.transbg then
       require("lspconfig.ui.windows").default_options.border = "rounded"
     end
@@ -236,5 +246,17 @@ M.config = function(_, opts)
     })
   end
 end
+
+-- M.init = function()
+--   if minimal.lsp_disable_file_watcher then
+--     -- HACK: disable lsp watcher. Too slow on linux
+--     local ok, wf = pcall(require, "vim.lsp._watchfiles")
+--     if ok then
+--       wf._watchfunc = function()
+--         vim.notify("LSP » File watcher disabled!", vim.log.levels.WARN)
+--       end
+--     end
+--   end
+--end
 
 return M
