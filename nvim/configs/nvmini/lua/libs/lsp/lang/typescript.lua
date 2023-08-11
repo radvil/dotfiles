@@ -30,6 +30,10 @@ return {
       servers = {
         ---@type lspconfig.options.tsserver
         tsserver = {
+          -- Test
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
           settings = {
             typescript = {
               format = {
