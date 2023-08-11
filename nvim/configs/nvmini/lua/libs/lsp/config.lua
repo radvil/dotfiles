@@ -58,6 +58,7 @@ M.opts = {
     bashls = {},
     html = {},
     cssls = {},
+    emmet_language_server = {},
     lua_ls = {
       mason = true,
       settings = {
