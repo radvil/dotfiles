@@ -26,10 +26,7 @@ return {
     skip_confirm_for_simple_edits = false,
     prompt_save_on_select_new_entry = true,
     default_file_explorer = true,
-    buf_options = {
-      buflisted = true,
-      bufhidden = "hide",
-    },
+    buf_options = { buflisted = true },
     use_default_keymaps = false,
     keymaps = {
       ["g?"] = "actions.show_help",
