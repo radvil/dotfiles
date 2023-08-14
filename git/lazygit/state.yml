@@ -1,11 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
-    - /home/radvil/.dotfiles
-    - /home/radvil/AMI/mykado-console
-    - /home/radvil/AMI/ami-erp-project
-    - /home/radvil/Projects/go-journeys/src
-    - /home/radvil/AMI/parastar-console
-    - /home/radvil/Projects/linux-dotfiles
+- /home/radvil/.dotfiles
+- /home/radvil/AMI/mykado-console
+- /home/radvil/AMI/ami-erp-project
+- /home/radvil/Projects/go-journeys/src
+- /home/radvil/AMI/parastar-console
+- /home/radvil/Projects/linux-dotfiles
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
+ignorewhitespaceindiffview: false
