@@ -1,7 +1,3 @@
-if true then
-  return {}
-end
-
 ---@type LazySpec[]
 return {
   "neovim/nvim-lspconfig",
@@ -13,8 +9,6 @@ return {
         on_attach = function(client)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
-          -- NOTE: test later
-          -- require("common.lsp").attach_keymaps(client, buffer)
         end,
       },
     },

@@ -6,7 +6,7 @@ return {
   require("libs.lsp.lang.go"),
   require("libs.lsp.lang.json"),
   require("libs.lsp.lang.rust"),
-  require("libs.lsp.lang.emmet"),
+  -- require("libs.lsp.lang.emmet"),
   require("libs.lsp.lang.docker"),
   require("libs.lsp.lang.angular"),
   require("libs.lsp.lang.markdown"),
