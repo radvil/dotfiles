@@ -122,9 +122,9 @@ return {
 
       require("ufo").setup({
         -----@diagnostic disable-next-line: unused-local
-        -- provider_selector = function(bufnr, filetype, buftype)
-        --   return ftMap[filetype]
-        -- end,
+        provider_selector = function(bufnr, filetype, buftype)
+          return ftMap[filetype]
+        end,
         -- open_fold_hl_timeout = 150,
         fold_virt_text_handler = handler,
         preview = {

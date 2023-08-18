@@ -8,7 +8,7 @@ return {
     "rcarriga/nvim-notify",
   },
   -- stylua: ignore
-  enabled = function() return minimal.noice_ux end,
+  enabled = --[[ false ]] function() return minimal.noice_ux end,
   -- stylua: ignore
   keys = {
     {

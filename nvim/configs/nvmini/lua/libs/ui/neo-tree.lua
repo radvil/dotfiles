@@ -108,11 +108,12 @@ return {
 
     opts.filesystem = {
       bind_to_cwd = false,
-      follow_current_file = {
-        enabled = true,
-      },
       use_libuv_file_watcher = true,
       hijack_netrw_behavior = "disabled",
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = true,
+      },
       window = {
         mappings = {
           ["."] = "set_root",
@@ -124,6 +125,13 @@ return {
           ["]g"] = "next_git_modified",
           ["<a-space>"] = "clear_filter",
         },
+      },
+    }
+
+    opts.buffers = {
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = true,
       },
     }
 
