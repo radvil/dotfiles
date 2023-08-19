@@ -6,11 +6,11 @@ opt.maplocalleader = [[\]]
 opt.name = "Nvim Mini"
 opt.username = os.getenv("USER")
 opt.transbg = not vim.g.neovide
-opt.colorscheme = vim.g.neovide and "tokyonight" or "monokai-pro"
+opt.colorscheme = vim.g.neovide and "tokyonight" or "catppuccin"
 opt.colorvariant = opt.colorscheme == "tokyonight" and "moon" or "mocha"
 opt.darkmode = true
 opt.completion = true
-opt.bufferline = false
+opt.bufferline = true
 opt.fold = true
 opt.autotag = true
 opt.autopairs = true
