@@ -8,11 +8,12 @@ return {
         "<leader>e",
         function()
           require("neo-tree.command").execute({
-            dir = require("lazyvim.util").get_root(),
+            dir = require("common.utils").get_root(),
             toggle = true,
           })
         end,
         desc = "Neotree » Toggle (root)",
+        silent = true,
       },
       {
         "<leader>E",
@@ -23,6 +24,7 @@ return {
           })
         end,
         desc = "Neotree » Toggle",
+        silent = true,
       },
       {
         "<leader><cr>",
@@ -33,7 +35,7 @@ return {
     }
   end,
 
-  opts = function(_, opts)
+  config = function(_, opts)
     local icons = require("common.icons")
     local i = function(icon)
       return string.format("%s ", icon)
@@ -41,12 +43,10 @@ return {
     opts.default_component_configs = {
       indent = {
         with_markers = true,
-        with_expanders = true,
-        indent_marker = "┊",
-        last_indent_marker = "»",
+        with_expanders = false,
+        -- indent_marker = "┊",
         expander_collapsed = icons.Folder.FoldClosed,
         expander_expanded = icons.Folder.FoldOpened,
-        expander_highlight = "NeoTreeExpander",
       },
       git_status = {
         symbols = {
@@ -104,11 +104,12 @@ return {
 
     opts.filesystem = {
       bind_to_cwd = false,
-      follow_current_file = {
-        enabled = true,
-      },
       use_libuv_file_watcher = true,
       hijack_netrw_behavior = "disabled",
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = true,
+      },
       window = {
         mappings = {
           ["."] = "set_root",
@@ -123,24 +124,31 @@ return {
       },
     }
 
+    opts.buffers = {
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = true,
+      },
+    }
+
     opts.source_selector = {
       winbar = true,
       statusline = false,
       truncation_character = "…",
       show_scrolled_off_parent_node = true,
-      highlight_tab = "BufferLineFill",
-      highlight_separator = "BufferLineFill",
-      highlight_background = "BufferLineFill",
-      highlight_tab_active = "BufferLineBackground",
-      highlight_separator_active = "BufferLineBackground",
+      highlight_tab = "BufferLineBackground",
+      highlight_separator = "BufferLineBackground",
+      highlight_background = "BufferLineBackground",
+      highlight_tab_active = "BufferLineBufferSelected",
+      highlight_separator_active = "BufferLineIndicatorSelected",
       sources = {
         {
           source = "filesystem",
-          display_name = "  files",
+          display_name = " 󰙅 files",
         },
         {
           source = "buffers",
-          display_name = "  buffers",
+          display_name = "  buffers",
         },
         {
           source = "git_status",
@@ -148,5 +156,16 @@ return {
         },
       },
     }
+
+    require("neo-tree").setup(opts)
+
+    vim.api.nvim_create_autocmd("TermClose", {
+      pattern = "*lazygit",
+      callback = function()
+        if package.loaded["neo-tree.sources.git_status"] then
+          require("neo-tree.sources.git_status").refresh()
+        end
+      end,
+    })
   end,
 }
