@@ -42,6 +42,7 @@ local M = {
         "<leader>um",
         ":MarkdownPreviewToggle<cr>",
         desc = "Toggle » Markdown Preview",
+        silent = true,
       },
     },
   },

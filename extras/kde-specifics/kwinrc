@@ -36,11 +36,14 @@ OutRotationAngle=2
 OutRotationEdge=3
 
 [Effect-kwin4_effect_glitch]
-Duration=500
+Color=255,85,210
+Duration=450
 Speed=1
+Strength=1
 
 [Effect-kwin4_effect_hexagon]
-Duration=700
+Duration=200
+GlowColor=255,26,114,128
 Scale=2
 
 [Effect-kwin4_effect_incinerate]
@@ -59,6 +62,10 @@ IndividualMenuConfig=true
 Menus=96
 MoveResize=96
 
+[Effect-slide]
+SlideBackground=false
+VerticalGap=10
+
 [Effect-windowview]
 BorderActivateAll=9
 
@@ -76,11 +83,11 @@ diminactiveEnabled=true
 forceblurEnabled=false
 kwin4_effect_fadedesktopEnabled=true
 kwin4_effect_fadingpopupsEnabled=false
+kwin4_effect_glitchEnabled=true
 kwin4_effect_scaleEnabled=false
 kwin4_effect_shapecornersEnabled=true
 kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
-kwin4_effect_tvEnabled=true
 magiclampEnabled=true
 screenedgeEnabled=false
 slideEnabled=false

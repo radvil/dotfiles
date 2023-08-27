@@ -13,12 +13,10 @@ return {
   config = function()
     require("legendary").setup({
       select_prompt = " Quick command/keymaps ",
+      which_key = { auto_register = minimal.whichkey },
       include_legendary_cmds = false,
       include_builtin = true,
       lazy_nvim = {
-        auto_register = true,
-      },
-      which_key = {
         auto_register = true,
       },
       extensions = {

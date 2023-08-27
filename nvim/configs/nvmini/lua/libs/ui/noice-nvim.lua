@@ -12,7 +12,7 @@ return {
   -- stylua: ignore
   keys = {
     {
-      "<leader>nu",
+      "<leader>lu",
       function()
         require("noice")[activated and "disable" or "enable"]()
         activated = not activated
@@ -25,10 +25,10 @@ return {
     { "<c-d>", function() if not require("noice.lsp").scroll(4) then return "<c-d>" end end, silent = true, expr = true, desc = "Noice » Scroll forward", mode = {"i", "n", "s"} },
     { "<c-u>", function() if not require("noice.lsp").scroll(-4) then return "<c-u>" end end, silent = true, expr = true, desc = "Noice » Scroll backward", mode = {"i", "n", "s"} },
     { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Noice » Redirect cmdline" },
-    { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice » Last message" },
-    { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice » History" },
-    { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice » All" },
-    { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Noice » Dismiss All" },
+    { "<leader>ll", function() require("noice").cmd("last") end, desc = "Noice » Last message" },
+    { "<leader>lh", function() require("noice").cmd("history") end, desc = "Noice » History" },
+    { "<leader>la", function() require("noice").cmd("all") end, desc = "Noice » All" },
+    { "<leader>ld", function() require("noice").cmd("dismiss") end, desc = "Noice » Dismiss All" },
   },
 
   ---@param opts NoiceConfig

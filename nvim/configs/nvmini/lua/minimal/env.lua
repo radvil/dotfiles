@@ -5,9 +5,10 @@ opt.mapleader = " "
 opt.maplocalleader = [[\]]
 opt.name = "Nvim Mini"
 opt.username = os.getenv("USER")
-opt.transbg = not vim.g.neovide
-opt.colorscheme = vim.g.neovide and "tokyonight" or "catppuccin"
+opt.transbg = true
+opt.colorscheme = "catppuccin"
 opt.colorvariant = opt.colorscheme == "tokyonight" and "moon" or "mocha"
+opt.note_vault = vim.fn.expand("~") .. "/Documents/obsidian-vault"
 opt.darkmode = true
 opt.completion = true
 opt.bufferline = true
@@ -25,12 +26,12 @@ opt.global_statusline = false
 opt.inc_rename = false
 opt.indentblank = true
 opt.indentscope = false
-opt.whichkey = true
-opt.barbeque = true
+opt.whichkey = false
+opt.barbeque = false
 opt.animations = false
 opt.animate_window = false
 opt.animate_cursor = false
-opt.smooth_cursor = not vim.g.neovide
+opt.smooth_cursor = false
 ---@type "neo-tree" | "nvim-tree"
 opt.sidebar = "neo-tree"
 ---@type "dashboard-nvim" | "alpha-nvim"

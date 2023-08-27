@@ -102,7 +102,6 @@ end
 
 return {
   "akinsho/nvim-bufferline.lua",
-  dependencies = "nvim-tree/nvim-web-devicons",
   event = "VeryLazy",
   enabled = function()
     return minimal.bufferline

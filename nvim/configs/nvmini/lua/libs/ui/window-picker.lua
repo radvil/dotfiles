@@ -1,6 +1,5 @@
 local M = {}
 M[1] = "s1n7ax/nvim-window-picker"
-M.commit = "6e9875711b9d5cefcf77cc6e30dcce53135b9cc5"
 M.event = "VeryLazy"
 
 M.config = function()
@@ -14,7 +13,6 @@ M.config = function()
     show_prompt = false,
     hint = "floating-big-letter",
     prompt_message = "Window » Pick",
-    other_win_hl_color = minimal.palette.yellow,
     filter_rules = {
       autoselect_one = true,
       include_current = false,
@@ -39,7 +37,6 @@ M.config = function()
 
     if not target_win then target_win = curr_win end
     local target_ft = vim.api.nvim_get_option_value("filetype", { win = target_win })
-    local target_buf = vim.fn.winbufnr(target_win)
 
     if vim.tbl_contains(filetypes, target_ft) then
       vim.notify("Not possible!", vim.log.levels.WARN, {
@@ -49,8 +46,13 @@ M.config = function()
     end
 
     vim.api.nvim_win_set_buf(target_win, 0)
-    vim.api.nvim_win_set_buf(0, target_buf)
     vim.api.nvim_set_current_win(target_win)
+
+    local target_buf = vim.fn.winbufnr(target_win)
+
+    if type(target_buf) == "number" then
+      vim.api.nvim_win_set_buf(0, target_buf)
+    end
   end
 
   local map = function(lhs, rhs, desc)

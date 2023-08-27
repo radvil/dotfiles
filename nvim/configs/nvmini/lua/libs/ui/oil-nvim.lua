@@ -7,26 +7,26 @@ return {
 	keys = {
 		{
 			"<Leader>fe",
-			function() require("oil").toggle_float() end,
+			function() require("oil").open() end,
 			desc = "Float » Explorer (pwd)",
       silent = true,
 		},
 		{
 			"<Leader>fE",
-			function() require("oil").toggle_float(vim.loop.cwd()) end,
+			function() require("oil").open(vim.loop.cwd()) end,
 			desc = "Float » Explorer (cwd)",
       silent = true,
 		},
 	},
 
   opts = {
-    delete_to_trash = true,
+    delete_to_trash = false, -- 'false' to use trash
     restore_win_options = true,
     trash_command = "trash-put",
     skip_confirm_for_simple_edits = false,
     prompt_save_on_select_new_entry = true,
     default_file_explorer = true,
-    buf_options = { buflisted = true },
+    buf_options = { buflisted = false },
     use_default_keymaps = false,
     keymaps = {
       ["g?"] = "actions.show_help",
