@@ -4,20 +4,20 @@ return {
     "DiffviewOpen",
     "DiffviewClose",
     "DiffviewToggleFiles",
-    "DiffviewFocusFiles"
+    "DiffviewFocusFiles",
   },
 
   keys = {
     {
       "<leader>gd",
       ":DiffviewOpen<cr>",
-      desc = "Git » Open diff view"
+      desc = "Git » Open diff view",
     },
     {
       "<leader>gh",
-      ":DiffviewOpen<cr>",
-      desc = "Git » Open file history"
-    }
+      ":DiffviewFileHistory<cr>",
+      desc = "Git » Open file history",
+    },
   },
 
   opts = {
@@ -35,6 +35,6 @@ return {
         local msg = "%s » Closed on tabpage %d"
         vim.notify(msg:format(view.class:name(), view.tabpage), vim.log.levels.WARN)
       end,
-    }
-  }
+    },
+  },
 }
