@@ -33,8 +33,6 @@ return {
     local map = function(lhs, rhs, desc)
       return vim.keymap.set({ "n", "t" }, lhs, rhs, {
         desc = "Window » " .. desc,
-        silent = true,
-        --remap = true,
       })
     end
     -- resize keymaps

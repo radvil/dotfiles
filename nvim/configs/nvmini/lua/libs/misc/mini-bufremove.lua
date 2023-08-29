@@ -3,6 +3,11 @@ return {
   enabled = true,
   keys = {
     {
+      "<c-w>",
+      "<Cmd>BD<Cr>",
+      desc = "Buffer » Delete",
+    },
+    {
       "<Leader>bd",
       "<Cmd>BD<Cr>",
       desc = "Buffer » Delete",

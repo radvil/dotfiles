@@ -111,7 +111,7 @@ return {
     local Kmap = function(lhs, cmd, desc)
       cmd = string.format("<cmd>BufferLine%s<cr>", cmd)
       desc = string.format("Buffer » %s", desc)
-      return { lhs, cmd, desc = desc, silent = true }
+      return { lhs, cmd, desc = desc }
     end
     return {
       Kmap("<a-b>", "Pick", "Pick"),

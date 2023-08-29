@@ -4,7 +4,6 @@ local Kmap = function(lhs, rhs, desc)
   vim.keymap.set("n", lhs, rhs, {
     desc = string.format("Obsidian » %s", desc),
     noremap = false,
-    silent = true,
     expr = true,
   })
 end
@@ -19,44 +18,37 @@ return {
       "<leader>nc",
       ":ObsidianNew<cr>",
       desc = "Obsidian » Create new note",
-      silent = true,
     },
     {
       "<leader>no",
       ":ObsidianOpen<cr>",
       desc = "Obsidian » Open",
-      silent = true,
     },
     {
       "<leader>nb",
       ":ObsidianBacklinks<cr>",
       desc = "Obsidian » Show note's backlinks",
-      silent = true,
     },
     {
       "<leader>nn",
       ":ObsidianToday<cr>",
       desc = "Obsidian » Today/now note",
-      silent = true,
     },
     {
       "<leader>ny",
       ":ObsidianYesterday<cr>",
       desc = "Obsidian » Yesterday note",
-      silent = true,
     },
     {
       "<leader>nt",
       ":ObsidianTemplate<cr>",
       desc = "Obsidian » Insert a template",
-      silent = true,
     },
     {
       "gF",
       "<cmd>ObsidianLinkNew<cr>",
       desc = "Obsidian » Link to new note",
       mode = { "v", "x" },
-      silent = true,
     },
   },
   config = function()

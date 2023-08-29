@@ -18,7 +18,6 @@ return {
         })
       end,
       desc = "Neotree » Toggle (root)",
-      silent = true,
     },
     {
       "<leader>E",
@@ -29,13 +28,11 @@ return {
         })
       end,
       desc = "Neotree » Toggle",
-      silent = true,
     },
     {
       "<leader><cr>",
       ":Neotree buffers<cr>",
       desc = "Neotree » Buffers",
-      silent = true,
     },
   },
 

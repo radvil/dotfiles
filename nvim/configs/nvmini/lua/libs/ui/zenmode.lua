@@ -7,13 +7,11 @@ return {
       "<a-q>",
       ":ZenMode<cr>",
       desc = "Window » Zen toggle",
-      silent = true,
     },
     {
       "<Leader>wz",
       ":ZenMode<cr>",
       desc = "Window » Zen toggle",
-      silent = true,
     },
   },
 

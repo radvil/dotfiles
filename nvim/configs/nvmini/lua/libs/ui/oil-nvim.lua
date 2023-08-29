@@ -9,13 +9,11 @@ return {
 			"<Leader>fe",
 			function() require("oil").open() end,
 			desc = "Float » Explorer (pwd)",
-      silent = true,
 		},
 		{
 			"<Leader>fE",
 			function() require("oil").open(vim.loop.cwd()) end,
 			desc = "Float » Explorer (cwd)",
-      silent = true,
 		},
 	},
 

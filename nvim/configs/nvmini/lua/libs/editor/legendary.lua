@@ -7,7 +7,6 @@ return {
       "<leader>q",
       ":Legendary<cr>",
       desc = "Quick Command/Keymaps Palette",
-      silent = true,
     },
   },
   config = function()

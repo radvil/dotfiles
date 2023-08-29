@@ -109,7 +109,6 @@ M.opts = {
           end, {
             desc = "Rename under cursor",
             buffer = bufnr,
-            silent = true,
             expr = true,
           })
         else

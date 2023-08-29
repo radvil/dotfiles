@@ -33,21 +33,25 @@ M.keys = {
     "<Leader>bd",
     "<Cmd>BD<Cr>",
     desc = "buffer » delete",
+    silent = true,
   },
   {
     "<Leader>bf",
     "<Cmd>BF<Cr>",
     desc = "buffer » delete (force)",
+    silent = true,
   },
   {
     "<Leader>bD",
     "<Cmd>BAD<Cr>",
     desc = "buffer » delete all",
+    silent = true,
   },
   {
     "<Leader>bF",
     "<Cmd>BAF<Cr>",
     desc = "buffer » delete all (force)",
+    silent = true,
   },
 }
 

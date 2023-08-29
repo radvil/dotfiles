@@ -106,7 +106,6 @@ return {
         lhs,
         cmd,
         desc = string.format("Telescope » %s", desc),
-        silent = true,
       }
     end
     return {
