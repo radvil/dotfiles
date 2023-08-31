@@ -3,19 +3,22 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   enabled = true,
 
-  -- stylua: ignore
-	keys = {
-		{
-			"<Leader>fe",
-			function() require("oil").open() end,
-			desc = "Float » Explorer (pwd)",
-		},
-		{
-			"<Leader>fE",
-			function() require("oil").open(vim.loop.cwd()) end,
-			desc = "Float » Explorer (cwd)",
-		},
-	},
+  keys = {
+    {
+      "<Leader>fe",
+      function()
+        require("oil").open()
+      end,
+      desc = "Float » Explorer (pwd)",
+    },
+    {
+      "<Leader>fE",
+      function()
+        require("oil").open(vim.loop.cwd())
+      end,
+      desc = "Float » Explorer (cwd)",
+    },
+  },
 
   opts = {
     delete_to_trash = false, -- 'false' to use trash

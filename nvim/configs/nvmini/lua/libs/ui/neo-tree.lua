@@ -10,24 +10,32 @@ return {
 
   keys = {
     {
-      "<leader>e",
+      "<Leader>e",
       function()
-        require("neo-tree.command").execute({
-          dir = require("minimal.util").get_root(),
-          toggle = true,
-        })
+        if require("zen-mode.view").is_open() then
+          require("oil").open()
+        else
+          require("neo-tree.command").execute({
+            dir = require("minimal.util").get_root(),
+            toggle = true,
+          })
+        end
       end,
-      desc = "Neotree » Toggle (root)",
+      desc = "Tree » Toggle (root)",
     },
     {
       "<leader>E",
       function()
-        require("neo-tree.command").execute({
-          dir = vim.loop.cwd(),
-          toggle = true,
-        })
+        if require("zen-mode.view").is_open() then
+          require("oil").open(vim.loop.cwd())
+        else
+          require("neo-tree.command").execute({
+            dir = vim.loop.cwd(),
+            toggle = true,
+          })
+        end
       end,
-      desc = "Neotree » Toggle",
+      desc = "Tree » Toggle",
     },
     {
       "<leader><cr>",
