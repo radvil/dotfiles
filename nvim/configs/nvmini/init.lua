@@ -5,16 +5,17 @@ core.bootstrap(function(opts)
 
   require("lazy").setup({
     require("lazy"),
-    require("libs.color"),
-    require("libs.editor"),
-    require("libs.misc"),
-    require("libs.lsp"),
-    require("libs.ui"),
-    {
-      "radvil/NeoVerse",
-      import = "neoverse.plugins.window",
-    },
+    { import = "libs" },
+    { import = "lang" },
+    { import = "linter" },
+    { "radvil/NeoVerse" },
+    { import = "neoverse.plugins.completion" },
+    { import = "neoverse.plugins.window" },
     { import = "neoverse.plugins.editor" },
+    { import = "neoverse.plugins.finder" },
+    { import = "neoverse.plugins.ui-ux" },
+    { import = "neoverse.plugins.misc" },
+    { "echasnovski/mini.indentscope", enabled = false },
   }, opts)
 
   vim.schedule(function()

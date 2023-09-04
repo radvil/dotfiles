@@ -1,22 +1,5 @@
 local M = {}
 
-M.Treesitter = {
-  "bash",
-  "css",
-  "diff",
-  "html",
-  "javascript",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "python",
-  "query",
-  "regex",
-  "toml",
-  "vim",
-  "yaml",
-}
-
 M.Excludes = {
   "NeogitStatus",
   "Dashboard",
