@@ -3,7 +3,7 @@ require("minimal.util").debug("Loading options...")
 vim.opt.wrap = false
 vim.opt.autowrite = true
 vim.opt.confirm = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.list = true

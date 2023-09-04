@@ -8,7 +8,20 @@ core.bootstrap(function(opts)
     { import = "libs" },
     { import = "lang" },
     { import = "linter" },
-    { "radvil/NeoVerse" },
+    {
+      "radvil/NeoVerse",
+      ---@type NeoVerseOpts
+      opts = {
+        darkmode = true,
+        transparent = false,
+        colorscheme = "monokai-pro",
+        after_config_init = function()
+          require("minimal.autocmd")
+          require("minimal.keymap")
+        end,
+      },
+    },
+    { import = "neoverse.plugins.colorscheme" },
     { import = "neoverse.plugins.completion" },
     { import = "neoverse.plugins.window" },
     { import = "neoverse.plugins.editor" },
@@ -16,10 +29,6 @@ core.bootstrap(function(opts)
     { import = "neoverse.plugins.ui-ux" },
     { import = "neoverse.plugins.misc" },
     { "echasnovski/mini.indentscope", enabled = false },
+    { "gen740/SmoothCursor.nvim", enabled = false },
   }, opts)
-
-  vim.schedule(function()
-    require("minimal.autocmd")
-    require("minimal.keymap")
-  end)
 end)

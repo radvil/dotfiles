@@ -1,5 +1,6 @@
 local opt = {}
 
+-- TODO: configure all o these as default options as NeoVerse lib
 opt.dev = false
 opt.mapleader = " "
 opt.maplocalleader = [[\]]
@@ -16,7 +17,6 @@ opt.fold = true
 opt.autotag = true
 opt.autopairs = true
 opt.splitjoin = true
-opt.lsp_disable_file_watcher = true
 opt.lsp_default_mappings = true
 opt.lsp_inlay_hint = false
 opt.noice_ux = not vim.g.neovide
