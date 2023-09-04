@@ -10,6 +10,11 @@ core.bootstrap(function(opts)
     require("libs.misc"),
     require("libs.lsp"),
     require("libs.ui"),
+    {
+      "radvil/NeoVerse",
+      import = "neoverse.plugins.window",
+    },
+    { import = "neoverse.plugins.editor" },
   }, opts)
 
   vim.schedule(function()

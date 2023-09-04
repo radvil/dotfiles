@@ -63,12 +63,8 @@ M.opts = {
       mason = true,
       settings = {
         Lua = {
-          workspace = {
-            checkThirdParty = false,
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
+          workspace = { checkThirdParty = false },
+          completion = { callSnippet = "Replace" },
           hint = {
             enable = true,
             setType = true,
@@ -196,6 +192,7 @@ M.config = function(_, opts)
     }
     local setup_opts = vim.tbl_deep_extend("force", {
       capabilities = vim.deepcopy(
+        ---@diagnostic disable-next-line: param-type-mismatch
         vim.tbl_deep_extend(
           "force",
           {},
@@ -206,10 +203,12 @@ M.config = function(_, opts)
       ),
     }, opts.servers[server] or {})
     if opts.standalone_setups[server] then
+      ---@diagnostic disable-next-line: param-type-mismatch
       if opts.standalone_setups[server](server, setup_opts) then
         return
       end
     elseif opts.standalone_setups["*"] then
+      ---@diagnostic disable-next-line: param-type-mismatch
       if opts.standalone_setups["*"](server, setup_opts) then
         return
       end
@@ -246,17 +245,5 @@ M.config = function(_, opts)
     })
   end
 end
-
--- M.init = function()
---   if minimal.lsp_disable_file_watcher then
---     -- HACK: disable lsp watcher. Too slow on linux
---     local ok, wf = pcall(require, "vim.lsp._watchfiles")
---     if ok then
---       wf._watchfunc = function()
---         vim.notify("LSP » File watcher disabled!", vim.log.levels.WARN)
---       end
---     end
---   end
---end
 
 return M

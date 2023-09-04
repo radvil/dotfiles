@@ -1,7 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/Projects/neoversal
 - /home/radvil/AMI/mykado-console
+- /home/radvil/AMI/ami-assets
 - /home/radvil/AMI/ami-erp-project
 - /home/radvil/Documents/obsidian-vault
 - /home/radvil/Projects/linux-dotfiles

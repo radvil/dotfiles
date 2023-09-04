@@ -260,13 +260,6 @@ return {
 
       Kmap(
         "<leader>,",
-        -- LazyUtil.telescope("buffers", {
-        --   prompt_title = Icon.RootFolderOpened .. "Opened buffers",
-        --   ignore_current_buffer = true,
-        --   initial_mode = "normal",
-        --   sort_lastused = true,
-        --   sort_mru = true,
-        -- }),
         ":Telescope buffers ignore_current_buffer=true initial_mode=normal sort_lastused=true sort_mru=true<cr>",
         "Find opened buffers"
       ),
