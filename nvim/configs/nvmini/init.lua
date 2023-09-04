@@ -13,10 +13,19 @@ core.bootstrap(function(opts)
       opts = {
         dev = false,
         darkmode = true,
+        colorscheme = "monokai-pro-octagon",
         transparent = not vim.g.neovide,
-        colorscheme = function()
-          vim.cmd.colorscheme("monokai-pro-octagon")
+        statusline = {
+          theme = "auto",
+          global = false,
+        },
+        note_dir = function()
+          return vim.fn.expand("~") .. "/Documents/obsidian-vault"
         end,
+        snippet_dirs = {
+          os.getenv("DOTFILES") .. "/nvim/assets/snippets/all",
+          os.getenv("DOTFILES") .. "/nvim/assets/snippets/angular",
+        },
         before_config_init = function()
           require("minimal.option")
         end,
@@ -36,5 +45,7 @@ core.bootstrap(function(opts)
 
     { "echasnovski/mini.indentscope", enabled = false },
     { "gen740/SmoothCursor.nvim", enabled = false },
+    -- { "glepnir/dashboard-nvim", enabled = false },
+    { "goolord/alpha-nvim", enabled = false },
   }, opts)
 end)
