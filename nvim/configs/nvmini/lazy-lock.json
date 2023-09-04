@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LuaSnip": { "branch": "master", "commit": "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
-  "NeoVerse": { "branch": "main", "commit": "c5931467ecee4c859b04f1a19ff64cab717a76d6" },
+  "NeoVerse": { "branch": "main", "commit": "ed60e12e1a214b4e4c1ac33d9ea18269f4c95313" },
   "SchemaStore.nvim": { "branch": "main", "commit": "d7aa3b9720d383b19ecd5397d9d4a3371b2c4e9c" },
   "alpha-nvim": { "branch": "main", "commit": "5f211a1597b06be24b1600d72a62b94cab1e2df9" },
   "barbecue": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },

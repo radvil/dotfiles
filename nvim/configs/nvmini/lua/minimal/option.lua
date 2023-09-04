@@ -1,4 +1,4 @@
-require("minimal.util").debug("Loading options...")
+require("neoverse.common.utils").debug("Loading options...")
 
 local config = require("neoverse.config")
 local icon = require("neoverse.common.icons")

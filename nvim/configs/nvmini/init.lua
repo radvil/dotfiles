@@ -11,6 +11,7 @@ core.bootstrap(function(opts)
       "radvil/NeoVerse",
       ---@type NeoVerseOpts
       opts = {
+        dev = false,
         darkmode = true,
         transparent = not vim.g.neovide,
         colorscheme = function()
