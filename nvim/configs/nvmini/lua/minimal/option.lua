@@ -1,9 +1,12 @@
 require("minimal.util").debug("Loading options...")
 
+local config = require("neoverse.config")
+local icon = require("neoverse.common.icons")
+
 vim.opt.wrap = false
 vim.opt.autowrite = true
 vim.opt.confirm = true
-vim.opt.cursorline = true
+vim.opt.cursorline = config.transparent
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.list = true
@@ -48,12 +51,11 @@ vim.opt.foldcolumn = "1"
 vim.opt.clipboard = ""
 vim.opt.mouse = "a"
 
-local icon = require("minimal.icon")
 vim.opt.spelllang = { "en" }
 vim.opt.fillchars = {
-  foldopen = icon.Folder.FoldOpened,
-  foldclose = icon.Folder.FoldClosed,
-  diff = icon.Common.Slash,
+  foldopen = icon.FoldOpened,
+  foldclose = icon.FoldClosed,
+  diff = "/",
   foldsep = " ",
   fold = " ",
   eob = " ",
@@ -80,7 +82,6 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_cursor_animate_command_line = true
-  vim.g.neovide_transparency = minimal.transbg and 0.87 or 1
-  -- vim.opt.guifont = { "FiraCode Nerd Font", ":h8" }
+  vim.g.neovide_transparency = 1 -- 0.87
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h7.5" }
 end

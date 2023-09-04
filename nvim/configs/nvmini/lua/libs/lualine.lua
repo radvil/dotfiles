@@ -17,7 +17,7 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = minimal.colorscheme,
+        theme = "auto",
         globalstatus = minimal.global_statusline,
         disabled_filetypes = {
           statusline = {
