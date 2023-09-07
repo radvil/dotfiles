@@ -9,6 +9,10 @@ local function get_default_opts()
     defaults = {
       lazy = not minimal.dev,
     },
+    dev = {
+      path = "~/Projects",
+      fallback = false,
+    },
     ui = {
       size = { width = 0.8, height = 0.8 },
       wrap = true,
@@ -50,7 +54,34 @@ local function get_default_opts()
     performance = {
       cache = { enabled = not minimal.dev },
       rtp = {
-        disabled_plugins = require("minimal.filetype").Builtins,
+        disabled_plugins = {
+          "2html_plugin",
+          "bugreport",
+          "compiler",
+          "ftplugin",
+          "fzf",
+          "getscript",
+          "getscriptPlugin",
+          "gzip",
+          "logipat",
+          "matchit",
+          "optwin",
+          "rplugin",
+          "rrhelper",
+          "spellfile_plugin",
+          "synmenu",
+          "syntax",
+          "tar",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "vimball",
+          "vimballPlugin",
+          "zip",
+          "zipPlugin",
+          "ruby",
+          "gem",
+        },
       },
     },
   }

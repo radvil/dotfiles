@@ -1,9 +1,6 @@
-local icon = require("minimal.icon").Common
-
 return {
   "williamboman/mason.nvim",
   cmd = "Mason",
-
   keys = {
     {
       "<leader>fm",
@@ -12,22 +9,18 @@ return {
     },
   },
 
-  opts = {
-    ui = {
-      border = minimal.transbg and "single" or "none",
-      icons = {
-        package_uninstalled = icon.Lens,
-        package_installed = icon.Flash,
-        package_pending = icon.Start,
-      },
-    },
-    ensure_installed = {
-      "stylua",
-      "shfmt",
-    },
-  },
-
   config = function(_, opts)
+    local NeoConfig = require("neoverse.config")
+    opts = vim.tbl_deep_extend("force", opts or {}, {
+      ui = {
+        border = NeoConfig.transparent and "single" or "none",
+        icons = NeoConfig.icons.Mason,
+      },
+      ensure_installed = {
+        "stylua",
+        "shfmt",
+      },
+    })
     require("mason").setup(opts)
     local registry = require("mason-registry")
     local function ensure_installed()

@@ -126,11 +126,10 @@ M.opts = {
     end, { desc = "Toggle » Format on save" })
 
     ---@param client lsp.Client
-    require("minimal.util").on_lsp_attach(function(client, bufnr)
+    require("neoverse.common.utils").on_lsp_attach(function(client, bufnr)
       local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
       local active = minimal.lsp_inlay_hint
       if inlay_hint and client.supports_method("textDocument/inlayHint") then
-        -- vim.lsp.buf.inlay_hint(bufnr, active)
         inlay_hint(bufnr, active)
         vim.keymap.set("n", "<leader>uh", function()
           active = not active
@@ -170,9 +169,9 @@ M.config = function(_, opts)
     require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
   end
 
-  require("libs.lsp.diagnostic").setup(opts.diagnostics)
-  require("libs.lsp.keymap").setup(opts.mappings)
-  require("libs.lsp.format").setup(opts.format)
+  require("lsp.config.diagnostic").setup(opts.diagnostics)
+  require("lsp.config.keymap").setup(opts.mappings)
+  require("lsp.config.format").setup(opts.format)
 
   local function setup(server)
     local capabilities = vim.lsp.protocol.make_client_capabilities()

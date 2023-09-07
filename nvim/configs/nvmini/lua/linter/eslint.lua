@@ -17,16 +17,16 @@ return {
       eslint = function()
         vim.api.nvim_create_autocmd("BufWritePre", {
           callback = function(event)
-            if not require("libs.lsp.format").enabled() then
+            if not require("lsp.config.format").enabled() then
               return
             end
 
-            local client = vim.lsp.get_active_clients({
+            local client = vim.lsp.get_clients({
               bufnr = event.buf,
               name = "eslint",
             })[1]
             if client then
-              local namespace = vim.lsp.diagnostic.get_namespace(client.id)
+              local namespace = vim.lsp.diagnostic.get_namespace(client.id, false)
               local diag = vim.diagnostic.get(event.buf, {
                 namespace = namespace,
               })

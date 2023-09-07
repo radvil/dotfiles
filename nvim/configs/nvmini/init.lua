@@ -2,26 +2,21 @@ local core = require("minimal")
 
 core.bootstrap(function(opts)
   require("lazy").setup({
-    require("lazy"),
-    { import = "libs" },
+    { import = "lsp" },
     { import = "lang" },
     { import = "linter" },
 
     {
       "radvil/NeoVerse",
+      dev = false,
       ---@type NeoVerseOpts
       opts = {
-        dev = false,
         darkmode = true,
-        colorscheme = "monokai-pro-octagon",
-        transparent = not vim.g.neovide,
-        statusline = {
-          theme = "auto",
-          global = false,
-        },
-        note_dir = function()
-          return vim.fn.expand("~") .. "/Documents/obsidian-vault"
+        colorscheme = function()
+          vim.cmd.colorscheme("monokai-pro-octagon")
         end,
+        transparent = not vim.g.neovide,
+        note_dir = vim.fn.expand("~") .. "/Documents/obsidian-vault",
         snippet_dirs = {
           os.getenv("DOTFILES") .. "/nvim/assets/snippets/all",
           os.getenv("DOTFILES") .. "/nvim/assets/snippets/angular",
@@ -45,7 +40,7 @@ core.bootstrap(function(opts)
 
     { "echasnovski/mini.indentscope", enabled = false },
     { "gen740/SmoothCursor.nvim", enabled = false },
-    -- { "glepnir/dashboard-nvim", enabled = false },
-    { "goolord/alpha-nvim", enabled = false },
+    { "glepnir/dashboard-nvim", enabled = false },
+    -- { "goolord/alpha-nvim", enabled = false },
   }, opts)
 end)

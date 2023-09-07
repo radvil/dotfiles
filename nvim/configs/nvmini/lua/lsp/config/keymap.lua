@@ -11,7 +11,7 @@ M.opts = nil
 ---@return (LazyKeys|{has?:string})[]
 function M.get()
   local format_document = function()
-    require("libs.lsp.format").format({ force = true })
+    require("lsp.config.format").format({ force = true })
   end
   if not M._keys then
     ---@class PluginLspKeys
@@ -24,7 +24,7 @@ function M.get()
       {
         "K",
         function()
-          local ufo = require("minimal.util").call("ufo")
+          local ufo = require("neoverse.common.utils").call("ufo")
           if not ufo or not ufo.peekFoldedLinesUnderCursor() then
             vim.lsp.buf.hover()
           end
@@ -133,7 +133,7 @@ end
 function M.setup(opts)
   M.opts = opts
   if not M._loaded then
-    require("minimal.util").on_lsp_attach(M.on_attach)
+    require("neoverse.common.utils").on_lsp_attach(M.on_attach)
     M._loaded = true
   end
 end

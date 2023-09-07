@@ -40,7 +40,24 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("escape with <q>"),
-  pattern = require("minimal.filetype").Windows,
+  pattern = {
+    "TelescopeResults",
+    "TelescopePrompt",
+    "neo-tree-popup",
+    "DressingInput",
+    "flash_prompt",
+    "cmp_menu",
+    "neo-tree",
+    "WhichKey",
+    "lspinfo",
+    "Outline",
+    "notify",
+    "prompt",
+    "mason",
+    "noice",
+    "lazy",
+    "oil",
+  },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
     vim.wo.foldcolumn = "0"

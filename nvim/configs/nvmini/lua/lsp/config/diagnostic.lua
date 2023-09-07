@@ -7,8 +7,8 @@ function M.setup(opts)
     return
   end
 
-  local icons = require("minimal.icon").Diagnostics
-  for name, icon in pairs(icons) do
+  local NeoIcons = require("neoverse.config").icons.Diagnostics
+  for name, icon in pairs(NeoIcons) do
     name = "DiagnosticSign" .. name
     vim.fn.sign_define(name, {
       texthl = name,
@@ -20,7 +20,7 @@ function M.setup(opts)
   if type(opts.virtual_text) == "table" and opts.virtual_text.prefix == "icons" then
     opts.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
       or function(diagnostic)
-        for d, icon in pairs(icons) do
+        for d, icon in pairs(NeoIcons) do
           if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
             return icon
           end
