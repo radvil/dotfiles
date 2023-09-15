@@ -2,17 +2,17 @@ env:
   TERM: xterm-256color # alacritty
 
 window:
-  dimensions:
-    columns: 0
-    lines: 0
-  position:
-    x: 0
-    y: 0
-  padding:
-    x: 0
-    y: 0
+  # dimensions:
+  #   columns: 0
+  #   lines: 0
+  # position:
+  #   x: 0
+  #   y: 0
+  # padding:
+  #   x: 0
+  #   y: 0
   decorations: full # full | none
-  opacity: 1.0
+  opacity: 0.9
   startup_mode: Windowed # Windowed | Maximized | Fullscreen
   title: Alacritty
   dynamic_title: true
@@ -28,96 +28,16 @@ font:
   draw_bold_text_with_bright_colors: false
   normal:
     family: FiraCode Nerd Font
-    # family: Input Mono Condensed
+    # family: JetBrainsMono Nerd Font
     style: Regular
-  # bold:
-  #   family: Input Mono Condensed
-  #   style: Bold
-  # italic:
-  #   family: Input Mono Condensed
-  #   style: Italic
-  # bold_italic:
-  #   family: Input Mono Condensed
 
 colors:
   primary:
-    background: "#1E1E2E"
+    # background: "#1E1E2E"
+    background: "#181825"
     foreground: "#c5c8c6"
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
-  #cursor:
-  #   text: CellBackground
-  #   cursor: CellForeground
-  #vi_mode_cursor:
-  #   text: CellBackground
-  #   cursor: CellForeground
-  #search:
-  #  matches:
-  #    foreground: '#000000'
-  #    background: '#ffffff'
-  #  focused_match:
-  #    foreground: '#ffffff'
-  #    background: '#000000'
-  #hints:
-  #  start:
-  #    foreground: '#1d1f21'
-  #    background: '#e9ff5e'
-  #  end:
-  #    foreground: '#e9ff5e'
-  #    background: '#1d1f21'
-  #footer_bar:
-  #  background: '#c5c8c6'
-  #  foreground: '#1d1f21'
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
 
 cursor:
   style:
     shape: Block # Block | Underline | Beam
     blinking: On # Never | Off | On | Always
-  # vi_mode_style: None
-  # blink_interval: 750
-  # blink_timeout: 5
-# shell:
-#   program: /bin/zsh
-#args:
-#  - --login
-#working_directory: None
-#ipc_socket: true
-
-# mouse:
-# double_click: { threshold: 300 }
-# triple_click: { threshold: 300 }
-# hide_when_typing: false
-
-# key_bindings:
-#   # - { key: Escape, mods: Control, action: ToggleViMode }
-#   - { key: Escape, mode: Vi|~Search, action: ClearSelection }
-#   - { key: D, mods: Control, mode: Vi|~Search, action: ScrollHalfPageDown }
-#   - { key: U, mods: Control, mode: Vi|~Search, action: ScrollHalfPageUp }

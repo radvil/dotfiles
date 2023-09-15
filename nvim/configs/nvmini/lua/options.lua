@@ -1,12 +1,11 @@
-require("neoverse.common.utils").debug("Loading options...")
+require("neoverse.utils").debug("Loading options...")
 
-local config = require("neoverse.config")
-local icon = require("neoverse.common.icons")
+local Config = require("neoverse.config")
 
 vim.opt.wrap = false
 vim.opt.autowrite = true
 vim.opt.confirm = true
-vim.opt.cursorline = config.transparent
+vim.opt.cursorline = false
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.list = true
@@ -47,14 +46,14 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.inccommand = "nosplit"
 vim.opt.splitkeep = "screen"
 vim.opt.signcolumn = "yes"
-vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = "0"
 vim.opt.clipboard = ""
 vim.opt.mouse = "a"
 
 vim.opt.spelllang = { "en" }
 vim.opt.fillchars = {
-  foldopen = icon.FoldOpened,
-  foldclose = icon.FoldClosed,
+  foldopen = Config.icons.Folds.Expanded,
+  foldclose = Config.icons.Folds.Collapsed,
   diff = "/",
   foldsep = " ",
   fold = " ",

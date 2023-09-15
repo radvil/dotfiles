@@ -10,7 +10,7 @@ local ftMap = {
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
-  local suffix = ("  %d "):format(endLnum - lnum)
+  local suffix = (" 󰁂 %d "):format(endLnum - lnum)
   local sufWidth = vim.fn.strdisplaywidth(suffix)
   local targetWidth = width - sufWidth
   local curWidth = 0
@@ -39,7 +39,11 @@ end
 return {
   "kevinhwang91/nvim-ufo",
   event = "VeryLazy",
-  dependencies = "kevinhwang91/promise-async",
+  dependencies = {
+    "neovim/nvim-lspconfig",
+    "kevinhwang91/promise-async",
+    "nvim-treesitter/nvim-treesitter-context",
+  },
   keys = {
     {
       "zR",

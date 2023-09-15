@@ -70,7 +70,7 @@ function __create_tmux_session() {
 function ami-project() {
   cached_dir=$(pwd)
   cd "$HOME/AMI"
-  dir_name=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project  " --preview="exa -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
+  dir_name=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81% -w 69% --layout="reverse" --border --prompt="🚀 Select Project » " --preview="eza -l {} --icons --git-ignore --no-user --no-time --sort type -T -L 6" --preview-window="bottom,25")
   if [[ -z $dir_name ]]; then
     info "No project was selected"
     cd "$cached_dir"
@@ -84,7 +84,7 @@ alias ami="ami-project"
 bindkey -s "\ew" "ami-project\n"
 
 function zmux() {
-  selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path  ")
+  selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path » ")
   full_path=$(echo "$selected" | tr -s ' ' | cut -d ' ' -f 2)
   if [[ -z $full_path ]]; then
     info "No path was selected"
@@ -97,7 +97,7 @@ bindkey -s "\em" "zmux\n"
 
 function ssh-use() {
   profiles=("radvil-gitlab [Work]" "radvil-github [Personal]" "radvil2-github [Personal]")
-  selected=$(printf "%s\n" "${profiles[@]}" | fzf --border --prompt="🔑 Select Key  ")
+  selected=$(printf "%s\n" "${profiles[@]}" | fzf --border --prompt="🔑 Select Key » ")
   if [[ -z $selected ]]; then
     warn "No key was selected"
     return 0

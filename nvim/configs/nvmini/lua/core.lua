@@ -1,13 +1,26 @@
 local M = {}
 
-local function get_default_opts()
-  local icon = require("minimal.icon").Common
-  local title = string.format(" %s %s ", icon.Vim, minimal.name)
+local options = {
+  dev = false,
+  name = "Neo",
+  mapleader = " ",
+  maplocalleader = [[\]],
+  username = os.getenv("USER"),
+  providers_blacklist = {
+    "perl",
+    "python3",
+    "ruby",
+  },
+}
+
+local function get_lazy_opts()
+  local icon = require("icons").Common
+  local title = string.format(" %s %s ", icon.Vim, options.name)
   return {
     -- directory where plugins will be installed
-    root = vim.fn.stdpath("data") .. "/" .. minimal.username,
+    root = vim.fn.stdpath("data") .. "/" .. options.username,
     defaults = {
-      lazy = not minimal.dev,
+      lazy = not options.dev,
     },
     dev = {
       path = "~/Projects",
@@ -16,7 +29,7 @@ local function get_default_opts()
     ui = {
       size = { width = 0.8, height = 0.8 },
       wrap = true,
-      border = minimal.transbg and "single" or "",
+      border = "single",
       title = title,
       title_pos = "right",
       icons = {
@@ -52,7 +65,7 @@ local function get_default_opts()
       },
     },
     performance = {
-      cache = { enabled = not minimal.dev },
+      cache = { enabled = not options.dev },
       rtp = {
         disabled_plugins = {
           "2html_plugin",
@@ -87,33 +100,42 @@ local function get_default_opts()
   }
 end
 
-function M.bootstrap(on_init)
-  require("minimal.env")
+local function log(msg, opts)
+  opts = vim.tbl_deep_extend("force", {
+    severity = vim.log.levels.INFO,
+    title = "LOG",
+  }, opts or {}) or {}
+  local title = string.format("[%s]", opts.title)
+  local hl = opts.severity == vim.log.levels.INFO and "Type" or "Label"
+  vim.api.nvim_echo({
+    { title, hl },
+    { " » " .. msg },
+  }, true, {})
+end
 
-  vim.g.mapleader = minimal.mapleader
-  vim.g.maplocalleader = minimal.maplocalleader
+function M.bootstrap(on_init)
+  vim.g.mapleader = options.mapleader
+  vim.g.maplocalleader = options.maplocalleader
 
   -- make all keymaps silent by default
   local keymap_set = vim.keymap.set
 
   ---@diagnostic disable-next-line: duplicate-set-field
-  vim.keymap.set = function(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    return keymap_set(mode, lhs, rhs, opts)
+  vim.keymap.set = function(mode, lhs, rhs, kopts)
+    kopts = kopts or {}
+    kopts.silent = kopts.silent ~= false
+    return keymap_set(mode, lhs, rhs, kopts)
   end
 
-  for _, value in ipairs(minimal.providers_blacklist) do
+  for _, value in ipairs(options.providers_blacklist) do
     vim.cmd(string.format("let g:loaded_%s_provider = 0", value))
   end
 
-  local util = require("minimal.util")
-  local opts = get_default_opts()
-  local userpath = string.format("/%s/lazy.nvim", minimal.username)
+  local userpath = string.format("/%s/lazy.nvim", options.username)
   local path = vim.fn.stdpath("data") .. userpath
 
   if not vim.loop.fs_stat(path) then
-    util.log("🚩 lazy.nvim was not installed. Installing from latest stable version...", {
+    log("🚩 lazy.nvim was not installed. Installing from latest stable version...", {
       severity = vim.log.levels.WARN,
       title = "BOOTSRAP",
     })
@@ -129,7 +151,8 @@ function M.bootstrap(on_init)
   end
 
   vim.opt.rtp:prepend(path)
-  on_init(opts)
+
+  on_init(get_lazy_opts())
 end
 
 return M

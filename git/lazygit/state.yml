@@ -2,9 +2,11 @@ lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
 - /home/radvil/Projects/NeoVerse
-- /home/radvil/AMI/mykado-console
-- /home/radvil/AMI/ami-assets
 - /home/radvil/AMI/ami-erp-project
+- /home/radvil/AMI/panasonic-indomart
+- /home/radvil/AMI/mykado-console
+- /home/radvil/Projects/forks/LazyVim
+- /home/radvil/AMI/ami-assets
 - /home/radvil/Documents/obsidian-vault
 - /home/radvil/Projects/linux-dotfiles
 - /home/radvil/Projects/go-journeys/src

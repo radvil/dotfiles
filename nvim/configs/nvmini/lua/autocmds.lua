@@ -1,4 +1,4 @@
-require("neoverse.common.utils").debug("Loading autocommands...")
+require("neoverse.utils").debug("Loading autocommands...")
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("nvmini_" .. name, { clear = true })
@@ -27,23 +27,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
-if minimal.colorscheme == "catppuccin" and minimal.transbg then
-  vim.api.nvim_create_autocmd("BufReadPre", {
-    group = augroup("change_cursor_line_bg"),
-    pattern = "*",
-    callback = function()
-      local bg = minimal.palette.bg2
-      vim.cmd.highlight("CursorLine guibg=" .. bg)
-    end,
-  })
-end
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = augroup("change_cursor_line_bg"),
+  pattern = "*catppuccin*",
+  callback = function()
+    local bg = require("neoverse.config").palette.bg2
+    vim.cmd.highlight("CursorLine guibg=" .. bg)
+  end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("escape with <q>"),
+  group = augroup("close_with_<q>"),
   pattern = {
-    "TelescopeResults",
-    "TelescopePrompt",
     "neo-tree-popup",
+    "spectre_panel",
     "DressingInput",
     "flash_prompt",
     "cmp_menu",

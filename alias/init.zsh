@@ -2,9 +2,9 @@
 
 alias cl="clear"
 alias rm="trash"
-alias ls="exa"
-alias ll='exa -alF'
-alias la='exa -la'
+alias ls="eza"
+alias ll='eza -alF'
+alias la='eza -la'
 alias grep="rg"
 alias mx="tmux"
 alias v="NVIM_APPNAME=nvmini nvim"

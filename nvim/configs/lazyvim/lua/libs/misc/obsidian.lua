@@ -1,40 +1,100 @@
 ---@param lhs string
 ---@param rhs string | function
-local Kmap = function(lhs, rhs)
-  vim.keymap.set("n", lhs, rhs, { silent = true, noremap = false, expr = true })
+local Kmap = function(lhs, rhs, desc)
+  vim.keymap.set("n", lhs, rhs, {
+    desc = string.format("Obsidian » %s", desc),
+    noremap = false,
+    expr = true,
+  })
 end
 
 return {
   "epwalsh/obsidian.nvim",
-  lazy = true,
-  event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/obsidian-vault/**.md" },
-  dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {
-    dir = "~/Documents/obsidian-vault",
-    finder = "telescope.nvim",
-    -- Optional, for templates (see below).
-    templates = {
-      subdir = "templates",
-      date_format = "%Y-%m-%d-%a",
-      time_format = "%H:%M",
+  dependencies = "nvim-lua/plenary.nvim",
+  keys = {
+    {
+      "<leader>nc",
+      ":ObsidianNew<cr>",
+      desc = "Obsidian » Create new note",
     },
-    -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-    open_app_foreground = false,
-    -- daily_notes = {
-    --   folder = "notes/dailies",
-    --   date_format = "%Y-%m-%d",
-    -- },
+    {
+      "<leader>no",
+      ":ObsidianOpen<cr>",
+      desc = "Obsidian » Open",
+    },
+    {
+      "<leader>nb",
+      ":ObsidianBacklinks<cr>",
+      desc = "Obsidian » Show note's backlinks",
+    },
+    {
+      "<leader>nn",
+      ":ObsidianToday<cr>",
+      desc = "Obsidian » Today/now note",
+    },
+    {
+      "<leader>ny",
+      ":ObsidianYesterday<cr>",
+      desc = "Obsidian » Yesterday note",
+    },
+    {
+      "<leader>nt",
+      ":ObsidianTemplate<cr>",
+      desc = "Obsidian » Insert a template",
+    },
+    {
+      "gF",
+      "<cmd>ObsidianLinkNew<cr>",
+      desc = "Obsidian » Link to new note",
+      mode = { "v", "x" },
+    },
   },
-  config = function(_, opts)
-    local obs = require("obsidian")
-    obs.setup(opts)
+  config = function()
+    local obsidian = require("obsidian")
+    local options = {
+      dir = vim.fn.expand("~") .. "/Documents/obsidian-vault",
+      mappings = {},
+      finder = "telescope.nvim",
+      completion = {
+        nvim_cmp = true,
+      },
+      daily_notes = {
+        folder = "+daily",
+        date_format = "%Y-%m-%d",
+      },
+      follow_url_func = function(url)
+        vim.fn.jobstart({ "xdg-open", url })
+      end,
+      note_id_func = function(title)
+        local suffix = ""
+        if title ~= nil then
+          suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        else
+          for _ = 1, 4 do
+            suffix = suffix .. string.char(math.random(65, 90))
+          end
+        end
+        return tostring(os.time()) .. "-" .. suffix
+      end,
+    }
+
+    obsidian.setup(options)
 
     Kmap("gf", function()
-      if obs.util.cursor_on_markdown_link() then
-        return ":ObsidianFollowLink<cr>"
+      if obsidian.util.cursor_on_markdown_link() then
+        return "<cmd>ObsidianFollowLink<cr>"
       else
         return "gf"
       end
-    end)
+    end, "Follow link")
+  end,
+
+  init = function()
+    if require("common.utils").call("which-key") then
+      require("which-key").register({
+        mode = "n",
+        ["<leader>n"] = { name = "Note[Obsidian]" },
+      })
+    end
   end,
 }

@@ -99,6 +99,9 @@ return {
         ["K"] = { "toggle_preview", config = { use_float = true } },
         ["<esc>"] = "revert_preview",
         ["R"] = "refresh",
+
+        ["<a-[>"] = "prev_source",
+        ["<a-]>"] = "next_source",
       },
     }
 

@@ -12,7 +12,7 @@ kitty
 neovim
 nnn
 tmux
-exa
+eza
 ripgrep
 fzf
 fd
