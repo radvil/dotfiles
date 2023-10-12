@@ -23,12 +23,12 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 8
+  size: 7.5
   # builtin_box_drawing: false
   draw_bold_text_with_bright_colors: false
   normal:
-    family: FiraCode Nerd Font
-    # family: JetBrainsMono Nerd Font
+    # family: FiraCode Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
 
 colors:

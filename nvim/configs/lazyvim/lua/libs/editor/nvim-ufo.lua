@@ -38,6 +38,7 @@ end
 
 return {
   "kevinhwang91/nvim-ufo",
+  enabled = false,
   event = "VeryLazy",
   dependencies = {
     "neovim/nvim-lspconfig",

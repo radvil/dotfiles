@@ -15,7 +15,8 @@ NeoUtils.map("i", "<c-d>", "<del>", { desc = "Delete next char" })
 NeoUtils.map("i", "<c-h>", "<left>", { desc = "Shift one char left" })
 NeoUtils.map("i", "<c-l>", "<right>", { desc = "Shift one char right" })
 NeoUtils.map({ "i", "c" }, "<a-bs>", "<esc>ciw", { nowait = true, desc = "Delete backward" })
-NeoUtils.map({ "i", "c" }, "<a-i>", "<space><esc>i", { desc = "Tab backward" })
+-- NeoUtils.map({ "i", "c" }, "<a-i>", "<space><esc>i", { desc = "Tab backward" })
+NeoUtils.map({ "i", "c" }, "<a-i>", "<space><left>", { desc = "Tab backward" })
 NeoUtils.map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch" })
 NeoUtils.map({ "n", "x", "v" }, "ga", "<esc>ggVG", { nowait = true, desc = "Select all" })
 NeoUtils.map({ "n", "x", "v" }, "Q", "q", { nowait = true, desc = "Record" })
@@ -73,7 +74,10 @@ NeoUtils.map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Buffer » Switch to oth
 NeoUtils.map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Buffer » Switch to other" })
 NeoUtils.map("n", "[b", ":bprevious<cr>", { desc = "Buffer » Prev" })
 NeoUtils.map("n", "]b", ":bnext<cr>", { desc = "Buffer » Next" })
-
+if NeoUtils.call("bufferline") == nil then
+  NeoUtils.map("n", "<a-[>", ":bprevious<cr>", { desc = "Buffer » Prev" })
+  NeoUtils.map("n", "<a-]>", ":bnext<cr>", { desc = "Buffer » Next" })
+end
 if NeoUtils.call("mini.bufremove") == nil then
   NeoUtils.map("n", "<leader>bd", ":bdelete<cr>", { desc = "Buffer » Delete" })
   NeoUtils.map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "Buffer » Delete (all)" })

@@ -5,7 +5,7 @@ local Config = require("neoverse.config")
 vim.opt.wrap = false
 vim.opt.autowrite = true
 vim.opt.confirm = true
-vim.opt.cursorline = false
+vim.opt.cursorline = Config.transparent
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.list = true
@@ -38,6 +38,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.pumblend = 0
 vim.opt.pumheight = 10
+vim.opt.smoothscroll = true
 
 vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.wildmode = "longest:full,full"

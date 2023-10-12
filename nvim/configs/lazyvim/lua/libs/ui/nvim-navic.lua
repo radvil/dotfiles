@@ -5,6 +5,6 @@ return {
     depth_limit = 5,
     highlight = true,
     separator = " » ",
-    lazy_update_context = false,
+    lazy_update_context = true,
   },
 }
