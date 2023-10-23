@@ -29,7 +29,7 @@ vim.opt.undolevels = 10000
 vim.opt.updatetime = 200
 vim.opt.hidden = true
 vim.opt.laststatus = 3
-vim.opt.timeoutlen = 900
+vim.opt.timeoutlen = 400
 vim.opt.winwidth = 7
 vim.opt.winminwidth = 5
 vim.opt.equalalways = false
@@ -47,7 +47,7 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.inccommand = "nosplit"
 vim.opt.splitkeep = "screen"
 vim.opt.signcolumn = "yes"
-vim.opt.foldcolumn = "0"
+vim.opt.foldcolumn = "1"
 vim.opt.clipboard = ""
 vim.opt.mouse = "a"
 

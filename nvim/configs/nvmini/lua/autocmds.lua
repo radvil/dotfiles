@@ -44,6 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "mason",
     "noice",
     "lazy",
+    "help",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

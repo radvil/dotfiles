@@ -15,13 +15,12 @@ NeoUtils.map("i", "<c-d>", "<del>", { desc = "Delete next char" })
 NeoUtils.map("i", "<c-h>", "<left>", { desc = "Shift one char left" })
 NeoUtils.map("i", "<c-l>", "<right>", { desc = "Shift one char right" })
 NeoUtils.map({ "i", "c" }, "<a-bs>", "<esc>ciw", { nowait = true, desc = "Delete backward" })
--- NeoUtils.map({ "i", "c" }, "<a-i>", "<space><esc>i", { desc = "Tab backward" })
 NeoUtils.map({ "i", "c" }, "<a-i>", "<space><left>", { desc = "Tab backward" })
 NeoUtils.map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear hlsearch" })
 NeoUtils.map({ "n", "x", "v" }, "ga", "<esc>ggVG", { nowait = true, desc = "Select all" })
 NeoUtils.map({ "n", "x", "v" }, "Q", "q", { nowait = true, desc = "Record" })
-NeoUtils.map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-NeoUtils.map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+NeoUtils.map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+NeoUtils.map({ "n", "x", "o" }, "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
 
 if vim.opt.clipboard ~= "unnamedplus" then
   local opt = function(desc)
@@ -58,7 +57,7 @@ NeoUtils.map("n", "<leader>td", ":tabclose<cr>", { desc = "Tab » Delete" })
 -- windows
 NeoUtils.map("n", "<leader>ww", "<c-w>p", { desc = "Window » Other" })
 NeoUtils.map("n", "<leader>wd", "<c-w>c", { desc = "Window » Delete" })
-if NeoUtils.call("smart-splits") == nil then
+if not NeoUtils.lazy_has("smart-splits.nvim") then
   NeoUtils.map("n", "<c-h>", "<c-w>h", { remap = true, desc = "Window » Navigate left" })
   NeoUtils.map("n", "<c-j>", "<c-w>j", { remap = true, desc = "Window » Navigate down" })
   NeoUtils.map("n", "<c-k>", "<c-w>k", { remap = true, desc = "Window » Navigate up" })
@@ -74,53 +73,37 @@ NeoUtils.map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Buffer » Switch to oth
 NeoUtils.map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Buffer » Switch to other" })
 NeoUtils.map("n", "[b", ":bprevious<cr>", { desc = "Buffer » Prev" })
 NeoUtils.map("n", "]b", ":bnext<cr>", { desc = "Buffer » Next" })
-if NeoUtils.call("bufferline") == nil then
+if not NeoUtils.lazy_has("bufferline.nvim") then
   NeoUtils.map("n", "<a-[>", ":bprevious<cr>", { desc = "Buffer » Prev" })
   NeoUtils.map("n", "<a-]>", ":bnext<cr>", { desc = "Buffer » Next" })
 end
-if NeoUtils.call("mini.bufremove") == nil then
+if not NeoUtils.lazy_has("mini.bufremove") then
   NeoUtils.map("n", "<leader>bd", ":bdelete<cr>", { desc = "Buffer » Delete" })
   NeoUtils.map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "Buffer » Delete (all)" })
 end
 
-NeoUtils.map("n", "<leader>us", function()
-  NeoUtils.toggle("spell")
-end, { desc = "Toggle » Spell" })
-NeoUtils.map("n", "<leader>uw", function()
-  NeoUtils.toggle("wrap")
-end, { desc = "Toggle » Word wrap" })
-NeoUtils.map("n", "<leader>uc", function()
-  NeoUtils.toggle("cursorline")
-end, { desc = "Toggle » Cursor line" })
-NeoUtils.map("n", "<leader>un", function()
-  NeoUtils.toggle("relativenumber", true)
-  NeoUtils.toggle("number")
-end, { desc = "Toggle » Line numbers" })
+--stylua: ignore start
+NeoUtils.map("n", "<leader>us", function() NeoUtils.toggle("spell") end, { desc = "Toggle » Spell" })
+NeoUtils.map("n", "<leader>uw", function() NeoUtils.toggle("wrap") end, { desc = "Toggle » Word wrap" })
+NeoUtils.map("n", "<leader>uc", function() NeoUtils.toggle("cursorline") end, { desc = "Toggle » Cursor line" })
+NeoUtils.map("n", "<leader>un", function() NeoUtils.toggle("relativenumber", true) NeoUtils.toggle("number") end, { desc = "Toggle » Line numbers" })
 
 ---floating terminal
 local ft = function(cmd, root)
   local opt = { size = { width = 0.6, height = 0.7 }, title = "  " .. (cmd or "Terminal"), title_pos = "right" }
   opt.border = require("neoverse.config").transparent and "single" or "none"
-  if root then
-    opt.cwd = NeoUtils.get_root()
-  end
+  if root then opt.cwd = NeoUtils.get_root() end
   NeoUtils.float_term(cmd, opt)
 end
 NeoUtils.map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 NeoUtils.map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Float » Terminal hide" })
---stylua: ignore
 NeoUtils.map("n", "<leader>fh", function() ft("btop") end, { desc = "Float » Open htop/btop" })
---stylua: ignore
 NeoUtils.map("n", "<leader>fT", function() ft(nil) end, { desc = "Float » Terminal (cwd)" })
---stylua: ignore
 NeoUtils.map("n", "<leader>ft", function() ft(nil, true) end, { desc = "Float » Terminal (rwd)" })
---stylua: ignore
 NeoUtils.map("n", [[<c-\>]], function() ft(nil, true) end, { desc = "Float » Terminal open (rwd)" })
 
 if not vim.g.neovide then
-  NeoUtils.map("n", "<leader>fz", function()
-    vim.cmd([[call system('zmux')]])
-  end, { desc = "Float » Tmux Z" })
+  NeoUtils.map("n", "<leader>fz", function() vim.cmd([[call system('zmux')]]) end, { desc = "Float » Tmux Z" })
 end
 
 ---lazygit
@@ -134,7 +117,41 @@ local lz = function(opts)
     esc_esc = false,
   })
 end
---stylua: ignore
 NeoUtils.map("n", "<leader>gg", function() lz() end, { desc = "Git » Open lazygit (cwd)" })
---stylua: ignore
 NeoUtils.map("n", "<leader>gG", function() lz({ cwd = NeoUtils.get_root() }) end, { desc = "Git » Open lazygit (rwd)" })
+
+--stylua: ignore end
+
+local theme_map = {
+  catppuccin = "catppuccin",
+  tokyonight = "tokyonight.nvim",
+  monokai = "monokai-pro.nvim",
+}
+
+-- toggle opacity
+NeoUtils.map("n", "<leader>uT", function()
+  local Config = require("neoverse.config")
+  NeoUtils.try(function()
+    local colors_name = vim.g.colors_name
+    for key, value in pairs(theme_map) do
+      if string.match(colors_name, key) then
+        Config.set("transparent", not Config.transparent)
+        vim.cmd.Lazy("reload " .. value)
+        vim.cmd.Lazy("reload noice.nvim")
+        vim.cmd.colorscheme(colors_name)
+        vim.opt.cursorline = not vim.opt.cursorline
+        break
+      end
+    end
+  end)
+end, { desc = "Toggle » Transparent Background" })
+
+NeoUtils.map("n", "<leader>uH", function()
+  local next = vim.b.ts_highlight and "stop" or "start"
+  vim.treesitter[next]()
+  if next == "stop" then
+    NeoUtils.warn("Highlight stopped!", { title = "Treesitter Highlight" })
+  else
+    NeoUtils.info("Highlight started!", { title = "Treesitter Highlight" })
+  end
+end, { desc = "Toggle » Treesitter Highlight" })
