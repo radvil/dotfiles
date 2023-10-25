@@ -1,9 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/Projects/NeoVerse
+- /home/radvil/Projects/forks/mocha-tmux
 - /home/radvil/AMI/mykado-console
 - /home/radvil/AMI/parastar-console
-- /home/radvil/Projects/NeoVerse
 - /home/radvil/Projects/forks/LazyVim
 - /home/radvil/AMI/sentra-ponsel
 - /home/radvil/AMI/cheongdam-clinic
