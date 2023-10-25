@@ -59,13 +59,12 @@ local function get_lazy_opts()
     install = {
       missing = true,
       colorscheme = {
-        "tokyonight",
         "catppuccin",
         "monokai-pro",
       },
     },
     performance = {
-      cache = { enabled = not options.dev },
+      cache = { enabled = true },
       rtp = {
         disabled_plugins = {
           "2html_plugin",

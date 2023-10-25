@@ -29,7 +29,7 @@ return {
     local Prefer = require("preferences")
 
     opts = vim.tbl_deep_extend("force", opts or {}, {
-      style = "day",
+      style = "moon",
       lualine_bold = true,
       dim_inactive = false,
       sidebars = ft_windows,

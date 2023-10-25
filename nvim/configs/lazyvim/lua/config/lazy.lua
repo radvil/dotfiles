@@ -29,12 +29,12 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        -- colorscheme = function()
-        --   require("tokyonight").load()
-        -- end,
         colorscheme = function()
-          vim.cmd.colorscheme("catppuccin-mocha")
+          require("tokyonight").load()
         end,
+        -- colorscheme = function()
+        --   vim.cmd.colorscheme("catppuccin-mocha")
+        -- end,
         defaults = {
           autocmds = true,
           keymaps = false,
