@@ -105,7 +105,7 @@ function ssh-use() {
     eval $(ssh-agent -s)
     selected=$(echo $selected | cut -d ' ' -f 1)
     ssh-add "$HOME/.ssh/$selected"
-    okay "Selected key  $selected"
+    okay "Selected key » $selected"
   fi
 }
 
