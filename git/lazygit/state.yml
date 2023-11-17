@@ -1,17 +1,17 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/Projects/forks/mocha-tmux
 - /home/radvil/Projects/NeoVerse
-- /home/radvil/AMI/mykado-console
-- /home/radvil/AMI/parastar-console
-- /home/radvil/Projects/forks/LazyVim
-- /home/radvil/AMI/sentra-ponsel
-- /home/radvil/AMI/cheongdam-clinic
-- /home/radvil/.local/share/nvmini/radvil/lazy.nvim
 - /home/radvil/AMI/ami-erp-project
-- /home/radvil/AMI/panasonic-indomart
-- /home/radvil/Projects/ami
+- /home/radvil/AMI/mykado-console
+- /home/radvil/Projects/forks/LazyVim
+- /home/radvil/AMI/cdr-front-end
+- /home/radvil/Projects/cli-tools/nodejs/schematics
+- /home/radvil/Projects/nvim-treesitter
+- /home/radvil/AMI/clio-crm
+- /home/radvil/Projects/forks/mocha-tmux
+- /home/radvil/AMI/sentra-ponsel
+- /home/radvil/.local/share/nvmini/radvil/lazy.nvim
 - /home/radvil/AMI/ami-assets
 - /home/radvil/Documents/obsidian-vault
 - /home/radvil/Projects/linux-dotfiles

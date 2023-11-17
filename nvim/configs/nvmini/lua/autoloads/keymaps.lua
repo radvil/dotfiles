@@ -1,5 +1,15 @@
 local Utils = require("neoverse.utils")
 
+Utils.map("i", "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
+Utils.map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "manual entry" })
+Utils.map("n", "<c-w>", "<cmd>tabclose<cr>", { desc = "close tab" })
+
+if not vim.g.neovide then
+  Utils.map("n", "<leader>fz", function()
+    vim.cmd([[call system('zmux')]])
+  end, { desc = "zmux" })
+end
+
 -- toggle transparency
 Utils.map("n", "<leader>uT", function()
   Utils.try(function()
@@ -11,11 +21,12 @@ Utils.map("n", "<leader>uT", function()
     }) do
       if string.match(colors_name, key) then
         vim.g.neo_transparent = not vim.g.neo_transparent
-        vim.opt.cursorline = not vim.opt.cursorline:get()
         vim.cmd.Lazy("reload " .. value .. " noice.nvim")
-        vim.cmd.colorscheme(colors_name)
+        vim.schedule(function()
+          vim.cmd.colorscheme(colors_name)
+        end)
         break
       end
     end
   end)
-end, { desc = "Toggle » Transparent Background" })
+end, { desc = "toggle » transparent background" })

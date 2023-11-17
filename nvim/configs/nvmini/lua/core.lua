@@ -113,8 +113,8 @@ local function log(msg, opts)
 end
 
 function M.bootstrap(on_init)
-  vim.g.mapleader = options.mapleader
-  vim.g.maplocalleader = options.maplocalleader
+  -- vim.g.mapleader = options.mapleader
+  -- vim.g.maplocalleader = options.maplocalleader
 
   -- make all keymaps silent by default
   local keymap_set = vim.keymap.set

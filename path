@@ -31,5 +31,6 @@ function regpath() {
 source_file "$HOME/.nvm/nvm.sh" --silent
 source_file "$HOME/.nvm/bash_completion" --silent
 
+regpath "$HOME/.cargo/bin"
 regpath "$CLI_PROJECTS/bash" "BASH_TOOLS"
 regpath "$NVM_BIN" "PNPM_HOME"

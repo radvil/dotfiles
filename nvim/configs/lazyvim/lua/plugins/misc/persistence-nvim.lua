@@ -1,13 +1,7 @@
 return {
   "folke/persistence.nvim",
   opts = {
-    options = {
-      "buffers",
-      "tabpages",
-      "winsize",
-      "curdir",
-      "help",
-    },
+    options = vim.opt.sessionoptions:get(),
   },
   -- stylua: ignore start
   keys = function()
