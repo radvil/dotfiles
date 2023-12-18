@@ -1,5 +1,34 @@
 local Utils = require("neoverse.utils")
 
+---@param scope 'session' | 'window'
+local tmux_run = function(scope)
+  scope = scope or "window"
+  vim.ui.input({
+    prompt = "Run Command in a new : " .. scope,
+    completion = "file_in_path", -- :h command-completion
+    default = "",
+  }, function(value)
+    if not value then
+      vim.notify("Canceled", vim.log.levels.WARN, {
+        title = "Run Command",
+        icon = " ",
+      })
+    else
+      local prefix = scope == "window" and "cmdw" or "cmds"
+      local name = prefix .. " " .. value
+      vim.cmd(string.format("call system('%s')", name))
+    end
+  end)
+end
+
+vim.api.nvim_create_user_command("Cmds", function()
+  tmux_run("session")
+end, { desc = "Run command inside new tmux session" })
+
+vim.api.nvim_create_user_command("Cmdw", function()
+  tmux_run("window")
+end, { desc = "Run command inside new tmux window" })
+
 Utils.map("i", "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
 Utils.map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "manual entry" })
 Utils.map("n", "<c-w>", "<cmd>tabclose<cr>", { desc = "close tab" })
