@@ -4,7 +4,7 @@ local Utils = require("neoverse.utils")
 local tmux_run = function(scope)
   scope = scope or "window"
   vim.ui.input({
-    prompt = "Run Command in a new : " .. scope,
+    prompt = string.format("Run in a new tmux %s: ", scope),
     completion = "file_in_path", -- :h command-completion
     default = "",
   }, function(value)
