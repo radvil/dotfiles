@@ -1,33 +1,43 @@
 #!/bin/bash
-# @desc: run command inside a tmux session named 'CMDLINE'
-# if session named 'CMDLINE' already exists, it will use the existing session
+# @desc: run command inside a tmux session
+# if the same session name already exists, it will use the existing session
 
 function warn() {
 	printf "\033[0;33m[Warn]\033[0m %s$1\n"
 }
 
-cmd="$1"
-name="CMDLINE"
+function __create_title() {
+	origin="$1"
+	title=$(basename "$origin")
+	# if title starts with "." remove it"
+	[[ $title == .* ]] && title=${title#.}
+	# replace "." with "-"
+	title=$(echo "$title" | tr '.' '-')
+	echo "$title"
+}
+
+cmd="$@"
+session_name=$(__create_title "$cmd")
 cwd="$(pwd)"
 
 if [[ -z "$cmd" ]]; then
 	warn "Please provide a command!"
 else
 	if [[ -z "$TMUX" ]]; then
-		if tmux has-session -t "$name" 2>/dev/null; then
-			tmux attach -t "$name" \; \
+		if tmux has-session -t "$session_name" 2>/dev/null; then
+			tmux attach -t "$session_name" \; \
 				send-keys "$cmd" Enter
 		else
-			tmux new -s "$name" -c "$cwd" \; \
-				send-keys -t "$name" "$cmd" Enter
+			tmux new -s "$session_name" -c "$cwd" \; \
+				send-keys -t "$session_name" "$cmd" Enter
 		fi
 	else
-		if tmux has-session -t "$name" 2>/dev/null; then
-			tmux switch-client -t "$name"
+		if tmux has-session -t "$session_name" 2>/dev/null; then
+			tmux switch-client -t "$session_name"
 		else
-			tmux new -s "$name" -d -c "$cwd"
-			tmux switch-client -t "$name"
+			tmux new -s "$session_name" -d -c "$cwd"
+			tmux switch-client -t "$session_name"
 		fi
-		tmux send-keys -t "$name" "$cmd" Enter
+		tmux send-keys -t "$session_name" "$cmd" Enter
 	fi
 fi

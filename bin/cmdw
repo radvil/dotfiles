@@ -6,22 +6,35 @@ function warn() {
 	printf "\033[0;33m[Warn]\033[0m %s$1\n"
 }
 
-name="command-line"
+function __create_title() {
+	origin="$1"
+	win_name=$(basename "$origin")
+	# if win_name starts with "." remove it"
+	[[ $win_name == .* ]] && win_name=${win_name#.}
+	# replace "." with "-"
+	win_name=$(echo "$win_name" | tr '.' '-')
+	echo "$win_name"
+}
+
+name=$@
+win_title=$(__create_title "$name")
 
 if [ -z "$TMUX" ]; then
 	warn "Should run inside tmux!"
 else
-	if [ -z "$1" ]; then
+	if [ -z "$name" ]; then
 		error "No command provided!"
 	else
-		if tmux list-windows -F '#{window_name}' | grep -q "$name"; then
-			tmux select-window -t "$name"
+		if tmux list-windows -F '#{window_title}' | grep -q "$win_title"; then
+			tmux select-window -t "$win_title"
 		else
-			tmux new-window -d -n "$name" -c "#{pane_current_path}"
+			tmux new-window -d -n "$win_title" -c "#{pane_current_path}"
 		fi
-		tmux send-keys -t "$name" "$1" Enter
-		if [[ "$2" == "--switch" || "$2" == "-s" ]]; then
-			tmux select-window -t "$name"
+		if [[ "$*" == *"--switch"* || "$*" == *"-s"* ]]; then
+			# if [[ "$2" == "--switch" || "$2" == "-s" ]]; then
+			tmux switch-window -t "$win_title"
 		fi
+		# TODO: run command properly after window initialized
+		tmux send-keys -t "$win_title" "$name" Enter
 	fi
 fi
