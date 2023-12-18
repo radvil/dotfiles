@@ -1,0 +1,27 @@
+#!/bin/bash
+# @desc: run command in a new tmux window
+# if the same window name already exists, it will use the existing window
+
+function warn() {
+	printf "\033[0;33m[Warn]\033[0m %s$1\n"
+}
+
+name="command-line"
+
+if [ -z "$TMUX" ]; then
+	warn "Should run inside tmux!"
+else
+	if [ -z "$1" ]; then
+		error "No command provided!"
+	else
+		if tmux list-windows -F '#{window_name}' | grep -q "$name"; then
+			tmux select-window -t "$name"
+		else
+			tmux new-window -d -n "$name" -c "#{pane_current_path}"
+		fi
+		tmux send-keys -t "$name" "$1" Enter
+		if [[ "$2" == "--switch" || "$2" == "-s" ]]; then
+			tmux select-window -t "$name"
+		fi
+	fi
+fi

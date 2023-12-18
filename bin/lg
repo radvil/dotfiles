@@ -1,0 +1,14 @@
+#!/bin/bash
+# @desc: run lazygit
+# if inside tmux session provide --popup flag
+# will open 'lazygit' inside fzf tmux popup
+
+if [[ -z "$TMUX" ]]; then
+	lazygit
+else
+	if [[ "$1" == "--popup" ]]; then
+		tmux popup -h 90% -w 90% -S padded -E lazygit
+	else
+		lazygit
+	fi
+fi
