@@ -1,5 +1,6 @@
 {
   "extras": [
+    "extras.cellular-automation",
     "extras.sticky-buff",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.mini-surround",
@@ -20,8 +21,8 @@
     "neoverse.extras.ui.bufferline-nvim",
     "neoverse.extras.ui.diffview-nvim",
     "neoverse.extras.ui.legendary-nvim",
+    "neoverse.extras.ui.neo-tree",
     "neoverse.extras.ui.nvim-navic",
-    "neoverse.extras.ui.nvim-tree",
     "neoverse.extras.ui.status-column",
     "neoverse.extras.ui.todo-comments-nvim",
     "neoverse.extras.ui.trouble-nvim",

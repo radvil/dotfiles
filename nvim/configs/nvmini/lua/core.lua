@@ -29,7 +29,7 @@ local function get_lazy_opts()
     ui = {
       size = { width = 0.8, height = 0.8 },
       wrap = true,
-      border = "single",
+      border = "rounded",
       title = title,
       title_pos = "right",
       icons = {
