@@ -17,7 +17,7 @@ return {
       smartmove = { enabled = true },
       cmdline = {
         enabled = true,
-        view = "cmdline",
+        view = "cmdline_popup",
       },
       popup_menu = {
         enabled = false,
