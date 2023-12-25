@@ -2,6 +2,7 @@ local Utils = require("neoverse.utils")
 
 vim.opt.autowrite = true
 vim.opt.cursorline = true
+vim.opt.mousemoveevent = true
 -- vim.opt.hidden = false
 -- vim.opt.list = true -- Show some invisible characters (tabs...
 vim.opt.signcolumn = "no" -- "yes" to always show the signcolumn, otherwise it would shift the text each time
@@ -13,7 +14,6 @@ vim.opt.sessionoptions = {
   "globals",
   "skiprtp",
   "buffers",
-  "curdir",
   "folds",
   "help",
 }
