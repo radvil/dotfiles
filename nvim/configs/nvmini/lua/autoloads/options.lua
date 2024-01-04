@@ -18,7 +18,8 @@ vim.opt.sessionoptions = {
   "help",
 }
 
-vim.g.neo_transparent = true and not vim.g.neovide
+vim.g.neo_autocomplete = false
+vim.g.neo_transparent = false and not vim.g.neovide
 vim.g.neo_notesdir = vim.fn.expand("~") .. "/Documents/obsidian-vault"
 vim.g.neo_snippet_dirs = {
   os.getenv("DOTFILES") .. "/nvim/assets/snippets/all",

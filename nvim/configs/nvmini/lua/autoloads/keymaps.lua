@@ -37,6 +37,17 @@ if not vim.g.neovide then
 end
 -- stylua: ignore end
 
+Utils.map("n", "<leader>uC", function()
+  local next = not vim.g.neo_autocomplete
+  vim.g.neo_autocomplete = next
+  vim.cmd.Lazy("load nvim-cmp")
+  if next then
+    Utils.info("Code completion set to auto", { title = "Code completion" })
+  else
+    Utils.warn("Code completion set to manual", { title = "Code completion" })
+  end
+end, { desc = "toggle » code completion trigger" })
+
 -- toggle transparency
 Utils.map("n", "<leader>uT", function()
   Utils.try(function()

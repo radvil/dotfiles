@@ -5,6 +5,7 @@ return {
   optional = true,
   ---@type CatppuccinOptions
   opts = {
+    flavour = "mocha",
     dim_inactive = {
       enabled = false,
       percentage = 0.13,
