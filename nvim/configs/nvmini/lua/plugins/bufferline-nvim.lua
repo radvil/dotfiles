@@ -29,11 +29,13 @@ return {
     local Hl = require("highlights.bufferline-nvim")
     local Has = require("neoverse.utils").lazy_has
     if type(opts.options == "table") then
-      opts.options.always_show_bufferline = false
       opts.options.mode = "tabs"
       opts.options.sort_by = "tabs"
+      opts.options.buffer_close_icon = ""
+      opts.options.diagnostics = false
       opts.options.move_wraps_at_ends = false
       opts.options.show_tab_indicators = false
+      opts.options.always_show_bufferline = false
       table.insert(opts.options.offsets, {
         filetype = "neo-tree",
         highlight = "BufferLineFill",

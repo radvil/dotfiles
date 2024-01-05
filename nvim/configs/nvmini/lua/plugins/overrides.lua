@@ -10,6 +10,26 @@ return {
   },
 
   {
+    "epwalsh/obsidian.nvim",
+    optional = true,
+    opts = {
+      dir = vim.fn.expand("~") .. "/Documents/obsidian-vault",
+    },
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    optional = true,
+    ---@type NeoSnippetOpts
+    opts = {
+      json_snippets = {
+        os.getenv("DOTFILES") .. "/nvim/assets/snippets/all",
+        os.getenv("DOTFILES") .. "/nvim/assets/snippets/angular",
+      },
+    },
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     optional = true,
     lazy = not vim.g.neo_autocomplete,

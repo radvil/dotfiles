@@ -1,103 +1,106 @@
 local M = {}
-
-local options = {
-  dev = false,
-  name = "Neo",
-  mapleader = " ",
-  maplocalleader = [[\]],
-  username = os.getenv("USER"),
-  providers_blacklist = {
-    "perl",
-    "python3",
-    "ruby",
-  },
+local Icons = {
+  ArrowRight = "",
+  Bullet = "●",
+  BulletOutlined = "○",
+  Calendar = "",
+  Check = "✔ ",
+  CmdOutlined = " ",
+  Cog = " ",
+  Flash = "",
+  File = " ",
+  Import = " ",
+  Keys = " ",
+  Lazy = "󰒲 ",
+  Package = " ",
+  Source = " ",
+  Star = "★",
+  Start = "",
+  Vim = " ",
 }
 
-local function get_lazy_opts()
-  local icon = require("icons").Common
-  local title = string.format(" %s %s ", icon.Vim, options.name)
-  return {
-    -- directory where plugins will be installed
-    root = vim.fn.stdpath("data") .. "/" .. options.username,
-    defaults = {
-      lazy = not options.dev,
-    },
-    dev = {
-      path = "~/Projects",
-      fallback = false,
-    },
-    ui = {
-      size = { width = 0.8, height = 0.8 },
-      wrap = true,
-      border = "rounded",
-      title = title,
-      title_pos = "right",
-      icons = {
-        cmd = icon.CmdOutlined,
-        config = icon.Cog,
-        event = icon.Flash,
-        ft = icon.File,
-        init = icon.Start,
-        import = icon.Import,
-        keys = icon.Keys,
-        lazy = icon.Lazy,
-        loaded = icon.Bullet,
-        not_loaded = icon.BulletOutlined,
-        plugin = icon.Package,
-        runtime = icon.Vim,
-        source = icon.Source,
-        start = icon.Check,
-        task = icon.Calendar,
-        list = {
-          icon.Bullet,
-          icon.ArrowRight,
-          icon.Star,
-          "‒",
-        },
+---@class NeoConfigOptions
+local LAZY_NVIM_OPTIONS = {
+  -- directory where plugins will be installed
+  root = vim.fn.stdpath("data") .. "/" .. os.getenv("USER"),
+  dev = { path = "~/Projects/linuxdev/neovim", fallback = false },
+  defaults = { lazy = false },
+  ui = {
+    wrap = true,
+    size = { width = 0.8, height = 0.8 },
+    title = Icons.Vim .. "NeoConfig",
+    border = "rounded",
+    title_pos = "right",
+    icons = {
+      cmd = Icons.CmdOutlined,
+      config = Icons.Cog,
+      event = Icons.Flash,
+      ft = Icons.File,
+      init = Icons.Start,
+      import = Icons.Import,
+      keys = Icons.Keys,
+      lazy = Icons.Lazy,
+      loaded = Icons.Bullet,
+      not_loaded = Icons.BulletOutlined,
+      plugin = Icons.Package,
+      runtime = Icons.Vim,
+      source = Icons.Source,
+      start = Icons.Check,
+      task = Icons.Calendar,
+      list = {
+        Icons.Bullet,
+        Icons.ArrowRight,
+        Icons.Star,
+        "‒",
       },
     },
-    install = {
-      missing = true,
-      colorscheme = {
-        "catppuccin",
-        "monokai-pro",
+  },
+  install = {
+    missing = true,
+    colorscheme = {
+      "catppuccin",
+      "monokai-pro",
+    },
+  },
+  performance = {
+    cache = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "bugreport",
+        "compiler",
+        "ftplugin",
+        "fzf",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "matchit",
+        "optwin",
+        "rplugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "synmenu",
+        "syntax",
+        "tar",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "ruby",
+        "gem",
       },
     },
-    performance = {
-      cache = { enabled = true },
-      rtp = {
-        disabled_plugins = {
-          "2html_plugin",
-          "bugreport",
-          "compiler",
-          "ftplugin",
-          "fzf",
-          "getscript",
-          "getscriptPlugin",
-          "gzip",
-          "logipat",
-          "matchit",
-          "optwin",
-          "rplugin",
-          "rrhelper",
-          "spellfile_plugin",
-          "synmenu",
-          "syntax",
-          "tar",
-          "tarPlugin",
-          "tohtml",
-          "tutor",
-          "vimball",
-          "vimballPlugin",
-          "zip",
-          "zipPlugin",
-          "ruby",
-          "gem",
-        },
-      },
-    },
-  }
-end
+  },
+  -- my custom options
+  providers_blacklist = {},
+}
+
+---@type NeoConfigOptions
+local options
 
 local function log(msg, opts)
   opts = vim.tbl_deep_extend("force", {
@@ -112,10 +115,7 @@ local function log(msg, opts)
   }, true, {})
 end
 
-function M.bootstrap(on_init)
-  -- vim.g.mapleader = options.mapleader
-  -- vim.g.maplocalleader = options.maplocalleader
-
+function M.bootstrap(opts)
   -- make all keymaps silent by default
   local keymap_set = vim.keymap.set
 
@@ -126,11 +126,7 @@ function M.bootstrap(on_init)
     return keymap_set(mode, lhs, rhs, kopts)
   end
 
-  for _, value in ipairs(options.providers_blacklist) do
-    vim.cmd(string.format("let g:loaded_%s_provider = 0", value))
-  end
-
-  local userpath = string.format("/%s/lazy.nvim", options.username)
+  local userpath = string.format("/%s/lazy.nvim", os.getenv("USER"))
   local path = vim.fn.stdpath("data") .. userpath
 
   if not vim.loop.fs_stat(path) then
@@ -151,7 +147,13 @@ function M.bootstrap(on_init)
 
   vim.opt.rtp:prepend(path)
 
-  on_init(get_lazy_opts())
+  options = vim.tbl_deep_extend("force", LAZY_NVIM_OPTIONS, opts or {}) or {}
+
+  for _, value in ipairs(options.providers_blacklist) do
+    vim.cmd(string.format("let g:loaded_%s_provider = 0", value))
+  end
+
+  require("lazy").setup(options)
 end
 
 return M

@@ -56,6 +56,12 @@ require("lazy").setup({
     { import = "plugins.ui-ux" },
     { import = "plugins.misc" },
   },
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  dev = {
+    -- if a plugin's spec set to `dev` this dir is used
+    path = "~/Projects/linuxdev/neovim",
+    fallback = false,
+  },
   defaults = {
     lazy = false,
     version = false,

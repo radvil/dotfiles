@@ -1,14 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/Projects/NeoVerse
-- /home/radvil/Projects/amdb
-- /home/radvil/Projects/doti2
+- /home/radvil/Projects/linuxdev/neovim/NeoVerse
 - /home/radvil/AMI/mykado-console
 - /home/radvil/AMI/cdr-front-end
 - /home/radvil/AMI/clio-crm
 - /home/radvil/AMI/parastar-frontend-console
-- /home/radvil/Projects/forks/LazyVim
 - /home/radvil/AMI/ami-erp-project
 startuppopupversion: 5
 customcommandshistory: []

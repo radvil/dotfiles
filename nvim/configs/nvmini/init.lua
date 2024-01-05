@@ -1,5 +1,14 @@
-require("core").bootstrap(function(opts)
-  require("lazy").setup({
+require("core").bootstrap({
+  dev = {
+    path = "~/Projects/linuxdev/neovim",
+    fallback = false,
+  },
+  providers_blacklist = {
+    "perl",
+    "python3",
+    "ruby",
+  },
+  spec = {
     {
       "radvil/NeoVerse",
       import = "neoverse.core.plugins",
@@ -16,5 +25,5 @@ require("core").bootstrap(function(opts)
       },
     },
     { import = "plugins" },
-  }, opts)
-end)
+  },
+})
