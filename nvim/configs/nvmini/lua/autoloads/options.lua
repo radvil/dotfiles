@@ -2,7 +2,9 @@ local Utils = require("neoverse.utils")
 
 vim.opt.autowrite = true
 vim.opt.cursorline = true
+vim.opt.mouse = "nv" -- enable mouse on 'normal' and 'visual mode' only
 vim.opt.mousemoveevent = true
+vim.opt.conceallevel = 3 -- Hide * markup for bold and italic
 vim.opt.signcolumn = "yes" -- avoid gitsigns error ??
 vim.opt.virtualedit = "block" -- "block" to allow cursor to move where there is no text in visual block mode
 vim.opt.formatoptions = "jcroqlnt" -- tcqj

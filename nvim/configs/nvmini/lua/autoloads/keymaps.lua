@@ -37,6 +37,7 @@ if not vim.g.neovide then
 end
 -- stylua: ignore end
 
+-- toggle autocomplete
 Utils.map("n", "<leader>uC", function()
   local next = not vim.g.neo_autocomplete
   vim.g.neo_autocomplete = next

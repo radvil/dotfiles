@@ -23,6 +23,7 @@
     "neoverse.extras.ui.legendary-nvim",
     "neoverse.extras.ui.neo-tree",
     "neoverse.extras.ui.nvim-navic",
+    "neoverse.extras.ui.nvim-notify",
     "neoverse.extras.ui.status-column",
     "neoverse.extras.ui.todo-comments-nvim",
     "neoverse.extras.ui.trouble-nvim",

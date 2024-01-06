@@ -18,6 +18,16 @@ return {
   },
 
   {
+    "rcarriga/nvim-notify",
+    optional = true,
+    opts = function(_, opts)
+      if type(opts.banned_messages) == "table" then
+        vim.list_extend(opts.banned_messages, { "No information available" })
+      end
+    end,
+  },
+
+  {
     "L3MON4D3/LuaSnip",
     optional = true,
     ---@type NeoSnippetOpts
@@ -32,7 +42,6 @@ return {
   {
     "hrsh7th/nvim-cmp",
     optional = true,
-    lazy = not vim.g.neo_autocomplete,
     opts = {
       completion = { keyword_length = 1 },
       enabled = function()
