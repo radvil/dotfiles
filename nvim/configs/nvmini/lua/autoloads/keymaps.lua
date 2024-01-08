@@ -26,16 +26,17 @@ vim.api.nvim_create_user_command("Cmds", function() tmux_run("session") end, { d
 vim.api.nvim_create_user_command("Cmdw", function() tmux_run("window") end, { desc = "Run command inside new tmux window" })
 Utils.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "Run command in new tmux session" })
 Utils.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "Run command in new tmux window" })
--- stylua: ignore start
+-- stylua: ignore end
 
-Utils.map("i", "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
-Utils.map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "manual entry" })
+Utils.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
+Utils.map("n", "<leader>K", "<cmd>nrm! K<cr>", { desc = "manual entry" })
 Utils.map("n", "<c-w>", "<cmd>tabclose<cr>", { desc = "close tab" })
 
 if not vim.g.neovide then
-  Utils.map("n", "<leader>fz", function() vim.cmd([[call system('zmux')]]) end, { desc = "zmux" })
+  Utils.map("n", "<leader>fz", function()
+    vim.cmd([[call system('zmux')]])
+  end, { desc = "zmux" })
 end
--- stylua: ignore end
 
 -- toggle autocomplete
 Utils.map("n", "<leader>uC", function()
@@ -48,6 +49,9 @@ Utils.map("n", "<leader>uC", function()
     Utils.warn("Code completion set to manual", { title = "Code completion" })
   end
 end, { desc = "toggle » code completion trigger" })
+
+-- rightclick
+-- Utils.map("n", "<RightMouse>", "<cmd>:popup mousemenu<cr>")
 
 -- toggle transparency
 Utils.map("n", "<leader>uT", function()

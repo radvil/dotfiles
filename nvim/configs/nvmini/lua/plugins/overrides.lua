@@ -18,6 +18,24 @@ return {
   },
 
   {
+    "mrjones2014/legendary.nvim",
+    optional = true,
+    opts = function(_, opts)
+      if type(opts.extensions) == "table" then
+        if not require("neoverse.utils").lazy_has("which-key.nvim") then
+          opts.extensions.which_key = false
+        end
+      end
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    lazy = true,
+  },
+
+  {
     "rcarriga/nvim-notify",
     optional = true,
     opts = function(_, opts)

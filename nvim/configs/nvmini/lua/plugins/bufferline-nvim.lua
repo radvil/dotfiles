@@ -36,6 +36,9 @@ return {
       opts.options.move_wraps_at_ends = false
       opts.options.show_tab_indicators = false
       opts.options.always_show_bufferline = false
+      opts.options.close_command = "tabclose! %d"
+      opts.options.right_mouse_command = false
+      opts.options.close_command = nil
       table.insert(opts.options.offsets, {
         filetype = "neo-tree",
         highlight = "BufferLineFill",
