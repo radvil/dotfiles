@@ -32,3 +32,4 @@ end
 -- GLOBALS
 vim.g.neo_transparent = true
 vim.g.neo_autocomplete = true
+vim.g.neo_autopairs = true
