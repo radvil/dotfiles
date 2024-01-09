@@ -27,7 +27,6 @@
     "neoverse.extras.ui.status-column",
     "neoverse.extras.ui.todo-comments-nvim",
     "neoverse.extras.ui.trouble-nvim",
-    "neoverse.extras.ui.which-key-nvim",
     "neoverse.extras.ui.zenmode"
   ],
   "version": 2
