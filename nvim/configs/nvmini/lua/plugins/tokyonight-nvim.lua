@@ -5,7 +5,6 @@ return {
     local transparent = vim.g.neo_transparent
     return {
       on_colors = function(colors)
-        -- colors.bg_darker = "#0d0e18"
         colors.statusline = "#181826"
         colors.subtext1 = "#bac2de"
         colors.subtext0 = "#a6adc8"

@@ -58,7 +58,7 @@ Utils.map("n", "<leader>uT", function()
   Utils.try(function()
     local colors_name = vim.g.colors_name
     for key, value in pairs({
-      tokyonight = "tokyonight.nvim",
+      tokyonight = "tokyonight",
       monokai = "monokai-pro.nvim",
       catppuccin = "catppuccin",
     }) do

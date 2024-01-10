@@ -27,7 +27,6 @@ return {
   end,
   opts = function(_, opts)
     local Hl = require("highlights.bufferline-nvim")
-    local Has = require("neoverse.utils").lazy_has
     if type(opts.options == "table") then
       opts.options.mode = "tabs"
       opts.options.sort_by = "tabs"
@@ -35,7 +34,7 @@ return {
       opts.options.diagnostics = false
       opts.options.move_wraps_at_ends = false
       opts.options.show_tab_indicators = false
-      opts.options.always_show_bufferline = true
+      opts.options.always_show_bufferline = false
       opts.options.close_command = "tabclose! %d"
       opts.options.right_mouse_command = false
       opts.options.close_command = nil
@@ -49,7 +48,7 @@ return {
           local sep = package.config:sub(1, 1)
           local parts = vim.split(path, "[\\/]")
           if #parts > 4 then
-            parts = { parts[1], "…", parts[#parts - 1], parts[#parts] }
+            parts = { parts[1], " … ", parts[#parts - 1], parts[#parts] }
             return "󱉭 " .. table.concat(parts, sep)
           else
             return "󱉭 " .. path
@@ -57,9 +56,12 @@ return {
         end,
       })
     end
-    if Has("catppuccin") and string.match(vim.g.colors_name, "catppuccin") then
+    local Match = function(name)
+      return require("neoverse.utils").lazy_has(name) and string.match(vim.g.colors_name, name)
+    end
+    if Match("catppuccin") then
       opts.highlights = Hl.catppuccin()
-    elseif Has("tokyonight.nvim") and string.match(vim.g.colors_name, "tokyonight") then
+    elseif Match("tokyonight") then
       opts.highlights = Hl.tokyonight()
     end
   end,

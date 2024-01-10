@@ -1,5 +1,6 @@
 local Utils = require("neoverse.utils")
 
+vim.opt.smoothscroll = true
 vim.opt.autowrite = true
 vim.opt.cursorline = true
 vim.opt.mouse = "nv" -- enable mouse on 'normal' and 'visual mode' only
@@ -31,5 +32,15 @@ end
 
 -- GLOBALS
 vim.g.neo_transparent = true
+vim.g.neo_winborder = vim.g.neo_transparent and "rounded" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = true
+
+if vim.g.neovide then
+  vim.g.neo_transparent = false
+  ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_transparency = 0.95
+  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h7" }
+end
