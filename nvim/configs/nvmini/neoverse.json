@@ -20,7 +20,6 @@
     "neoverse.extras.lsp.typescript-tools",
     "neoverse.extras.ui.bufferline-nvim",
     "neoverse.extras.ui.diffview-nvim",
-    "neoverse.extras.ui.legendary-nvim",
     "neoverse.extras.ui.neo-tree",
     "neoverse.extras.ui.nvim-navic",
     "neoverse.extras.ui.nvim-notify",
