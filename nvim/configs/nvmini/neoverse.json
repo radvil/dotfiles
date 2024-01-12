@@ -1,6 +1,7 @@
 {
   "extras": [
     "extras.cellular-automation",
+    "extras.cmp-cmdline",
     "extras.sticky-buff",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.mini-surround",
