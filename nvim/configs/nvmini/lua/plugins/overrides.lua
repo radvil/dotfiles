@@ -10,6 +10,12 @@ return {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    optional = true,
+    lazy = true,
+  },
+
+  {
     "epwalsh/obsidian.nvim",
     optional = true,
     opts = {

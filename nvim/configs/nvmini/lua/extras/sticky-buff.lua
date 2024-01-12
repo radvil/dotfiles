@@ -1,5 +1,5 @@
 return {
   "stevearc/stickybuf.nvim",
-  event = "VeryLazy",
+  event = "BufAdd",
   opts = {},
 }
