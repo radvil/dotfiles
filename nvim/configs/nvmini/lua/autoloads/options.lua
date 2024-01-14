@@ -15,7 +15,7 @@ vim.opt.sessionoptions = {
   "globals",
   "skiprtp",
   "buffers",
-  "folds",
+  -- "folds",
   "help",
 }
 

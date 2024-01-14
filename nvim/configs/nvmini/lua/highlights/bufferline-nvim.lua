@@ -9,15 +9,9 @@ function M.catppuccin(styles)
     if not C then return {} end
     local O = ctp.options
     local active_bg = C.surface0
-    local inactive_bg = C.mantle
+    local inactive_bg = C.mantle -- "#181825" to apply C.mantle on mocha for all variants
     local separator_fg = C.crust
-    local fill_bg = C.crust
-    if vim.g.neo_transparent == true then
-      active_bg = C.none
-      inactive_bg = require("neoverse.config").palette.dark
-      separator_fg = C.surface1
-      fill_bg = C.crust
-    end
+    local fill_bg = vim.g.neo_transparent and C.none or C.base
     local highlights = {
       fill = { bg = fill_bg },
       background = { bg = inactive_bg },

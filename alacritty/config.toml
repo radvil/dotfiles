@@ -4,7 +4,7 @@ opacity = 0.92
 blur = true
 
 [colors]
-transparent_background_colors = false
+transparent_background_colors = true
 
 [[colors.indexed_colors]]
 color = "0xff9e64"

@@ -6,6 +6,10 @@ return {
   ---@type CatppuccinOptions
   opts = {
     flavour = "mocha",
+    background = {
+      light = "latte",
+      dark = "mocha",
+    },
     dim_inactive = {
       enabled = false,
       percentage = 0.13,

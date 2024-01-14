@@ -1,5 +1,5 @@
-local Utils = require("neoverse.utils")
-local palette = require("neoverse.config").palette
+-- local Utils = require("neoverse.utils")
+-- local palette = require("neoverse.config").palette
 
 -- vim.cmd([[:amenu 10.90 mousemenu.Select\ all <cmd>normal ggVG<CR>]])
 -- vim.cmd([[:amenu 10.100 mousemenu.Goto\ definitions <cmd>Telescope lsp_definitions<CR>]])
@@ -8,17 +8,19 @@ local palette = require("neoverse.config").palette
 
 if vim.opt.cursorline then
   vim.opt.guicursor = ""
-  vim.api.nvim_create_autocmd("InsertEnter", {
-    group = Utils.create_augroup("cursor_insert"),
-    callback = function()
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
-    end,
-  })
 
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    group = Utils.create_augroup("cursor_normal"),
-    callback = function()
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = palette.dark2 })
-    end,
-  })
+  -- TODO: do this better
+  -- vim.api.nvim_create_autocmd("InsertEnter", {
+  --   group = Utils.create_augroup("cursor_insert"),
+  --   callback = function()
+  --     vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+  --   end,
+  -- })
+  --
+  -- vim.api.nvim_create_autocmd("InsertLeave", {
+  --   group = Utils.create_augroup("cursor_normal"),
+  --   callback = function()
+  --     vim.api.nvim_set_hl(0, "CursorLine", { bg = palette.dark2 })
+  --   end,
+  -- })
 end
