@@ -277,7 +277,7 @@ _launch=none,none,Konsole
 [org.kde.krunner.desktop]
 RunClipboard=none,Alt+Shift+F2,Run command on clipboard contents
 _k_friendly_name=KRunner
-_launch=Meta+Space,Alt+Space\tAlt+F2\tSearch,KRunner
+_launch=none,Alt+Space\tAlt+F2\tSearch,KRunner
 
 [org.kde.plasma.emojier.desktop]
 _k_friendly_name=Emoji Selector
@@ -320,7 +320,7 @@ activate task manager entry 8=none,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=none,Meta+9,Activate Task Manager Entry 9
 activate widget 3=none,none,Activate Application Launcher Widget
 activate widget 32=none,none,Activate System Tray Widget
-activate widget 69=none,none,Activate Application Launcher Widget
+activate widget 78=Meta+Space,none,Activate Application Launcher Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=none,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=none,Meta+Alt+P,Move keyboard focus between panels
