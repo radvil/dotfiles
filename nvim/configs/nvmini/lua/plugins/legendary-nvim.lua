@@ -1,3 +1,7 @@
+local notify = function(msg)
+  return require("neoverse.utils").info(msg, { title = "gitsigns" })
+end
+
 return {
   "mrjones2014/legendary.nvim",
   lazy = true,
@@ -35,9 +39,7 @@ return {
           "<leader>gr",
           function()
             require("gitsigns").refresh()
-            vim.schedule(function()
-              require("neoverse.utils").info("refreshed", { title = "gitsigns" })
-            end)
+            notify("view refreshed")
           end,
           description = "gitsigns » refresh view",
         },
@@ -45,9 +47,7 @@ return {
           "<leader>gun",
           function()
             require("gitsigns").toggle_numhl()
-            vim.schedule(function()
-              require("neoverse.utils").info("numbers toggled", { title = "gitsigns" })
-            end)
+            notify("numbers toggled")
           end,
           description = "gitsigns » toggle numbers",
         },
@@ -55,9 +55,7 @@ return {
           "<leader>guu",
           function()
             require("gitsigns").toggle_signs()
-            vim.schedule(function()
-              require("neoverse.utils").info("signs toggled", { title = "gitsigns" })
-            end)
+            notify("signs toggled")
           end,
           description = "gitsigns » toggle signs",
         },
@@ -65,9 +63,7 @@ return {
           "<leader>gud",
           function()
             require("gitsigns").toggle_word_diff()
-            vim.schedule(function()
-              require("neoverse.utils").info("word diff toggled", { title = "gitsigns" })
-            end)
+            notify("word diff toggled")
           end,
           description = "gitsigns » toggle word diff",
         },
@@ -75,9 +71,7 @@ return {
           "<leader>gub",
           function()
             require("gitsigns").toggle_current_line_blame()
-            vim.schedule(function()
-              require("neoverse.utils").info("line blame toggled", { title = "gitsigns" })
-            end)
+            notify("line blame toggled")
           end,
           description = "gitsigns » toggle current line blame",
         },
