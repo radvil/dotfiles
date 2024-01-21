@@ -1,10 +1,26 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 7.5
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
 [window]
 dynamic_padding = false
-opacity = 0.9
-blur = true
+# opacity = 1
+opacity = 0.96
+blur = false
 
 [colors]
-transparent_background_colors = true
+transparent_background_colors = false
+
+[colors.primary]
+background = "0x1a1b26"
+# background = "#282A36"
+foreground = "0xc0caf5"
 
 [[colors.indexed_colors]]
 color = "0xff9e64"
@@ -34,20 +50,6 @@ red = "0xf7768e"
 white = "0xa9b1d6"
 yellow = "0xe0af68"
 
-[colors.primary]
-background = "0x1a1b26"
-foreground = "0xc0caf5"
-
 [cursor.style]
 blinking = "Always"
 shape = "Block"
-
-[env]
-TERM = "xterm-256color"
-
-[font]
-size = 11.5
-
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
