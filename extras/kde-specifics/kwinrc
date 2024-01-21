@@ -69,16 +69,19 @@ VerticalGap=10
 [Effect-windowview]
 BorderActivateAll=9
 
+[Input]
+TabletMode=off
+
 [NightColor]
 Active=true
-Mode=Constant
+LatitudeAuto=-5.152
+LongitudeAuto=119.437
 NightTemperature=4900
 
 [Plugins]
-bismuthEnabled=true
 blurEnabled=true
 contrastEnabled=false
-desktopchangeosdEnabled=true
+desktopchangeosdEnabled=false
 diminactiveEnabled=true
 forceblurEnabled=false
 kwin4_effect_fadeEnabled=true
@@ -89,10 +92,10 @@ kwin4_effect_shapecornersEnabled=true
 kwin4_effect_squashEnabled=false
 kwin4_effect_translucencyEnabled=true
 magiclampEnabled=true
+poloniumEnabled=false
 screenedgeEnabled=false
 slideEnabled=false
 synchronizeskipswitcherEnabled=false
-tileseditorEnabled=false
 
 [Script-bismuth]
 enableSpiralLayout=false
@@ -109,6 +112,9 @@ tileLayoutGap=10
 PopupHideDelay=500
 TextOnly=true
 
+[Script-polonium]
+KeepTiledBelow=false
+
 [Script-tilegaps]
 gapBottom=13
 gapLeft=13
@@ -118,6 +124,7 @@ gapTop=13
 includeMaximized=false
 
 [TabBox]
+LayoutName=big_icons
 OrderMinimizedMode=1
 
 [TabBoxAlternative]
@@ -130,7 +137,7 @@ padding=10
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][bd455426-91b5-5aa4-b78c-9e21c3c810ab]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.6848958333333334},{"layoutDirection":"vertical","tiles":[{"height":0.5},{"height":0.5}],"width":0.31510416666666663}]}
+tiles={"layoutDirection":"floating","tiles":[]}
 
 [Windows]
 BorderlessMaximizedWindows=false
@@ -145,5 +152,5 @@ BorderSize=Tiny
 BorderSizeAuto=false
 ButtonsOnLeft=XIA
 ButtonsOnRight=S
-library=org.kde.bismuth.decoration
-theme=Bismuth
+library=org.kde.oxygen
+theme=Oxygen
