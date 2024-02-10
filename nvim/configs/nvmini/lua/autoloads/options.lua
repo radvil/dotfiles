@@ -1,5 +1,6 @@
 local Utils = require("neoverse.utils")
 
+vim.opt.guicursor = ""
 vim.opt.smoothscroll = true
 vim.opt.autowrite = true
 vim.opt.cursorline = true
@@ -31,7 +32,7 @@ if vim.opt.signcolumn:get() == "yes" and not Utils.lazy_has("statuscol.nvim") th
 end
 
 -- GLOBALS
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 vim.g.neo_winborder = vim.g.neo_transparent and "rounded" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = true
