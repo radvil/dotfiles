@@ -2,6 +2,29 @@
 
 return {
   {
+    "nvim-lualine/lualine.nvim",
+    enabled = false,
+  },
+  {
+    "radvil/NeoLine",
+    dev = true,
+    ---@type NeoLineOpts
+    opts = {
+      modes = {
+        ui = {
+          n = {
+            label = "Normal",
+            bg = "#89b4fa",
+          },
+          c = {
+            label = "Commando",
+            bg = "#f5e0dc",
+          },
+        },
+      },
+    },
+  },
+  {
     "radvil2/windows.nvim",
     optional = true,
     opts = {
@@ -38,6 +61,7 @@ return {
     opts = function(_, opts)
       if type(opts.keymaps) == "table" then
         local actions = require("oil.actions")
+        -- new tab and close previous opened oil window
         local newtab = function()
           local bufnr = vim.api.nvim_get_current_buf()
           actions.select_tab.callback()
