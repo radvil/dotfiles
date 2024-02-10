@@ -74,8 +74,8 @@ TabletMode=off
 
 [NightColor]
 Active=true
-LatitudeAuto=-5.152
-LongitudeAuto=119.437
+LatitudeAuto=-4.0165
+LongitudeAuto=119.6197
 NightTemperature=4900
 
 [Plugins]
@@ -140,7 +140,7 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"floating","tiles":[]}
 
 [Windows]
-BorderlessMaximizedWindows=false
+BorderlessMaximizedWindows=true
 ElectricBorderMaximize=false
 RollOverDesktops=true
 

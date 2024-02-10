@@ -1,28 +1,19 @@
 local Utils = require("neoverse.utils")
 
--- vim.cmd([[:amenu 10.90 mousemenu.Select\ all <cmd>normal ggVG<CR>]])
--- vim.cmd([[:amenu 10.100 mousemenu.Goto\ definitions <cmd>Telescope lsp_definitions<CR>]])
--- vim.cmd([[:amenu 10.110 mousemenu.Goto\ references <cmd>Telescope lsp_references<CR>]])
--- vim.cmd([[:amenu 10.110 mousemenu.Goto\ implementations <cmd>Telescope lsp_implementations<CR>]])
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = Utils.create_augroup("cursor_insert"),
+  callback = function()
+    if vim.opt.cursorline and vim.bo.buftype == "" then
+      vim.wo.cursorline = false
+    end
+  end,
+})
 
-if vim.opt.cursorline then
-  vim.opt.guicursor = ""
-
-  vim.api.nvim_create_autocmd("InsertEnter", {
-    group = Utils.create_augroup("cursor_insert"),
-    callback = function()
-      if vim.bo.buftype == "" then
-        vim.wo.cursorline = false
-      end
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    group = Utils.create_augroup("cursor_normal"),
-    callback = function()
-      if vim.bo.buftype == "" then
-        vim.wo.cursorline = true
-      end
-    end,
-  })
-end
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = Utils.create_augroup("cursor_normal"),
+  callback = function()
+    if vim.opt.cursorline and vim.bo.buftype == "" then
+      vim.wo.cursorline = true
+    end
+  end,
+})

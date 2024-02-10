@@ -2,10 +2,10 @@ lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
 - /home/radvil/Projects/linuxdev/neovim/NeoVerse
-- /home/radvil/AMI/cliocrm-frontend-console
-- /home/radvil/AMI/cdr-front-end
-- /home/radvil/AMI/mykado-console
 - /home/radvil/Projects/linuxdev/neovim/LazyVim
+- /home/radvil/AMI/mykado-console
+- /home/radvil/AMI/cdr-front-end
+- /home/radvil/AMI/cliocrm-frontend-console
 - /home/radvil/Projects/angular-projects/amdb
 - /home/radvil/AMI/clio-crm
 - /home/radvil/AMI/parastar-frontend-console
