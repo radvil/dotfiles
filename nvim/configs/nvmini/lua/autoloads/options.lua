@@ -1,9 +1,18 @@
 local Utils = require("neoverse.utils")
 
+-- GLOBALS
+vim.g.neo_transparent = false
+vim.g.neo_winborder = vim.g.neo_transparent and "rounded" or "none"
+vim.g.neo_autocomplete = true
+vim.g.neo_autopairs = true
+vim.g.neo_autoformat = false
+
+-- options
 vim.opt.guicursor = ""
+vim.opt.laststatus = 3
 vim.opt.smoothscroll = true
 vim.opt.autowrite = true
-vim.opt.cursorline = true
+vim.wo.cursorline = vim.g.neo_transparent
 vim.opt.mouse = "nv" -- enable mouse on 'normal' and 'visual mode' only
 vim.opt.mousemoveevent = true
 vim.opt.conceallevel = 3 -- Hide * markup for bold and italic
@@ -20,6 +29,10 @@ vim.opt.sessionoptions = {
   "help",
 }
 
+if vim.g.neo_transparent then
+  vim.opt.background = "dark"
+end
+
 if not Utils.lazy_has("nvim-ufo") then
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -30,12 +43,6 @@ end
 if vim.opt.signcolumn:get() == "yes" and not Utils.lazy_has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.require'neoverse.utils'.ui.statuscolumn()]]
 end
-
--- GLOBALS
-vim.g.neo_transparent = false
-vim.g.neo_winborder = vim.g.neo_transparent and "rounded" or "none"
-vim.g.neo_autocomplete = true
-vim.g.neo_autopairs = true
 
 if vim.g.neovide then
   vim.g.neo_transparent = false
