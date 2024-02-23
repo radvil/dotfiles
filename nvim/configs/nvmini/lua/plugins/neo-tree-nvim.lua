@@ -3,7 +3,7 @@ return {
   optional = true,
   opts = {
     window = {
-      position = "right",
+      position = "left",
       width = 42,
     },
     source_selector = {
