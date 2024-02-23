@@ -42,6 +42,24 @@ M.image_nvim = function()
   end)
 end
 
-M.image_nvim()
+M.find_filepath = function()
+  local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+  -- vim.notify(fpath) -- ~/.dotfiles/nvim/configs/nvmini/lua
+  local basename = vim.fs.basename(fpath)
+  vim.notify(basename) -- ~/.dotfiles/nvim/configs/nvmini/lua
+end
+
+M.main = function()
+  local specials = {
+    ["neo-tree"] = "xx",
+    ["NvimTree"] = function(self)
+      return self
+    end,
+  }
+  local filetypes = vim.tbl_keys(specials)
+  vim.notify(vim.fn.expand("%:e"))
+end
+
+M.main()
 
 return M

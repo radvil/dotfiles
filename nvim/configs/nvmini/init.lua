@@ -17,6 +17,7 @@ require("core").bootstrap({
       opts = {
         colorscheme = function()
           vim.cmd.colorscheme("catppuccin")
+          -- vim.cmd.colorscheme("monokai-pro-octagon")
         end,
         builtins = {
           keymaps = true,
