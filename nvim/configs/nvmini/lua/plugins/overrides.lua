@@ -3,24 +3,43 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    enabled = false,
+    enabled = true,
   },
   {
     "radvil/NeoLine",
+    enabled = false,
+    dependencies = "nvim-tree/nvim-web-devicons",
     dev = true,
     ---@type NeoLineOpts
     opts = {
       modes = {
         ui = {
-          n = {
-            label = "Normal",
-            bg = "#89b4fa",
-          },
           c = {
-            label = "Commando",
+            name = "command",
+            label = "Komandan",
             bg = "#f5e0dc",
           },
         },
+      },
+      specials = {
+        ["lspinfo"] = function()
+          local utils = require("neo-line.utils")
+          local sections = require("neo-line.sections")
+          vim.api.nvim_set_hl(0, "@lspinfo", {
+            bg = "#89b4fa",
+            fg = "#1e1e2e",
+            bold = true,
+          })
+          vim.api.nvim_set_hl(0, "@lspinfo.separator", {
+            link = "@neoline.mode.normal.inverted",
+          })
+          return table.concat({
+            utils.hl("@lspinfo", "  LSP-INFO "),
+            utils.hl("@lspinfo.separator", ""),
+            utils.hl("Normal"),
+            sections.separator(),
+          })
+        end,
       },
     },
   },
@@ -151,6 +170,36 @@ return {
           hl_group = "FlashCurrent",
         },
       },
+    },
+  },
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    enabled = false,
+    priority = 1000,
+    opts = {
+      transparent_mode = vim.g.neo_transparent,
+      dim_inactive = not vim.g.neo_transparent,
+      terminal_colors = true,
+      undercurl = true,
+      underline = true,
+      bold = true,
+      strikethrough = true,
+      invert_selection = false,
+      invert_signs = false,
+      invert_tabline = false,
+      invert_indent_guides = false,
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      contrast = "hard", -- can be "hard", "soft" or empty string
+      italic = {
+        strings = true,
+        emphasis = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      palette_overrides = {},
+      overrides = {},
     },
   },
 }
