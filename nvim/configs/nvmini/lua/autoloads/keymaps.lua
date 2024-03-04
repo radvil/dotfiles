@@ -28,9 +28,16 @@ Utils.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "Run c
 Utils.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "Run command in new tmux window" })
 -- stylua: ignore end
 
+-- experimental keymap
+Utils.map({ "n", "x", "v" }, "s", "<nop>", { desc = "[reset]" })
+Utils.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
+Utils.map({ "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
+
 Utils.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
 Utils.map("n", "<leader>K", "<cmd>nrm! K<cr>", { desc = "manual entry" })
--- Utils.map("n", "<c-w>", "<cmd>tabclose<cr>", { desc = "close tab" })
+Utils.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
+Utils.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
+Utils.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
 
 if not vim.g.neovide then
   Utils.map("n", "<leader>fz", function()
