@@ -1,18 +1,19 @@
 local Utils = require("neoverse.utils")
 
 -- GLOBALS
-vim.g.neo_transparent = false
-vim.g.neo_winborder = vim.g.neo_transparent and "rounded" or "none"
+vim.g.neo_transparent = true
+vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_autocomplete = true
-vim.g.neo_autopairs = true
+vim.g.neo_autopairs = false
 vim.g.neo_autoformat = false
+vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
 
 -- options
 vim.opt.guicursor = ""
 vim.opt.laststatus = 3
 vim.opt.smoothscroll = true
 vim.opt.autowrite = true
-vim.wo.cursorline = vim.g.neo_transparent
+vim.opt.cursorline = false
 vim.opt.mouse = "nv" -- enable mouse on 'normal' and 'visual mode' only
 vim.opt.mousemoveevent = true
 vim.opt.conceallevel = 3 -- Hide * markup for bold and italic

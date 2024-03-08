@@ -2,7 +2,6 @@
   "extras": [
     "extras.cellular-automation",
     "extras.cmp-cmdline",
-    "extras.sticky-buff",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.luasnip",
@@ -10,7 +9,6 @@
     "neoverse.extras.completion.nvim-autopairs",
     "neoverse.extras.editor.flash-nvim",
     "neoverse.extras.editor.mini-hipatterns",
-    "neoverse.extras.editor.mini-indentscope",
     "neoverse.extras.editor.mini-splitjoin",
     "neoverse.extras.editor.nvim-ufo",
     "neoverse.extras.editor.obsidian-nvim",
@@ -25,10 +23,8 @@
     "neoverse.extras.ui.diffview-nvim",
     "neoverse.extras.ui.neo-tree",
     "neoverse.extras.ui.nvim-notify",
-    "neoverse.extras.ui.status-column",
     "neoverse.extras.ui.todo-comments-nvim",
-    "neoverse.extras.ui.trouble-nvim",
-    "neoverse.extras.ui.zenmode"
+    "neoverse.extras.ui.trouble-nvim"
   ],
   "version": 2
 }

@@ -9,7 +9,7 @@ return {
     "radvil/NeoLine",
     enabled = false,
     dependencies = "nvim-tree/nvim-web-devicons",
-    dev = true,
+    dev = false,
     ---@type NeoLineOpts
     opts = {
       modes = {

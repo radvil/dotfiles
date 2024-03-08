@@ -81,9 +81,10 @@ NightTemperature=4900
 [Plugins]
 blurEnabled=true
 contrastEnabled=false
-desktopchangeosdEnabled=false
+cubeEnabled=true
 diminactiveEnabled=true
-forceblurEnabled=false
+fadedesktopEnabled=true
+forceblurEnabled=true
 kwin4_effect_fadeEnabled=true
 kwin4_effect_fadedesktopEnabled=true
 kwin4_effect_fadingpopupsEnabled=false
@@ -96,17 +97,6 @@ poloniumEnabled=false
 screenedgeEnabled=false
 slideEnabled=false
 synchronizeskipswitcherEnabled=false
-
-[Script-bismuth]
-enableSpiralLayout=false
-layoutPerActivity=false
-monocleMaximize=false
-preventProtrusion=false
-screenGapBottom=10
-screenGapLeft=10
-screenGapRight=10
-screenGapTop=10
-tileLayoutGap=10
 
 [Script-desktopchangeosd]
 PopupHideDelay=500
@@ -124,23 +114,28 @@ gapTop=13
 includeMaximized=false
 
 [TabBox]
-LayoutName=big_icons
 OrderMinimizedMode=1
 
 [TabBoxAlternative]
 LayoutName=thumbnail_grid
 
 [Tiling]
-padding=10
+padding=4
 
 [Tiling][213a9620-187e-58a6-b80b-85d8fb95dfce]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][a5b7d9c3-c471-5fbd-aa5b-9fa6ffa94ce7]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][ba56c627-ac4b-5faf-991b-8f952d41c023]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][bd455426-91b5-5aa4-b78c-9e21c3c810ab]
 tiles={"layoutDirection":"floating","tiles":[]}
 
 [Windows]
-BorderlessMaximizedWindows=true
+BorderlessMaximizedWindows=false
 ElectricBorderMaximize=false
 RollOverDesktops=true
 

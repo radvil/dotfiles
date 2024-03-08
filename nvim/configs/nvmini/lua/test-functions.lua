@@ -50,14 +50,12 @@ M.find_filepath = function()
 end
 
 M.main = function()
-  local specials = {
-    ["neo-tree"] = "xx",
-    ["NvimTree"] = function(self)
-      return self
-    end,
-  }
-  local filetypes = vim.tbl_keys(specials)
-  vim.notify(vim.fn.expand("%:e"))
+  -- vim.api.nvim_create_autocmd("FileType", {
+  --   pattern = "*",
+  --   callback = function()
+  --     vim.notify(vim.bo.filetype)
+  --   end,
+  -- })
 end
 
 M.main()

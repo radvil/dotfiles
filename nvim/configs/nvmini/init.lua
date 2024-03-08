@@ -16,8 +16,7 @@ require("core").bootstrap({
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()
-          vim.cmd.colorscheme("catppuccin")
-          -- vim.cmd.colorscheme("monokai-pro-octagon")
+          vim.cmd.colorscheme("catppuccin-frappe")
         end,
         builtins = {
           keymaps = true,

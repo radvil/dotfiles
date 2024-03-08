@@ -11,7 +11,7 @@ return {
   keys = function()
     return {
       Kmap("<a-b>", "Pick", "pick & enter"),
-      Kmap("<a-q>", "PickClose", "pick & close"),
+      Kmap("<leader>bq", "PickClose", "pick & close"),
       Kmap("<leader>bx", "PickClose", "pick & close"),
       Kmap("<a-[>", "CyclePrev", "switch prev"),
       Kmap("<a-]>", "CycleNext", "switch next"),
