@@ -1,4 +1,3 @@
-moc
 ffmpeg
 ffmpegthumbnailer
 exfat-utils

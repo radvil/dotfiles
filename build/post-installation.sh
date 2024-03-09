@@ -1,18 +1,11 @@
 #!/usr/bin/env bash
 
 # links configs
-setup_link "$DOTFILES/profile" "$HOME/.profile"
-setup_link "$DOTFILES/tmux/tpm" "$HOME/.tmux"
 setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
 setup_link "$DOTFILES/alacritty/config.toml" "$HOME/.config/alacritty.toml"
-setup_link "$DOTFILES/wezterm/config.lua" "$HOME/.wezterm.lua"
 setup_link "$DOTFILES/zsh/env" "$HOME/.zshenv"
-setup_link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
-
-# custom neovim configs linking
-source "$DOTFILES/nvim/bin/setup-links.sh"
 
 # toggle color options into pacman
 sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
@@ -60,39 +53,12 @@ if confirmed "Do you wanna install additional web browsers?"; then
 	okay "Additional web browsers installed successfully"
 fi
 
-# Setup Keychron Service
-if confirmed "Do you wanna setup the \"Keychron Service\" ?"; then
-	source_file "$DOTFILES/extras/keychron/install.sh"
-fi
-
 # Enable bluetooth service
 if confirmed "Do you wanna enable \"Bluetooth Service\"?"; then
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
 fi
 
-# Custom plymouth for arch
-if confirmed "Do you wanna install and change the default plymouth to a sweet one?"; then
-	source_file "$DOTFILES/extras/plymouth/install.sh"
-fi
-
-# Optional rofi launcer
-if confirmed "Do you wanna install and restore \"Rofi Launcer\" config?"; then
-	source_file "$DOTFILES/extras/rofi/install.sh"
-fi
-
-# Prev KDE specifics
-if confirmed "Do you want to restore you previous \"KDE specifics config\"?"; then
-	source_file "$DOTFILES/extras/kde-specifics/install.sh"
-fi
-
-# Setup Spotify TUI
-if confirmed "Do you install and configure spotify-tui?"; then
-	source_file "$DOTFILES/extras/spotify/install.sh"
-fi
-
 # change default shell to zsh
-sudo chsh -s /bin/zsh
+sudo chsh -s /usr/bin/zsh
 info "zsh has been set as the default shell"
-info "switching shell to zsh"
-zsh

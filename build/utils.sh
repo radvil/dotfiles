@@ -39,12 +39,12 @@ setup_link() {
 	local src="$1" dst="$2"
 	if [ -d "$src" ]; then
 		if [ ! -d "$dst" ]; then
-			ln -s "$src" "$dst"
+			ln -sf "$src" "$dst"
 			okay "linked dir \"$1\" >> \"$2\""
 		else
 			if confirmed "\"$dst\" already exists, do you wanna replace it ?"; then
 				rm -rf "$dst"
-				ln -s "$src" "$dst"
+				ln -sf "$src" "$dst"
 				okay "linked \"$1\" >> \"$2\""
 			else
 				warn "\"$1\" to \"$2\" [skipped]"
@@ -52,12 +52,12 @@ setup_link() {
 		fi
 	else
 		if [ ! -f "$dst" ]; then
-			ln -s "$src" "$dst"
+			ln -sf "$src" "$dst"
 			okay "linked file \"$1\" >> \"$2\""
 		else
 			if confirmed "\"$dst\" already exists, do you wanna replace it ?"; then
 				rm -rf "$dst"
-				ln -s "$src" "$dst"
+				ln -sf "$src" "$dst"
 				okay "linked \"$1\" >> \"$2\""
 			else
 				warn "\"$1\" to \"$2\" [skipped]"

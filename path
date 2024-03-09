@@ -31,10 +31,7 @@ function setup() {
 	# should setup NVM before anything else
 	source_file "$HOME/.nvm/nvm.sh" --silent
 	source_file "$HOME/.nvm/bash_completion" --silent
-
-	regpath "$HOME/.cargo/bin"
 	regpath "$DOTFILES/bin" "DOTFILES_BIN"
-	regpath "$NVM_BIN" "PNPM_HOME"
 }
 
 setup

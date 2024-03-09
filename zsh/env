@@ -1,11 +1,8 @@
 #!/bin/zsh
 
-export EDITOR=nvim
-# export LANG=en_US.UTF-8
 export DOTFILES="$HOME/.dotfiles"
 
 # base
-source "$DOTFILES/secrets"
 source "$DOTFILES/build/utils.sh"
 source "$DOTFILES/path"
 
@@ -16,7 +13,6 @@ source_file "$DOTFILES/starship/init.zsh" --silent
 source_file "$DOTFILES/nnn/init.zsh" --silent
 source_file "$DOTFILES/fzf/init.zsh" --silent
 source_file "$DOTFILES/z/init.zsh" --silent
-source_file "$DOTFILES/extras/spotify/init.zsh" --silent
 
 # customs
 source_file "$DOTFILES/alias/init.zsh" --silent
