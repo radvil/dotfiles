@@ -51,5 +51,5 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
   vim.g.neovide_cursor_animate_command_line = false
   vim.g.neovide_transparency = 0.95
-  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h7" }
+  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }
 end
