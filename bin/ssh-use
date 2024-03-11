@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+__warn() {
+	printf "[\033[0;33m⚠ WARN\033[0m] %s$1\n"
+}
+
+__okay() {
+	printf "\033[2K[\033[00;32m✔ OKAY\033[0m] %s$1\n"
+}
+
+profiles=("laradvil [Work]" "radvil [Personal]" "radvil2 [Personal]")
+
+selected=$(printf "%s\n" "${profiles[@]}" | fzf --border --prompt="🔑 Select Key » ")
+
+if [[ -z $selected ]]; then
+  __warn "No key was selected"
+  return 0
+else
+  eval $(ssh-agent -s)
+  selected=$(echo $selected | cut -d ' ' -f 1)
+  ssh-add "$HOME/.ssh/$selected"
+  __okay "Selected key » $selected"
+fi

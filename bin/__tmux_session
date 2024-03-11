@@ -1,0 +1,42 @@
+#!/usr/bin/env zsh
+
+function __get_session_name() {
+  full_path="$1"
+  session_name=$(basename "$full_path")
+  # if session_name starts with "." remove it"
+  [[ $session_name == .* ]] && session_name=${session_name#.}
+  # uppercase session_name and replace "." with "-"
+  session_name=$(echo "$session_name" | tr '[:lower:]' '[:upper:]' | tr '.' '-')
+  echo "$session_name"
+}
+
+full_path=$(realpath "$1")
+session_name=$(__get_session_name "$full_path")
+
+# if not inside tmux
+if [[ -z "$TMUX" ]]; then
+  # if session exists attach to it
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux attach -t "$session_name"
+  else
+    # if second argument exists and == nvim create session with nvim
+    if [[ -n $2 ]] && [[ $2 == nvim ]]; then
+      tmux new -s "$session_name" -c "$full_path" nvim
+    else
+      tmux new -s "$session_name" -c "$full_path"
+    fi
+  fi
+else
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux switch-client -t "$session_name"
+  else
+    # if second argument exists and == nvim create session with nvim
+    if [[ -n $2 ]] && [[ $2 == nvim ]]; then
+      tmux new -s "$session_name" -d -c "$full_path" nvim
+    else
+      tmux new -s "$session_name" -d -c "$full_path"
+    fi
+    # switch to new created session
+    tmux switch-client -t "$session_name"
+  fi
+fi

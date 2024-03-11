@@ -6,6 +6,7 @@ setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
 setup_link "$DOTFILES/alacritty/config.toml" "$HOME/.config/alacritty.toml"
 setup_link "$DOTFILES/zsh/env" "$HOME/.zshenv"
+setup_link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 
 # toggle color options into pacman
 sudo sed -i 's/#Color/Color/g' /etc/pacman.conf

@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+[[ -s "$DOTFILES/z/init.zsh" ]] && source "$DOTFILES/z/init.zsh"
+[[ -s "$DOTFILES/git/init.zsh" ]] && source "$DOTFILES/git/init.zsh"
+[[ -s "$DOTFILES/starship/init.zsh" ]] && source "$DOTFILES/starship/init.zsh"
+[[ -s "$DOTFILES/omz/init.zsh" ]] && source "$DOTFILES/omz/init.zsh"
+[[ -s "$DOTFILES/fzf/init.zsh" ]] && source "$DOTFILES/fzf/init.zsh"
+[[ -s "$DOTFILES/nnn/init.zsh" ]] && source "$DOTFILES/nnn/init.zsh"
+
+export BUN_INSTALL="$HOME/.bun" 
+[[ -d "$BUN_INSTALL/bin" ]] && export PATH="$BUN_INSTALL/bin:$PATH"
+[[ -s "$BUN_INSTALL/_bun" ]] && source "$BUN_INSTALL/_bun"
+
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+[[ -s "$HOME/.nvm/bash_completion" ]] && source "$HOME/.nvm/bash_completion"
+
+alias ami="ami-project"
+bindkey -s "\ew" "ami-project\n"
+bindkey -s "\em" "zmux\n"
+
+[[ -s "$DOTFILES/alias/init.zsh" ]] && source "$DOTFILES/alias/init.zsh"
