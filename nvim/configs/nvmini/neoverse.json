@@ -2,6 +2,7 @@
   "extras": [
     "extras.cellular-automation",
     "extras.cmp-cmdline",
+    "extras.suda-vim",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.luasnip",
@@ -24,7 +25,8 @@
     "neoverse.extras.ui.neo-tree",
     "neoverse.extras.ui.nvim-notify",
     "neoverse.extras.ui.todo-comments-nvim",
-    "neoverse.extras.ui.trouble-nvim"
+    "neoverse.extras.ui.trouble-nvim",
+    "neoverse.extras.ui.which-key-nvim"
   ],
   "version": 2
 }
