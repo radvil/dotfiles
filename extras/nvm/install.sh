@@ -14,10 +14,10 @@ if [ ! -d "$HOME/.nvm" ]; then
 	info "Installing global npm modules..."
 	nvm install v14
 	nvm alias default 14
-	npm install -g @angular/cli@13 yarn
+	npm install -g @angular/cli@13
 	nvm install --lts
 	nvm use --lts
-	npm install -g @angular/cli@next yarn nx
+	npm install -g @angular/cli@latest
 	okay "Global node modules installed successfully!"
 else
 	info "\"Node Version Manager\" has already installed. Skipping..."
