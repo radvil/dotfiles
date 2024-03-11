@@ -27,6 +27,19 @@ if confirmed "Do you wanna install & setup \"Tmux\" ?"; then
 	source_file "$DOTFILES/tmux/install.sh"
 fi
 
+## YAY
+if confirmed "Do you wanna install & setup \"Yay\" ?"; then
+	sudo pacman -S --needed git base-devel
+	mkdir ~/Downloads/Programs -p
+	if [ -d "$HOME/Downloads/Programs/yay" ]; then
+	  rm -rf "$HOME/Downloads/Programs/yay"
+	fi
+	git clone https://aur.archlinux.org/yay.git ~/Downloads/Programs/yay
+	pushd ~/Downloads/Programs/yay
+	makepkg -si
+	popd
+fi
+
 ## NeoVim Nightly
 if confirmed "Do you wanna install & setup \"Neovim Nightly\" ?"; then
 	source_file "$DOTFILES/nvim/bin/install.sh"

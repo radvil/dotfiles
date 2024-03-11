@@ -46,10 +46,14 @@ if vim.opt.signcolumn:get() == "yes" and not Utils.lazy_has("statuscol.nvim") th
 end
 
 if vim.g.neovide then
-  vim.g.neo_transparent = false
   ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
   vim.g.neovide_cursor_animate_command_line = false
-  vim.g.neovide_transparency = 0.95
+  if vim.g.neo_transparent then
+    vim.g.neovide_transparency = 0.96
+    vim.g.neo_transparent = false
+  else
+    vim.g.neovide_transparency = 1
+  end
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }
 end

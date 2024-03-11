@@ -96,7 +96,7 @@ function zmux() {
 bindkey -s "\em" "zmux\n"
 
 function ssh-use() {
-  profiles=("radvil-gitlab [Work]" "radvil-github [Personal]" "radvil2-github [Personal]")
+  profiles=("laradvil [Work]" "radvil [Personal]" "radvil2 [Personal]")
   selected=$(printf "%s\n" "${profiles[@]}" | fzf --border --prompt="🔑 Select Key » ")
   if [[ -z $selected ]]; then
     warn "No key was selected"

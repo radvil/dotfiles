@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-[[ $DOTFILES_UTILS_LOADED != "true" ]] && source "$DOTFILES/build/utils.sh"
+if [ $DOTFILES_UTILS_LOADED != "true" ]; then
+  source "$DOTFILES/build/utils.sh"
+fi
 
-if [ -f "$HOME/.tmux" ]; then
-  rm -rf "$HOME/.tmux"
+if [ -d "$HOME/.tmux/plugins" ]; then
+  rm -rf "$HOME/.tmux/plugins"
 fi
 
 sudo pacman -S tmux
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source ~/.tmux.conf
+ln -sf $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
+## tmux source ~/.tmux.conf
