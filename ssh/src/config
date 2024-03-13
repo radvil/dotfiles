@@ -1,5 +1,5 @@
 # NOTE: Clone via ssh command format
-# ${Host.User}@${Host.HostName}:${Host}/${repo_name}.git
+# ${Host.User}@${Host}:${base_repository_url}.git
 #
 # EXAMPLE:
 # `$ git clone git@github.com:radvil/dotfiles.git`
