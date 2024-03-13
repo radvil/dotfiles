@@ -8,20 +8,19 @@ __okay() {
 	printf "\033[2K[\033[00;32m✔ OKAY\033[0m] %s$1\n"
 }
 
-__profiles=("laradvil [Work]" "radvil [Personal]" "radvil2 [Personal]")
-
-__ssh_profile=$(printf "%s\n" "${__profiles[@]}" | fzf --border --prompt="🔑 Select Key » ")
+# __DOT_SSH_PROFILES=("laradvil [Work]" "radvil [Personal]" "radvil2 [Personal]")
+__ssh_profile=$(printf "%s\n" "${__DOT_SSH_PROFILES[@]}" | fzf --border --prompt="🔑 Select Key » ")
 
 if [[ -z "$__ssh_profile" ]]; then
 	__warn "No key was selected"
 	return 0
 else
-	# ps aux | grep "ssh-agent -s" | awk "{print $2}" | xargs
-  # eval $(ssh-agent -s)
+  ps -ef | grep "ssh-agent" | grep -v grep | awk '{print $2}' | xargs kill
+
   [[ -z $SSH_AGENT_PID ]] || eval "$(ssh-agent -s)"
 
   ## TODO
 	__ssh_key="/home/radvil/.ssh/$(echo $__ssh_profile | cut -d ' ' -f 1)"
   ssh-add $__ssh_key
-	# __okay "Selected key » $__DOT_SSH_KEY"
+	__okay "Selected key » $__DOT_SSH_KEY"
 fi

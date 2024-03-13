@@ -12,6 +12,11 @@ if confirmed "Do you wanna install media packages ?"; then
   okay "Media players and codecs installed successfully!"
 fi
 
+## Oh My Zsh
+if confirmed "Do you wanna install & setup \"Open SSH\" ?"; then
+	source_file "$DOTFILES/ssh/install.sh"
+fi
+
 ## Node Version Manager
 if confirmed "Do you wanna install & setup \"Node Version Manager\" ?"; then
 	source_file "$DOTFILES/extras/nvm/install.sh"

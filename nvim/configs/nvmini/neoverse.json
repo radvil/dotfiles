@@ -5,6 +5,7 @@
     "extras.suda-vim",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
+    "neoverse.extras.completion.codeium-nvim",
     "neoverse.extras.completion.luasnip",
     "neoverse.extras.completion.mini-surround",
     "neoverse.extras.completion.nvim-autopairs",

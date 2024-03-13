@@ -12,3 +12,8 @@ if [ -z "${MY_Z_FILE}" ]; then
   [ -f "$MY_Z_FILE" ] || warn "file $MY_Z_FILE was not found"
   eval "$(lua $MY_Z_FILE --init zsh)"
 fi
+
+if [ -z "${__DOT_SSH_PROFILES}" ]; then
+  __DOT_SSH_PROFILES=("laradvil [Work]" "radvil [Personal]" "radvil2 [Personal]")
+  export __DOT_SSH_PROFILES
+fi

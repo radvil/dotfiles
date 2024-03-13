@@ -1,0 +1,17 @@
+IdentityFile ~/.ssh/radvil
+
+# GitLab.com
+Host github.laradvil.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/laradvil
+
+# Personals
+Host github.radvil.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/radvil
+
+# Personals
+Host github.radvil2.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/radvil2
+
