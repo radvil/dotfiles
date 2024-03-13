@@ -9,7 +9,7 @@ fi
 
 if [ -z "${MY_Z_FILE}" ]; then
   MY_Z_FILE="$DOTFILES/z/z.lua"
-  [ -f "$MY_Z_FILE" ] || warn "file $MY_Z_FILE was not found"
+  [ -f "$MY_Z_FILE" ] || printf "[\033[0;33m⚠ WARN\033[0m] file $MY_Z_FILE was not found\n"
   eval "$(lua $MY_Z_FILE --init zsh)"
 fi
 
