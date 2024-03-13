@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
+- /home/radvil/AMI/cliocrm-frontend-console
 - /home/radvil/AMI/mykado-console
 - /home/radvil/Projects/linuxdev/neovim/NeoVerse
-- /home/radvil/AMI/cliocrm-frontend-console
 - /home/radvil/Projects/linuxdev/neovim/LazyVim
 - /home/radvil/Projects/linuxdev/neovim/NeoLine
 startuppopupversion: 5

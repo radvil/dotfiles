@@ -1,17 +1,32 @@
-IdentityFile ~/.ssh/radvil
+# NOTE: Clone via ssh command format
+# ${Host.User}@${Host.HostName}:${Host}/${repo_name}.git
+#
+# EXAMPLE:
+# `$ git clone git@github.com:radvil/dotfiles.git`
+# `$ git clone git@laradvil:ptami/mykado-platform-frontend.git`
+# `$ git clone git@radvil2:radvil2/smooth-cursor.nvim.git`
 
-# GitLab.com
-Host github.laradvil.com
-  PreferredAuthentications publickey
-  IdentityFile ~/.ssh/laradvil
-
-# Personals
-Host github.radvil.com
-  PreferredAuthentications publickey
+# Main github
+Host github.com
   IdentityFile ~/.ssh/radvil
+	HostName github.com
+  User git
 
-# Personals
-Host github.radvil2.com
+# AMI
+Host laradvil
+  IdentityFile ~/.ssh/laradvil
+  HostName github.com
+  User git
+
+# Personal (same as main)
+Host radvil
+  IdentityFile ~/.ssh/radvil
+	HostName github.com
+  User git
+
+# Personal
+Host radvil2
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/radvil2
-
+	HostName github.com
+  User git

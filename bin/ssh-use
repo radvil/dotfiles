@@ -15,12 +15,10 @@ if [[ -z "$__ssh_profile" ]]; then
 	__warn "No key was selected"
 	return 0
 else
-  ps -ef | grep "ssh-agent" | grep -v grep | awk '{print $2}' | xargs kill
-
-  [[ -z $SSH_AGENT_PID ]] || eval "$(ssh-agent -s)"
-
-  ## TODO
+  # ps -ef | grep "ssh-agent" | grep -v grep | awk '{print $2}' | xargs kill
+  [[ -z $SSH_AGENT_PID ]] || eval $(ssh-agent -s)
+  ssh-add -D
 	__ssh_key="/home/radvil/.ssh/$(echo $__ssh_profile | cut -d ' ' -f 1)"
   ssh-add $__ssh_key
-	__okay "Selected key » $__DOT_SSH_KEY"
+	__okay "Selected key » $__ssh_key"
 fi
