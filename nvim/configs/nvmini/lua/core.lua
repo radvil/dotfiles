@@ -31,7 +31,7 @@ function M.defaults()
       wrap = true,
       size = { width = 0.8, height = 0.8 },
       title = Icons.Vim .. "NeoConfig",
-      border = "rounded",
+      border = vim.g.neovide and "none" or "rounded",
       title_pos = "right",
       icons = {
         cmd = Icons.CmdOutlined,
