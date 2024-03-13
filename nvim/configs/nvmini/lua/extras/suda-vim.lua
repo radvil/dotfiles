@@ -1,4 +1,9 @@
+---@type LazySpec
 return {
   "lambdalisue/suda.vim",
-  config = false
+  config = false,
+  cmd = {
+    "SudaRead",
+    "SudaWrite"
+  },
 }

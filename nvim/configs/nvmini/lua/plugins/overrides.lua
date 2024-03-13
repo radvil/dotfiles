@@ -60,6 +60,15 @@ return {
   },
 
   {
+    "nvim-treesitter-context",
+    optional = true,
+    opts = {
+      enable = vim.g.neovide,
+      max_lines = 3,
+    },
+  },
+
+  {
     "folke/persistence.nvim",
     optional = true,
     opts = function(_, opts)
@@ -146,9 +155,13 @@ return {
     end,
   },
 
+  ---@type LazySpec
   {
     "folke/noice.nvim",
-    optional = true,
+    -- optional = true,
+    enabled = function()
+      return vim.g.neovide
+    end,
     opts = {
       notify = { enabled = true },
       smartmove = { enabled = true },

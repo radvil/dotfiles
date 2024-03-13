@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env zsh
 #shellcheck disable=2181
 
 git_purge_branch() {

@@ -2,7 +2,7 @@ local Utils = require("neoverse.utils")
 
 -- GLOBALS
 vim.g.neo_transparent = true
-vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
+vim.g.neo_winborder = not vim.g.neovide and "single" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = false
 vim.g.neo_autoformat = false
@@ -50,10 +50,7 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
   vim.g.neovide_cursor_animate_command_line = false
   if vim.g.neo_transparent then
-    vim.g.neovide_transparency = 0.96
     vim.g.neo_transparent = false
-  else
-    vim.g.neovide_transparency = 1
   end
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }
 end

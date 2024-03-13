@@ -2,7 +2,7 @@
 
 # provide cutom values for fzf
 export FZF_TMUX=1
-export FZF_TMUX_OPTS="-p -h 80% -w 69% --layout=reverse --border"
+export FZF_TMUX_OPTS="-p -h 80% -w 60% --layout=reverse --border"
 
 # custom file finder
 function _fzf_compgen_path() {
@@ -18,14 +18,13 @@ function _fzf_compgen_dir() {
 function _fzf_comprun() {
   local command=$1
   shift
-
   case "$command" in
     tree)         fd . --type=directory | fzf --preview "tree -C {}" "$@";;
     *)            fzf "$@";;
   esac
 }
 
-# default utilities
+# load bultin functions
 \. "$DOTFILES/fzf/utils/completion.zsh"
 \. "$DOTFILES/fzf/utils/key-bindings.zsh"
 

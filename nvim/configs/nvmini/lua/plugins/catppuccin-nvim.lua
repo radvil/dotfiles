@@ -6,7 +6,7 @@ return {
   opts = function()
     ---@type CatppuccinOptions
     return {
-      flavour = vim.opt.background:get() == "light" and "latte" or "frappe",
+      flavour = vim.g.neovide and "mocha" or "frappe",
       dim_inactive = {
         enabled = false,
         percentage = 0.13,

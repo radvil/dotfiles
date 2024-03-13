@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # shellcheck disable=SC2046,2086,SC2181,1090
-
-export DOTFILES_UTILS_LOADED="true"
 
 info() {
 	printf "[\033[00;34m🚀INFO\033[0m] %s$1\n"
@@ -92,4 +90,3 @@ has_installed() {
 	cmdname="$(command -v "$1" 2>/dev/null)"
 	[[ -x "$cmdname" ]]
 }
-

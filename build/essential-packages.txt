@@ -30,3 +30,4 @@ trash-cli
 htop
 neofetch
 bc
+xclip
