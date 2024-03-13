@@ -6,19 +6,23 @@ if [ -z "${BUN_INSTALL}" ]; then
   export BUN_INSTALL
 fi
 
+function __setup_nvm(){
+  [ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
+  [ -s "$HOME/.nvm/bash_completion" ] && source "$HOME/.nvm/bash_completion"
+}
 
-if ! command -v nvm &> /dev/null; then
-  # HACK: prevent sourcing every time a new instance of zsh spawned
-  # becaues it is too much slow
-  function load_nvm() {
-    [ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
-    [ -s "$HOME/.nvm/bash_completion" ] && source "$HOME/.nvm/bash_completion"
-    nvm ls
-    printf "\033[2K[\033[00;32m✔ OKAY\033[0m] nvm loaded\n"
-  }
+# NOTE: Load on first shell initialization
+if [ -z "${NVM_DIR}" ]; then
+  __setup_nvm
+else
+  if ! command -v nvm &> /dev/null; then
+    # HACK: prevent sourcing every time a new instance of zsh spawned
+    # becaues it is too much slow, so better expose it as a function
+    function dot-load-nvm() {
+      __setup_nvm
+      nvm ls
+      printf "\033[2K[\033[00;32m✔ OKAY\033[0m] nvm loaded\n"
+    }
+  fi
 fi
 
-# if [ -z "${NVM_DIR}" ]; then
-#   [ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
-#   [ -s "$HOME/.nvm/bash_completion" ] && source "$HOME/.nvm/bash_completion"
-# fi
