@@ -6,7 +6,7 @@ if [ -z "${BUN_INSTALL}" ]; then
   export BUN_INSTALL
 fi
 
-function __setup_nvm(){
+function __setup_nvm() {
   [ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"
   [ -s "$HOME/.nvm/bash_completion" ] && source "$HOME/.nvm/bash_completion"
 }
