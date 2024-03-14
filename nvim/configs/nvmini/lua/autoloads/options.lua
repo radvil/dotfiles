@@ -9,7 +9,9 @@ vim.g.neo_autoformat = false
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
 
 -- options
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
+vim.opt.guicursor =
+  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 vim.opt.laststatus = 3
 vim.opt.smoothscroll = true
 vim.opt.autowrite = true
