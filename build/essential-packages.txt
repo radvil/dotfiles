@@ -31,3 +31,4 @@ htop
 neofetch
 bc
 xclip
+man-db
