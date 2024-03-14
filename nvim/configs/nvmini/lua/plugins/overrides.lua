@@ -67,6 +67,15 @@ return {
       max_lines = 3,
     },
   },
+  -- Automatically syncs terminal background and cursor 
+  -- with any neovim colorscheme.
+  -- {
+  --   "typicode/bg.nvim",
+  --   lazy = false,
+  --   enabled = function()
+  --     return not vim.g.neo_transparent
+  --   end
+  -- },
 
   {
     "folke/persistence.nvim",
