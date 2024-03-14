@@ -5,7 +5,6 @@
     "extras.suda-vim",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
-    "neoverse.extras.completion.codeium-nvim",
     "neoverse.extras.completion.luasnip",
     "neoverse.extras.completion.mini-surround",
     "neoverse.extras.completion.nvim-autopairs",
@@ -14,6 +13,7 @@
     "neoverse.extras.editor.mini-splitjoin",
     "neoverse.extras.editor.nvim-ufo",
     "neoverse.extras.editor.obsidian-nvim",
+    "neoverse.extras.editor.outline",
     "neoverse.extras.editor.treesitter-context",
     "neoverse.extras.formatter.prettier",
     "neoverse.extras.lang.angular",
@@ -29,5 +29,5 @@
     "neoverse.extras.ui.todo-comments-nvim",
     "neoverse.extras.ui.trouble-nvim"
   ],
-  "version": 2
+  "version": 3
 }
