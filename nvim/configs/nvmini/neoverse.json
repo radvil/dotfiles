@@ -14,7 +14,6 @@
     "neoverse.extras.editor.obsidian-nvim",
     "neoverse.extras.editor.outline",
     "neoverse.extras.editor.treesitter-context",
-    "neoverse.extras.formatter.prettier",
     "neoverse.extras.lang.angular",
     "neoverse.extras.lang.markdown",
     "neoverse.extras.lang.tailwind",

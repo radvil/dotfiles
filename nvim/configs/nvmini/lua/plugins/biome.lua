@@ -1,12 +1,5 @@
-local function biome_lsp_or_prettier(bufnr)
-  local has_biome_lsp = vim.lsp.get_clients({
-    bufnr = bufnr,
-    name = "biome",
-  })[1]
-  if has_biome_lsp then
-    return {}
-  end
-  local has_prettier = vim.fs.find({
+local has_prettier = function()
+  return vim.fs.find({
     -- https://prettier.io/docs/en/configuration.html
     ".prettierrc",
     ".prettierrc.json",
@@ -19,7 +12,17 @@ local function biome_lsp_or_prettier(bufnr)
     "prettier.config.js",
     "prettier.config.cjs",
   }, { upward = true })[1]
-  if has_prettier then
+end
+
+local function biome_lsp_or_prettier(bufnr)
+  local has_biome_lsp = vim.lsp.get_clients({
+    bufnr = bufnr,
+    name = "biome",
+  })[1]
+  if has_biome_lsp then
+    return {}
+  end
+  if has_prettier() then
     return { "prettier" }
   end
   return { "biome" }
@@ -29,16 +32,16 @@ return {
   {
     "mason.nvim",
     optional = true,
-    opts = {
-      ensure_installed = { "biome" },
-    },
+    opts = function(_, opts)
+      table.insert(opts.ensure_installed or {}, "prettier")
+    end,
   },
   {
     "conform.nvim",
     optional = true,
     ---@class ConformOpts
-    opts = {
-      formatters_by_ft = {
+    opts = function(_, opts)
+      opts.formatters_by_ft = {
         javascript = biome_lsp_or_prettier,
         typescript = biome_lsp_or_prettier,
         javascriptreact = biome_lsp_or_prettier,
@@ -55,7 +58,12 @@ return {
         markdown = { "biome" },
         handlebars = { "biome" },
         ["markdown.mdx"] = { "biome" },
-      },
-    },
+      }
+      if vim.opt.expandtab then
+        require("conform").formatters.biome = {
+          command = "biome --indent-style=space",
+        }
+      end
+    end,
   },
 }
