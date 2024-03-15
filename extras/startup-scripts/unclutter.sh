@@ -1,3 +1,5 @@
 #!/bin/bash
 
-unclutter --timeout=5 &
+if [ "$XDG_SESSION_TYPE" == "x11" ]; then
+  unclutter --timeout=5 &
+fi
