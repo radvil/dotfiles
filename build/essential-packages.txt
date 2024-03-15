@@ -2,6 +2,8 @@ amd-ucode
 zsh
 git
 curl
+jq
+tidy
 ssh-tools
 rsync
 lua51
