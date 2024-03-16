@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # links configs
-setup_link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
 setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
 setup_link "$DOTFILES/alacritty/config.toml" "$HOME/.config/alacritty.toml"
@@ -14,23 +13,6 @@ sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 # cleanning up pacman cache every week if necessary
 sudo systemctl enable paccache.timer
 
-# Install AUR Helper
-if ! has_installed yay; then
-	if confirmed "Install \"yay\" as AUR Helper?"; then
-		info "Installing \"yay\" as \"AUR Helper\" alternative"
-		DOWNLOAD_PATH="$HOME/Downloads/Programs"
-		mkdir "$DOWNLOAD_PATH" -p
-		git clone https://aur.archlinux.org/yay.git "$DOWNLOAD_PATH/yay"
-		pushd "$DOWNLOAD_PATH/yay" || exit
-		makepkg -si
-		popd || exit
-		rm -rf "$DOWNLOAD_PATH/yay"
-		okay "\"yay\" installed successfully!"
-	fi
-else
-	info "\"yay\" has already installed. Skipping..."
-fi
-
 # Install GUI Package Manager
 if ! has_installed pamac; then
 	if confirmed "Install \"pamac-aur\" as GUI package manager?"; then
@@ -40,6 +22,12 @@ if ! has_installed pamac; then
 	fi
 else
 	info "\"pamac-aur\" has already installed. Skipping..."
+fi
+
+# Media players codecs
+if confirmed "Do you wanna install media packages ?"; then
+  install_packages "$DOTFILES/build/media-packages.txt"
+  okay "Media players and codecs installed successfully!"
 fi
 
 # Additional fonts and emoji
@@ -58,6 +46,16 @@ fi
 if confirmed "Do you wanna enable \"Bluetooth Service\"?"; then
 	sudo systemctl enable bluetooth.service
 	sudo systemctl start bluetooth.service
+fi
+
+## Tmux
+if confirmed "Do you wanna install & setup \"Tmux\" ?"; then
+	source_file "$DOTFILES/tmux/install.sh"
+fi
+
+## NeoVim Nightly
+if confirmed "Do you wanna install & setup \"Neovim Nightly\" ?"; then
+	source_file "$DOTFILES/nvim/bin/install.sh"
 fi
 
 # change default shell to zsh
