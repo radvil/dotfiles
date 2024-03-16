@@ -34,3 +34,4 @@ neofetch
 bc
 xclip
 man-db
+sshfs
