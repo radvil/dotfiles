@@ -1,4 +1,4 @@
-title-text:""
+title-text: "Grub Test"
 desktop-image: "background.png"
 message-font: "Poppins Regular 14"
 message-color: "#757575"
@@ -6,7 +6,7 @@ terminal-font: "Terminus Regular 14"
 terminal-box: "terminal_*.png"
 
 + label {
-  text="Grub Bootloader"
+  text="Loader Evil"
   font = "Poppins Regular 48"
   color="#99C6FF"
   left = 50%-200
@@ -17,7 +17,7 @@ terminal-box: "terminal_*.png"
 }
 
 + label {
-  text="Choose your operating system"
+  text="Select OS"
   font = "Poppins Regular 16"
   color="#F3F3F3"
   top=30%-30
@@ -67,3 +67,4 @@ terminal-box: "terminal_*.png"
   height = 42
   file = "menu.png"
 }
+
