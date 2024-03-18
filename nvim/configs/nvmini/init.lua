@@ -16,7 +16,7 @@ require("core").bootstrap({
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()
-          vim.cmd.colorscheme("catppuccin-frappe")
+          vim.cmd.colorscheme("catppuccin")
         end,
         builtins = {
           keymaps = true,
