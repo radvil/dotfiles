@@ -6,7 +6,7 @@ return {
   opts = function()
     ---@type CatppuccinOptions
     return {
-      flavour = vim.g.neovide and "mocha" or "frappe",
+      flavour = "mocha",
       dim_inactive = {
         enabled = false,
         percentage = 0.13,
