@@ -1,6 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LuaSnip": { "branch": "master", "commit": "a7a4b4682c4b3e2ba82b82a4e6e5f5a0e79dec32" },
+  "NeoVerse": { "branch": "main", "commit": "f91758ba987c52b6e08a84265eb429bad196928e" },
   "SchemaStore.nvim": { "branch": "main", "commit": "4d798fd5b692c8fce77268aba8f6f926b0c9f835" },
   "animation.nvim": { "branch": "main", "commit": "fb77091ab72ec9971aee0562e7081182527aaa6a" },
   "bufferline.nvim": { "branch": "main", "commit": "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef" },
@@ -11,7 +12,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "conform.nvim": { "branch": "master", "commit": "0a530b31acacf10eca9f9a74b2434ece4d232ca3" },
+  "conform.nvim": { "branch": "master", "commit": "46cb8285275a2657de70c07f4ae3f8e6ffc6a075" },
   "dashboard-nvim": { "branch": "master", "commit": "92c94c8c3c92ddd29e1181a0aebcc22f2fe96f71" },
   "diffview.nvim": { "branch": "main", "commit": "3dc498c9777fe79156f3d32dddd483b8b3dbd95f" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
