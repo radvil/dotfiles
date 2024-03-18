@@ -25,5 +25,18 @@ return {
         },
       },
     },
+    filesystem = {
+      window = {
+        mappings = {
+          ["O"] = {
+            function(state)
+              local fpath = state.tree:get_node().path
+              require("neoverse.utils").open_with_system_default(fpath)
+            end,
+            desc = "open with system default",
+          },
+        }
+      }
+    }
   },
 }
