@@ -72,7 +72,12 @@ M.debug_plugins = function()
 end
 
 M.main = function()
-  vim.print(vim.loop.os_uname());
+  -- vim.print(vim.loop.os_uname());
+  local has_biome_lsp = vim.lsp.get_clients({
+    bufnr = vim.api.nvim_get_current_buf() or 0,
+    name = "biome",
+  })[1]
+  vim.print(has_biome_lsp)
 end
 
 M.main()
