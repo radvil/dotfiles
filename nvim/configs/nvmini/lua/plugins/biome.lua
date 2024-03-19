@@ -1,69 +1,49 @@
-local has_prettier = function()
-  return vim.fs.find({
-    -- https://prettier.io/docs/en/configuration.html
-    ".prettierrc",
-    ".prettierrc.json",
-    ".prettierrc.yml",
-    ".prettierrc.yaml",
-    ".prettierrc.json5",
-    ".prettierrc.js",
-    ".prettierrc.cjs",
-    ".prettierrc.toml",
-    "prettier.config.js",
-    "prettier.config.cjs",
-  }, { upward = true })[1]
-end
-
-local function biome_lsp_or_prettier(bufnr)
-  local has_biome_lsp = vim.lsp.get_clients({
-    bufnr = bufnr,
-    name = "biome",
-  })[1]
-  if has_biome_lsp then
-    return {}
-  end
-  if has_prettier() then
-    return { "prettier" }
-  end
-  return { "biome" }
-end
+local with_fallback = { { "biome", "prettier" } }
 
 return {
   {
     "mason.nvim",
-    optional = true,
     opts = function(_, opts)
-      table.insert(opts.ensure_installed or {}, "prettier")
+      table.insert(opts.ensure_installed, "biome")
     end,
   },
+
   {
     "conform.nvim",
     optional = true,
     ---@class ConformOpts
-    opts = function(_, opts)
-      opts.formatters_by_ft = {
-        javascript = biome_lsp_or_prettier,
-        typescript = biome_lsp_or_prettier,
-        javascriptreact = biome_lsp_or_prettier,
-        typescriptreact = biome_lsp_or_prettier,
-        json = { "biome" },
-        jsonc = { "biome" },
-        vue = { "biome" },
-        css = { "biome" },
-        scss = { "biome" },
-        less = { "biome" },
-        html = { "biome" },
-        yaml = { "biome" },
-        graphql = { "biome" },
-        markdown = { "biome" },
-        handlebars = { "biome" },
-        ["markdown.mdx"] = { "biome" },
+    opts = {
+      -- if both biome and prettier executable is not available
+      lsp_fallback = true,
+      formatters = {
+        biome = {
+          ---NOTE: only use biome if config file exists
+          condition = function(ctx)
+            return vim.fs.find({
+              "biome.json",
+              "biome.jsonc",
+            }, { path = ctx.filename, upward = true })[1]
+          end
+        },
+      },
+      formatters_by_ft = {
+        javascript = with_fallback,
+        typescript = with_fallback,
+        javascriptreact = with_fallback,
+        typescriptreact = with_fallback,
+        json = with_fallback,
+        jsonc = with_fallback,
+        vue = with_fallback,
+        css = with_fallback,
+        scss = with_fallback,
+        less = with_fallback,
+        html = with_fallback,
+        yaml = with_fallback,
+        graphql = with_fallback,
+        markdown = with_fallback,
+        handlebars = with_fallback,
+        ["markdown.mdx"] = with_fallback,
       }
-      if vim.opt.expandtab then
-        require("conform").formatters.biome = {
-          command = "biome --indent-style=space",
-        }
-      end
-    end,
+    }
   },
 }
