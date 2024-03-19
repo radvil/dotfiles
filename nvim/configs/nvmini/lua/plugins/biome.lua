@@ -1,4 +1,5 @@
-local with_fallback = { { "biome", "prettier" } }
+local biome_prior = { { "biome", "prettier" } }
+local prettier_prior = { { "prettier", "biome" } }
 
 return {
   {
@@ -19,31 +20,29 @@ return {
         biome = {
           ---NOTE: only use biome if config file exists
           condition = function(ctx)
-            return vim.fs.find({
-              "biome.json",
-              "biome.jsonc",
-            }, { path = ctx.filename, upward = true })[1]
-          end
+            return vim.fs.find({ "biome.json", "biome.jsonc" }, { path = ctx.filename, upward = true })[1]
+          end,
         },
       },
       formatters_by_ft = {
-        javascript = with_fallback,
-        typescript = with_fallback,
-        javascriptreact = with_fallback,
-        typescriptreact = with_fallback,
-        json = with_fallback,
-        jsonc = with_fallback,
-        vue = with_fallback,
-        css = with_fallback,
-        scss = with_fallback,
-        less = with_fallback,
-        html = with_fallback,
-        yaml = with_fallback,
-        graphql = with_fallback,
-        markdown = with_fallback,
-        handlebars = with_fallback,
-        ["markdown.mdx"] = with_fallback,
-      }
-    }
+        javascript = biome_prior,
+        typescript = biome_prior,
+        javascriptreact = biome_prior,
+        typescriptreact = biome_prior,
+        json = biome_prior,
+        jsonc = biome_prior,
+        vue = biome_prior,
+
+        yaml = prettier_prior,
+        graphql = prettier_prior,
+        css = prettier_prior,
+        scss = prettier_prior,
+        less = prettier_prior,
+        html = prettier_prior,
+        markdown = prettier_prior,
+        handlebars = prettier_prior,
+        ["markdown.mdx"] = prettier_prior,
+      },
+    },
   },
 }
