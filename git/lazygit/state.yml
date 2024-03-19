@@ -1,13 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/radvil/.dotfiles
-- /home/radvil/Documents/obsidian-vault
+- /home/radvil/AMI/cliocrm-frontend-console
 - /home/radvil/AMI/mykado-console
-- /home/radvil/Downloads/Programs/WhiteSur-gtk-theme
+- /home/radvil/Documents/obsidian-vault
 - /home/radvil/Projects/linuxdev/neovim/LazyVim
 - /home/radvil/Projects/linuxdev/neovim/NeoVerse
 - /home/radvil/Projects/angular-projects/amdb
-- /home/radvil/AMI/cliocrm-frontend-console
 - /home/radvil/AMI/clio-microsite
 - /home/radvil/Projects/linuxdev/neovim/NeoLine
 startuppopupversion: 5
