@@ -22,7 +22,7 @@ function confirmed() {
 	fi
 }
 
-__setup__() {
+__install__() {
   if confirmed "Install \"Git Utilities\" ?"; then
     if ! command -v "lazygit" >/dev/null 2>&1; then
       info "Installing \"git, lazygit, git-delta...\""
@@ -47,4 +47,4 @@ __setup__() {
   fi
 }
 
-__setup__
+__install__
