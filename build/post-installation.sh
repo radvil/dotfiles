@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # links configs
-setup_link "$DOTFILES/git/lazygit" "$HOME/.config/lazygit"
 setup_link "$DOTFILES/kitty" "$HOME/.config/kitty"
 setup_link "$DOTFILES/alacritty/config.toml" "$HOME/.config/alacritty.toml"
 setup_link "$DOTFILES/zsh/env" "$HOME/.zshenv"
@@ -26,8 +25,8 @@ fi
 
 # Media players codecs
 if confirmed "Do you wanna install media packages ?"; then
-  install_packages "$DOTFILES/build/media-packages.txt"
-  okay "Media players and codecs installed successfully!"
+	install_packages "$DOTFILES/build/media-packages.txt"
+	okay "Media players and codecs installed successfully!"
 fi
 
 # Additional fonts and emoji
@@ -52,6 +51,9 @@ fi
 if confirmed "Do you wanna install & setup \"Tmux\" ?"; then
 	source_file "$DOTFILES/tmux/install.sh"
 fi
+
+## Git utilities including LazyGit
+source_file "$DOTFILES/git/install.sh"
 
 ## NeoVim Nightly
 if confirmed "Do you wanna install & setup \"Neovim Nightly\" ?"; then
