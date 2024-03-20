@@ -10,7 +10,7 @@ return {
     optional = true,
     opts = {
       animation = {
-        enable = true
+        enable = true,
       },
     },
   },
@@ -25,6 +25,10 @@ return {
   {
     "folke/which-key.nvim",
     optional = true,
-    lazy = true,
+    opts = {
+      defaults = {
+        ["Z"] = { name = "Quit" },
+      },
+    },
   },
 }

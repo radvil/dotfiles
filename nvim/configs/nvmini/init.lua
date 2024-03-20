@@ -12,7 +12,7 @@ require("core").bootstrap({
     {
       "radvil/NeoVerse",
       import = "neoverse.core.plugins",
-      dev = false,
+      dev = true,
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()

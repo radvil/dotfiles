@@ -39,6 +39,13 @@ Utils.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
 Utils.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
 Utils.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
 
+Utils.map("n", "ZZ", ":qa<cr>", { desc = "quit session" })
+Utils.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
+Utils.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
+Utils.map("n", "ZB", ":BAD<cr>", { desc = "quit [B]uffers" })
+Utils.map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
+Utils.map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
+
 if not vim.g.neovide then
   Utils.map("n", "<leader>fz", function()
     vim.cmd([[call system('zmux')]])

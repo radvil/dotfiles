@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
-  "folke/noice.nvim",
-  -- optional = true,
+  "noice.nvim",
+  optional = true,
   enabled = function()
     return vim.g.neovide
   end,

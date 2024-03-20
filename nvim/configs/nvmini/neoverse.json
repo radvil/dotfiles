@@ -1,8 +1,9 @@
 {
   "extras": [
+    "extras.ai.copilot",
+    "extras.ai.gp-nvim",
     "extras.cellular-automation",
     "extras.cmp-cmdline",
-    "extras.copilot",
     "extras.rest-nvim",
     "extras.suda-vim",
     "neoverse.extras.colorscheme.monokai-pro",
@@ -17,7 +18,6 @@
     "neoverse.extras.editor.outline",
     "neoverse.extras.editor.treesitter-context",
     "neoverse.extras.lang.angular",
-    "neoverse.extras.lang.markdown",
     "neoverse.extras.lang.tailwind",
     "neoverse.extras.lang.typescript",
     "neoverse.extras.linter.eslint",
@@ -27,7 +27,8 @@
     "neoverse.extras.ui.noice-nvim",
     "neoverse.extras.ui.nvim-notify",
     "neoverse.extras.ui.todo-comments-nvim",
-    "neoverse.extras.ui.trouble-nvim"
+    "neoverse.extras.ui.trouble-nvim",
+    "neoverse.extras.ui.which-key-nvim"
   ],
   "version": 3
 }
