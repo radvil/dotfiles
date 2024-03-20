@@ -1,10 +1,9 @@
 ---@diagnostic disable: need-check-nil
 
 return {
-  {
-    "nvim-lualine/lualine.nvim",
-    enabled = true,
-  },
+  { "lukas-reineke/headlines.nvim", enabled = false },
+  { "iamcco/markdown-preview.nvim", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = true },
   {
     "radvil2/windows.nvim",
     optional = true,
