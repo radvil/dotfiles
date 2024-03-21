@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
-ln -sf "$DOTFILES/nvim/configs/nvmini" "$HOME/.config/nvim"
-ln -sf "$DOTFILES/nvim/configs/nvmini" "$HOME/.config/nvmini"
-ln -sf "$DOTFILES/nvim/configs/lazyvim" "$HOME/.config/lazyvim"
+__install__() {
+	local source_dir="$DOTFILES/nvim/configs"
+	local target_dir="$HOME/.config"
+	ln -sf "$source_dir/nvmini" "$target_dir/nvim"
+	ln -sf "$source_dir/nvmini" "$target_dir/nvmini"
+	ln -sf "$source_dir/lazyvim" "$target_dir/lazyvim"
+}
+
+__install__
