@@ -8,26 +8,22 @@
   email = radvil.linux@gmail.com
 
 ; below are config to use delta
-; [interactive]
-;   diffFilter = delta --color-only --features=interactive
 [delta]
   features = decorations
-  line-numbers = true
+  line-numbers = false
   navigate = true ; use n and N to move between diff sections
   side-by-side = false
   dark = true ; or light = true
   syntax-theme = Nord
-  ; plus-style = syntax "#003800"
-  ; minus-style = syntax "#3f0001"
 
-; [delta "decorations"]
-;   commit-decoration-style = bold yellow box ul
-;   file-style = bold yellow ul
-;   file-decoration-style = none
-;   hunk-header-decoration-style = cyan box ul
-;
-; [delta "line-numbers"]
-;   line-numbers-left-style = cyan
-;   line-numbers-right-style = cyan
-;   line-numbers-minus-style = 124
-;   line-numbers-plus-style = 28
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
