@@ -24,26 +24,44 @@ function confirmed() {
 
 __install__() {
   if confirmed "Install \"Git Utilities\" ?"; then
-    if ! command -v "lazygit" >/dev/null 2>&1; then
-      info "Installing \"git, lazygit, git-delta...\""
-      sudo pacman -S git git-delta lazygit --needed --noconfirm
-      [ ! $? -eq 0 ] || warn "Installation failed! Please check the logs."
-      okay "\"git, lazygit, git-delta\" installed with no errors!"
-    else
-      okay "\"lazygit\" has already been installed. Skipping..."
-    fi
+    local pkgs="git git-delta lazygit bat"
+    info "Installing $pkgs ..."
+    sudo pacman -S ${pkgs} --needed --noconfirm && \
+    okay "$pkgs installed with no errors!"
   fi
 
-	if confirmed "Renew configuration ?"; then
+	if confirmed "Setup configurations ?"; then
     local src_dir="$DOTFILES/git"
-    local target_dir="$HOME/.config/lazygit"
-    [ -d "$target_dir" ] || mkdir -p "$target_dir"
-    if [ -f "$src_dir/config.yml" ]; then
-      cp -r "$src_dir/config.yml" "$target_dir/config.yml.bak"
-      info "Backup old \"lazygit\" configuration file"
+
+    # Link .gitconfig
+    if [ -f "$HOME/.gitconfig" ]; then
+      cp -r "$HOME/.gitconfig" "$HOME/.gitconfig.old"
+      info "Backing up old '.gitconfig' file to $HOME/.gitconfig"
     fi
-    ln -sf "$src_dir/lazygit.yml" "$target_dir/config.yml"
-    okay "Configuration linked to $target_dir/config.yml"
+    ln -sf "$src_dir/gitconfig" "$HOME/.gitconfig" && \
+      okay "$src_dir/gitconfig linked to $HOME/.gitconfig"
+
+    # Link bat.conf
+    if [ ! -d "$HOME/.config/bat" ]; then
+      mkdir -p "$HOME/.config/bat";
+      info "Creating $HOME/.config/bat"
+    fi
+    if [ -f "$HOME/.config/bat/config" ]; then
+      cp -r "$HOME/.config/bat/config" "$HOME/.config/bat/config.old"
+      info "Backing up old 'config' file to $HOME/.config/bat/config.old"
+    fi
+    ln -sf "$src_dir/bat.conf" "$HOME/.config/bat/config" && \
+      okay "$src_dir/bat.conf linked to $HOME/.config/bat/config"
+
+    # Link Lazygit
+    local lazy_dir="$HOME/.config/lazygit"
+    [ -d "$lazy_dir" ] || mkdir -p "$lazy_dir"
+    if [ -f "$lazy_dir/config.yml" ]; then
+      cp -r "$lazy_dir/config.yml" "$lazy_dir/config.yml.old"
+      info "Backing up old 'lazygit.yml' file to $lazy_dir/config.yml.old"
+    fi
+    ln -sf "$src_dir/lazygit.yml" "$lazy_dir/config.yml" && \
+      okay "$src_dir/lazygit.yml linked to $lazy_dir/config.yml"
   fi
 }
 

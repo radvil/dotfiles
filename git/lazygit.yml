@@ -46,7 +46,7 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-    useConfig: false
+    useConfig: false # If true, lazygit will use whatever pager is specified in $GIT_PAGER, $PAGER, or your git config.
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
