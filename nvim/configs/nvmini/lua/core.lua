@@ -136,7 +136,7 @@ function M.bootstrap(opts)
   local userpath = string.format("/%s/lazy.nvim", os.getenv("USER"))
   local path = vim.fn.stdpath("data") .. userpath
 
-  if not vim.loop.fs_stat(path) then
+  if not vim.uv.fs_stat(path) then
     log("🚩 lazy.nvim was not installed. Installing from latest stable version...", {
       severity = vim.log.levels.WARN,
       title = "BOOTSRAP",

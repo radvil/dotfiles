@@ -4,7 +4,7 @@
 --   group = Utils.create_augroup("leaving_cwd"),
 --   callback = function()
 --     if vim.bo.buftype == "" then
---       if Utils.root() ~= vim.loop.cwd() then
+--       if Utils.root() ~= vim.uv.cwd() then
 --         Utils.warn("Leaving [cwd] to " .. Utils.root(), { title = "Warning" })
 --       end
 --     end

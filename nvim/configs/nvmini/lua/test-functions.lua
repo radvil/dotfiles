@@ -72,7 +72,7 @@ M.debug_plugins = function()
 end
 
 M.main = function()
-  -- vim.print(vim.loop.os_uname());
+  -- vim.print(vim.uv.os_uname());
   M.debug_plugins()
 end
 

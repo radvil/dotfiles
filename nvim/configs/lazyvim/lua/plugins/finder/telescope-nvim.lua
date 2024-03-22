@@ -36,14 +36,14 @@ function _G.NeoTelescope(builtin, opts)
     ---@type table
     opts = vim.tbl_deep_extend("force", { cwd = Root.get() }, opts or {})
     if builtin == "files" then
-      if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
+      if vim.uv.fs_stat((opts.cwd or vim.uv.cwd()) .. "/.git") then
         opts.show_untracked = true
         builtin = "git_files"
       else
         builtin = "find_files"
       end
     end
-    if opts.cwd and opts.cwd ~= vim.loop.cwd() then
+    if opts.cwd and opts.cwd ~= vim.uv.cwd() then
       opts.attach_mappings = function(_, map)
         map("i", "<a-c>", function()
           local action_state = require("telescope.actions.state")
@@ -258,7 +258,7 @@ return {
         NeoTelescope("oldfiles", {
           prompt_title = Icons.FindRecentFiles .. "Recent files (cwd)",
           initial_mode = "normal",
-          cwd = vim.loop.cwd(),
+          cwd = vim.uv.cwd(),
         }),
         "Recent files (cwd)"
       ),
@@ -267,7 +267,7 @@ return {
         "<leader>/r",
         NeoTelescope("oldfiles", {
           prompt_title = Icons.FindRecentFiles .. "Recent files (cwd)",
-          cwd = vim.loop.cwd(),
+          cwd = vim.uv.cwd(),
         }),
         "Recent files (cwd)"
       ),

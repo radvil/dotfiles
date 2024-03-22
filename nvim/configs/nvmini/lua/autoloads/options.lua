@@ -1,7 +1,7 @@
 local Utils = require("neoverse.utils")
 
 -- GLOBALS
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 vim.g.neo_winborder = not vim.g.neovide and "single" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = false

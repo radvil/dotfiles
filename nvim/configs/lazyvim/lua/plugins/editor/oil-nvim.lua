@@ -16,7 +16,7 @@ return {
     {
       "<Leader>fE",
       function()
-        require("oil").open(vim.loop.cwd())
+        require("oil").open(vim.uv.cwd())
       end,
       desc = "File Explorer » Open (cwd)",
     },

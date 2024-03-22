@@ -34,10 +34,10 @@ return {
       "<leader>E",
       function()
         if require("zen-mode.view").is_open() then
-          require("oil").open(vim.loop.cwd())
+          require("oil").open(vim.uv.cwd())
         else
           require("neo-tree.command").execute({
-            dir = vim.loop.cwd(),
+            dir = vim.uv.cwd(),
             toggle = true,
           })
         end

@@ -12,11 +12,11 @@ require("core").bootstrap({
     {
       "radvil/NeoVerse",
       import = "neoverse.core.plugins",
-      dev = true,
+      dev = false,
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()
-          vim.cmd.colorscheme("catppuccin")
+          vim.cmd.colorscheme("catppuccin-mocha")
         end,
         builtins = {
           keymaps = true,
