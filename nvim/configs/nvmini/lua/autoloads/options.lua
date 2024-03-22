@@ -1,5 +1,3 @@
-local Utils = require("neoverse.utils")
-
 -- GLOBALS
 vim.g.neo_transparent = false
 vim.g.neo_winborder = not vim.g.neovide and "single" or "none"
@@ -36,14 +34,14 @@ if vim.g.neo_transparent then
   vim.opt.background = "dark"
 end
 
-if not Utils.lazy_has("nvim-ufo") then
+if not Lonard.lazy_has("nvim-ufo") then
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   vim.opt.foldtext = "v:lua.require'neoverse.utils'.ui.foldtext()"
   vim.o.formatexpr = "v:lua.require'neoverse.utils'.format.formatexpr()"
 end
 
-if vim.opt.signcolumn:get() == "yes" and not Utils.lazy_has("statuscol.nvim") then
+if vim.opt.signcolumn:get() == "yes" and not Lonard.lazy_has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.require'neoverse.utils'.ui.statuscolumn()]]
 end
 

@@ -57,7 +57,7 @@ return {
       })
     end
     local Match = function(name)
-      return require("neoverse.utils").lazy_has(name) and string.match(vim.g.colors_name, name)
+      return Lonard.lazy_has(name) and string.match(vim.g.colors_name, name)
     end
     if Match("catppuccin") then
       opts.highlights = Hl.catppuccin()

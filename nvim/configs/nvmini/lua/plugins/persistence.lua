@@ -4,7 +4,7 @@ return {
   opts = function(_, opts)
     if type(opts) == "table" then
       opts.pre_save = function()
-        require("neoverse.utils").info("saving session...", {
+        Lonard.info("saving session...", {
           title = "persistence",
           animate = false,
         })

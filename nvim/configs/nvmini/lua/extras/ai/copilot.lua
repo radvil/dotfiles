@@ -6,7 +6,7 @@ return {
     optional = true,
     event = "VeryLazy",
     opts = function(_, opts)
-      table.insert(opts.sections.lualine_y, 2, require("neoverse.utils").lualine.cmp_source("copilot"))
+      table.insert(opts.sections.lualine_y, 2, Lonard.lualine.cmp_source("copilot"))
     end,
   },
 
@@ -19,10 +19,10 @@ return {
         function()
           if activated then
             vim.cmd("Copilot disable")
-            require("neoverse.utils").warn("server disabled", { title = "Copilot" })
+            Lonard.warn("server disabled", { title = "Copilot" })
           else
             vim.cmd("Copilot enable")
-            require("neoverse.utils").info("server enabled", { title = "Copilot" })
+            Lonard.info("server enabled", { title = "Copilot" })
           end
           activated = not activated
         end,
@@ -53,7 +53,7 @@ return {
       copilot_cmp.setup({ fix_pairs = true })
       -- attach cmp source whenever copilot attaches
       -- fixes lazy-loading issues with the copilot cmp source
-      require("neoverse.utils").lsp.on_attach(function(client)
+      Lonard.lsp.on_attach(function(client)
         if client.name == "copilot" and activated then
           copilot_cmp._on_insert_enter({})
         end

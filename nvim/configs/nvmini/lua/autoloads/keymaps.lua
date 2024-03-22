@@ -1,5 +1,3 @@
-local Utils = require("neoverse.utils")
-
 ---@param scope 'session' | 'window'
 local tmux_run = function(scope)
   scope = scope or "window"
@@ -24,52 +22,52 @@ end
 -- stylua: ignore start
 vim.api.nvim_create_user_command("Cmds", function() tmux_run("session") end, { desc = "Run command inside new tmux session" })
 vim.api.nvim_create_user_command("Cmdw", function() tmux_run("window") end, { desc = "Run command inside new tmux window" })
-Utils.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "Run command in new tmux session" })
-Utils.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "Run command in new tmux window" })
+Lonard.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "Run command in new tmux session" })
+Lonard.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "Run command in new tmux window" })
 -- stylua: ignore end
 
 -- experimental keymap
-Utils.map({ "n", "x", "v" }, "s", "<nop>", { desc = "[reset]" })
-Utils.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
-Utils.map({ "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
+Lonard.map({ "n", "x", "v" }, "s", "<nop>", { desc = "[reset]" })
+Lonard.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
+Lonard.map({ "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
 
-Utils.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
-Utils.map("n", "<leader>K", "<cmd>nrm! K<cr>", { desc = "manual entry" })
-Utils.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
-Utils.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
-Utils.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
+Lonard.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
+Lonard.map("n", "<leader>K", "<cmd>nrm! K<cr>", { desc = "manual entry" })
+Lonard.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
+Lonard.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
+Lonard.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
 
-Utils.map("n", "ZZ", ":qa<cr>", { desc = "quit session" })
-Utils.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
-Utils.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
-Utils.map("n", "ZB", ":BAD<cr>", { desc = "quit [B]uffers" })
-Utils.map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
-Utils.map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
+Lonard.map("n", "ZZ", ":qa<cr>", { desc = "quit session" })
+Lonard.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
+Lonard.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
+Lonard.map("n", "ZB", ":BAD<cr>", { desc = "quit [B]uffers" })
+Lonard.map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
+Lonard.map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
 
 if not vim.g.neovide then
-  Utils.map("n", "<leader>fz", function()
+  Lonard.map("n", "<leader>fz", function()
     vim.cmd([[call system('zmux')]])
   end, { desc = "zmux" })
 end
 
 -- toggle autocomplete
-Utils.map("n", "<leader>uC", function()
+Lonard.map("n", "<leader>uC", function()
   local next = not vim.g.neo_autocomplete
   vim.g.neo_autocomplete = next
   vim.cmd.Lazy("load nvim-cmp")
   if next then
-    Utils.info("Code completion set to auto", { title = "Code completion" })
+    Lonard.info("Code completion set to auto", { title = "Code completion" })
   else
-    Utils.warn("Code completion set to manual", { title = "Code completion" })
+    Lonard.warn("Code completion set to manual", { title = "Code completion" })
   end
 end, { desc = "toggle » code completion trigger" })
 
 -- rightclick
--- Utils.map("n", "<RightMouse>", "<cmd>:popup mousemenu<cr>")
+-- Lonard.map("n", "<RightMouse>", "<cmd>:popup mousemenu<cr>")
 
 -- toggle transparency
-Utils.map("n", "<leader>uT", function()
-  Utils.try(function()
+Lonard.map("n", "<leader>uT", function()
+  Lonard.try(function()
     local colors_name = vim.g.colors_name
     for key, value in pairs({
       tokyonight = "tokyonight",

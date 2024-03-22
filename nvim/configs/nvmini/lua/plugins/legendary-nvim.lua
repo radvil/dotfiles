@@ -1,5 +1,5 @@
 local notify = function(msg)
-  return require("neoverse.utils").info(msg, { title = "gitsigns" })
+  return Lonard.info(msg, { title = "gitsigns" })
 end
 
 return {
@@ -27,13 +27,12 @@ return {
     },
   },
   config = function(_, opts)
-    local Utils = require("neoverse.utils")
-    if Utils.lazy_has("which-key.nvim") then
+    if Lonard.lazy_has("which-key.nvim") then
       opts.extensions.which_key = {
         auto_register = true,
       }
     end
-    if Utils.lazy_has("gitsigns.nvim") then
+    if Lonard.lazy_has("gitsigns.nvim") then
       vim.list_extend(opts.keymaps, {
         {
           "<leader>gr",

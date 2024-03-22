@@ -31,7 +31,7 @@ return {
           ["O"] = {
             function(state)
               local fpath = state.tree:get_node().path
-              require("neoverse.utils").open_with_system_default(fpath)
+              Lonard.open_with_system_default(fpath)
             end,
             desc = "open with system default",
           },

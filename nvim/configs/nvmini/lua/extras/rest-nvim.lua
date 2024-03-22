@@ -64,7 +64,7 @@ return {
     config = function(_, opts)
       require("rest-nvim").setup(opts)
       vim.api.nvim_create_autocmd("FileType", {
-        group = require("neoverse.utils").create_augroup("http-result-preview"),
+        group = Lonard.create_augroup("http-result-preview"),
         desc = "Enable wrap on http result",
         pattern = { "httpResult" },
         callback = function()
