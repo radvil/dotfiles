@@ -6,6 +6,7 @@ alias ls="eza"
 alias ll='eza -alF'
 alias la='eza -la'
 alias grep="rg"
+alias cat="bat"
 alias mx="tmux"
 alias v="NVIM_APPNAME=nvmini nvim"
 alias vi="NVIM_APPNAME=nvmini nvim"
