@@ -28,13 +28,11 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
+      dev = true,
       opts = {
         colorscheme = function()
           require("tokyonight").load()
         end,
-        -- colorscheme = function()
-        --   vim.cmd.colorscheme("catppuccin-mocha")
-        -- end,
         defaults = {
           autocmds = true,
           keymaps = false,

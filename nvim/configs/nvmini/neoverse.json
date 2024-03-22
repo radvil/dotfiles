@@ -6,6 +6,7 @@
     "extras.cmp-cmdline",
     "extras.rest-nvim",
     "extras.suda-vim",
+    "extras.utils.dot",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.luasnip",
