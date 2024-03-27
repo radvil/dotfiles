@@ -7,7 +7,7 @@ local tmux_run = function(scope)
     default = "",
   }, function(value)
     if not value then
-      vim.notify("Canceled", vim.log.levels.WARN, {
+      Lonard.warn("Canceled", {
         title = "Run Command",
         icon = " ",
       })
@@ -32,7 +32,6 @@ Lonard.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
 
 Lonard.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
-Lonard.map("n", "<leader>K", "<cmd>nrm! K<cr>", { desc = "manual entry" })
 Lonard.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
 Lonard.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
 Lonard.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })

@@ -1,6 +1,5 @@
 -- GLOBALS
 vim.g.neo_transparent = false
--- vim.g.neo_winborder = not vim.g.neovide and "single" or "none"
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = false
@@ -10,6 +9,7 @@ vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
 
 -- options
 -- vim.opt.guicursor = ""
+vim.opt.pumblend = vim.g.neo_transparent and 0 or 60
 vim.opt.guicursor =
   "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 vim.opt.laststatus = 3
@@ -32,10 +32,6 @@ vim.opt.sessionoptions = {
   "help",
 }
 
-if vim.g.neo_transparent then
-  vim.opt.background = "dark"
-end
-
 if not Lonard.lazy_has("nvim-ufo") then
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -56,3 +52,5 @@ if vim.g.neovide then
   end
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }
 end
+
+-- vim.print("options", vim.g.neo_transparent)

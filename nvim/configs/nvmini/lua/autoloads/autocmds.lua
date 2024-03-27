@@ -8,3 +8,24 @@
 --     end
 --   end,
 -- })
+
+-- local group = vim.api.nvim_create_augroup("adjust_transparency", { clear = true })
+-- vim.api.nvim_create_autocmd("OptionSet", {
+--   group = group,
+--   pattern = "background",
+--   callback = function()
+--     local has_changed = vim.v.option_new ~= vim.v.option_old
+--     if not has_changed then
+--       return
+--     end
+--
+--     -- if string.match(vim.g.colors_name, "catppuccin") then
+--     --   vim.cmd("Lazy reload catppuccin")
+--     --   vim.cmd("colorscheme catppuccin")
+--     -- end
+--
+--     if vim.v.option_new == "light" then
+--       vim.g.neo_transparent = false
+--     end
+--   end,
+-- })

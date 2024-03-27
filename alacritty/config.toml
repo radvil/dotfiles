@@ -1,55 +1,53 @@
 [env]
-TERM = "xterm-256color"
+TERM             = "xterm-256color"
 
 [font]
-size = 7.5
+size             = 10
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
+family           = "JetBrains Mono"
+style            = "Regular"
 
 [window]
-dynamic_padding = false
-# opacity = 1
-opacity = 0.96
-blur = false
+dynamic_padding  = false
+opacity          = 0.98
+blur             = false
 
 [colors]
 transparent_background_colors = false
 
 [colors.primary]
-background = "0x1a1b26"
-# background = "#282A36"
-foreground = "0xc0caf5"
+background      = "#202027"
+foreground      = "#fcfcfc"
 
 [[colors.indexed_colors]]
-color = "0xff9e64"
-index = 16
+color           = "#ff9e64"
+index           = 16
 
 [[colors.indexed_colors]]
-color = "0xdb4b4b"
-index = 17
+color           = "#db4b4b"
+index           = 17
 
 [colors.bright]
-black = "0x414868"
-blue = "0x7aa2f7"
-cyan = "0x7dcfff"
-green = "0x9ece6a"
-magenta = "0xbb9af7"
-red = "0xf7768e"
-white = "0xc0caf5"
-yellow = "0xe0af68"
+black           = "#6C6168"
+red             = "#F29BA7"
+green           = "#a8be81"
+yellow          = "#F3DDA0"
+blue            = "#86AACC"
+magenta         = "#D0B1C8"
+cyan            = "#C9E4F6"
+white           = "#E3F2FA"
 
 [colors.normal]
-black = "0x15161e"
-blue = "0x7aa2f7"
-cyan = "0x7dcfff"
-green = "0x9ece6a"
-magenta = "0xbb9af7"
-red = "0xf7768e"
-white = "0xa9b1d6"
-yellow = "0xe0af68"
+black           = "#1c1d22"
+red             = "#EA7A95"
+green           = "#a8be81"
+yellow          = "#eccc81"
+blue            = "#5d81ab"
+magenta         = "#b18eab"
+cyan            = "#A6C9E5"
+white           = "#FBF1F5"
 
 [cursor.style]
-blinking = "Always"
-shape = "Block"
+blinking        = "Always"
+shape           = "Block"

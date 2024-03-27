@@ -1,5 +1,5 @@
 return {
-  "folke/tokyonight.nvim",
+  "tokyonight.nvim",
   optional = true,
   opts = function()
     local transparent = vim.g.neo_transparent
