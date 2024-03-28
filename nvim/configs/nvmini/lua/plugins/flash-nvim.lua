@@ -8,32 +8,18 @@ end
 
 local custom_keys = {
   {
-    "<a-space>",
-    mode = { "x", "v", "o" },
+    "<a-s>",
+    mode = { "n", "x", "v", "o" },
     function()
       require("flash").treesitter({
         label = {
           rainbow = {
-            enabled = true
+            enabled = false
           }
         },
       })
     end,
     desc = "flash » select node",
-  },
-  {
-    "<a-s>",
-    mode = "n",
-    function()
-      require("flash").treesitter_search({
-        label = {
-          rainbow = {
-            enabled = true
-          }
-        },
-      })
-    end,
-    desc = "treesitter » search range",
   },
   {
     "go",

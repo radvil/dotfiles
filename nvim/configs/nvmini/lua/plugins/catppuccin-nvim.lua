@@ -6,7 +6,6 @@ return {
   opts = function()
     ---@type CatppuccinOptions
     return {
-      flavour = "auto",
       background = {
         dark = "frappe",
         light = "latte",

@@ -9,12 +9,21 @@ family           = "JetBrains Mono"
 style            = "Regular"
 
 [window]
-dynamic_padding  = false
-opacity          = 0.98
-blur             = false
+dynamic_padding           = false
+opacity                   = 0.93
+blur                      = true
+decorations_theme_variant = "Dark"
 
 [colors]
 transparent_background_colors = false
+
+[colors.cursor]
+text            = "CellBackground"
+cursor          = "CellForeground"
+
+[colors.vi_mode_cursor]
+text            = "CellBackground"
+cursor          = "#ff9e64"
 
 [colors.primary]
 background      = "#202027"
@@ -51,3 +60,12 @@ white           = "#FBF1F5"
 [cursor.style]
 blinking        = "Always"
 shape           = "Block"
+
+[mouse]
+hide_when_typing          = true
+
+[keyboard]
+bindings = [
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+  # { key = "U", mods = "Control|Shift", action = "ToggleViMode" },
+]

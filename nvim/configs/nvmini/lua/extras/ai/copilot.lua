@@ -40,7 +40,9 @@ return {
     config = function(_, opts)
       require("copilot").setup(opts)
       if not activated then
-        vim.cmd("Copilot disable")
+        -- vim.schedule(function()
+          vim.cmd("Copilot disable")
+        -- end)
       end
     end,
   },
