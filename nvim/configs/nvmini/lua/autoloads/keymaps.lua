@@ -67,21 +67,29 @@ end, { desc = "toggle » code completion trigger" })
 
 -- toggle transparency
 Lonard.map("n", "<leader>uT", function()
-  Lonard.try(function()
-    local colors_name = vim.g.colors_name
-    for key, value in pairs({
-      tokyonight = "tokyonight",
-      monokai = "monokai-pro.nvim",
-      catppuccin = "catppuccin",
-    }) do
-      if string.match(colors_name, key) then
-        vim.g.neo_transparent = not vim.g.neo_transparent
-        vim.cmd.Lazy("reload " .. value .. " noice.nvim" .. " telescope.nvim")
-        vim.schedule(function()
-          vim.cmd.colorscheme(colors_name)
-        end)
-        break
-      end
+  if vim.g.neovide then
+    if vim.g.neovide_transparency < 1 then
+      vim.g.neovide_transparency = 1
+    else
+      vim.g.neovide_transparency = 0.96
     end
-  end)
+  else
+    Lonard.try(function()
+      local colors_name = vim.g.colors_name
+      for key, value in pairs({
+        tokyonight = "tokyonight",
+        monokai = "monokai-pro.nvim",
+        catppuccin = "catppuccin",
+      }) do
+        if string.match(colors_name, key) then
+          vim.g.neo_transparent = not vim.g.neo_transparent
+          vim.cmd.Lazy("reload " .. value .. " noice.nvim" .. " telescope.nvim")
+          vim.schedule(function()
+            vim.cmd.colorscheme(colors_name)
+          end)
+          break
+        end
+      end
+    end)
+  end
 end, { desc = "toggle » transparent background" })

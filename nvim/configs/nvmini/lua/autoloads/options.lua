@@ -49,10 +49,13 @@ if vim.opt.signcolumn:get() == "yes" and not Lonard.lazy_has("statuscol.nvim") t
 end
 
 if vim.g.neovide then
-  ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
-  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  ---@type "" | "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
+  vim.g.neovide_cursor_vfx_mode = ""
   vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_hide_mouse_when_typing = true
   if vim.g.neo_transparent then
+    vim.g.neovide_transparency = 0.93
     vim.g.neo_transparent = false
   end
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }

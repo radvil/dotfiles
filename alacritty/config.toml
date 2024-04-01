@@ -5,13 +5,13 @@ TERM             = "xterm-256color"
 size             = 10
 
 [font.normal]
-family           = "JetBrains Mono"
+family           = "JetBrainsMono Nerd Font"
 style            = "Regular"
 
 [window]
 dynamic_padding           = false
-opacity                   = 0.93
-blur                      = true
+opacity                   = 0.96
+blur                      = false
 decorations_theme_variant = "Dark"
 
 [colors]

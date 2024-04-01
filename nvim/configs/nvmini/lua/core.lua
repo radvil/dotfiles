@@ -20,8 +20,8 @@ local Icons = {
   Vim = " ",
 }
 
----@class NeoConfigOptions
 function M.defaults()
+  ---@class NeoConfigOptions
   return {
     -- directory where plugins will be installed
     root = vim.fn.stdpath("data") .. "/" .. os.getenv("USER"),
@@ -56,6 +56,10 @@ function M.defaults()
           "‒",
         },
       },
+    },
+    change_detection = {
+      enabled = true,
+      notify = false,
     },
     install = {
       missing = true,
