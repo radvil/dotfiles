@@ -33,6 +33,7 @@ function M.defaults()
       title = Icons.Vim .. "NeoConfig",
       border = "none",
       title_pos = "right",
+      backdrop = 60,
       icons = {
         cmd = Icons.CmdOutlined,
         config = Icons.Cog,

@@ -7,6 +7,7 @@
     "extras.rest-nvim",
     "extras.suda-vim",
     "extras.utils.dot",
+    "extras.utils.mini-trailspace",
     "extras.utils.nvim-silicon",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
