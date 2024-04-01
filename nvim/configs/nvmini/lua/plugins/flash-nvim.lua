@@ -2,25 +2,45 @@
 ---@param key string
 local get_ft = function(key)
   local opts = Lonard.opts("flash.nvim")
-  if not opts then return {} end
+  if not opts then
+    return {}
+  end
   return opts.neo_filetype_excludes[key] or {}
 end
 
 local custom_keys = {
   {
     "<a-s>",
-    mode = { "n", "x", "v", "o" },
+    mode = { "n", "v", "x", "o" },
+    -- mode = "n",
     function()
       require("flash").treesitter({
         label = {
           rainbow = {
-            enabled = false
-          }
+            enabled = false,
+            shades = 3,
+          },
         },
       })
     end,
     desc = "flash » select node",
   },
+  -- {
+  --   "s",
+  --   function()
+  --     require("flash").treesitter({
+  --       label = {
+  --         rainbow = {
+  --           enabled = false,
+  --           shades = 3,
+  --         },
+  --       },
+  --     })
+  --   end,
+  --   desc = "flash » select node",
+  --   mode = { "v", "x", "o" },
+  --   nowait = true,
+  -- },
   {
     "go",
     mode = "n",
@@ -79,5 +99,5 @@ return {
     if type(keys) == "table" then
       vim.list_extend(keys, custom_keys)
     end
-  end
+  end,
 }
