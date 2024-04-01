@@ -7,6 +7,7 @@
 - [ ] Create a custom plasma 6 shell theme
 - [x] Fix wayland issue for screensharing
 - [ ] Please learn `CURL`
+- [ ] `lazy.nvim` backdrop replace
 - [ ] Checkout `UndoTree`
-- [ ] Checkout `UndoTree`
+- [ ] Checkout `NeoGit`
 - [ ] Fix bufferline | neo-tree highlights for `tokyonight` colorscheme
