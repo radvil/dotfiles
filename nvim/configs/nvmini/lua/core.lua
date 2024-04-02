@@ -20,7 +20,13 @@ local Icons = {
   Vim = " ",
 }
 
+local has_bg = function()
+  local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+  return normal and normal.bg ~= nil
+end
+
 function M.defaults()
+  local transparent = has_bg()
   ---@class NeoConfigOptions
   return {
     -- directory where plugins will be installed
@@ -31,9 +37,9 @@ function M.defaults()
       wrap = true,
       size = { width = 0.8, height = 0.8 },
       title = Icons.Vim .. "NeoConfig",
-      border = "none",
+      border = transparent and "rounded" or "none",
+      backdrop = transparent and 100 or 60,
       title_pos = "right",
-      backdrop = 60,
       icons = {
         cmd = Icons.CmdOutlined,
         config = Icons.Cog,
