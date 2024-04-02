@@ -4,6 +4,7 @@
     "extras.ai.gp-nvim",
     "extras.cellular-automation",
     "extras.cmp-cmdline",
+    "extras.lazycat.kopi-cat",
     "extras.rest-nvim",
     "extras.suda-vim",
     "extras.utils.dot",

@@ -78,7 +78,7 @@ Lonard.map("n", "<leader>uT", function()
       local colors_name = vim.g.colors_name
       for key, value in pairs({
         tokyonight = "tokyonight",
-        monokai = "monokai-pro.nvim",
+        monokai = "monokai-pro",
         catppuccin = "catppuccin",
       }) do
         if string.match(colors_name, key) then

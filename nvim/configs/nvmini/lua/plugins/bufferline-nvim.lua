@@ -26,7 +26,6 @@ return {
     }
   end,
   opts = function(_, opts)
-    local Hl = require("highlights.bufferline-nvim")
     if type(opts.options == "table") then
       opts.options.mode = "tabs"
       opts.options.sort_by = "tabs"
@@ -56,6 +55,7 @@ return {
         end,
       })
     end
+    local Hl = require("highlights.bufferline-nvim")
     local Match = function(name)
       return Lonard.lazy_has(name) and string.match(vim.g.colors_name, name)
     end
