@@ -13,7 +13,7 @@ return {
       opts.on_highlights = function(hl, c)
         hl.Folded = {
           bg = transparent and c.statusline or c.bg_dark,
-          fg = c.red,
+          fg = c.orange,
         }
         hl.StatusLineNC = {
           bg = c.bg_dark,
