@@ -1,19 +1,19 @@
 return {
-  "tokyonight.nvim",
-  optional = true,
-  opts = function()
+  "tokyonight",
+  opts = function(_, opts)
     local transparent = vim.g.neo_transparent
-    return {
-      on_colors = function(colors)
+    if type(opts) == "table" then
+      opts.on_colors = function(colors)
         colors.statusline = "#181826"
         colors.subtext1 = "#bac2de"
         colors.subtext0 = "#a6adc8"
         colors.surface1 = "#45475a"
         colors.surface0 = "#313244"
-      end,
-      on_highlights = function(hl, c)
+      end
+      opts.on_highlights = function(hl, c)
         hl.Folded = {
           bg = transparent and c.statusline or c.bg_dark,
+          fg = c.red,
         }
         hl.StatusLineNC = {
           bg = c.bg_dark,
@@ -71,7 +71,7 @@ return {
             fg = c.bg_dark,
           }
         end
-      end,
-    }
+      end
+    end
   end,
 }

@@ -1,6 +1,6 @@
 -- GLOBALS
 vim.opt.background = "dark"
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = false
