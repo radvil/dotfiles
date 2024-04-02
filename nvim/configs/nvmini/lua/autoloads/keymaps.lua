@@ -37,7 +37,7 @@ Lonard.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
 Lonard.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
 Lonard.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
 
-Lonard.map("n", "ZZ", ":qa<cr>", { desc = "quit session" })
+Lonard.map("n", "ZZ", ":conf qa<cr>", { desc = "+confirm quit all" })
 Lonard.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
 Lonard.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
 Lonard.map("n", "ZB", ":BAD<cr>", { desc = "quit [B]uffers" })
