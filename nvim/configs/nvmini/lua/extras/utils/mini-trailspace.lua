@@ -11,7 +11,7 @@ return {
     {
       "<leader>mt",
       neo_trim,
-      desc = "Trim whitespaces",
+      desc = "[t]rim whitespaces",
     },
   },
   init = function()
