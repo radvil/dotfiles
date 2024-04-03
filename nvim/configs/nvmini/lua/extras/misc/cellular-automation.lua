@@ -3,9 +3,9 @@ return {
   lazy = true,
   keys = {
     {
-      "<leader>mr",
+      "<leader>mR",
       "<cmd>CellularAutomaton make_it_rain<CR>",
-      desc = "make it [r]ain",
+      desc = "make it [R]ain",
     },
   },
 }

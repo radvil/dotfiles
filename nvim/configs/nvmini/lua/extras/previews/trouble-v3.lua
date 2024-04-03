@@ -38,7 +38,7 @@ return {
 
   -- lualine integration
   {
-    "lualine.nvim",
+    "nvim-lualine/lualine.nvim",
     optional = true,
     opts = function(_, opts)
       local trouble = require("trouble")
