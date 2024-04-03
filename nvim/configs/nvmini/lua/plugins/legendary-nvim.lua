@@ -9,11 +9,11 @@ return {
     {
       "<leader>q",
       "<cmd>Legendary<cr>",
-      desc = "quick command/keymaps palette",
+      desc = "[q]uick access",
     },
   },
   opts = {
-    select_prompt = " Quick command/keymaps ",
+    select_prompt = " Quick Access ",
     include_legendary_cmds = false,
     include_builtin = true,
     keymaps = {},

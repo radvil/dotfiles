@@ -5,7 +5,7 @@ return {
     {
       "<leader>mr",
       "<cmd>CellularAutomaton make_it_rain<CR>",
-      desc = "Make it rain..",
+      desc = "make it [r]ain",
     },
   },
 }

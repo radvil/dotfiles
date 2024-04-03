@@ -1,6 +1,5 @@
 local Kmap = function(lhs, cmd, desc)
   cmd = string.format("<cmd>BufferLine%s<cr>", cmd)
-  desc = string.format("tabline » %s", desc)
   return { lhs, cmd, desc = desc }
 end
 
@@ -10,19 +9,18 @@ return {
   -- replace all mappings (using tab keymaps instead of buffers)
   keys = function()
     return {
-      Kmap("<a-b>", "Pick", "pick & enter"),
-      Kmap("<leader>bq", "PickClose", "pick & close"),
-      Kmap("<leader>bx", "PickClose", "pick & close"),
-      Kmap("<a-[>", "CyclePrev", "switch prev"),
-      Kmap("<a-]>", "CycleNext", "switch next"),
-      Kmap("<a-1>", "GoToBuffer 1", "switch 1st"),
-      Kmap("<a-2>", "GoToBuffer 2", "switch 2nd"),
-      Kmap("<a-3>", "GoToBuffer 3", "switch 3rd"),
-      Kmap("<a-4>", "GoToBuffer 4", "switch 4th"),
-      Kmap("<a-5>", "GoToBuffer 5", "switch 5th"),
-      Kmap("<leader>bB", "CloseLeft", "close left"),
-      Kmap("<leader>bW", "CloseRight", "close right"),
-      Kmap("<leader>bC", "CloseOthers", "close others"),
+      Kmap("<a-b>", "Pick", "pick & enter tab"),
+      Kmap("<leader>bc", "PickClose", "pick & close tab"),
+      Kmap("<a-[>", "CyclePrev", "switch prev tab"),
+      Kmap("<a-]>", "CycleNext", "switch next tab"),
+      Kmap("<a-1>", "GoToBuffer 1", "switch to tab #1"),
+      Kmap("<a-2>", "GoToBuffer 2", "switch to tab #2"),
+      Kmap("<a-3>", "GoToBuffer 3", "switch to tab #3"),
+      Kmap("<a-4>", "GoToBuffer 4", "switch to tab #4"),
+      Kmap("<a-5>", "GoToBuffer 5", "switch to tab #5"),
+      Kmap("<leader>bB", "CloseLeft", "close left tabs"),
+      Kmap("<leader>bW", "CloseRight", "close right tabs"),
+      Kmap("<leader>bC", "CloseOthers", "close other tabs"),
     }
   end,
   opts = function(_, opts)

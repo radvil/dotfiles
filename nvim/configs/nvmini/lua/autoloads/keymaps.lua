@@ -20,10 +20,10 @@ local tmux_run = function(scope)
 end
 
 -- stylua: ignore start
-vim.api.nvim_create_user_command("Cmds", function() tmux_run("session") end, { desc = "Run command inside new tmux session" })
-vim.api.nvim_create_user_command("Cmdw", function() tmux_run("window") end, { desc = "Run command inside new tmux window" })
-Lonard.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "Run command in new tmux session" })
-Lonard.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "Run command in new tmux window" })
+vim.api.nvim_create_user_command("Cmds", function() tmux_run("session") end, { desc = "run command inside new tmux [s]ession" })
+vim.api.nvim_create_user_command("Cmdw", function() tmux_run("window") end, { desc = "run command inside new tmux [w]indow" })
+Lonard.map("n", "<leader>tS", function() tmux_run("session") end, { desc = "run command in new tmux [s]ession" })
+Lonard.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "run command in new tmux [w]indow" })
 -- stylua: ignore end
 
 -- experimental keymap
@@ -31,12 +31,7 @@ Lonard.map({ "n", "x", "v" }, "s", "<nop>", { remap = true, desc = "[reset]" })
 -- Lonard.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
-
 Lonard.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
-Lonard.map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "[tab] prev" })
-Lonard.map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "[tab] next" })
-Lonard.map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[tab] quit" })
-
 Lonard.map("n", "ZZ", ":conf qa<cr>", { desc = "+confirm quit all" })
 Lonard.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
 Lonard.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
@@ -47,7 +42,7 @@ Lonard.map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
 if not vim.g.neovide then
   Lonard.map("n", "<leader>fz", function()
     vim.cmd([[call system('zmux')]])
-  end, { desc = "zmux" })
+  end, { desc = "[z]mux" })
 end
 
 -- toggle autocomplete

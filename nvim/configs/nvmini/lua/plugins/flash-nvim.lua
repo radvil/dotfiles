@@ -88,7 +88,7 @@ local custom_keys = {
         end,
       })
     end,
-    desc = "flash » jump and toggle fold",
+    desc = "[z]ump + toggle fold",
   },
 }
 
