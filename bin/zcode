@@ -14,11 +14,15 @@ then
   __fail "Neovide is already running"
 fi
 
+NVIM_APPNAME="nvmini"
+
 if [[ "$1" == "--config" ]]; then
-  export NVIM_APPNAME="$2"
+  NVIM_APPNAME="$2"
 elif [[ "$1" == "--config="* ]]; then
-  export NVIM_APPNAME="${1#*=}"
+  NVIM_APPNAME="${1#*=}"
 fi
+
+export NVIM_APPNAME
 
 selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path » ")
 
