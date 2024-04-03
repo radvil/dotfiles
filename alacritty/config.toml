@@ -10,7 +10,7 @@ style            = "Regular"
 
 [window]
 dynamic_padding           = false
-opacity                   = 0.93
+opacity                   = 0.95
 blur                      = false
 decorations_theme_variant = "Dark"
 
