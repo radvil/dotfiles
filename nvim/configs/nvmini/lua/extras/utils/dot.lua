@@ -7,37 +7,56 @@ local function have(path)
 end
 
 return {
-  "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    local function add(lang)
-      if type(opts.ensure_installed) == "table" then
-        table.insert(opts.ensure_installed, lang)
-      end
-    end
-
-    vim.filetype.add({
-      extension = { rasi = "rasi" },
-      pattern = {
-        [".*/waybar/config"] = "jsonc",
-        [".*/mako/config"] = "dosini",
-        [".*/kitty/*.conf"] = "bash",
-        [".*/hypr/.*%.conf"] = "hyprlang",
+  {
+    "nvim-lspconfig",
+    opts = {
+      servers = {
+        bashls = {},
       },
-    })
+    },
+  },
+  {
+    "mason.nvim",
+    optional = true,
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed or {}, {
+        "shfmt",
+        "shellcheck",
+      })
+    end,
+  },
+  {
+    "nvim-treesitter",
+    opts = function(_, opts)
+      local function add(lang)
+        if type(opts.ensure_installed) == "table" then
+          table.insert(opts.ensure_installed, lang)
+        end
+      end
 
-    add("git_config")
+      vim.filetype.add({
+        extension = { rasi = "rasi" },
+        pattern = {
+          [".*/waybar/config"] = "jsonc",
+          [".*/mako/config"] = "dosini",
+          [".*/kitty/*.conf"] = "bash",
+          [".*/hypr/.*%.conf"] = "hyprlang",
+        },
+      })
 
-    if have("hypr") then
-      add("hyprlang")
-    end
+      add("git_config")
 
-    if have("fish") then
-      add("fish")
-    end
+      if have("hypr") then
+        add("hyprlang")
+      end
 
-    if have("rofi") or have("wofi") then
-      add("rasi")
-    end
-  end,
+      if have("fish") then
+        add("fish")
+      end
+
+      if have("rofi") or have("wofi") then
+        add("rasi")
+      end
+    end,
+  },
 }
-
