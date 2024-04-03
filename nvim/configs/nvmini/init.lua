@@ -21,7 +21,6 @@ require("core").bootstrap({
           end
           vim.cmd.colorscheme("catppuccin")
           -- vim.cmd.colorscheme("tokyonight")
-          -- vim.print("config", vim.g.neo_transparent)
         end,
         builtins = {
           keymaps = true,
