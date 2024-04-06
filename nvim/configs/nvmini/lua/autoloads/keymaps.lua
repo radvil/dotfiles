@@ -28,7 +28,6 @@ Lonard.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "run c
 
 -- experimental keymap
 Lonard.map({ "n", "x", "v" }, "s", "<nop>", { remap = true, desc = "[reset]" })
--- Lonard.map({ "i", "s", "o" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
 Lonard.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
