@@ -88,3 +88,9 @@ Lonard.map("n", "<leader>uT", function()
     end)
   end
 end, { desc = "toggle » transparent background" })
+
+if Lonard.lazy_has("mini.map") then
+  for _, key in ipairs({ "n", "N", "*", "#" }) do
+    Lonard.map("n", key, key .. "<Cmd>lua require('mini.map').refresh({}, {lines = false, scrollbar = false})<CR>")
+  end
+end
