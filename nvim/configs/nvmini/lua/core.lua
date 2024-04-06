@@ -31,7 +31,7 @@ function M.defaults()
       wrap = true,
       size = { width = 0.8, height = 0.8 },
       title = Icons.Vim .. "NeoConfig",
-      border = vim.g.neo_transparent and "rounded" or "none",
+      border = vim.g.neo_transparent and "single" or "none", -- TODO: this won't work 
       backdrop = 60,
       title_pos = "right",
       icons = {
