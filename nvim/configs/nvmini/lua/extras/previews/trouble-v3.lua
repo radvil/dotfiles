@@ -1,19 +1,6 @@
 -- NOTE: WE'LL WAIT FOR THE STABLE
 -- THIS THING IS GONNA HELP US A LOT
 
-local Config = require("neoverse.config")
-for _, other in ipairs({ "aerial", "outline" }) do
-  local extra = "neoverse.extras.editor." .. other
-  if vim.tbl_contains(Config.json.data.extras, extra) then
-    other = other:gsub("^%l", string.upper)
-    Lonard.error({
-      "**Trouble v3** includes support for document symbols.",
-      ("You currently have the **%s** extra enabled."):format(other),
-      "Please disable it in your config.",
-    })
-  end
-end
-
 return {
   {
     "folke/trouble.nvim",
@@ -34,6 +21,20 @@ return {
         desc = "Code[Trouble] LSP references/definitions/...",
       },
     },
+    init = function()
+      local Config = require("neoverse.config")
+      for _, other in ipairs({ "aerial", "outline" }) do
+        local extra = "neoverse.extras.editor." .. other
+        if vim.tbl_contains(Config.json.data.extras, extra) then
+          other = other:gsub("^%l", string.upper)
+          Lonard.error({
+            "**Trouble v3** includes support for document symbols.",
+            ("You currently have the **%s** extra enabled."):format(other),
+            "Please disable it in your config.",
+          })
+        end
+      end
+    end,
   },
 
   -- lualine integration
