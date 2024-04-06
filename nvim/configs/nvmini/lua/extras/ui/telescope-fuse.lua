@@ -183,9 +183,9 @@ local create_fused_layout = function(picker)
   prepare_layout_parts(layout, box_kind)
   local layout_update = layout.update
   function layout:update()
-    local box, box_kind = get_box()
-    prepare_layout_parts(layout, box_kind)
-    layout_update(self, { size = get_layout_size(box_kind) }, box)
+    local _box, _box_kind = get_box()
+    prepare_layout_parts(layout, _box_kind)
+    layout_update(self, { size = get_layout_size(_box_kind) }, _box)
   end
   return TSLayout(layout)
 end
