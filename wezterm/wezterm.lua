@@ -7,13 +7,14 @@ config.bold_brightens_ansi_colors = true
 config.font_size = 10
 config.font = wz.font_with_fallback({
 	"JetBrainsMono Nerd Font",
-	-- "JetBrains Mono",
+	"JetBrains Mono",
 })
 
 -- keyboard & mouse specifics
-config.use_dead_keys = false
+-- config.use_dead_keys = false
 config.disable_default_key_bindings = true
 config.disable_default_mouse_bindings = true
+config.hide_mouse_cursor_when_typing = false
 config.keys = {
 	{
 		key = "F5",
