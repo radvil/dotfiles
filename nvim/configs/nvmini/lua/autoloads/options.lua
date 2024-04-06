@@ -35,8 +35,8 @@ vim.o.formatexpr = "v:lua.Lonard.format.formatexpr()"
 -- Folding
 vim.opt.foldlevel = 99
 
--- HACK: causes freezes on <= 0.9, so only enable on >= 0.10 for now
 if not Lonard.lazy_has("nvim-ufo") then
+  -- HACK: causes freezes on <= 0.9, so only enable on >= 0.10 for now
   vim.opt.foldmethod = "expr"
   -- vim.opt.foldtext = "v:lua.require'neoverse.utils'.ui.foldtext()"
   vim.opt.foldtext = ""
@@ -59,6 +59,8 @@ if vim.g.neovide then
     vim.g.neo_transparent = false
   end
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h10" }
+  vim.opt.guicursor =
+    "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff500-blinkon500,sm:block-blinkwait500-blinkoff500-blinkon500"
 end
 
 -- vim.print("options", vim.g.neo_transparent)
