@@ -190,33 +190,27 @@ local create_fused_layout = function(picker)
   return TSLayout(layout)
 end
 
-if true then
-  return {}
-end
-
 return {
   "telescope.nvim",
   optional = true,
-  opts = function(_, opts)
-    if type(opts.defaults) == "table" then
-      opts.defaults = {
-        layout_strategy = "flex",
-        layout_config = {
-          horizontal = {
-            size = {
-              width = "90%",
-              height = "70%",
-            },
-          },
-          vertical = {
-            size = {
-              width = "90%",
-              height = "90%",
-            },
+  opts = {
+    defaults = {
+      layout_strategy = "flex",
+      create_layout = create_fused_layout,
+      layout_config = {
+        horizontal = {
+          size = {
+            width = "90%",
+            height = "80%",
           },
         },
-        create_layout = create_fused_layout,
-      }
-    end
-  end,
+        vertical = {
+          size = {
+            width = "90%",
+            height = "90%",
+          },
+        },
+      },
+    },
+  },
 }
