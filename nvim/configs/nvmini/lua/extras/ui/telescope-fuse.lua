@@ -192,25 +192,26 @@ end
 
 return {
   "telescope.nvim",
-  optional = true,
-  opts = {
-    defaults = {
-      layout_strategy = "flex",
-      create_layout = create_fused_layout,
-      layout_config = {
-        horizontal = {
-          size = {
-            width = "90%",
-            height = "80%",
+  opts = function(_, opts)
+    if type(opts.defaults) == "table" then
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        layout_strategy = "flex",
+        create_layout = create_fused_layout,
+        layout_config = {
+          horizontal = {
+            size = {
+              width = "90%",
+              height = "80%",
+            },
+          },
+          vertical = {
+            size = {
+              width = "90%",
+              height = "90%",
+            },
           },
         },
-        vertical = {
-          size = {
-            width = "90%",
-            height = "90%",
-          },
-        },
-      },
-    },
-  },
+      })
+    end
+  end,
 }
