@@ -7,4 +7,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 - [ ] Reimplement `lualine` to my liking
 - [x] Nvim LspConfig
-- [ ] `Flash.nvim` highlight
+- [x] `Flash.nvim` highlight

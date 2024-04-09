@@ -1,3 +1,11 @@
+local palette = {
+  dark = "#1E1E2E",
+  light = "#ffffff",
+  sky = "#51AFEF",
+  pink = "#ff007c",
+  yellow = "#ffc777",
+}
+
 return {
   "catppuccin/nvim",
   name = "catppuccin",
@@ -44,6 +52,20 @@ return {
             bold = false,
             bg = colors.base,
             fg = colors.rosewater,
+          },
+          FlashCurrent = {
+            fg = palette.dark,
+            bg = palette.yellow,
+            style = { "bold" },
+          },
+          FlashMatch = {
+            fg = palette.light,
+            bg = palette.sky
+          },
+          FlashLabel = {
+            fg = palette.light,
+            bg = palette.pink,
+            style = { "bold" },
           },
           IncSearch = { bg = colors.maroon, fg = colors.crust },
           WinSeparator = { fg = colors.surface1 },
