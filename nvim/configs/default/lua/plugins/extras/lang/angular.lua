@@ -33,19 +33,19 @@ local cmd = function(id, cmd, desc)
   })
 end
 
----@param root_dir? string
-local getNgCmd = function(root_dir)
-  local bun = os.getenv("HOME") .. "/.bun"
-  local bun_libs = string.format("%s/install/global/node_modules", bun)
-  return {
-    bun .. "/bin/ngserver",
-    "--stdio",
-    "--tsProbeLocations",
-    root_dir .. "," .. bun_libs,
-    "--ngProbeLocations",
-    root_dir .. "," .. bun_libs .. "/@angular/language-server/node_modules",
-  }
-end
+-- ---@param root_dir? string
+-- local getNgCmd = function(root_dir)
+--   local bun = os.getenv("HOME") .. "/.bun"
+--   local bun_libs = string.format("%s/install/global/node_modules", bun)
+--   return {
+--     bun .. "/bin/ngserver",
+--     "--stdio",
+--     "--tsProbeLocations",
+--     root_dir .. "," .. bun_libs,
+--     "--ngProbeLocations",
+--     root_dir .. "," .. bun_libs .. "/@angular/language-server/node_modules",
+--   }
+-- end
 
 return {
   {

@@ -76,7 +76,7 @@ return {
       function()
         require("harpoon"):list():prev()
       end,
-      desc = "go to prev bookmarked f]le",
+      desc = "go to prev bookmarked f[le",
     },
     {
       "<leader>]",
