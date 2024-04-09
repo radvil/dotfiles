@@ -1,0 +1,35 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.util.dot",
+    "lazyvim.plugins.extras.util.mini-hipatterns",
+    "plugins.extras.completion.cmp-cmdline",
+    "plugins.extras.editor.diffview",
+    "plugins.extras.editor.legendary",
+    "plugins.extras.editor.mini-diff",
+    "plugins.extras.editor.mini-splitjoin",
+    "plugins.extras.editor.obsidian",
+    "plugins.extras.editor.oil",
+    "plugins.extras.editor.outline",
+    "plugins.extras.editor.tabout",
+    "plugins.extras.editor.telescope-fuse",
+    "plugins.extras.lang.angular",
+    "plugins.extras.lang.typescript",
+    "plugins.extras.lazycat.kopi-cat",
+    "plugins.extras.misc.cellular-automation",
+    "plugins.extras.misc.mini-trailspace",
+    "plugins.extras.misc.rest",
+    "plugins.extras.misc.sticky-buff",
+    "plugins.extras.misc.suda",
+    "plugins.extras.misc.undotree",
+    "plugins.extras.ui.map",
+    "plugins.extras.ui.navic",
+    "plugins.extras.ui.zenmode"
+  ],
+  "news": {
+    "NEWS.md": "3314"
+  },
+  "version": 3
+}

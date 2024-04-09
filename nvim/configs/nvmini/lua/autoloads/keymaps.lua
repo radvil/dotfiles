@@ -27,6 +27,8 @@ Lonard.map("n", "<leader>tW", function() tmux_run("window") end, { desc = "run c
 -- stylua: ignore end
 
 -- experimental keymap
+Lonard.map({ "n", "x", "v", "o" }, "H", "^", { desc = "start of line (non blank)" })
+Lonard.map({ "n", "x", "v", "o" }, "L", "$", { desc = "end of the line" })
 Lonard.map({ "n", "x", "v" }, "s", "<nop>", { remap = true, desc = "[reset]" })
 Lonard.map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
 Lonard.map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })

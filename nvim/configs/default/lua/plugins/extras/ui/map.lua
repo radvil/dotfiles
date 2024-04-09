@@ -11,7 +11,7 @@ return {
     {
       "<leader>mm",
       function()
-        Lonard.warn("deprecated. Use <Leader>ww or <a-w> instead!", { title = "mini.map" })
+        LazyVim.warn("deprecated. Use <Leader>ww or <a-w> instead!", { title = "mini.map" })
         vim.schedule(function()
           require("mini.map").toggle_focus()
         end)
