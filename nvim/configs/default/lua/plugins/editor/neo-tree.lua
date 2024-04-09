@@ -90,7 +90,7 @@ return {
         hide_root_node = true,
         default_component_configs = {
           indent = {
-            padding = 0,
+            padding = 3,
             with_markers = true,
             with_expanders = true,
           },

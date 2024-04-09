@@ -148,7 +148,7 @@ return {
       end,
     }
 
-    opts = vim.tbl_deep_extend("force", defaults, opts or {})
+    opts = vim.tbl_deep_extend("force", opts or {}, defaults)
     require("catppuccin").setup(opts)
   end,
 }

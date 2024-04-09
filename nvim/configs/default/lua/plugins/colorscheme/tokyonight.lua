@@ -1,8 +1,10 @@
 return {
   "tokyonight.nvim",
-  config = function()
+  lazy = false,
+  priority = 9999,
+  config = function(_, opts)
     local transparent = vim.g.neo_transparent
-    return {
+    local defaults = {
       style = "moon",
       lualine_bold = true,
       dim_inactive = false,
@@ -39,5 +41,7 @@ return {
         floats = transparent and "transparent" or "dark",
       },
     }
+    opts = vim.tbl_deep_extend("force", defaults, opts or {})
+    require("tokyonight").setup(opts)
   end,
 }

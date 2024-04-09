@@ -87,22 +87,22 @@ end
 ---buffers
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "go to recent buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "go to recent [b]uffer" })
-map("n", "[b", ":bprevious<cr>", { desc = "buffer » previous" })
-map("n", "]b", ":bnext<cr>", { desc = "buffer » next" })
+map("n", "[b", ":bprevious<cr>", { desc = "prev[ous buffer" })
+map("n", "]b", ":bnext<cr>", { desc = "n]xt buffer" })
 if not LazyVim.has("bufferline.nvim") then
-  map("n", "<a-[>", ":bprevious<cr>", { desc = "buffer » previous" })
-  map("n", "<a-]>", ":bnext<cr>", { desc = "buffer » next" })
+  map("n", "<a-[>", ":bprevious<cr>", { desc = "prev[ous buffer" })
+  map("n", "<a-]>", ":bnext<cr>", { desc = "n]xt buffer" })
 end
 if not LazyVim.has("mini.bufremove") then
-  map("n", "<leader>bd", ":bdelete<cr>", { desc = "buffer » delete current" })
-  map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "buffer » delete all" })
+  map("n", "<leader>bd", ":bdelete<cr>", { desc = "[d]elete buffer" })
+  map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "[D]elete all buffers" })
 end
 
-map("n", "<leader>us", function() LazyVim.toggle.option("spell") end, { desc = "toggle » spell" })
-map("n", "<leader>uw", function() LazyVim.toggle.option("wrap") end, { desc = "toggle » word wrap" })
-map("n", "<leader>uc", function() LazyVim.toggle.option("cursorline") end, { desc = "toggle » cursor line" })
-map("n", "<leader>un", function() LazyVim.toggle.number() end, { desc = "toggle » line numbers" })
-map("n", "<leader>ux", function() LazyVim.toggle.diagnostics() end, { desc = "toggle » diagnostics" })
+map("n", "<leader>us", function() LazyVim.toggle.option("spell") end, { desc = "toggle word [s]pell" })
+map("n", "<leader>uw", function() LazyVim.toggle.option("wrap") end, { desc = "toggle word [w]rap" })
+map("n", "<leader>uc", function() LazyVim.toggle.option("cursorline") end, { desc = "toggle [c]ursor line" })
+map("n", "<leader>un", function() LazyVim.toggle.number() end, { desc = "toggle line [n]umbers" })
+map("n", "<leader>ux", function() LazyVim.toggle.diagnostics() end, { desc = "toggle diagnosti[x]" })
 
 ---floating terminal
 local ft = function(cmd, root)
@@ -197,7 +197,7 @@ map("n", "<leader>uC", function()
   else
     LazyVim.warn("Code completion set to manual", { title = "Code completion" })
   end
-end, { desc = "toggle » code completion trigger" })
+end, { desc = "toggle code [C]ompletion" })
 
 -- toggle transparency
 map("n", "<leader>uT", function()

@@ -86,7 +86,7 @@ return {
               },
             })
           end,
-          desc = "flash » jump",
+          desc = "ju[m]p anywhere",
         },
         {
           "<a-m>",
@@ -100,7 +100,7 @@ return {
               },
             })
           end,
-          desc = "flash » jump",
+          desc = "ju[m]p anywhere",
         },
         {
           "<a-s>",
@@ -115,7 +115,7 @@ return {
               },
             })
           end,
-          desc = "flash » select node",
+          desc = "[s]elect node",
         },
         {
           "go",
@@ -141,7 +141,7 @@ return {
               end,
             })
           end,
-          desc = "flash » jump and open",
+          desc = "jump and [o]pen",
         },
         {
           "<leader>z",

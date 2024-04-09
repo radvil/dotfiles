@@ -50,7 +50,7 @@ return {
         end
         A.nvim_set_current_win(win)
       end,
-      desc = "window » pick",
+      desc = "pick a [w]indow",
     },
     {
       "<leader>ws",
@@ -82,7 +82,7 @@ return {
           A.nvim_set_current_win(picked_win)
         end)
       end,
-      desc = "window » pick and swap",
+      desc = "pick and [s]wap window ",
     },
     {
       "<leader>wx",
@@ -100,7 +100,7 @@ return {
         end
         A.nvim_win_close(picked, false)
       end,
-      desc = "window » pick and close",
+      desc = "pick and [x]lose a window",
     },
   },
 }
