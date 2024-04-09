@@ -55,8 +55,8 @@ return {
     }
   end,
 
-  opts = function()
-    local opts = {
+  opts = function(_, opts)
+    local defaults = {
       options = {
         mode = "tabs",
         sort_by = "tabs",
@@ -83,23 +83,23 @@ return {
           return not vim.tbl_contains(blacklist, vim.bo[bufnr].filetype)
         end,
         offsets = {
-          {
-            filetype = "neo-tree",
-            highlight = "BufferLineFill",
-            text_align = "left",
-            separator = true,
-            text = function()
-              local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~") --[[@as string]]
-              local sep = package.config:sub(1, 1)
-              local parts = vim.split(path, "[\\/]")
-              if #parts > 4 then
-                parts = { parts[1], " … ", parts[#parts - 1], parts[#parts] }
-                return "󱉭 " .. table.concat(parts, sep)
-              else
-                return "󱉭 " .. path
-              end
-            end,
-          },
+          -- {
+          --   filetype = "neo-tree",
+          --   highlight = "BufferLineFill",
+          --   text_align = "left",
+          --   separator = true,
+          --   text = function()
+          --     local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~") --[[@as string]]
+          --     local sep = package.config:sub(1, 1)
+          --     local parts = vim.split(path, "[\\/]")
+          --     if #parts > 4 then
+          --       parts = { parts[1], " … ", parts[#parts - 1], parts[#parts] }
+          --       return "󱉭 " .. table.concat(parts, sep)
+          --     else
+          --       return "󱉭 " .. path
+          --     end
+          --   end,
+          -- },
         },
       },
     }
@@ -113,6 +113,8 @@ return {
     elseif match("tokyonight") then
       opts.highlights = require("hi.bufferline").tokyonight()
     end
+
+    opts = vim.tbl_deep_extend("force", defaults, opts or {})
 
     return opts
   end,
