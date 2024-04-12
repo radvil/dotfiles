@@ -98,6 +98,10 @@ if not LazyVim.has("mini.bufremove") then
   map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "[D]elete all buffers" })
 end
 
+-- quickfix
+map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+
 map("n", "<leader>us", function() LazyVim.toggle.option("spell") end, { desc = "toggle word [s]pell" })
 map("n", "<leader>uw", function() LazyVim.toggle.option("wrap") end, { desc = "toggle word [w]rap" })
 map("n", "<leader>uc", function() LazyVim.toggle.option("cursorline") end, { desc = "toggle [c]ursor line" })
