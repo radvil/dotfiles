@@ -12,9 +12,10 @@ return {
       {
         "<leader>go",
         function()
+          -- TODO: notify current toggle status
           require("mini.diff").toggle_overlay(0)
         end,
-        desc = "Toggle mini.diff overlay",
+        desc = "Toggle git [o]verlay",
       },
     },
     opts = {

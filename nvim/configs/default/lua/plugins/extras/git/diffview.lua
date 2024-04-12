@@ -12,12 +12,12 @@ return {
       {
         "<leader>gd",
         "<cmd>DiffviewOpen<cr>",
-        desc = "open [g]it [d]iff view",
+        desc = "open git [d]iffview",
       },
       {
         "<leader>gh",
         "<cmd>DiffviewFileHistory<cr>",
-        desc = "view [g]it file [h]istory",
+        desc = "open git file [h]istory",
       },
     }
   end,
