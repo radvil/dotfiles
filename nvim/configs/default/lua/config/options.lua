@@ -33,7 +33,6 @@ vim.opt.sessionoptions = {
 if not LazyVim.has("nvim-ufo") then
   vim.opt.foldexpr = "v:lua.LazyVim.ui.foldexpr()"
   vim.opt.foldmethod = "expr"
-  vim.opt.fillchars = "fold: "
   vim.opt.foldtext = ""
 end
 
