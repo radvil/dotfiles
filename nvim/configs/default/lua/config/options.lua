@@ -11,6 +11,7 @@ vim.g.maplocalleader = "\\"
 -- * powershell
 -- LazyVim.terminal.setup("pwsh")
 
+vim.opt.clipboard = ""
 vim.opt.cursorline = false
 vim.opt.fillchars = {
   foldclose = "",
