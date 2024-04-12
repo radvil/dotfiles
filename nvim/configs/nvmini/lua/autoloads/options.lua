@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 -- GLOBALS
 vim.opt.background = "dark"
 vim.g.neo_transparent = true
@@ -36,7 +37,6 @@ vim.o.formatexpr = "v:lua.Lonard.format.formatexpr()"
 vim.opt.foldlevel = 99
 
 if not Lonard.lazy_has("nvim-ufo") then
-  -- HACK: causes freezes on <= 0.9, so only enable on >= 0.10 for now
   vim.opt.foldexpr = "v:lua.Lonard.ui.foldexpr()"
   vim.opt.foldmethod = "expr"
   vim.opt.foldtext = ""
