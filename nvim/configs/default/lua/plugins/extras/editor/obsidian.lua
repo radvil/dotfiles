@@ -5,7 +5,7 @@ local create_note_with_title = function()
     default = "",
   }, function(value)
     if not value then
-      vim.notify("Note creation canceled", vim.log.levels.WARN, {
+      LazyVim.warn("Note creation canceled", {
         title = "Obsidian",
         icon = "󱙒 ",
       })
