@@ -30,6 +30,17 @@ vim.opt.sessionoptions = {
   "folds",
 }
 
+if not LazyVim.has("nvim-ufo") then
+  vim.opt.foldexpr = "v:lua.LazyVim.ui.foldexpr()"
+  vim.opt.foldmethod = "expr"
+  vim.opt.fillchars = "fold: "
+  vim.opt.foldtext = ""
+end
+
+if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
+  vim.opt.statuscolumn = [[%!v:lua.LazyVim.ui.statuscolumn()]]
+end
+
 if vim.g.neovide then
   ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
   vim.g.neovide_cursor_vfx_mode = "railgun"
