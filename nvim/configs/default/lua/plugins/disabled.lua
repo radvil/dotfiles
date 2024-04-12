@@ -3,6 +3,7 @@ local disabled_plugins = {
   "folke/noice.nvim",
   -- "echasnovski/mini.indentscope",
   "echasnovski/mini.ai",
+  "nvim-treesitter/nvim-treesitter-textobjects",
 }
 
 ---@type LazySpec[]
