@@ -35,8 +35,8 @@ Lonard.map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with sp
 Lonard.map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
 Lonard.map("n", "ZZ", ":conf qa<cr>", { desc = "+confirm quit all" })
 Lonard.map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
-Lonard.map("n", "Zb", ":bdelete<cr>", { desc = "quit [b]uffer" })
-Lonard.map("n", "ZB", ":BAD<cr>", { desc = "quit [B]uffers" })
+Lonard.map("n", "Zb", "<cmd>BD<cr>", { desc = "quit [b]uffer" })
+Lonard.map("n", "ZB", "<cmd>BAD<cr>", { desc = "quit [B]uffers" })
 Lonard.map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
 Lonard.map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
 
