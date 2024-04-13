@@ -13,6 +13,7 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.clipboard = ""
 vim.opt.cursorline = false
+vim.opt.pumblend = 0 -- Popup blend
 
 vim.opt.sessionoptions = {
   "tabpages",
