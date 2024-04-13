@@ -76,11 +76,12 @@ return {
           end,
         },
       },
-      standalone_setups = {
+      setup = {
         angularls = function()
           LazyVim.lsp.on_attach(function(client)
             if client.name == "angularls" then
               client.server_capabilities.renameProvider = false
+              client.server_capabilities.signatureHelpProvider = false
               cmd("c", goToComponentFile, "Go to component file")
               cmd("t", goToTemplateFile, "Go to template file")
             end
