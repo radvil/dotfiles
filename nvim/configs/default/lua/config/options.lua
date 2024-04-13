@@ -13,14 +13,6 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.clipboard = ""
 vim.opt.cursorline = false
-vim.opt.fillchars = {
-  foldclose = "",
-  foldopen = "",
-  foldsep = " ",
-  diff = "/",
-  -- fold = " ",
-  eob = " ",
-}
 
 vim.opt.sessionoptions = {
   "tabpages",
@@ -28,6 +20,15 @@ vim.opt.sessionoptions = {
   "winsize",
   "curdir",
   "folds",
+}
+
+vim.opt.fillchars = {
+  foldclose = "",
+  foldopen = "",
+  foldsep = " ",
+  diff = "/",
+  -- fold = " ",
+  eob = " ",
 }
 
 if not LazyVim.has("nvim-ufo") then

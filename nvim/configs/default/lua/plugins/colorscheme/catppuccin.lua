@@ -60,7 +60,7 @@ return {
           },
           FlashMatch = {
             fg = palette.light,
-            bg = palette.sky
+            bg = palette.sky,
           },
           FlashLabel = {
             fg = palette.light,
