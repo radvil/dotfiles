@@ -11,18 +11,17 @@ return {
 
   {
     "folke/noice.nvim",
-      -- stylua: ignore
-      keys = function ()
-        return {
-          { "<c-d>", function() if not require("noice.lsp").scroll(4) then return "<c-d>" end end, expr = true, desc = "Noice » Scroll forward", mode = {"i", "n", "s"} },
-          { "<c-u>", function() if not require("noice.lsp").scroll(-4) then return "<c-u>" end end, expr = true, desc = "Noice » Scroll backward", mode = {"i", "n", "s"} },
-          { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Noice » Redirect cmdline" },
-          { "<leader>ll", function() require("noice").cmd("last") end, desc = "Logger » Noice last message" },
-          { "<leader>lh", function() require("noice").cmd("history") end, desc = "Logger » Noice message history" },
-          { "<leader>la", function() require("noice").cmd("all") end, desc = "Logger » All noice messages" },
-          { "<leader>ld", function() require("noice").cmd("dismiss") end, desc = "Logger » Dismiss noice messages" },
-        }
-      end,
+    keys = function ()
+      return {
+        { "<c-d>", function() if not require("noice.lsp").scroll(4) then return "<c-d>" end end, expr = true, desc = "Noice » Scroll forward", mode = {"i", "n", "s"} },
+        { "<c-u>", function() if not require("noice.lsp").scroll(-4) then return "<c-u>" end end, expr = true, desc = "Noice » Scroll backward", mode = {"i", "n", "s"} },
+        { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Noice » Redirect cmdline" },
+        { "<leader>ll", function() require("noice").cmd("last") end, desc = "Logger » Noice last message" },
+        { "<leader>lh", function() require("noice").cmd("history") end, desc = "Logger » Noice message history" },
+        { "<leader>la", function() require("noice").cmd("all") end, desc = "Logger » All noice messages" },
+        { "<leader>ld", function() require("noice").cmd("dismiss") end, desc = "Logger » Dismiss noice messages" },
+      }
+    end,
 
     ---@param opts NoiceConfig
     opts = function(_, opts)
