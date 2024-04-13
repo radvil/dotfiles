@@ -221,7 +221,7 @@ map("n", "<leader>uT", function()
       }) do
         if string.match(colors_name, key) then
           vim.g.neo_transparent = not vim.g.neo_transparent
-          vim.cmd.Lazy("reload " .. value .. " noice.nvim" .. " telescope.nvim")
+          vim.cmd.Lazy("reload " .. value .. " noice.nvim")
           vim.schedule(function()
             vim.cmd.colorscheme(colors_name)
           end)
