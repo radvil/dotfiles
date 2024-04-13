@@ -9,9 +9,9 @@ function M.catppuccin(styles)
     if not C then return {} end
     local O = ctp.options
     local active_bg = C.surface0
-    local inactive_bg = C.mantle -- "#181825" to apply C.mantle on mocha for all variants
+    local inactive_bg = C.mantle
     local separator_fg = C.crust
-    local fill_bg = vim.g.neo_transparent and C.none or C.base
+    local fill_bg = C.base
     local highlights = {
       fill = { bg = fill_bg },
       background = { bg = inactive_bg },
@@ -26,10 +26,10 @@ function M.catppuccin(styles)
       tab_separator_selected = { fg = separator_fg, bg = active_bg },
       tab_close = { fg = C.red, bg = inactive_bg },
       indicator_selected = { fg = C.peach, bg = active_bg, style = styles },
-      separator = { fg = separator_fg, bg = inactive_bg },
+      separator = { fg = C.surface1, bg = inactive_bg },
       separator_visible = { fg = separator_fg, bg = inactive_bg },
       separator_selected = { fg = separator_fg, bg = active_bg },
-      offset_separator = { fg = separator_fg, bg = C.base },
+      offset_separator = { fg = C.surface1, bg = C.base },
       close_button = { fg = C.surface1, bg = inactive_bg },
       close_button_visible = { fg = C.surface1, bg = inactive_bg },
       close_button_selected = { fg = C.red, bg = active_bg },
