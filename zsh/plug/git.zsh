@@ -133,3 +133,5 @@ is-at-least 2.30 "$git_version" \
   && alias git-push_upstream='git push --set-upstream origin $(git-current_branch) --force-with-lease --force-if-includes' \
   || alias git-push_upstream='git push --set-upstream origin $(git-current_branch) --force-with-lease'
 
+# cleaning up
+unset git_version
