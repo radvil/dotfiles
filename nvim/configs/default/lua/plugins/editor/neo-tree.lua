@@ -11,7 +11,7 @@ return {
             highlight = "NeoBufferLineOffset",
             text_align = "left",
             separator = true,
-            --TODO: get current opened dir from neo-tree API 
+            --TODO: get current opened dir from neo-tree API
             text = function()
               local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~")
               local sep = package.config:sub(1, 1)
@@ -202,8 +202,23 @@ return {
         },
 
         source_selector = {
-          winbar = vim.opt.laststatus == 3,
+          winbar = true,
           statusline = vim.opt.laststatus ~= 3,
+          truncation_character = "…",
+          sources = {
+            {
+              source = "filesystem",
+              display_name = " 󰙅 files",
+            },
+            {
+              source = "buffers",
+              display_name = "  buffers",
+            },
+            {
+              source = "git_status",
+              display_name = "  git",
+            },
+          },
         },
       }
     end,
