@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export EDITOR="nvim"
+
 # Set DOTFILES when needed
 if [ -z "${DOTFILES}" ]; then
   DOTFILES="$HOME/.dotfiles"

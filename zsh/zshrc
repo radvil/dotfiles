@@ -12,4 +12,3 @@
 
 bindkey -s "\ew" "ami-project\n"
 bindkey -s "\em" "zmux\n"
-#neofetch
