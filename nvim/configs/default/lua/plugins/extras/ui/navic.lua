@@ -16,7 +16,7 @@ return {
         lazy_update_context = true,
         separator = "  ",
         highlight = true,
-        depth_limit = 6,
+        depth_limit = 5,
       }
     end,
   },
