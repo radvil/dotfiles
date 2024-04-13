@@ -64,7 +64,7 @@ return {
         diagnostics = false,
         move_wraps_at_ends = false,
         show_tab_indicators = false,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         close_command = "tabclose! %d",
         right_mouse_command = false,
         show_close_icon = false,

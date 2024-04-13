@@ -29,7 +29,7 @@ function M.catppuccin(styles)
       separator = { fg = C.surface1, bg = inactive_bg },
       separator_visible = { fg = separator_fg, bg = inactive_bg },
       separator_selected = { fg = separator_fg, bg = active_bg },
-      -- offset_separator = { fg = C.surface1, bg = C.base },
+      offset_separator = { link = "WinSeparator" },
       close_button = { fg = C.surface1, bg = inactive_bg },
       close_button_visible = { fg = C.surface1, bg = inactive_bg },
       close_button_selected = { fg = C.red, bg = active_bg },

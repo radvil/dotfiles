@@ -122,11 +122,6 @@ return {
           NoiceCmdlineIcon = { fg = colors.subtext0 },
           InclineActive = { bg = colors.surface0, fg = colors.rosewater },
           InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
-
-          -- bufferline
-          BufferLineOffsetSeparator = {
-            link = "WinSeparator",
-          },
         }
         if vim.g.neo_winborder == "none" then
           hl_groups.TelescopePromptBorder = {
