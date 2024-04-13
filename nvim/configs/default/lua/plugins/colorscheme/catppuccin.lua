@@ -43,6 +43,12 @@ return {
       },
       custom_highlights = function(colors)
         local hl_groups = {
+          NeoBufferLineOffset = {
+            bg = colors.mantle,
+            fg = colors.blue,
+            bold = true,
+            italic = true,
+          },
           Folded = {
             bg = colors.mantle,
             fg = colors.maroon,
@@ -68,7 +74,7 @@ return {
             style = { "bold" },
           },
           IncSearch = { bg = colors.maroon, fg = colors.crust },
-          WinSeparator = { fg = colors.surface1 },
+          WinSeparator = { fg = vim.g.neo_transparent and colors.surface1 or colors.mantle },
           MiniIndentscopeSymbol = { fg = colors.flamingo },
           NavicText = { fg = colors.subtext0, bold = false },
           NavicSeparator = { fg = colors.surface1 },
@@ -95,6 +101,7 @@ return {
             fg = colors.crust,
             bold = true,
           },
+          NeoTreeWinSeparator = { link = "WinSeparator" },
           NvimTreeIndentMarker = { link = "NeoTreeIndentMarker" },
           NvimTreeGitDirty = { link = "NeoTreeGitModified" },
           NvimTreeWinSeparator = { link = "WinSeparator" },
@@ -115,6 +122,11 @@ return {
           NoiceCmdlineIcon = { fg = colors.subtext0 },
           InclineActive = { bg = colors.surface0, fg = colors.rosewater },
           InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
+
+          -- bufferline
+          BufferLineOffsetSeparator = {
+            link = "WinSeparator",
+          },
         }
         if vim.g.neo_winborder == "none" then
           hl_groups.TelescopePromptBorder = {

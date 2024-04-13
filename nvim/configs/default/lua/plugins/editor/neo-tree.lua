@@ -8,9 +8,10 @@ return {
         offsets = {
           {
             filetype = "neo-tree",
-            highlight = "BufferLineFill",
+            highlight = "NeoBufferLineOffset",
             text_align = "left",
             separator = true,
+            --TODO: get current opened dir from neo-tree API 
             text = function()
               local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~")
               local sep = package.config:sub(1, 1)

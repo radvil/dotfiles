@@ -29,7 +29,7 @@ function M.catppuccin(styles)
       separator = { fg = C.surface1, bg = inactive_bg },
       separator_visible = { fg = separator_fg, bg = inactive_bg },
       separator_selected = { fg = separator_fg, bg = active_bg },
-      offset_separator = { fg = C.surface1, bg = C.base },
+      -- offset_separator = { fg = C.surface1, bg = C.base },
       close_button = { fg = C.surface1, bg = inactive_bg },
       close_button_visible = { fg = C.surface1, bg = inactive_bg },
       close_button_selected = { fg = C.red, bg = active_bg },
@@ -66,22 +66,22 @@ function M.catppuccin(styles)
       modified = { fg = C.peach, bg = inactive_bg },
       modified_selected = { fg = C.peach, bg = active_bg },
     }
-    for _, color in pairs(highlights) do
+    for _, hi in pairs(highlights) do
       -- Because default is gui=bold,italic
-      color.italic = false
-      color.bold = false
-      if color.style then
-        for _, style in pairs(color.style) do
-          color[style] = true
+      hi.italic = false
+      hi.bold = false
+      if hi.style then
+        for _, style in pairs(hi.style) do
+          hi[style] = true
           if O.no_italic and style == "italic" then
-            color[style] = false
+            hi[style] = false
           end
           if O.no_bold and style == "bold" then
-            color[style] = false
+            hi[style] = false
           end
         end
       end
-      color.style = nil
+      hi.style = nil
     end
     return highlights
   end
