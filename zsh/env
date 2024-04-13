@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 export EDITOR="nvim"
+export KEYTIMEOUT=15
 
 # Set DOTFILES when needed
 if [ -z "${DOTFILES}" ]; then
