@@ -64,7 +64,7 @@ return {
         diagnostics = false,
         move_wraps_at_ends = false,
         show_tab_indicators = false,
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         close_command = "tabclose! %d",
         right_mouse_command = false,
         show_close_icon = false,
@@ -82,25 +82,7 @@ return {
         custom_filter = function(bufnr)
           return not vim.tbl_contains(blacklist, vim.bo[bufnr].filetype)
         end,
-        offsets = {
-          -- {
-          --   filetype = "neo-tree",
-          --   highlight = "BufferLineFill",
-          --   text_align = "left",
-          --   separator = true,
-          --   text = function()
-          --     local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~") --[[@as string]]
-          --     local sep = package.config:sub(1, 1)
-          --     local parts = vim.split(path, "[\\/]")
-          --     if #parts > 4 then
-          --       parts = { parts[1], " … ", parts[#parts - 1], parts[#parts] }
-          --       return "󱉭 " .. table.concat(parts, sep)
-          --     else
-          --       return "󱉭 " .. path
-          --     end
-          --   end,
-          -- },
-        },
+        offsets = { },
       },
     }
 
