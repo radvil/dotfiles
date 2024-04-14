@@ -4,6 +4,7 @@ plug_dir="$DOTFILES/zsh/plug"
 
 [ -s "$plug_dir/git.zsh" ] && source "$plug_dir/git.zsh"
 [ -s "$plug_dir/ssh.zsh" ] && source "$plug_dir/ssh.zsh"
+[ -s "$plug_dir/rsync.zsh" ] && source "$plug_dir/rsync.zsh"
 [ -s "$plug_dir/extract.zsh" ] && source "$plug_dir/extract.zsh"
 [ -s "$plug_dir/vi-mode.zsh" ] && source "$plug_dir/vi-mode.zsh"
 [ -s "$plug_dir/qr-code.zsh" ] && source "$plug_dir/qr-code.zsh"
