@@ -2,9 +2,6 @@
 return {
   "noice.nvim",
   optional = true,
-  enabled = function()
-    return false and vim.g.neovide
-  end,
   opts = {
     notify = { enabled = true },
     smartmove = { enabled = true },
