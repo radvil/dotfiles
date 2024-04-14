@@ -7,7 +7,7 @@ local map = vim.keymap.set
 ---@diagnostic disable: missing-fields
 -- reset
 map({ "n", "x", "v" }, "<nL>", "<nop>")
-map("", "<c-z>", ":undo<cr>", { nowait = true })
+-- map("", "<c-z>", ":undo<cr>", { nowait = true })
 map("n", "Q", "q", { nowait = true, desc = "toggle recording" })
 map("n", "<a-q>", "<nop>")
 map("n", "q", "<nop>")

@@ -7,5 +7,5 @@ if [ -z "${__DOT_OMZ}" ]; then
   fi
 fi
 
-plugins=(vi-mode colored-man-pages)
+plugins=(vi-mode fancy-ctrl-z)
 source "$__DOT_OMZ"
