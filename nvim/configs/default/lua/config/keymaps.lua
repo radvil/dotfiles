@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -111,7 +112,9 @@ map("n", "<leader>uN", function() LazyVim.toggle("relativenumber") end, { desc =
 map("n", "<leader>ux", function() LazyVim.toggle.diagnostics() end, { desc = "toggle diagnosti[x]" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>ul", function() LazyVim.toggle("conceallevel", false, { 0, conceallevel }) end, { desc = "toggle conceal[l]evel" })
-if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then map( "n", "<leader>uh", function() LazyVim.toggle.inlay_hints() end, { desc = "toggle inlay [h]ints" }) end
+if vim.lsp.inlay_hint then
+  map( "n", "<leader>uh", function() LazyVim.toggle.inlay_hints() end, { desc = "toggle inlay [h]ints" })
+end
 map("n", "<leader>uH", function() if vim.b.ts_highlight then vim.treesitter.stop() else vim.treesitter.start() end end, { desc = "toggle treesitter [H]ighlight" })
 
 -- lazygit

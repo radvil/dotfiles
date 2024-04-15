@@ -80,8 +80,14 @@ return {
   opts = {
     diagnostics = {
       virtual_text = {
-        prefix = "icons"
-      }
+        prefix = "icons",
+      },
+    },
+    inlay_hints = {
+      enabled = true,
+    },
+    codelens = {
+      enabled = true,
     },
     servers = {
       bashls = {},

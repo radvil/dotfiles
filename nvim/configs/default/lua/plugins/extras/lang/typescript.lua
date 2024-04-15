@@ -12,6 +12,17 @@ local invoke = function(name)
   end
 end
 
+local inlay_hints_settings = {
+  includeInlayParameterNameHints = "all",
+  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  includeInlayFunctionParameterTypeHints = true,
+  includeInlayVariableTypeHints = true,
+  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+  includeInlayPropertyDeclarationTypeHints = true,
+  includeInlayFunctionLikeReturnTypeHints = true,
+  includeInlayEnumMemberValueHints = true,
+}
+
 ---@type LazySpec[]
 return {
   {
@@ -33,7 +44,7 @@ return {
       ft = {
         "typescriptreact",
         "typescript",
-        "tsx"
+        "tsx",
       },
     },
     opts = {
@@ -62,10 +73,16 @@ return {
               desc = "Add [m]issing Imports",
             },
           },
-          settings = {},
+          settings = {
+            typescript = {
+              inlayHints = inlay_hints_settings,
+            },
+            javascript = {
+              inlayHints = inlay_hints_settings,
+            },
+          },
         },
       },
     },
   },
 }
-
