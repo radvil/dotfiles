@@ -80,6 +80,9 @@ return {
             javascript = {
               inlayHints = inlay_hints_settings,
             },
+            completions = {
+              completeFunctionCalls = true,
+            },
           },
         },
       },
