@@ -78,6 +78,11 @@ return {
   end,
 
   opts = {
+    diagnostics = {
+      virtual_text = {
+        prefix = "icons"
+      }
+    },
     servers = {
       bashls = {},
       html = {
