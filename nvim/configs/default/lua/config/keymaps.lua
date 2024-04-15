@@ -106,7 +106,22 @@ map("n", "<leader>us", function() LazyVim.toggle.option("spell") end, { desc = "
 map("n", "<leader>uw", function() LazyVim.toggle.option("wrap") end, { desc = "toggle word [w]rap" })
 map("n", "<leader>uc", function() LazyVim.toggle.option("cursorline") end, { desc = "toggle [c]ursor line" })
 map("n", "<leader>un", function() LazyVim.toggle.number() end, { desc = "toggle line [n]umbers" })
+map("n", "<leader>ub", function() LazyVim.toggle("background", false, { "light", "dark" }) end, { desc = "toggle [b]ackground" })
+map("n", "<leader>uN", function() LazyVim.toggle("relativenumber") end, { desc = "toggle relativeline [N]umbers" })
 map("n", "<leader>ux", function() LazyVim.toggle.diagnostics() end, { desc = "toggle diagnosti[x]" })
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+map("n", "<leader>ul", function() LazyVim.toggle("conceallevel", false, { 0, conceallevel }) end, { desc = "toggle conceal[l]evel" })
+if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then map( "n", "<leader>uh", function() LazyVim.toggle.inlay_hints() end, { desc = "toggle inlay [h]ints" }) end
+map("n", "<leader>uH", function() if vim.b.ts_highlight then vim.treesitter.stop() else vim.treesitter.start() end end, { desc = "toggle treesitter [H]ighlight" })
+
+-- lazygit
+map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
+map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
+
+map("n", "<leader>gf", function()
+  local git_path = vim.api.nvim_buf_get_name(0)
+  LazyVim.lazygit({args = { "-f", vim.trim(git_path) }})
+end, { desc = "Lazygit Current File History" })
 
 ---floating terminal
 local ft = function(cmd, root)
