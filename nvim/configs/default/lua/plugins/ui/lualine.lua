@@ -1,27 +1,11 @@
 ---@diagnostic disable: undefined-field
+
 local M = {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
 }
 
-M.init = function()
-  vim.g.lualine_laststatus = vim.o.laststatus
-  if vim.fn.argc(-1) > 0 then
-    -- set an empty statusline till lualine loads
-    vim.o.statusline = " "
-  else
-    -- hide the statusline on the starter page
-    vim.o.laststatus = 0
-  end
-end
-
-M.opts = function()
-  -- PERF: we don't need this lualine require madness 🤷
-  local lualine_require = require("lualine_require")
-  lualine_require.require = require
-
-  vim.o.laststatus = vim.g.lualine_laststatus
-
+M.config = function(_, opts)
   local Icons = require("lazyvim.config").icons
   local A = {
     "mode",
@@ -85,17 +69,31 @@ M.opts = function()
         removed = Icons.git.removed .. " ",
       },
       source = function()
-        local gitsigns = vim.b.gitsigns_status_dict
-        if gitsigns then
+        if vim.b.minidiff_summary then
+          local summary = vim.b.minidiff_summary
           return {
-            added = gitsigns.added,
-            modified = gitsigns.changed,
-            removed = gitsigns.removed,
+            added = summary.add,
+            modified = summary.change,
+            removed = summary.delete,
           }
+        else
+          local gitsigns = vim.b.gitsigns_status_dict
+          if gitsigns then
+            return {
+              added = gitsigns.added,
+              modified = gitsigns.changed,
+              removed = gitsigns.removed,
+            }
+          end
         end
       end,
     },
   }
+  if LazyVim.has("codeium.nvim") then
+    table.insert(Y, 2, LazyVim.lualine.cmp_source("codeium"))
+  elseif LazyVim.has("copilot.lua") then
+    table.insert(Y, 2, LazyVim.lualine.cmp_source("copilot"))
+  end
   local Z = {
     {
       function()
@@ -126,7 +124,16 @@ M.opts = function()
     table.insert(B, 1, "branch")
   end
 
-  return {
+  if opts.sections then
+    opts.sections.lualine_a = A
+    opts.sections.lualine_b = B
+    opts.sections.lualine_c = C
+    opts.sections.lualine_x = {}
+    opts.sections.lualine_y = Y
+    opts.sections.lualine_z = Z
+  end
+
+  require("lualine").setup({
     extensions = { "neo-tree", "lazy", "oil" },
     options = {
       theme = "auto",
@@ -146,7 +153,7 @@ M.opts = function()
       lualine_y = Y,
       lualine_z = Z,
     },
-  }
+  })
 end
 
 return M
