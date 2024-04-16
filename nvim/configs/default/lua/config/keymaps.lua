@@ -129,7 +129,7 @@ end, { desc = "Lazygit Current File History" })
 ---floating terminal
 local ft = function(cmd, root)
   local label = (type(cmd) == "table" and cmd[1] or cmd) or "Terminal"
-  local opt = { size = { width = 0.6, height = 0.7 }, title = "  " .. label, title_pos = "right" }
+  local opt = { size = { width = 0.8, height = 0.8 }, title = "  " .. label, title_pos = "right" }
   if root then opt.cwd = LazyVim.root.get() end
   LazyVim.terminal.open(cmd, opt)
 end
