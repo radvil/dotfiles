@@ -2,6 +2,8 @@
 
 export EDITOR="nvim"
 export KEYTIMEOUT=15
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=100
 
 # Set DOTFILES when needed
 if [ -z "${DOTFILES}" ]; then
