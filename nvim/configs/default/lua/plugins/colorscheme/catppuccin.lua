@@ -74,7 +74,7 @@ return {
             style = { "bold" },
           },
           IncSearch = { bg = colors.maroon, fg = colors.crust },
-          WinSeparator = { fg = vim.g.neo_transparent and colors.surface1 or colors.mantle },
+          WinSeparator = { fg = vim.g.neo_transparent and colors.surface1 or colors.crust },
           MiniIndentscopeSymbol = { fg = colors.flamingo },
           NavicText = { fg = colors.subtext0, bold = false },
           NavicSeparator = { fg = colors.surface1 },
