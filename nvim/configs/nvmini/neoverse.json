@@ -6,6 +6,7 @@
     "extras.misc.cellular-automation",
     "extras.misc.cmp-cmdline",
     "extras.misc.dot",
+    "extras.misc.fugitive",
     "extras.misc.mini-trailspace",
     "extras.misc.rest-nvim",
     "extras.misc.sticky-buff",
