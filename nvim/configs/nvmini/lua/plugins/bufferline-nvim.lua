@@ -5,6 +5,7 @@ end
 
 return {
   "akinsho/bufferline.nvim",
+  commit = "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef",
   optional = true,
   -- replace all mappings (using tab keymaps instead of buffers)
   keys = function()

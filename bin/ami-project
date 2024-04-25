@@ -12,8 +12,8 @@ dir_name=$(printf "%s\n" "$@" | fd . --type=d --max-depth=1 | fzf-tmux -p -h 81%
 
 if [[ -z $dir_name ]]; then
   __info "No project was selected"
-  cd "$cached_dir"
+  # cd "$cached_dir"
 else
   __tmux_session "$dir_name" "nvim"
-  cd "$cached_dir"
+  # cd "$cached_dir"
 fi

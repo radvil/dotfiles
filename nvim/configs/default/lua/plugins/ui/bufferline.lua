@@ -36,6 +36,7 @@ end
 return {
   "akinsho/bufferline.nvim",
   dependencies = { "mini.bufremove" },
+  commit = "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef",
   event = "LazyFile",
   keys = function()
     return {

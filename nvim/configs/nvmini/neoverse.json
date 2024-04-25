@@ -1,6 +1,5 @@
 {
   "extras": [
-    "extras.ai.copilot",
     "extras.ai.gp-nvim",
     "extras.lazycat.kopi-cat",
     "extras.misc.cellular-automation",
