@@ -55,5 +55,5 @@ end
 vim.g.autoformat = false
 vim.g.lazygit_config = true
 vim.g.minipairs_disable = false
-vim.g.neo_transparent = false
+vim.g.neo_transparent = true
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
