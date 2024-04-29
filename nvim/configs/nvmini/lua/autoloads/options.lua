@@ -17,7 +17,6 @@ vim.opt.autowrite = true
 vim.opt.cursorline = false
 vim.opt.mouse = "nv"
 vim.opt.mousemoveevent = true
-vim.opt.conceallevel = 3
 vim.opt.signcolumn = "yes" -- avoid gitsigns error ??
 vim.opt.virtualedit = "block" -- "block" to allow cursor to move where there is no text in visual block mode
 vim.opt.formatoptions = "jcroqlnt" -- tcqj
