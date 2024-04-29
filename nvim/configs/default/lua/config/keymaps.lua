@@ -45,12 +45,12 @@ local diagnostic_goto = function(next, severity)
   end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "code line [d]iagnostics" })
-map("n", "]d", diagnostic_goto(true), { desc = "go to next [d]iagnostic" })
-map("n", "[d", diagnostic_goto(false), { desc = "go to prev [d]iagnostic" })
-map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "go to next [e]rror" })
-map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "go to prev [e]rror" })
-map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "go to next [w]arning" })
-map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "go to prev [w]arning" })
+map({ "n", "v", "x" }, "]d", diagnostic_goto(true), { desc = "go to next [d]iagnostic" })
+map({ "n", "v", "x" }, "[d", diagnostic_goto(false), { desc = "go to prev [d]iagnostic" })
+map({ "n", "v", "x" }, "]e", diagnostic_goto(true, "ERROR"), { desc = "go to next [e]rror" })
+map({ "n", "v", "x" }, "[e", diagnostic_goto(false, "ERROR"), { desc = "go to prev [e]rror" })
+map({ "n", "v", "x" }, "]w", diagnostic_goto(true, "WARN"), { desc = "go to next [w]arning" })
+map({ "n", "v", "x" }, "[w", diagnostic_goto(false, "WARN"), { desc = "go to prev [w]arning" })
 
 -- clipboard
 if vim.opt.clipboard ~= "unnamedplus" then
