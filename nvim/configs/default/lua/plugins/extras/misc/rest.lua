@@ -2,12 +2,14 @@
 return {
   {
     "nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "http",
-        "json",
-      },
-    },
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, {
+          "http",
+          "json",
+        })
+      end
+    end,
   },
 
   ---@usage: https://github.com/rest-nvim/rest.nvim/blob/main/tests/basic_get.http

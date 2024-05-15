@@ -12,8 +12,9 @@ vim.g.maplocalleader = "\\"
 -- LazyVim.terminal.setup("pwsh")
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
+vim.opt.swapfile = false
 
 vim.opt.sessionoptions = {
   "tabpages",
