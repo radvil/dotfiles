@@ -13,7 +13,6 @@
     "extras.misc.undotree",
     "extras.ui.mini-diff",
     "extras.ui.mini-map",
-    "extras.ui.statusline-alternative",
     "neoverse.extras.colorscheme.monokai-pro",
     "neoverse.extras.colorscheme.tokyonight-nvim",
     "neoverse.extras.completion.luasnip",

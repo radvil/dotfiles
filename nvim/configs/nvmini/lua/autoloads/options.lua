@@ -11,24 +11,23 @@ vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
 
 vim.g.deprecation_warnings = false
 
-vim.opt.guicursor =
-  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 vim.opt.laststatus = 3
 vim.opt.smoothscroll = true
 vim.opt.autowrite = true
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.mouse = "nv"
 vim.opt.mousemoveevent = true
-vim.opt.signcolumn = "yes" -- avoid gitsigns error ??
 vim.opt.virtualedit = "block" -- "block" to allow cursor to move where there is no text in visual block mode
 vim.opt.formatoptions = "jcroqlnt" -- tcqj
+
 vim.opt.sessionoptions = {
   "tabpages",
   "winsize",
   "globals",
   "skiprtp",
   "buffers",
-  -- "folds",
+  "curdir",
+  "folds",
   "help",
 }
 
