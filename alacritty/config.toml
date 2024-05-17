@@ -10,7 +10,7 @@ family           = "JetBrainsMono Nerd Font"
 
 [window]
 dynamic_padding           = false
-opacity                   = 0.95
+opacity                   = 0.93
 blur                      = false
 decorations_theme_variant = "Dark"
 

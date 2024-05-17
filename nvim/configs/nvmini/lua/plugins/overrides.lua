@@ -3,7 +3,7 @@
 return {
   { "lukas-reineke/headlines.nvim", enabled = false },
   { "iamcco/markdown-preview.nvim", enabled = false },
-  { "nvim-lualine/lualine.nvim", enabled = true },
+  { "nvim-lualine/lualine.nvim", enabled = false },
   {
     "radvil2/windows.nvim",
     optional = true,

@@ -4,10 +4,7 @@ local Kmap = function(lhs, cmd, desc)
 end
 
 return {
-  "akinsho/bufferline.nvim",
-  commit = "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef",
-  optional = true,
-  -- replace all mappings (using tab keymaps instead of buffers)
+  "bufferline.nvim",
   keys = function()
     return {
       Kmap("<a-b>", "Pick", "pick & enter tab"),
@@ -37,8 +34,8 @@ return {
       opts.options.right_mouse_command = false
       opts.options.close_command = nil
       table.insert(opts.options.offsets, {
-        filetype = "neo-tree",
         highlight = "BufferLineFill",
+        filetype = "neo-tree",
         text_align = "left",
         separator = true,
         text = function()

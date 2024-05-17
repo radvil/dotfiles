@@ -35,9 +35,7 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  dependencies = { "mini.bufremove" },
-  commit = "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef",
-  event = "LazyFile",
+  event = "UIEnter",
   keys = function()
     return {
       Kmap("<a-q>", "PickClose", "pick & close"),
@@ -63,9 +61,10 @@ return {
         sort_by = "tabs",
         buffer_close_icon = "",
         diagnostics = false,
+        diagnostics_indicator = nil,
         move_wraps_at_ends = false,
         show_tab_indicators = false,
-        always_show_bufferline = false,
+        always_show_bufferline = true,
         close_command = "tabclose! %d",
         right_mouse_command = false,
         show_close_icon = false,
@@ -83,7 +82,26 @@ return {
         custom_filter = function(bufnr)
           return not vim.tbl_contains(blacklist, vim.bo[bufnr].filetype)
         end,
-        offsets = { },
+        offsets = {
+          {
+            filetype = "neo-tree",
+            highlight = "NeoBufferLineOffset",
+            text_align = "left",
+            separator = true,
+            --TODO: get current opened dir from neo-tree API
+            text = function()
+              local path = vim.fn.getcwd():gsub(os.getenv("HOME"), "~")
+              local sep = package.config:sub(1, 1)
+              local parts = vim.split(path, "[\\/]")
+              if #parts > 4 then
+                parts = { parts[1], " … ", parts[#parts - 1], parts[#parts] }
+                return "󱉭 " .. table.concat(parts, sep)
+              else
+                return "󱉭 " .. path
+              end
+            end,
+          },
+        },
       },
     }
 
@@ -97,7 +115,7 @@ return {
       opts.highlights = require("hi.bufferline").tokyonight()
     end
 
-    opts = vim.tbl_deep_extend("force", defaults, opts or {})
+    opts = vim.tbl_deep_extend("force", opts or {}, defaults)
 
     return opts
   end,

@@ -9,6 +9,8 @@ vim.g.neo_autoformat = false
 -- TODO: This is for telescope param, probably should refactor...
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
 
+vim.g.deprecation_warnings = false
+
 vim.opt.guicursor =
   "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250,sm:block-blinkwait175-blinkoff150-blinkon175"
 vim.opt.laststatus = 3
@@ -59,5 +61,3 @@ if vim.g.neovide then
   vim.opt.guicursor =
     "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff500-blinkon500,sm:block-blinkwait500-blinkoff500-blinkon500"
 end
-
--- vim.print("options", vim.g.neo_transparent)

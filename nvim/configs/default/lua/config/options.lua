@@ -17,10 +17,13 @@ vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 
 vim.opt.sessionoptions = {
-  "tabpages",
   "buffers",
-  "winsize",
   "curdir",
+  "tabpages",
+  "winsize",
+  "help",
+  "globals",
+  "skiprtp",
   "folds",
 }
 
@@ -59,3 +62,5 @@ vim.g.minipairs_disable = false
 vim.g.neo_transparent = false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
+
+vim.g.deprecation_warnings = false
