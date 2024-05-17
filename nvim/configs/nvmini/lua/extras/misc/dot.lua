@@ -29,8 +29,8 @@ return {
     "nvim-treesitter",
     opts = function(_, opts)
       local function add(lang)
-        if type(opts.ensure_installed) == "table" then
-          table.insert(opts.ensure_installed, lang)
+        if type(opts.ensure_install) == "table" then
+          table.insert(opts.ensure_install, lang)
         end
       end
 

@@ -3,7 +3,7 @@ return {
   {
     "nvim-treesitter",
     opts = {
-      ensure_installed = {
+      ensure_install = {
         "http",
         "json",
       },
