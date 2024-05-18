@@ -68,7 +68,7 @@ local opts = {
         key = "p",
       },
       {
-        action = "NeoExtras",
+        action = "LazyExtra",
         desc = " Manage extra",
         icon = " ",
         key = "x",
