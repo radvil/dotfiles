@@ -31,6 +31,8 @@ return {
     keys[#keys + 1] = { "<c-k>", false, mode = "i" }
     keys[#keys + 1] = { "<leader>cc", false }
     keys[#keys + 1] = { "<leader>cC", false }
+    keys[#keys + 1] = { "]]", false }
+    keys[#keys + 1] = { "[[", false }
     keys[#keys + 1] = {
       "g<c-v>",
       function()
@@ -74,6 +76,26 @@ return {
       end,
       desc = "Hover",
       has = "hover",
+    }
+
+    keys[#keys + 1] = {
+      "<a-n>",
+      function()
+        LazyVim.lsp.words.jump(vim.v.count1)
+      end,
+      has = "documentHighlight",
+      desc = "Next Reference",
+      mode = { "n", "x", "o" },
+    }
+
+    keys[#keys + 1] = {
+      "<a-p>",
+      function()
+        LazyVim.lsp.words.jump(-vim.v.count1)
+      end,
+      has = "documentHighlight",
+      desc = "Next Reference",
+      mode = { "n", "x", "o" },
     }
   end,
 

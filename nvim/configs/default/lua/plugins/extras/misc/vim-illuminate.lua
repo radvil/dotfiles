@@ -1,6 +1,5 @@
 return {
   "RRethy/vim-illuminate",
-
   keys = function()
     return {
       {
