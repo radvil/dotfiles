@@ -9,11 +9,12 @@ return {
         "<Leader>e",
         function()
           require("neo-tree.command").execute({
-            position = "left",
             dir = LazyVim.root(),
+            position = "left",
             selector = true,
-            reveal = true,
             toggle = true,
+            reveal = true,
+            reveal_force_cwd = true,
           })
         end,
         desc = "[e]xplore tree (root)",
@@ -26,6 +27,8 @@ return {
             dir = vim.uv.cwd(),
             selector = true,
             toggle = true,
+            reveal = true,
+            reveal_force_cwd = true,
           })
         end,
         desc = "[E]xplore tree (cwd)",
@@ -37,8 +40,9 @@ return {
             position = "float",
             dir = LazyVim.root(),
             selector = false,
-            reveal = true,
             toggle = false,
+            reveal = true,
+            reveal_force_cwd = true,
           })
         end,
         desc = "[f]loat tree (root)",
@@ -51,6 +55,8 @@ return {
             dir = vim.uv.cwd(),
             selector = false,
             toggle = false,
+            reveal = true,
+            reveal_force_cwd = true,
           })
         end,
         desc = "[F]loat tree (cwd)",
