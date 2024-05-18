@@ -29,7 +29,7 @@ return {
       opts.options.diagnostics = false
       opts.options.move_wraps_at_ends = false
       opts.options.show_tab_indicators = false
-      opts.options.always_show_bufferline = false
+      opts.options.always_show_bufferline = true
       opts.options.close_command = "tabclose! %d"
       opts.options.right_mouse_command = false
       opts.options.close_command = nil
