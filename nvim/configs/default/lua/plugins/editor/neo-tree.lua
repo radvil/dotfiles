@@ -36,7 +36,7 @@ return {
           require("neo-tree.command").execute({
             position = "float",
             dir = LazyVim.root(),
-            selector = true,
+            selector = false,
             reveal = true,
             toggle = false,
           })
@@ -49,7 +49,7 @@ return {
           require("neo-tree.command").execute({
             position = "float",
             dir = vim.uv.cwd(),
-            selector = true,
+            selector = false,
             toggle = false,
           })
         end,
