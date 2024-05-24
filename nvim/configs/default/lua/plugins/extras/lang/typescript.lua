@@ -64,6 +64,7 @@ return {
               desc = "[c]lear Unused Imports",
             },
             {
+              "<leader>cm",
               function()
                 vim.lsp.buf.code_action({
                   apply = true,
