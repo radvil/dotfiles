@@ -63,7 +63,7 @@ return {
       servers = {
         angularls = {
           -- mason = false,
-          single_file_support = true,
+          -- single_file_support = true,
           -- on_new_config = function(new_config, new_root_dir)
           --   new_config.cmd = getNgCmd(new_root_dir)
           -- end,
@@ -71,8 +71,7 @@ return {
             local util = require("lspconfig").util
             local original = util.root_pattern("angular.json", "project.json")(fname)
             local nx_fallback = util.root_pattern("nx.json", "workspace.json")(fname)
-            local git_fallback = util.root_pattern(".git")(fname)
-            return original or nx_fallback or git_fallback
+            return original or nx_fallback
           end,
         },
       },
@@ -81,7 +80,7 @@ return {
           LazyVim.lsp.on_attach(function(client)
             if client.name == "angularls" then
               client.server_capabilities.renameProvider = false
-              client.server_capabilities.signatureHelpProvider = false
+              client.server_capabilities.signatureHelpProvider = nil
               cmd("c", goToComponentFile, "Go to component file")
               cmd("t", goToTemplateFile, "Go to template file")
             end
