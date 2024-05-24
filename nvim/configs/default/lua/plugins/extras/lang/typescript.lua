@@ -1,26 +1,14 @@
----@diagnostic disable: missing-fields
-
-local invoke = function(name)
-  return function()
-    vim.lsp.buf.code_action({
-      apply = true,
-      context = {
-        only = { string.format("source.%s.ts", name) },
-        diagnostics = {},
-      },
-    })
-  end
-end
+---@diagnostic disable: missing-fields, assign-type-mismatch
 
 local inlay_hints_settings = {
-  includeInlayParameterNameHints = "all",
-  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-  includeInlayFunctionParameterTypeHints = true,
-  includeInlayVariableTypeHints = true,
-  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-  includeInlayPropertyDeclarationTypeHints = true,
-  includeInlayFunctionLikeReturnTypeHints = true,
   includeInlayEnumMemberValueHints = true,
+  includeInlayFunctionLikeReturnTypeHints = true,
+  includeInlayFunctionParameterTypeHints = true,
+  includeInlayParameterNameHints = "literal",
+  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  includeInlayPropertyDeclarationTypeHints = true,
+  includeInlayVariableTypeHints = false,
+  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
 }
 
 ---@type LazySpec[]
@@ -39,14 +27,6 @@ return {
   },
   {
     "nvim-lspconfig",
-    dependencies = {
-      "dmmulroy/ts-error-translator.nvim",
-      ft = {
-        "typescriptreact",
-        "typescript",
-        "tsx",
-      },
-    },
     opts = {
       servers = {
         ---@type lspconfig.options.tsserver
@@ -59,17 +39,40 @@ return {
           keys = {
             {
               "<leader>co",
-              invoke("organizeImports"),
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.organizeImports.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
               desc = "[o]rganize Imports",
             },
             {
               "<leader>cc",
-              invoke("removeUnused"),
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.removeUnused.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
               desc = "[c]lear Unused Imports",
             },
             {
-              "<leader>cm",
-              invoke("addMissingImports"),
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.addMissingImports.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
               desc = "Add [m]issing Imports",
             },
           },
