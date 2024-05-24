@@ -18,6 +18,7 @@
     "neoverse.extras.completion.mini-surround",
     "neoverse.extras.completion.native-snippets",
     "neoverse.extras.completion.nvim-autopairs",
+    "neoverse.extras.completion.nvim-ts-autotag",
     "neoverse.extras.editor.context-commentstring",
     "neoverse.extras.editor.flash-nvim",
     "neoverse.extras.editor.gitsigns-nvim",
