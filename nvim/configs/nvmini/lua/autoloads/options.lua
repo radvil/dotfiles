@@ -7,7 +7,7 @@ vim.g.neo_autocomplete = true
 vim.g.neo_autopairs = false
 vim.g.neo_autoformat = false
 -- TODO: This is for telescope param, probably should refactor...
-vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/obsidian-vault"
+vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 
 vim.g.deprecation_warnings = false
 

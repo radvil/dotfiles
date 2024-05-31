@@ -2,6 +2,6 @@ return {
   "epwalsh/obsidian.nvim",
   optional = true,
   opts = {
-    dir = vim.fn.expand("~") .. "/Documents/obsidian-vault",
+    dir = vim.g.neo_notesdir
   },
 }

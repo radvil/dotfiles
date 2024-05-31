@@ -74,7 +74,7 @@ return {
       },
     },
     opts = {
-      dir = vim.fn.expand("~") .. "/Documents/obsidian-vault",
+      dir = vim.g.neo_notesdir,
       mappings = {},
       finder = "telescope.nvim",
       completion = { nvim_cmp = true },
