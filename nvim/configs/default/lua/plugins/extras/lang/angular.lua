@@ -47,6 +47,23 @@ end
 --   }
 -- end
 
+---@param root_dir string
+local function getServerCmd(root_dir)
+  ---@diagnostic disable-next-line: param-type-mismatch
+  local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
+  local project_node_dir = node_root and node_root .. "/node_modules" or node_root
+  local glob_server_node_dir =
+    table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
+  return {
+    "ngserver",
+    "--stdio",
+    "--tsProbeLocations",
+    table.concat({ project_node_dir, glob_server_node_dir }, ","),
+    "--ngProbeLocations",
+    table.concat({ project_node_dir, glob_server_node_dir .. "/@angular/language-server/node_modules" }, ","),
+  }
+end
+
 return {
   {
     "nvim-treesitter",
@@ -62,16 +79,12 @@ return {
     opts = {
       servers = {
         angularls = {
-          -- mason = false,
-          -- single_file_support = true,
-          -- on_new_config = function(new_config, new_root_dir)
-          --   new_config.cmd = getNgCmd(new_root_dir)
-          -- end,
-          root_dir = function(fname)
-            local util = require("lspconfig").util
-            local original = util.root_pattern("angular.json", "project.json")(fname)
-            local nx_fallback = util.root_pattern("nx.json", "workspace.json")(fname)
-            return original or nx_fallback
+          on_new_config = function(new_config, new_root_dir)
+            new_config.cmd = getServerCmd(new_root_dir)
+          end,
+          root_dir = function(root_dir)
+            local is_angular = require("lspconfig.util").root_pattern("angular.json", "nx.json")
+            return is_angular(root_dir)
           end,
         },
       },
@@ -85,7 +98,6 @@ return {
               cmd("t", goToTemplateFile, "Go to template file")
             end
           end)
-          return false
         end,
       },
     },
