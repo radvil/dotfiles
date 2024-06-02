@@ -1,9 +1,6 @@
+---@diagnostic disable: missing-parameter, missing-fields
 local open_with_trouble = function(...)
-  require("trouble.providers.telescope").open_with_trouble(...)
-end
-
-local open_selected_with_trouble = function(...)
-  require("trouble.providers.telescope").open_selected_with_trouble(...)
+  require("trouble.sources.telescope").open(...)
 end
 
 ---@type LazySpec[]
@@ -16,23 +13,57 @@ return {
       return {
         {
           "<leader>xb",
-          "<cmd>TroubleToggle document_diagnostics<cr>",
+          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
           desc = "[b]uffer diagnosti[x]",
         },
         {
           "<leader>xw",
-          "<cmd>TroubleToggle workspace_diagnostics<cr>",
+          "<cmd>Trouble diagnostics toggle<cr>",
           desc = "[w]orkspace diagnosti[x]",
         },
         {
           "<leader>xl",
-          "<cmd>TroubleToggle loclist<cr>",
+          "<cmd>Trouble loclist toggle<cr>",
           desc = "diagnosti[x] [l]oclist",
         },
         {
           "<leader>xq",
-          "<cmd>TroubleToggle quickfix<cr>",
+          "<cmd>Trouble qflist toggle<cr>",
           desc = "diagnosti[x] [q]uickfix",
+        },
+        -- TODO: check possible duplicated with Outline.nvim
+        {
+          "<leader>cS",
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+          desc = "LSP references/definitions/... (Trouble)",
+        },
+        {
+          "[q",
+          function()
+            if require("trouble").is_open() then
+              require("trouble").prev({ skip_groups = true, jump = true })
+            else
+              local ok, err = pcall(vim.cmd.cprev)
+              if not ok then
+                vim.notify(err, vim.log.levels.ERROR)
+              end
+            end
+          end,
+          desc = "Previous Trouble/Quickfix Item",
+        },
+        {
+          "]q",
+          function()
+            if require("trouble").is_open() then
+              require("trouble").next({ skip_groups = true, jump = true })
+            else
+              local ok, err = pcall(vim.cmd.cnext)
+              if not ok then
+                vim.notify(err, vim.log.levels.ERROR)
+              end
+            end
+          end,
+          desc = "Next Trouble/Quickfix Item",
         },
       }
     end,
@@ -45,8 +76,8 @@ return {
     opts = {
       defaults = {
         mappings = {
-          ["n"] = { ["<a-x>"] = open_with_trouble, ["<a-t>"] = open_selected_with_trouble },
-          ["i"] = { ["<a-x>"] = open_with_trouble, ["<a-t>"] = open_selected_with_trouble },
+          ["n"] = { ["<a-x>"] = open_with_trouble },
+          ["i"] = { ["<a-x>"] = open_with_trouble },
         },
       },
     },
