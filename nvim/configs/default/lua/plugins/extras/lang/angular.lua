@@ -37,8 +37,8 @@ end
 local function getServerCmd(root_dir)
   ---@diagnostic disable-next-line: param-type-mismatch
   local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
-  local project_node_dir = node_root
-  -- and node_root .. "/node_modules" or node_root
+  local project_node_dir = node_root .. "/node_modules"
+  -- local project_node_dir = node_root and node_root .. "/node_modules" or node_root
   local glob_server_node_dir =
     table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
   return {
