@@ -4,7 +4,7 @@
 return {
   -- desc = "Typescript LSP configuration",
   recommended = function()
-    return Lonard.extras.wants({
+    return LazyVim.extras.wants({
       ft = {
         "javascript",
         "javascriptreact",

@@ -33,25 +33,12 @@ local cmd = function(id, cmd, desc)
   })
 end
 
--- ---@param root_dir? string
--- local getNgCmd = function(root_dir)
---   local bun = os.getenv("HOME") .. "/.bun"
---   local bun_libs = string.format("%s/install/global/node_modules", bun)
---   return {
---     bun .. "/bin/ngserver",
---     "--stdio",
---     "--tsProbeLocations",
---     root_dir .. "," .. bun_libs,
---     "--ngProbeLocations",
---     root_dir .. "," .. bun_libs .. "/@angular/language-server/node_modules",
---   }
--- end
-
 ---@param root_dir string
 local function getServerCmd(root_dir)
   ---@diagnostic disable-next-line: param-type-mismatch
   local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
-  local project_node_dir = node_root and node_root .. "/node_modules" or node_root
+  local project_node_dir = node_root
+  -- and node_root .. "/node_modules" or node_root
   local glob_server_node_dir =
     table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
   return {
@@ -90,12 +77,12 @@ return {
       },
       setup = {
         angularls = function()
+          cmd("c", goToComponentFile, "Go to component file")
+          cmd("t", goToTemplateFile, "Go to template file")
           LazyVim.lsp.on_attach(function(client)
             if client.name == "angularls" then
               client.server_capabilities.renameProvider = false
               client.server_capabilities.signatureHelpProvider = nil
-              cmd("c", goToComponentFile, "Go to component file")
-              cmd("t", goToTemplateFile, "Go to template file")
             end
           end)
         end,
