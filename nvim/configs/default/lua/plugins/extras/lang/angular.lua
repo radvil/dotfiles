@@ -33,25 +33,35 @@ local cmd = function(id, cmd, desc)
   })
 end
 
----@param root_dir string
-local function getServerCmd(root_dir)
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
-  local project_node_dir = node_root .. "/node_modules"
-  -- local project_node_dir = node_root and node_root .. "/node_modules" or node_root
-  local glob_server_node_dir =
-    table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
-  return {
-    "ngserver",
-    "--stdio",
-    "--tsProbeLocations",
-    table.concat({ project_node_dir, glob_server_node_dir }, ","),
-    "--ngProbeLocations",
-    table.concat({ project_node_dir, glob_server_node_dir .. "/@angular/language-server/node_modules" }, ","),
-  }
-end
+------@param root_dir string
+---local function getServerCmd(root_dir)
+---  ---@diagnostic disable-next-line: param-type-mismatch
+---  local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
+---  local project_node_dir = node_root .. "/node_modules"
+---  -- local project_node_dir = node_root and node_root .. "/node_modules" or node_root
+---  local glob_server_node_dir =
+---    table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
+---  return {
+---    "ngserver",
+---    "--stdio",
+---    "--tsProbeLocations",
+---    table.concat({ project_node_dir, glob_server_node_dir }, ","),
+---    "--ngProbeLocations",
+---    table.concat({ project_node_dir, glob_server_node_dir .. "/@angular/language-server/node_modules" }, ","),
+---  }
+---end
 
 return {
+  recommended = function()
+    return LazyVim.extras.wants({
+      ft = { "html", "typescript" },
+      root = {
+        "angular.json",
+        "nx.json",
+      },
+    })
+  end,
+
   {
     "nvim-treesitter",
     opts = function(_, opts)
@@ -61,19 +71,44 @@ return {
     end,
   },
 
+  -- {
+  --   "nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       angularls = {
+  --         -- on_new_config = function(new_config, new_root_dir)
+  --         --   new_config.cmd = getServerCmd(new_root_dir)
+  --         -- end,
+  --         -- root_dir = function(root_dir)
+  --         --   local is_angular = require("lspconfig.util").root_pattern("angular.json", "nx.json")
+  --         --   return is_angular(root_dir)
+  --         -- end,
+  --       },
+  --     },
+  --     setup = {
+  --       angularls = function()
+  --         cmd("c", goToComponentFile, "Go to component file")
+  --         cmd("t", goToTemplateFile, "Go to template file")
+  --         LazyVim.lsp.on_attach(function(client)
+  --           if client.name == "angularls" then
+  --             client.server_capabilities.renameProvider = false
+  --             client.server_capabilities.signatureHelpProvider = nil
+  --           end
+  --         end)
+  --       end,
+  --     },
+  --   },
+  -- },
+
+  -- depends on the typescript extra
+  { import = "plugins.extras.lang.typescript" },
+
+  -- LSP Servers
   {
-    "nvim-lspconfig",
+    "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        angularls = {
-          on_new_config = function(new_config, new_root_dir)
-            new_config.cmd = getServerCmd(new_root_dir)
-          end,
-          root_dir = function(root_dir)
-            local is_angular = require("lspconfig.util").root_pattern("angular.json", "nx.json")
-            return is_angular(root_dir)
-          end,
-        },
+        angularls = {},
       },
       setup = {
         angularls = function()
@@ -82,11 +117,28 @@ return {
           LazyVim.lsp.on_attach(function(client)
             if client.name == "angularls" then
               client.server_capabilities.renameProvider = false
-              client.server_capabilities.signatureHelpProvider = nil
             end
           end)
         end,
       },
     },
+  },
+
+  -- Configure tsserver plugin
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+        {
+          name = "typescript-svelte-plugin",
+          location = LazyVim.get_pkg_path(
+            "angular-language-server",
+            "/node_modules/@angular/language-server",
+            { warn = false }
+          ),
+          enableForWorkspaceTypeScriptVersions = true,
+        },
+      })
+    end,
   },
 }
