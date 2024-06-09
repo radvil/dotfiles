@@ -1,5 +1,6 @@
 return {
   "echasnovski/mini.bufremove",
+  enabled = false,
   keys = function()
     return {
       {

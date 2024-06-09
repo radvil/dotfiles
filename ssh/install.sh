@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 if [ ! -x "$(command -v ssh)" ]; then
 	sudo pacman -S openssh

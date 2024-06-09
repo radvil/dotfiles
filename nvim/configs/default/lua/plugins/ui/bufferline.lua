@@ -65,8 +65,10 @@ return {
         move_wraps_at_ends = false,
         show_tab_indicators = false,
         always_show_bufferline = false,
-        close_command = "tabclose! %d",
-        right_mouse_command = false,
+        -- close_command = "tabclose! %d",
+        -- right_mouse_command = false,
+        close_command = ":bd",
+        right_mouse_command = ":bd",
         show_close_icon = false,
         show_buffer_icons = true,
         separator_style = "thin",
@@ -102,11 +104,11 @@ return {
             end,
           },
         },
-     },
+      },
     }
 
     local match = function(name)
-      return LazyVim.has(name) and string.match(vim.g.colors_name, name)
+      return vim.g.colors_name == name
     end
 
     if match("catppuccin") then

@@ -1,5 +1,5 @@
 return {
-  "tokyonight.nvim",
+  "folke/tokyonight.nvim",
   lazy = false,
   priority = 9999,
   config = function(_, opts)

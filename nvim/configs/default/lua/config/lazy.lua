@@ -71,7 +71,7 @@ local defaults = {
     wrap = true,
     size = { width = 0.8, height = 0.8 },
     title = Icons.Vim .. "NeoConfig",
-    border = "none",
+    border = os.getenv("KITTY_WINDOW_ID") and "single" or "none",
     backdrop = 60,
     title_pos = "right",
     icons = {

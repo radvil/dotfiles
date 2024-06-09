@@ -90,13 +90,11 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "go to recent buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "go to recent [b]uffer" })
 map("n", "[b", ":bprevious<cr>", { desc = "prev[ous buffer" })
 map("n", "]b", ":bnext<cr>", { desc = "n]xt buffer" })
+map("n", "<leader>bd", LazyVim.ui.bufremove, { desc = "[d]elete buffer" })
+map("n", "<Leader>bD", "<cmd>:bd<cr>", { desc = "[D]elete buffer+window" })
 if not LazyVim.has("bufferline.nvim") then
   map("n", "<a-[>", ":bprevious<cr>", { desc = "prev[ous buffer" })
   map("n", "<a-]>", ":bnext<cr>", { desc = "n]xt buffer" })
-end
-if not LazyVim.has("mini.bufremove") then
-  map("n", "<leader>bd", ":bdelete<cr>", { desc = "[d]elete buffer" })
-  map("n", "<Leader>bD", ":bufdo bdelete<cr>", { desc = "[D]elete all buffers" })
 end
 
 -- quickfix
@@ -223,31 +221,23 @@ end, { desc = "toggle code [C]ompletion" })
 
 -- toggle transparency
 map("n", "<leader>uT", function()
-  if vim.g.neovide then
-    if vim.g.neovide_transparency < 1 then
-      vim.g.neovide_transparency = 1
-    else
-      vim.g.neovide_transparency = 0.96
-    end
-  else
-    LazyVim.try(function()
-      local colors_name = vim.g.colors_name
-      for key, value in pairs({
-        tokyonight = "tokyonight",
-        monokai = "monokai-pro",
-        catppuccin = "catppuccin",
-      }) do
-        if string.match(colors_name, key) then
-          vim.g.neo_transparent = not vim.g.neo_transparent
-          vim.cmd.Lazy("reload " .. value .. " noice.nvim")
-          vim.schedule(function()
-            vim.cmd.colorscheme(colors_name)
-          end)
-          break
-        end
+  LazyVim.try(function()
+    local colors_name = vim.g.colors_name
+    for key, value in pairs({
+      tokyonight = "tokyonight.nvim",
+      monokai = "monokai-pro",
+      catppuccin = "catppuccin",
+    }) do
+      if string.match(colors_name, key) then
+        vim.g.neo_transparent = not vim.g.neo_transparent
+        vim.cmd.Lazy("reload " .. value .. " noice.nvim" .. " telescope.nvim")
+        vim.schedule(function()
+          vim.cmd.colorscheme(colors_name)
+        end)
+        break
       end
-    end)
-  end
+    end
+  end)
 end, { desc = "toggle transparent background" })
 
 if LazyVim.has("mini.map") then

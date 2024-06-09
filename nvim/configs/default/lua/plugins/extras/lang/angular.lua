@@ -27,38 +27,20 @@ end
 ---@param id string
 ---@param cmd string | function
 ---@param desc string
-local cmd = function(id, cmd, desc)
+local create_command = function(id, cmd, desc)
   vim.api.nvim_create_user_command(string.format("A%s", id), cmd, {
     desc = string.format("Angular » %s", desc),
   })
 end
 
-------@param root_dir string
----local function getServerCmd(root_dir)
----  ---@diagnostic disable-next-line: param-type-mismatch
----  local node_root = vim.fs.dirname(vim.fs.find(root_dir, { upward = true })[1])
----  local project_node_dir = node_root .. "/node_modules"
----  -- local project_node_dir = node_root and node_root .. "/node_modules" or node_root
----  local glob_server_node_dir =
----    table.concat({ vim.fn.stdpath("data"), "/mason/packages/angular-language-server/node_modules" })
----  return {
----    "ngserver",
----    "--stdio",
----    "--tsProbeLocations",
----    table.concat({ project_node_dir, glob_server_node_dir }, ","),
----    "--ngProbeLocations",
----    table.concat({ project_node_dir, glob_server_node_dir .. "/@angular/language-server/node_modules" }, ","),
----  }
----end
+local is_angular = function(root_dir)
+  return require("lspconfig.util").root_pattern("angular.json", "project.json")(root_dir)
+end
 
 return {
   recommended = function()
     return LazyVim.extras.wants({
-      ft = { "html", "typescript" },
-      root = {
-        "angular.json",
-        "nx.json",
-      },
+      root = { "angular.json" },
     })
   end,
 
@@ -66,39 +48,10 @@ return {
     "nvim-treesitter",
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, { "angular", "scss" })
+        vim.list_extend(opts.ensure_installed, { "angular", "html", "scss" })
       end
     end,
   },
-
-  -- {
-  --   "nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       angularls = {
-  --         -- on_new_config = function(new_config, new_root_dir)
-  --         --   new_config.cmd = getServerCmd(new_root_dir)
-  --         -- end,
-  --         -- root_dir = function(root_dir)
-  --         --   local is_angular = require("lspconfig.util").root_pattern("angular.json", "nx.json")
-  --         --   return is_angular(root_dir)
-  --         -- end,
-  --       },
-  --     },
-  --     setup = {
-  --       angularls = function()
-  --         cmd("c", goToComponentFile, "Go to component file")
-  --         cmd("t", goToTemplateFile, "Go to template file")
-  --         LazyVim.lsp.on_attach(function(client)
-  --           if client.name == "angularls" then
-  --             client.server_capabilities.renameProvider = false
-  --             client.server_capabilities.signatureHelpProvider = nil
-  --           end
-  --         end)
-  --       end,
-  --     },
-  --   },
-  -- },
 
   -- depends on the typescript extra
   { import = "plugins.extras.lang.typescript" },
@@ -108,14 +61,42 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        angularls = {},
+        -- html = {
+        --   filetypes = { "html", "templ", "svg", "angular.html" },
+        -- },
+        tailwindcss = {
+          filetypes_include = { "angular.html" },
+        },
+        angularls = {
+          filetypes = { "typescript", "html", "angular.html", "typescriptreact", "tsx" },
+          root_dir = is_angular,
+        },
       },
       setup = {
         angularls = function()
-          cmd("c", goToComponentFile, "Go to component file")
-          cmd("t", goToTemplateFile, "Go to template file")
-          LazyVim.lsp.on_attach(function(client)
-            if client.name == "angularls" then
+          if is_angular(vim.uv.cwd()) then
+            create_command("c", goToComponentFile, "Go to component file")
+            create_command("t", goToTemplateFile, "Go to template file")
+            vim.filetype.add({
+              pattern = {
+                -- [".*%.component%.html"] = "angular.html",
+                -- [".*%.component%.svg"] = "angular.html",
+                [".*%.html"] = "angular.html",
+                [".*%.svg"] = "angular.html",
+              },
+            })
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "angular.html",
+              callback = function()
+                vim.treesitter.language.register("angular", "angular.html")
+              end,
+            })
+          end
+          LazyVim.lsp.on_attach(function(client, bufnr)
+            if client.name == "vtsls" then
+              client.server_capabilities.renameProvider = false
+            end
+            if client.name == "html" and vim.bo[bufnr].filetype == "angular.html" then
               client.server_capabilities.renameProvider = false
             end
           end)
@@ -130,13 +111,10 @@ return {
     opts = function(_, opts)
       LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
         {
-          name = "typescript-svelte-plugin",
-          location = LazyVim.get_pkg_path(
-            "angular-language-server",
-            "/node_modules/@angular/language-server",
-            { warn = false }
-          ),
-          enableForWorkspaceTypeScriptVersions = true,
+          name = "@angular/language-server",
+          location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
+          enableForWorkspaceTypeScriptVersions = false,
+          language = { "angular" },
         },
       })
     end,

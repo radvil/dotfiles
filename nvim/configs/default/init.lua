@@ -13,7 +13,13 @@ require("config.lazy").bootstrap({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "tokyonight-moon",
+        colorscheme = function()
+          if vim.opt.background:get() == "light" then
+            vim.g.neo_transparent = false
+          end
+          vim.cmd.colorscheme("tokyonight")
+          -- vim.cmd.colorscheme("catppuccin")
+        end,
         defaults = {
           keymaps = false,
           autocmds = true,

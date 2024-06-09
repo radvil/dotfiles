@@ -44,9 +44,10 @@ M.main = function()
   -- vim.print(vim.uv.os_uname());
   -- vim.print(vim.fn.stdpath("state"))
   -- M.debug_plugins()
+  -- local active_clients = Lonard.lsp.get_clients();
+  -- vim.print(active_clients[1].config.filetypes)
 
-  local active_clients = Lonard.lsp.get_clients();
-  vim.print(active_clients[1].config.filetypes)
+  vim.print(vim.fn.system("which ngserver"))
 end
 
 M.main()

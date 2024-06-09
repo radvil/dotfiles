@@ -3,8 +3,10 @@
 return {
   "neovim/nvim-lspconfig",
   init = function()
+    local border = vim.g.neo_winborder
+    require("lspconfig.ui.windows").default_options.border = border
+
     if not LazyVim.has("noice.nvim") then
-      local border = vim.g.neo_winborder
       vim.lsp.handlers["textDocument/signatureHelp"] =
         vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
       -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
@@ -101,6 +103,7 @@ return {
 
   opts = {
     diagnostics = {
+      float = { border = vim.g.neo_winborder },
       virtual_text = {
         prefix = "icons",
       },
@@ -113,27 +116,9 @@ return {
     },
     servers = {
       bashls = {},
-      html = {
-        -- mason = false,
-        -- cmd = {
-        --   os.getenv("HOME") .. "/.bun/bin/vscode-html-language-server",
-        --   "--stdio",
-        -- },
-      },
-      cssls = {
-        -- mason = false,
-        -- cmd = {
-        --   os.getenv("HOME") .. "/.bun/bin/vscode-css-language-server",
-        --   "--stdio",
-        -- },
-      },
-      emmet_language_server = {
-        -- mason = false,
-        -- cmd = {
-        --   os.getenv("HOME") .. "/.bun/bin/emmet-language-server",
-        --   "--stdio",
-        -- },
-      },
+      -- html = { },
+      cssls = {},
+      emmet_language_server = {},
     },
   },
 }
