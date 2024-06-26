@@ -32,19 +32,19 @@ local opts = {
         key = "s",
       },
       {
-        action = "Telescope oldfiles",
+        action = "lua LazyVim.pick('oldfiles')()",
         desc = " Recent files",
         icon = "📁",
         key = "r",
       },
       {
-        action = "Telescope find_files",
+        action = "lua LazyVim.pick()()",
         desc = " Find files",
         icon = "🔭",
         key = "f",
       },
       {
-        action = "Telescope live_grep",
+        action = "lua LazyVim.pick('live_grep')()",
         desc = " Grep words",
         icon = "🔎",
         key = "w",

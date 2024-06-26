@@ -1,3 +1,4 @@
+---@diagnostic disable: assign-type-mismatch
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
@@ -13,3 +14,19 @@ vim.api.nvim_create_user_command("BAD", function()
     vim.cmd("ls")
   end)
 end, { desc = "Delete all buffers" })
+
+-- TODO: Remove autocommand later since I barely use them
+vim.api.nvim_create_user_command(
+  "NeoDotfiles",
+  LazyVim.pick("auto", { root = os.getenv("DOTFILES") }),
+  { desc = "Searh Dotfiles" }
+)
+
+vim.api.nvim_create_user_command(
+  "NeoNotes",
+  LazyVim.pick("auto", { root = vim.g.neo_notesdir }),
+  { desc = "Search Dotfiles" }
+)
+
+vim.keymap.set("n", "<leader>/n", "<cmd>NeoNotes<cr>", { desc = "[n]otes" })
+vim.keymap.set("n", "<leader>/d", "<cmd>NeoDotfiles<cr>", { desc = "[d]otfiles" })

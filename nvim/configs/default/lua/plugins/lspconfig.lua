@@ -28,77 +28,12 @@ return {
     end
 
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    -- TODO: `type_definitions` conflicted with yank to clipboard
-    keys[#keys + 1] = { "gy", false }
-    keys[#keys + 1] = { "<c-k>", false, mode = "i" }
-    keys[#keys + 1] = { "<leader>cc", false }
-    keys[#keys + 1] = { "<leader>cC", false }
-    keys[#keys + 1] = { "]]", false }
-    keys[#keys + 1] = { "[[", false }
-    keys[#keys + 1] = {
-      "g<c-v>",
-      function()
-        require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
-      end,
-      desc = "Go to Definition (vsplit)",
-      has = "definition",
-    }
-    keys[#keys + 1] = {
-      "g<c-x>",
-      function()
-        require("telescope.builtin").lsp_definitions({ jump_type = "split" })
-      end,
-      desc = "Go to Definition (split)",
-      has = "definition",
-    }
-    keys[#keys + 1] = {
-      "g<c-t>",
-      function()
-        require("telescope.builtin").lsp_definitions({ jump_type = "tab drop" })
-      end,
-      desc = "Go to Definition (tab drop)",
-      has = "definition",
-    }
-    keys[#keys + 1] = {
-      "<a-k>",
-      vim.lsp.buf.signature_help,
-      mode = "i",
-      desc = "Signature Help",
-      has = "signatureHelp",
-    }
-    keys[#keys + 1] = {
-      "K",
-      function()
-        local ufo = LazyVim.has("nvim.ufo")
-        if ufo then
-          return require("ufo").peekFoldedLinesUnderCursor() or vim.lsp.buf.hover()
-        else
-          return vim.lsp.buf.hover()
-        end
-      end,
-      desc = "Hover",
-      has = "hover",
-    }
-
-    keys[#keys + 1] = {
-      "<a-n>",
-      function()
-        LazyVim.lsp.words.jump(vim.v.count1)
-      end,
-      has = "documentHighlight",
-      desc = "Next Reference",
-      mode = { "n", "x", "o" },
-    }
-
-    keys[#keys + 1] = {
-      "<a-p>",
-      function()
-        LazyVim.lsp.words.jump(-vim.v.count1)
-      end,
-      has = "documentHighlight",
-      desc = "Next Reference",
-      mode = { "n", "x", "o" },
-    }
+    vim.list_extend(keys, {
+      { "<c-k>", false, mode = "i" },
+      { "<leader>cc", false },
+      { "<leader>cC", false },
+      { "gy", false },
+    })
   end,
 
   opts = {
@@ -116,9 +51,11 @@ return {
     },
     servers = {
       bashls = {},
-      -- html = { },
+      html = {},
       cssls = {},
-      emmet_language_server = {},
+      emmet_language_server = {
+        filetypes = { "typescript", "html" },
+      },
     },
   },
 }

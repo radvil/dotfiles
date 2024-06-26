@@ -9,6 +9,7 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "plugins.extras.ai.gp",
     "plugins.extras.completion.cmp-cmdline",
+    "plugins.extras.editor.fzf",
     "plugins.extras.editor.legendary",
     "plugins.extras.editor.mini-splitjoin",
     "plugins.extras.editor.obsidian",
@@ -28,12 +29,13 @@
     "plugins.extras.misc.sticky-buff",
     "plugins.extras.misc.suda",
     "plugins.extras.misc.undotree",
+    "plugins.extras.misc.vim-illuminate",
     "plugins.extras.ui.map",
     "plugins.extras.ui.navic",
     "plugins.extras.ui.zenmode"
   ],
   "news": {
-    "NEWS.md": "5950"
+    "NEWS.md": "6077"
   },
   "version": 6
 }

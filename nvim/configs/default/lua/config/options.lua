@@ -15,6 +15,7 @@ vim.opt.clipboard = ""
 vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
+vim.opt.relativenumber = true
 
 vim.opt.sessionoptions = {
   "buffers",
@@ -59,7 +60,8 @@ end
 vim.g.autoformat = false
 vim.g.lazygit_config = true
 vim.g.minipairs_disable = false
-vim.g.neo_transparent = os.getenv("KITTY_WINDOW_ID") and true or false
+vim.g.neo_transparent = false
+-- os.getenv("KITTY_WINDOW_ID") and true or false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 

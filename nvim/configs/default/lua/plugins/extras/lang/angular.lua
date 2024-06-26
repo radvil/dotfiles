@@ -33,14 +33,16 @@ local create_command = function(id, cmd, desc)
   })
 end
 
-local is_angular = function(root_dir)
-  return require("lspconfig.util").root_pattern("angular.json", "project.json")(root_dir)
+local angular_root_pattern = { "angular.json", "project.json" }
+
+local get_root_dir = function(root_dir)
+  return require("lspconfig.util").root_pattern(unpack(angular_root_pattern))(root_dir)
 end
 
 return {
   recommended = function()
     return LazyVim.extras.wants({
-      root = { "angular.json" },
+      root = angular_root_pattern,
     })
   end,
 
@@ -50,6 +52,24 @@ return {
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, { "angular", "html", "scss" })
       end
+      vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+        -- pattern = { "*.html", "*.svg" },
+        pattern = {
+          "*.component.html",
+          "*.component.svg",
+          "*.page.html",
+          "*.page.svg",
+          "*.cmp.html",
+          "*.cmp.svg",
+          "*.ui.html",
+          "*.ui.svg",
+        },
+        callback = function(ev)
+          if not not get_root_dir(ev.match) then
+            vim.treesitter.start(ev.buf, "angular")
+          end
+        end,
+      })
     end,
   },
 
@@ -61,45 +81,29 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        -- html = {
-        --   filetypes = { "html", "templ", "svg", "angular.html" },
-        -- },
-        tailwindcss = {
-          filetypes_include = { "angular.html" },
-        },
+        html = {},
         angularls = {
-          filetypes = { "typescript", "html", "angular.html", "typescriptreact", "tsx" },
-          root_dir = is_angular,
+          root_dir = get_root_dir,
+          keys = {
+            {
+              "<leader>cr",
+              function()
+                vim.lsp.buf.rename(nil, {
+                  -- name = "angularls",
+                  filter = function(client)
+                    return client.name == "angularls"
+                  end,
+                })
+              end,
+              desc = "Rename",
+            },
+          },
         },
       },
       setup = {
         angularls = function()
-          if is_angular(vim.uv.cwd()) then
-            create_command("c", goToComponentFile, "Go to component file")
-            create_command("t", goToTemplateFile, "Go to template file")
-            vim.filetype.add({
-              pattern = {
-                -- [".*%.component%.html"] = "angular.html",
-                -- [".*%.component%.svg"] = "angular.html",
-                [".*%.html"] = "angular.html",
-                [".*%.svg"] = "angular.html",
-              },
-            })
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = "angular.html",
-              callback = function()
-                vim.treesitter.language.register("angular", "angular.html")
-              end,
-            })
-          end
-          LazyVim.lsp.on_attach(function(client, bufnr)
-            if client.name == "vtsls" then
-              client.server_capabilities.renameProvider = false
-            end
-            if client.name == "html" and vim.bo[bufnr].filetype == "angular.html" then
-              client.server_capabilities.renameProvider = false
-            end
-          end)
+          create_command("c", goToComponentFile, "Go to component file")
+          create_command("t", goToTemplateFile, "Go to template file")
         end,
       },
     },
