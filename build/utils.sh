@@ -77,8 +77,7 @@ source_file() {
 install_packages() {
 	local sources="$1"
 	info "installing common dependencies.."
-	#sudo pacman -Syyu
-	sudo pacman -S $(cat $sources) --needed
+	sudo dnf install $(cat $sources)
 	if [[ ! $? -eq 0 ]]; then
 		warn "failed during dependencies installation!"
 	else

@@ -8,7 +8,7 @@ if [ -d "$HOME/.tmux/plugins" ]; then
   rm -rf "$HOME/.tmux/plugins"
 fi
 
-sudo pacman -S tmux
+sudo dnf install tmux
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sf $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf

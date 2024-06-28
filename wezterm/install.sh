@@ -26,7 +26,7 @@ __install__() {
 	name="wezterm"
 	if confirmed "Install \"$name\" ?"; then
 		info "Installing wezterm ..."
-		sudo pacman -S ${name} --needed --noconfirm &&
+		sudo dnf install ${name} &&
 			okay "${name} installed with no errors!"
 	fi
 	if confirmed "Setup configurations ?"; then

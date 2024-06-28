@@ -1,5 +1,0 @@
-ttf-roboto
-ttf-roboto-mono
-ttf-roboto-mono-nerd
-ttf-ubuntu-font-family
-adobe-source-sans-pro-fonts

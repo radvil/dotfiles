@@ -10,7 +10,6 @@
 [ -s "$DOTFILES/webdev/init.zsh" ] && source "$DOTFILES/webdev/init.zsh"
 [ -s "$DOTFILES/alias/init.zsh" ] && source "$DOTFILES/alias/init.zsh"
 
-bindkey -s "\ew" "ami-project\n"
 bindkey -s "\em" "zmux\n"
 
 # pnpm
@@ -20,10 +19,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
 
 # bun completions
 [ -s "/home/radvil/.bun/_bun" ] && source "/home/radvil/.bun/_bun"

@@ -26,7 +26,9 @@ __install__() {
   if confirmed "Install \"Git Utilities\" ?"; then
     local pkgs="git git-delta lazygit bat"
     info "Installing $pkgs ..."
-    sudo pacman -S ${pkgs} --needed --noconfirm && \
+    sudo dnf copr enable atim/lazygit -y
+    sudo dnf update --refresh
+    sudo dnf install ${pkgs} && \
     okay "$pkgs installed with no errors!"
   fi
 
