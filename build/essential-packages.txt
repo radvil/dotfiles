@@ -22,8 +22,8 @@ unzip
 zip
 tar
 trash-cli
-htop
-neofetch
+btop
+fastfetch
 bc
 xclip
 man-db
