@@ -3,7 +3,7 @@ return {
     "which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
+      spec = {
         ["s"] = { name = "[s]urround" },
       },
     },

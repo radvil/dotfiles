@@ -12,7 +12,7 @@ require("core").bootstrap({
     {
       "radvil/NeoVerse",
       import = "neoverse.core.plugins",
-      dev = true,
+      dev = false,
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()
@@ -20,7 +20,6 @@ require("core").bootstrap({
             vim.g.neo_transparent = false
           end
           vim.cmd.colorscheme("catppuccin")
-          -- vim.cmd.colorscheme("tokyonight")
         end,
         builtins = {
           keymaps = true,

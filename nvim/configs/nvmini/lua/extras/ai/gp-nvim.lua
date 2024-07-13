@@ -5,7 +5,7 @@ return {
     "which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
+      spec = {
         ["<c-g>"] = { name = "gp.nvim" },
       },
     },

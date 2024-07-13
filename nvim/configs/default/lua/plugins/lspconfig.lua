@@ -1,5 +1,7 @@
 ---@diagnostic disable: duplicate-set-field
 
+LazyVim.lsp.words.enabled = false
+
 return {
   "neovim/nvim-lspconfig",
   init = function()

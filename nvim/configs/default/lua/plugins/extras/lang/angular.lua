@@ -104,23 +104,29 @@ return {
         angularls = function()
           create_command("c", goToComponentFile, "Go to component file")
           create_command("t", goToTemplateFile, "Go to template file")
+          create_command("r", function()
+            vim.cmd.LspStart("angularls")
+            vim.schedule(function ()
+              LazyVim.info("Restarting angularls...")
+            end)
+          end, "Go to template file")
         end,
       },
     },
   },
 
   -- Configure tsserver plugin
-  {
-    "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
-        {
-          name = "@angular/language-server",
-          location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
-          enableForWorkspaceTypeScriptVersions = false,
-          language = { "angular" },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = function(_, opts)
+  --     LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+  --       {
+  --         name = "@angular/language-server",
+  --         location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
+  --         enableForWorkspaceTypeScriptVersions = false,
+  --         language = { "angular" },
+  --       },
+  --     })
+  --   end,
+  -- },
 }

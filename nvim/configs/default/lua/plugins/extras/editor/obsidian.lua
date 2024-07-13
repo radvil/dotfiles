@@ -21,7 +21,7 @@ return {
     "which-key.nvim",
     optional = true,
     opts = {
-      defaults = {
+      spec = {
         ["<leader>n"] = { name = "[n]ote/obsidia[n]" },
       },
     },
