@@ -21,8 +21,8 @@ return {
       group = "+ ",
     },
     disable = {
-      buftypes = { "terminal" },
-      filetypes = {
+      bt = { "terminal" },
+      ft = {
         "DiffviewFiles",
         "NeogitStatus",
         "Dashboard",
@@ -46,14 +46,16 @@ return {
         "help",
         "qf",
       },
-    },
-    triggers_blacklist = {
-      n = {
-        "[",
-        "]",
-        "z",
-        "`",
-      },
+      ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
+      trigger = function(ctx)
+        local prefixes = {
+          "[",
+          "]",
+          "z",
+          "`",
+        }
+        return ctx.mode == "n" and vim.tbl_contains(prefixes, ctx.keys)
+      end,
     },
     layout = {
       align = "left",
