@@ -4,6 +4,7 @@ local disabled_plugins = {
   -- "echasnovski/mini.indentscope",
   "echasnovski/mini.ai",
   "nvim-treesitter/nvim-treesitter-textobjects",
+  "MagicDuck/grug-far.nvim",
 }
 
 ---@type LazySpec[]

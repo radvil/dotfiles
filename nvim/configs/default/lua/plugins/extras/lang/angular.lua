@@ -106,7 +106,7 @@ return {
           create_command("t", goToTemplateFile, "Go to template file")
           create_command("r", function()
             vim.cmd.LspStart("angularls")
-            vim.schedule(function ()
+            vim.schedule(function()
               LazyVim.info("Restarting angularls...")
             end)
           end, "Go to template file")

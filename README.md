@@ -11,3 +11,4 @@
 - [ ] Checkout `UndoTree`
 - [ ] Checkout `NeoGit`
 - [ ] Fix bufferline | neo-tree highlights for `tokyonight` colorscheme
+- [ ] Create a doc to encrypt/decrypt my secret

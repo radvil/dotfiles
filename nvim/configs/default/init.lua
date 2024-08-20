@@ -17,8 +17,8 @@ require("config.lazy").bootstrap({
           if vim.opt.background:get() == "light" then
             vim.g.neo_transparent = false
           end
-          -- vim.cmd.colorscheme("tokyonight")
-          vim.cmd.colorscheme("catppuccin")
+          vim.cmd.colorscheme("tokyonight")
+          -- vim.cmd.colorscheme("catppuccin")
         end,
         defaults = {
           keymaps = false,

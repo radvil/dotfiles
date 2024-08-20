@@ -1,6 +1,6 @@
 require("core").bootstrap({
   dev = {
-    path = "~/Projects/linuxdev/neovim",
+    path = "~/Projects/linux",
     fallback = false,
   },
   providers_blacklist = {
@@ -12,7 +12,7 @@ require("core").bootstrap({
     {
       "radvil/NeoVerse",
       import = "neoverse.core.plugins",
-      dev = false,
+      dev = true,
       ---@type NeoVerseOpts
       opts = {
         colorscheme = function()

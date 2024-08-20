@@ -46,16 +46,14 @@ return {
         "help",
         "qf",
       },
-      ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
-      trigger = function(ctx)
-        local prefixes = {
-          "[",
-          "]",
-          "z",
-          "`",
-        }
-        return ctx.mode == "n" and vim.tbl_contains(prefixes, ctx.keys)
-      end,
+    },
+    trigger = {
+      {
+        { "[", mode = "nxsot" },
+        { "]", mode = "nxsot" },
+        { "z", mode = "nxsot" },
+        { "`", mode = "nxsot" },
+      },
     },
     layout = {
       align = "left",
