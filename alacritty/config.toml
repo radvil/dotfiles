@@ -1,3 +1,5 @@
+live_config_reload = true
+
 [env]
 TERM             = "xterm-256color"
 
@@ -6,13 +8,14 @@ size             = 10
 
 [font.normal]
 family           = "JetBrainsMono Nerd Font"
-# style            = "Regular"
+style            = "Regular"
 
 [window]
-dynamic_padding           = false
+dynamic_padding           = true
 opacity                   = 0.93
 blur                      = true
-decorations_theme_variant = "Dark"
+decorations               = "Full"
+# decorations_theme_variant = "Dark"
 
 [colors]
 transparent_background_colors = false
