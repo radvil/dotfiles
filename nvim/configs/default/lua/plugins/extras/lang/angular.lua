@@ -84,20 +84,20 @@ return {
         html = {},
         angularls = {
           root_dir = get_root_dir,
-          keys = {
-            {
-              "<leader>cr",
-              function()
-                vim.lsp.buf.rename(nil, {
-                  -- name = "angularls",
-                  filter = function(client)
-                    return client.name == "angularls"
-                  end,
-                })
-              end,
-              desc = "Rename",
-            },
-          },
+          -- keys = {
+          --   {
+          --     "<leader>cr",
+          --     function()
+          --       vim.lsp.buf.rename(nil, {
+          --         -- name = "angularls",
+          --         filter = function(client)
+          --           return client.name == "angularls"
+          --         end,
+          --       })
+          --     end,
+          --     desc = "Rename",
+          --   },
+          -- },
         },
       },
       setup = {
@@ -110,6 +110,9 @@ return {
               LazyVim.info("Restarting angularls...")
             end)
           end, "Go to template file")
+          LazyVim.lsp.on_attach(function(client)
+            client.server_capabilities.renameProvider = false
+          end, "angularls")
         end,
       },
     },
