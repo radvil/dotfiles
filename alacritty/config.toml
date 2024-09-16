@@ -12,8 +12,8 @@ style            = "Regular"
 
 [window]
 dynamic_padding           = true
-opacity                   = 0.93
-blur                      = false
+opacity                   = 0.97
+blur                      = true
 # decorations               = "None"
 # decorations_theme_variant = "Dark"
 
