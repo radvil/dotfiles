@@ -60,7 +60,7 @@ end
 vim.g.autoformat = false
 vim.g.lazygit_config = true
 vim.g.minipairs_disable = false
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 -- os.getenv("KITTY_WINDOW_ID") and true or false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"

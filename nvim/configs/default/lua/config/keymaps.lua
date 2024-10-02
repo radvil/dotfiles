@@ -33,8 +33,8 @@ map({ "n", "x", "o" }, "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = 
 
 -- formatting
 map({ "n", "v" }, "<leader>cf", function() LazyVim.format({ force = true }) end, { desc = "code [f]ormat" })
-map("n", "<leader>uf", function() LazyVim.format.toggle() end, { desc = "toggle code auto [f]ormat" })
-map("n", "<leader>uF", function() LazyVim.format.toggle(true) end, { desc = "toggle code auto [f]ormat (buffer)" })
+LazyVim.toggle.map("<leader>uf", LazyVim.toggle.format())
+LazyVim.toggle.map("<leader>uF", LazyVim.toggle.format(true))
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
@@ -101,19 +101,19 @@ end
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
-map("n", "<leader>us", function() LazyVim.toggle.option("spell") end, { desc = "toggle word [s]pell" })
-map("n", "<leader>uw", function() LazyVim.toggle.option("wrap") end, { desc = "toggle word [w]rap" })
-map("n", "<leader>uc", function() LazyVim.toggle.option("cursorline") end, { desc = "toggle [c]ursor line" })
-map("n", "<leader>un", function() LazyVim.toggle.number() end, { desc = "toggle line [n]umbers" })
-map("n", "<leader>ub", function() LazyVim.toggle("background", false, { "light", "dark" }) end, { desc = "toggle [b]ackground" })
-map("n", "<leader>uN", function() LazyVim.toggle("relativenumber") end, { desc = "toggle relativeline [N]umbers" })
-map("n", "<leader>ux", function() LazyVim.toggle.diagnostics() end, { desc = "toggle diagnosti[x]" })
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>ul", function() LazyVim.toggle("conceallevel", false, { 0, conceallevel }) end, { desc = "toggle conceal[l]evel" })
+-- toggle options
+LazyVim.toggle.map("<leader>un", LazyVim.toggle.number)
+LazyVim.toggle.map("<leader>ux", LazyVim.toggle.diagnostics)
+LazyVim.toggle.map("<leader>uH", LazyVim.toggle.treesitter)
+LazyVim.toggle.map("<leader>uw", LazyVim.toggle("wrap", { name = "Wrap" }))
+LazyVim.toggle.map("<leader>us", LazyVim.toggle("spell", { name = "Spelling" }))
+LazyVim.toggle.map("<leader>uc", LazyVim.toggle("cursorline", { name = "Cursorline" }))
+LazyVim.toggle.map("<leader>uN", LazyVim.toggle("relativenumber", { name = "Relative Number" }))
+LazyVim.toggle.map("<leader>ub", LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" }))
+LazyVim.toggle.map("<leader>ul", LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } }))
 if vim.lsp.inlay_hint then
-  map( "n", "<leader>uh", function() LazyVim.toggle.inlay_hints() end, { desc = "toggle inlay [h]ints" })
+  LazyVim.toggle.map("<leader>uh", LazyVim.toggle.inlay_hints)
 end
-map("n", "<leader>uH", function() if vim.b.ts_highlight then vim.treesitter.stop() else vim.treesitter.start() end end, { desc = "toggle treesitter [H]ighlight" })
 
 -- lazygit
 map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
@@ -146,18 +146,6 @@ map("n", "<leader>gH", function()
   local git_path = vim.api.nvim_buf_get_name(0)
   LazyVim.lazygit({ args = { "lazygit", "-f", vim.trim(git_path) } })
 end, { desc = "lazygit file [H]istory" })
-
---stylua: ignore end
-
-map("n", "<leader>uH", function()
-  local next = vim.b.ts_highlight and "stop" or "start"
-  vim.treesitter[next]()
-  if next == "stop" then
-    LazyVim.warn("Highlight stopped!", { title = "treesitter highlight" })
-  else
-    LazyVim.info("Highlight started!", { title = "treesitter highlight" })
-  end
-end, { desc = "toggle treesitter highlight" })
 
 ---@param scope 'session' | 'window'
 local tmux_run = function(scope)

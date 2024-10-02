@@ -12,13 +12,13 @@ style            = "Regular"
 
 [window]
 dynamic_padding           = true
-opacity                   = 0.97
-blur                      = true
+opacity                   = 0.93
+blur                      = false
 # decorations               = "None"
 # decorations_theme_variant = "Dark"
 
 [colors]
-transparent_background_colors = false
+transparent_background_colors = true
 
 [colors.cursor]
 text            = "CellBackground"
