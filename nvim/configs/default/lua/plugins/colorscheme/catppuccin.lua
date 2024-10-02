@@ -108,7 +108,7 @@ return {
       navic = { custom_bg = "lualine" },
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
-      telescope = { style = "nvchad" },
+      telescope = { style = "classic" or "nvchad" },
     },
   },
   ---@param opts CatppuccinOptions

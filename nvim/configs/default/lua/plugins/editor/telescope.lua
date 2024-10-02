@@ -45,7 +45,6 @@ return {
         })()
       end
       local mappings = {
-        ["<a-f>"] = actions.close,
         ["<a-space>"] = actions.close,
         ["<cr>"] = actions.select_default,
         ["<c-y>"] = actions.select_default,
@@ -154,12 +153,6 @@ return {
 
         {
           "<c-p>",
-          LazyVim.pick("files", { prompt_title = Icons.FindFiles .. "[p]ick file" }),
-          desc = "[p]ick file (root)",
-        },
-
-        {
-          "<a-f>",
           LazyVim.pick("files", { prompt_title = Icons.FindFiles .. "[p]ick file" }),
           desc = "[p]ick file (root)",
         },
