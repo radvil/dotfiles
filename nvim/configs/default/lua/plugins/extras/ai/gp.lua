@@ -33,10 +33,12 @@ return {
       },
     },
     opts = {
+      model = "gpt-40",
       openai_api_key = {
-        "gpg",
-        "--decrypt",
-        os.getenv("DOTFILES") .. "/secrets/open-ai-key.gpg",
+        "echo",
+        -- "gpg",
+        -- "--decrypt",
+        -- os.getenv("DOTFILES") .. "/secrets/open-ai-key.gpg",
       },
     },
     init = function()

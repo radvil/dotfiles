@@ -1,7 +1,7 @@
 return {
   "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 9999,
+  lazy = true,
+  -- priority = 9999,
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     local defaults = {

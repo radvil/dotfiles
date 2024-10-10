@@ -101,21 +101,24 @@ return {
     default_integrations = true,
     transparent_background = false,
     background = { light = "latte", dark = "frappe" },
-    dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+    dim_inactive = { enabled = true, shade = "dark", percentage = 0.69 },
     integrations = {
       flash = false,
       nvimtree = false,
       navic = { custom_bg = "lualine" },
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
-      telescope = { style = "classic" or "nvchad" },
+      telescope = {
+        enabled = true,
+        style = "nvchad"
+      },
     },
   },
   ---@param opts CatppuccinOptions
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     opts.transparent_background = transparent
-    opts.dim_inactive.enabled = not transparent
+    -- opts.dim_inactive.enabled = not transparent
     opts.custom_highlights = custom_hls
     require("catppuccin").setup(opts)
   end,

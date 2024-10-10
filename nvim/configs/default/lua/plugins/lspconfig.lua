@@ -35,6 +35,10 @@ return {
       { "<leader>cc", false },
       { "<leader>cC", false },
       { "gy", false },
+      { "<a-p>", false },
+      { "<a-n>", false },
+      { "[[", false },
+      { "]]", false },
     })
   end,
 
@@ -51,12 +55,15 @@ return {
     codelens = {
       enabled = false,
     },
+    document_highlight = {
+      enabled = false,
+    },
     servers = {
       bashls = {},
       html = {},
       cssls = {},
       emmet_language_server = {
-        filetypes = { "typescript", "html" },
+        filetypes = { "html" },
       },
     },
   },

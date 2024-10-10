@@ -20,9 +20,8 @@ local Icons = {
 
 return {
   {
-    "telescope.nvim",
-    optional = true,
-    opts = function()
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
       local actions = require("telescope.actions")
       local find_files_no_ignore = function()
         local action_state = require("telescope.actions.state")
@@ -61,17 +60,17 @@ return {
         ["<a-i>"] = find_files_no_ignore,
         ["<a-h>"] = find_files_with_hidden,
       }
-      local NeoDefaults = {
-        defaults = {
+      if type(opts.defaults) == "table" then
+        opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+          sorting_strategy = "ascending",
+          prompt_prefix = " 🔭 ",
+          selection_caret = "👉",
           layout_strategy = "horizontal",
           layout_config = {
             prompt_position = "bottom",
             width = 0.9,
             height = 0.9,
           },
-          sorting_strategy = "ascending",
-          prompt_prefix = " 🔭 ",
-          selection_caret = "👉",
           mappings = {
             ["i"] = mappings,
             ["n"] = vim.tbl_extend("force", mappings, {
@@ -79,21 +78,9 @@ return {
               ["q"] = actions.close,
             }),
           },
-        },
-      }
-      if vim.g.neo_winborder == "single" then
-        NeoDefaults.defaults.borderchars = {
-          "─",
-          "│",
-          "─",
-          "│",
-          "┌",
-          "┐",
-          "┘",
-          "└",
-        }
+        })
       end
-      return NeoDefaults
+      return opts
     end,
     keys = function()
       ---@param lhs string

@@ -42,7 +42,7 @@ return {
 
   keys = {
     {
-      "<a-w>",
+      "<leader>ww",
       function()
         local win = require("window-picker").pick_window({ include_current_win = false })
         if not win then
@@ -98,6 +98,9 @@ return {
         if not picked then
           return
         end
+        -- TODO: fix treesitter context window!
+        -- local bufnr = A.nvim_win_get_buf(picked)
+        -- vim.print(vim.bo[bufnr].buftype)
         A.nvim_win_close(picked, false)
       end,
       desc = "pick and [x]lose a window",

@@ -8,7 +8,7 @@ Type=simple
 
 #Group=
 
-ExecStart=/home/radvil/.spoofdpi/bin/spoofdpi
+ExecStart=/home/laradvil/.spoofdpi/bin/spoofdpi
 
 Restart=on-failure
 

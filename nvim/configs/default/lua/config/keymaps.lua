@@ -10,7 +10,8 @@ local map = vim.keymap.set
 map({ "n", "x", "v" }, "<nL>", "<nop>")
 -- map("", "<c-z>", ":undo<cr>", { nowait = true })
 map("n", "Q", "q", { nowait = true, desc = "toggle recording" })
-map("n", "<a-q>", "<nop>")
+-- map("n", "<a-q>", "<nop>")
+map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
 map("n", "q", "<nop>")
 
 -- base
@@ -72,7 +73,9 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "swap selected lines up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "swap selected lines down" })
 
 -- windows
-map("n", "<leader>ww", "<c-w>p", { desc = "last used window" })
+if not LazyVim.has("nvim-window-picker") then
+  map("n", "<leader>ww", "<c-w>p", { desc = "last used window" })
+end
 map("n", "<leader>wd", "<c-w>c", { desc = "delete current window" })
 if not LazyVim.has("smart-splits.nvim") then
   map("n", "<c-h>", "<c-w>h", { remap = true, desc = "go to left window" })
@@ -179,7 +182,6 @@ map("n", "<leader>tW", function() tmux_run("window") end, { desc = "run command 
 map({ "n", "x", "v", "o" }, "H", "^", { desc = "start of line (non blank)" })
 map({ "n", "x", "v", "o" }, "L", "$", { desc = "end of the line" })
 map({ "n", "x", "v" }, "s", "<nop>", { remap = true, desc = "[reset]" })
-map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
 map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
 map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
 map("n", "ZZ", ":conf qa<cr>", { desc = "+confirm quit all" })

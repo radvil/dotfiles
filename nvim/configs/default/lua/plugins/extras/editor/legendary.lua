@@ -4,19 +4,19 @@ end
 
 return {
   "mrjones2014/legendary.nvim",
-  priority = 9999,
-  lazy = false,
+  -- priority = 9999,
+  lazy = true,
   keys = function()
     return {
       {
-        "<leader>q",
+        "<leader>/l",
         "<cmd>Legendary<cr>",
-        desc = "[q]uick access",
+        desc = "Legendary",
       },
     }
   end,
   opts = {
-    select_prompt = " Quick Access ",
+    select_prompt = " Legendary ",
     include_legendary_cmds = false,
     include_builtin = true,
     keymaps = {},

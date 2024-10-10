@@ -9,14 +9,10 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "plugins.extras.ai.gp",
     "plugins.extras.completion.cmp-cmdline",
-    "plugins.extras.editor.fzf",
     "plugins.extras.editor.legendary",
     "plugins.extras.editor.mini-splitjoin",
     "plugins.extras.editor.obsidian",
     "plugins.extras.editor.oil",
-    "plugins.extras.editor.outline",
-    "plugins.extras.editor.tabout",
-    "plugins.extras.editor.telescope-fuse",
     "plugins.extras.git.diffview",
     "plugins.extras.git.fugitive",
     "plugins.extras.git.mini-diff",
@@ -25,14 +21,10 @@
     "plugins.extras.lazycat.kopi-cat",
     "plugins.extras.misc.cellular-automation",
     "plugins.extras.misc.mini-trailspace",
-    "plugins.extras.misc.rest",
-    "plugins.extras.misc.sticky-buff",
     "plugins.extras.misc.suda",
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
-    "plugins.extras.ui.map",
-    "plugins.extras.ui.navic",
-    "plugins.extras.ui.zenmode"
+    "plugins.extras.ui.telescope-fuse"
   ],
   "news": {
     "NEWS.md": "6520"

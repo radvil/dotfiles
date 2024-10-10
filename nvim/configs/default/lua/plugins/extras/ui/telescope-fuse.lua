@@ -95,9 +95,9 @@ local create_fused_layout = function(picker)
         top_align = "center",
       },
     },
-    -- win_options = {
-    --   winhighlight = "Normal:Normal",
-    -- },
+    win_options = {
+      winhighlight = "Normal:Normal",
+    },
   })
 
   local prompt = make_popup({
@@ -109,9 +109,9 @@ local create_fused_layout = function(picker)
         top_align = "center",
       },
     },
-    -- win_options = {
-    --   winhighlight = "Normal:Normal",
-    -- },
+    win_options = {
+      winhighlight = "Normal:Normal",
+    },
   })
 
   local preview = make_popup({
@@ -194,26 +194,25 @@ end
 
 return {
   "telescope.nvim",
+  dependencies = { "MunifTanjim/nui.nvim" },
   opts = function(_, opts)
     if type(opts.defaults) == "table" then
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        layout_strategy = "flex",
-        create_layout = create_fused_layout,
-        layout_config = {
-          horizontal = {
-            size = {
-              width = "90%",
-              height = "80%",
-            },
-          },
-          vertical = {
-            size = {
-              width = "90%",
-              height = "90%",
-            },
+      opts.defaults.layout_strategy = "flex"
+      opts.defaults.create_layout = create_fused_layout
+      opts.defaults.layout_config = {
+        horizontal = {
+          size = {
+            width = "80%",
+            height = "80%",
           },
         },
-      })
+        vertical = {
+          size = {
+            width = "80%",
+            height = "90%",
+          },
+        },
+      }
     end
   end,
 }

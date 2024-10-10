@@ -41,9 +41,7 @@ end
 
 return {
   recommended = function()
-    return LazyVim.extras.wants({
-      root = angular_root_pattern,
-    })
+    return LazyVim.extras.wants({ root = angular_root_pattern })
   end,
 
   {
@@ -84,20 +82,15 @@ return {
         html = {},
         angularls = {
           root_dir = get_root_dir,
-          -- keys = {
-          --   {
-          --     "<leader>cr",
-          --     function()
-          --       vim.lsp.buf.rename(nil, {
-          --         -- name = "angularls",
-          --         filter = function(client)
-          --           return client.name == "angularls"
-          --         end,
-          --       })
-          --     end,
-          --     desc = "Rename",
-          --   },
-          -- },
+          keys = {
+            {
+              "<leader>cr",
+              function()
+                require("utils").lsp_buf_rename_use_priority_or_any()
+              end,
+              desc = "Lsp Rename",
+            },
+          },
         },
       },
       setup = {
@@ -110,9 +103,9 @@ return {
               LazyVim.info("Restarting angularls...")
             end)
           end, "Go to template file")
-          LazyVim.lsp.on_attach(function(client)
-            client.server_capabilities.renameProvider = false
-          end, "angularls")
+          -- LazyVim.lsp.on_attach(function(client, bufnr)
+          --   -- client.server_capabilities.renameProvider = false
+          -- end, "angularls")
         end,
       },
     },
@@ -127,7 +120,7 @@ return {
           name = "@angular/language-server",
           location = LazyVim.get_pkg_path("angular-language-server", "/node_modules/@angular/language-server"),
           enableForWorkspaceTypeScriptVersions = false,
-          language = { "angular" },
+          -- language = { "angular" },
         },
       })
     end,
