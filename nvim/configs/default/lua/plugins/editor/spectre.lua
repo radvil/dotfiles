@@ -1,5 +1,5 @@
 local M = {
-  "nvim-spectre",
+  "nvim-pack/nvim-spectre",
   cmd = "Spectre",
   build = false,
 }
