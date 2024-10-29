@@ -11,7 +11,7 @@ return {
 
   {
     "folke/noice.nvim",
-    enabled = true,
+    enabled = false,
     keys = function ()
       return {
         { "<c-d>", function() if not require("noice.lsp").scroll(4) then return "<c-d>" end end, expr = true, desc = "Noice » Scroll forward", mode = {"i", "n", "s"} },
