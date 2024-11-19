@@ -1,0 +1,18 @@
+[Unit]
+Description=Script Daemon For Test User Services
+
+[Service]
+Type=simple
+
+#User=
+
+#Group=
+
+ExecStart=/home/radvil/.spoofdpi/bin/spoofdpi
+
+Restart=on-failure
+
+StandardOutput=file:%h/log_file
+
+[Install]
+WantedBy=default.target

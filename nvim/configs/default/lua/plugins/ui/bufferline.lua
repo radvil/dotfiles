@@ -108,7 +108,7 @@ return {
     }
 
     local match = function(name)
-      return vim.g.colors_name == name
+      return string.find(vim.g.colors_name, name)
     end
 
     if match("catppuccin") then

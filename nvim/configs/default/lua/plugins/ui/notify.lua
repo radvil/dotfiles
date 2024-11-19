@@ -1,3 +1,7 @@
+-- if true then
+--   return {}
+-- end
+
 ---@diagnostic disable: missing-fields, duplicate-set-field
 return {
   {

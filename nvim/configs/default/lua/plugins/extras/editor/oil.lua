@@ -8,6 +8,16 @@ local M = {
 -- stylua: ignore
 M.keys = {
   {
+    "<a-d>",
+    function() require("oil").open() end,
+    desc = "[o]pen open file directory",
+  },
+  {
+    "<a-f>",
+    function() require("oil").toggle_float() end,
+    desc = "[o]pen toggle file directory [float]",
+  },
+  {
     "<Leader>fo",
     function() require("oil").open() end,
     desc = "[o]pen files",

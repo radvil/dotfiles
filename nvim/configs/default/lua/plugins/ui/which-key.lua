@@ -2,6 +2,7 @@ return {
   "which-key.nvim",
   opts = {
     show_help = true,
+    notify = false,
     plugins = {
       marks = true,
       registers = true,
@@ -10,7 +11,7 @@ return {
         suggestions = 20,
       },
     },
-    window = {
+    win = {
       border = vim.g.neo_winborder,
       padding = vim.g.neo_transparent and { 0, 0, 0, 0 } or { 1, 2, 1, 2 },
     },
@@ -20,8 +21,8 @@ return {
       group = "+ ",
     },
     disable = {
-      buftypes = { "terminal" },
-      filetypes = {
+      bt = { "terminal" },
+      ft = {
         "DiffviewFiles",
         "NeogitStatus",
         "Dashboard",
@@ -46,12 +47,12 @@ return {
         "qf",
       },
     },
-    triggers_blacklist = {
-      n = {
-        "[",
-        "]",
-        "z",
-        "`",
+    trigger = {
+      {
+        { "[", mode = "nxsot" },
+        { "]", mode = "nxsot" },
+        { "z", mode = "nxsot" },
+        { "`", mode = "nxsot" },
       },
     },
     layout = {
@@ -62,7 +63,7 @@ return {
         max = 9,
       },
     },
-    defaults = {
+    spec = {
       mode = { "n", "x" },
       ["g"] = { name = "goto" },
       ["z"] = { name = "fold" },
