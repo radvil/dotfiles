@@ -213,12 +213,14 @@ end, { desc = "toggle code [C]ompletion" })
 map("n", "<leader>uT", function()
   LazyVim.try(function()
     local colors_name = vim.g.colors_name
-    for key, value in pairs({
-      tokyonight = "tokyonight.nvim",
-      monokai = "monokai-pro",
-      catppuccin = "catppuccin",
+    for _, value in ipairs({
+      "tokyonight",
+      "catppuccin",
+      "monokai-pro",
+      "kanagawa",
+      "onedark",
     }) do
-      if string.match(colors_name, key) then
+      if string.match(colors_name, value) then
         vim.g.neo_transparent = not vim.g.neo_transparent
         vim.cmd.Lazy("reload " .. value)
         vim.schedule(function()

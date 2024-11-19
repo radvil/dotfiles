@@ -1,5 +1,6 @@
 return {
   "folke/tokyonight.nvim",
+  name = "tokyonight",
   lazy = false,
   priority = 9999,
   config = function(_, opts)
@@ -108,7 +109,7 @@ return {
             fg = c.bg_dark,
           }
         end
-      end
+      end,
     }
     opts = vim.tbl_deep_extend("force", defaults, opts or {})
     require("tokyonight").setup(opts)

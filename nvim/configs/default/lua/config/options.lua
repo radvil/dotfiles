@@ -11,6 +11,16 @@ vim.g.maplocalleader = "\\"
 -- * powershell
 -- LazyVim.terminal.setup("pwsh")
 
+-- os.getenv("KITTY_WINDOW_ID") and true or false
+---@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark"
+
+---@type NeoColorscheme
+vim.g.neo_colorscheme = "onedark"
+vim.g.neo_transparent = false
+vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
+-- TODO: set this to the plugin opts instead
+vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
+
 vim.opt.clipboard = ""
 vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
@@ -47,6 +57,12 @@ if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
 end
 
+vim.g.autoformat = false
+vim.g.lazygit_config = true
+vim.g.minipairs_disable = false
+
+vim.g.deprecation_warnings = false
+
 if vim.g.neovide then
   ---@type "railgun" | "torpedo" | "pixiedust" | "sonicboom" | "ripple" | "wireframe"
   vim.g.neovide_cursor_vfx_mode = "railgun"
@@ -56,15 +72,3 @@ if vim.g.neovide then
   vim.g.neovide_transparency = 1 -- 0.87
   vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h7.5" }
 end
-
-vim.g.autoformat = false
-vim.g.lazygit_config = true
-vim.g.minipairs_disable = false
-vim.g.neo_transparent = false
--- os.getenv("KITTY_WINDOW_ID") and true or false
-vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
-vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
-
-vim.g.deprecation_warnings = false
-
--- Snacks.words.enabled = false
