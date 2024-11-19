@@ -12,7 +12,7 @@ vim.g.maplocalleader = "\\"
 -- LazyVim.terminal.setup("pwsh")
 
 -- os.getenv("KITTY_WINDOW_ID") and true or false
----@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark"
+---@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark" | "material"
 
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "onedark"

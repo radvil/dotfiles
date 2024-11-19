@@ -1,13 +1,12 @@
 ---@alias OneDarkVariant "dark" |"darker" |"cool" | "deep" | "warm" | "warmer" | "light"
 
+local next = nil
 local bg_default = {
   ---@type OneDarkVariant
   dark = "darker",
   ---@type OneDarkVariant
   light = "light",
 }
-
-local next = nil
 
 return {
   "navarasu/onedark.nvim",
@@ -53,7 +52,7 @@ return {
     require("onedark").setup(opts)
   end,
   init = function()
-    local augroup = vim.api.nvim_create_augroup("neo_autocmds", { clear = true })
+    local augroup = vim.api.nvim_create_augroup("neo_autocmds_colorscheme_onedark", { clear = true })
     vim.api.nvim_create_autocmd("OptionSet", {
       group = augroup,
       pattern = "background",
