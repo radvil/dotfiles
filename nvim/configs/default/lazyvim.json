@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.ui.dashboard-nvim",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "plugins.extras.ai.gp",
@@ -31,11 +32,10 @@
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
     "plugins.extras.ui.map",
-    "plugins.extras.ui.navic",
     "plugins.extras.ui.zenmode"
   ],
   "news": {
-    "NEWS.md": "6520"
+    "NEWS.md": "7429"
   },
-  "version": 6
+  "version": 7
 }

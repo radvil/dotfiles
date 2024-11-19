@@ -44,7 +44,7 @@ if not LazyVim.has("nvim-ufo") then
 end
 
 if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
-  vim.opt.statuscolumn = [[%!v:lua.LazyVim.ui.statuscolumn()]]
+  vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
 end
 
 if vim.g.neovide then
@@ -66,3 +66,5 @@ vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 
 vim.g.deprecation_warnings = false
+
+-- Snacks.words.enabled = false

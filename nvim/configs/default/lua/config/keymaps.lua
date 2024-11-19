@@ -33,8 +33,8 @@ map({ "n", "x", "o" }, "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = 
 
 -- formatting
 map({ "n", "v" }, "<leader>cf", function() LazyVim.format({ force = true }) end, { desc = "code [f]ormat" })
-LazyVim.toggle.map("<leader>uf", LazyVim.toggle.format())
-LazyVim.toggle.map("<leader>uF", LazyVim.toggle.format(true))
+LazyVim.format.snacks_toggle():map("<leader>uf")
+LazyVim.format.snacks_toggle(true):map("<leader>uF")
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
@@ -90,7 +90,10 @@ map("n", "<leader>`", "<cmd>e #<cr>", { desc = "go to recent buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "go to recent [b]uffer" })
 map("n", "[b", ":bprevious<cr>", { desc = "prev[ous buffer" })
 map("n", "]b", ":bnext<cr>", { desc = "n]xt buffer" })
-map("n", "<leader>bd", LazyVim.ui.bufremove, { desc = "[d]elete buffer" })
+
+map("n", "<leader>bd", function ()
+  Snacks.bufdelete()
+end, { desc = "[d]elete buffer" })
 map("n", "<Leader>bD", "<cmd>:bd<cr>", { desc = "[D]elete buffer+window" })
 if not LazyVim.has("bufferline.nvim") then
   map("n", "<a-[>", ":bprevious<cr>", { desc = "prev[ous buffer" })
@@ -102,34 +105,41 @@ map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- toggle options
-LazyVim.toggle.map("<leader>un", LazyVim.toggle.number)
-LazyVim.toggle.map("<leader>ux", LazyVim.toggle.diagnostics)
-LazyVim.toggle.map("<leader>uH", LazyVim.toggle.treesitter)
-LazyVim.toggle.map("<leader>uw", LazyVim.toggle("wrap", { name = "Wrap" }))
-LazyVim.toggle.map("<leader>us", LazyVim.toggle("spell", { name = "Spelling" }))
-LazyVim.toggle.map("<leader>uc", LazyVim.toggle("cursorline", { name = "Cursorline" }))
-LazyVim.toggle.map("<leader>uN", LazyVim.toggle("relativenumber", { name = "Relative Number" }))
-LazyVim.toggle.map("<leader>ub", LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" }))
-LazyVim.toggle.map("<leader>ul", LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } }))
+Snacks.toggle.option("spell", { name = "Spelling"}):map("<leader>us")
+Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
+Snacks.toggle.option("relativenumber", { name = "Relative Number"}):map("<leader>uL")
+Snacks.toggle.diagnostics():map("<leader>ud")
+Snacks.toggle.line_number():map("<leader>ul")
+Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
+Snacks.toggle.treesitter():map("<leader>uT")
+Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
 if vim.lsp.inlay_hint then
-  LazyVim.toggle.map("<leader>uh", LazyVim.toggle.inlay_hints)
+  Snacks.toggle.inlay_hints():map("<leader>uh")
 end
 
 -- lazygit
-map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
-map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
+if vim.fn.executable("lazygit") == 1 then
+  map("n", "<leader>gg", function() Snacks.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
+  map("n", "<leader>gG", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
+  map("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
+  map("n", "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
+  map("n", "<leader>gf", function() Snacks.lazygit.log_file() end, { desc = "Lazygit Current File History" })
+  map("n", "<leader>gl", function() Snacks.lazygit.log({ cwd = LazyVim.root.git() }) end, { desc = "Lazygit Log" })
+  map("n", "<leader>gL", function() Snacks.lazygit.log() end, { desc = "Lazygit Log (cwd)" })
+end
 
-map("n", "<leader>gf", function()
-  local git_path = vim.api.nvim_buf_get_name(0)
-  LazyVim.lazygit({args = { "-f", vim.trim(git_path) }})
-end, { desc = "Lazygit Current File History" })
+-- floating terminal
+map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
+map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
 
 ---floating terminal
 local ft = function(cmd, root)
   local label = (type(cmd) == "table" and cmd[1] or cmd) or "Terminal"
   local opt = { size = { width = 0.8, height = 0.8 }, title = "  " .. label, title_pos = "right" }
   if root then opt.cwd = LazyVim.root.get() end
-  LazyVim.terminal.open(cmd, opt)
+  Snacks.terminal(cmd, opt)
 end
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 map("n", [[<c-\>]], function() ft(nil) end, { desc = [[open term[\]nal (cwd)]] })
@@ -138,14 +148,6 @@ map("n", "<leader>tN", function() ft(nil) end, { desc = "[N]ew terminal (cwd)" }
 map("n", "<leader>tn", function() ft(nil, true) end, { desc = "[n]ew terminal (root)" })
 map("n", "<leader>tH", function() ft("btop") end, { desc = "run [H]top" })
 map("n", "<leader>tP", function() ft({ "ping", "9.9.9.9" }) end, { desc = "run [P]ing test" })
-
----lazygit
-map("n", "<leader>gg", function() LazyVim.lazygit({ cwd = LazyVim.root.git() }) end, { desc = "open lazy[g]it (root)" })
-map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "lazy[G]it (cwd)" })
-map("n", "<leader>gH", function()
-  local git_path = vim.api.nvim_buf_get_name(0)
-  LazyVim.lazygit({ args = { "lazygit", "-f", vim.trim(git_path) } })
-end, { desc = "lazygit file [H]istory" })
 
 ---@param scope 'session' | 'window'
 local tmux_run = function(scope)
