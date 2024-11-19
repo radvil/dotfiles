@@ -1,6 +1,6 @@
 require("core").bootstrap({
   dev = {
-    path = "~/Projects/linuxdev/neovim",
+    path = "~/Projects/linux",
     fallback = false,
   },
   providers_blacklist = {
@@ -20,7 +20,6 @@ require("core").bootstrap({
             vim.g.neo_transparent = false
           end
           vim.cmd.colorscheme("catppuccin")
-          -- vim.cmd.colorscheme("tokyonight")
         end,
         builtins = {
           keymaps = true,

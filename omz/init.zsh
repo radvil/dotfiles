@@ -7,5 +7,5 @@ if [ -z "${__DOT_OMZ}" ]; then
   fi
 fi
 
-plugins=(vi-mode fancy-ctrl-z)
+plugins=(vi-mode nvm)
 source "$__DOT_OMZ"

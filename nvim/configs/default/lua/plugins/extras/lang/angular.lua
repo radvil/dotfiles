@@ -84,26 +84,35 @@ return {
         html = {},
         angularls = {
           root_dir = get_root_dir,
-          keys = {
-            {
-              "<leader>cr",
-              function()
-                vim.lsp.buf.rename(nil, {
-                  -- name = "angularls",
-                  filter = function(client)
-                    return client.name == "angularls"
-                  end,
-                })
-              end,
-              desc = "Rename",
-            },
-          },
+          -- keys = {
+          --   {
+          --     "<leader>cr",
+          --     function()
+          --       vim.lsp.buf.rename(nil, {
+          --         -- name = "angularls",
+          --         filter = function(client)
+          --           return client.name == "angularls"
+          --         end,
+          --       })
+          --     end,
+          --     desc = "Rename",
+          --   },
+          -- },
         },
       },
       setup = {
         angularls = function()
           create_command("c", goToComponentFile, "Go to component file")
           create_command("t", goToTemplateFile, "Go to template file")
+          create_command("r", function()
+            vim.cmd.LspStart("angularls")
+            vim.schedule(function()
+              LazyVim.info("Restarting angularls...")
+            end)
+          end, "Go to template file")
+          LazyVim.lsp.on_attach(function(client)
+            client.server_capabilities.renameProvider = false
+          end, "angularls")
         end,
       },
     },

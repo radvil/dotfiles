@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -x "$(command -v ssh)" ]; then
-	sudo pacman -S openssh
+	sudo dnf install openssh -y
 fi
 
 __SOURCE_DIR="$DOTFILES/ssh/src"

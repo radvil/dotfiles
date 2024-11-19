@@ -1,5 +1,7 @@
 ---@diagnostic disable: duplicate-set-field
 
+-- LazyVim.lsp.words.enabled = false
+
 return {
   "neovim/nvim-lspconfig",
   init = function()
@@ -53,9 +55,7 @@ return {
       bashls = {},
       html = {},
       cssls = {},
-      emmet_language_server = {
-        filetypes = { "typescript", "html" },
-      },
+      emmet_language_server = {},
     },
   },
 }
