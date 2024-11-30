@@ -22,7 +22,7 @@ vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true

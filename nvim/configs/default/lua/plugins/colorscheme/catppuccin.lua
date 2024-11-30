@@ -21,7 +21,7 @@ local custom_hls = function(colors)
     StatusLineNC = { bg = colors.crust },
     StatusLine = {
       bold = false,
-      bg = colors.base,
+      -- bg = colors.base,
       fg = colors.rosewater,
     },
     FlashCurrent = {
