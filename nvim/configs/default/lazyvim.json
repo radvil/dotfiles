@@ -17,7 +17,6 @@
     "plugins.extras.editor.oil",
     "plugins.extras.editor.outline",
     "plugins.extras.editor.tabout",
-    "plugins.extras.editor.telescope-fuse",
     "plugins.extras.git.diffview",
     "plugins.extras.git.fugitive",
     "plugins.extras.git.mini-diff",
@@ -27,6 +26,7 @@
     "plugins.extras.lazycat.kopi-cat",
     "plugins.extras.lazycat.material",
     "plugins.extras.lazycat.onedark",
+    "plugins.extras.lazycat.rose-pine",
     "plugins.extras.misc.cellular-automation",
     "plugins.extras.misc.mini-trailspace",
     "plugins.extras.misc.rest",
@@ -35,6 +35,7 @@
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
     "plugins.extras.ui.map",
+    "plugins.extras.ui.modeline",
     "plugins.extras.ui.zenmode"
   ],
   "news": {

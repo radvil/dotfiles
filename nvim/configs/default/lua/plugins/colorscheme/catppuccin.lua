@@ -94,7 +94,8 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   priority = 9999,
-  lazy = false,
+  -- lazy = false,
+  lazy = not string.match(vim.g.neo_colorscheme, "catppuccin"),
   opts = {
     flavour = "auto",
     term_colors = true,
@@ -105,10 +106,11 @@ return {
     integrations = {
       flash = false,
       nvimtree = false,
-      navic = { custom_bg = "lualine" },
+      -- navic = { custom_bg = "lualine" },
+      navic = false,
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
-      telescope = { style = "classic" or "nvchad" },
+      telescope = { style = "nvchad" },
     },
   },
   ---@param opts CatppuccinOptions

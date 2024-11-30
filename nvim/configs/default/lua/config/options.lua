@@ -12,17 +12,17 @@ vim.g.maplocalleader = "\\"
 -- LazyVim.terminal.setup("pwsh")
 
 -- os.getenv("KITTY_WINDOW_ID") and true or false
----@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark" | "material"
+---@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark" | "material" | "rose-pine"
 
 ---@type NeoColorscheme
-vim.g.neo_colorscheme = "onedark"
-vim.g.neo_transparent = false
+vim.g.neo_colorscheme = "kanagawa"
+vim.g.neo_transparent = true
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 -- TODO: set this to the plugin opts instead
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true

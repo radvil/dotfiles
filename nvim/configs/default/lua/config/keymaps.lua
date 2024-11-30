@@ -220,6 +220,7 @@ map("n", "<leader>uT", function()
       "kanagawa",
       "onedark",
       "material",
+      "rose-pine",
     }) do
       if string.match(colors_name, value) then
         vim.g.neo_transparent = not vim.g.neo_transparent

@@ -1,6 +1,6 @@
----@diagnostic disable: inject-field, undefined-field, param-type-mismatch, duplicate-set-field
+local M = {}
 
-local create_fused_layout = function(picker)
+M.create_fused_layout = function(picker)
   local Layout = require("nui.layout")
   local Popup = require("nui.popup")
   local TSLayout = require("telescope.pickers.layout")
@@ -192,29 +192,4 @@ local create_fused_layout = function(picker)
   return TSLayout(layout)
 end
 
-return {
-  "telescope.nvim",
-  optional = true,
-  opts = function(_, opts)
-    if type(opts.defaults) == "table" then
-      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-        layout_strategy = "flex",
-        create_layout = create_fused_layout,
-        layout_config = {
-          horizontal = {
-            size = {
-              width = "90%",
-              height = "80%",
-            },
-          },
-          vertical = {
-            size = {
-              width = "90%",
-              height = "90%",
-            },
-          },
-        },
-      })
-    end
-  end,
-}
+return M

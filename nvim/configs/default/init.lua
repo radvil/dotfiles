@@ -1,6 +1,6 @@
 require("config.lazy").bootstrap({
   dev = {
-    path = "~/Projects/linuxdev/neovim",
+    path = "/media/data/Projects/Misc",
     fallback = false,
   },
   providers_blacklist = {

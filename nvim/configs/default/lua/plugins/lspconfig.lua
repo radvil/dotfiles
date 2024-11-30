@@ -22,7 +22,9 @@ return {
         end
         local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
         -- markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+        markdown_lines = vim.split(table.concat(markdown_lines, "\n"), "\n", { trimempty = true })
         if vim.tbl_isempty(markdown_lines) then
+          -- markdown_lines = { "# Not Available" }
           return
         end
         return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
@@ -35,6 +37,15 @@ return {
       { "<leader>cc", false },
       { "<leader>cC", false },
       { "gy", false },
+      {
+        "<leader>ca",
+        function()
+          vim.lsp.buf.code_action()
+        end,
+        desc = "Code Action",
+        mode = { "n", "v" },
+        has = "codeAction",
+      },
     })
   end,
 

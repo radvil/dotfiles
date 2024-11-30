@@ -3,7 +3,7 @@
 local next = nil
 local bg_default = {
   ---@type OneDarkVariant
-  dark = "darker",
+  dark = "cool",
   ---@type OneDarkVariant
   light = "light",
 }
@@ -58,7 +58,7 @@ return {
       pattern = "background",
       desc = "On Background Changed",
       callback = function()
-        if string.match(vim.g.colors_name, "onedark") then
+        if vim.g.colors_name and string.match(vim.g.colors_name, "onedark") then
           if vim.v.option_old == vim.v.option_new then
             return
           else

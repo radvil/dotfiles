@@ -1,3 +1,7 @@
+-- if true then
+--   return {}
+-- end
+
 ---@diagnostic disable: assign-type-mismatch
 local Config = require("lazyvim.config")
 local Icons = {
@@ -20,8 +24,7 @@ local Icons = {
 
 return {
   {
-    "telescope.nvim",
-    optional = true,
+    "nvim-telescope/telescope.nvim",
     opts = function()
       local actions = require("telescope.actions")
       local find_files_no_ignore = function()
@@ -69,6 +72,24 @@ return {
             width = 0.9,
             height = 0.9,
           },
+
+          -- layout_strategy = "flex",
+          -- create_layout = require("fuse").create_fused_layout,
+          -- layout_config = {
+          --   horizontal = {
+          --     size = {
+          --       width = "90%",
+          --       height = "80%",
+          --     },
+          --   },
+          --   vertical = {
+          --     size = {
+          --       width = "90%",
+          --       height = "90%",
+          --     },
+          --   },
+          -- },
+
           sorting_strategy = "ascending",
           prompt_prefix = " 🔭 ",
           selection_caret = "👉",

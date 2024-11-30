@@ -212,7 +212,8 @@ return {
 
       source_selector = {
         winbar = true,
-        statusline = vim.opt.laststatus ~= 3,
+        -- statusline = vim.opt.laststatus ~= 3,
+        statusline = false,
         truncation_character = "…",
         sources = {
           {

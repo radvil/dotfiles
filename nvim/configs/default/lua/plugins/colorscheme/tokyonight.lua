@@ -1,8 +1,9 @@
 return {
   "folke/tokyonight.nvim",
   name = "tokyonight",
-  lazy = false,
-  priority = 9999,
+  -- lazy = false,
+  -- priority = 9999,
+  lazy = not string.match(vim.g.neo_colorscheme, "tokyonight"),
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     local defaults = {
