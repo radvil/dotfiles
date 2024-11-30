@@ -9,7 +9,7 @@ return {
     local defaults = {
       style = "moon",
       lualine_bold = true,
-      dim_inactive = false,
+      dim_inactive = vim.g.neo_diminactive,
       terminal_colors = true,
       transparent = transparent,
       hide_inactive_statusline = true,

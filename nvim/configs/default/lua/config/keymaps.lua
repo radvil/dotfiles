@@ -234,6 +234,31 @@ map("n", "<leader>uT", function()
   end)
 end, { desc = "toggle transparent background" })
 
+-- toggle dim
+map("n", "<leader>uD", function()
+  LazyVim.try(function()
+    local colors_name = vim.g.colors_name
+    for _, value in ipairs({
+      "tokyonight",
+      "catppuccin",
+      "monokai-pro",
+      "kanagawa",
+      "onedark",
+      "material",
+      "rose-pine",
+    }) do
+      if string.match(colors_name, value) then
+        vim.g.neo_diminactive = not vim.g.neo_diminactive
+        vim.cmd.Lazy("reload " .. value)
+        vim.schedule(function()
+          vim.cmd.colorscheme(colors_name)
+        end)
+        break
+      end
+    end
+  end)
+end, { desc = "toggle transparent background" })
+
 if LazyVim.has("mini.map") then
   for _, key in ipairs({ "n", "N", "*", "#" }) do
     map("n", key, key .. "<Cmd>lua require('mini.map').refresh({}, {lines = false, scrollbar = false})<CR>")

@@ -56,11 +56,11 @@ return {
       -- Floating panels
       Hi.FloatBorder = {
         bg = "none",
-        fg = theme.vcs.changed
+        fg = theme.vcs.changed,
       }
       Hi.FloatTitle = {
         bg = theme.vcs.changed,
-        fg = theme.ui.bg_m3
+        fg = theme.ui.bg_m3,
       }
       Hi.NormalFloat = {
         bg = "none",
@@ -94,8 +94,7 @@ return {
   },
   config = function(_, opts)
     opts.transparent = vim.g.neo_transparent
-    -- opts.dimInactive = vim.g.neo_transparent
-    opts.dimInactive = true
+    opts.dimInactive = vim.g.neo_diminactive
     require("kanagawa").setup(opts)
   end,
 }

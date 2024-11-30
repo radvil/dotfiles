@@ -17,6 +17,7 @@ vim.g.maplocalleader = "\\"
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "kanagawa"
 vim.g.neo_transparent = true
+vim.g.neo_diminactive = true
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 -- TODO: set this to the plugin opts instead
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"

@@ -117,7 +117,7 @@ return {
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     opts.transparent_background = transparent
-    opts.dim_inactive.enabled = not transparent
+    opts.dim_inactive.enabled = vim.g.neo_diminactive
     opts.custom_highlights = custom_hls
     require("catppuccin").setup(opts)
   end,
