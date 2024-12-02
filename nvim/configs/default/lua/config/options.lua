@@ -16,14 +16,14 @@ vim.g.maplocalleader = "\\"
 
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "kanagawa"
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 vim.g.neo_diminactive = true
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 -- TODO: set this to the plugin opts instead
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true

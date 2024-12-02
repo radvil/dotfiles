@@ -75,7 +75,7 @@ return {
       return {
         {
           "<a-m>",
-          mode = "n",
+          mode = { "n", "i" },
           function()
             require("flash").jump({
               search = {
@@ -134,9 +134,11 @@ return {
                 vim.api.nvim_set_current_win(target.win)
                 vim.api.nvim_win_set_cursor(target.win, target.pos)
                 if vim.tbl_contains(ftMap.sidebars, vim.bo.filetype) then
-                  vim.cmd.execute([["normal \<CR>"]])
+                  vim.api.nvim_input("<cr>")
+                  -- vim.cmd.execute([["normal \<CR>"]])
                 else
-                  vim.cmd.execute([["normal gd"]])
+                  vim.api.nvim_input("gd")
+                  -- vim.cmd.execute([["normal gd"]])
                 end
               end,
             })
@@ -159,8 +161,10 @@ return {
                 state:hide()
                 vim.api.nvim_set_current_win(target.win)
                 vim.api.nvim_win_set_cursor(target.win, target.pos)
-                vim.cmd.execute([["normal za"]])
-                state:restore()
+                vim.api.nvim_input("za")
+                vim.schedule(function()
+                  state:restore()
+                end)
               end,
             })
           end,
@@ -169,7 +173,9 @@ return {
       }
     end,
     opts = {
-      labels = "asdfghjklqwertyuiopzxcvbnm",
+      -- labels = "asdfghjklqwertyuiopzxcvbnm",
+      -- NOTE: exclude j and k for better escape support
+      labels = "asdfghlqwertyuiopzxcvbnm",
       search = {
         mode = "exact",
         forward = true,

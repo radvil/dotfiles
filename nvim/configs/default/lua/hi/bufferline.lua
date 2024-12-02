@@ -92,16 +92,16 @@ function M.kanagawa()
     if not theme then
       return {}
     end
-    -- local active_bg = theme.ui.bg_p1
-    local active_bg = "none"
+    local active_bg = theme.ui.bg_p1
+    -- local active_bg = "none"
     local inactive_bg = theme.ui.bg_m1
     local inactive_text = theme.ui.nontext
     local text = theme.ui.fg
     local text_alt = theme.ui.fg_dim
     local separator_fg = theme.ui.bg_m2
     -- local fill_bg = inactive_bg
-    -- local fill_bg = 'none'
-    local fill_bg = theme.ui.bg_m3
+    local fill_bg = 'none'
+    -- local fill_bg = theme.ui.bg_m3
     return {
       fill = { bg = fill_bg },
       background = { bg = inactive_bg },

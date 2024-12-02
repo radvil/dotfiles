@@ -73,8 +73,8 @@ return {
             height = 0.9,
           },
 
-          -- layout_strategy = "flex",
           -- create_layout = require("fuse").create_fused_layout,
+          -- layout_strategy = "flex",
           -- layout_config = {
           --   horizontal = {
           --     size = {
