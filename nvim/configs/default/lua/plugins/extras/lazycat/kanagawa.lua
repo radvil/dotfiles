@@ -12,6 +12,7 @@ local overrides = function(colors)
     IblIndent = { fg = theme.ui.bg_p2 },
     StatusLine = { bold = false, bg = theme.ui.bg_m3, fg = theme.vcs.changed },
     WinSeparator = { fg = transparent and theme.ui.nontext or theme.ui.bg_p2 },
+    MiniStatuslineModeNormal = { bold = true, fg = theme.ui.bg_m3, bg = theme.syn.special3 },
 
     FlashCurrent = { fg = palette.dark, bg = palette.yellow, bold = true },
     FlashLabel = { fg = palette.light, bg = palette.pink, bold = true },

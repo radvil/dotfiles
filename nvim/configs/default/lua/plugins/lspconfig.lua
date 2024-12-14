@@ -28,26 +28,10 @@ return {
         return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
       end
     end
-
-    local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    vim.list_extend(keys, {
-      { "<c-k>", false, mode = "i" },
-      { "<leader>cc", false },
-      { "<leader>cC", false },
-      { "gy", false },
-      {
-        "<leader>ca",
-        function()
-          vim.lsp.buf.code_action()
-        end,
-        desc = "Code Action",
-        mode = { "n", "v" },
-        has = "codeAction",
-      },
-    })
   end,
 
   opts = {
+    document_highlight = { enabled = false },
     diagnostics = {
       float = { border = vim.g.neo_winborder },
       virtual_text = {

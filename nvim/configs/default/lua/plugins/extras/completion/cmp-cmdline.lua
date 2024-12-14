@@ -1,6 +1,8 @@
+---@diagnostic disable: redundant-parameter
+
 return {
   "hrsh7th/cmp-cmdline",
-  dependencies = "hrsh7th/nvim-cmp",
+  dependencies = { "hrsh7th/nvim-cmp" },
   event = "CmdlineEnter",
   config = function()
     local cmp = require("cmp")

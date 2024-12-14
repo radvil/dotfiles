@@ -1,6 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.luasnip",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.tailwind",
@@ -9,13 +10,10 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "plugins.extras.ai.gp",
     "plugins.extras.completion.cmp-cmdline",
-    "plugins.extras.editor.fzf",
-    "plugins.extras.editor.legendary",
     "plugins.extras.editor.mini-splitjoin",
     "plugins.extras.editor.obsidian",
     "plugins.extras.editor.oil",
     "plugins.extras.editor.outline",
-    "plugins.extras.editor.tabout",
     "plugins.extras.git.diffview",
     "plugins.extras.git.fugitive",
     "plugins.extras.git.mini-diff",
@@ -34,11 +32,11 @@
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
     "plugins.extras.ui.map",
-    "plugins.extras.ui.modeline",
+    "plugins.extras.ui.mini-statusline",
     "plugins.extras.ui.zenmode"
   ],
   "news": {
-    "NEWS.md": "7429"
+    "NEWS.md": "10960"
   },
   "version": 7
 }

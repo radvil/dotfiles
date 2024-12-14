@@ -65,7 +65,7 @@ local defaults = {
     },
   },
   checker = {
-    enabled = true,
+    enabled = false,
   },
   ui = {
     wrap = true,
@@ -130,6 +130,9 @@ local defaults = {
       },
     },
   },
+
+  -- custom options
+  providers_blacklist = {},
 }
 
 ---@type NeoOptions
@@ -145,6 +148,9 @@ function M.bootstrap(opts)
       kopts.silent = kopts.silent ~= false
       return keymap_set(mode, lhs, rhs, kopts)
     end
+  end
+  for _, value in ipairs(options.providers_blacklist) do
+    vim.cmd(string.format("let g:loaded_%s_provider = 0", value))
   end
   require("lazy").setup(options)
 end
