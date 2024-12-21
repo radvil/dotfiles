@@ -78,28 +78,29 @@ return {
       }
       opts = vim.tbl_deep_extend("force", opts, {
         defaults = {
-          -- layout_strategy = "horizontal",
-          -- layout_config = {
-          --   prompt_position = "bottom",
-          --   width = 0.9,
-          --   height = 0.9,
-          -- },
-          create_layout = require("fuse").create_fused_layout,
-          layout_strategy = "flex",
+          layout_strategy = "horizontal",
           layout_config = {
-            horizontal = {
-              size = {
-                width = "90%",
-                height = "80%",
-              },
-            },
-            vertical = {
-              size = {
-                width = "90%",
-                height = "90%",
-              },
-            },
+            prompt_position = "bottom",
+            width = 0.9,
+            height = 0.9,
           },
+
+          -- create_layout = require("fuse").create_fused_layout,
+          -- layout_strategy = "flex",
+          -- layout_config = {
+          --   horizontal = {
+          --     size = {
+          --       width = "90%",
+          --       height = "80%",
+          --     },
+          --   },
+          --   vertical = {
+          --     size = {
+          --       width = "90%",
+          --       height = "90%",
+          --     },
+          --   },
+          -- },
 
           sorting_strategy = "ascending",
           prompt_prefix = " 🔭 ",
@@ -263,7 +264,7 @@ return {
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]trings grep",
+            prompt_title = Icons.GrepStrings .. "[s]earch under cursor",
             layout_strategy = "vertical",
           }),
           "[s]trings grep (root)"
@@ -272,7 +273,7 @@ return {
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]trings grep selection",
+            prompt_title = Icons.GrepStrings .. "[s]earch under cursor (current selected)",
             layout_strategy = "vertical",
             mode = "v",
           }),
@@ -297,7 +298,7 @@ return {
             layout_strategy = "vertical",
             cwd = vim.uv.cwd(),
           }),
-          "[S]tring grep selection [cwd]",
+          "[S]earch selection under cursor [cwd]",
           "v"
         ),
 
@@ -357,10 +358,25 @@ return {
         { "<leader>cc", false },
         { "<leader>cC", false },
         { "gy", false },
+        -- {
+        --   "gd",
+        --   function()
+        --     vim.lsp.buf.definition({ reuse_win = true })
+        --   end,
+        --   desc = "Go to Definition",
+        --   has = "definition",
+        -- },
         {
           "g<c-v>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+            -- local pos = vim.api.nvim_win_get_cursor(0)
+            -- vim.cmd.vsplit()
+            -- vim.schedule(function()
+            --   local win = vim.api.nvim_get_current_win()
+            --   vim.api.nvim_win_set_cursor(win, pos)
+            --   vim.lsp.buf.definition({ reuse_win = true })
+            -- end)
           end,
           desc = "Go to Definition (vsplit)",
           has = "definition",
@@ -369,6 +385,13 @@ return {
           "g<c-x>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "split" })
+            -- local pos = vim.api.nvim_win_get_cursor(0)
+            -- vim.cmd.split()
+            -- vim.schedule(function()
+            --   local win = vim.api.nvim_get_current_win()
+            --   vim.api.nvim_win_set_cursor(win, pos)
+            --   vim.lsp.buf.definition({ reuse_win = true })
+            -- end)
           end,
           desc = "Go to Definition (split)",
           has = "definition",
@@ -377,6 +400,13 @@ return {
           "g<c-t>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "tab drop" })
+            -- local pos = vim.api.nvim_win_get_cursor(0)
+            -- vim.cmd("tab split")
+            -- vim.schedule(function()
+            --   local win = vim.api.nvim_get_current_win()
+            --   vim.api.nvim_win_set_cursor(win, pos)
+            --   vim.lsp.buf.definition({ reuse_win = true })
+            -- end)
           end,
           desc = "Go to Definition (tab drop)",
           has = "definition",

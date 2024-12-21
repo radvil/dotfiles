@@ -103,6 +103,7 @@ return {
     transparent_background = false,
     background = { light = "latte", dark = "frappe" },
     dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+    color_overrides = {},
     integrations = {
       flash = false,
       nvimtree = false,
