@@ -2,8 +2,6 @@
 
 # NOTE: this file loaded after env
 
-# [ -s "$DOTFILES/zsh/plug/init.zsh" ] && source "$DOTFILES/zsh/plug/init.zsh"
-[ -s "$DOTFILES/omz/init.zsh" ] && source "$DOTFILES/omz/init.zsh"
 [ -s "$DOTFILES/starship/init.zsh" ] && source "$DOTFILES/starship/init.zsh"
 [ -s "$DOTFILES/fzf/init.zsh" ] && source "$DOTFILES/fzf/init.zsh"
 [ -s "$DOTFILES/nnn/init.zsh" ] && source "$DOTFILES/nnn/init.zsh"

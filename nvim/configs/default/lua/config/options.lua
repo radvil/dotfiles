@@ -29,7 +29,7 @@ vim.g.snacks_animate = false
 vim.g.deprecation_warnings = true
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true

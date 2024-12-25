@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 ---@class NeoFlashFtExcludes
 local ftMap = {
   popups = {
