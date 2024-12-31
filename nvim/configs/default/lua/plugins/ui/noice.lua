@@ -111,15 +111,15 @@ return {
         ---display cmdline and popup menu together
         cmdline_popup = {
           relative = "editor",
-          position = { col = "50%", row = 6 },
+          position = { col = "50%", row = 5 },
           size = { width = 60, height = "auto" },
-          border = { style = "single", padding = { 0, 1 } },
+          border = { style = "rounded", padding = { 0, 1 } },
         },
         popupmenu = {
           relative = "editor",
-          size = { width = 60, height = 10 },
+          size = { width = 60, height = 9 },
           position = { col = "50%", row = 10 },
-          border = { style = "single", padding = { 0, 1 } },
+          border = { style = "rounded", padding = { 0, 1 } },
         },
       },
       routes = {

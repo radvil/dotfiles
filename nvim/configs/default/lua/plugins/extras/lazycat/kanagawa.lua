@@ -9,6 +9,7 @@ local overrides = function(colors)
   }
 
   local Hi = {
+    Visual = { bg = "#293c62" },
     IblIndent = { fg = theme.ui.bg_p2 },
     StatusLine = { bold = false, bg = theme.ui.bg_m3, fg = theme.vcs.changed },
     WinSeparator = { fg = transparent and theme.ui.nontext or theme.ui.bg_p2 },

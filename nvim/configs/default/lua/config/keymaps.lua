@@ -19,9 +19,8 @@ map("v", ">", ">gv", { desc = "indent right" })
 map("n", "U", "<c-r>", { nowait = true, desc = "redo" })
 map("n", "ZZ", ":conf qa<cr>", { nowait = true, desc = "quit all +confirmation" })
 map("n", "<a-cr>", "o<esc>", { desc = "add one line down" })
--- map("i", "<c-d>", "<del>", { desc = "delete next char" })
--- map("i", "<c-h>", "<left>", { desc = "shift one char left" })
--- map("i", "<c-l>", "<right>", { desc = "shift one char right" })
+map("i", "<c-h>", "<left>", { desc = "shift one char left" })
+map("i", "<c-l>", "<right>", { desc = "shift one char right" })
 map({ "i", "c" }, "<a-bs>", "<esc>ciw", { nowait = true, desc = "delete backward" })
 map({ "i", "c" }, "<a-i>", "<space><left>", { desc = "tab backward" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "clear hlsearch" })
@@ -38,10 +37,10 @@ LazyVim.format.snacks_toggle(true):map("<leader>uF")
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  local count = next and 1 or -1
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go({ severity = severity })
+    vim.diagnostic.jump({ count = count, severity = severity })
   end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "code line [d]iagnostics" })
@@ -129,21 +128,17 @@ if vim.fn.executable("lazygit") == 1 then
 end
 
 -- floating terminal
-map("n", "<leader>fT", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<leader>ft", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "which_key_ignore" })
+map("n", "<c-/>",      function() Snacks.terminal({ cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" })
+map("n", "<c-_>",      function() Snacks.terminal({ cwd = vim.uv.cwd() }) end, { desc = "which_key_ignore" })
 
----floating terminal
 local ft = function(cmd, root)
   local label = (type(cmd) == "table" and cmd[1] or cmd) or "Terminal"
   local opt = { size = { width = 0.8, height = 0.8 }, title = "  " .. label, title_pos = "right" }
   if root then opt.cwd = LazyVim.root.get() end
-  Snacks.terminal(cmd, opt)
+  Snacks.terminal.toggle(cmd, opt)
 end
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-map("n", [[<c-\>]], function() ft(nil) end, { desc = [[open term[\]nal (cwd)]] })
-map("t", [[<c-\>]], "<cmd>fclose<cr>", { desc = [[close term[\]nal (cwd)]]})
+map({ "n", "t" }, [[<c-\>]], function() ft(nil) end, { desc = [[toggle term[\]nal (cwd)]] })
 map("n", "<leader>tN", function() ft(nil) end, { desc = "[N]ew terminal (cwd)" })
 map("n", "<leader>tn", function() ft(nil, true) end, { desc = "[n]ew terminal (root)" })
 map("n", "<leader>tH", function() ft("btop") end, { desc = "run [H]top" })

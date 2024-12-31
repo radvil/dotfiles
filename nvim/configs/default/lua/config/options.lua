@@ -16,7 +16,7 @@ LazyVim.terminal.setup("fish")
 
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "kanagawa"
-vim.g.neo_transparent = false
+vim.g.neo_transparent = true
 vim.g.neo_diminactive = true
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 
@@ -29,7 +29,8 @@ vim.g.snacks_animate = false
 vim.g.deprecation_warnings = true
 
 vim.opt.clipboard = ""
-vim.opt.cursorline = false
+vim.opt.guicursor = ""
+vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
