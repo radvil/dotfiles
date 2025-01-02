@@ -358,25 +358,10 @@ return {
         { "<leader>cc", false },
         { "<leader>cC", false },
         { "gy", false },
-        -- {
-        --   "gd",
-        --   function()
-        --     vim.lsp.buf.definition({ reuse_win = true })
-        --   end,
-        --   desc = "Go to Definition",
-        --   has = "definition",
-        -- },
         {
           "g<c-v>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
-            -- local pos = vim.api.nvim_win_get_cursor(0)
-            -- vim.cmd.vsplit()
-            -- vim.schedule(function()
-            --   local win = vim.api.nvim_get_current_win()
-            --   vim.api.nvim_win_set_cursor(win, pos)
-            --   vim.lsp.buf.definition({ reuse_win = true })
-            -- end)
           end,
           desc = "Go to Definition (vsplit)",
           has = "definition",
@@ -385,13 +370,6 @@ return {
           "g<c-x>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "split" })
-            -- local pos = vim.api.nvim_win_get_cursor(0)
-            -- vim.cmd.split()
-            -- vim.schedule(function()
-            --   local win = vim.api.nvim_get_current_win()
-            --   vim.api.nvim_win_set_cursor(win, pos)
-            --   vim.lsp.buf.definition({ reuse_win = true })
-            -- end)
           end,
           desc = "Go to Definition (split)",
           has = "definition",
@@ -400,13 +378,6 @@ return {
           "g<c-t>",
           function()
             require("telescope.builtin").lsp_definitions({ jump_type = "tab drop" })
-            -- local pos = vim.api.nvim_win_get_cursor(0)
-            -- vim.cmd("tab split")
-            -- vim.schedule(function()
-            --   local win = vim.api.nvim_get_current_win()
-            --   vim.api.nvim_win_set_cursor(win, pos)
-            --   vim.lsp.buf.definition({ reuse_win = true })
-            -- end)
           end,
           desc = "Go to Definition (tab drop)",
           has = "definition",

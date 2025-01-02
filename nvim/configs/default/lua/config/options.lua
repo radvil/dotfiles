@@ -17,7 +17,7 @@ LazyVim.terminal.setup("fish")
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "kanagawa"
 vim.g.neo_transparent = true
-vim.g.neo_diminactive = true
+vim.g.neo_diminactive = false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 
 vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
