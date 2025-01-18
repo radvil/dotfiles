@@ -2,8 +2,6 @@
 
 # NOTE: this file loaded after env
 
-# [ -s "$DOTFILES/zsh/plug/init.zsh" ] && source "$DOTFILES/zsh/plug/init.zsh"
-[ -s "$DOTFILES/omz/init.zsh" ] && source "$DOTFILES/omz/init.zsh"
 [ -s "$DOTFILES/starship/init.zsh" ] && source "$DOTFILES/starship/init.zsh"
 [ -s "$DOTFILES/fzf/init.zsh" ] && source "$DOTFILES/fzf/init.zsh"
 [ -s "$DOTFILES/nnn/init.zsh" ] && source "$DOTFILES/nnn/init.zsh"
@@ -27,3 +25,7 @@ esac
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:$HOME/.spoofdpi/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

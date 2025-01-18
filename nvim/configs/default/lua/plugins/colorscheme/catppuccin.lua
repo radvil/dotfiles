@@ -7,7 +7,7 @@ local custom_hls = function(colors)
     yellow = "#ffc777",
   }
 
-  return {
+  local Hls = {
     NeoBufferLineOffset = {
       bg = colors.mantle,
       fg = colors.blue,
@@ -88,6 +88,23 @@ local custom_hls = function(colors)
     InclineActive = { bg = colors.surface0, fg = colors.rosewater },
     InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
   }
+
+  -- Floating panels
+  if not vim.g.neo_transparent then
+    Hls.FloatBorder = {
+      bg = colors.mantle,
+      fg = colors.mantle,
+    }
+    Hls.FloatTitle = {
+      bg = colors.mantle,
+      fg = colors.maroon,
+    }
+    Hls.NormalFloat = {
+      bg = colors.mantle,
+    }
+  end
+
+  return Hls
 end
 
 return {
@@ -103,6 +120,7 @@ return {
     transparent_background = false,
     background = { light = "latte", dark = "frappe" },
     dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+    color_overrides = {},
     integrations = {
       flash = false,
       nvimtree = false,
@@ -110,7 +128,10 @@ return {
       navic = false,
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
-      telescope = { style = "nvchad" },
+      telescope = {
+        style = "nvchad",
+        -- style = "classic"
+      },
     },
   },
   ---@param opts CatppuccinOptions

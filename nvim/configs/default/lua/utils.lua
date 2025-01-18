@@ -32,4 +32,25 @@ function M.call(...)
   end
 end
 
+-- function open_in_float_window()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local winnr = vim.api.nvim_get_current_win()
+--   local width = vim.api.nvim_win_get_width(winnr)
+--   local height = vim.api.nvim_win_get_height(winnr)
+--   local row = vim.api.nvim_win_get_cursor(winnr)[1]
+--   local col = vim.api.nvim_win_get_cursor(winnr)[2]
+--   local opts = {
+--     relative = "editor",
+--     width = width,
+--     height = height,
+--     row = row,
+--     col = col,
+--     style = "minimal",
+--     border = "single",
+--   }
+--   local float_win = vim.api.nvim_open_win(bufnr, true, opts)
+--   vim.api.nvim_win_set_option(float_win, "winhl", "Normal:Normal")
+--   vim.api.nvim_win_set_option(float_win, "winblend", 10)
+-- end
+
 return M

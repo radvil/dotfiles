@@ -28,5 +28,13 @@ vim.api.nvim_create_user_command(
   { desc = "Search Dotfiles" }
 )
 
+vim.api.nvim_create_user_command("GD", function()
+  vim.lsp.buf.definition()
+end, { desc = "Lsp Goto Definition" })
+
+vim.api.nvim_create_user_command("GR", function()
+  vim.lsp.buf.definition()
+end, { desc = "Lsp Goto Definition" })
+
 vim.keymap.set("n", "<leader>/n", "<cmd>NeoNotes<cr>", { desc = "[n]otes" })
 vim.keymap.set("n", "<leader>/d", "<cmd>NeoDotfiles<cr>", { desc = "[d]otfiles" })
