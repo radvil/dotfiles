@@ -1,6 +1,47 @@
 #!/usr/bin/env zsh
 
-# NOTE: this file loaded after env
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+export DOTFILES="$HOME/.dotfiles"
+export EDITOR="nvim"
+export PATH="$PATH:$HOME/.spoofdpi/bin"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+VI_MODE_SET_CURSOR=true
+
+plugins=(
+  git
+  vi-mode
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-history-substring-search
+)
+
+[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
+
+if [ -z "${DOTFILES}" ]; then
+  DOTFILES="$HOME/.dotfiles"
+  [ -d "$DOTFILES/bin" ] && PATH="$DOTFILES/bin:$PATH"
+  export DOTFILES
+fi
+
+if [ -z "${MY_Z_FILE}" ]; then
+  MY_Z_FILE="$DOTFILES/z/z.lua"
+  if ! command -v z &> /dev/null; then
+    [ -f "$MY_Z_FILE" ] || printf "[\033[0;33m⚠ WARN\033[0m] file $MY_Z_FILE was not found\n"
+    eval "$(lua $MY_Z_FILE --init zsh)"
+  fi
+fi
+
+if [ -z "${__DOT_SSH_PROFILES}" ]; then
+  __DOT_SSH_PROFILES=("laradvil" "radvil" "radvil2")
+  export __DOT_SSH_PROFILES
+fi
 
 [ -s "$DOTFILES/starship/init.zsh" ] && source "$DOTFILES/starship/init.zsh"
 [ -s "$DOTFILES/fzf/init.zsh" ] && source "$DOTFILES/fzf/init.zsh"
@@ -10,32 +51,7 @@
 
 bindkey -s "\em" "zmux\n"
 
-# pnpm
-export PNPM_HOME="/home/radvil/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# bun completions
-[ -s "/home/radvil/.bun/_bun" ] && source "/home/radvil/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$PATH:$BUN_INSTALL/bin"
-export PATH="$PATH:$HOME/.spoofdpi/bin"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Yazi quit with cd
-# function y() {
-# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-# 	yazi "$@" --cwd-file="$tmp"
-# 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-# 		builtin cd -- "$cwd"
-# 	fi
-# 	rm -f -- "$tmp"
-# }
