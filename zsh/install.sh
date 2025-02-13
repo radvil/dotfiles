@@ -13,5 +13,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" &&
   git clone https://github.com/zsh-users/zsh-history-substring-search "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
 
-ZSH=$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)") \
-  ln -sf "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+ZSH=$(sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)")
+ln -sf "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"

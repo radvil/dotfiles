@@ -4,8 +4,7 @@ curl
 jq
 tidy
 rsync
-ghostscript
-ImageMagick
+zoxide
 kitty
 nnn
 eza
