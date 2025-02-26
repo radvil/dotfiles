@@ -16,7 +16,7 @@ LazyVim.terminal.setup("fish")
 
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "catppuccin"
-vim.g.neo_transparent = true
+vim.g.neo_transparent = false
 vim.g.neo_diminactive = false
 vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
 
