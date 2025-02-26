@@ -1,6 +1,6 @@
----@diagnostic disable: inject-field, undefined-field, param-type-mismatch, duplicate-set-field
+local M = {}
 
-local create_fused_layout = function(picker)
+M.create_fused_layout = function(picker)
   local Layout = require("nui.layout")
   local Popup = require("nui.popup")
   local TSLayout = require("telescope.pickers.layout")
@@ -192,6 +192,7 @@ local create_fused_layout = function(picker)
   return TSLayout(layout)
 end
 
+<<<<<<<< HEAD:nvim/configs/default/lua/plugins/extras/ui/telescope-fuse.lua
 return {
   "telescope.nvim",
   dependencies = { "MunifTanjim/nui.nvim" },
@@ -216,3 +217,6 @@ return {
     end
   end,
 }
+========
+return M
+>>>>>>>> variant/fedora:nvim/configs/default/lua/fuse.lua

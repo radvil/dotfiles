@@ -1,7 +1,5 @@
 ---@diagnostic disable: duplicate-set-field
 
-LazyVim.lsp.words.enabled = false
-
 return {
   "neovim/nvim-lspconfig",
   init = function()
@@ -22,27 +20,18 @@ return {
         end
         local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
         -- markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+        markdown_lines = vim.split(table.concat(markdown_lines, "\n"), "\n", { trimempty = true })
         if vim.tbl_isempty(markdown_lines) then
+          -- markdown_lines = { "# Not Available" }
           return
         end
         return vim.lsp.util.open_floating_preview(markdown_lines, "markdown", config)
       end
     end
-
-    local keys = require("lazyvim.plugins.lsp.keymaps").get()
-    vim.list_extend(keys, {
-      { "<c-k>", false, mode = "i" },
-      { "<leader>cc", false },
-      { "<leader>cC", false },
-      { "gy", false },
-      { "<a-p>", false },
-      { "<a-n>", false },
-      { "[[", false },
-      { "]]", false },
-    })
   end,
 
   opts = {
+    document_highlight = { enabled = false },
     diagnostics = {
       float = { border = vim.g.neo_winborder },
       virtual_text = {
@@ -62,9 +51,7 @@ return {
       bashls = {},
       html = {},
       cssls = {},
-      emmet_language_server = {
-        filetypes = { "html" },
-      },
+      emmet_language_server = {},
     },
   },
 }

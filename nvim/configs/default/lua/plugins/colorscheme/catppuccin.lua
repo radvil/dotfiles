@@ -7,7 +7,7 @@ local custom_hls = function(colors)
     yellow = "#ffc777",
   }
 
-  return {
+  local Hls = {
     NeoBufferLineOffset = {
       bg = colors.mantle,
       fg = colors.blue,
@@ -21,7 +21,7 @@ local custom_hls = function(colors)
     StatusLineNC = { bg = colors.crust },
     StatusLine = {
       bold = false,
-      bg = colors.base,
+      -- bg = colors.base,
       fg = colors.rosewater,
     },
     FlashCurrent = {
@@ -88,29 +88,48 @@ local custom_hls = function(colors)
     InclineActive = { bg = colors.surface0, fg = colors.rosewater },
     InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
   }
+
+  -- Floating panels
+  if not vim.g.neo_transparent then
+    Hls.FloatBorder = {
+      bg = colors.mantle,
+      fg = colors.mantle,
+    }
+    Hls.FloatTitle = {
+      bg = colors.mantle,
+      fg = colors.maroon,
+    }
+    Hls.NormalFloat = {
+      bg = colors.mantle,
+    }
+  end
+
+  return Hls
 end
 
 return {
   "catppuccin/nvim",
   name = "catppuccin",
   priority = 9999,
-  lazy = false,
+  -- lazy = false,
+  lazy = not string.match(vim.g.neo_colorscheme, "catppuccin"),
   opts = {
     flavour = "auto",
     term_colors = true,
     default_integrations = true,
     transparent_background = false,
     background = { light = "latte", dark = "frappe" },
-    dim_inactive = { enabled = true, shade = "dark", percentage = 0.69 },
+    dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+    color_overrides = {},
     integrations = {
       flash = false,
       nvimtree = false,
-      navic = { custom_bg = "lualine" },
+      -- navic = { custom_bg = "lualine" },
+      navic = false,
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
       telescope = {
-        enabled = true,
-        style = "nvchad"
+        style = "nvchad",
       },
     },
   },
@@ -118,7 +137,7 @@ return {
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     opts.transparent_background = transparent
-    -- opts.dim_inactive.enabled = not transparent
+    opts.dim_inactive.enabled = vim.g.neo_diminactive
     opts.custom_highlights = custom_hls
     require("catppuccin").setup(opts)
   end,

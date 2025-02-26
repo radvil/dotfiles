@@ -32,83 +32,25 @@ function M.call(...)
   end
 end
 
-
-local lsp_priority = {
-  rename = {
-    "angularls",
-    "vtsls",
-    "html",
-  },
-}
-
--- https://neovim.io/doc/user/lsp.html#lsp-api
-local lsp_have_feature = {
-  rename = function(client)
-    return client.supports_method("textDocument/rename")
-  end,
-  inlay_hint = function(client)
-    return client.supports_method("textDocument/inlayHint")
-  end,
-}
-
-local function lsp_buf_rename(client_name)
-  vim.lsp.buf.rename(nil, { name = client_name })
-end
-
-local function get_lsp_client_names(have_feature)
-  local client_names = {}
-  local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
-  for _, client in ipairs(attached_clients) do
-    if have_feature(client) then
-      table.insert(client_names, client.name)
-    end
-  end
-  return client_names
-end
-
-local function lsp_buf_rename_use_any(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
-  for _, client_name in ipairs(client_names) do
-    lsp_buf_rename(client_name)
-    return
-  end
-  if fallback then
-    fallback()
-  end
-end
-
-function M.lsp_buf_rename_use_one(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
-  if #client_names == 1 then
-    lsp_buf_rename(client_names[1])
-    return
-  end
-  if fallback then
-    fallback()
-  end
-end
-
-function M.lsp_buf_rename_use_priority(fallback)
-  local client_names = get_lsp_client_names(lsp_have_feature.rename)
-  for _, client_priority_name in ipairs(lsp_priority.rename) do
-    for _, client_name in ipairs(client_names) do
-      if client_priority_name == client_name then
-        lsp_buf_rename(client_priority_name)
-        return
-      end
-    end
-  end
-  if fallback then
-    fallback()
-  end
-end
-
-function M.lsp_buf_rename_use_priority_or_any()
-  M.lsp_buf_rename_use_one(function()
-    M.lsp_buf_rename_use_priority(function()
-      lsp_buf_rename_use_any()
-    end)
-  end)
-end
+-- function open_in_float_window()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local winnr = vim.api.nvim_get_current_win()
+--   local width = vim.api.nvim_win_get_width(winnr)
+--   local height = vim.api.nvim_win_get_height(winnr)
+--   local row = vim.api.nvim_win_get_cursor(winnr)[1]
+--   local col = vim.api.nvim_win_get_cursor(winnr)[2]
+--   local opts = {
+--     relative = "editor",
+--     width = width,
+--     height = height,
+--     row = row,
+--     col = col,
+--     style = "minimal",
+--     border = "single",
+--   }
+--   local float_win = vim.api.nvim_open_win(bufnr, true, opts)
+--   vim.api.nvim_win_set_option(float_win, "winhl", "Normal:Normal")
+--   vim.api.nvim_win_set_option(float_win, "winblend", 10)
+-- end
 
 return M

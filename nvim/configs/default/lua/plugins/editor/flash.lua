@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 ---@class NeoFlashFtExcludes
 local ftMap = {
   popups = {
@@ -54,6 +55,27 @@ local telescope_pick = function(prompt_bufnr)
   })
 end
 
+---jump to definition with flash
+---@param jump_type "vsplit" | "split" | "tab drop" | nil
+local jump_to_definition = function(jump_type)
+  return function()
+    require("flash").jump({
+      search = {
+        exclude = ftMap.popups,
+        multi_window = true,
+        autojump = false,
+        forward = true,
+      },
+      ---@param state Flash.State
+      action = function(target, state)
+        state:hide()
+        vim.api.nvim_set_current_win(target.win)
+        vim.api.nvim_win_set_cursor(target.win, target.pos)
+        require("telescope.builtin").lsp_definitions({ jump_type = jump_type })
+      end,
+    })
+  end
+end
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -68,6 +90,40 @@ return {
     },
   },
 
+  {
+    "neovim/nvim-lspconfig",
+    optinal = true,
+    opts = function()
+      local Keys = require("lazyvim.plugins.lsp.keymaps").get()
+      vim.list_extend(Keys, {
+        {
+          "<a-g><a-d>",
+          jump_to_definition(),
+          desc = "Jump to Definition",
+          has = "definition",
+        },
+        {
+          "<a-g><a-v>",
+          jump_to_definition("vsplit"),
+          desc = "Jump to Definition (vsplit)",
+          has = "definition",
+        },
+        {
+          "<a-g><a-x>",
+          jump_to_definition("split"),
+          desc = "Jump to Definition (split)",
+          has = "definition",
+        },
+        {
+          "<a-g><a-t>",
+          jump_to_definition("tab drop"),
+          desc = "Jump to Definition (tab drop)",
+          has = "definition",
+        },
+      })
+    end,
+  },
+
   ---@type LazySpec
   {
     "folke/flash.nvim",
@@ -75,7 +131,7 @@ return {
       return {
         {
           "<a-m>",
-          mode = "n",
+          mode = { "n", "i" },
           function()
             require("flash").jump({
               search = {
@@ -134,9 +190,9 @@ return {
                 vim.api.nvim_set_current_win(target.win)
                 vim.api.nvim_win_set_cursor(target.win, target.pos)
                 if vim.tbl_contains(ftMap.sidebars, vim.bo.filetype) then
-                  vim.cmd.execute([["normal \<CR>"]])
+                  vim.api.nvim_input("<cr>")
                 else
-                  vim.cmd.execute([["normal gd"]])
+                  vim.api.nvim_input("gd")
                 end
               end,
             })
@@ -159,8 +215,10 @@ return {
                 state:hide()
                 vim.api.nvim_set_current_win(target.win)
                 vim.api.nvim_win_set_cursor(target.win, target.pos)
-                vim.cmd.execute([["normal za"]])
-                state:restore()
+                vim.api.nvim_input("za")
+                vim.schedule(function()
+                  state:restore()
+                end)
               end,
             })
           end,
@@ -169,7 +227,9 @@ return {
       }
     end,
     opts = {
-      labels = "asdfghjklqwertyuiopzxcvbnm",
+      -- labels = "asdfghjklqwertyuiopzxcvbnm",
+      -- NOTE: exclude j and k for better escape support
+      labels = "asdfghlqwertyuiopzxcvbnm",
       search = {
         mode = "exact",
         forward = true,

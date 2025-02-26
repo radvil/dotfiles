@@ -115,6 +115,8 @@ return {
       opts.highlights = require("hi.bufferline").catppuccin()
     elseif match("tokyonight") then
       opts.highlights = require("hi.bufferline").tokyonight()
+    elseif match("kanagawa") then
+      opts.highlights = require("hi.bufferline").kanagawa()
     end
 
     opts = vim.tbl_deep_extend("force", opts or {}, defaults)

@@ -9,14 +9,32 @@ vim.g.maplocalleader = "\\"
 -- This sets `vim.o.shell` and does some additional configuration for:
 -- * pwsh
 -- * powershell
--- LazyVim.terminal.setup("pwsh")
+LazyVim.terminal.setup("fish")
+
+-- os.getenv("KITTY_WINDOW_ID") and true or false
+---@alias NeoColorscheme "catppuccin" | "tokyonight" | "kanagawa" | "onedark" | "material" | "rose-pine"
+
+---@type NeoColorscheme
+vim.g.neo_colorscheme = "catppuccin"
+vim.g.neo_transparent = true
+vim.g.neo_diminactive = false
+vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
+
+vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
+vim.g.minipairs_disable = true
+vim.g.autoformat = false
+vim.g.lazygit_config = true
+vim.g.lazyvim_picker = "telescope"
+vim.g.snacks_animate = false
+vim.g.deprecation_warnings = true
 
 vim.opt.clipboard = ""
+vim.opt.guicursor = ""
 vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
-
+vim.opt.smoothscroll = true
 vim.opt.sessionoptions = {
   "buffers",
   "curdir",
@@ -44,7 +62,7 @@ if not LazyVim.has("nvim-ufo") then
 end
 
 if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
-  vim.opt.statuscolumn = [[%!v:lua.LazyVim.ui.statuscolumn()]]
+  vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
 end
 
 if vim.g.neovide then
@@ -54,15 +72,5 @@ if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_cursor_animate_command_line = true
   vim.g.neovide_transparency = 1 -- 0.87
-  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h7.5" }
+  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h12" }
 end
-
-vim.g.autoformat = false
-vim.g.lazygit_config = true
-vim.g.minipairs_disable = false
-vim.g.neo_transparent = true
--- os.getenv("KITTY_WINDOW_ID") and true or false
-vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
-vim.g.neo_notesdir = os.getenv("HOME") .. "/Documents/Notes"
-
-vim.g.deprecation_warnings = false

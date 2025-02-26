@@ -1,33 +1,42 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.luasnip",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.angular",
     "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.mini-hipatterns",
-    "plugins.extras.ai.gp",
     "plugins.extras.completion.cmp-cmdline",
     "plugins.extras.editor.legendary",
     "plugins.extras.editor.mini-splitjoin",
     "plugins.extras.editor.obsidian",
     "plugins.extras.editor.oil",
+    "plugins.extras.editor.outline",
     "plugins.extras.git.diffview",
     "plugins.extras.git.fugitive",
     "plugins.extras.git.mini-diff",
-    "plugins.extras.lang.angular",
-    "plugins.extras.lang.typescript",
+    "plugins.extras.lazycat.kanagawa",
     "plugins.extras.lazycat.kopi-cat",
+    "plugins.extras.lazycat.material",
+    "plugins.extras.lazycat.onedark",
+    "plugins.extras.lazycat.rose-pine",
     "plugins.extras.misc.cellular-automation",
     "plugins.extras.misc.mini-trailspace",
     "plugins.extras.misc.suda",
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
-    "plugins.extras.ui.telescope-fuse"
+    "plugins.extras.ui.map",
+    "plugins.extras.ui.mini-statusline",
+    "plugins.extras.ui.zenmode"
   ],
+  "install_version": 7,
   "news": {
-    "NEWS.md": "6520"
+    "NEWS.md": "10960"
   },
-  "version": 6
+  "version": 8
 }

@@ -1,6 +1,6 @@
 require("config.lazy").bootstrap({
   dev = {
-    path = "~/Projects/linuxdev/neovim",
+    path = "/media/data/Projects/Misc",
     fallback = false,
   },
   providers_blacklist = {
@@ -14,11 +14,7 @@ require("config.lazy").bootstrap({
       import = "lazyvim.plugins",
       opts = {
         colorscheme = function()
-          if vim.opt.background:get() == "light" then
-            vim.g.neo_transparent = false
-          end
-          -- vim.cmd.colorscheme("tokyonight")
-          vim.cmd.colorscheme("catppuccin")
+          vim.cmd.colorscheme(vim.g.neo_colorscheme)
         end,
         defaults = {
           keymaps = false,

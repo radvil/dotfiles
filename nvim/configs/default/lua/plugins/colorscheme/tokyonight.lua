@@ -1,13 +1,15 @@
 return {
   "folke/tokyonight.nvim",
-  lazy = true,
+  name = "tokyonight",
+  -- lazy = false,
   -- priority = 9999,
+  lazy = not string.match(vim.g.neo_colorscheme, "tokyonight"),
   config = function(_, opts)
     local transparent = vim.g.neo_transparent
     local defaults = {
       style = "moon",
       lualine_bold = true,
-      dim_inactive = false,
+      dim_inactive = vim.g.neo_diminactive,
       terminal_colors = true,
       transparent = transparent,
       hide_inactive_statusline = true,
@@ -108,7 +110,7 @@ return {
             fg = c.bg_dark,
           }
         end
-      end
+      end,
     }
     opts = vim.tbl_deep_extend("force", defaults, opts or {})
     require("tokyonight").setup(opts)

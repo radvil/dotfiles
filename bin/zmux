@@ -4,7 +4,8 @@ __info() {
 	printf "[\033[00;34m🚀INFO\033[0m] %s$1\n"
 }
 
-selected=$(printf "%s\n" "$@" | z | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path » ")
+# selected=$(printf "%s\n" "$@" | zoxide query -l | fzf-tmux -p -h 81% -w 69% --border --prompt="🚀 Select Path » ")
+selected=$(zoxide query -i)
 
 full_path=$(echo "$selected" | tr -s ' ' | cut -d ' ' -f 2)
 

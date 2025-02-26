@@ -18,31 +18,48 @@ local Icons = {
   Buffers = " ",
 }
 
+local function find_command()
+  if 1 == vim.fn.executable("rg") then
+    return { "rg", "--files", "--color", "never", "-g", "!.git" }
+  elseif 1 == vim.fn.executable("fd") then
+    return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+  elseif 1 == vim.fn.executable("fdfind") then
+    return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+  elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+    return { "find", ".", "-type", "f" }
+  elseif 1 == vim.fn.executable("where") then
+    return { "where", "/r", ".", "*" }
+  end
+end
+
+local find_files_no_ignore = function()
+  local action_state = require("telescope.actions.state")
+  local line = action_state.get_current_line()
+  LazyVim.pick("find_files", {
+    prompt_title = Icons.FindHiddens .. "files + [i]gnored",
+    sorting_strategy = "descending",
+    default_text = line,
+    no_ignore = true,
+  })()
+end
+
+local find_files_with_hidden = function()
+  local action_state = require("telescope.actions.state")
+  local line = action_state.get_current_line()
+  LazyVim.pick("find_files", {
+    prompt_title = Icons.FindHiddens .. "files + [h]idden",
+    sorting_strategy = "descending",
+    default_text = line,
+    hidden = true,
+  })()
+end
+
 return {
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
+    config = function(_, opts)
       local actions = require("telescope.actions")
-      local find_files_no_ignore = function()
-        local action_state = require("telescope.actions.state")
-        local line = action_state.get_current_line()
-        LazyVim.pick("find_files", {
-          prompt_title = Icons.FindHiddens .. "files + [i]gnored",
-          sorting_strategy = "descending",
-          default_text = line,
-          no_ignore = true,
-        })()
-      end
-      local find_files_with_hidden = function()
-        local action_state = require("telescope.actions.state")
-        local line = action_state.get_current_line()
-        LazyVim.pick("find_files", {
-          prompt_title = Icons.FindHiddens .. "files + [h]idden",
-          sorting_strategy = "descending",
-          default_text = line,
-          hidden = true,
-        })()
-      end
       local mappings = {
         ["<a-space>"] = actions.close,
         ["<cr>"] = actions.select_default,
@@ -65,12 +82,35 @@ return {
           sorting_strategy = "ascending",
           prompt_prefix = " 🔭 ",
           selection_caret = "👉",
+      opts = vim.tbl_deep_extend("force", opts, {
+        defaults = {
           layout_strategy = "horizontal",
           layout_config = {
             prompt_position = "bottom",
             width = 0.9,
             height = 0.9,
           },
+
+          -- create_layout = require("fuse").create_fused_layout,
+          -- layout_strategy = "flex",
+          -- layout_config = {
+          --   horizontal = {
+          --     size = {
+          --       width = "90%",
+          --       height = "80%",
+          --     },
+          --   },
+          --   vertical = {
+          --     size = {
+          --       width = "90%",
+          --       height = "90%",
+          --     },
+          --   },
+          -- },
+
+          sorting_strategy = "ascending",
+          prompt_prefix = " 🔭 ",
+          selection_caret = "👉",
           mappings = {
             ["i"] = mappings,
             ["n"] = vim.tbl_extend("force", mappings, {
@@ -79,8 +119,30 @@ return {
             }),
           },
         })
-      end
       return opts
+          -- open files in the first window that is an actual file.
+          -- use the current window if no other window is available.
+          get_selection_window = function()
+            local wins = vim.api.nvim_list_wins()
+            table.insert(wins, 1, vim.api.nvim_get_current_win())
+            for _, win in ipairs(wins) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              if vim.bo[buf].buftype == "" then
+                return win
+              end
+            end
+            return 0
+          end,
+        },
+        -- EOL defaults
+        pickers = {
+          find_files = {
+            find_command = find_command,
+            hidden = true,
+          },
+        },
+      })
+      require("telescope").setup(opts)
     end,
     keys = function()
       ---@param lhs string
@@ -210,7 +272,7 @@ return {
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]trings grep",
+            prompt_title = Icons.GrepStrings .. "[s]earch under cursor",
             layout_strategy = "vertical",
           }),
           "[s]trings grep (root)"
@@ -219,7 +281,7 @@ return {
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]trings grep selection",
+            prompt_title = Icons.GrepStrings .. "[s]earch under cursor (current selected)",
             layout_strategy = "vertical",
             mode = "v",
           }),
@@ -244,7 +306,7 @@ return {
             layout_strategy = "vertical",
             cwd = vim.uv.cwd(),
           }),
-          "[S]tring grep selection [cwd]",
+          "[S]earch selection under cursor [cwd]",
           "v"
         ),
 
@@ -298,7 +360,12 @@ return {
     "neovim/nvim-lspconfig",
     opts = function()
       local Keys = require("lazyvim.plugins.lsp.keymaps").get()
+
       vim.list_extend(Keys, {
+        { "<c-k>", false, mode = "i" },
+        { "<leader>cc", false },
+        { "<leader>cC", false },
+        { "gy", false },
         {
           "g<c-v>",
           function()
