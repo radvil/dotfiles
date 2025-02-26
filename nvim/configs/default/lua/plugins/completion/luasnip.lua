@@ -3,8 +3,8 @@ return {
 
   opts = {
     json_snippets = {
-      os.getenv("DOTFILES") .. "/nvim/assets/snippets/all",
-      os.getenv("DOTFILES") .. "/nvim/assets/snippets/angular",
+      os.getenv("HOME") .. "/.dotfiles/nvim/assets/snippets/all",
+      os.getenv("HOME") .. "/.dotfiles/nvim/assets/snippets/angular",
     },
   },
 

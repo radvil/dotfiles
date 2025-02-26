@@ -38,7 +38,7 @@ return {
         "echo",
         -- "gpg",
         -- "--decrypt",
-        -- os.getenv("DOTFILES") .. "/secrets/open-ai-key.gpg",
+        -- os.getenv("HOME") .. "/.dotfiles/secrets/open-ai-key.gpg",
       },
     },
     init = function()

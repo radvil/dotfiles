@@ -57,7 +57,6 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
-    opts = function(_, opts)
     config = function(_, opts)
       local actions = require("telescope.actions")
       local mappings = {
@@ -77,11 +76,6 @@ return {
         ["<a-i>"] = find_files_no_ignore,
         ["<a-h>"] = find_files_with_hidden,
       }
-      if type(opts.defaults) == "table" then
-        opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
-          sorting_strategy = "ascending",
-          prompt_prefix = " 🔭 ",
-          selection_caret = "👉",
       opts = vim.tbl_deep_extend("force", opts, {
         defaults = {
           layout_strategy = "horizontal",
@@ -90,24 +84,6 @@ return {
             width = 0.9,
             height = 0.9,
           },
-
-          -- create_layout = require("fuse").create_fused_layout,
-          -- layout_strategy = "flex",
-          -- layout_config = {
-          --   horizontal = {
-          --     size = {
-          --       width = "90%",
-          --       height = "80%",
-          --     },
-          --   },
-          --   vertical = {
-          --     size = {
-          --       width = "90%",
-          --       height = "90%",
-          --     },
-          --   },
-          -- },
-
           sorting_strategy = "ascending",
           prompt_prefix = " 🔭 ",
           selection_caret = "👉",
@@ -118,8 +94,6 @@ return {
               ["q"] = actions.close,
             }),
           },
-        })
-      return opts
           -- open files in the first window that is an actual file.
           -- use the current window if no other window is available.
           get_selection_window = function()

@@ -18,7 +18,7 @@ end, { desc = "Delete all buffers" })
 -- TODO: Remove autocommand later since I barely use them
 vim.api.nvim_create_user_command(
   "NeoDotfiles",
-  LazyVim.pick("auto", { cwd = os.getenv("DOTFILES") }),
+  LazyVim.pick("auto", { cwd = os.getenv("HOME") .. "/.dotfiles" }),
   { desc = "Searh Dotfiles" }
 )
 
