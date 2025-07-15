@@ -1,0 +1,20 @@
+{
+  "name": "kitty",
+  "description": "Terminal. Cute😼, fast, and do more than just run commands!",
+  "builds": {
+    "arch": ["sudo pacman -S kitty"],
+    "cachyos": ["sudo pacman -S kitty"],
+    "fedora": ["sudo dnf install kitty -y"],
+    "nobara": ["sudo dnf install kitty -y"]
+  },
+  "configs": [
+    {
+      "from": "./src",
+      "to": "~/.config/kitty",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": ["rm -rf ~/.config/kitty"]
+}

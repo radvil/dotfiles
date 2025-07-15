@@ -1,0 +1,15 @@
+# vim: fileencoding=utf-8:ft=sh
+# shellcheck disable=all
+
+x=exit
+n=nnn -P v
+N=sudo nnn -P v
+cl=clear
+rm=trash
+ls=eza
+ll=eza -alF
+la=eza -la
+mx=tmux
+cat=bat -p
+grep=rg
+neofetch=fastfetch

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function __zmux() {
+  local __selected __full_path
+  __selected=$(zoxide query -i)
+  __full_path=$(echo "$__selected" | tr -s ' ' | cut -d ' ' -f 2)
+  if [[ -z $__full_path ]]; then
+    printf "\e[34m[INFO]\e[0m %s\n" "No path was selected"
+    printf "\n"
+    return 0
+  else
+    __tmux_session "$__full_path"
+  fi
+}
+
+__zmux
+
+unset __zmux

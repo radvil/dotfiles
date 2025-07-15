@@ -1,0 +1,17 @@
+[Keyboard]
+RepeatDelay=250
+RepeatRate=50
+
+[Libinput][1267][12795][ASUE120D:00 04F3:31FB Touchpad]
+Enabled=true
+NaturalScroll=true
+
+[Libinput][2821][6582][Asus Keyboard]
+Enabled=true
+
+[Libinput][Defaults]
+PointerAccelerationProfile=1
+
+[Mouse]
+cursorSize=32
+cursorTheme=volantes_cursors

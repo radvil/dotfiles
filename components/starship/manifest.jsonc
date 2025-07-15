@@ -1,0 +1,45 @@
+{
+  "name": "starship",
+  "description": "The minimal, blazing-fast customizable prompt for any shell!",
+  "priority": 3,
+  "builds": {
+    "arch": [
+      "mkdir -p ~/.local/bin",
+      "sudo pacman -S fish nerd-fonts -y",
+      "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
+    ],
+    "cachyos": [
+      "mkdir -p ~/.local/bin",
+      "sudo pacman -S fish nerd-fonts -y",
+      "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
+    ],
+    "fedora": [
+      "mkdir -p ~/.local/bin",
+      "sudo pacman -S fish nerd-fonts -y",
+      "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
+    ],
+    "nobara": [
+      "sudo dnf install starship fish nerd-fonts -y"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src",
+      "to": "~/.config/starship",
+      "method": "symlink",
+      "force": true,
+      "tags": ["arch", "cachyos", "fedora", "nobara"]
+    },
+    {
+      "from": "./src/starship.fish",
+      "to": "~/.config/fish/conf.d/01-starship.fish",
+      "method": "symlink",
+      "force": true,
+      "tags": ["arch", "cachyos", "fedora", "nobara"]
+    }
+  ],
+  "cleanup": [
+    "rm -rf ~/.config/starship",
+    "rm -rf ~/.config/fish/conf.d/starship.fish"
+  ]
+}

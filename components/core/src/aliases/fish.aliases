@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+# alias lazyvim='env NVIM_APPNAME=lazyvim nvim'
+function lazyvim
+    env NVIM_APPNAME=lazyvim nvim $argv
+end
+
+alias so-bash='source ~/.bashrc'
+alias __sync-local-time='timedatectl set-local-rtc 1'
+alias __nvidia-check-drm='sudo cat /sys/module/nvidia_drm/parameters/modeset'
+alias __purge-nvim-cache='rm -rf ~/.cache/nvim && rm -rf ~/.local/state/nvim'
+alias __start-plasma-from-cmd='/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland'

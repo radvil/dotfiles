@@ -1,0 +1,58 @@
+{
+  // component's name
+  "name": "neovim",
+
+  "description": "Neovim with multiple configurations",
+
+  // shell commands grouped by machine/distro id to install component's deps.
+  "builds": {
+    "cachyos": ["sudo pacman -Syu --noconfirm neovim"]
+  },
+
+  "configs": [
+    {
+      // relative to the component's root.
+      "from": "./src/lazyvim",
+
+      // destination on host system (~ resolved to home dir)
+      "to": "~/.config/lazyvim",
+
+      // "copy" | "symlink"
+      "method": "symlink",
+      "optional": false,
+      "force": true,
+      "tags": [
+        "*"
+      ]
+    },
+    {
+      "from": "./src/lazyvim",
+      "to": "~/.config/nvim",
+      "method": "symlink",
+      "optional": false,
+      "force": true,
+      "tags": [
+        "*"
+      ]
+    },
+    {
+      "from": "./assets",
+      "to": "~/.local/share/dotfiles/assets",
+      "method": "symlink",
+      "optional": true,
+      "force": false,
+      "tags": [
+        "*"
+      ]
+    }
+  ],
+
+  // commands to execute during `deno task remove` to clean everything up
+  // includes config, cache, plugins, etc.
+  "cleanup": [
+    "rm -rf ~/.config/LazyVim",
+    "rm -rf ~/.local/share/LazyVim",
+    "rm -rf ~/.local/share/dotfiles/assets",
+    "rm -rf ~/.cache/LazyVim"
+  ]
+}

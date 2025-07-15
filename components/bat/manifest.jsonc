@@ -1,0 +1,20 @@
+{
+  "name": "bat",
+  "description": "Like cat, but with wings 🦇💅",
+  "builds": {
+    "arch": ["sudo pacman -S bat"],
+    "cachyos": ["sudo pacman -S bat"],
+    "fedora": ["sudo dnf install bat -y"],
+    "nobara": ["sudo dnf install bat -y"]
+  },
+  "configs": [
+    {
+      "from": "./src",
+      "to": "~/.config/bat",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": ["rm -rf ~/.config/bat"]
+}

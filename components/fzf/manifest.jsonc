@@ -1,0 +1,37 @@
+{
+  "name": "fzf",
+  "description": "When you need to find a file, but you’re too lazy to type the full name",
+  "builds": {
+    "nobara": [
+      "sudo dnf install -y fzf fzf-tmux tmux zoxide --skip-unavailable"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src/bin/__tmux_session",
+      "to": "~/.local/bin/__tmux_session",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    },
+    {
+      "from": "./src/bin/ssh-use",
+      "to": "~/.local/bin/ssh-use",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    },
+    {
+      "from": "./src/bin/zmux",
+      "to": "~/.local/bin/zmux",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": [
+    "rm -rf ~/.local/bin/__tmux_session",
+    "rm -rf ~/.local/bin/ssh-use",
+    "rm -rf ~/.local/bin/zmux"
+  ]
+}
