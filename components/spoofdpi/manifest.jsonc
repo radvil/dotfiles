@@ -1,0 +1,20 @@
+{
+  "name": "spoofdpi",
+  "description": "Meeeeepooooooooooo",
+  "builds": {},
+  "configs": [
+    {
+      "from": "./src/spoofdpi.service",
+      "to": "~/.config/systemd/user/spoofdpi.service",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": [
+    "systemctl --user stop spoofdpi.service",
+    "systemctl --user disable spoofdpi.service",
+    "systemctl --user daemon-reload",
+    "sudo rm -rf ~/.config/systemd/user/spoofdpi.service"
+  ]
+}

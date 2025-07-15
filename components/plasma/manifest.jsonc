@@ -1,0 +1,53 @@
+{
+  "name": "plasma",
+  "description": "KDE Plasma config",
+  "builds": {
+    "nobara": [
+      "rm -rf ~/.cache/plasmashell/qmlcache"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src/kcminputrc",
+      "to": "~/.config/kcminputrc",
+      "method": "symlink",
+      "force": true,
+      "tags": ["nobara"]
+    },
+    {
+      "from": "./src/kwinrc",
+      "to": "~/.config/kwinrc",
+      "method": "symlink",
+      "force": true,
+      "tags": ["nobara"]
+    },
+    {
+      "from": "./src/kdeglobals",
+      "to": "~/.config/kdeglobals",
+      "method": "symlink",
+      "force": true,
+      "tags": ["nobara"]
+    },
+    {
+      "from": "./src/kglobalshortcutsrc",
+      "to": "~/.config/kglobalshortcutsrc",
+      "method": "symlink",
+      "force": true,
+      "tags": ["nobara"]
+    },
+    {
+      "from": "./src/plasmarc",
+      "to": "~/.config/plasmarc",
+      "method": "symlink",
+      "force": true,
+      "tags": ["nobara"]
+    }
+  ],
+  "cleanup": [
+    "rm -rf ~/.config/kcminputrc",
+    "rm -rf ~/.config/kdeglobals",
+    "rm -rf ~/.config/kglobalshortcutsrc",
+    "rm -rf ~/.config/kwinrc",
+    "rm -rf ~/.config/plasmarc"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "fish",
+  "description": "Like Bash, but with a better attitude, auto-suggestions, and colorsi.",
+  "priority": 2,
+  "builds": {
+    "arch": [
+      "sudo pacman -Syu --noconfirm fish"
+    ],
+    "cachyos": [
+      "sudo pacman -Syu --noconfirm fish"
+    ],
+    "fedora": [
+      "sudo dnf install fish -y"
+    ],
+    "nobara": [
+      "sudo dnf install fish -y"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src",
+      "to": "~/.config/fish",
+      "method": "symlink",
+      "force": true,
+      "tags": [
+        "arch",
+        "cachyos",
+        "fedora",
+        "nobara"
+      ]
+    }
+  ],
+  "cleanup": [
+    "rm -rf ~/.config/fish"
+  ]
+}

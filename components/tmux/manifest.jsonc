@@ -1,0 +1,22 @@
+{
+  "name": "tmux",
+  "description": "Why open 5 terminals when I am 5 terminals?",
+  "builds": {
+    "nobara": [
+      "sudo dnf install tmux -y"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src/tmux.conf",
+      "to": "~/.tmux.conf",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": [
+    "rm -rf ~/.tmux",
+    "rm -rf ~/.tmux.conf"
+  ]
+}

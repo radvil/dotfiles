@@ -1,0 +1,13 @@
+{
+  "name": "ssh",
+  "description": "ssshhhhhhhhh",
+  "builds": {
+    "nobara": [
+      "sudo dnf install gpg openssh --skip-unavailable -y"
+    ]
+  },
+  "configs": [],
+  "cleanup": [
+    "rm -rf ~/.ssh"
+  ]
+}

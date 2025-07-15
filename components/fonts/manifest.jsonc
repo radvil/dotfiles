@@ -1,0 +1,12 @@
+{
+  "name": "fonts",
+  "description": "All required fonts",
+  "builds": {
+    "nobara": ["sudo dnf install -y nerd-fonts"]
+  },
+  "configs": [],
+  "cleanup": [
+    "sudo dnf remove -y nerd-fonts"
+    // TODO: cleanup all manual installed files.
+  ]
+}

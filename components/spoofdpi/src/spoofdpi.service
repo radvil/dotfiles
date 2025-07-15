@@ -1,0 +1,18 @@
+[Unit]
+Description=Script Daemon to autostart spoofdpi
+After=network.target
+
+[Service]
+Type=simple
+
+ExecStart=%h/.spoofdpi/bin/spoofdpi
+
+Restart=on-failure
+
+; Log output to a file inside the user's home directory
+StandardOutput=append:%h/spoofdpi_log_file
+StandardError=append:%h/spoofdpi_error_log
+
+[Install]
+WantedBy=default.target
+

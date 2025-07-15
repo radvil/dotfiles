@@ -1,0 +1,1 @@
+/media/data/Projects/Personal/dotfiles/components/starship/src/starship.fish

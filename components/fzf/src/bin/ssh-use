@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+function __ssh_use() {
+  __warn() {
+    printf "[\033[0;33m⚠ WARN\033[0m] %s$1\n"
+  }
+
+  __okay() {
+    printf "\033[2K[\033[00;32m✔ OKAY\033[0m] %s$1\n"
+  }
+
+  local ssh_profile
+  local ssh_key
+
+  ssh_profile=$(echo "$SSH_PROFILES" | tr ' ' '\n' | fzf --border --prompt="🔑 Select Key » ")
+  ssh_key="$HOME/.ssh/$(echo "$ssh_profile" | cut -d ' ' -f 1)"
+
+  if [[ -z "$ssh_profile" ]]; then
+    __warn "No key was selected"
+    return 0
+  else
+    [[ -z $SSH_AGENT_PID ]] || eval "$(ssh-agent -s)"
+
+    ssh-add -D
+    ssh-add "$ssh_key"
+    __okay "Selected key » $ssh_key"
+  fi
+}
+
+__ssh_use
+
+unset __ssh_use

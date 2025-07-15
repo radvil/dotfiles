@@ -1,0 +1,23 @@
+{
+  "name": "bash",
+  "description": "I've been scripting since before you were installed.",
+  "priority": 1,
+  "builds": {},
+  "configs": [
+    {
+      "from": "./src/bashrc.d",
+      "to": "~/.bashrc.d",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    },
+    {
+      "from": "./src/bashrc",
+      "to": "~/.bashrc",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": ["rm -rf ~/.bashrc.d", "rm -rf ~/.bashrc"]
+}

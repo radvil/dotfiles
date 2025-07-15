@@ -1,0 +1,39 @@
+{
+  "name": "git",
+  "description": "All of my Git modules & configs",
+  "builds": {
+    "nobara": [
+      "sudo dnf copr enable atim/lazygit -y",
+      "sudo dnf install -y git delta lazygit"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src/gitconfig",
+      "to": "~/.gitconfig",
+      "method": "symlink",
+      "force": false,
+      "tags": ["*"]
+    },
+    {
+      "from": "./src/lazygit.yml",
+      "to": "~/.config/lazygit/config.yml",
+      "method": "symlink",
+      "force": false,
+      "tags": ["*"]
+    },
+    {
+      "from": "./src/bin/lg",
+      "to": "~/.local/bin/lg",
+      "method": "symlink",
+      "force": false,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": [
+    "sudo dnf remove -y lazygit",
+    "sudo dnf copr disable atim/lazygit -y",
+    "rm -rf ~/.config/lazygit/config.yml",
+    "rm -rf ~/.local/bin/lg"
+  ]
+}

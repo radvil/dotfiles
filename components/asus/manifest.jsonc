@@ -1,0 +1,9 @@
+{
+  "name": "asus",
+  "description": "ASUS Zephyrus G15 linux plugins",
+  "builds": {
+    "arch": ["sudo pacman -S -y asusctl supergfxctl rog-control-center"],
+    "cachyos": ["sudo pacman -S -y asusctl supergfxctl rog-control-center"]
+  },
+  "cleanup": []
+}
