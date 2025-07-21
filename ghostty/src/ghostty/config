@@ -1,6 +1,8 @@
 # vim:fileencoding=utf-8:ft=config
 
-shell-integration = fish
+# shell-integration = fish
+initial-command = fish
+shell-integration-features = no-cursor
 
 # theme = dark:GruvboxDarkHard,light:GruvboxLightHard
 theme = "Ghostty Default StyleDark"
@@ -11,7 +13,8 @@ font-size = 14
 font-family = "JetBrainsMono Nerd Font"
 
 mouse-hide-while-typing = true
-cursor-style = "block"
+cursor-style = block
+cursor-style-blink = true
 cursor-opacity = 0.93
 
 # auto | none | client | server
