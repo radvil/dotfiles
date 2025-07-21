@@ -1,0 +1,24 @@
+{
+  "name": "ghostty",
+  "description": "Terminal with style",
+  "builds": {
+    "fedora": [
+      "sudo dnf copr enable scottames/ghostty -y",
+      "sudo dnf install ghostty -y"
+    ],
+    "nobara": [
+      "sudo dnf copr enable scottames/ghostty -y",
+      "sudo dnf install ghostty -y"
+    ]
+  },
+  "configs": [
+    {
+      "from": "./src/ghostty",
+      "to": "~/.config/ghostty",
+      "method": "symlink",
+      "force": true,
+      "tags": ["*"]
+    }
+  ],
+  "cleanup": ["rm -rf ~/.config/ghostty"]
+}
