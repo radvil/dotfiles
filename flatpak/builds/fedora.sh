@@ -16,7 +16,6 @@ function setup() {
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo --user
 
   local userApps=(
-    "app.devsuite.Ptyxis"
     "ca.edestcroix.Recordbox"
     "com.discordapp.Discord"
     "com.github.wwmm.easyeffects"
