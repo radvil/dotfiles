@@ -30,7 +30,9 @@ map({ "i", "n", "s" }, "<esc>", function()
   LazyVim.cmp.actions.snippet_stop()
   return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
-map({ "n", "x", "v" }, "ga", "<esc>ggVG", { nowait = true, desc = "select all" })
+
+-- see: autocmd for select all
+-- map({ "n", "x", "v" }, "ga", "<esc>ggVG", { nowait = true, desc = "select all" })
 map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "next search result" })
 map({ "n", "x", "o" }, "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "prev search result" })
 

@@ -80,4 +80,32 @@ M.reload_theme = function(cb)
   end
 end
 
+local excluded_ft = {
+  "TelescopeResults",
+  "TelescopePrompt",
+  "DressingInput",
+  "DiffviewFiles",
+  "flash_prompt",
+  "dashboard",
+  "gitcommit",
+  "WhichKey",
+  "NvimTree",
+  "cmp_menu",
+  "Outline",
+  "incline",
+  "Trouble",
+  "prompt",
+  "notify",
+  "dirbuf",
+  "noice",
+  "alpha",
+  "help",
+  "dbui",
+  "qf",
+}
+
+function M.isValidBuffer()
+  return vim.bo.buftype == "" and not vim.tbl_contains(excluded_ft, vim.bo.filetype)
+end
+
 return M

@@ -34,7 +34,7 @@ vim.g.deprecation_warnings = false
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
