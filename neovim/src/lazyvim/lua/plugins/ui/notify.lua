@@ -12,22 +12,6 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    keys = {
-      {
-        "ZN",
-        function()
-          require("notify").dismiss({ pending = true, silent = true })
-        end,
-        desc = "quit/dismiss [N]otifications",
-      },
-      {
-        "<leader>/N",
-        function()
-          require("telescope").extensions.notify.notify()
-        end,
-        desc = "View all [N]otifications",
-      },
-    },
     ---@type notify.Config
     opts = {
       ---@type "default" | "minimal" | "simple" | "compact" | "wrapped-compact"
