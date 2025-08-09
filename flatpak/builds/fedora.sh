@@ -5,13 +5,16 @@ function setup() {
     printf "\e[32m[SUCCESS]\e[0m %s\n" "$1"
   }
 
-  # NOTE: I wonder if I should enable this by default?
-  # local configZip
-  # configZip=$(realpath "components/flatpak/src/apps.zip")
-  # unzip -o -d "$HOME/.var/app" "$configZip"
+  function __info() {
+    printf "\e[34m[INFO]\e[0m %s\n" "$1"
+  }
 
-  sudo dnf download obs-studio-plugin-vkcapture --destdir=~/Downloads
-  sudo rpm -ivh --nodeps ~/Downloads/obs-studio-plugin-vkcapture
+  # NOTE: I wonder if I should enable this by default?
+  local downloadDir="$HOME/Downloads/Programs/obs-plugins"
+  mkdir "$downloadDir" -p
+  sudo dnf download obs-studio-plugin-vkcapture --destdir="$downloadDir"
+  sudo rpm -ivh --nodeps "$downloadDir/obs-studio-plugin-vkcapture*"
+  sudo rm -rf "$downloadDir"
 
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo --user
 
@@ -48,8 +51,9 @@ function setup() {
     "org.nickvision.tubeconverter"
   )
 
-  flatpak install --user "${userApps[@]}" -y
-  __success "flatpak packages installed successfully"
+  flatpak install --user --noninteractive "${userApps[@]}" -y &&
+    __success "flatpak packages installed successfully" &&
+    __info "Please restore the app's configs on 'src/apps.zip' manually!"
 }
 
 setup
