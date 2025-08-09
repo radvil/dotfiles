@@ -54,7 +54,10 @@ fi
 
 # === Actual Restore ===
 log_info "Extracting archive..."
-tar -xzvf "$BACKUP_FILE" -C "$HOME"
+tar -xzvf "$BACKUP_FILE" -C "/"
+# tar -xzvf "$BACKUP_FILE" -C "$HOME"
+# echo "$BACKUP_FILE" &&
+# echo "$HOME"
 
 log_success "Restore complete!"
 

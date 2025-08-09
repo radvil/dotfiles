@@ -2,7 +2,7 @@
 
 function setup() {
   local installer
-  installer=$(realpath "components/plasma/scripts/plasma-tools.sh")
+  installer="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../scripts/plasma-tools.sh"
   chmod +x "$installer"
   bash -c "$installer --restore-all"
 }

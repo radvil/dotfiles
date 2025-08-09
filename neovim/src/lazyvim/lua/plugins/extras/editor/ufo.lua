@@ -65,7 +65,7 @@ return {
       end,
       preview = {
         win_config = {
-          border = vim.g.neo_winborder,
+          border = vim.o.winborder,
           winhighlight = "Normal:Folded",
           winblend = 0,
         },

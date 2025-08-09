@@ -74,3 +74,10 @@
 ## Screen locking
 
 Should just pick one from the wallpapers options.
+
+
+## TODO
+
+- [ ] Fix plasma installer for assets and configs. Hint: check the restore path
+- [ ] Provide core packages installation like eza, cargo, etc.
+- [ ] Set global icons to use papirus-folders with "yaru" style

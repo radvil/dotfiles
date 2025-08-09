@@ -13,7 +13,7 @@ return {
       },
     },
     win = {
-      border = vim.g.neo_winborder,
+      border = vim.o.winborder,
       padding = vim.g.neo_transparent and { 0, 0, 0, 0 } or { 1, 2, 1, 2 },
     },
     icons = {

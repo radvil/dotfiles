@@ -5,8 +5,9 @@ function setup() {
   sudo dnf copr enable -y jhyub/supergfxctl-plasmoid
   sudo dnf update --refresh
   sudo dnf install -y asusctl supergfxctl asusctl-rog-gui supergfxctl-plasmoid
-  sudo systemctl enable asusctl --now
-  sudo systemctl enable supergfxctl --now
+  sudo systemctl daemon-reload &&
+  sudo systemctl start asusd &&
+  sudo systemctl enable supergfxd --now
 }
 
 setup

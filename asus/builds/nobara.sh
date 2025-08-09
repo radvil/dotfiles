@@ -2,7 +2,7 @@
 
 function setup() {
   local installer
-  installer=$(realpath "components/asus/builds/fedora.sh")
+  installer=$(dirname "$0")/fedora.sh
   chmod +x "$installer"
   bash -c "$installer"
 }

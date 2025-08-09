@@ -72,7 +72,8 @@ map({ "n", "v", "x" }, "[w", diagnostic_goto(false, "WARN"), { desc = "go to pre
 
 -- clipboard
 if vim.opt.clipboard ~= "unnamedplus" then
-  map({ "n", "o", "x", "v" }, "gy", '"+y', { desc = "yank from system clipboard (system)", nowait = true })
+  map({ "n", "o", "x", "v" }, "gy", '"+y', { desc = "yank to system clipboard (system)", nowait = true })
+  map({ "n", "o", "x", "v" }, "<leader>d", '"+d', { desc = "delete to system clipboard (system)", nowait = true })
   map({ "n", "o", "x", "v" }, "gp", '"+p', { desc = "paste from system clipboard (system)", nowait = true })
   map("n", "gY", '"+y$', { desc = "yank to end of line (system)", nowait = true })
   map("n", "gP", '"+P', { desc = "paste before cursor (system)", nowait = true })

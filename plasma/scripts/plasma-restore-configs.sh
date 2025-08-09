@@ -67,7 +67,8 @@ else
   kquitapp6 plasmashell
 
   echo "♻️ Restoring user config files..."
-  tar -xzvf "$USER_BACKUP" -C "$HOME"
+  # tar -xzvf "$USER_BACKUP" -C "$HOME"
+  tar -xzvf "$USER_BACKUP" -C "/"
 
   echo "🚀 Restarting Plasma shell..."
   kstart6 plasmashell

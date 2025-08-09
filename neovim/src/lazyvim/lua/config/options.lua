@@ -23,7 +23,7 @@ vim.g.neo_colorscheme = "catppuccin"
 vim.g.neo_transparent = false
 vim.g.neo_diminactive = false
 -- vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
-vim.g.neo_winborder = "single"
+vim.opt.winborder = 'rounded'
 
 vim.g.minipairs_disable = true
 vim.g.autoformat = false
