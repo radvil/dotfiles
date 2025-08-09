@@ -9,7 +9,6 @@ function setup() {
     printf "\e[34m[INFO]\e[0m %s\n" "$1"
   }
 
-  # NOTE: I wonder if I should enable this by default?
   local downloadDir="$HOME/Downloads/Programs/obs-plugins"
   mkdir "$downloadDir" -p
   sudo dnf download obs-studio-plugin-vkcapture --destdir="$downloadDir"
