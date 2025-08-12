@@ -2,11 +2,10 @@
   "name": "fonts",
   "description": "All required fonts",
   "builds": {
-    "nobara": ["sudo dnf install -y nerd-fonts"]
+    "nobara": ["sudo dnf install -y nerd-fonts"],
+    // "cachyos": ["paru -S --noconfirm nerd-fonts-git"]
   },
   "configs": [],
   "cleanup": [
-    "sudo dnf remove -y nerd-fonts"
-    // TODO: cleanup all manual installed files.
   ]
 }

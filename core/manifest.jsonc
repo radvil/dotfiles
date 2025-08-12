@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "description": "Essential packages",
+  "priority": 0, // top
+  "builds": {
+  },
+  "configs": [
+  ],
+  "cleanup": []
+}
+

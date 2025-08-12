@@ -5,12 +5,12 @@
   "builds": {
     "arch": [
       "mkdir -p ~/.local/bin",
-      "sudo pacman -S fish nerd-fonts -y",
+      "paru -S fish nerd-fonts-git --noconfirm",
       "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
     ],
     "cachyos": [
       "mkdir -p ~/.local/bin",
-      "sudo pacman -S fish nerd-fonts -y",
+      "paru -S fish --noconfirm",
       "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
     ],
     "fedora": [

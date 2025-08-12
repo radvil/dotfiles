@@ -11,7 +11,7 @@ return {
   end,
   opts = {
     ui = {
-      border = vim.o.winborder
+      border = vim.g.neo_winborder
     },
   },
 }

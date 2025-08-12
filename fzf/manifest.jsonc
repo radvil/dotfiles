@@ -4,6 +4,9 @@
   "builds": {
     "nobara": [
       "sudo dnf install -y fzf fzf-tmux tmux zoxide --skip-unavailable"
+    ],
+    "cachyos": [
+      "paru -S --noconfirm fzf tmux zoxide"
     ]
   },
   "configs": [
@@ -12,21 +15,27 @@
       "to": "~/.local/bin/__tmux_session",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": [
+        "*"
+      ]
     },
     {
       "from": "./src/bin/ssh-use",
       "to": "~/.local/bin/ssh-use",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": [
+        "*"
+      ]
     },
     {
       "from": "./src/bin/zmux",
       "to": "~/.local/bin/zmux",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": [
+        "*"
+      ]
     }
   ],
   "cleanup": [

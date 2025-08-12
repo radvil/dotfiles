@@ -3,7 +3,7 @@
 return {
   "neovim/nvim-lspconfig",
   init = function()
-    local border = vim.o.winborder
+    local border = vim.g.neo_winborder
     require("lspconfig.ui.windows").default_options.border = border
 
     if not LazyVim.has("noice.nvim") then

@@ -5,12 +5,11 @@ return {
     -- opts.mapping["<C-CR>"] = nil
     -- opts.mapping["<S-CR>"] = nil
     -- opts.mapping["<CR>"] = nil
-    if vim.g.neo_transparent then
-      local cmp = require("cmp")
-      opts.window = {
-        documentation = cmp.config.window.bordered(),
-        completion = cmp.config.window.bordered(),
-      }
-    end
+
+    local wd = require("cmp").config.window
+    opts.window = {
+      documentation = wd.bordered(),
+      completion = wd.bordered(),
+    }
   end,
 }

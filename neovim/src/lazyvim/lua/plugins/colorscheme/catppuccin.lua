@@ -96,20 +96,17 @@ local custom_hls = function(colors)
     InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
   }
 
-  -- Floating panels
-  -- if not vim.g.neo_transparent then
-  --   Hls.FloatBorder = {
-  --     bg = colors.mantle,
-  --     fg = colors.mantle,
-  --   }
-  --   Hls.FloatTitle = {
-  --     bg = colors.mantle,
-  --     fg = colors.maroon,
-  --   }
-  --   Hls.NormalFloat = {
-  --     bg = colors.mantle,
-  --   }
-  -- end
+    Hls.FloatBorder = {
+      bg = vim.g.neo_transparent and "NONE" or colors.base,
+      fg = colors.blue
+    }
+    Hls.FloatTitle = {
+      bg = colors.mantle,
+      fg = colors.maroon,
+    }
+    Hls.NormalFloat = {
+      bg = colors.mantle,
+    }
 
   return Hls
 end
@@ -145,14 +142,11 @@ return {
       navic = false,
       indent_blankline = { colored_indent_levels = true },
       native_lsp = { inlay_hints = { background = true } },
-      telescope = {
-        enabled = true,
-        -- style = "nvchad",
-      },
       mini = {
         enabled = true,
         indentscope_color = "rosewater",
       },
+      telescope = { enabled = false }
     },
   },
   ---@param opts CatppuccinOptions

@@ -13,4 +13,5 @@ Enabled=true
 PointerAccelerationProfile=1
 
 [Mouse]
-cursorTheme=breeze_cursors
+cursorSize=32
+cursorTheme=volantes_cursors

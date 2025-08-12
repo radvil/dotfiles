@@ -3,7 +3,7 @@
   "description": "Like cat, but with wings 🦇💅",
   "builds": {
     "arch": ["sudo pacman -S bat"],
-    "cachyos": ["sudo pacman -S bat"],
+    "cachyos": ["sudo pacman -S bat --noconfirm"],
     "fedora": ["sudo dnf install bat -y"],
     "nobara": ["sudo dnf install bat -y"]
   },

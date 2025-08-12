@@ -7,7 +7,7 @@
       "sudo pacman -Syu --noconfirm fish"
     ],
     "cachyos": [
-      "sudo pacman -Syu --noconfirm fish"
+      "sudo pacman -S --noconfirm fish"
     ],
     "fedora": [
       "sudo dnf install fish -y"

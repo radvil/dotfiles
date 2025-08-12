@@ -9,4 +9,5 @@ function setup() {
 
 setup
 
-unset install_neovim
+unset setup
+

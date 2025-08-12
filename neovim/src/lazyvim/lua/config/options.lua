@@ -22,8 +22,9 @@ end
 vim.g.neo_colorscheme = "catppuccin"
 vim.g.neo_transparent = false
 vim.g.neo_diminactive = false
--- vim.g.neo_winborder = vim.g.neo_transparent and "single" or "none"
-vim.opt.winborder = 'rounded'
+-- vim.opt.winborder = "rounded"
+-- vim.g.neo_winborder = vim.g.neo_transparent and "single" and "none"
+vim.g.neo_winborder = "rounded"
 
 vim.g.minipairs_disable = true
 vim.g.autoformat = false
@@ -34,7 +35,7 @@ vim.g.deprecation_warnings = false
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true

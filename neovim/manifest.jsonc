@@ -6,7 +6,7 @@
 
   // shell commands grouped by machine/distro id to install component's deps.
   "builds": {
-    "cachyos": ["sudo pacman -Syu --noconfirm neovim"]
+    "cachyos": ["paru -S --noconfirm git ripgrep fd-find hub neovim shell-color-scripts-git"]
   },
 
   "configs": [

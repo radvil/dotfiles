@@ -63,16 +63,12 @@ if [[ $DRY_RUN -eq 1 ]]; then
   echo "🔎 [DRY-RUN] Would extract: $USER_BACKUP → $HOME"
   echo "🔎 [DRY-RUN] Would start Plasma shell: kstart6 plasmashell"
 else
-  # echo "🛑 Stopping Plasma shell..."
-  # kquitapp6 plasmashell
-
   echo "♻️ Restoring user config files..."
   # tar -xzvf "$USER_BACKUP" -C "$HOME"
   tar -xzvf "$USER_BACKUP" -C "/"
 
   # echo "🚀 Restarting Plasma shell..."
-  # kstart6 plasmashell
-  nohup plasmashell --replace &
+  systemctl --user restart plasma-plasmashell
 
   echo "✅ User config restored!"
 fi

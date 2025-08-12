@@ -2,6 +2,9 @@
   "name": "tmux",
   "description": "Why open 5 terminals when I am 5 terminals?",
   "builds": {
+    "cachyos": [
+      "sudo pacman -S tmux --noconfirm"
+    ],
     "nobara": [
       "sudo dnf install tmux -y"
     ]
@@ -12,7 +15,9 @@
       "to": "~/.tmux.conf",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": [
+        "*"
+      ]
     }
   ],
   "cleanup": [

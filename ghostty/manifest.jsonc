@@ -9,6 +9,9 @@
     "nobara": [
       "sudo dnf copr enable scottames/ghostty -y",
       "sudo dnf install ghostty -y"
+    ],
+    "cachyos": [
+      "sudo pacman -S --noconfirm ghostty"
     ]
   },
   "configs": [
@@ -17,8 +20,12 @@
       "to": "~/.config/ghostty",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": [
+        "*"
+      ]
     }
   ],
-  "cleanup": ["rm -rf ~/.config/ghostty"]
+  "cleanup": [
+    "rm -rf ~/.config/ghostty"
+  ]
 }

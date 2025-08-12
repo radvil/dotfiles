@@ -2,11 +2,12 @@
 
 function setup() {
   local installer
-  installer=$(dirname "$0")/fedora.sh
+  installer=$(dirname "$0")/install-apps.sh
   chmod +x "$installer"
   bash -c "$installer"
+  paru -S obs-vkcapture --noconfirm
 }
 
 setup
 
-unset install_neovim
+unset setup

@@ -1,6 +1,6 @@
 {
   "name": "flatpak",
-  "description": "Flatpak user apps",
+  "description": "Flatpak system apps",
   "builds": {
   },
   "configs": [],

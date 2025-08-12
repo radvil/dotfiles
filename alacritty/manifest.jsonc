@@ -3,14 +3,14 @@
   "description": "Terminal. No tabs, no fluff — just speed.",
   "builds": {
     "arch": ["sudo pacman -S alacritty"],
-    "cachyos": ["sudo pacman -S alacritty"],
+    "cachyos": ["paru -S alacritty --noconfirm"],
     "fedora": ["sudo dnf install alacritty -y"],
     "nobara": ["sudo dnf install alacritty -y"]
   },
   "configs": [
     {
       "from": "./src/alacritty.toml",
-      "to": "~/.config/alacritty.toml",
+      "to": "~/.config/alacritty/alacritty.toml",
       "method": "symlink",
       "force": true,
       "tags": ["*"]

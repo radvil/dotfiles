@@ -3,7 +3,7 @@
   "description": "Terminal. Cute😼, fast, and do more than just run commands!",
   "builds": {
     "arch": ["sudo pacman -S kitty"],
-    "cachyos": ["sudo pacman -S kitty"],
+    "cachyos": ["paru -S kitty --noconfirm"],
     "fedora": ["sudo dnf install kitty -y"],
     "nobara": ["sudo dnf install kitty -y"]
   },

@@ -5,7 +5,8 @@
     "nobara": [
       "sudo dnf copr enable atim/lazygit -y",
       "sudo dnf install -y git delta lazygit"
-    ]
+    ],
+    "cachyos": ["sudo pacman -S git git-delta lazygit --noconfirm"]
   },
   "configs": [
     {

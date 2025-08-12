@@ -2,11 +2,11 @@
 
 function setup() {
   local installer
-  installer=$(dirname "$0")/fedora.sh
+  installer=$(dirname "$0")/nobara.sh
   chmod +x "$installer"
   bash -c "$installer"
 }
 
 setup
 
-unset install_neovim
+unset setup
