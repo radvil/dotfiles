@@ -1,16 +1,27 @@
 local base = {
-  red = "#ff657a",
-  maroon = "#F29BA7",
+  -- red = "#ff657a",
+  -- maroon = "#F29BA7",
+  -- peach = "#ff9b5e",
+  -- yellow = "#eccc81",
+  -- green = "#a8be81",
+  -- teal = "#9cd1bb",
+  -- sky = "#A6C9E5",
+  -- sapphire = "#86AACC",
+  -- blue = "#5d81ab",
+  -- lavender = "#ACB6D2",
+  -- mauve = "#b18eab",
+
+  red = "#D13C57",
+  maroon = "#ff657a",
   peach = "#ff9b5e",
   yellow = "#eccc81",
   green = "#a8be81",
   teal = "#9cd1bb",
-  sky = "#A6C9E5",
+  sky = "#67B4E4",
   sapphire = "#86AACC",
   blue = "#5d81ab",
-  -- lavender = "#7683B5",
   lavender = "#ACB6D2",
-  mauve = "#b18eab",
+  mauve = "#DA9FAA",
 }
 
 ---@param value table<string, string>

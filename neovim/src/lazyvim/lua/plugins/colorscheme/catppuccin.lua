@@ -96,17 +96,17 @@ local custom_hls = function(colors)
     InclineInActive = { bg = colors.mantle, fg = colors.surface1 },
   }
 
-    Hls.FloatBorder = {
-      bg = vim.g.neo_transparent and "NONE" or colors.base,
-      fg = colors.blue
-    }
-    Hls.FloatTitle = {
-      bg = colors.mantle,
-      fg = colors.maroon,
-    }
-    Hls.NormalFloat = {
-      bg = colors.mantle,
-    }
+  Hls.FloatBorder = {
+    bg = vim.g.neo_transparent and "NONE" or colors.base,
+    fg = colors.blue,
+  }
+  Hls.FloatTitle = {
+    bg = colors.mantle,
+    fg = colors.maroon,
+  }
+  Hls.NormalFloat = {
+    bg = colors.mantle,
+  }
 
   return Hls
 end
@@ -146,7 +146,10 @@ return {
         enabled = true,
         indentscope_color = "rosewater",
       },
-      telescope = { enabled = false }
+      telescope = {
+        enabled = true,
+        style = "classic",
+      },
     },
   },
   ---@param opts CatppuccinOptions

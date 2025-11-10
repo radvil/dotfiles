@@ -1,8 +1,8 @@
 local disabled_plugins = {
   -- "folke/which-key.nvim",
-  -- "echasnovski/mini.indentscope",
+  -- "nvim-mini/mini.indentscope",
   -- "folke/noice.nvim",
-  "echasnovski/mini.ai",
+  "nvim-mini/mini.ai",
   "nvim-treesitter/nvim-treesitter-textobjects",
   "MagicDuck/grug-far.nvim",
   -- "stevearc/dressing.nvim",

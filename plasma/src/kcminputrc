@@ -2,16 +2,25 @@
 RepeatDelay=290
 RepeatRate=55
 
+[Libinput][12538][768][USB Optical Mouse ]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+ScrollFactor=1
+
+[Libinput][1267][12795][ASUE120D:00 04F3:31FB Mouse]
+PointerAccelerationProfile=2
+
 [Libinput][1267][12795][ASUE120D:00 04F3:31FB Touchpad]
 Enabled=true
 NaturalScroll=true
 
 [Libinput][2821][6582][Asus Keyboard]
 Enabled=true
+PointerAcceleration=0.000
+PointerAccelerationProfile=2
 
 [Libinput][Defaults]
 PointerAccelerationProfile=1
 
 [Mouse]
-cursorSize=32
-cursorTheme=volantes_cursors
+cursorTheme=Pop

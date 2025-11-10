@@ -76,6 +76,7 @@ local jump_to_definition = function(jump_type)
     })
   end
 end
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -92,36 +93,39 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    optinal = true,
-    opts = function()
-      local Keys = require("lazyvim.plugins.lsp.keymaps").get()
-      vim.list_extend(Keys, {
-        {
-          "<a-g><a-d>",
-          jump_to_definition(),
-          desc = "Jump to Definition",
-          has = "definition",
+    optional = true,
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            {
+              "<a-g><a-d>",
+              jump_to_definition(),
+              desc = "Jump to Definition",
+              has = "definition",
+            },
+            {
+              "<a-g><a-v>",
+              jump_to_definition("vsplit"),
+              desc = "Jump to Definition (vsplit)",
+              has = "definition",
+            },
+            {
+              "<a-g><a-x>",
+              jump_to_definition("split"),
+              desc = "Jump to Definition (split)",
+              has = "definition",
+            },
+            {
+              "<a-g><a-t>",
+              jump_to_definition("tab drop"),
+              desc = "Jump to Definition (tab drop)",
+              has = "definition",
+            },
+          },
         },
-        {
-          "<a-g><a-v>",
-          jump_to_definition("vsplit"),
-          desc = "Jump to Definition (vsplit)",
-          has = "definition",
-        },
-        {
-          "<a-g><a-x>",
-          jump_to_definition("split"),
-          desc = "Jump to Definition (split)",
-          has = "definition",
-        },
-        {
-          "<a-g><a-t>",
-          jump_to_definition("tab drop"),
-          desc = "Jump to Definition (tab drop)",
-          has = "definition",
-        },
-      })
-    end,
+      },
+    },
   },
 
   ---@type LazySpec

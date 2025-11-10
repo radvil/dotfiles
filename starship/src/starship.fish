@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
-# set starship_src (dirname $(realpath (status -f)))
-# set -gx STARSHIP_CONFIG (realpath "$starship_src/starship.toml")
+set starship_src (dirname $(realpath (status -f)))
+set -gx STARSHIP_CONFIG (realpath "$starship_src/starship.toml")
 
 if status is-interactive
     if type -q starship

@@ -9,14 +9,16 @@ function setup() {
     printf "\e[34m[INFO]\e[0m %s\n" "$1"
   }
 
+  flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo --system
+  flatpak install flathub-beta com.discordapp.DiscordCanary --system -y
+
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo --system
 
   local userApps=(
     "ca.edestcroix.Recordbox"
-    "com.discordapp.Discord"
     "com.github.wwmm.easyeffects"
     "com.microsoft.Edge"
-    "com.obsproject.Studio"
+    # "com.obsproject.Studio"
     "com.obsproject.Studio.Plugin.AitumMultistream"
     "com.obsproject.Studio.Plugin.DroidCam"
     "com.obsproject.Studio.Plugin.OBSVkCapture"
@@ -40,7 +42,7 @@ function setup() {
   )
 
   flatpak install --system --noninteractive "${userApps[@]}" -y &&
-  # flatpak install --system "${userApps[@]}" -y &&
+    # flatpak install --system "${userApps[@]}" -y &&
     __success "flatpak packages installed successfully" &&
     __info "Please restore the app's configs on 'src/apps.zip' manually!"
 }

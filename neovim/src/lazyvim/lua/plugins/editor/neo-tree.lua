@@ -10,7 +10,6 @@ return {
         function()
           require("neo-tree.command").execute({
             dir = LazyVim.root(),
-            position = "left",
             selector = true,
             toggle = true,
             reveal = true,
@@ -23,7 +22,6 @@ return {
         "<leader>E",
         function()
           require("neo-tree.command").execute({
-            position = "left",
             dir = vim.uv.cwd(),
             selector = true,
             toggle = true,
@@ -117,7 +115,7 @@ return {
 
       window = {
         -- width = 40,
-        position = "left",
+        position = "right",
         mapping_options = {
           noremap = true,
           nowait = true,

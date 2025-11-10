@@ -29,7 +29,7 @@ return {
           only_current = true,
         },
         chunk = {
-          enabled = true,
+          enabled = false,
           only_current = false,
           char = {
             -- corner_top = "┌",

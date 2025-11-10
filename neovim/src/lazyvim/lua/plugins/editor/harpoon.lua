@@ -152,9 +152,9 @@ return {
     harpoon:extend({
       UI_CREATE = function(ctx)
       --stylua: ignore start
-      LazyVim.safe_keymap_set("n", "<C-x>", function() harpoon.ui:select_menu_item({ split = true }) end, { buffer = ctx.bufnr })
-      LazyVim.safe_keymap_set("n", "<C-v>", function() harpoon.ui:select_menu_item({ vsplit = true }) end, { buffer = ctx.bufnr })
-      LazyVim.safe_keymap_set("n", "<C-t>", function() harpoon.ui:select_menu_item({ tabedit = true }) end, { buffer = ctx.bufnr })
+      vim.keymap.set("n", "<C-x>", function() harpoon.ui:select_menu_item({ split = true }) end, { buffer = ctx.bufnr })
+      vim.keymap.set("n", "<C-v>", function() harpoon.ui:select_menu_item({ vsplit = true }) end, { buffer = ctx.bufnr })
+      vim.keymap.set("n", "<C-t>", function() harpoon.ui:select_menu_item({ tabedit = true }) end, { buffer = ctx.bufnr })
         --stylua: ignore end
       end,
     })
@@ -207,7 +207,7 @@ return {
           require("harpoon"):list():select(i)
         end,
       })
-      LazyVim.safe_keymap_set(
+      vim.keymap.set(
         "n",
         "<Leader>" .. i,
         string.format("<cmd>M%s<cr>", i),

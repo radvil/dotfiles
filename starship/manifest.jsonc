@@ -15,7 +15,6 @@
     ],
     "fedora": [
       "mkdir -p ~/.local/bin",
-      "sudo pacman -S fish nerd-fonts -y",
       "curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin"
     ],
     "nobara": [

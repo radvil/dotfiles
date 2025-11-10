@@ -98,7 +98,7 @@ return {
     },
     config = function(_, opts)
       require("obsidian").setup(opts)
-      LazyVim.safe_keymap_set("n", "gf", function()
+      vim.keymap.set("n", "gf", function()
         if require("obsidian").util.cursor_on_markdown_link() then
           return "<cmd>ObsidianFollowLink<cr>"
         else

@@ -21,7 +21,7 @@ return {
     on_attach = function(buffer)
       local gs = package.loaded.gitsigns
       local function Kmap(mode, lhs, rhs, desc)
-        LazyVim.safe_keymap_set(mode, lhs, rhs, { buffer = buffer, desc = desc })
+        vim.keymap.set(mode, lhs, rhs, { buffer = buffer, desc = desc })
       end
       -- stylua: ignore start
       Kmap("n", "<leader>gr", function() gs.refresh() LazyVim.info("refreshed", { title = "gitsigns" }) end, "[r]efresh [g]itsigns")

@@ -332,59 +332,61 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    opts = function()
-      local Keys = require("lazyvim.plugins.lsp.keymaps").get()
-
-      vim.list_extend(Keys, {
-        { "<c-k>", false, mode = "i" },
-        { "<leader>cc", false },
-        { "<leader>cC", false },
-        { "gy", false },
-        {
-          "g<c-v>",
-          function()
-            require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
-          end,
-          desc = "Go to Definition (vsplit)",
-          has = "definition",
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            { "<c-k>", false, mode = "i" },
+            { "<leader>cc", false },
+            { "<leader>cC", false },
+            { "gy", false },
+            {
+              "g<c-v>",
+              function()
+                require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+              end,
+              desc = "Go to Definition (vsplit)",
+              has = "definition",
+            },
+            {
+              "g<c-x>",
+              function()
+                require("telescope.builtin").lsp_definitions({ jump_type = "split" })
+              end,
+              desc = "Go to Definition (split)",
+              has = "definition",
+            },
+            {
+              "g<c-t>",
+              function()
+                require("telescope.builtin").lsp_definitions({ jump_type = "tab drop" })
+              end,
+              desc = "Go to Definition (tab drop)",
+              has = "definition",
+            },
+            {
+              "<a-k>",
+              vim.lsp.buf.signature_help,
+              mode = "i",
+              desc = "Signature Help",
+              has = "signatureHelp",
+            },
+            {
+              "K",
+              function()
+                local ufo = LazyVim.has("nvim.ufo")
+                if ufo then
+                  return require("ufo").peekFoldedLinesUnderCursor() or vim.lsp.buf.hover()
+                else
+                  return vim.lsp.buf.hover()
+                end
+              end,
+              desc = "Hover",
+              has = "hover",
+            },
+          },
         },
-        {
-          "g<c-x>",
-          function()
-            require("telescope.builtin").lsp_definitions({ jump_type = "split" })
-          end,
-          desc = "Go to Definition (split)",
-          has = "definition",
-        },
-        {
-          "g<c-t>",
-          function()
-            require("telescope.builtin").lsp_definitions({ jump_type = "tab drop" })
-          end,
-          desc = "Go to Definition (tab drop)",
-          has = "definition",
-        },
-        {
-          "<a-k>",
-          vim.lsp.buf.signature_help,
-          mode = "i",
-          desc = "Signature Help",
-          has = "signatureHelp",
-        },
-        {
-          "K",
-          function()
-            local ufo = LazyVim.has("nvim.ufo")
-            if ufo then
-              return require("ufo").peekFoldedLinesUnderCursor() or vim.lsp.buf.hover()
-            else
-              return vim.lsp.buf.hover()
-            end
-          end,
-          desc = "Hover",
-          has = "hover",
-        },
-      })
-    end,
+      },
+    },
   },
 }

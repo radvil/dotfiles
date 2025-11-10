@@ -4,7 +4,7 @@ return {
     enabled = false,
   },
   {
-    "echasnovski/mini.statusline",
+    "nvim-mini/mini.statusline",
     opts = {
       set_vim_settings = true,
       use_icons = true,

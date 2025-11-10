@@ -17,14 +17,15 @@ style            = "Regular"
 [window]
 dynamic_padding           = true
 blur                      = false
-opacity                   = 0.93
+opacity                   = 0.88
 dimensions                = { columns = 120, lines = 30 }
-padding                   = { x = 4, y = 4 }
+# dimensions                = { columns = 230, lines = 48 }
+# padding                   = { x = 4, y = 4 }
 # decorations               = "None"
 # decorations_theme_variant = "Dark"
 
 [colors]
-transparent_background_colors = true
+transparent_background_colors = false
 
 [colors.cursor]
 text            = "CellBackground"
@@ -35,7 +36,8 @@ text            = "CellBackground"
 cursor          = "#ff9e64"
 
 [colors.primary]
-background      = "#202027"
+#background      = "#202027"
+background      = "#121212"
 foreground      = "#fcfcfc"
 
 [[colors.indexed_colors]]

@@ -1,18 +1,19 @@
 local goToTemplateFile = function()
-  local params = vim.lsp.util.make_position_params(0)
+  local params = vim.lsp.util.make_position_params(0, "utf-32")
   vim.lsp.buf_request(0, "angular/getTemplateLocationForComponent", params, function(_, result)
     if result then
-      vim.lsp.util.jump_to_location(result, "utf-8")
+      vim.lsp.util.show_document(result, "utf-8", { focus = true })
     end
   end)
 end
 
 local goToComponentFile = function()
-  local params = vim.lsp.util.make_position_params(0)
+  local params = vim.lsp.util.make_position_params(0, "utf-32")
   vim.lsp.buf_request(0, "angular/getComponentsWithTemplateFile", params, function(_, result)
     if result then
       if #result == 1 then
-        vim.lsp.util.jump_to_location(result[1], "utf-8")
+        vim.lsp.util.show_document(result[1], "utf-8", { focus = true })
+        -- vim.lsp.util.jump_to_location(result[1], "utf-8")
       else
         vim.fn.setqflist({}, " ", {
           title = "Angular Language Server",

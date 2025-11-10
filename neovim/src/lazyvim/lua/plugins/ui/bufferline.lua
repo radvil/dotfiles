@@ -54,8 +54,8 @@ return {
     }
   end,
 
-  opts = function(_, opts)
-    local defaults = {
+  config = function()
+    local opts = {
       options = {
         mode = "tabs",
         sort_by = "tabs",
@@ -119,8 +119,6 @@ return {
       opts.highlights = require("hi.bufferline").kanagawa()
     end
 
-    opts = vim.tbl_deep_extend("force", opts or {}, defaults)
-
-    return opts
+    require("bufferline").setup(opts)
   end,
 }

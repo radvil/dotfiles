@@ -35,7 +35,7 @@ vim.g.deprecation_warnings = false
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
@@ -62,19 +62,11 @@ vim.opt.fillchars = {
 }
 
 if not LazyVim.has("nvim-ufo") then
-  vim.opt.foldexpr = "v:lua.LazyVim.ui.foldexpr()"
+  vim.opt.foldexpr = "v:lua.LazyVim.treesitter.foldexpr()"
   vim.opt.foldmethod = "expr"
   vim.opt.foldtext = ""
 end
 
 if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
-end
-
-if vim.g.neovide then
-  vim.g.neovide_remember_window_size = true
-  vim.g.neovide_hide_mouse_when_typing = false
-  vim.g.neovide_cursor_animate_command_line = true
-  vim.g.neovide_transparency = 1 -- 0.87
-  vim.opt.guifont = { "JetbrainsMono Nerd Font", ":h12" }
 end

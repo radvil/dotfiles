@@ -5,7 +5,7 @@ local neo_trim = function()
 end
 
 return {
-  "echasnovski/mini.trailspace",
+  "nvim-mini/mini.trailspace",
   opts = {},
   keys = {
     {
