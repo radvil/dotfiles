@@ -1,9 +1,3 @@
-[Activities][LastVirtualDesktop]
-a224c20d-5651-4b50-b4cf-c1bff9a7fa94=c8fd9f4a-ec5e-40ab-b116-d430dbe31c48
-aa66f7f8-3ef1-4909-bcb7-a53f31041986=84362957-41e2-4f92-a7ca-d797daba6694
-c061eed4-282d-49e7-8783-40697ae8a6cd=84362957-41e2-4f92-a7ca-d797daba6694
-ff82c4f6-01c7-4fcb-adc1-5f22860abf7d=c8fd9f4a-ec5e-40ab-b116-d430dbe31c48
-
 [Desktops]
 Id_1=2ac74770-d46c-4a60-9972-3f62addbe6a0
 Id_2=c8fd9f4a-ec5e-40ab-b116-d430dbe31c48
@@ -48,9 +42,6 @@ CommandAll2=Nothing
 
 [NightColor]
 Active=true
-LatitudeFixed=-2.748091603053439
-LongitudeFixed=121.12781954887214
-Mode=Location
 NightTemperature=4300
 
 [Plugins]
@@ -60,7 +51,8 @@ desktopchangeosdEnabled=true
 fadedesktopEnabled=true
 mousemarkEnabled=true
 slideEnabled=false
-squash2Enabled=false
+squashEnabled=false
+windowapertureEnabled=false
 
 [Script-desktopchangeosd]
 PopupHideDelay=250
@@ -197,9 +189,6 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 
 [Tiling][c8fd9f4a-ec5e-40ab-b116-d430dbe31c48][928f7381-b9de-4944-828f-e71b13f826c4]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Wayland]
-InputMethod[$d]
 
 [Xwayland]
 Scale=1.25

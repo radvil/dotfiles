@@ -48,34 +48,6 @@ ForegroundNormal=239,240,241
 ForegroundPositive=17,209,22
 ForegroundVisited=206,147,216
 
-[Colors:Header]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
-
-[Colors:Header][Inactive]
-BackgroundAlternate[$d]
-BackgroundNormal[$d]
-DecorationFocus[$d]
-DecorationHover[$d]
-ForegroundActive[$d]
-ForegroundInactive[$d]
-ForegroundLink[$d]
-ForegroundNegative[$d]
-ForegroundNeutral[$d]
-ForegroundNormal[$d]
-ForegroundPositive[$d]
-ForegroundVisited[$d]
-
 [Colors:Selection]
 BackgroundAlternate=172,51,70
 BackgroundNormal=172,51,70
@@ -132,11 +104,6 @@ ForegroundNormal=223,223,223
 ForegroundPositive=76,175,80
 ForegroundVisited=173,101,175
 
-[DirSelect Dialog]
-DirSelectDialog Size=1464,600
-History Items[$e]=file:$HOME/Downloads,file:$HOME/Downloads/X,file:$HOME/Musics/Avenged Sevenfold,file:$HOME/Documents/Notes,file:$HOME/Downloads/X,file:$HOME/Pictures,file:$HOME/Games/Heroic/Prefixes/default/sideload,file:$HOME/Games,file:$HOME/Downloads/Programs,file:///run/media/radvil/One Touch/SteamBackups,file:///run/media/radvil/One Touch/SteamBackups/Sekiro Shadows Die Twice,file:$HOME/Videos/Rec,file:///media/data/Games,file:$HOME/Downloads/Compressed,file:///opt/xdman/chrome-extension,file:$HOME/Videos,file:///run/media/radvil/WindowsOS/Users/V/Downloads,file:///media/data/Misc,file:$HOME/Videos/Rec,file:///media/data,file:///media/data/SteamLibrary,file:$HOME/Musics,file:$HOME,file:$HOME,file:///run/media/radvil/One Touch/SteamBackups/Resident Evil 3,file:///run/media/radvil/One Touch/SteamBackups/The Witcher 3 Wild Hunt,file:///media/data/Misc/OBS,file:$HOME/Games/umu/umu-default,file:$HOME/Games/umu,file:$HOME/Documents,file:///run/media/radvil/One Touch/SteamBackups/A Way Out,file:$HOME/Documents/Notes,file:///run/media/radvil/One Touch/SteamBackups/Days Gone,file:$HOME/Musics,file:$HOME/Downloads/Programs,file:///run/media/radvil/One Touch/Apps/Windos/Repacks,file:$HOME/Downloads/Programs,file:$HOME/Downloads/Compressed,file:///media/data/Installers,file:$HOME/Downloads/Programs,file:$HOME/Downloads/Compressed,file:$HOME/Videos/Rec,file:$HOME/Videos,file:///run/media/radvil/One Touch/SteamBackups/Detroit Become Human,file:///run/media/radvil/One Touch/SteamBackups/Sifu,file:///run/media/radvil/One Touch/SteamBackups/Need for Speed Heat,file:$HOME/Projects/Roamstay/roamstay-angular-pms,file:$HOME/Projects/Roamstay/BAK,file:$HOME/Projects/Roamstay/roamstay-angular-pms,file:$HOME/Apps
-Splitter State=\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\xa8\x00\x00\x02\xa8\x00\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00
-
 [General]
 AccentColor=233,61,88
 ColorScheme=Nobara
@@ -154,7 +121,7 @@ smallestReadableFont=Adwaita Sans,11,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 toolBarFont=Adwaita Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 
 [KDE]
-AnimationDurationFactor=0.7071067811865475
+AnimationDurationFactor=0.25
 LookAndFeelPackage=org.nobaraproject.desktop
 SingleClick=false
 SmoothScroll=false
@@ -165,9 +132,6 @@ Allow Expansion=false
 Automatically select filename extension=true
 Breadcrumb Navigation=true
 Decoration position=2
-LocationCombo Completionmode=5
-PathCombo Completionmode=5
-Show Bookmarks=false
 Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
@@ -188,7 +152,7 @@ EnableRemoteFolderThumbnail=false
 MaximumRemoteSize=0
 
 [Sounds]
-Theme=freedesktop
+Theme=Pop
 
 [WM]
 activeBackground=18,18,18
