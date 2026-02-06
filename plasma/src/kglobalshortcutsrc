@@ -2,6 +2,7 @@
 _k_friendly_name=Activity Manager
 switch-to-activity-a224c20d-5651-4b50-b4cf-c1bff9a7fa94=none,none,Switch to activity "Default"
 switch-to-activity-aa66f7f8-3ef1-4909-bcb7-a53f31041986=none,none,Switch to activity "Default"
+switch-to-activity-b522c9bc-e43a-4929-8b5f-256c9d8632a0=none,none,Switch to activity "Default"
 switch-to-activity-c061eed4-282d-49e7-8783-40697ae8a6cd=none,none,Switch to activity "Default"
 switch-to-activity-ff82c4f6-01c7-4fcb-adc1-5f22860abf7d=none,none,Switch to activity "Default"
 
@@ -256,7 +257,7 @@ _k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
-Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
+Slideshow Wallpaper Next Image=none,none,Next Wallpaper Image
 _k_friendly_name=plasmashell
 activate application launcher=Meta+Space,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=none,Meta+1,Activate Task Manager Entry 1

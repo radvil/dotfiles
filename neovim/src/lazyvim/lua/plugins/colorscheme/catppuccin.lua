@@ -118,17 +118,13 @@ return {
   -- lazy = false,
   lazy = not string.match(vim.g.neo_colorscheme, "catppuccin"),
   opts = {
-    flavour = "auto",
+    -- flavour = "auto",
     term_colors = true,
     default_integrations = true,
     transparent_background = false,
     no_italic = true,
     no_bold = false,
     no_underline = false,
-    background = {
-      light = "latte",
-      dark = "frappe",
-    },
     dim_inactive = {
       enabled = true,
       shade = "dark",

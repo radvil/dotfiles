@@ -14,6 +14,7 @@ require("config.lazy").bootstrap({
       import = "lazyvim.plugins",
       opts = {
         colorscheme = function()
+          -- vim.print(vim.g.neo_colorscheme)
           vim.cmd.colorscheme(vim.g.neo_colorscheme)
         end,
         defaults = {

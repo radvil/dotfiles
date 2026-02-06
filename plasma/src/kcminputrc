@@ -21,6 +21,3 @@ PointerAccelerationProfile=2
 
 [Libinput][Defaults]
 PointerAccelerationProfile=1
-
-[Mouse]
-cursorTheme=breeze_cursors
