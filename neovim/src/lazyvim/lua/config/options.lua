@@ -32,6 +32,7 @@ vim.g.lazygit_config = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.snacks_animate = false
 vim.g.deprecation_warnings = false
+vim.g.lazyvim_ts_lsp = "tsgo"
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""

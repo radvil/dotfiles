@@ -113,6 +113,7 @@ TerminalService=Alacritty.desktop
 UseSystemBell=true
 XftHintStyle=hintslight
 XftSubPixel=none
+accentColorFromWallpaper=false
 fixed=JetBrainsMono Nerd Font,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 font=Adwaita Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 menuFont=Adwaita Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
@@ -124,10 +125,13 @@ Theme=Papirus-Dark
 
 [KDE]
 AnimationDurationFactor=0.25
-LookAndFeelPackage=org.kde.breezedark.desktop
+LookAndFeelPackage=com.ekaaty.vinyl.desktop.dark
 ShowDeleteCommand=false
 SingleClick=false
 SmoothScroll=false
+contrast=4
+frameContrast=0.2
+widgetStyle=Vinyl
 
 [KFileDialog Settings]
 Allow Expansion=false

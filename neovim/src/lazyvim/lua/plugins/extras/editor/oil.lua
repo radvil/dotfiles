@@ -72,4 +72,10 @@ M.opts = {
   },
 }
 
+M.init = function()
+  vim.api.nvim_create_user_command("OH", function()
+    require("oil").open(nil, { vertical = true })
+  end, { desc = "Open oil in vertical split" })
+end
+
 return M
