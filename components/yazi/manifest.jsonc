@@ -1,9 +1,0 @@
-{
-  "name": "yazi",
-  "description": "File manager TUI",
-  "builds": {
-    "nobara": ["sudo dnf install -y curl unzip"]
-  },
-  "configs": [],
-  "cleanup": ["rm -rf $HOME/.local/bin/yazi"]
-}

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# vim:fileencoding=utf-8:ft=sh
+
+# source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# shellcheck disable=SC1090
+if [ -d ~/.bashrc.d ]; then
+  for rc in ~/.bashrc.d/**.sh; do
+    if [ -f "$rc" ]; then
+      source "$rc"
+    fi
+  done
+fi
+
+unset rc
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.deno/env"
+source "$HOME/.local/share/bash-completion/completions/deno.bash"
+. "/home/radvil/.deno/env"
+source /home/radvil/.local/share/bash-completion/completions/deno.bash
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
