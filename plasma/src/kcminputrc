@@ -21,5 +21,8 @@ Enabled=true
 PointerAcceleration=0.000
 PointerAccelerationProfile=1
 
+[Libinput][2821][6582][ITE Tech. Inc. ITE Device(8910)]
+ScrollFactor=4
+
 [Libinput][Defaults]
 PointerAccelerationProfile=1

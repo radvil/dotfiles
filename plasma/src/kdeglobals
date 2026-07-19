@@ -106,6 +106,7 @@ ForegroundVisited=173,101,175
 
 [General]
 AccentColor=233,61,88
+ColorScheme=Nobara
 ColorSchemeHash=7715fd9c409e8efa0516fd38da43c1c19bb12d96
 LastUsedCustomAccentColor=233,61,88
 TerminalApplication=alacritty
@@ -124,8 +125,9 @@ toolBarFont=Adwaita Sans,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
 Theme=Papirus-Dark
 
 [KDE]
-AnimationDurationFactor=0.25
-LookAndFeelPackage=com.ekaaty.vinyl.desktop.dark
+AnimationDurationFactor=0.5
+AutomaticLookAndFeel=false
+LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
 SingleClick=false
 SmoothScroll=false
@@ -153,12 +155,15 @@ View Style=Simple
 [KScreen]
 ScreenScaleFactors=eDP-1=1;
 
+[KShortcutsDialog Settings]
+Dialog Size=628,480
+
 [PreviewSettings]
 EnableRemoteFolderThumbnail=false
 MaximumRemoteSize=0
 
 [Sounds]
-Theme=Pop
+Theme=oxygen
 
 [WM]
 activeBackground=18,18,18
