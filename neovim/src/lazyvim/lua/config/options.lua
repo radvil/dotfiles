@@ -21,7 +21,7 @@ end
 ---@type NeoColorscheme
 vim.g.neo_colorscheme = "catppuccin-frappe"
 vim.g.neo_transparent = false
-vim.g.neo_diminactive = true
+vim.g.neo_diminactive = false
 -- vim.opt.winborder = "rounded"
 -- vim.g.neo_winborder = vim.g.neo_transparent and "single" and "none"
 vim.g.neo_winborder = "rounded"
@@ -32,7 +32,7 @@ vim.g.lazygit_config = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.snacks_animate = false
 vim.g.deprecation_warnings = false
-vim.g.lazyvim_ts_lsp = "tsgo"
+vim.g.lazyvim_ts_lsp = "tsc"
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""

@@ -1,5 +1,5 @@
 [Keyboard]
-RepeatDelay=290
+RepeatDelay=360
 RepeatRate=50
 
 [Libinput][12538][768][USB Optical Mouse ]
@@ -26,3 +26,6 @@ ScrollFactor=4
 
 [Libinput][Defaults]
 PointerAccelerationProfile=1
+
+[Mouse]
+cursorTheme=Oxygen_Zion

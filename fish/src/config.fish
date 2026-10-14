@@ -4,7 +4,7 @@
 # set -gx NOTES_DIR "$HOME/Documents/Notes"
 
 function fish_greeting
-    echo Yoo (set_color yellow)$USER(set_color normal), please stop being an asshole!\n
+    # echo Yoo (set_color yellow)$USER(set_color normal), please stop being an asshole!\n
 end
 
 if status is-interactive

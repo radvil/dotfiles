@@ -1,10 +1,10 @@
 [Desktops]
 Id_1=c8fd9f4a-ec5e-40ab-b116-d430dbe31c48
-Id_2=2ac74770-d46c-4a60-9972-3f62addbe6a0
-Id_3=84362957-41e2-4f92-a7ca-d797daba6694
-Id_4=c03a5b3b-e827-44e9-9887-b0e19bf4516d
-Name_1=A
-Name_2=D
+Id_2=78a3e16a-cdf9-4a70-9652-3b05afad0c37
+Id_3=f3a6ef28-6f25-47c9-a738-1fd8dd68d6d6
+Id_4=7c9a0376-967a-4c9b-9047-b9471fd14c9b
+Name_1=D
+Name_2=A
 Name_3=N
 Name_4=G
 Number=4
@@ -42,7 +42,7 @@ CommandAll2=Nothing
 
 [NightColor]
 Active=true
-NightTemperature=5400
+NightTemperature=5000
 
 [Plugins]
 blurEnabled=true
@@ -124,6 +124,14 @@ padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][589fc451-0949-56f9-8121-36d04ebf3347]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][78a3e16a-cdf9-4a70-9652-3b05afad0c37][ebe45ca4-959e-48d8-938a-1d5cf87b3aef]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][7c9a0376-967a-4c9b-9047-b9471fd14c9b][ebe45ca4-959e-48d8-938a-1d5cf87b3aef]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][84362957-41e2-4f92-a7ca-d797daba6694][]
@@ -267,8 +275,15 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][f3a6ef28-6f25-47c9-a738-1fd8dd68d6d6][ebe45ca4-959e-48d8-938a-1d5cf87b3aef]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Wayland]
 InputMethod[$e]=/usr/share/applications/org.kde.plasma.keyboard.desktop
+
+[Windows]
+BorderlessMaximizedWindows=true
 
 [Xwayland]
 Scale=1.25
@@ -278,3 +293,5 @@ BorderSize=None
 BorderSizeAuto=false
 ButtonsOnLeft=XIAH
 ButtonsOnRight=SM
+library=org.kde.vinyl
+theme=Vinyl

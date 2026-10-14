@@ -9,6 +9,7 @@ return {
         "<Leader>e",
         function()
           require("neo-tree.command").execute({
+            position = "right",
             dir = LazyVim.root(),
             selector = true,
             toggle = true,
@@ -22,6 +23,7 @@ return {
         "<leader>E",
         function()
           require("neo-tree.command").execute({
+            position = "right",
             dir = vim.uv.cwd(),
             selector = true,
             toggle = true,

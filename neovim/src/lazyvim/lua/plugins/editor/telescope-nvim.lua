@@ -153,14 +153,22 @@ return {
           LazyVim.pick("resume", { prompt_title = Icons.ResumeLast .. "cont[/]nue action" }),
           "cont[/]nue action"
         ),
-        Kmap("<leader>/f", LazyVim.pick("files", { prompt_title = Icons.FindFiles .. "[f]iles" }), "[f]iles (root)"),
+
+        Kmap(
+          "<leader>/f",
+          LazyVim.pick("files", {
+            prompt_title = Icons.FindFiles .. "[f]iles // cwd",
+            cwd = vim.uv.cwd(),
+          }),
+          "[f]iles // cwd"
+        ),
         Kmap(
           "<leader>/F",
           LazyVim.pick("files", {
-            prompt_title = Icons.FindFiles .. "[F]iles",
-            cwd = vim.uv.cwd(),
+            prompt_title = Icons.FindFiles .. "[F]iles // root",
+            root = true,
           }),
-          "[F]iles (cwd)"
+          "[F]iles // root"
         ),
 
         {
@@ -176,8 +184,11 @@ return {
 
         {
           "<c-p>",
-          LazyVim.pick("files", { prompt_title = Icons.FindFiles .. "[p]ick file" }),
-          desc = "[p]ick file (root)",
+          LazyVim.pick("files", {
+            prompt_title = Icons.FindFiles .. "File picker // cwd",
+            cwd = vim.uv.cwd(),
+          }),
+          desc = "File picker // cwd",
         },
 
         {
@@ -189,20 +200,21 @@ return {
         Kmap(
           "<leader>/w",
           LazyVim.pick("live_grep", {
-            prompt_title = Icons.LiveGrepWords .. "[w]ord grep",
+            prompt_title = Icons.LiveGrepWords .. "Live grep // cwd",
             layout_strategy = "vertical",
+            cwd = vim.uv.cwd(),
           }),
-          "[w]ord grep (root)"
+          "Live grep // cwd"
         ),
 
         Kmap(
           "<leader>/W",
           LazyVim.pick("live_grep", {
-            prompt_title = Icons.LiveGrepWords .. "[W]ord grep",
+            prompt_title = Icons.LiveGrepWords .. "Live grep // root",
             layout_strategy = "vertical",
-            cwd = vim.uv.cwd(),
+            root = true,
           }),
-          "[W]ord grep (cwd)"
+          "Live grep // root"
         ),
 
         Kmap(
@@ -226,61 +238,66 @@ return {
         Kmap(
           "<leader>/r",
           LazyVim.pick("oldfiles", {
-            prompt_title = Icons.FindRecentFiles .. "[r]ecent files (cwd)",
+            prompt_title = Icons.FindRecentFiles .. "Most recent files // cwd",
             initial_mode = "normal",
             cwd = vim.uv.cwd(),
           }),
-          "[r]ecent files (cwd)"
+          "Most recent files // cwd"
         ),
 
         Kmap(
           "<leader>/R",
           LazyVim.pick("oldfiles", {
-            prompt_title = Icons.FindRecentFiles .. "[R]ecent files (global)",
+            prompt_title = Icons.FindRecentFiles .. "Most recent files // global",
             initial_mode = "normal",
-            cwd = false,
+            root = false,
+            cwd = nil,
           }),
-          "[R]ecent files"
+          "Most recent files // global"
         ),
 
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]earch under cursor",
+            prompt_title = Icons.GrepStrings .. "Grep string // cwd",
             layout_strategy = "vertical",
+            initial_mode = "normal",
+            cwd = vim.uv.cwd(),
           }),
-          "[s]trings grep (root)"
+          "Grep string // cwd"
         ),
 
         Kmap(
           "<leader>/s",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[s]earch under cursor (current selected)",
+            prompt_title = Icons.GrepStrings .. "Grep string // cwd",
             layout_strategy = "vertical",
-            mode = "v",
+            initial_mode = "normal",
+            cwd = vim.uv.cwd(),
           }),
-          "[s]trings grep selection (root)",
+          "Grep string // cwd",
           "v"
         ),
 
         Kmap(
           "<leader>/S",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[S]trings grep",
+            prompt_title = Icons.GrepStrings .. "Grep string // root",
             layout_strategy = "vertical",
-            cwd = vim.uv.cwd(),
+            initial_mode = "normal",
+            root = true,
           }),
-          "[S]trings grep (cwd)"
+          "Grep string // root"
         ),
 
         Kmap(
           "<leader>/S",
           LazyVim.pick("grep_string", {
-            prompt_title = Icons.GrepStrings .. "[S]tring grep selection",
+            prompt_title = Icons.GrepStrings .. "Grep string // root",
             layout_strategy = "vertical",
-            cwd = vim.uv.cwd(),
+            root = true,
           }),
-          "[S]earch selection under cursor [cwd]",
+          "Grep string // root",
           "v"
         ),
 
@@ -290,7 +307,7 @@ return {
             prompt_title = Icons.MarkList .. "marks[']",
             initial_mode = "normal",
           }),
-          desc = "marks[']",
+          desc = "Marks[']",
         },
 
         {
@@ -305,26 +322,26 @@ return {
         {
           "<leader><tab>",
           LazyVim.pick("buffers", {
-            prompt_title = Icons.FindRecentFiles .. "buffers (cwd)",
+            prompt_title = Icons.FindRecentFiles .. "Buffers (cwd)",
             ignore_current_buffer = false,
             initial_mode = "normal",
             cwd = vim.uv.cwd(),
             sort_mru = true,
           }),
-          desc = "buffers (cwd)",
+          desc = "Buffers // cwd",
         },
 
         {
           "<leader>,",
           LazyVim.pick("buffers", {
-            prompt_title = Icons.Buffers .. "buffers (global)",
+            prompt_title = Icons.Buffers .. "Buffers // global",
             ignore_current_buffer = false,
             initial_mode = "normal",
             sort_lastused = true,
             sort_mru = true,
-            cwd = false,
+            cwd = nil,
           }),
-          desc = "buffers (global)",
+          desc = "Buffers // global",
         },
       }
     end,
