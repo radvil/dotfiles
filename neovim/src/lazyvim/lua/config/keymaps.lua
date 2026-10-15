@@ -43,14 +43,15 @@ map({ "n", "v" }, "<leader>cf", function() LazyVim.format({ force = true }) end,
 LazyVim.format.snacks_toggle():map("<leader>uf")
 LazyVim.format.snacks_toggle(true):map("<leader>uF")
 
--- diagnostic
+-- -- diagnostic
 -- local diagnostic_goto = function(next, severity)
 --   local count = next and 1 or -1
 --   severity = severity and vim.diagnostic.severity[severity] or nil
 --   return function()
 --     vim.diagnostic.jump({
 --       count = count,
---       severity = severity
+--       severity = severity,
+--       -- on_jump TODO: on jump open popup on diagnosed text
 --     })
 --   end
 -- end
@@ -62,6 +63,7 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
+
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "code line [d]iagnostics" })
 map({ "n", "v", "x" }, "]d", diagnostic_goto(true), { desc = "go to next [d]iagnostic" })
 map({ "n", "v", "x" }, "[d", diagnostic_goto(false), { desc = "go to prev [d]iagnostic" })
@@ -180,6 +182,16 @@ map("n", "<leader>tj", function()
     }
   })
 end, { desc = "run zmux" })
+
+map("n", "<leader>fe", function()
+  Snacks.terminal.toggle("spf", {
+    cwd = vim.uv.os_homedir(),
+    win = {
+      title = "   Super File Manager",
+      title_pos = "right",
+    }
+  })
+end, { desc = "Open Super File Manager" })
 
 -- experimental keymap
 map({ "n", "x", "v", "o" }, "H", "^", { desc = "start of line (non blank)" })
