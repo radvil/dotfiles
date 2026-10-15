@@ -3,6 +3,13 @@ local M = {
   lazy = true,
 }
 
+M.dependencies = {
+  {
+    "smart-splits-nvim/backend-tmux",
+    main = "smart-splits-backend-tmux",
+  },
+}
+
 M.keys = function()
   -- TODO: better keymaps setup
   local ss = require("smart-splits")
@@ -22,16 +29,13 @@ M.keys = function()
     Kmap("<c-k>", ss.move_cursor_up, "Go to upper window"),
     Kmap("<c-h>", ss.move_cursor_left, "Go to left window"),
     Kmap("<c-l>", ss.move_cursor_right, "Go to right window"),
-
-    -- window operation
-    Kmap("<leader>w<cr>", ss.start_resize_mode, "Start window resizing"),
   }
 end
 
 M.opts = {
-  log_level = "info",
+  mux = { backend = "smart-splits-backend-tmux" },
+  move = { at_edge = "split" },
   ignored_buftypes = { "terminal", "prompt" },
-  cursor_follows_swapped_bufs = true,
   ignored_filetypes = {
     "TelescopeResults",
     "TelescopePrompt",
@@ -51,22 +55,17 @@ M.opts = {
     "lazy",
     "oil",
   },
-  resize_mode = {
-    quit_key = "q",
-    resize_keys = { "h", "j", "k", "l" },
-    silent = true,
-    hooks = {
-      on_enter = function()
-        LazyVim.info("Resizing start. Press <q> to exit!", { title = "Window" })
-      end,
-      on_leave = function()
-        LazyVim.warn("Resizing stopped!", { title = "Window" })
-      end,
+  log = {
+    level = "info",
+  },
+  resize = {
+    ignored_events = {
+      "BufEnter",
+      "WinEnter",
     },
   },
-  ignored_events = {
-    "BufEnter",
-    "WinEnter",
+  swap = {
+    move_cursor = true,
   },
 }
 
