@@ -34,7 +34,7 @@ end
 
 M.opts = {
   mux = { backend = "smart-splits-backend-tmux" },
-  move = { at_edge = "split" },
+  move = { at_edge = "wrap" },
   ignored_buftypes = { "terminal", "prompt" },
   ignored_filetypes = {
     "TelescopeResults",
