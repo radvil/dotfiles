@@ -21,7 +21,7 @@
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "plugins.extras.completion.cmp-cmdline",
     "plugins.extras.editor.mini-splitjoin",
-    "plugins.extras.editor.obsidian",
+    "plugins.extras.editor.obsidian-nvim",
     "plugins.extras.editor.oil",
     "plugins.extras.editor.outline",
     "plugins.extras.git.diffview",
