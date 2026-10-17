@@ -71,3 +71,9 @@ end
 if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
 end
+
+-- LSP Server to use for Rust.
+-- Set to "bacon-ls" to use bacon-ls instead of rust-analyzer.
+-- only for diagnostics. The rest of LSP support will still be
+-- provided by rust-analyzer.
+vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
