@@ -2,12 +2,8 @@
   "name": "tmux",
   "description": "Why open 5 terminals when I am 5 terminals?",
   "builds": {
-    "cachyos": [
-      "sudo pacman -S tmux --noconfirm"
-    ],
-    "nobara": [
-      "sudo dnf install tmux -y"
-    ]
+    "cachyos": ["sudo pacman -S tmux --noconfirm"],
+    "nobara": ["sudo dnf install tmux -y"],
   },
   "configs": [
     {
@@ -15,13 +11,8 @@
       "to": "~/.tmux.conf",
       "method": "symlink",
       "force": true,
-      "tags": [
-        "*"
-      ]
-    }
+      "tags": ["*"],
+    },
   ],
-  "cleanup": [
-    "rm -rf ~/.tmux",
-    "rm -rf ~/.tmux.conf"
-  ]
+  "cleanup": ["rm -rf ~/.tmux", "rm -rf ~/.tmux.conf"],
 }

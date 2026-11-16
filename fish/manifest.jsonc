@@ -1,20 +1,12 @@
 {
   "name": "fish",
-  "description": "Like Bash, but with a better attitude, auto-suggestions, and colorsi.",
+  "description": "Like Bash, but with a better attitude, auto-suggestions, and colors.",
   "priority": 2,
   "builds": {
-    "arch": [
-      "sudo pacman -Syu --noconfirm fish"
-    ],
-    "cachyos": [
-      "sudo pacman -S --noconfirm fish"
-    ],
-    "fedora": [
-      "sudo dnf install fish -y"
-    ],
-    "nobara": [
-      "sudo dnf install fish -y"
-    ]
+    "arch": ["sudo pacman -Syu --noconfirm fish fisher"],
+    "cachyos": ["sudo pacman -S --noconfirm fish fisher"],
+    "fedora": ["sudo dnf install fish fisher -y"],
+    "nobara": ["sudo dnf install fish fisher -y"]
   },
   "configs": [
     {
@@ -22,15 +14,8 @@
       "to": "~/.config/fish",
       "method": "symlink",
       "force": true,
-      "tags": [
-        "arch",
-        "cachyos",
-        "fedora",
-        "nobara"
-      ]
+      "tags": ["arch", "cachyos", "fedora", "nobara"]
     }
   ],
-  "cleanup": [
-    "rm -rf ~/.config/fish"
-  ]
+  "cleanup": ["rm -rf ~/.config/fish"]
 }

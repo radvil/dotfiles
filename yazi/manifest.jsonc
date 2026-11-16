@@ -3,8 +3,8 @@
   "description": "File manager TUI",
   "builds": {
     "nobara": ["sudo dnf install -y curl unzip"],
-    "cachyos": ["paru -S yazi --noconfirm"]
+    "cachyos": ["paru -S yazi --noconfirm"],
   },
   "configs": [],
-  "cleanup": ["rm -rf $HOME/.local/bin/yazi"]
+  "cleanup": ["rm -rf $HOME/.local/bin/yazi"],
 }

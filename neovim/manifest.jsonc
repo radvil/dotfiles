@@ -6,7 +6,9 @@
 
   // shell commands grouped by machine/distro id to install component's deps.
   "builds": {
-    "cachyos": ["paru -S --noconfirm git ripgrep fd-find hub neovim shell-color-scripts-git"]
+    "cachyos": [
+      "paru -S --noconfirm git ripgrep fd-find hub neovim shell-color-scripts-git",
+    ],
   },
 
   "configs": [
@@ -21,9 +23,7 @@
       "method": "symlink",
       "optional": false,
       "force": true,
-      "tags": [
-        "*"
-      ]
+      "tags": ["*"],
     },
     {
       "from": "./src/lazyvim",
@@ -31,9 +31,7 @@
       "method": "symlink",
       "optional": false,
       "force": true,
-      "tags": [
-        "*"
-      ]
+      "tags": ["*"],
     },
     {
       "from": "./assets",
@@ -41,10 +39,8 @@
       "method": "symlink",
       "optional": true,
       "force": false,
-      "tags": [
-        "*"
-      ]
-    }
+      "tags": ["*"],
+    },
   ],
 
   // commands to execute during `deno task remove` to clean everything up
@@ -53,6 +49,6 @@
     "rm -rf ~/.config/LazyVim",
     "rm -rf ~/.local/share/LazyVim",
     "rm -rf ~/.local/share/dotfiles/assets",
-    "rm -rf ~/.cache/LazyVim"
-  ]
+    "rm -rf ~/.cache/LazyVim",
+  ],
 }

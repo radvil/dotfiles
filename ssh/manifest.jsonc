@@ -2,13 +2,9 @@
   "name": "ssh",
   "description": "ssshhhhhhhhh",
   "builds": {
-    "nobara": [
-      "sudo dnf install gpg openssh --skip-unavailable -y"
-    ],
-    "cachyos": ["sudo pacman -S openssh --noconfirm"]
+    "nobara": ["sudo dnf install gpg openssh --skip-unavailable -y"],
+    "cachyos": ["sudo pacman -S openssh --noconfirm"],
   },
   "configs": [],
-  "cleanup": [
-    "rm -rf ~/.ssh"
-  ]
+  "cleanup": ["rm -rf ~/.ssh"],
 }

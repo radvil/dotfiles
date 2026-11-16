@@ -312,8 +312,9 @@ activate task manager entry 6=Meta+6,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=Meta+7,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=Meta+8,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=Meta+9,Meta+9,Activate Task Manager Entry 9
-activate widget 153=none,none,Activate Application Launcher Widget
-activate widget 157=none,none,Activate Pager Widget
+activate widget 161=Meta+Shift+V,none,Activate KVitals Widget
+activate widget 164=none,none,Activate Plasma Gnome Pager Widget
+activate widget 166=none,none,Activate Application Launcher Widget
 activate widget 29=none,none,Activate Ginti Widget
 activate widget 3=none,none,Activate Application Launcher Widget
 activate widget 98=none,none,Activate Peek at Desktop Widget
@@ -336,9 +337,12 @@ switch to previous activity=none,none,Switch to Previous Activity
 toggle do not disturb=none,none,Toggle do not disturb
 
 [services][Alacritty.desktop]
-_launch=Ctrl+Alt+T
+_launch=none
 
 [services][com.mitchellh.ghostty.desktop]
+_launch=none
+
+[services][ghostty.desktop]
 _launch=none
 
 [services][net.local.curl-2.desktop]
@@ -357,6 +361,8 @@ _launch=Search\tMeta+/
 ShowOSD=Display
 
 [services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=none
+OpenWithoutScreenshot=none
 RecordRegion=Meta+Shift+R
 RecordScreen=none
 RecordWindow=none

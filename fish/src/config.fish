@@ -14,3 +14,10 @@ end
 function fish_user_key_bindings
     keybinds_zeoxide
 end
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/radvil/.local/bin" $PATH
+
+# Qwen Code PATH block begin
+set -gx PATH '/home/radvil/.local/bin' $PATH
+

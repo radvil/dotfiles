@@ -5,7 +5,7 @@
     "arch": ["sudo pacman -S alacritty"],
     "cachyos": ["paru -S alacritty --noconfirm"],
     "fedora": ["sudo dnf install alacritty -y"],
-    "nobara": ["sudo dnf install alacritty -y"]
+    "nobara": ["sudo dnf install alacritty -y"],
   },
   "configs": [
     {
@@ -13,8 +13,8 @@
       "to": "~/.config/alacritty/alacritty.toml",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
-    }
+      "tags": ["*"],
+    },
   ],
-  "cleanup": ["rm -rf ~/.config/alacritty.toml"]
+  "cleanup": ["rm -rf ~/.config/alacritty.toml"],
 }

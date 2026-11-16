@@ -48,25 +48,24 @@ return {
         desc = "[f]loat tree (root)",
       },
       {
-        "<leader>fF",
-        function()
-          require("neo-tree.command").execute({
-            position = "float",
-            dir = vim.uv.cwd(),
-            selector = false,
-            toggle = false,
-            reveal = true,
-            reveal_force_cwd = true,
-          })
-        end,
-        desc = "[F]loat tree (cwd)",
-      },
-      {
         "<leader>fb",
         function()
           require("neo-tree.command").execute({
             dir = LazyVim.root(),
             source = "buffers",
+            action = "focus",
+            reveal = true,
+            toggle = true,
+          })
+        end,
+        desc = "[b]uffers",
+      },
+      {
+        "<leader>fg",
+        function()
+          require("neo-tree.command").execute({
+            dir = LazyVim.root(),
+            source = "git_status",
             action = "focus",
             reveal = true,
             toggle = true,
@@ -153,7 +152,7 @@ return {
         use_libuv_file_watcher = true,
         hijack_netrw_behavior = "disabled",
         follow_current_file = {
-          enabled = true,
+          enabled = false,
           leave_dirs_open = true,
         },
         window = {

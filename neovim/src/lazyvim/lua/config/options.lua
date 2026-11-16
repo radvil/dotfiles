@@ -16,12 +16,11 @@ if Utils.command_exists("fish") then
 end
 
 -- os.getenv("KITTY_WINDOW_ID") and true or false
----@alias NeoColorscheme "catppuccin-latte" | "catppuccin-machiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight" | "kanagawa" | "onedark" | "material" | "rose-pine"
-
+---@alias NeoColorscheme "catppuccin-latte" | "catppuccin-machiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight-moon" | "kanagawa" | "onedark" | "material" | "rose-pine"
 ---@type NeoColorscheme
-vim.g.neo_colorscheme = "catppuccin-frappe"
+vim.g.neo_colorscheme = "tokyonight-moon"
 vim.g.neo_transparent = false
-vim.g.neo_diminactive = false
+vim.g.neo_diminactive = true
 -- vim.opt.winborder = "rounded"
 -- vim.g.neo_winborder = vim.g.neo_transparent and "single" and "none"
 vim.g.neo_winborder = "rounded"
@@ -32,7 +31,6 @@ vim.g.lazygit_config = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.snacks_animate = false
 vim.g.deprecation_warnings = false
-vim.g.lazyvim_ts_lsp = "tsc"
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
@@ -77,3 +75,5 @@ end
 -- only for diagnostics. The rest of LSP support will still be
 -- provided by rust-analyzer.
 vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
+
+vim.g.lazyvim_ts_lsp = "tsc"

@@ -9,15 +9,15 @@
       "to": "~/.bashrc.d",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
+      "tags": ["*"],
     },
     {
       "from": "./src/bashrc",
       "to": "~/.bashrc",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
-    }
+      "tags": ["*"],
+    },
   ],
-  "cleanup": ["rm -rf ~/.bashrc.d", "rm -rf ~/.bashrc"]
+  "cleanup": ["rm -rf ~/.bashrc.d", "rm -rf ~/.bashrc"],
 }

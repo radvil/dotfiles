@@ -292,6 +292,6 @@ Scale=1.25
 BorderSize=None
 BorderSizeAuto=false
 ButtonsOnLeft=XIAH
-ButtonsOnRight=SM
+ButtonsOnRight=SFM
 library=org.kde.vinyl
 theme=Vinyl

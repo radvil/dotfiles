@@ -75,7 +75,6 @@
 
 Should just pick one from the wallpapers options.
 
-
 ## TODO
 
 - [ ] Fix plasma installer for assets and configs. Hint: check the restore path
