@@ -32,6 +32,29 @@ return {
     opts = {
       servers = {
         angularls = {
+          keys = {
+            {
+              "<leader>cr",
+              function()
+                local bufnr = vim.api.nvim_get_current_buf()
+                local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                local target_client = nil
+                for _, client in ipairs(clients) do
+                  if client.name == "angularls" then
+                    target_client = client
+                    break
+                  elseif client.name == "ts_ls" or client.name == "tsc" or client.name == "vtsls" then
+                    target_client = client
+                  end
+                end
+                if target_client then
+                  vim.lsp.buf.rename(nil, { name = target_client.name })
+                else
+                  vim.lsp.buf.rename()
+                end
+              end,
+            },
+          },
           root_dir = function(bufnr, on_dir)
             -- prefer the top-level nx config if it exists (monorepo support)
             local git = vim.fs.root(bufnr, ".git")
@@ -45,10 +68,9 @@ return {
       },
       setup = {
         angularls = function()
-          Snacks.util.lsp.on({ name = "angularls" }, function(_, client)
-            --HACK: disable angular renaming capability due to duplicate rename popping up
-            client.server_capabilities.renameProvider = false
-          end)
+          -- Snacks.util.lsp.on({ name = "angularls" }, function(_, client)
+          --   client.server_capabilities.renameProvider = false
+          -- end)
         end,
       },
     },

@@ -218,12 +218,22 @@ map("n", "<leader>uD", function()
   LazyVim.try(Utils.reload_theme(function () vim.g.neo_diminactive = not vim.g.neo_diminactive end))
 end, { desc = "Toggle dim background" })
 
--- native snippets. only needed on < 0.11, as 0.11 creates these by default
--- if vim.fn.has("nvim-0.11") == 0 then
---   map("s", "<Tab>", function()
---     return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
---   end, { expr = true, desc = "Jump Next" })
---   map({ "i", "s" }, "<S-Tab>", function()
---     return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
---   end, { expr = true, desc = "Jump Previous" })
--- end
+-- stylua: ignore end
+-- map("n", "<leader>rn", function()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local clients = vim.lsp.get_clients({ bufnr = bufnr })
+--   local target_client = nil
+--   for _, client in ipairs(clients) do
+--     if client.name == "angularls" then
+--       target_client = client
+--       break
+--     elseif client.name == "ts_ls" or client.name == "vtsls" then
+--       target_client = client
+--     end
+--   end
+--   if target_client then
+--     vim.lsp.buf.rename(nil, { name = target_client.name })
+--   else
+--     vim.lsp.buf.rename()
+--   end
+-- end, { desc = "LSP Rename (Single Client)" })

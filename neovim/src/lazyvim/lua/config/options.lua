@@ -34,7 +34,7 @@ vim.g.deprecation_warnings = false
 
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
@@ -79,7 +79,7 @@ vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 -- To use the newer, much faster `tsc` LSP server, either:
 -- enable the `tsc` extra, or set `vim.g.lazyvim_ts_lsp = "tsc"`
 ---@type "vtsls" | "tsgo" | "tsc"
-vim.g.lazyvim_ts_lsp = "tsc"
+vim.g.lazyvim_ts_lsp = "vtsls"
 
 -- Enable this option to avoid conflicts with Prettier.
 -- https://www.lazyvim.org/extras/lang/typescript/biome
