@@ -15,7 +15,7 @@ return {
         vim.list_extend(opts.ensure_installed, { "angular", "scss" })
       end
       vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-        pattern = { "*.html", "*.html" },
+        pattern = { "*.html" },
         callback = function()
           vim.treesitter.start(nil, "angular")
         end,
@@ -35,7 +35,7 @@ return {
           root_dir = function(bufnr, on_dir)
             -- prefer the top-level nx config if it exists (monorepo support)
             local git = vim.fs.root(bufnr, ".git")
-            local markers = { "nx.json", "angular.json" }
+            local markers = { "nx.json", "angular.json", "project.json" }
             local root = git and vim.fs.root(git, markers) or vim.fs.root(bufnr, markers)
             if root then
               on_dir(root)

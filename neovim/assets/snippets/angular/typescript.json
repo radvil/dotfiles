@@ -8,7 +8,7 @@
       "@Component({",
       "\tselector: '${1:selector-name}',",
       "\ttemplateUrl: '${2:name}.html',",
-      "\tstyleUrl: '${2:name}.scss',",
+      "\tstyleUrl: '${2:name}.css',",
       "\timports: [],",
       "})",
       "export class ${3:Name}{",

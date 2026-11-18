@@ -24,7 +24,7 @@ M.keys = {
   },
   {
     "<Leader>fO",
-    function() require("oil").open(vim.uv.cwd()) end,
+    function() require("oil").open_float(vim.uv.cwd()) end,
     desc = "[O]pen current working dir",
   },
 }

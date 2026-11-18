@@ -208,18 +208,6 @@ map("n", "ZB", "<cmd>BAD<cr>", { desc = "quit [B]uffers" })
 map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
 map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
 
--- Toggle autocomplete
-map("n", "<leader>uC", function()
-  local next = not vim.g.neo_autocomplete
-  vim.g.neo_autocomplete = next
-  vim.cmd.Lazy("load nvim-cmp")
-  if next then
-    LazyVim.info("Code completion set to auto", { title = "Code completion" })
-  else
-    LazyVim.warn("Code completion set to manual", { title = "Code completion" })
-  end
-end, { desc = "toggle code [C]ompletion" })
-
 -- Toggle transparency
 map("n", "<leader>uT", function()
   LazyVim.try(Utils.reload_theme(function() vim.g.neo_transparent = not vim.g.neo_transparent end))
@@ -231,11 +219,11 @@ map("n", "<leader>uD", function()
 end, { desc = "Toggle dim background" })
 
 -- native snippets. only needed on < 0.11, as 0.11 creates these by default
-if vim.fn.has("nvim-0.11") == 0 then
-  map("s", "<Tab>", function()
-    return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
-  end, { expr = true, desc = "Jump Next" })
-  map({ "i", "s" }, "<S-Tab>", function()
-    return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
-  end, { expr = true, desc = "Jump Previous" })
-end
+-- if vim.fn.has("nvim-0.11") == 0 then
+--   map("s", "<Tab>", function()
+--     return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
+--   end, { expr = true, desc = "Jump Next" })
+--   map({ "i", "s" }, "<S-Tab>", function()
+--     return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
+--   end, { expr = true, desc = "Jump Previous" })
+-- end

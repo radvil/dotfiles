@@ -76,4 +76,11 @@ end
 -- provided by rust-analyzer.
 vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 
+-- To use the newer, much faster `tsc` LSP server, either:
+-- enable the `tsc` extra, or set `vim.g.lazyvim_ts_lsp = "tsc"`
+---@type "vtsls" | "tsgo" | "tsc"
 vim.g.lazyvim_ts_lsp = "tsc"
+
+-- Enable this option to avoid conflicts with Prettier.
+-- https://www.lazyvim.org/extras/lang/typescript/biome
+vim.g.lazyvim_prettier_needs_config = true
