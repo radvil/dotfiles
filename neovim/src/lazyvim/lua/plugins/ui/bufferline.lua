@@ -1,6 +1,9 @@
 ---@diagnostic disable: param-type-mismatch
 local blacklist = {
   -- popups
+  "snacks_picker_preview",
+  "snacks_picker_select",
+  "snacks_picker_input",
   "TelescopeResults",
   "TelescopePrompt",
   "neo-tree-popup",

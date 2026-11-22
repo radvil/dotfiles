@@ -9,7 +9,7 @@ local map = vim.keymap.set
 ---- either both of these affect window navigation
 -- map({ "n", "x", "v" }, "<nL>", "<nop>")
 -- map("n", "<a-q>", "<nop>")
-map("n", "q", "<nop>")
+map({ "n", "x", "v" }, "q", "<nop>")
 
 map("", "<c-z>", ":undo<cr>", { nowait = true })
 map("n", "Q", "q", { nowait = true, desc = "toggle recording" })
@@ -44,25 +44,14 @@ map({ "n", "v" }, "<leader>cf", function() LazyVim.format({ force = true }) end,
 LazyVim.format.snacks_toggle():map("<leader>uf")
 LazyVim.format.snacks_toggle(true):map("<leader>uF")
 
--- -- diagnostic
--- local diagnostic_goto = function(next, severity)
---   local count = next and 1 or -1
---   severity = severity and vim.diagnostic.severity[severity] or nil
---   return function()
---     vim.diagnostic.jump({
---       count = count,
---       severity = severity,
---       -- on_jump TODO: on jump open popup on diagnosed text
---     })
---   end
--- end
-
+-- diagnostic
 local diagnostic_goto = function(next, severity)
----@diagnostic disable-next-line: deprecated
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go({ severity = severity })
+    vim.diagnostic.jump({
+      count = (next and 1 or -1) * vim.v.count1,
+      severity = severity and vim.diagnostic.severity[severity] or nil,
+      float = true,
+    })
   end
 end
 
@@ -76,11 +65,23 @@ map({ "n", "v", "x" }, "[w", diagnostic_goto(false, "WARN"), { desc = "go to pre
 
 -- clipboard
 if vim.opt.clipboard ~= "unnamedplus" then
-  map({ "n", "o", "x", "v" }, "<leader>y", '"+y', { desc = "yank to system clipboard (system)", nowait = true })
-  map({ "n", "o", "x", "v" }, "<leader>d", '"+d', { desc = "delete to system clipboard (system)", nowait = true })
-  map({ "n", "o", "x", "v" }, "<leader>p", '"+p', { desc = "paste from system clipboard (system)", nowait = true })
-  map("n", "gY", '"+y$', { desc = "yank to end of line (system)", nowait = true })
-  map("n", "gP", '"+P', { desc = "paste before cursor (system)", nowait = true })
+  -- map(mode, "<Leader>y", '"+y',  { desc = "[y]ank to system clipboard" })
+  -- map(mode, "<Leader>p", '"+p',  { desc = "[p]aste after from system clipboard" })
+  map({ "n", "v" }, "<Leader>x", '"_d',  { desc = "[x]elete without yanking" })
+  map("n",          "<Leader>X", '"_D',  { desc = "[X]elete line without yanking" })
+  map("n",          "x",         '"_x',  { noremap = true, silent = true })
+
+  map("n",                    "gP",        '"+P',  { desc = "[P]aste before cursor (system)", nowait = true })
+  map({ "n", "o", "x", "v" }, "<Leader>P", '"+P',  { desc = "[P]aste before from system clipboard", nowait = true })
+  map({ "n", "v" },           "<leader>p", '"+p',  { desc = "[p]aste from system clipboard (system)", nowait = true })
+  map({ "o", "x" },           "<Leader>p", '"_dP', { desc = "[p]aste from system clipboard (system)", nowait = true })
+
+  map({ "n", "o", "x", "v" }, "<Leader>d", '"+d',  { desc = "[d]elete (cut) to system clipboard", nowait = true })
+  map({ "n", "o", "x", "v" }, "<Leader>D", '"+D',  { desc = "[D]elete line (cut) to system clipboard", nowait = true })
+
+  map("n",                    "gY",        '"+y$', { desc = "[Y]ank to end of line (system)", nowait = true })
+  map("n",                    "<Leader>Y", '"+Y',  { desc = "[Y]ank line to system clipboard", nowait = true })
+  map({ "n", "o", "x", "v" }, "<leader>y", '"+y',  { desc = "[y]ank to system clipboard (system)", nowait = true })
 end
 
 -- Clear search, diff update and redraw
@@ -116,9 +117,7 @@ map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "go to recent [b]uffer" })
 map("n", "[b", ":bprevious<cr>", { desc = "prev[ous buffer" })
 map("n", "]b", ":bnext<cr>", { desc = "n]xt buffer" })
 
-map("n", "<leader>bd", function ()
-  Snacks.bufdelete()
-end, { desc = "[d]elete buffer" })
+map("n", "<leader>bd", function () Snacks.bufdelete() end, { desc = "[d]elete buffer" })
 map("n", "<c-w>q", "<cmd>:bd<cr>", { desc = "[q]uit window+buffer" })
 if not LazyVim.has("bufferline.nvim") then
   map("n", "<a-[>", ":bprevious<cr>", { desc = "prev[ous buffer" })
@@ -133,11 +132,16 @@ map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 Snacks.toggle.option("spell", { name = "Spelling"}):map("<leader>us")
 Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
 Snacks.toggle.option("relativenumber", { name = "Relative Number"}):map("<leader>uL")
+Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
+Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
+Snacks.toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map("<leader>uA")
+Snacks.toggle.treesitter():map("<leader>ut")
+Snacks.toggle.indent():map("<leader>ui")
+Snacks.toggle.scroll():map("<leader>uS")
 Snacks.toggle.diagnostics():map("<leader>ud")
 Snacks.toggle.line_number():map("<leader>ul")
-Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
-Snacks.toggle.treesitter():map("<leader>uT")
-Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
+Snacks.toggle.animate():map("<leader>ua")
+
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
@@ -219,21 +223,3 @@ map("n", "<leader>uD", function()
 end, { desc = "Toggle dim background" })
 
 -- stylua: ignore end
--- map("n", "<leader>rn", function()
---   local bufnr = vim.api.nvim_get_current_buf()
---   local clients = vim.lsp.get_clients({ bufnr = bufnr })
---   local target_client = nil
---   for _, client in ipairs(clients) do
---     if client.name == "angularls" then
---       target_client = client
---       break
---     elseif client.name == "ts_ls" or client.name == "vtsls" then
---       target_client = client
---     end
---   end
---   if target_client then
---     vim.lsp.buf.rename(nil, { name = target_client.name })
---   else
---     vim.lsp.buf.rename()
---   end
--- end, { desc = "LSP Rename (Single Client)" })

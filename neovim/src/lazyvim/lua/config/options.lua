@@ -28,10 +28,11 @@ vim.g.neo_winborder = "rounded"
 vim.g.minipairs_disable = true
 vim.g.autoformat = false
 vim.g.lazygit_config = true
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "snacks"
 vim.g.snacks_animate = false
 vim.g.deprecation_warnings = false
 
+-- vim.opt.cmdheight = 4
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
 vim.opt.cursorline = false
@@ -79,7 +80,7 @@ vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 -- To use the newer, much faster `tsc` LSP server, either:
 -- enable the `tsc` extra, or set `vim.g.lazyvim_ts_lsp = "tsc"`
 ---@type "vtsls" | "tsgo" | "tsc"
-vim.g.lazyvim_ts_lsp = "vtsls"
+vim.g.lazyvim_ts_lsp = "tsc"
 
 -- Enable this option to avoid conflicts with Prettier.
 -- https://www.lazyvim.org/extras/lang/typescript/biome

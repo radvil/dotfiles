@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  "todo-comments.nvim",
+  "folke/todo-comments.nvim",
   keys = function()
     return {
       {
@@ -18,14 +18,18 @@ return {
         desc = "goto previous [t]odo",
       },
       {
-        "<leader>xt",
-        "<cmd>TodoTrouble<Cr>",
-        desc = "[t]odos diagnosti[x]",
+        "<leader>/t",
+        function()
+          Snacks.picker.todo_comments()
+        end,
+        desc = "/ Todo items",
       },
       {
-        "<leader>/t",
-        "<cmd>TodoTelescope<Cr>",
-        desc = "telescope » [t]asks/[t]odos",
+        "<leader>/T",
+        function()
+          Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+        end,
+        desc = "/ items Todo/Fix/Fixme",
       },
     }
   end,

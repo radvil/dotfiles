@@ -86,10 +86,38 @@ require("config.lazy").bootstrap({
         },
       },
     },
+    {
+      "radvil/ng-nvim",
+      name = "NgNvim",
+      dev = true,
+      cmd = {
+        "At",
+        "Ac",
+        "As",
+        "Atc",
+        "Ap",
+        "Atv",
+        "Acv",
+        "Asv",
+      },
+      config = function()
+        require("ng-nvim").setup({
+          ignored_dirs = {
+            node_modules = true,
+            [".git"] = true,
+            dist = true,
+            [".nx"] = true,
+            [".angular"] = true,
+          },
+        })
+      end,
+    },
     { import = "plugins.colorscheme" },
     { import = "plugins.completion" },
     { import = "plugins.editor" },
+    { import = "plugins.lsp" },
     { import = "plugins.misc" },
+    { import = "plugins.nav" },
     { import = "plugins.ui" },
     { import = "plugins" },
   },

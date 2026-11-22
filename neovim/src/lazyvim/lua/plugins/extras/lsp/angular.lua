@@ -43,7 +43,7 @@ return {
                   if client.name == "angularls" then
                     target_client = client
                     break
-                  elseif client.name == "ts_ls" or client.name == "tsc" or client.name == "vtsls" then
+                  elseif client.name == "tsc" or client.name == "vtsls" or client.name == "ts_ls" then
                     target_client = client
                   end
                 end
@@ -53,6 +53,7 @@ return {
                   vim.lsp.buf.rename()
                 end
               end,
+              desc = "Format Angular Code",
             },
           },
           root_dir = function(bufnr, on_dir)
@@ -94,8 +95,10 @@ return {
   {
     "conform.nvim",
     opts = function(_, opts)
-      if LazyVim.has_extra("formatting.prettier") then
-        opts.formatters_by_ft = opts.formatters_by_ft or {}
+      opts.formatters_by_ft = opts.formatters_by_ft or {}
+      if LazyVim.has_extra("lang.typescript.oxc") then
+        opts.formatters_by_ft.htmlangular = { "oxfmt" }
+      elseif LazyVim.has_extra("formatting.prettier") then
         opts.formatters_by_ft.htmlangular = { "prettier" }
       end
     end,

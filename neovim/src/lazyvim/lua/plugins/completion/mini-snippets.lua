@@ -4,6 +4,8 @@ local snippets = os.getenv("DOTFILES") .. "/neovim/assets/snippets"
 return {
   "mini.snippets",
   opts = {
+    -- <c-c> by default, see :h MiniSnippets-session
+    mappings = { stop = "<a-q>" },
     snippets = {
       -- gen_loader.from_file(snippets .. "/all/package.json"),
       gen_loader.from_file(snippets .. "/all/css.json"),

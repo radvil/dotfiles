@@ -1,6 +1,6 @@
 [Keyboard]
 RepeatDelay=360
-RepeatRate=50
+RepeatRate=36
 
 [Libinput][12538][768][USB Optical Mouse ]
 PointerAcceleration=0.200

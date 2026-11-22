@@ -1,11 +1,13 @@
 local disabled_plugins = {
-  -- "folke/which-key.nvim",
   -- "nvim-mini/mini.indentscope",
   -- "folke/noice.nvim",
+  -- "folke/which-key.nvim",
   "nvim-mini/mini.ai",
   "nvim-treesitter/nvim-treesitter-textobjects",
+  "nvim-treesitter/nvim-treesitter-context",
   "MagicDuck/grug-far.nvim",
-  -- "stevearc/dressing.nvim",
+  "stevearc/dressing.nvim",
+  "nvim-telescope/telescope.nvim",
 }
 
 ---@type LazySpec[]

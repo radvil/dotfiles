@@ -15,6 +15,10 @@ return {
     opts = {
       dashboard = require("plugins.ui.opts.snacks-dashboard"),
       words = { enabled = false },
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      --animate = { enabled = true, duraton = 1000 },
+      --scroll = { enabled = true },
       indent = {
         indent = {
           char = "┊",
@@ -41,6 +45,14 @@ return {
             arrow = ">",
           },
         },
+      },
+      input = {
+        icon = " ",
+        icon_hl = "SnacksInputIcon",
+        icon_pos = "left",
+        prompt_pos = "title",
+        win = { style = "input" },
+        expand = false,
       },
     },
   },
