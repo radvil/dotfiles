@@ -1,8 +1,7 @@
 {
   "name": "flatpak",
   "description": "Flatpak system apps",
-  "builds": {
-  },
+  "builds": {},
   "configs": [],
-  "cleanup": []
+  "cleanup": [],
 }

@@ -75,13 +75,13 @@ _______________                              _______________
   },
   sections = {
     { section = "header" },
-    {
-      pane = 2,
-      section = "terminal",
-      cmd = "colorscript -e square",
-      height = 4,
-      padding = 2,
-    },
+    -- {
+    --   pane = 2,
+    --   section = "terminal",
+    --   cmd = "colorscript -e square",
+    --   height = 4,
+    --   padding = 2,
+    -- },
     {
       section = "keys",
       padding = 1,
@@ -94,6 +94,7 @@ _______________                              _______________
       section = "recent_files",
       indent = 2,
       padding = 2,
+      limit = 10,
     },
     {
       pane = 2,

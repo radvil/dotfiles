@@ -16,10 +16,9 @@ if Utils.command_exists("fish") then
 end
 
 -- os.getenv("KITTY_WINDOW_ID") and true or false
----@alias NeoColorscheme "catppuccin-latte" | "catppuccin-machiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight" | "kanagawa" | "onedark" | "material" | "rose-pine"
-
+---@alias NeoColorscheme "catppuccin-latte" | "catppuccin-machiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight-moon" | "kanagawa" | "onedark" | "material" | "rose-pine"
 ---@type NeoColorscheme
-vim.g.neo_colorscheme = "catppuccin-frappe"
+vim.g.neo_colorscheme = "tokyonight-moon"
 vim.g.neo_transparent = false
 vim.g.neo_diminactive = true
 -- vim.opt.winborder = "rounded"
@@ -29,14 +28,14 @@ vim.g.neo_winborder = "rounded"
 vim.g.minipairs_disable = true
 vim.g.autoformat = false
 vim.g.lazygit_config = true
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "snacks"
 vim.g.snacks_animate = false
 vim.g.deprecation_warnings = false
-vim.g.lazyvim_ts_lsp = "tsgo"
 
+-- vim.opt.cmdheight = 4
 vim.opt.clipboard = ""
 vim.opt.guicursor = ""
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
@@ -71,3 +70,18 @@ end
 if vim.opt.signcolumn:get() == "yes" and not LazyVim.has("statuscol.nvim") then
   vim.opt.statuscolumn = [[%!v:lua.Snacks.statuscolumn()]]
 end
+
+-- LSP Server to use for Rust.
+-- Set to "bacon-ls" to use bacon-ls instead of rust-analyzer.
+-- only for diagnostics. The rest of LSP support will still be
+-- provided by rust-analyzer.
+vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
+
+-- To use the newer, much faster `tsc` LSP server, either:
+-- enable the `tsc` extra, or set `vim.g.lazyvim_ts_lsp = "tsc"`
+---@type "vtsls" | "tsgo" | "tsc"
+vim.g.lazyvim_ts_lsp = "tsc"
+
+-- Enable this option to avoid conflicts with Prettier.
+-- https://www.lazyvim.org/extras/lang/typescript/biome
+vim.g.lazyvim_prettier_needs_config = true

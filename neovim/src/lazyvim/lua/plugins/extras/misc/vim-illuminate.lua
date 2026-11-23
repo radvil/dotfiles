@@ -5,6 +5,7 @@ return {
       words = { enabled = false },
     },
   },
+
   {
     "RRethy/vim-illuminate",
     keys = {
@@ -25,40 +26,41 @@ return {
         mode = { "n", "x", "o" },
       },
     },
-    config = function()
-      require("illuminate").configure({
-        delay = 100,
-        under_cursor = false,
-        large_file_cutoff = 2000,
-        -- large_file_overrides = nil,
-        -- large_file_overrides = {
-        --   providers = { "lsp" },
-        -- },
-        filetypes_denylist = {
-          "fugitiveblame",
-          "DiffviewFiles",
-          "NeogitStatus",
-          "Dashboard",
-          "dashboard",
-          "MundoDiff",
-          "gitcommit",
-          "NvimTree",
-          "fugitive",
-          "neo-tree",
-          "Outline",
-          "Trouble",
-          "harpoon",
-          "prompt",
-          "dirbuf",
-          "alpha",
-          "Mundo",
-          "dbui",
-          "help",
-          "edgy",
-          "oil",
-          "qf",
-        },
-      })
+    opts = {
+      delay = 100,
+      under_cursor = false,
+      large_file_cutoff = 2000,
+      -- large_file_overrides = nil,
+      large_file_overrides = {
+        providers = { "lsp" },
+      },
+      filetypes_denylist = {
+        "fugitiveblame",
+        "DiffviewFiles",
+        "NeogitStatus",
+        "Dashboard",
+        "dashboard",
+        "MundoDiff",
+        "gitcommit",
+        "NvimTree",
+        "fugitive",
+        "neo-tree",
+        "Outline",
+        "Trouble",
+        "harpoon",
+        "prompt",
+        "dirbuf",
+        "alpha",
+        "Mundo",
+        "dbui",
+        "help",
+        "edgy",
+        "oil",
+        "qf",
+      },
+    },
+    config = function(opts)
+      require("illuminate").configure(opts)
     end,
   },
 }

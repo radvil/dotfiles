@@ -6,14 +6,15 @@
 local Utils = require("utils")
 local map = vim.keymap.set
 
----@diagnostic disable: missing-fields
--- reset
+---- either both of these affect window navigation
 -- map({ "n", "x", "v" }, "<nL>", "<nop>")
+-- map("n", "<a-q>", "<nop>")
+map({ "n", "x", "v" }, "q", "<nop>")
+
 map("", "<c-z>", ":undo<cr>", { nowait = true })
 map("n", "Q", "q", { nowait = true, desc = "toggle recording" })
--- map("n", "<a-q>", "<nop>")
 map({ "n", "i", "x", "v", "s", "o", "c" }, "<a-q>", "<esc>", { desc = "[esc]" })
-map("n", "q", "<nop>")
+map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
 
 -- base
 map("v", "<", "<gv", { desc = "indent left" })
@@ -44,51 +45,55 @@ LazyVim.format.snacks_toggle():map("<leader>uf")
 LazyVim.format.snacks_toggle(true):map("<leader>uF")
 
 -- diagnostic
--- local diagnostic_goto = function(next, severity)
---   local count = next and 1 or -1
---   severity = severity and vim.diagnostic.severity[severity] or nil
---   return function()
---     vim.diagnostic.jump({
---       count = count,
---       severity = severity
---     })
---   end
--- end
-
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go({ severity = severity })
+    vim.diagnostic.jump({
+      count = (next and 1 or -1) * vim.v.count1,
+      severity = severity and vim.diagnostic.severity[severity] or nil,
+      float = true,
+    })
   end
 end
+
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "code line [d]iagnostics" })
 map({ "n", "v", "x" }, "]d", diagnostic_goto(true), { desc = "go to next [d]iagnostic" })
 map({ "n", "v", "x" }, "[d", diagnostic_goto(false), { desc = "go to prev [d]iagnostic" })
-map({ "n", "v", "x" }, "]e", diagnostic_goto(true, "ERROR"), { desc = "go to next [e]rror" })
-map({ "n", "v", "x" }, "[e", diagnostic_goto(false, "ERROR"), { desc = "go to prev [e]rror" })
+map({ "n", "v", "x" }, "]x", diagnostic_goto(true, "ERROR"), { desc = "go to next [e]rror" })
+map({ "n", "v", "x" }, "[x", diagnostic_goto(false, "ERROR"), { desc = "go to prev [e]rror" })
 map({ "n", "v", "x" }, "]w", diagnostic_goto(true, "WARN"), { desc = "go to next [w]arning" })
 map({ "n", "v", "x" }, "[w", diagnostic_goto(false, "WARN"), { desc = "go to prev [w]arning" })
 
 -- clipboard
 if vim.opt.clipboard ~= "unnamedplus" then
-  map({ "n", "o", "x", "v" }, "gy", '"+y', { desc = "yank to system clipboard (system)", nowait = true })
-  map({ "n", "o", "x", "v" }, "<leader>d", '"+d', { desc = "delete to system clipboard (system)", nowait = true })
-  map({ "n", "o", "x", "v" }, "gp", '"+p', { desc = "paste from system clipboard (system)", nowait = true })
-  map("n", "gY", '"+y$', { desc = "yank to end of line (system)", nowait = true })
-  map("n", "gP", '"+P', { desc = "paste before cursor (system)", nowait = true })
+  -- map(mode, "<Leader>y", '"+y',  { desc = "[y]ank to system clipboard" })
+  -- map(mode, "<Leader>p", '"+p',  { desc = "[p]aste after from system clipboard" })
+  map({ "n", "v" }, "<Leader>x", '"_d',  { desc = "[x]elete without yanking" })
+  map("n",          "<Leader>X", '"_D',  { desc = "[X]elete line without yanking" })
+  map("n",          "x",         '"_x',  { noremap = true, silent = true })
+
+  map("n",                    "gP",        '"+P',  { desc = "[P]aste before cursor (system)", nowait = true })
+  map({ "n", "o", "x", "v" }, "<Leader>P", '"+P',  { desc = "[P]aste before from system clipboard", nowait = true })
+  map({ "n", "v" },           "<leader>p", '"+p',  { desc = "[p]aste from system clipboard (system)", nowait = true })
+  map({ "o", "x" },           "<Leader>p", '"_dP', { desc = "[p]aste from system clipboard (system)", nowait = true })
+
+  map({ "n", "o", "x", "v" }, "<Leader>d", '"+d',  { desc = "[d]elete (cut) to system clipboard", nowait = true })
+  map({ "n", "o", "x", "v" }, "<Leader>D", '"+D',  { desc = "[D]elete line (cut) to system clipboard", nowait = true })
+
+  map("n",                    "gY",        '"+y$', { desc = "[Y]ank to end of line (system)", nowait = true })
+  map("n",                    "<Leader>Y", '"+Y',  { desc = "[Y]ank line to system clipboard", nowait = true })
+  map({ "n", "o", "x", "v" }, "<leader>y", '"+y',  { desc = "[y]ank to system clipboard (system)", nowait = true })
 end
 
 -- Clear search, diff update and redraw
 map( "n", "<leader>ur", "<cmd>nohlsearch<bar>diffupdate<bar>normal! <c-l><cr>", { desc = "redraw / update ui" })
 
 -- swap lines
-map("n", "<A-k>", ":m .-2<cr>==", { desc = "swap current line up" })
-map("n", "<A-j>", ":m .+1<cr>==", { desc = "swap current line down" })
-map("i", "<A-j>", "<esc>:m .+1<cr>==gi", { desc = "swap current line down" })
-map("i", "<A-k>", "<esc>:m .-2<cr>==gi", { desc = "swap current line up" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "swap selected lines up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "swap selected lines down" })
+map("n", "[e", ":m .-2<cr>==", { desc = "swap current line up" })
+map("n", "]e", ":m .+1<cr>==", { desc = "swap current line down" })
+map("i", "[e", "<esc>:m .-2<cr>==gi", { desc = "swap current line up" })
+map("i", "]e", "<esc>:m .+1<cr>==gi", { desc = "swap current line down" })
+map("v", "[e", ":m '<-2<cr>gv=gv", { desc = "swap selected lines up" })
+map("v", "]e", ":m '>+1<cr>gv=gv", { desc = "swap selected lines down" })
 
 -- windows
 if not LazyVim.has("nvim-window-picker") then
@@ -112,10 +117,8 @@ map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "go to recent [b]uffer" })
 map("n", "[b", ":bprevious<cr>", { desc = "prev[ous buffer" })
 map("n", "]b", ":bnext<cr>", { desc = "n]xt buffer" })
 
-map("n", "<leader>bd", function ()
-  Snacks.bufdelete()
-end, { desc = "[d]elete buffer" })
-map("n", "<Leader>bD", "<cmd>:bd<cr>", { desc = "[D]elete buffer+window" })
+map("n", "<leader>bd", function () Snacks.bufdelete() end, { desc = "[d]elete buffer" })
+map("n", "<c-w>q", "<cmd>:bd<cr>", { desc = "[q]uit window+buffer" })
 if not LazyVim.has("bufferline.nvim") then
   map("n", "<a-[>", ":bprevious<cr>", { desc = "prev[ous buffer" })
   map("n", "<a-]>", ":bnext<cr>", { desc = "n]xt buffer" })
@@ -129,11 +132,16 @@ map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 Snacks.toggle.option("spell", { name = "Spelling"}):map("<leader>us")
 Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
 Snacks.toggle.option("relativenumber", { name = "Relative Number"}):map("<leader>uL")
+Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
+Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
+Snacks.toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map("<leader>uA")
+Snacks.toggle.treesitter():map("<leader>ut")
+Snacks.toggle.indent():map("<leader>ui")
+Snacks.toggle.scroll():map("<leader>uS")
 Snacks.toggle.diagnostics():map("<leader>ud")
 Snacks.toggle.line_number():map("<leader>ul")
-Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
-Snacks.toggle.treesitter():map("<leader>uT")
-Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
+Snacks.toggle.animate():map("<leader>ua")
+
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
@@ -181,30 +189,28 @@ map("n", "<leader>tj", function()
   })
 end, { desc = "run zmux" })
 
+map("n", "<leader>fe", function()
+  Snacks.terminal.toggle("spf", {
+    -- cwd = vim.uv.os_homedir(),
+    cwd = vim.uv.cwd(),
+    win = {
+      title = "   Super File Manager",
+      title_pos = "right",
+    }
+  })
+end, { desc = "Open Super File Manager" })
+
 -- experimental keymap
 map({ "n", "x", "v", "o" }, "H", "^", { desc = "start of line (non blank)" })
 map({ "n", "x", "v", "o" }, "L", "$", { desc = "end of the line" })
 map({ "n", "x", "v" }, "s", "<nop>", { remap = true, desc = "[reset]" })
-map({ "n", "i", "s", "o" }, "<a-space>", "<esc>", { desc = "[esc] with space" })
-map({ "i", "n" }, "<c-s>", "<cmd>write<cr>", { desc = "save changes" })
+map({ "i", "n" }, "<c-s>", "<cmd>write<cr><esc>", { desc = "save changes" })
 map("n", "ZZ", ":conf qa<cr>", { desc = "+confirm quit all" })
 map("n", "Zt", ":tabclose<cr>", { desc = "quit [t]ab" })
 map("n", "Zb", "<cmd>BD<cr>", { desc = "quit [b]uffer" })
 map("n", "ZB", "<cmd>BAD<cr>", { desc = "quit [B]uffers" })
 map("n", "Zw", "<c-w>c", { desc = "quit [w]indow" })
 map("n", "Zf", ":fclose<cr>", { desc = "quit [f]loating window" })
-
--- Toggle autocomplete
-map("n", "<leader>uC", function()
-  local next = not vim.g.neo_autocomplete
-  vim.g.neo_autocomplete = next
-  vim.cmd.Lazy("load nvim-cmp")
-  if next then
-    LazyVim.info("Code completion set to auto", { title = "Code completion" })
-  else
-    LazyVim.warn("Code completion set to manual", { title = "Code completion" })
-  end
-end, { desc = "toggle code [C]ompletion" })
 
 -- Toggle transparency
 map("n", "<leader>uT", function()
@@ -216,18 +222,4 @@ map("n", "<leader>uD", function()
   LazyVim.try(Utils.reload_theme(function () vim.g.neo_diminactive = not vim.g.neo_diminactive end))
 end, { desc = "Toggle dim background" })
 
-if LazyVim.has("mini.map") then
-  for _, key in ipairs({ "n", "N", "*", "#" }) do
-    map("n", key, key .. "<Cmd>lua require('mini.map').refresh({}, {lines = false, scrollbar = false})<CR>")
-  end
-end
-
--- native snippets. only needed on < 0.11, as 0.11 creates these by default
-if vim.fn.has("nvim-0.11") == 0 then
-  map("s", "<Tab>", function()
-    return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
-  end, { expr = true, desc = "Jump Next" })
-  map({ "i", "s" }, "<S-Tab>", function()
-    return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
-  end, { expr = true, desc = "Jump Previous" })
-end
+-- stylua: ignore end

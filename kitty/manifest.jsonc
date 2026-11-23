@@ -5,7 +5,7 @@
     "arch": ["sudo pacman -S kitty"],
     "cachyos": ["paru -S kitty --noconfirm"],
     "fedora": ["sudo dnf install kitty -y"],
-    "nobara": ["sudo dnf install kitty -y"]
+    "nobara": ["sudo dnf install kitty -y"],
   },
   "configs": [
     {
@@ -13,8 +13,8 @@
       "to": "~/.config/kitty",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
-    }
+      "tags": ["*"],
+    },
   ],
-  "cleanup": ["rm -rf ~/.config/kitty"]
+  "cleanup": ["rm -rf ~/.config/kitty"],
 }

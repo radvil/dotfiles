@@ -6,6 +6,5 @@
     // "cachyos": ["paru -S --noconfirm nerd-fonts-git"]
   },
   "configs": [],
-  "cleanup": [
-  ]
+  "cleanup": [],
 }

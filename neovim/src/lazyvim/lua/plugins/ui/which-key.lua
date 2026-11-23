@@ -1,7 +1,7 @@
 return {
   "which-key.nvim",
   opts = {
-    preset = "modern",
+    preset = "helix",
     show_help = true,
     notify = false,
     plugins = {

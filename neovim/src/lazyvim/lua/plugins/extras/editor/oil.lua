@@ -8,24 +8,24 @@ local M = {
 -- stylua: ignore
 M.keys = {
   {
-    "<a-d>",
-    function() require("oil").open() end,
-    desc = "[o]pen open file directory",
-  },
-  {
     "<a-f>",
     function() require("oil").toggle_float() end,
-    desc = "[o]pen toggle file directory [float]",
+    desc = "[o]pen current file's dir (float)",
+  },
+  {
+    "<a-d>",
+    function() require("oil").open(vim.uv.cwd()) end,
+    desc = "[o]pen current working dir (float)",
   },
   {
     "<Leader>fo",
     function() require("oil").open() end,
-    desc = "[o]pen files",
+    desc = "[o]pen current file's dir",
   },
   {
     "<Leader>fO",
-    function() require("oil").open(vim.uv.cwd()) end,
-    desc = "[O]pen files (cwd)",
+    function() require("oil").open_float(vim.uv.cwd()) end,
+    desc = "[O]pen current working dir",
   },
 }
 
@@ -34,11 +34,14 @@ M.opts = {
   skip_confirm_for_simple_edits = false,
   default_file_explorer = true,
   use_default_keymaps = false,
-  restore_win_options = false,
   delete_to_trash = true,
   cleanup_delay_ms = 500,
   view_options = { show_hidden = true },
   buf_options = { buflisted = true },
+  constrain_cursor = "name",
+  lsp_file_methods = {
+    enabled = false,
+  },
   keymaps = {
     ["q"] = "actions.close",
     ["g?"] = "actions.show_help",
@@ -54,19 +57,12 @@ M.opts = {
     ["<leader>r"] = "actions.refresh",
   },
   win_options = {
-    wrap = false,
-    signcolumn = "no",
-    cursorcolumn = false,
-    foldcolumn = "0",
-    spell = false,
-    list = false,
-    conceallevel = 3,
     concealcursor = "n",
   },
   float = {
     padding = 2,
     max_width = 96,
-    max_height = 45,
+    max_height = 20,
     border = "single",
     win_options = { winblend = 0 },
   },

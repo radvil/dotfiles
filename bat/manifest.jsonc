@@ -5,7 +5,7 @@
     "arch": ["sudo pacman -S bat"],
     "cachyos": ["sudo pacman -S bat --noconfirm"],
     "fedora": ["sudo dnf install bat -y"],
-    "nobara": ["sudo dnf install bat -y"]
+    "nobara": ["sudo dnf install bat -y"],
   },
   "configs": [
     {
@@ -13,8 +13,8 @@
       "to": "~/.config/bat",
       "method": "symlink",
       "force": true,
-      "tags": ["*"]
-    }
+      "tags": ["*"],
+    },
   ],
-  "cleanup": ["rm -rf ~/.config/bat"]
+  "cleanup": ["rm -rf ~/.config/bat"],
 }

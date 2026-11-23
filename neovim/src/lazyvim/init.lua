@@ -1,6 +1,6 @@
 require("config.lazy").bootstrap({
   dev = {
-    path = "/media/data/Projects/Misc",
+    path = "/media/data/Projects/Misc/Wkwk-Nvim",
     fallback = false,
   },
   providers_blacklist = {
@@ -89,7 +89,9 @@ require("config.lazy").bootstrap({
     { import = "plugins.colorscheme" },
     { import = "plugins.completion" },
     { import = "plugins.editor" },
+    { import = "plugins.lsp" },
     { import = "plugins.misc" },
+    { import = "plugins.nav" },
     { import = "plugins.ui" },
     { import = "plugins" },
   },

@@ -88,7 +88,7 @@ return {
         view_warn = "notify",
       },
       lsp = {
-        progress = { enabled = false },
+        progress = { enabled = true },
         ---message shown by lsp servers
         message = { enabled = true, view = "mini" },
         hover = { enabled = true, silent = true },
@@ -128,17 +128,17 @@ return {
     },
   },
 
-  config = function(_, opts)
-    opts = vim.tbl_deep_extend("force", opts or {}) or {}
-    if opts and not vim.g.neo_transparent then
-      local win_opts = { winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder" }
-      local border_opts = { style = "none", padding = { 1, 2 } }
-      opts.views.popupmenu.border = border_opts
-      opts.views.cmdline_popup.border = border_opts
-      opts.views.popupmenu.win_options = win_opts
-      opts.views.cmdline_popup.win_options = win_opts
-      opts.presets.lsp_doc_border = { views = { hover = { border = border_opts } } }
-    end
-    require("noice").setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   opts = vim.tbl_deep_extend("force", opts or {}) or {}
+  --   if opts and not vim.g.neo_transparent then
+  --     local win_opts = { winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder" }
+  --     local border_opts = { style = "none", padding = { 1, 2 } }
+  --     opts.views.popupmenu.border = border_opts
+  --     opts.views.cmdline_popup.border = border_opts
+  --     opts.views.popupmenu.win_options = win_opts
+  --     opts.views.cmdline_popup.win_options = win_opts
+  --     opts.presets.lsp_doc_border = { views = { hover = { border = border_opts } } }
+  --   end
+  --   require("noice").setup(opts)
+  -- end,
 }

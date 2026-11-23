@@ -5,11 +5,11 @@ initial-command = fish
 shell-integration-features = no-cursor
 
 # theme = dark:GruvboxDarkHard,light:GruvboxLightHard
-theme = "Ghostty Default StyleDark"
-background-opacity = 1
+theme = "Atom"
+background-opacity = 0.86
 background-blur = true
 
-font-size = 14
+font-size = 13
 font-family = "JetBrainsMono Nerd Font"
 
 mouse-hide-while-typing = true

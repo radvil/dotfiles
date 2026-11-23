@@ -4,7 +4,7 @@
 # set -gx NOTES_DIR "$HOME/Documents/Notes"
 
 function fish_greeting
-    echo Yoo (set_color yellow)$USER(set_color normal), please stop being an asshole!\n
+    # echo Yoo (set_color yellow)$USER(set_color normal), please stop being an asshole!\n
 end
 
 if status is-interactive
@@ -14,3 +14,10 @@ end
 function fish_user_key_bindings
     keybinds_zeoxide
 end
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/radvil/.local/bin" $PATH
+
+# Qwen Code PATH block begin
+set -gx PATH '/home/radvil/.local/bin' $PATH
+

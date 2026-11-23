@@ -7,28 +7,11 @@
       "",
       "@Component({",
       "\tselector: '${1:selector-name}',",
-      "\ttemplateUrl: '${2:name}.component.html',",
-      "\tstyleUrl: '${2:name}.component.scss',",
+      "\ttemplateUrl: '${2:name}.html',",
+      "\tstyleUrl: '${2:name}.css',",
+      "\timports: [],",
       "})",
-      "export class ${3:Name}Component {",
-      "\tconstructor() { }",
-      "}"
-    ]
-  },
-  "Angular Component (Standalone)": {
-    "prefix": "a-component-standalone",
-    "description": "Angular component standalone",
-    "body": [
-      "import { ChangeDetectionStrategy, Component } from '@angular/core';",
-      "",
-      "@Component({",
-      "\tstandalone: true,",
-      "\tselector: '${1:selector-name}',",
-      "\ttemplateUrl: '${2:name}.cmp.html',",
-      "\tstyleUrl: '${2:name}.cmp.scss',",
-      "\tchangeDetection: ChangeDetectionStrategy.OnPush,",
-      "})",
-      "export class ${3:Name}Cmp {",
+      "export class ${3:Name}{",
       "\tconstructor() { }",
       "}"
     ]
@@ -41,10 +24,11 @@
       "",
       "@Component({",
       "\tselector: '${1:selector-name}',",
+      "\timports: [],",
       "\ttemplate: `$0`",
       "})",
       "",
-      "export class ${2:Name}Component {",
+      "export class ${2:Name}{",
       "\tconstructor() { }",
       "}"
     ]
@@ -57,24 +41,6 @@
       "",
       "@Pipe({",
       "\tname: '${1:selector-name}'",
-      "})",
-      "",
-      "export class ${2:Name}Pipe implements PipeTransform {",
-      "\ttransform(value: any, ...args: any[]): any {",
-      "\t\t$0",
-      "\t}",
-      "}"
-    ]
-  },
-  "Angular Pipe (Standalone)": {
-    "prefix": "a-pipe-standalone",
-    "description": "Angular pipe standalone",
-    "body": [
-      "import { Pipe, PipeTransform } from '@angular/core';",
-      "",
-      "@Pipe({",
-      "\tstandalone: true,",
-      "\tname: '${1:selector-name}',",
       "\timports: [],",
       "})",
       "",
@@ -85,13 +51,26 @@
       "}"
     ]
   },
+  "Angular Injectable": {
+    "prefix": "a-injectable",
+    "description": "Angular Injectable",
+    "body": [
+      "import { Injectable } from '@angular/core';",
+      "",
+      "@Injectable()",
+      "export class ${2:ServiceName}{",
+      "\tconstructor() { }",
+      "\t$0",
+      "}"
+    ]
+  },
   "Angular Service": {
     "prefix": "a-service",
     "description": "Angular Service with Injectable ProvidedIn Root",
     "body": [
-      "import { Injectable } from '@angular/core';",
+      "import { Service } from '@angular/core';",
       "",
-      "@Injectable({providedIn: ${1:'root'}})",
+      "@Service()",
       "export class ${2:ServiceName}Service {",
       "\tconstructor() { }",
       "\t$0",
