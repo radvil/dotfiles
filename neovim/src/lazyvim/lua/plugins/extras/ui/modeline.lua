@@ -1,9 +1,9 @@
 return {
-  { "nvim-lualine/lualine.nvim", enabled = false, },
+  { "nvim-lualine/lualine.nvim", enabled = false },
   { "nvim-mini/mini.statusline", enabled = false },
   {
     "nvimdev/modeline.nvim",
-    dev = true,
+    name = "modeline",
     config = function()
       require("modeline").setup()
     end,

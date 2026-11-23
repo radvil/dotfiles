@@ -1,4 +1,4 @@
----@diagnostic disable: missing-fields
+---@diagnostic disable: missing-fields, assign-type-mismatch
 ---@class NeoFlashFtExcludes
 local ftMap = {
   popups = {
@@ -55,28 +55,6 @@ local telescope_pick = function(prompt_bufnr)
   })
 end
 
----jump to definition with flash
----@param jump_type "vsplit" | "split" | "tab drop" | nil
-local jump_to_definition = function(jump_type)
-  return function()
-    require("flash").jump({
-      search = {
-        exclude = ftMap.popups,
-        multi_window = true,
-        autojump = false,
-        forward = true,
-      },
-      ---@param state Flash.State
-      action = function(target, state)
-        state:hide()
-        vim.api.nvim_set_current_win(target.win)
-        vim.api.nvim_win_set_cursor(target.win, target.pos)
-        require("telescope.builtin").lsp_definitions({ jump_type = jump_type })
-      end,
-    })
-  end
-end
-
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -91,44 +69,6 @@ return {
     },
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    optional = true,
-    opts = {
-      servers = {
-        ["*"] = {
-          keys = {
-            {
-              "<a-g><a-d>",
-              jump_to_definition(),
-              desc = "Jump to Definition",
-              has = "definition",
-            },
-            {
-              "<a-g><a-v>",
-              jump_to_definition("vsplit"),
-              desc = "Jump to Definition (vsplit)",
-              has = "definition",
-            },
-            {
-              "<a-g><a-x>",
-              jump_to_definition("split"),
-              desc = "Jump to Definition (split)",
-              has = "definition",
-            },
-            {
-              "<a-g><a-t>",
-              jump_to_definition("tab drop"),
-              desc = "Jump to Definition (tab drop)",
-              has = "definition",
-            },
-          },
-        },
-      },
-    },
-  },
-
-  ---@type LazySpec
   {
     "folke/flash.nvim",
     keys = function()
@@ -150,20 +90,6 @@ return {
         },
         {
           "<a-m>",
-          mode = { "x", "o" },
-          function()
-            require("flash").jump({
-              search = {
-                multi_window = false,
-                forward = true,
-                wrap = true,
-              },
-            })
-          end,
-          desc = "ju[m]p anywhere",
-        },
-        {
-          "<C-Space>",
           mode = { "x", "o" },
           function()
             require("flash").jump({
@@ -281,6 +207,22 @@ return {
                   local default_width = 0.75
                   local default_height = 0.65
                   local maximized = false
+
+                  local function open_from_float(self, open_cmd)
+                    local cur = vim.api.nvim_win_get_cursor(self.win)
+                    promoted_to_main = true
+                    self:close()
+                    if vim.api.nvim_buf_is_valid(def_buf) then
+                      vim.bo[def_buf].modifiable = true
+                      vim.bo[def_buf].readonly = false
+                      if open_cmd then
+                        vim.cmd(open_cmd)
+                      end
+                      vim.api.nvim_set_current_buf(def_buf)
+                      vim.api.nvim_win_set_cursor(0, cur)
+                    end
+                  end
+
                   local win = Snacks.win({
                     buf = def_buf,
                     width = default_width,
@@ -289,8 +231,8 @@ return {
                     title = " " .. vim.fn.fnamemodify(vim.uri_to_fname(uri), ":~:.") .. ":" .. row .. " ",
                     title_pos = "center",
                     wo = {
-                      cursorline = true,
                       number = true,
+                      cursorline = true,
                       relativenumber = false,
                     },
                     on_close = function()
@@ -322,18 +264,27 @@ return {
                       },
                       ["<cr>"] = {
                         function(self)
-                          local cur = vim.api.nvim_win_get_cursor(self.win)
-                          promoted_to_main = true
-                          self:close()
-                          if vim.api.nvim_buf_is_valid(def_buf) then
-                            -- Unlock for editing in the main window
-                            vim.bo[def_buf].modifiable = true
-                            vim.bo[def_buf].readonly = false
-                            vim.api.nvim_set_current_buf(def_buf)
-                            vim.api.nvim_win_set_cursor(0, cur)
-                          end
+                          open_from_float(self)
                         end,
                         desc = "Open in main window (writable)",
+                      },
+                      ["<c-t>"] = {
+                        function(self)
+                          open_from_float(self, "tabnew")
+                        end,
+                        desc = "Open in new tab (writable)",
+                      },
+                      ["<c-x>"] = {
+                        function(self)
+                          open_from_float(self, "split")
+                        end,
+                        desc = "Open in horizontal split (writable)",
+                      },
+                      ["<c-v>"] = {
+                        function(self)
+                          open_from_float(self, "vsplit")
+                        end,
+                        desc = "Open in vertical split (writable)",
                       },
                     },
                   })
@@ -429,11 +380,54 @@ return {
         },
       },
     }, -- [EOL opts]
-    config = function(_, opts)
-      require("flash").setup(opts)
-      vim.api.nvim_create_user_command("FlashToggleSearch", function()
-        require("flash").toggle()
-      end, { desc = "toggle flash.nvim search" })
+    config = function(_, options)
+      require("flash").setup(options)
+
+      ---jump to definition with flash
+      ---@param jump_type "vsplit" | "split" | "tab" | nil
+      local jump_to_definition = function(jump_type)
+        return function()
+          require("flash").jump({
+            search = {
+              exclude = ftMap.popups,
+              multi_window = true,
+              autojump = false,
+              forward = true,
+            },
+            ---@param state Flash.State
+            action = function(target, state)
+              state:hide()
+              vim.api.nvim_set_current_win(target.win)
+              vim.api.nvim_win_set_cursor(target.win, target.pos)
+              Snacks.picker.lsp_definitions({ confirm = jump_type })
+            end,
+          })
+        end
+      end
+
+      vim.api.nvim_create_user_command("JD", function(opts)
+        local mode = opts.fargs[1] -- nil if called as just `:JD`, or "split" if `:JD split`
+        if mode == nil then
+          jump_to_definition()()
+        elseif mode == "sp" then
+          jump_to_definition("split")()
+        elseif mode == "vs" then
+          jump_to_definition("vsplit")()
+        elseif mode == "tab" then
+          jump_to_definition("tab")()
+        else
+          vim.notify("Invalid argument: " .. mode, vim.log.levels.ERROR)
+        end
+      end, {
+        nargs = "?",
+        desc = "Jump to definition (supports split, vsplit, tab)",
+        complete = function(arg_lead)
+          local subcommands = { "sp", "vs", "tab" }
+          return vim.tbl_filter(function(item)
+            return vim.startswith(item, arg_lead)
+          end, subcommands)
+        end,
+      })
     end,
   },
 }

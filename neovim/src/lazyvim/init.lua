@@ -1,6 +1,6 @@
 require("config.lazy").bootstrap({
   dev = {
-    path = "/media/data/Projects/Misc",
+    path = "/media/data/Projects/Misc/Wkwk-Nvim",
     fallback = false,
   },
   providers_blacklist = {
@@ -85,32 +85,6 @@ require("config.lazy").bootstrap({
           },
         },
       },
-    },
-    {
-      "radvil/ng-nvim",
-      name = "NgNvim",
-      dev = true,
-      cmd = {
-        "At",
-        "Ac",
-        "As",
-        "Atc",
-        "Ap",
-        "Atv",
-        "Acv",
-        "Asv",
-      },
-      config = function()
-        require("ng-nvim").setup({
-          ignored_dirs = {
-            node_modules = true,
-            [".git"] = true,
-            dist = true,
-            [".nx"] = true,
-            [".angular"] = true,
-          },
-        })
-      end,
     },
     { import = "plugins.colorscheme" },
     { import = "plugins.completion" },
