@@ -1,3 +1,32 @@
+local NG_ROOT_MARKERS = { "nx.json", "angular.json", "project.json" }
+
+---@param bufnr integer
+---@return boolean
+local function is_angular_or_nx_workspace(bufnr)
+  ---@type string?
+  local start_path = vim.api.nvim_buf_get_name(bufnr)
+  if start_path == nil or start_path == "" then
+    start_path = vim.uv.cwd() or ""
+  end
+  local root = vim.fs.root(start_path, NG_ROOT_MARKERS)
+  if root then
+    return true
+  end
+  -- fallback: check if package.json lists @angular/core
+  local pkg_root = vim.fs.root(start_path, { "package.json" })
+  if pkg_root then
+    local pkg_path = vim.fs.joinpath(pkg_root, "package.json")
+    local ok, lines = pcall(vim.fn.readfile, pkg_path)
+    if ok and lines then
+      local content = table.concat(lines, "\n")
+      if content:find('"@angular/core"', 1, true) then
+        return true
+      end
+    end
+  end
+  return false
+end
+
 return {
   recommended = function()
     return LazyVim.extras.wants({
@@ -16,8 +45,11 @@ return {
       end
       vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
         pattern = { "*.html" },
-        callback = function()
-          vim.treesitter.start(nil, "angular")
+        group = vim.api.nvim_create_augroup("HtmlAngularTreesitter", { clear = true }),
+        callback = function(args)
+          if is_angular_or_nx_workspace(args.buf) then
+            pcall(vim.treesitter.start, args.buf, "angular")
+          end
         end,
       })
     end,
@@ -38,6 +70,7 @@ return {
               function()
                 local bufnr = vim.api.nvim_get_current_buf()
                 local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                ---@type nil | vim.lsp.Client
                 local target_client = nil
                 for _, client in ipairs(clients) do
                   if client.name == "angularls" then
@@ -53,20 +86,20 @@ return {
                   vim.lsp.buf.rename()
                 end
               end,
-              desc = "Format Angular Code",
+              desc = "[C]ode [f]ormat (Angular)",
             },
           },
           root_dir = function(bufnr, on_dir)
             -- prefer the top-level nx config if it exists (monorepo support)
             local git = vim.fs.root(bufnr, ".git")
-            local markers = { "nx.json", "angular.json", "project.json" }
+            local markers = NG_ROOT_MARKERS
             local root = git and vim.fs.root(git, markers) or vim.fs.root(bufnr, markers)
             if root then
               on_dir(root)
             end
           end,
         },
-      },
+      }, -- EOL opts.servers
       setup = {
         angularls = function()
           -- Snacks.util.lsp.on({ name = "angularls" }, function(_, client)
@@ -104,26 +137,63 @@ return {
     end,
   },
 
+  {
+    "nvim-mini/mini.icons",
+    optional = true,
+    opts = {
+      file = {
+        ["angular.json"] = {
+          glyph = "",
+          hl = "MiniIconsRed",
+        },
+      },
+      extension = {
+        ["module.ts"] = {
+          glyph = "",
+          hl = "MiniIconsRed",
+        },
+        ["service.ts"] = {
+          glyph = "",
+          hl = "MiniIconsYellow",
+        },
+        ["component.ts"] = {
+          glyph = "",
+          hl = "MiniIconsAzure",
+        },
+        ["pipe.ts"] = {
+          glyph = "",
+          hl = "MiniIconsCyan",
+        },
+        ["routes.ts"] = {
+          glyph = "",
+          hl = "MiniIconsGreen",
+        },
+      },
+    },
+  },
+
   -- navigation
   ---@type LazyPlugin
   {
-    "Wkwk-Hehe/NgNav",
+    "wkwk-hehe/Wkwk.NgNav",
     name = "Wkwk.NgNav",
-    dev = true,
+    version = "*",
+    -- dev = true,
     -- cmd = { "At", "Ac", "As", "Atc", "Ap", "Atv", "Acv", "Asv" },
     -- ft = { "typescript", "htmlangular", "json" },
     cond = function()
-      local root = vim.fs.root(0, { "angular.json", "nx.json" })
-      if not root then
-        return false
-      end
-      -- Fallback for Nx / Angular workspaces using project.json
-      -- local fallback = vim.fn.filereadable(vim.fs.joinpath(root, "project.json")) == 1
-      -- vim.print(fallback)
-      return true
+      return is_angular_or_nx_workspace(0)
     end,
     opts = {
-      ignored_dirs = { "node_modules", ".git", "dist", ".nx", ".angular" },
+      workspace = {
+        ignored_dirs = {
+          "node_modules",
+          ".angular",
+          "dist",
+          ".git",
+          ".nx",
+        },
+      },
     },
     config = function(opts)
       local mod = require("wkwk.ng-nav")
