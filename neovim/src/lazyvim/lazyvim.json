@@ -38,8 +38,7 @@
     "plugins.extras.misc.suda",
     "plugins.extras.misc.undotree",
     "plugins.extras.misc.vim-illuminate",
-    "plugins.extras.ui.mini-statusline",
-    "plugins.extras.ui.modeline",
+    "plugins.extras.ui.wkwk-statusline",
     "plugins.extras.ui.zenmode"
   ],
   "install_version": 7,
