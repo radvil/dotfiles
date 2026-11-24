@@ -27,7 +27,6 @@
     "plugins.extras.editor.outline",
     "plugins.extras.git.diffview",
     "plugins.extras.git.fugitive",
-    "plugins.extras.git.mini-diff",
     "plugins.extras.lang.angular",
     "plugins.extras.lazycat.kanagawa",
     "plugins.extras.lazycat.kopi-cat",
