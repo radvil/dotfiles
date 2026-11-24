@@ -1,30 +1,44 @@
-local NG_ROOT_MARKERS = { "nx.json", "angular.json", "project.json" }
+local NG_ROOT_MARKERS = { "angular.json", "project.json" }
+
+---@type table<string, boolean>
+local workspace_cache = {}
 
 ---@param bufnr integer
 ---@return boolean
-local function is_angular_or_nx_workspace(bufnr)
-  ---@type string?
-  local start_path = vim.api.nvim_buf_get_name(bufnr)
-  if start_path == nil or start_path == "" then
-    start_path = vim.uv.cwd() or ""
+local function is_angular_workspace(bufnr)
+  local buf_name = vim.api.nvim_buf_get_name(bufnr)
+  local target = buf_name ~= "" and vim.fs.dirname(buf_name) or (vim.uv.cwd() or "")
+  if target == "" then
+    return false
   end
-  local root = vim.fs.root(start_path, NG_ROOT_MARKERS)
-  if root then
+  -- check fast workspace/project markers first (no file reads needed)
+  local marker_root = vim.fs.root(target, NG_ROOT_MARKERS)
+  if marker_root then
+    if workspace_cache[marker_root] ~= nil then
+      return workspace_cache[marker_root]
+    end
+    workspace_cache[marker_root] = true
     return true
   end
-  -- fallback: check if package.json lists @angular/core
-  local pkg_root = vim.fs.root(start_path, { "package.json" })
-  if pkg_root then
-    local pkg_path = vim.fs.joinpath(pkg_root, "package.json")
-    local ok, lines = pcall(vim.fn.readfile, pkg_path)
-    if ok and lines then
-      local content = table.concat(lines, "\n")
-      if content:find('"@angular/core"', 1, true) then
-        return true
-      end
-    end
+  -- vim.notify("Cached: should only triggered once", "warn")
+  -- fallback: find nearest package.json directory and cache by directory path
+  local pkg_root = vim.fs.root(target, { "package.json" })
+  if not pkg_root then
+    return false
   end
-  return false
+  if workspace_cache[pkg_root] ~= nil then
+    return workspace_cache[pkg_root]
+  end
+  -- NX + Angular detection fill fall here
+  local is_ng = false
+  local pkg_path = vim.fs.joinpath(pkg_root, "package.json")
+  local ok, lines = pcall(vim.fn.readfile, pkg_path)
+  if ok and type(lines) == "table" then
+    local content = table.concat(lines, "\n")
+    is_ng = content:find('"@angular/core"', 1, true) ~= nil
+  end
+  workspace_cache[pkg_root] = is_ng
+  return is_ng
 end
 
 return {
@@ -47,7 +61,7 @@ return {
         pattern = { "*.html" },
         group = vim.api.nvim_create_augroup("HtmlAngularTreesitter", { clear = true }),
         callback = function(args)
-          if is_angular_or_nx_workspace(args.buf) then
+          if is_angular_workspace(args.buf) then
             pcall(vim.treesitter.start, args.buf, "angular")
           end
         end,
@@ -86,7 +100,7 @@ return {
                   vim.lsp.buf.rename()
                 end
               end,
-              desc = "[C]ode [f]ormat (Angular)",
+              desc = "Rename variable",
             },
           },
           root_dir = function(bufnr, on_dir)
@@ -182,7 +196,7 @@ return {
     -- cmd = { "At", "Ac", "As", "Atc", "Ap", "Atv", "Acv", "Asv" },
     -- ft = { "typescript", "htmlangular", "json" },
     cond = function()
-      return is_angular_or_nx_workspace(0)
+      return is_angular_workspace(0)
     end,
     opts = {
       workspace = {
