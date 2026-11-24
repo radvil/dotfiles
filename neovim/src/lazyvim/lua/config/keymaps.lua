@@ -71,10 +71,10 @@ if vim.opt.clipboard ~= "unnamedplus" then
   map("n",          "<Leader>X", '"_D',  { desc = "[X]elete line without yanking" })
   map("n",          "x",         '"_x',  { noremap = true, silent = true })
 
+  map({ "o", "x" },           "p", '"_dP', { desc = "[p]aste from system clipboard (system)", nowait = true })
   map("n",                    "gP",        '"+P',  { desc = "[P]aste before cursor (system)", nowait = true })
   map({ "n", "o", "x", "v" }, "<Leader>P", '"+P',  { desc = "[P]aste before from system clipboard", nowait = true })
   map({ "n", "v" },           "<leader>p", '"+p',  { desc = "[p]aste from system clipboard (system)", nowait = true })
-  map({ "o", "x" },           "<Leader>p", '"_dP', { desc = "[p]aste from system clipboard (system)", nowait = true })
 
   map({ "n", "o", "x", "v" }, "<Leader>d", '"+d',  { desc = "[d]elete (cut) to system clipboard", nowait = true })
   map({ "n", "o", "x", "v" }, "<Leader>D", '"+D',  { desc = "[D]elete line (cut) to system clipboard", nowait = true })
