@@ -16,9 +16,10 @@ if Utils.command_exists("fish") then
 end
 
 -- os.getenv("KITTY_WINDOW_ID") and true or false
----@alias NeoColorscheme "catppuccin-latte" | "catppuccin-machiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight-moon" | "kanagawa" | "onedark" | "material" | "rose-pine"
+---@alias NeoColorscheme "catppuccin-latte" | "catppuccin-macchiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight-moon" | "kanagawa" | "onedark" | "material" | "rose-pine"
 ---@type NeoColorscheme
-vim.g.neo_colorscheme = "tokyonight-moon"
+vim.g.neo_colorscheme = "catppuccin-mocha"
+-- vim.g.neo_colorscheme = "tokyonight-moon"
 vim.g.neo_transparent = false
 vim.g.neo_diminactive = true
 -- vim.opt.winborder = "rounded"

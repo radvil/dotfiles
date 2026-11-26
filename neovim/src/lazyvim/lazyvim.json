@@ -3,6 +3,7 @@
     "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.coding.mini-comment",
     "lazyvim.plugins.extras.coding.mini-snippets",
+    "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.angular",
     "lazyvim.plugins.extras.lang.git",
