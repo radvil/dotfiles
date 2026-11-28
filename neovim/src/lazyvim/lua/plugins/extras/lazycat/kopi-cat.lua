@@ -9,7 +9,7 @@ return {
     },
     color_overrides = {
       latte = palettes.meowday,
-      mocha = palettes.meowted,
+      mocha = palettes.meowthermal,
       frappe = palettes.kopicat,
       macchiato = palettes.naffee,
     },

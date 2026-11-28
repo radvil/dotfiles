@@ -18,7 +18,7 @@ end
 -- os.getenv("KITTY_WINDOW_ID") and true or false
 ---@alias NeoColorscheme "catppuccin-latte" | "catppuccin-macchiato" | "catppuccin-mocha" | "catppuccin-frappe" | "tokyonight-moon" | "kanagawa" | "onedark" | "material" | "rose-pine"
 ---@type NeoColorscheme
-vim.g.neo_colorscheme = "catppuccin-mocha"
+vim.g.neo_colorscheme = "catppuccin-macchiato"
 -- vim.g.neo_colorscheme = "tokyonight-moon"
 vim.g.neo_transparent = false
 vim.g.neo_diminactive = true
@@ -35,13 +35,14 @@ vim.g.deprecation_warnings = false
 
 -- vim.opt.cmdheight = 4
 vim.opt.clipboard = ""
-vim.opt.guicursor = ""
-vim.opt.cursorline = false
+-- vim.opt.guicursor = ""
+vim.opt.cursorline = true
 vim.opt.pumblend = 0 -- Popup blend
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
 vim.opt.smoothscroll = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
+vim.opt.timeoutlen = 2000
 vim.opt.sessionoptions = {
   "buffers",
   "curdir",

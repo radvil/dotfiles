@@ -43,10 +43,10 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: "single" # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-    useConfig: false # If true, lazygit will use whatever pager is specified in $GIT_PAGER, $PAGER, or your git config.
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never
+      useConfig: false # If true, lazygit will use whatever pager is specified in $GIT_PAGER, $PAGER, or your git config.
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
@@ -168,7 +168,7 @@ keybinding:
     viewResetOptions: "D"
     fetch: "f"
     toggleTreeView: "`"
-    openMergeTool: "M"
+    openMergeOptions: "M"
     openStatusFilter: "<c-b>"
   branches:
     createPullRequest: "o"
@@ -202,7 +202,6 @@ keybinding:
     pasteCommits: "v"
     tagCommit: "T"
     checkoutCommit: "<space>"
-    resetCherryPick: "<c-R>"
     copyCommitMessageToClipboard: "<c-y>"
     openLogMenu: "<c-l>"
     viewBisectOptions: "b"

@@ -21,8 +21,8 @@ return {
       --scroll = { enabled = true },
       indent = {
         indent = {
-          char = "┊",
           enabled = true,
+          char = "┊",
           only_current = false,
           only_scope = false,
         },

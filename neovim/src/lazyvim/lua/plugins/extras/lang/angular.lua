@@ -192,7 +192,7 @@ return {
     "wkwk-hehe/Wkwk.NgNav",
     name = "Wkwk.NgNav",
     version = "*",
-    -- dev = true,
+    dev = false,
     -- cmd = { "At", "Ac", "As", "Atc", "Ap", "Atv", "Acv", "Asv" },
     -- ft = { "typescript", "htmlangular", "json" },
     cond = function()
@@ -208,6 +208,14 @@ return {
           ".nx",
         },
       },
+      component_files = {
+        default_mode = "normal",
+        keys = {
+          split = "<c-x>",
+          vsplit = "<c-v>",
+          tab = "<c-t>",
+        },
+      },
     },
     config = function(opts)
       local mod = require("wkwk.ng-nav")
@@ -217,12 +225,14 @@ return {
       local uc = vim.api.nvim_create_user_command
       uc("Atc", api.ViewTypeCheckBlock, { desc = "[Wkwk.NgNav] Display typecheck block under cursor" })
       uc("At", api.GoToComponentTemplate, { desc = "[Wkwk.NgNav] Go to template file" })
+      uc("Ah", api.GoToComponentTemplate, { desc = "[Wkwk.NgNav] Go to template file" })
       uc("Ac", api.GoToComponentClass, { desc = "[Wkwk.NgNav] Go to component file" })
       uc("As", api.GoToComponentStylesheet, { desc = "[Wkwk.NgNav] Go to stylesheet file" })
-      uc("Atv", function() api.GoToComponentTemplate({ split = "vsplit" }) end, { desc = "[Wkwk.NgNav] Open template file in vertical split" })
+      uc("Ahv", function() api.GoToComponentTemplate({ split = "vsplit" }) end, { desc = "[Wkwk.NgNav] Open template file in vertical split" })
       uc("Acv", function() api.GoToComponentClass({ split = "vsplit" }) end, { desc = "[Wkwk.NgNav] Open component file in vertical split" })
       uc("Asv", function() api.GoToComponentStylesheet({ split = "vsplit" }) end, { desc = "[Wkwk.NgNav] Open stylesheet file in vertical split" })
       uc("Ap", function () api.OpenProjects({ split = "tab split" }) end, { desc = "[Wkwk.NgNav] Select projects" })
+      uc("Aj", function () api.GoToComponentFiles({ show_current = true, mode = "normal" }) end, { desc = "[Wkwk.NgNav] Jump to component's files" })
       -- stylua: ignore end
     end,
   },

@@ -74,7 +74,8 @@ M.kopicat = extend_base({
 M.naffee = extend_base({
   text = "#D9D6CE",
   overlay0 = "#92939B",
-  surface0 = "#2A2A32",
+  -- overlay2 = "#535763",
+  overlay2 = "#6E7988",
   red = "#D38A8A",
   mauve = "#B8A1D9",
   yellow = "#D8B982",
@@ -114,9 +115,6 @@ M.meowthermal = {
 }
 
 M.meowted = {
-  rosewater = "#E3C9C4",
-  flamingo = "#DFB6B3",
-  pink = "#D5B3C8",
   mauve = "#B4A8D6",
   red = "#C97D7E",
   maroon = "#C28B8C",
@@ -128,6 +126,9 @@ M.meowted = {
   sapphire = "#6B95AE",
   blue = "#748FB8",
   lavender = "#9AA4CA",
+  rosewater = "#E3C9C4",
+  flamingo = "#DFB6B3",
+  pink = "#D5B3C8",
   text = "#CDD6E0",
   subtext1 = "#B4BECA",
   subtext0 = "#9AA6B4",
@@ -141,5 +142,19 @@ M.meowted = {
   mantle = "#141920",
   crust = "#0F1318",
 }
+
+M.wkwk = vim.tbl_extend("force", M.meowted, {
+  red = "#ff657a",
+  maroon = "#F29BA7",
+  peach = "#ff9b5e",
+  yellow = "#eccc81",
+  green = "#a8be81",
+  teal = "#9cd1bb",
+  sky = "#A6C9E5",
+  sapphire = "#86AACC",
+  blue = "#5d81ab",
+  lavender = "#ACB6D2",
+  mauve = "#b18eab",
+})
 
 return M
